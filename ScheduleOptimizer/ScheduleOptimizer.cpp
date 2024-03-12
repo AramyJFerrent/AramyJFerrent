@@ -1,3 +1,10 @@
+```cpp
+/*
+* This program reads course information from a file,
+* assigns meeting days and times to each course, ensuring no overlap in schedules,
+* and outputs the final schedule to a file.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -6,14 +13,16 @@
 #include <ctime>
 #include <cstdlib>
 
+// Struct to hold class schedule information
 struct ClassSchedule {
-    std::string className;
-    std::string professorName;
-    std::vector<std::string> meetingDays;
-    int startTime;
-    int endTime;
+    std::string className;              // Name of the class
+    std::string professorName;          // Name of the professor
+    std::vector<std::string> meetingDays; // Days the class meets (MWF or TTh)
+    int startTime;                      // Start time of the class (in hours, 7 to 18)
+    int endTime;                        // End time of the class (in hours, 7 to 18)
 };
 
+// Function to check if two schedules overlap
 bool overlaps(const ClassSchedule& a, const ClassSchedule& b) {
     for (const auto& day : a.meetingDays) {
         if (std::find(b.meetingDays.begin(), b.meetingDays.end(), day) != b.meetingDays.end()) {
@@ -25,6 +34,7 @@ bool overlaps(const ClassSchedule& a, const ClassSchedule& b) {
     return false;
 }
 
+// Function to assign meeting days and times to each class
 void assignSchedule(std::vector<ClassSchedule>& schedules) {
     std::vector<std::vector<bool>> scheduleMatrix(5, std::vector<bool>(12, false)); // 5 days, 12 hours (7am to 6pm)
 
@@ -53,6 +63,7 @@ void assignSchedule(std::vector<ClassSchedule>& schedules) {
     }
 }
 
+// Function to output the final schedule to a file
 void outputSchedule(const std::vector<ClassSchedule>& schedules) {
     std::ofstream outfile("best_schedule.txt");
     if (outfile.is_open()) {
@@ -94,3 +105,4 @@ int main() {
 
     return 0;
 }
+```
