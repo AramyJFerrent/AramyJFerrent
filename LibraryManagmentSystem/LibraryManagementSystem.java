@@ -1,4 +1,3 @@
-```java
 /**
  * Represents a book in the library.
  */
@@ -223,4 +222,3 @@ public class LibraryManagementSystem {
         System.out.println("Book not found.");
     }
 }
-```
