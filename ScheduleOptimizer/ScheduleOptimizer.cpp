@@ -110,5 +110,3 @@ int main() {
 
     return 0;
 }
-
-These comments should provide a clear explanation of each function's purpose, parameters, and behavior, enhancing the readability and understanding of your code.
