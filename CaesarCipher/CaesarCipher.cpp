@@ -2,6 +2,11 @@
 #include <string>
 using namespace std;
 
+// Brief summary of the file contents/structure:
+// This program demonstrates encryption and decryption of a string using the Caesar cipher method. It takes an input string
+// and an offset key, encrypts the string by shifting each character by the offset amount, decrypts it back to the original input,
+// and finally outputs the reversed original input string.
+
 // Function to encrypt the string
 string encrypt(string input, int offset) {
     string encrypted = "";
