@@ -1,6 +1,12 @@
 #include "DoubleLinkedList.h"
 #include <iostream>
 
+/* 
+ * This file contains the implementation of the functions declared in DoubleLinkedList.h. 
+ * It defines the behavior of the DoubleLinkedList class, including inserting, merging, removing elements,
+ * accessing elements by index, and displaying the list contents.
+ */
+
 // Constructor
 DoubleLinkedList::DoubleLinkedList() {
     head = nullptr;
