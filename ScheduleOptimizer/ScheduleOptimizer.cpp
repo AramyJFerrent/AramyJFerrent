@@ -1,8 +1,7 @@
 /*
-* This program reads course information from a file,
-* assigns meeting days and times to each course, ensuring no overlap in schedules,
-* and outputs the final schedule to a file.
-*/
+ * This program reads course information from a file, assigns meeting days and times to each course,
+ * ensures no overlap in schedules, and outputs the final schedule to a file.
+ */
 
 #include <iostream>
 #include <fstream>
@@ -21,7 +20,8 @@ struct ClassSchedule {
     int endTime;                        // End time of the class (in hours, 7 to 18)
 };
 
-// Function to check if two schedules overlap
+// Checks if two schedules overlap
+// Returns true if the schedules overlap, false otherwise
 bool overlaps(const ClassSchedule& a, const ClassSchedule& b) {
     for (const auto& day : a.meetingDays) {
         if (std::find(b.meetingDays.begin(), b.meetingDays.end(), day) != b.meetingDays.end()) {
@@ -33,7 +33,7 @@ bool overlaps(const ClassSchedule& a, const ClassSchedule& b) {
     return false;
 }
 
-// Function to assign meeting days and times to each class
+// Assigns meeting days and times to each class
 void assignSchedule(std::vector<ClassSchedule>& schedules) {
     std::vector<std::vector<bool>> scheduleMatrix(5, std::vector<bool>(12, false)); // 5 days, 12 hours (7am to 6pm)
 
@@ -62,7 +62,7 @@ void assignSchedule(std::vector<ClassSchedule>& schedules) {
     }
 }
 
-// Function to output the final schedule to a file
+// Outputs the final schedule to a file
 void outputSchedule(const std::vector<ClassSchedule>& schedules) {
     std::ofstream outfile("best_schedule.txt");
     if (outfile.is_open()) {
@@ -82,13 +82,16 @@ void outputSchedule(const std::vector<ClassSchedule>& schedules) {
     }
 }
 
+// Reads course information from a file, assign schedules, and output the final schedule
 int main() {
+    // Open the input file
     std::ifstream infile("sections.txt");
     if (!infile.is_open()) {
         std::cerr << "Unable to open file.\n";
         return 1;
     }
 
+    // Read course information from the file
     std::vector<ClassSchedule> schedules;
     std::string className, professorName;
     while (infile >> className >> professorName) {
@@ -99,9 +102,13 @@ int main() {
     }
     infile.close();
 
+    // Assign meeting days and times to each class
     assignSchedule(schedules);
+
+    // Output the final schedule to a file
     outputSchedule(schedules);
 
     return 0;
 }
 
+These comments should provide a clear explanation of each function's purpose, parameters, and behavior, enhancing the readability and understanding of your code.
