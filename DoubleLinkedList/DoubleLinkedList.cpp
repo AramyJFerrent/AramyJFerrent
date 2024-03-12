@@ -70,6 +70,7 @@ void DoubleLinkedList::merge(DoubleLinkedList* absorbedList) {
         tail->next = absorbedList->head;
         absorbedList->head->prev = tail;
         tail = absorbedList->tail;
+        absorbedList->head->prev = tail; // Update prev pointer of absorbedList's head
     }
 
     count += absorbedList->count;
@@ -81,6 +82,10 @@ void DoubleLinkedList::merge(DoubleLinkedList* absorbedList) {
 
 // Remove a value from the linked list
 void DoubleLinkedList::remove(int value) {
+    if (head == nullptr) {
+        return; // List is empty
+    }
+
     Node* current = head;
 
     while (current != nullptr) {
@@ -97,7 +102,9 @@ void DoubleLinkedList::remove(int value) {
             }
             else {
                 current->prev->next = current->next;
-                current->next->prev = current->prev;
+                if (current->next != nullptr) {
+                    current->next->prev = current->prev;
+                }
             }
             delete current;
             count--;
@@ -135,3 +142,4 @@ void DoubleLinkedList::display(bool reverse) const {
     }
     std::cout << std::endl;
 }
+
