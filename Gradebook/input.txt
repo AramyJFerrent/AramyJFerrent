@@ -1,0 +1,8 @@
+CMPSC 122
+tom tp 3.33 3.0
+fred tp 3.33 3.0
+susan e 3.67
+fred e 2.33
+tom e 2.67
+susan e 3.67
+susan tp 3.0 3.33
