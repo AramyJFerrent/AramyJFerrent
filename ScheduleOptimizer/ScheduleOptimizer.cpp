@@ -1,8 +1,3 @@
-/*
- * This program reads course information from a file, assigns meeting days and times to each course,
- * ensures no overlap in schedules, and outputs the final schedule to a file.
- */
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -10,6 +5,11 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+
+/*
+ * This program reads course information from a file, assigns meeting days and times to each course,
+ * ensures no overlap in schedules, and outputs the final schedule to a file.
+ */
 
 // Struct to hold class schedule information
 struct ClassSchedule {
