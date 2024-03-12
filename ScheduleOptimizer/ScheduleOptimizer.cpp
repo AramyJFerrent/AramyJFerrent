@@ -1,4 +1,3 @@
-```cpp
 /*
 * This program reads course information from a file,
 * assigns meeting days and times to each course, ensuring no overlap in schedules,
@@ -105,4 +104,4 @@ int main() {
 
     return 0;
 }
-```
+
