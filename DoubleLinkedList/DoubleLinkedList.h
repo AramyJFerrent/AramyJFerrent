@@ -2,10 +2,7 @@
 #define DOUBLELINKEDLIST_H
 
 /* 
- * Name: [Your Name]
- * Course and Section: [Your Course and Section Number]
- * Project Number: [Your Project Number]
- * Brief Summary: This header file defines the DoubleLinkedList class, which represents a doubly linked list. 
+ * This header file defines the DoubleLinkedList class, which represents a doubly linked list. 
  * The class includes functions for inserting, merging, and removing elements, as well as accessing elements by index
  * and displaying the list contents.
  */
