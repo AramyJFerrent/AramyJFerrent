@@ -1,4 +1,3 @@
-```java
 package mortgageestimator;
 
 import java.util.Scanner;
@@ -57,4 +56,4 @@ public class MortgageEstimator {
         System.out.printf("Total Amount Paid: %.2f\n", totalPaid);
     }
 }
-```
+
