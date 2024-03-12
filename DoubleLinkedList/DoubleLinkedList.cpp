@@ -1,12 +1,14 @@
 #include "DoubleLinkedList.h"
 #include <iostream>
 
+// Constructor
 DoubleLinkedList::DoubleLinkedList() {
     head = nullptr;
     tail = nullptr;
     count = 0;
 }
 
+// Destructor
 DoubleLinkedList::~DoubleLinkedList() {
     Node* current = head;
     while (current != nullptr) {
@@ -16,6 +18,7 @@ DoubleLinkedList::~DoubleLinkedList() {
     }
 }
 
+// Insert a value into the linked list
 void DoubleLinkedList::insert(int value) {
     Node* newNode = new Node{ value, nullptr, nullptr };
 
@@ -47,6 +50,7 @@ void DoubleLinkedList::insert(int value) {
     count++;
 }
 
+// Merge another linked list into this one
 void DoubleLinkedList::merge(DoubleLinkedList* absorbedList) {
     if (absorbedList == nullptr || absorbedList->head == nullptr) {
         return;
@@ -69,6 +73,7 @@ void DoubleLinkedList::merge(DoubleLinkedList* absorbedList) {
     absorbedList->count = 0;
 }
 
+// Remove a value from the linked list
 void DoubleLinkedList::remove(int value) {
     Node* current = head;
 
@@ -96,6 +101,7 @@ void DoubleLinkedList::remove(int value) {
     }
 }
 
+// Get the value at the given index
 const int& DoubleLinkedList::operator[](int index) const {
     if (index < 0 || index >= count) {
         throw IndexOutOfBoundsException();
@@ -109,10 +115,12 @@ const int& DoubleLinkedList::operator[](int index) const {
     return current->data;
 }
 
+// Get the count of elements in the linked list
 int DoubleLinkedList::getCount() const {
     return count;
 }
 
+// Display the linked list (reverse if specified)
 void DoubleLinkedList::display(bool reverse) const {
     Node* current = reverse ? tail : head;
     while (current != nullptr) {
