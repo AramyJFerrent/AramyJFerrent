@@ -1,3 +1,8 @@
+/* 
+ * This file contains the declaration of the GradeBook class, which manages student assessments and grades for a course.
+ * It includes methods to set and get the course name, add assessments for students, calculate grades, and print grades.
+ */
+
 #ifndef GRADEBOOK_H
 #define GRADEBOOK_H
 
