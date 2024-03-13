@@ -1,9 +1,4 @@
 /* 
- * Name: [Your Name]
- * Course: [Course Number and Section]
- * Project: [Project Number]
- * 
- * File Contents / Structure:
  * This file contains the implementation of the Essay class, which represents an essay assessment in a student grading system. 
  * It includes methods to get and set the essay's grade.
  */
