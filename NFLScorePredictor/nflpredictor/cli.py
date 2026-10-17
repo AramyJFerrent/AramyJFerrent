@@ -44,8 +44,25 @@ def cmd_backtest(args) -> None:
         "Model only vs closing line": backtest.paired_bootstrap(err["model"], err["line"]),
     }
     checks = backtest.distribution_checks(bt)
+
+    # Picks against the spread. Starting QBs are taken from each team's previous
+    # game so the comparison with Wednesday lines uses nothing they could not know.
+    blind = FeatureBuilder(backtest.without_starters(games), team_games, qbs, hp)
+    blind_feats = blind.walk_forward(range(max(args.start - hp.fit_window_seasons, FIRST_SEASON + 1), args.end + 1))
+    margins = backtest.model_margins(blind_feats, range(args.start, args.end + 1), hp.fit_window_seasons)
+    margins = margins.join(backtest.load_midweek_lines(games, args.max_age_hours), on="game_id")
+    midweek = margins[margins["midweek_line"].notna()]
+    span = f"{int(midweek['season'].min())}–{int(midweek['season'].max())}" if len(midweek) else ""
+    picks = {
+        f"Wednesday line, {span}": backtest.pick_record(midweek, "midweek_line", closing_col="spread_line"),
+        f"Closing line, same {span} games": backtest.pick_record(midweek, "spread_line"),
+        f"Closing line, {args.start}–{args.end}": backtest.pick_record(margins, "spread_line"),
+    }
     path = OUTPUT_DIR / "backtest.md"
-    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end)))
+    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), picks))
+    for label, rec in picks.items():
+        print(f"{label}: {rec['wins']}-{rec['losses']}-{rec['pushes']} ({rec['cover']:.1%})"
+              + (f", line moved toward pick {rec['moved_toward']:.1%}" if "moved_toward" in rec else ""))
     for label, df in scores.items():
         print(label)
         print(df.round(3).to_string(index=False))
@@ -85,7 +102,8 @@ def cmd_ratings(args) -> None:
     team_games, qbs = load_summaries(FIRST_SEASON, season)
     fb = FeatureBuilder(games, team_games, qbs, hp)
     _, ratings = fb.current(games.iloc[:0], season)
-    table = ratings.table()
+    table = ratings["epa"].table()
+    table["st"] = table["team"].map(ratings["st"].off) - table["team"].map(ratings["st"].deff)
     table["elo"] = table["team"].map(fb.elo_ratings)
     with pd.option_context("display.float_format", "{:.3f}".format):
         print(table.to_string(index=False))
@@ -117,7 +135,7 @@ def main(argv=None) -> None:
     p.add_argument("--save", action="store_true", help="write the best settings to params.json")
     p.set_defaults(func=cmd_tune)
 
-    p = sub.add_parser("ratings", help="print current team ratings (EPA per play)")
+    p = sub.add_parser("ratings", help="print current team ratings (EPA per play; special teams per game)")
     p.set_defaults(func=cmd_ratings)
 
     args = parser.parse_args(argv)

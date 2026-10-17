@@ -22,7 +22,7 @@ import pandas as pd
 from .qb import DROPBACKS_PER_GAME
 from .simulate import ScoringModel, calibrate, fit_margin_weights, simulate, summarize
 
-POINT_FEATURES = ["off", "def_opp", "home", "home_div", "rest", "qb"]
+POINT_FEATURES = ["off", "def_opp", "st", "st_opp", "home", "home_div", "rest", "qb"]
 WIND_THRESHOLD_MPH = 10.0
 OUTDOOR_ROOFS = {"outdoors", "open"}
 
@@ -38,6 +38,8 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             "side": side,
             "off": f[f"off_{side}"].to_numpy(),
             "def_opp": f[f"def_{other}"].to_numpy(),
+            "st": f[f"off_st_{side}"].to_numpy(),
+            "st_opp": f[f"def_st_{other}"].to_numpy(),
             "home": home,
             "home_div": home * f["div_game"].to_numpy(),
             "rest": rest,
@@ -114,8 +116,9 @@ class ScoreModel:
     # ---- prediction ----------------------------------------------------
     def model_means(self, f: pd.DataFrame) -> dict:
         tv = team_view(f)
-        beta = np.array([self.coef[k] for k in POINT_FEATURES])
-        pts = tv["env"].to_numpy() + self.intercept + tv[POINT_FEATURES].to_numpy() @ beta
+        names = list(self.coef)
+        beta = np.array([self.coef[k] for k in names])
+        pts = tv["env"].to_numpy() + self.intercept + tv[names].to_numpy() @ beta
         n = len(f)
         home, away = pts[:n], pts[n:]
         return {"home": home, "away": away, "margin": home - away, "total": home + away}

@@ -16,9 +16,13 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-from .config import Hyperparams
+from .config import CACHE_DIR, TEAM_ALIASES, Hyperparams
+from .data import fetch
 from .features import FeatureBuilder
 from .model import ScoreModel
+
+# Westgate SuperContest lines: posted on Wednesday and never moved, 2013-2020.
+MIDWEEK_LINES_URL = "https://raw.githubusercontent.com/nflverse/nfldata/master/data/sc_lines.csv"
 
 log = logging.getLogger(__name__)
 
@@ -126,6 +130,61 @@ def paired_bootstrap(errors_a: np.ndarray, errors_b: np.ndarray, n: int = 5000, 
     idx = rng.integers(0, len(diff), size=(n, len(diff)))
     means = diff[idx].mean(axis=1)
     return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
+
+
+def load_midweek_lines(games: pd.DataFrame, max_age_hours: float = 24.0) -> pd.Series:
+    """Wednesday lines as expected home margins, indexed by game_id."""
+    path = fetch(MIDWEEK_LINES_URL, CACHE_DIR / "sc_lines.csv", max_age_hours)
+    sc = pd.read_csv(path).drop(columns=["home_team", "away_team"])
+    sc["side"] = sc["side"].replace(TEAM_ALIASES)
+    ids = games[["old_game_id", "game_id", "home_team"]].rename(columns={"game_id": "gid"})
+    matched = sc.merge(ids, left_on="game_id", right_on="old_game_id")
+    matched = matched[matched["side"] == matched["home_team"]]
+    return pd.Series(-matched["line"].to_numpy(), index=matched["gid"].to_numpy(), name="midweek_line")
+
+
+def without_starters(games: pd.DataFrame) -> pd.DataFrame:
+    """Schedule with the recorded starting QBs removed, so each team is assumed to
+    start whoever started its previous game: what is known by Wednesday."""
+    games = games.copy()
+    for col in ("home_qb_id", "away_qb_id", "home_qb_name", "away_qb_name"):
+        games[col] = pd.Series([None] * len(games), index=games.index, dtype=object)
+    return games
+
+
+def model_margins(features: pd.DataFrame, seasons, window: int) -> pd.DataFrame:
+    """Out-of-sample model-only margins (no market, no simulation) for finished games."""
+    out = []
+    for season in seasons:
+        train = features[(features["season"] >= season - window) & (features["season"] < season)]
+        test = features[(features["season"] == season) & features["completed"]].reset_index(drop=True)
+        if test.empty or train.empty:
+            continue
+        model = ScoreModel.fit(train, calibrate_scores=False)
+        out.append(test.assign(model_margin=model.model_means(test)["margin"]))
+    return pd.concat(out, ignore_index=True)
+
+
+def pick_record(df: pd.DataFrame, line_col: str, closing_col: str | None = None,
+                min_edge: float = 0.5) -> dict:
+    """Against-the-spread record of model picks where the model and line differ by ``min_edge``."""
+    line = df[line_col]
+    margin = df["home_score"] - df["away_score"]
+    edge, res = df["model_margin"] - line, margin - line
+    picked = line.notna() & (edge.abs() >= min_edge)
+    push = picked & (res == 0)
+    win = picked & ~push & (np.sign(edge) == np.sign(res))
+    w, l = int(win.sum()), int((picked & ~push & ~win).sum())
+    rate = w / (w + l) if w + l else float("nan")
+    half = 1.96 * np.sqrt(rate * (1 - rate) / (w + l)) if w + l else float("nan")
+    out = {"games": int(picked.sum()), "wins": w, "losses": l, "pushes": int(push.sum()),
+           "cover": rate, "cover_low": rate - half, "cover_high": rate + half}
+    if closing_col:
+        move = df[closing_col] - line
+        moved = picked & (move != 0)
+        out["moved_toward"] = float((np.sign(move[moved]) == np.sign(edge[moved])).mean())
+        out["moved_games"] = int(moved.sum())
+    return out
 
 
 def tune(games, team_games, qbs, seasons, grid: dict, base: Hyperparams | None = None) -> pd.DataFrame:
