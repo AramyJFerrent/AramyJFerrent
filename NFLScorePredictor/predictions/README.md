@@ -1,6 +1,6 @@
 # NFL score predictions
 
-Updated Sat Oct 17, 2026 03:19 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
+Updated Sat Oct 17, 2026 03:34 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
 
 Expected points blend the model with the betting line using the weight that has predicted best in recent seasons (see Current model fit). The spread and total columns show the model's own numbers next to the line, so you can see where it disagrees.
 
@@ -93,7 +93,7 @@ Points per game better than an average team on a neutral field, from opponent-ad
 | 24 | NYG | -1.9 | -1.5 | -0.3 | 1463 |
 | 25 | LAC | -2.8 | -4.1 | +1.3 | 1422 |
 | 26 | ARI | -2.8 | -1.2 | -1.7 | 1373 |
-| 27 | CLE | -3.0 | -4.3 | +1.4 | 1441 |
+| 27 | CLE | -3.0 | -4.4 | +1.4 | 1441 |
 | 28 | NO | -3.0 | -2.2 | -0.9 | 1396 |
 | 29 | MIA | -3.1 | -1.5 | -1.6 | 1373 |
 | 30 | NYJ | -3.3 | -2.8 | -0.5 | 1388 |
