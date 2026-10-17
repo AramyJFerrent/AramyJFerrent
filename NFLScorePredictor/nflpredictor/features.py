@@ -1,0 +1,80 @@
+"""Pregame features for every game, using only what was known beforehand.
+
+For historical games this is a walk-forward pass: the features for week W of a
+season come from ratings fitted on that season's weeks 1 to W-1 plus the
+preseason prior. For upcoming games the same features come from every game
+played so far.
+"""
+
+from __future__ import annotations
+
+import pandas as pd
+
+from .config import Hyperparams
+from .elo import run_elo
+from .qb import WEEKS_PER_SEASON, QBModel, adjustments
+from .ratings import RatingsEngine, Ratings, prepare_rows
+
+# League scoring drifts, so the baseline is a recency-weighted average of
+# recent games rather than a fixed number.
+ENV_HALF_LIFE_WEEKS = 20.0
+ENV_PRIOR_POINTS = 22.0
+ENV_PRIOR_GAMES = 20.0
+
+GAME_COLUMNS = [
+    "game_id", "season", "week", "game_type", "playoff", "neutral", "div_game", "kickoff",
+    "home_team", "away_team", "roof", "wind", "temp", "stadium_id", "home_rest", "away_rest",
+    "spread_line", "total_line", "home_moneyline", "away_moneyline",
+    "completed", "home_score", "away_score",
+]
+
+
+class FeatureBuilder:
+    def __init__(self, games: pd.DataFrame, team_games: pd.DataFrame, qbs: pd.DataFrame,
+                 hp: Hyperparams):
+        self.games = games
+        self.hp = hp
+        self.engine = RatingsEngine(prepare_rows(team_games, games), hp)
+        self.qb = QBModel(qbs, hp)
+        elo, self.elo_ratings = run_elo(games)
+        self.elo = elo.set_index("game_id")
+        done = games[games["completed"]]
+        self._env_widx = (done["season"] * WEEKS_PER_SEASON + done["week"]).to_numpy()
+        self._env_pts = ((done["home_score"] + done["away_score"]) / 2).to_numpy()
+        self._summary_weeks = team_games.groupby("season")["week"].max().to_dict()
+
+    def scoring_environment(self, season: int, week: int) -> float:
+        ref = season * WEEKS_PER_SEASON + week
+        mask = self._env_widx < ref
+        decay = 0.5 ** ((ref - self._env_widx[mask]) / ENV_HALF_LIFE_WEEKS)
+        return float((decay @ self._env_pts[mask] + ENV_PRIOR_GAMES * ENV_PRIOR_POINTS)
+                     / (decay.sum() + ENV_PRIOR_GAMES))
+
+    def _rows(self, games: pd.DataFrame, ratings: Ratings, season: int, week: int,
+              ref_week: float) -> pd.DataFrame:
+        out = games[GAME_COLUMNS].copy()
+        for side, other in (("home", "away"), ("away", "home")):
+            out[f"off_{side}"] = games[f"{side}_team"].map(ratings.off).fillna(0.0)
+            out[f"def_{side}"] = games[f"{side}_team"].map(ratings.deff).fillna(0.0)
+            out[f"plays_{side}"] = games[f"{side}_team"].map(ratings.plays).fillna(0.0)
+        out["league_epa"] = ratings.mu
+        out = out.join(adjustments(self.qb, games, season, week, ref_week))
+        out["env_points"] = self.scoring_environment(season, week)
+        out = out.join(self.elo, on="game_id")
+        return out
+
+    def walk_forward(self, seasons) -> pd.DataFrame:
+        """Features for every game in ``seasons``, each built from earlier weeks only."""
+        frames = []
+        for season in seasons:
+            season_games = self.games[self.games["season"] == season]
+            for week, week_games in season_games.groupby("week"):
+                ratings = self.engine.before(season, week)
+                frames.append(self._rows(week_games, ratings, season, week, week))
+        return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+    def current(self, games: pd.DataFrame, season: int) -> tuple[pd.DataFrame, Ratings]:
+        """Features for upcoming ``games`` from every game played so far this season."""
+        cutoff = int(self._summary_weeks.get(season, 0)) + 1
+        ratings = self.engine.before(season, cutoff)
+        return self._rows(games, ratings, season, cutoff, cutoff), ratings
