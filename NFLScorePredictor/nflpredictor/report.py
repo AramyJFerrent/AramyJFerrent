@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 import pandas as pd
 
@@ -29,11 +31,29 @@ def _qb(name) -> str:
     return "?" if pd.isna(name) else str(name)
 
 
+def american_odds(p: float) -> int:
+    """Fair (no-vig) American moneyline for win probability ``p``, rounded to 5."""
+    p = min(max(p, 0.01), 0.99)
+    raw = -100.0 * p / (1.0 - p) if p > 0.5 else 100.0 * (1.0 - p) / p
+    return int(5 * math.floor(raw / 5 + 0.5))
+
+
+def _moneyline(odds: int) -> str:
+    return f"+{odds}" if odds > 0 else str(odds)
+
+
+def fair_moneyline(home_win: float, away_win: float, home: str, away: str) -> str:
+    """Both sides' fair moneylines. Ties refund moneyline bets, so they are left out."""
+    home_p = home_win / (home_win + away_win)
+    return (f"{away} {_moneyline(american_odds(1 - home_p))} / "
+            f"{home} {_moneyline(american_odds(home_p))}")
+
+
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
-        "| Kickoff (ET) | Game | Predicted score | Win chance | Expected points | 80% range | "
-        "Spread: model / line | Total: model / line | QBs | Notes |",
-        "|---|---|---|---|---|---|---|---|---|---|",
+        "| Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | "
+        "80% range | Spread: model / line | Total: model / line | QBs | Notes |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
         home_p = r.home_win_prob + 0.5 * r.tie_prob
@@ -46,7 +66,8 @@ def upcoming_table(rows: pd.DataFrame) -> str:
         lines.append(
             f"| {_kickoff(r.kickoff)} | {r.away_team} @ {r.home_team} "
             f"| {r.away_team} {int(r.headline_away)}, {r.home_team} {int(r.headline_home)} "
-            f"| {fav} {p:.0%} | {r.pred_away:.1f} – {r.pred_home:.1f} "
+            f"| {fav} {p:.0%} | {fair_moneyline(r.home_win_prob, r.away_win_prob, r.home_team, r.away_team)} "
+            f"| {r.pred_away:.1f} – {r.pred_home:.1f} "
             f"| {int(r.away_low)}–{int(r.away_high)} / {int(r.home_low)}–{int(r.home_high)} "
             f"| {_spread(r.model_margin, r.home_team, r.away_team)} / {_spread(r.spread_line, r.home_team, r.away_team)} "
             f"| {r.model_total:.1f} / {_num(r.total_line)} "
@@ -168,6 +189,12 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "Expected points blend the model with the betting line using the weight that has "
         "predicted best in recent seasons (see Current model fit). The spread and total "
         "columns show the model's own numbers next to the line, so you can see where it disagrees.",
+        "",
+        "The fair moneyline is the American odds that match the win chance exactly, with no "
+        "bookmaker margin: -200 means risk $200 to win $100, +200 means risk $100 to win $200. "
+        "A sportsbook's price will be a little worse on both sides because of its cut, so a book "
+        "only offers value on a team when its price beats the fair line. Ties refund moneyline "
+        "bets, so they are left out of these odds.",
         "",
     ]
     if len(upcoming):
