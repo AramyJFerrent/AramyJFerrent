@@ -13,7 +13,7 @@ import pandas as pd
 from .config import Hyperparams
 from .elo import run_elo
 from .qb import WEEKS_PER_SEASON, QBModel, adjustments
-from .ratings import RatingsEngine, Ratings, prepare_rows
+from .ratings import RatingsEngine, Ratings, prepare_rows, targets
 
 # League scoring drifts, so the baseline is a recency-weighted average of
 # recent games rather than a fixed number.
@@ -34,7 +34,10 @@ class FeatureBuilder:
                  hp: Hyperparams):
         self.games = games
         self.hp = hp
-        self.engine = RatingsEngine(prepare_rows(team_games, games), hp)
+        self.engines = {
+            name: RatingsEngine(prepare_rows(team_games, games, target), target, hp.half_life_weeks)
+            for name, target in targets(hp).items()
+        }
         self.qb = QBModel(qbs, hp)
         elo, self.elo_ratings = run_elo(games)
         self.elo = elo.set_index("game_id")
@@ -50,14 +53,23 @@ class FeatureBuilder:
         return float((decay @ self._env_pts[mask] + ENV_PRIOR_GAMES * ENV_PRIOR_POINTS)
                      / (decay.sum() + ENV_PRIOR_GAMES))
 
-    def _rows(self, games: pd.DataFrame, ratings: Ratings, season: int, week: int,
+    def ratings(self, season: int, week: int) -> dict[str, Ratings]:
+        return {name: engine.before(season, week) for name, engine in self.engines.items()}
+
+    def _rows(self, games: pd.DataFrame, ratings: dict[str, Ratings], season: int, week: int,
               ref_week: float) -> pd.DataFrame:
         out = games[GAME_COLUMNS].copy()
-        for side, other in (("home", "away"), ("away", "home")):
-            out[f"off_{side}"] = games[f"{side}_team"].map(ratings.off).fillna(0.0)
-            out[f"def_{side}"] = games[f"{side}_team"].map(ratings.deff).fillna(0.0)
-            out[f"plays_{side}"] = games[f"{side}_team"].map(ratings.plays).fillna(0.0)
-        out["league_epa"] = ratings.mu
+        main = ratings["epa"]
+        for side in ("home", "away"):
+            team = games[f"{side}_team"]
+            out[f"off_{side}"] = team.map(main.off).fillna(0.0)
+            out[f"def_{side}"] = team.map(main.deff).fillna(0.0)
+            out[f"plays_{side}"] = team.map(main.plays).fillna(0.0)
+            for name, r in ratings.items():
+                if name != "epa":
+                    out[f"off_{name}_{side}"] = team.map(r.off).fillna(0.0)
+                    out[f"def_{name}_{side}"] = team.map(r.deff).fillna(0.0)
+        out["league_epa"] = main.mu
         out = out.join(adjustments(self.qb, games, season, week, ref_week))
         out["env_points"] = self.scoring_environment(season, week)
         out = out.join(self.elo, on="game_id")
@@ -69,12 +81,11 @@ class FeatureBuilder:
         for season in seasons:
             season_games = self.games[self.games["season"] == season]
             for week, week_games in season_games.groupby("week"):
-                ratings = self.engine.before(season, week)
-                frames.append(self._rows(week_games, ratings, season, week, week))
+                frames.append(self._rows(week_games, self.ratings(season, week), season, week, week))
         return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
 
-    def current(self, games: pd.DataFrame, season: int) -> tuple[pd.DataFrame, Ratings]:
+    def current(self, games: pd.DataFrame, season: int) -> tuple[pd.DataFrame, dict[str, Ratings]]:
         """Features for upcoming ``games`` from every game played so far this season."""
         cutoff = int(self._summary_weeks.get(season, 0)) + 1
-        ratings = self.engine.before(season, cutoff)
+        ratings = self.ratings(season, cutoff)
         return self._rows(games, ratings, season, cutoff, cutoff), ratings

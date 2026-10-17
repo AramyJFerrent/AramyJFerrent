@@ -43,8 +43,12 @@ LOG_COLUMNS = [
     "headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
     "one_score_prob", "away_low", "away_high", "home_low", "home_high",
     "spread_line", "total_line", "wind_forecast", "elo_spread", "predicted_at", "source",
+    "first_predicted_at", "first_spread_line", "first_model_margin",
     "away_score", "home_score",
 ]
+# The first prediction made once a line exists, kept so picks can be graded
+# against the early-week line and line movement measured up to kickoff.
+FIRST_COLUMNS = ["first_predicted_at", "first_spread_line", "first_model_margin"]
 
 
 def select_upcoming(games: pd.DataFrame, season: int, now: pd.Timestamp, weeks: int) -> pd.DataFrame:
@@ -70,6 +74,9 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, wind: pd.Series | 
     for col in ("headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
                 "one_score_prob", "away_low", "away_high", "home_low", "home_high"):
         rows[col] = preds[col].to_numpy()
+    rows["first_predicted_at"] = rows["predicted_at"]
+    rows["first_spread_line"] = rows["spread_line"]
+    rows["first_model_margin"] = rows["model_margin"]
     rows["away_score"] = np.nan
     rows["home_score"] = np.nan
     return rows[LOG_COLUMNS]
@@ -79,10 +86,11 @@ def load_log() -> pd.DataFrame:
     if not LOG_PATH.exists():
         return pd.DataFrame(columns=LOG_COLUMNS)
     entries = pd.read_csv(LOG_PATH)
-    for col in ("kickoff", "predicted_at"):
+    for col in LOG_COLUMNS:
+        if col not in entries:
+            entries[col] = "live" if col == "source" else np.nan
+    for col in ("kickoff", "predicted_at", "first_predicted_at"):
         entries[col] = pd.to_datetime(entries[col], utc=True)
-    if "source" not in entries:
-        entries["source"] = "live"
     return entries[LOG_COLUMNS]
 
 
@@ -90,7 +98,7 @@ def backfill(entries: pd.DataFrame, history: pd.DataFrame, season: int, n_sims: 
     """Walk-forward predictions for this season's finished games the log never saw.
 
     Used when the predictor starts mid-season, so the season-to-date grading
-    has something to show. Each game is predicted from earlier weeks only, with
+    has something to show, and rebuilt on every run. Each game is predicted from earlier weeks only, with
     the points map and blend fitted on earlier seasons; these rows use closing
     lines and actual starters, so they are marked ``backfill``, not ``live``.
     """
@@ -102,11 +110,23 @@ def backfill(entries: pd.DataFrame, history: pd.DataFrame, season: int, n_sims: 
     preds = ScoreModel.fit(past).predict(done, n_sims=n_sims, seed=season)
     rows = prediction_rows(done, preds, None, pd.NaT)
     rows["source"] = "backfill"
+    rows[FIRST_COLUMNS] = np.nan  # no early-week line was ever seen for these games
+    rows["first_predicted_at"] = pd.NaT
     return rows
 
 
 def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) -> pd.DataFrame:
-    """Upsert pre-kickoff predictions and attach final scores."""
+    """Upsert pre-kickoff predictions and attach final scores.
+
+    The latest prediction replaces earlier ones, except for the ``first_*``
+    columns, which keep the first prediction that had a betting line.
+    """
+    if len(new) and len(entries):
+        new = new.copy()
+        prev = entries.drop_duplicates("game_id", keep="last").set_index("game_id")
+        seen = new["game_id"].map(prev["first_spread_line"]).notna()
+        for col in FIRST_COLUMNS:
+            new.loc[seen, col] = new.loc[seen, "game_id"].map(prev[col])
     kept = entries[~entries["game_id"].isin(new["game_id"])]
     merged = pd.concat([kept, new], ignore_index=True) if len(kept) else new.copy()
     final = games[games["completed"]].set_index("game_id")
@@ -116,15 +136,18 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) ->
     return merged.sort_values(["kickoff", "game_id"], ignore_index=True)[LOG_COLUMNS]
 
 
-def power_ratings(ratings, model: ScoreModel, fb: FeatureBuilder) -> pd.DataFrame:
+def power_ratings(ratings: dict, model: ScoreModel, fb: FeatureBuilder) -> pd.DataFrame:
     """Ratings in points per game against an average opponent."""
-    table = ratings.table()
+    table = ratings["epa"].table()
+    st = ratings["st"]
     table["off_pts"] = model.coef["off"] * table["off"]
     table["def_pts"] = -model.coef["def_opp"] * table["def"]
-    table["net_pts"] = table["off_pts"] + table["def_pts"]
+    table["st_pts"] = (model.coef.get("st", 0.0) * table["team"].map(st.off).fillna(0.0)
+                       - model.coef.get("st_opp", 0.0) * table["team"].map(st.deff).fillna(0.0))
+    table["net_pts"] = table["off_pts"] + table["def_pts"] + table["st_pts"]
     table["elo"] = table["team"].map(fb.elo_ratings)
     return table.sort_values("net_pts", ascending=False, ignore_index=True)[
-        ["team", "net_pts", "off_pts", "def_pts", "elo"]]
+        ["team", "net_pts", "off_pts", "def_pts", "st_pts", "elo"]]
 
 
 def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
@@ -152,7 +175,9 @@ def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 100
     log.info("Fitted on %d games; market weight margin %.2f total %.2f",
              model.fit_games, 1 - model.margin_weight, 1 - model.total_weight)
 
+    # Backfilled games are rebuilt every run so they always reflect the current model.
     entries = load_log()
+    entries = entries[entries["source"] != "backfill"].reset_index(drop=True)
     filled = backfill(entries, history, season, n_sims)
     if len(filled):
         log.info("Backfilled %d finished games from earlier this season", len(filled))

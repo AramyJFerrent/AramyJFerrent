@@ -49,11 +49,32 @@ def fair_moneyline(home_win: float, away_win: float, home: str, away: str) -> st
             f"{home} {_moneyline(american_odds(home_p))}")
 
 
+# Smallest gap between the model's spread and the line that counts as a pick.
+PICK_MIN_EDGE = 0.5
+# Cover rate needed to profit at standard -110 odds.
+BREAK_EVEN = 110 / 210
+
+
+def _line(points: float) -> str:
+    return "PK" if abs(points) < 0.05 else f"{points:+.1f}"
+
+
+def model_pick(model_margin: float, line: float, home: str, away: str) -> str:
+    """The side the model's own spread favors against ``line`` (home margin), with the gap."""
+    if pd.isna(line) or pd.isna(model_margin):
+        return "–"
+    edge = model_margin - line
+    if abs(edge) < PICK_MIN_EDGE:
+        return "no edge"
+    team, spread = (home, -line) if edge > 0 else (away, line)
+    return f"{team} {_line(spread)} ({abs(edge):.1f})"
+
+
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
         "| Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | "
-        "80% range | Spread: model / line | Total: model / line | QBs | Notes |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
+        "80% range | Spread: model / line | Model pick (edge) | Total: model / line | QBs | Notes |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
         home_p = r.home_win_prob + 0.5 * r.tie_prob
@@ -70,6 +91,7 @@ def upcoming_table(rows: pd.DataFrame) -> str:
             f"| {r.pred_away:.1f} – {r.pred_home:.1f} "
             f"| {int(r.away_low)}–{int(r.away_high)} / {int(r.home_low)}–{int(r.home_high)} "
             f"| {_spread(r.model_margin, r.home_team, r.away_team)} / {_spread(r.spread_line, r.home_team, r.away_team)} "
+            f"| {model_pick(r.model_margin, r.spread_line, r.home_team, r.away_team)} "
             f"| {r.model_total:.1f} / {_num(r.total_line)} "
             f"| {_qb(r.away_qb)} / {_qb(r.home_qb)} | {', '.join(notes)} |"
         )
@@ -132,6 +154,43 @@ def grade(entries: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _record(margin: pd.Series, line: pd.Series, model: pd.Series) -> tuple[int, int, int]:
+    """Wins, losses and pushes for model picks against ``line``."""
+    edge, res = model - line, margin - line
+    picked = line.notna() & model.notna() & (edge.abs() >= PICK_MIN_EDGE)
+    push = picked & (res == 0)
+    win = picked & ~push & (np.sign(edge) == np.sign(res))
+    return int(win.sum()), int((picked & ~push & ~win).sum()), int(push.sum())
+
+
+def pick_table(entries: pd.DataFrame) -> str:
+    """Against-the-spread record of the model's picks, and whether lines moved toward them."""
+    g = entries.dropna(subset=["home_score", "away_score"])
+    margin = g["home_score"] - g["away_score"]
+    early = g["first_spread_line"].notna()
+    rows = [
+        ("Early-week line (first prediction with a line)",
+         _record(margin[early], g.loc[early, "first_spread_line"], g.loc[early, "first_model_margin"])),
+        ("Line at kickoff (last prediction)", _record(margin, g["spread_line"], g["model_margin"])),
+    ]
+    backfilled = int((g["source"] == "backfill").sum())
+    if backfilled:
+        rows[1] = (f"Line at kickoff (last prediction; includes {backfilled} backfilled games)", rows[1][1])
+    lines = ["| Picks against | Record (W-L-P) | Cover rate |", "|---|---|---|"]
+    for label, (w, l, p) in rows:
+        rate = f"{w / (w + l):.1%}" if w + l else "–"
+        lines.append(f"| {label} | {w}-{l}-{p} | {rate} |")
+    e = entries[entries["first_spread_line"].notna() & entries["spread_line"].notna()]
+    edge = e["first_model_margin"] - e["first_spread_line"]
+    move = e["spread_line"] - e["first_spread_line"]
+    moved = (edge.abs() >= PICK_MIN_EDGE) & (move != 0)
+    toward = int((np.sign(move[moved]) == np.sign(edge[moved])).sum())
+    lines += ["", f"Line moved toward the model's early pick before kickoff: "
+              f"{toward} of {int(moved.sum())} games"
+              + (f" ({toward / moved.sum():.0%})." if moved.sum() else ".")]
+    return "\n".join(lines)
+
+
 def _metrics_table(df: pd.DataFrame) -> str:
     cols = list(df.columns)
     out = ["| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)]
@@ -169,9 +228,11 @@ def results_table(rows: pd.DataFrame) -> str:
 
 
 def ratings_table(table: pd.DataFrame) -> str:
-    lines = ["| # | Team | Net | Offense | Defense | Elo |", "|---|---|---|---|---|---|"]
+    lines = ["| # | Team | Net | Offense | Defense | Special teams | Elo |", "|---|---|---|---|---|---|---|"]
     for i, r in enumerate(table.itertuples(index=False), 1):
-        lines.append(f"| {i} | {r.team} | {r.net_pts:+.1f} | {r.off_pts:+.1f} | {r.def_pts:+.1f} | {_num(r.elo, '{:.0f}')} |")
+        st = getattr(r, "st_pts", 0.0)
+        lines.append(f"| {i} | {r.team} | {r.net_pts:+.1f} | {r.off_pts:+.1f} | {r.def_pts:+.1f} "
+                     f"| {st:+.1f} | {_num(r.elo, '{:.0f}')} |")
     return "\n".join(lines)
 
 
@@ -196,6 +257,12 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "only offers value on a team when its price beats the fair line. Ties refund moneyline "
         "bets, so they are left out of these odds.",
         "",
+        "The model pick is the side the model's own spread favors against the current line, with "
+        "the gap in points (under half a point is no edge). Treat it as an experiment: in "
+        "walk-forward backtests these picks covered 53.7% against Wednesday lines (2015–2020) but "
+        "only 51.7% against closing lines (2015–2025), and 52.4% is break-even at standard -110 odds. "
+        "The live record is tracked below, graded against the first line each game had.",
+        "",
     ]
     if len(upcoming):
         for week, rows in upcoming.groupby("week"):
@@ -217,6 +284,10 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
                       "They are backfilled walk-forward (each week predicted from earlier weeks only) "
                       "but with closing lines and actual starters, so they flatter the model "
                       "slightly. Every game since is graded on the prediction logged before kickoff.", ""]
+        parts += ["### Model picks against the spread", "", pick_table(season_log), "",
+                  f"Break-even at standard -110 odds is {BREAK_EVEN:.1%}. Lines moving toward the "
+                  "model's pick (closing line value) is the quickest sign that it knows something "
+                  "the market doesn't yet.", ""]
         last_week = graded["week"].max()
         parts += [f"### Week {int(last_week)} results", "",
                   results_table(graded[graded["week"] == last_week]), ""]
@@ -235,6 +306,7 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         f"- Fitted on {model.fit_games} games from seasons {model.fit_seasons[0]}–{model.fit_seasons[-1]}.",
         f"- Home field: {c['home']:.1f} points ({c['home'] + c['home_div']:.1f} in divisional games).",
         f"- QB adjustment: {c['qb']:.2f} points per point of QB value gap.",
+        f"- Special teams: {c.get('st', 0.0):.2f} points per point of net special-teams EPA.",
         f"- Weight on the betting line: {1 - model.margin_weight:.0%} for the margin, "
         f"{1 - model.total_weight:.0%} for the total.",
         f"- Wind: {model.wind_blend:+.2f} total points per mph above 10 mph at open-air stadiums.",
@@ -243,7 +315,8 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
     return "\n".join(parts)
 
 
-def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple) -> str:
+def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple,
+                    picks: dict | None = None) -> str:
     parts = [
         "# Walk-forward backtest",
         "",
@@ -264,6 +337,18 @@ def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple)
               "| Comparison | Mean difference | 95% interval |", "|---|---|---|"]
     for name, (mean, lo, hi) in bootstrap.items():
         parts.append(f"| {name} | {mean:+.3f} | {lo:+.3f} to {hi:+.3f} |")
+    if picks:
+        parts += ["", "## Model picks against the spread", "",
+                  "The model's own spread (no market blend) against the line, picking whenever they "
+                  "differ by half a point or more. Starting QBs here are each team's previous starter, "
+                  "so nothing is used that a Wednesday line could not know. "
+                  f"Break-even at standard -110 odds is {BREAK_EVEN:.1%}.", "",
+                  "| Picks against | Record (W-L-P) | Cover rate | 95% range | Line moved toward pick by kickoff |",
+                  "|---|---|---|---|---|"]
+        for label, r in picks.items():
+            moved = f"{r['moved_toward']:.1%} of {r['moved_games']}" if "moved_toward" in r else "–"
+            parts.append(f"| {label} | {r['wins']}-{r['losses']}-{r['pushes']} | {r['cover']:.1%} "
+                         f"| {r['cover_low']:.1%}–{r['cover_high']:.1%} | {moved} |")
     calib = checks["calibration"]
     parts += ["", "## Win-probability calibration", "",
               "| Predicted | Games | Mean predicted | Actual |", "|---|---|---|---|"]

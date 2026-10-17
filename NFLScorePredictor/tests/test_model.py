@@ -16,6 +16,7 @@ def synthetic_features(n=1200, seed=0, market_noise=6.0, rating_noise=0.0):
         "game_id": [f"g{i}" for i in range(n)], "season": 2020 + (np.arange(n) // 300),
         "completed": True, "playoff": False, "neutral": False, "div_game": 0,
         "home_rest": 7, "away_rest": 7,
+        "off_st_home": 0.0, "off_st_away": 0.0, "def_st_home": 0.0, "def_st_away": 0.0,
         "off_home": off_h + rng.normal(0, rating_noise, n), "off_away": off_a + rng.normal(0, rating_noise, n),
         "def_home": def_h + rng.normal(0, rating_noise, n), "def_away": def_a + rng.normal(0, rating_noise, n),
         "home_qb_adj": 0.0, "away_qb_adj": 0.0, "env_points": 22.0,

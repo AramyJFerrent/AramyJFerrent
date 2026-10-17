@@ -44,8 +44,10 @@ FUMBLE_LOST_EPA_SCALE = 0.5
 TEAM_COLUMNS = [
     "game_id", "season", "week", "season_type", "team", "opp", "home",
     "plays", "w", "epa", "success", "dropbacks",
+    "pass_w", "pass_epa", "rush_w", "rush_epa", "st_epa", "drives",
     "tds", "fgs", "xp_att", "xp_made", "two_att", "two_made", "safeties",
 ]
+SPECIAL_TEAMS = ["kickoff", "punt", "field_goal", "extra_point"]
 QB_COLUMNS = ["game_id", "season", "week", "team", "qb_id", "qb_name", "dropbacks", "w", "epa"]
 
 
@@ -143,10 +145,24 @@ def summarize_pbp(pbp: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     plays["epa_w"] = epa * plays["w"]
     plays["success_w"] = plays["success"].fillna(0) * plays["w"]
     plays["dropback"] = plays["qb_dropback"].fillna(0)
+    plays["pass_w"] = plays["w"] * plays["dropback"]
+    plays["pass_epa"] = plays["epa_w"] * plays["dropback"]
+    plays["rush_w"] = plays["w"] - plays["pass_w"]
+    plays["rush_epa"] = plays["epa_w"] - plays["pass_epa"]
     offense = plays.groupby(["game_id", "posteam"]).agg(
         plays=("epa", "size"), w=("w", "sum"), epa=("epa_w", "sum"),
         success=("success_w", "sum"), dropbacks=("dropback", "sum"),
+        pass_w=("pass_w", "sum"), pass_epa=("pass_epa", "sum"),
+        rush_w=("rush_w", "sum"), rush_epa=("rush_epa", "sum"),
+        drives=("fixed_drive", "nunique"),
     ).rename_axis(["game_id", "team"])
+
+    # Special teams: kicking and return units together, as net EPA for the team.
+    st = p[p["play_type"].isin(SPECIAL_TEAMS) & p["epa"].notna() & p["posteam"].notna()]
+    st_epa = pd.concat([
+        st.groupby(["game_id", "posteam"])["epa"].sum().rename_axis(["game_id", "team"]),
+        -st.groupby(["game_id", "defteam"])["epa"].sum().rename_axis(["game_id", "team"]),
+    ]).groupby(level=[0, 1]).sum().rename("st_epa")
 
     def count(mask: pd.Series, by: str, name: str) -> pd.Series:
         return p[mask.fillna(False)].groupby(["game_id", by]).size().rename_axis(["game_id", "team"]).rename(name)
@@ -161,10 +177,13 @@ def summarize_pbp(pbp: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         count(p["safety"].eq(1), "defteam", "safeties"),
     ], axis=1)
 
-    teams = sides.join(offense, on=["game_id", "team"]).join(events, on=["game_id", "team"])
-    count_cols = ["plays", "dropbacks", "tds", "fgs", "xp_att", "xp_made", "two_att", "two_made", "safeties"]
+    teams = (sides.join(offense, on=["game_id", "team"]).join(st_epa, on=["game_id", "team"])
+             .join(events, on=["game_id", "team"]))
+    count_cols = ["plays", "dropbacks", "drives", "tds", "fgs", "xp_att", "xp_made", "two_att",
+                  "two_made", "safeties"]
     teams[count_cols] = teams[count_cols].fillna(0).astype(int)
-    teams[["w", "epa", "success"]] = teams[["w", "epa", "success"]].fillna(0.0)
+    sums = ["w", "epa", "success", "pass_w", "pass_epa", "rush_w", "rush_epa", "st_epa"]
+    teams[sums] = teams[sums].fillna(0.0)
     teams = teams[TEAM_COLUMNS].sort_values(["week", "game_id", "team"]).reset_index(drop=True)
 
     drops = plays[(plays["dropback"] == 1) & plays["id"].notna()]
@@ -210,4 +229,6 @@ def load_summaries(first: int = FIRST_SEASON, last: int | None = None) -> tuple[
             qbs.append(pd.read_csv(qb_path))
     if not teams:
         return pd.DataFrame(columns=TEAM_COLUMNS), pd.DataFrame(columns=QB_COLUMNS)
-    return pd.concat(teams, ignore_index=True), pd.concat(qbs, ignore_index=True)
+    # Older files may lack newer columns; those values load as missing.
+    return (pd.concat(teams, ignore_index=True).reindex(columns=TEAM_COLUMNS),
+            pd.concat(qbs, ignore_index=True))

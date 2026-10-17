@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 
 from nflpredictor.config import Hyperparams
-from nflpredictor.ratings import Ratings, RatingsEngine, fit
+from nflpredictor.ratings import Ratings, RatingsEngine, fit, targets
+
+
+EPA = targets(Hyperparams())["epa"]
 
 
 def synthetic_rows(n_weeks=10, seed=0):
@@ -24,7 +27,7 @@ def synthetic_rows(n_weeks=10, seed=0):
 
 def test_ridge_recovers_team_strength():
     rows, off, deff = synthetic_rows(n_weeks=16)
-    r = fit(rows, ref_week=17, prior=Ratings(), hp=Hyperparams(half_life_weeks=1000))
+    r = fit(rows, ref_week=17, prior=Ratings(), target=EPA, half_life_weeks=1000)
     teams = sorted(off)
     est_off = [r.off[t] for t in teams]
     est_def = [r.deff[t] for t in teams]
@@ -34,16 +37,15 @@ def test_ridge_recovers_team_strength():
 
 def test_no_games_returns_the_prior():
     prior = Ratings(off={"A": 0.1, "B": -0.1}, deff={"A": 0.0, "B": 0.05}, mu=0.01, hfa=0.02)
-    r = fit(pd.DataFrame(columns=["team", "opp", "week", "h", "y", "w"]), 1, prior, Hyperparams())
+    r = fit(pd.DataFrame(columns=["team", "opp", "week", "h", "y", "w"]), 1, prior, EPA, 30.0)
     assert r.off == prior.off and r.deff == prior.deff
 
 
 def test_prior_dominates_early_and_fades():
     rows, off, _ = synthetic_rows(n_weeks=16)
     prior = Ratings(off={t: 0.0 for t in off}, deff={t: 0.0 for t in off})
-    hp = Hyperparams()
-    early = fit(rows[rows.week <= 1], 2, prior, hp)
-    late = fit(rows, 17, prior, hp)
+    early = fit(rows[rows.week <= 1], 2, prior, EPA, 30.0)
+    late = fit(rows, 17, prior, EPA, 30.0)
     spread_early = np.std(list(early.off.values()))
     spread_late = np.std(list(late.off.values()))
     assert spread_early < spread_late
@@ -52,10 +54,21 @@ def test_prior_dominates_early_and_fades():
 def test_engine_chains_preseason_priors():
     rows, off, _ = synthetic_rows(n_weeks=16)
     second = rows.assign(season=2021)
-    engine = RatingsEngine(pd.concat([rows, second]), Hyperparams())
+    engine = RatingsEngine(pd.concat([rows, second]), EPA, 30.0)
     prior = engine.prior(2021)
     final = engine.final(2020)
     best = max(off, key=off.get)
     assert prior.off[best] == final.off[best] * Hyperparams().off_carryover
     week1 = engine.before(2021, 1)
     assert week1.off[best] == prior.off[best]
+
+
+def test_special_teams_rating_is_per_game_and_heavily_shrunk():
+    st = targets(Hyperparams())["st"]
+    assert st.weight is None
+    rows, off, _ = synthetic_rows(n_weeks=4)
+    rows = rows.assign(w=1.0, y=rows["y"] * 30)      # per-game values, one weight per game
+    r = fit(rows, 5, Ratings(), st, 30.0)
+    spread_fit = np.std(list(r.off.values()))
+    spread_true = np.std([v * 30 for v in off.values()])
+    assert spread_fit < spread_true                    # four games cannot overcome the prior
