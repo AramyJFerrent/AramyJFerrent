@@ -59,3 +59,17 @@ def test_grade_compares_model_and_line():
     assert table.loc["Final prediction", "Winners"] == 1.0
     assert table.loc["Model only (before blending)", "Margin MAE"] == 1.0   # +5 vs +4
     assert table.loc["Model only (before blending)", "Total MAE"] == 4.0
+
+
+def test_fair_moneyline_matches_win_chance():
+    from nflpredictor.report import american_odds, fair_moneyline
+
+    assert american_odds(0.75) == -300
+    assert american_odds(0.25) == 300
+    assert american_odds(0.5) == 100
+    assert american_odds(0.6) == -150
+    assert american_odds(0.73) == -270          # -270.4 rounds to the nearest 5
+    assert american_odds(0.999) == -9900        # capped at 99%
+    assert fair_moneyline(0.75, 0.25, "NE", "NYJ") == "NYJ +300 / NE -300"
+    # Ties are refunded, so the 2% tie chance is spread over both sides.
+    assert fair_moneyline(0.588, 0.392, "KC", "LV") == "LV +150 / KC -150"
