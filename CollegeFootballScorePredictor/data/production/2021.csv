@@ -1,0 +1,3645 @@
+athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
+4249761,Abilene Christian,0,59,0,0
+4380416,Abilene Christian,0,41,0,0
+4691272,Abilene Christian,130,0,1,0
+4261090,Air Force,0,0,0,4
+4360712,Air Force,0,0,0,1
+4360724,Air Force,0,0,0,1
+4401043,Air Force,0,428,161,0
+4404565,Air Force,0,0,0,7
+4571640,Air Force,0,89,0,0
+4571641,Air Force,45,0,42,0
+4571645,Air Force,0,0,0,1
+4571652,Air Force,0,0,124,0
+4571655,Air Force,0,0,0,2
+4571668,Air Force,0,31,0,0
+4571669,Air Force,0,11,471,0
+4578267,Air Force,0,97,161,0
+4580590,Air Force,0,0,80,0
+4580608,Air Force,0,81,0,0
+4693814,Air Force,900,13,701,0
+4693817,Air Force,13,181,252,0
+4696119,Air Force,0,0,0,1
+4696120,Air Force,0,0,0,1
+4697127,Air Force,0,0,1217,0
+4875562,Air Force,0,0,21,0
+4875563,Air Force,0,0,333,0
+4875564,Air Force,0,0,17,1
+4895190,Air Force,0,0,0,1
+4038741,Akron,380,17,188,0
+4240414,Akron,0,0,0,1
+4260320,Akron,0,137,0,0
+4368768,Akron,440,0,239,0
+4430089,Akron,0,858,10,0
+4568336,Akron,1249,28,140,0
+4569501,Akron,0,58,250,0
+4608589,Akron,0,180,0,0
+4608750,Akron,0,93,360,0
+4686851,Akron,0,0,0,1
+4686865,Akron,0,0,0,1
+4686870,Akron,0,50,0,0
+4701276,Akron,0,0,0,2
+4701279,Akron,0,17,168,0
+4710855,Akron,28,522,0,0
+4880126,Akron,0,0,0,2
+107494,Alabama,0,50,76,0
+4241446,Alabama,0,0,0,2
+4241468,Alabama,0,0,0,2
+4241474,Alabama,0,245,1002,0
+4241484,Alabama,0,0,0,1
+4360115,Alabama,6,320,0,0
+4372017,Alabama,0,0,0,3
+4372020,Alabama,0,0,0,2
+4372026,Alabama,13,221,0,0
+4426388,Alabama,89,1232,5,0
+4429001,Alabama,0,70,143,0
+4429172,Alabama,0,95,0,0
+4431506,Alabama,28,42,0,0
+4432694,Alabama,0,82,0,0
+4433975,Alabama,0,0,0,2
+4565190,Alabama,0,0,0,1
+4567096,Alabama,37,1029,8,0
+4567098,Alabama,0,0,0,2
+4567099,Alabama,0,0,0,1
+4567105,Alabama,0,207,0,0
+4567111,Alabama,0,0,0,6
+4567123,Alabama,0,0,0,1
+4567140,Alabama,0,0,0,1
+4685720,Alabama,3671,173,239,0
+4685723,Alabama,0,57,190,0
+4685724,Alabama,0,0,0,2
+4241904,Alabama State,0,7,13,0
+4248824,Alabama State,0,0,0,2
+4382936,Alabama State,0,46,0,0
+4428105,Alabama State,105,0,8,0
+4575131,Alabama State,0,15,11,0
+4038138,Alcorn State,0,73,0,0
+4051442,Alcorn State,265,0,21,0
+4250873,Alcorn State,0,45,0,0
+4036418,App State,0,1712,0,0
+4036448,App State,0,286,0,0
+4239994,App State,6574,96,514,0
+4240493,App State,0,0,0,1
+4241000,App State,0,0,0,1
+4241002,App State,0,10,114,0
+4241004,App State,96,1668,0,0
+4241006,App State,0,0,0,1
+4241007,App State,0,0,0,3
+4241009,App State,0,0,0,2
+4241012,App State,0,1802,8,0
+4360765,App State,0,38,803,0
+4360773,App State,0,0,0,4
+4360783,App State,0,0,0,1
+4360792,App State,0,154,0,0
+4360794,App State,0,184,0,0
+4361327,App State,0,0,37,0
+4427037,App State,0,40,0,0
+4428719,App State,0,40,3,0
+4428815,App State,0,462,0,0
+4429746,App State,0,0,0,2
+4431134,App State,0,52,0,0
+4567596,App State,0,60,0,0
+4576129,App State,0,0,0,1
+4612558,App State,0,0,27,0
+4613032,App State,0,32,967,0
+4035274,Arizona,0,0,0,1
+4244039,Arizona,0,0,0,1
+4245161,Arizona,0,9,20,0
+4245639,Arizona,0,839,95,0
+4245672,Arizona,0,0,32,1
+4245703,Arizona,0,52,0,0
+4259370,Arizona,0,0,0,2
+4360890,Arizona,968,0,198,0
+4361263,Arizona,0,128,362,0
+4372597,Arizona,89,48,47,0
+4426449,Arizona,0,284,0,0
+4426999,Arizona,536,0,43,0
+4430635,Arizona,1321,0,240,0
+4431239,Arizona,0,0,0,1
+4433844,Arizona,0,157,0,0
+4569135,Arizona,0,0,0,3
+4569138,Arizona,0,227,38,0
+4569146,Arizona,0,15,-6,0
+4569149,Arizona,0,0,0,2
+4569156,Arizona,4,255,265,0
+4569957,Arizona,0,0,0,1
+4685828,Arizona,0,93,148,0
+4697741,Arizona,0,61,238,0
+4697755,Arizona,0,0,0,1
+4711055,Arizona,0,300,0,0
+4712328,Arizona,0,23,7,0
+4035686,Arizona State,0,0,0,3
+4048246,Arizona State,0,0,0,2
+4242885,Arizona State,0,0,0,1
+4242887,Arizona State,0,0,0,4
+4242896,Arizona State,0,373,0,0
+4243261,Arizona State,0,134,19,0
+4360440,Arizona State,0,0,0,1
+4360456,Arizona State,0,0,0,1
+4360462,Arizona State,0,47,0,0
+4360466,Arizona State,0,0,0,1
+4426348,Arizona State,2170,14,643,0
+4426967,Arizona State,0,0,0,1
+4427886,Arizona State,0,0,0,1
+4428209,Arizona State,73,465,36,0
+4429184,Arizona State,0,53,41,0
+4429411,Arizona State,0,0,0,1
+4430075,Arizona State,0,0,0,1
+4430810,Arizona State,0,29,233,0
+4430893,Arizona State,0,19,390,0
+4430993,Arizona State,0,330,0,0
+4431275,Arizona State,0,0,0,1
+4569184,Arizona State,91,0,12,0
+4576788,Arizona State,0,164,0,0
+4591008,Arizona State,0,0,0,2
+4602656,Arizona State,0,0,0,1
+4686104,Arizona State,0,116,0,0
+4692538,Arizona State,0,27,0,0
+4697815,Arizona State,0,402,912,0
+4035117,Arkansas,0,0,0,2
+4079623,Arkansas,0,154,0,0
+4242149,Arkansas,0,0,0,4
+4242167,Arkansas,0,244,0,0
+4242178,Arkansas,0,205,48,0
+4242881,Arkansas,0,21,494,0
+4248047,Arkansas,0,0,0,1
+4363030,Arkansas,36,283,0,0
+4371991,Arkansas,32,0,23,0
+4371992,Arkansas,0,0,0,1
+4371995,Arkansas,0,0,0,1
+4429133,Arkansas,7,0,43,0
+4429156,Arkansas,0,0,0,1
+4430063,Arkansas,0,74,452,0
+4431389,Arkansas,0,81,0,0
+4567148,Arkansas,0,0,0,1
+4567149,Arkansas,2419,32,581,0
+4567151,Arkansas,3,127,0,0
+4567156,Arkansas,20,1066,114,0
+4567185,Arkansas,0,27,0,0
+4567189,Arkansas,0,0,0,1
+4596437,Arkansas,0,84,126,0
+4601080,Arkansas,0,109,426,0
+3707332,Arkansas State,0,204,0,0
+4039081,Arkansas State,0,0,0,3
+4240020,Arkansas State,892,90,61,1
+4241055,Arkansas State,0,0,0,1
+4241243,Arkansas State,0,126,470,0
+4242464,Arkansas State,0,0,0,2
+4360820,Arkansas State,0,0,0,1
+4361221,Arkansas State,0,0,0,1
+4361222,Arkansas State,1939,80,77,0
+4361227,Arkansas State,0,-3,92,0
+4362483,Arkansas State,5,511,0,0
+4362564,Arkansas State,0,62,0,0
+4427209,Arkansas State,0,239,0,0
+4429910,Arkansas State,0,0,0,2
+4430365,Arkansas State,0,0,0,3
+4433901,Arkansas State,75,633,9,0
+4569517,Arkansas State,0,0,0,1
+4570270,Arkansas State,0,67,0,0
+4608607,Arkansas State,0,163,314,0
+4613088,Arkansas State,0,0,0,3
+4685970,Arkansas State,0,0,0,2
+4710449,Arkansas State,0,64,207,0
+4711409,Arkansas State,0,116,0,0
+4714379,Arkansas State,0,45,0,0
+4880079,Arkansas State,0,69,0,0
+4032201,Arkansas-Pine Bluff,0,1,21,0
+4383504,Arkansas-Pine Bluff,50,0,33,0
+4578894,Arkansas-Pine Bluff,5,0,19,0
+4884087,Arkansas-Pine Bluff,0,49,0,0
+4258447,Army,562,0,610,0
+4373726,Army,65,0,545,0
+4373730,Army,285,0,44,0
+4373741,Army,0,12,105,0
+4373743,Army,0,66,182,0
+4373744,Army,0,36,70,0
+4373748,Army,0,0,0,2
+4373751,Army,0,26,0,0
+4373775,Army,0,0,0,1
+4373785,Army,0,0,0,2
+4427658,Army,0,0,346,0
+4577305,Army,66,0,14,0
+4577306,Army,0,0,0,2
+4577316,Army,0,82,65,0
+4577324,Army,0,0,420,0
+4577325,Army,0,45,0,0
+4577333,Army,0,0,0,3
+4577361,Army,0,0,0,1
+4577722,Army,0,0,0,1
+4689809,Army,0,22,0,0
+4689813,Army,0,0,0,1
+4689819,Army,0,0,0,2
+4689825,Army,0,219,610,0
+4689828,Army,0,31,0,0
+4689855,Army,0,407,0,0
+4895132,Army,0,4,16,0
+4034552,Auburn,0,0,0,2
+4035851,Auburn,10,451,47,0
+4242526,Auburn,0,352,0,0
+4242528,Auburn,0,0,0,3
+4247724,Auburn,0,31,0,0
+4361272,Auburn,0,0,0,5
+4361332,Auburn,0,477,0,0
+4361334,Auburn,0,0,0,4
+4371973,Auburn,0,0,0,4
+4371977,Auburn,0,160,65,0
+4371979,Auburn,0,0,0,2
+4429013,Auburn,0,116,1013,0
+4429056,Auburn,15,508,0,0
+4429062,Auburn,0,41,0,0
+4431001,Auburn,0,20,0,0
+4431948,Auburn,427,30,37,0
+4565535,Auburn,0,0,0,2
+4567217,Auburn,0,254,57,0
+4567218,Auburn,2258,0,272,0
+4567224,Auburn,0,0,0,1
+4567225,Auburn,0,0,0,1
+4567226,Auburn,0,0,0,7
+4567234,Auburn,0,93,0,0
+4567235,Auburn,0,65,0,0
+4573152,Auburn,0,0,0,1
+4602192,Auburn,5,23,0,0
+4689091,Auburn,0,0,0,1
+4695580,Auburn,0,33,0,0
+4710341,Auburn,0,61,347,0
+4046651,BYU,0,0,0,1
+4046654,BYU,0,0,0,2
+4046659,BYU,0,0,0,2
+4048099,BYU,0,271,27,0
+4242377,BYU,13,477,46,0
+4243753,BYU,0,0,0,1
+4256059,BYU,0,0,0,2
+4361254,BYU,308,0,14,0
+4373626,BYU,0,165,1196,0
+4373632,BYU,2567,29,407,0
+4373634,BYU,0,166,-7,0
+4373635,BYU,0,0,0,1
+4373637,BYU,0,27,230,0
+4373643,BYU,0,0,0,1
+4373644,BYU,0,497,9,0
+4373648,BYU,0,0,0,1
+4373651,BYU,0,0,0,3
+4426515,BYU,16,718,111,0
+4428765,BYU,0,93,8,0
+4569948,BYU,0,285,0,0
+4569949,BYU,0,0,26,0
+4569951,BYU,0,152,0,0
+4608794,BYU,0,0,0,1
+4687456,BYU,0,24,0,0
+4039162,Ball State,0,0,0,2
+4039210,Ball State,1965,0,283,0
+4047738,Ball State,0,91,0,0
+4244713,Ball State,0,0,0,1
+4244717,Ball State,0,0,0,2
+4244720,Ball State,0,0,0,1
+4244727,Ball State,0,547,218,0
+4244746,Ball State,0,59,0,0
+4249319,Ball State,0,0,0,1
+4261850,Ball State,0,75,0,0
+4261851,Ball State,0,98,272,0
+4360073,Ball State,26,531,6,0
+4361646,Ball State,0,378,0,0
+4427636,Ball State,0,0,0,1
+4427951,Ball State,0,45,25,0
+4429438,Ball State,0,0,0,2
+4568158,Ball State,0,0,0,1
+4686940,Ball State,0,9,34,0
+4714365,Ball State,0,68,688,0
+4030947,Baylor,0,337,3,0
+4035401,Baylor,0,0,0,2
+4035410,Baylor,0,0,0,1
+4241224,Baylor,0,101,1243,0
+4241225,Baylor,0,515,0,0
+4259166,Baylor,0,0,0,1
+4259169,Baylor,0,221,737,0
+4259175,Baylor,0,0,0,1
+4360482,Baylor,2,0,4,2
+4362915,Baylor,1986,9,254,0
+4362917,Baylor,0,0,0,2
+4362921,Baylor,7,884,0,0
+4373016,Baylor,0,50,11,0
+4373030,Baylor,0,358,0,0
+4379463,Baylor,0,0,0,2
+4426440,Baylor,0,0,0,4
+4428304,Baylor,0,0,0,1
+4429466,Baylor,0,78,0,0
+4429731,Baylor,0,0,0,4
+4565315,Baylor,573,0,110,0
+4568998,Baylor,0,0,0,1
+4571882,Baylor,0,0,0,1
+4240092,Bethune-Cookman,0,29,0,0
+4383503,Bethune-Cookman,53,0,0,0
+4240809,Boise State,0,95,0,0
+4242494,Boise State,0,185,342,0
+4243216,Boise State,6,0,17,0
+4248836,Boise State,0,160,0,0
+4260441,Boise State,0,409,22,0
+4260445,Boise State,0,0,0,2
+4260450,Boise State,0,0,0,4
+4260452,Boise State,0,85,29,0
+4261623,Boise State,0,0,0,3
+4361070,Boise State,0,0,0,1
+4373661,Boise State,0,28,216,0
+4373662,Boise State,0,95,0,0
+4373670,Boise State,0,0,0,1
+4373678,Boise State,0,1083,129,0
+4373682,Boise State,0,87,0,0
+4373684,Boise State,0,3,0,3
+4373686,Boise State,61,370,5,0
+4373687,Boise State,23,109,0,0
+4373688,Boise State,0,0,0,2
+4426499,Boise State,2941,84,160,0
+4426606,Boise State,0,0,0,5
+4428503,Boise State,0,0,0,1
+4429835,Boise State,0,169,554,0
+4431002,Boise State,0,56,9,0
+4431188,Boise State,0,0,0,2
+4035342,Boston College,0,0,0,2
+4239938,Boston College,0,167,0,0
+4239939,Boston College,1075,0,133,0
+4239941,Boston College,0,154,184,0
+4239943,Boston College,0,0,0,3
+4239957,Boston College,0,0,0,2
+4241891,Boston College,0,0,339,0
+4249633,Boston College,51,305,0,0
+4360213,Boston College,0,0,0,1
+4360215,Boston College,0,151,0,0
+4360468,Boston College,0,0,0,3
+4361351,Boston College,0,227,0,0
+4372768,Boston College,799,100,305,0
+4427059,Boston College,0,0,0,4
+4428484,Boston College,0,0,0,1
+4429615,Boston College,39,693,56,0
+4429652,Boston College,0,19,808,0
+4568154,Boston College,0,23,0,0
+4683501,Boston College,87,0,14,0
+4700456,Boston College,10,204,0,0
+4887311,Boston College,0,0,208,0
+4239937,Bowling Green,1981,36,183,0
+4244035,Bowling Green,0,0,0,1
+4244043,Bowling Green,0,0,0,2
+4361092,Bowling Green,36,311,0,0
+4373423,Bowling Green,0,0,0,1
+4426564,Bowling Green,0,0,0,1
+4428501,Bowling Green,0,157,4,0
+4429313,Bowling Green,0,111,0,0
+4429861,Bowling Green,0,0,0,1
+4433825,Bowling Green,0,66,0,0
+4565318,Bowling Green,0,0,189,0
+4570423,Bowling Green,0,0,0,1
+4575831,Bowling Green,0,142,76,0
+4577516,Bowling Green,0,178,0,0
+4605842,Bowling Green,0,98,46,0
+4612211,Bowling Green,0,42,185,0
+4685827,Bowling Green,0,84,40,0
+4689193,Bowling Green,0,4,115,0
+4710655,Bowling Green,0,0,0,1
+4710759,Bowling Green,0,22,0,0
+4573996,Bryant,0,5,17,0
+4574000,Bryant,0,26,0,0
+4876066,Bryant,106,0,5,0
+4876073,Bryant,0,23,56,0
+4694095,Bucknell,0,40,0,0
+4876610,Bucknell,107,0,0,0
+4876632,Bucknell,0,25,0,0
+4040824,Buffalo,15,270,0,0
+4040835,Buffalo,0,24,3,0
+4239714,Buffalo,1491,0,111,0
+4244833,Buffalo,0,507,0,0
+4257184,Buffalo,0,0,0,1
+4257189,Buffalo,0,22,402,0
+4283694,Buffalo,0,103,0,0
+4362447,Buffalo,372,0,201,0
+4362449,Buffalo,0,0,0,1
+4373454,Buffalo,0,99,737,0
+4428580,Buffalo,0,79,0,0
+4429454,Buffalo,0,218,271,0
+4430015,Buffalo,0,0,0,1
+4574315,Buffalo,0,84,0,0
+4576186,Buffalo,0,39,0,0
+4684091,Buffalo,0,136,0,0
+4693846,Buffalo,0,0,0,1
+4875438,Buffalo,0,62,0,0
+4875447,Buffalo,0,0,0,1
+4242991,Cal Poly,0,63,0,0
+4426770,Cal Poly,157,0,24,0
+4688413,Cal Poly,0,49,0,0
+4035854,California,0,20,0,0
+4035857,California,0,0,0,4
+4046519,California,34,453,0,0
+4242402,California,0,0,0,1
+4242408,California,2241,23,540,0
+4242413,California,0,55,0,0
+4242415,California,0,0,0,1
+4248250,California,92,0,6,0
+4259147,California,9,197,0,0
+4262196,California,0,0,0,1
+4372716,California,4,214,58,0
+4372717,California,0,69,143,0
+4372742,California,0,57,0,0
+4429316,California,0,7,86,0
+4429963,California,0,388,0,0
+4430847,California,0,0,78,0
+4430921,California,0,44,0,0
+4431311,California,0,0,0,1
+4565770,California,0,90,509,0
+4569239,California,12,594,0,0
+4688552,California,0,36,0,0
+4697424,California,0,0,0,4
+4038822,Campbell,0,0,25,0
+4048721,Campbell,0,24,0,0
+4247253,Campbell,0,70,0,0
+4361039,Campbell,0,31,0,0
+4571336,Campbell,0,39,0,0
+4571364,Campbell,175,0,26,0
+4691838,Campbell,0,0,27,0
+4876537,Campbell,0,0,24,0
+4032198,Central Arkansas,209,87,0,0
+4250253,Central Arkansas,21,63,0,0
+4250254,Central Arkansas,0,0,0,1
+4371393,Central Arkansas,0,0,0,2
+4371408,Central Arkansas,0,0,0,1
+4429867,Central Arkansas,0,118,0,0
+4578207,Central Arkansas,0,5,22,0
+4578224,Central Arkansas,66,5,0,0
+4688397,Central Arkansas,0,0,0,1
+4877645,Central Arkansas,0,0,28,0
+4371078,Central Connecticut,62,0,10,0
+4039258,Central Michigan,0,22,0,0
+4039267,Central Michigan,0,0,0,1
+4039269,Central Michigan,0,0,0,2
+4240866,Central Michigan,47,699,65,0
+4244769,Central Michigan,0,0,0,1
+4244771,Central Michigan,26,451,0,0
+4244772,Central Michigan,16,43,19,0
+4244774,Central Michigan,0,0,0,2
+4274040,Central Michigan,0,0,0,3
+4291989,Central Michigan,0,0,0,2
+4361091,Central Michigan,719,0,32,0
+4362570,Central Michigan,11,190,0,0
+4362576,Central Michigan,0,0,0,1
+4362583,Central Michigan,0,0,0,1
+4370065,Central Michigan,0,98,0,0
+4371381,Central Michigan,0,32,0,0
+4427146,Central Michigan,0,0,20,0
+4428119,Central Michigan,18,280,1437,0
+4429312,Central Michigan,0,0,0,2
+4430716,Central Michigan,0,0,0,1
+4430778,Central Michigan,0,0,0,1
+4570259,Central Michigan,1893,37,28,0
+4608004,Central Michigan,0,0,0,1
+4693844,Central Michigan,0,655,0,0
+4695674,Central Michigan,0,0,0,1
+4714157,Central Michigan,0,0,0,2
+4875667,Central Michigan,0,46,80,0
+4875671,Central Michigan,0,8,51,0
+4880194,Central Michigan,0,0,0,2
+4029744,Charleston Southern,0,82,0,0
+4047385,Charleston Southern,0,98,5,0
+4246097,Charleston Southern,411,0,118,0
+4376397,Charleston Southern,0,80,0,0
+4376413,Charleston Southern,0,0,0,1
+4379661,Charleston Southern,0,59,0,0
+4694180,Charleston Southern,0,56,58,0
+4694209,Charleston Southern,0,38,0,0
+4032592,Charlotte,0,0,0,1
+4045696,Charlotte,0,84,0,0
+4240571,Charlotte,0,0,0,1
+4241728,Charlotte,0,0,0,1
+4241730,Charlotte,0,0,0,1
+4249340,Charlotte,0,27,5,0
+4259268,Charlotte,0,580,26,0
+4259269,Charlotte,2473,134,293,0
+4259270,Charlotte,0,76,0,0
+4259275,Charlotte,53,76,442,0
+4372517,Charlotte,210,0,46,0
+4373696,Charlotte,0,0,0,1
+4373706,Charlotte,0,0,0,1
+4426840,Charlotte,0,193,474,0
+4428376,Charlotte,0,0,0,1
+4572267,Charlotte,33,317,0,0
+4608450,Charlotte,0,65,0,0
+4613157,Charlotte,0,33,0,0
+4684281,Charlotte,0,74,8,0
+4689590,Charlotte,0,23,0,0
+4710782,Charlotte,0,0,0,2
+4879650,Charlotte,9,767,8,0
+4903843,Charlotte,0,111,13,0
+4037378,Chattanooga,0,75,0,0
+4240152,Chattanooga,0,21,0,0
+4247262,Chattanooga,168,0,2,0
+4369373,Chattanooga,0,21,0,0
+4369374,Chattanooga,0,0,47,0
+4572713,Chattanooga,0,25,0,0
+4572719,Chattanooga,0,15,141,0
+4035583,Cincinnati,0,25,0,0
+4037474,Cincinnati,0,0,0,3
+4044060,Cincinnati,0,0,0,7
+4239086,Cincinnati,2888,192,503,0
+4239094,Cincinnati,0,0,0,3
+4239107,Cincinnati,0,0,0,1
+4239121,Cincinnati,0,0,0,6
+4247726,Cincinnati,0,0,0,2
+4256907,Cincinnati,0,0,0,2
+4258604,Cincinnati,0,296,0,0
+4360057,Cincinnati,0,34,114,0
+4360059,Cincinnati,0,0,0,2
+4360067,Cincinnati,0,0,0,3
+4360072,Cincinnati,0,0,0,4
+4360075,Cincinnati,0,42,208,0
+4360078,Cincinnati,54,767,0,0
+4360080,Cincinnati,0,0,0,4
+4360082,Cincinnati,44,213,0,0
+4360084,Cincinnati,0,0,0,1
+4360086,Cincinnati,0,293,0,0
+4372019,Cincinnati,0,209,1180,0
+4426676,Cincinnati,0,0,0,2
+4427250,Cincinnati,0,0,0,6
+4428718,Cincinnati,0,414,12,0
+4430905,Cincinnati,0,197,0,0
+4431306,Cincinnati,0,0,0,5
+4433935,Cincinnati,0,0,39,0
+4565908,Cincinnati,91,387,0,0
+4035468,Clemson,0,0,0,2
+4035472,Clemson,0,0,0,1
+4046826,Clemson,0,12,16,0
+4239997,Clemson,0,0,0,2
+4240009,Clemson,0,38,0,0
+4360304,Clemson,0,0,0,9
+4360306,Clemson,0,524,0,0
+4360314,Clemson,0,-7,41,0
+4426344,Clemson,0,0,0,1
+4426426,Clemson,0,431,0,0
+4426430,Clemson,56,0,66,0
+4426505,Clemson,0,0,0,2
+4426553,Clemson,0,177,0,0
+4428985,Clemson,0,0,0,8
+4428988,Clemson,0,0,0,1
+4429018,Clemson,0,0,0,2
+4429020,Clemson,2017,0,423,0
+4429207,Clemson,0,73,0,0
+4430831,Clemson,0,0,0,2
+4431196,Clemson,0,42,0,0
+4431209,Clemson,0,151,0,0
+4431210,Clemson,0,311,0,0
+4431454,Clemson,0,0,0,2
+4431519,Clemson,0,0,0,1
+4431545,Clemson,2,71,647,0
+4431562,Clemson,0,46,280,0
+4602197,Clemson,0,0,0,2
+4686093,Clemson,0,60,0,0
+4686095,Clemson,0,93,590,0
+4696315,Clemson,0,6,14,0
+4029728,Coastal Carolina,0,521,0,0
+4052004,Coastal Carolina,0,0,0,3
+4241089,Coastal Carolina,0,0,0,4
+4259723,Coastal Carolina,0,0,0,2
+4259726,Coastal Carolina,0,56,0,0
+4259753,Coastal Carolina,0,0,0,2
+4361029,Coastal Carolina,0,949,0,0
+4361032,Coastal Carolina,251,0,114,0
+4361044,Coastal Carolina,0,0,0,2
+4361049,Coastal Carolina,0,0,0,1
+4361050,Coastal Carolina,124,605,10,0
+4384740,Coastal Carolina,0,41,0,0
+4427936,Coastal Carolina,2377,124,298,0
+4428612,Coastal Carolina,0,29,4,0
+4430714,Coastal Carolina,0,68,500,0
+4568468,Coastal Carolina,0,0,0,2
+4608606,Coastal Carolina,0,69,32,0
+4608922,Coastal Carolina,0,233,377,0
+4682983,Coastal Carolina,0,0,0,13
+4685939,Coastal Carolina,0,28,861,0
+4247540,Colgate,67,0,26,0
+4571689,Colgate,0,17,11,0
+4694237,Colgate,0,29,16,0
+4243163,Colorado,2,73,288,0
+4243176,Colorado,0,282,0,0
+4243177,Colorado,0,0,0,3
+4243195,Colorado,0,0,0,1
+4360644,Colorado,43,174,1,0
+4360649,Colorado,0,81,1,0
+4360652,Colorado,0,7,115,0
+4360654,Colorado,0,85,664,0
+4428475,Colorado,0,60,0,0
+4429149,Colorado,1188,137,352,0
+4430421,Colorado,0,0,0,1
+4612411,Colorado,0,74,0,0
+4686767,Colorado,0,45,0,0
+4686769,Colorado,0,0,61,0
+4686775,Colorado,16,68,0,0
+4686781,Colorado,67,149,15,0
+4689721,Colorado,9,34,0,0
+3672865,Colorado State,0,16,0,6
+4243276,Colorado State,2852,3,499,0
+4256032,Colorado State,0,162,0,0
+4256044,Colorado State,0,45,0,0
+4256045,Colorado State,0,0,47,0
+4256049,Colorado State,0,114,33,0
+4360205,Colorado State,0,87,670,0
+4361281,Colorado State,0,0,0,1
+4361285,Colorado State,0,0,0,1
+4361287,Colorado State,0,57,264,0
+4361293,Colorado State,0,0,-6,1
+4361306,Colorado State,0,259,0,0
+4361307,Colorado State,0,884,0,0
+4361312,Colorado State,0,0,0,1
+4427677,Colorado State,0,0,0,2
+4427957,Colorado State,0,379,14,0
+4428292,Colorado State,0,0,0,1
+4428938,Colorado State,0,437,-5,0
+4569024,Colorado State,0,6,156,0
+4570083,Colorado State,0,28,4,0
+4683792,Colorado State,22,0,33,0
+4880253,Colorado State,0,0,0,1
+4036946,Delaware,0,11,122,0
+4248104,Delaware,102,0,0,0
+4248109,Delaware,0,0,49,0
+4428806,Delaware,0,8,23,0
+4573222,Delaware,0,57,0,0
+4240454,Duke,0,0,0,1
+4240473,Duke,0,128,0,0
+4240474,Duke,0,0,0,2
+4360403,Duke,1903,0,224,0
+4360405,Duke,0,654,0,0
+4360406,Duke,0,244,1196,0
+4360407,Duke,0,71,0,0
+4360413,Duke,0,0,0,3
+4426883,Duke,0,0,1,5
+4428151,Duke,0,0,0,3
+4428803,Duke,0,76,202,0
+4429362,Duke,0,506,7,0
+4429470,Duke,0,45,0,0
+4429742,Duke,0,105,0,0
+4430288,Duke,0,163,0,0
+4433880,Duke,0,41,4,0
+4565296,Duke,0,98,0,0
+4565311,Duke,0,0,0,1
+4573318,Duke,0,0,0,1
+4594444,Duke,77,0,126,0
+4683423,Duke,156,0,90,0
+4044083,Duquesne,0,0,0,1
+4046564,Duquesne,0,20,15,0
+4247081,Duquesne,0,43,0,0
+4427841,Duquesne,0,11,93,0
+4573455,Duquesne,191,3,13,0
+4694913,Duquesne,0,15,80,0
+4694924,Duquesne,3,42,0,0
+4749423,Duquesne,0,55,0,0
+4749427,Duquesne,0,0,0,1
+4035837,East Carolina,27,484,0,0
+4038564,East Carolina,0,0,0,1
+4241387,East Carolina,0,430,0,0
+4360131,East Carolina,2923,66,426,0
+4360136,East Carolina,0,0,0,3
+4360160,East Carolina,0,0,0,1
+4360162,East Carolina,0,0,0,2
+4373896,East Carolina,0,0,0,2
+4382578,East Carolina,102,808,6,0
+4432138,East Carolina,14,0,9,0
+4432635,East Carolina,0,0,0,3
+4567456,East Carolina,0,0,0,1
+4567458,East Carolina,0,462,0,0
+4567462,East Carolina,0,0,0,1
+4567464,East Carolina,0,0,0,1
+4567470,East Carolina,12,275,4,0
+4567471,East Carolina,0,0,0,2
+4567473,East Carolina,0,0,0,1
+4569653,East Carolina,0,190,0,0
+4590347,East Carolina,0,120,573,0
+4596334,East Carolina,0,230,1101,0
+4608781,East Carolina,0,0,0,2
+4241126,East Tennessee State,0,52,0,0
+4247446,East Tennessee State,0,0,0,1
+4247462,East Tennessee State,0,0,149,0
+4383429,East Tennessee State,0,14,23,0
+4383449,East Tennessee State,0,62,0,0
+4577478,East Tennessee State,136,0,4,0
+4577494,East Tennessee State,0,0,0,2
+4240452,Eastern Illinois,33,0,1,0
+4368767,Eastern Kentucky,97,0,37,0
+4877714,Eastern Kentucky,0,40,0,0
+4039341,Eastern Michigan,0,0,0,2
+4042110,Eastern Michigan,0,7,608,0
+4051459,Eastern Michigan,0,0,0,1
+4244804,Eastern Michigan,107,0,35,0
+4244818,Eastern Michigan,0,0,0,1
+4244819,Eastern Michigan,0,0,0,1
+4244834,Eastern Michigan,0,46,0,0
+4360056,Eastern Michigan,2631,0,207,0
+4360404,Eastern Michigan,0,82,0,0
+4360492,Eastern Michigan,6,135,197,0
+4363522,Eastern Michigan,0,0,21,0
+4363528,Eastern Michigan,0,307,0,0
+4363537,Eastern Michigan,27,867,4,0
+4363551,Eastern Michigan,13,560,0,0
+4363554,Eastern Michigan,0,78,0,0
+4363557,Eastern Michigan,0,0,0,1
+4363559,Eastern Michigan,0,0,0,2
+4429083,Eastern Michigan,0,78,380,0
+4430031,Eastern Michigan,0,0,0,1
+4569068,Eastern Michigan,0,0,0,2
+4569072,Eastern Michigan,0,172,0,0
+4571179,Eastern Michigan,0,49,0,0
+4577743,Eastern Michigan,0,0,0,1
+4686754,Eastern Michigan,0,0,0,1
+4688839,Eastern Michigan,0,8,48,0
+4875726,Eastern Michigan,0,184,0,0
+4875727,Eastern Michigan,0,107,0,0
+4027419,Eastern Washington,360,0,46,0
+4047369,Eastern Washington,0,20,59,0
+4247189,Eastern Washington,0,106,0,0
+4360451,Eastern Washington,0,0,0,1
+4364531,Eastern Washington,0,0,0,1
+4364538,Eastern Washington,0,32,0,0
+4695193,Eastern Washington,0,65,0,0
+4248280,Elon,0,35,0,0
+4248286,Elon,223,0,1,0
+4366858,Elon,0,0,36,0
+4366862,Elon,0,23,0,0
+4366864,Elon,0,83,0,0
+4372490,Elon,0,25,0,0
+4573246,Elon,0,25,10,0
+4034963,Florida,0,181,0,0
+4240603,Florida,0,211,382,0
+4240618,Florida,0,399,0,0
+4240619,Florida,0,0,0,4
+4360230,Florida,2269,70,699,0
+4360233,Florida,33,538,22,0
+4360238,Florida,11,206,460,0
+4361337,Florida,0,0,0,2
+4361426,Florida,47,417,0,0
+4361776,Florida,0,0,0,22
+4362496,Florida,0,0,23,0
+4429002,Florida,0,0,60,0
+4429084,Florida,463,49,421,0
+4430060,Florida,0,0,0,1
+4430817,Florida,0,249,0,0
+4432591,Florida,0,0,0,1
+4567399,Florida,0,0,0,1
+4567400,Florida,0,135,329,0
+4567402,Florida,0,89,0,0
+4567406,Florida,0,0,0,4
+4567415,Florida,41,187,0,0
+4567416,Florida,0,53,0,0
+4567417,Florida,0,0,0,1
+4589212,Florida,0,0,28,0
+4592832,Florida,0,61,0,0
+4241921,Florida A&M,0,0,0,1
+4386544,Florida A&M,0,139,0,0
+4386553,Florida A&M,0,54,0,0
+4427600,Florida A&M,0,0,93,0
+4574551,Florida A&M,0,0,0,1
+4040769,Florida Atlantic,0,70,72,0
+4040770,Florida Atlantic,0,0,0,1
+4040779,Florida Atlantic,0,90,0,0
+4240628,Florida Atlantic,1825,161,211,0
+4258236,Florida Atlantic,81,0,8,0
+4360603,Florida Atlantic,0,252,0,0
+4360609,Florida Atlantic,0,5,156,0
+4360618,Florida Atlantic,0,0,0,1
+4360632,Florida Atlantic,0,0,0,1
+4360881,Florida Atlantic,0,252,722,0
+4363035,Florida Atlantic,0,39,0,0
+4368341,Florida Atlantic,0,264,0,0
+4429505,Florida Atlantic,0,11,58,0
+4430100,Florida Atlantic,0,49,63,0
+4430331,Florida Atlantic,0,11,48,0
+4571589,Florida Atlantic,0,24,0,0
+4690143,Florida Atlantic,0,324,13,0
+4709667,Florida Atlantic,0,0,0,1
+4876006,Florida Atlantic,0,30,0,0
+4036215,Florida International,1939,170,9,0
+4244648,Florida International,0,0,21,0
+4244649,Florida International,65,479,0,0
+4244651,Florida International,0,2,80,0
+4244655,Florida International,0,0,0,2
+4244679,Florida International,0,0,0,1
+4255713,Florida International,0,324,0,0
+4361087,Florida International,0,43,0,0
+4374263,Florida International,0,27,0,0
+4374267,Florida International,0,0,83,0
+4374268,Florida International,0,0,0,1
+4374272,Florida International,0,25,0,0
+4427024,Florida International,0,0,0,1
+4427648,Florida International,0,27,179,0
+4428025,Florida International,0,60,0,0
+4429898,Florida International,0,2,18,0
+4567707,Florida International,57,0,0,0
+4574026,Florida International,46,613,0,0
+4576132,Florida International,0,0,0,1
+4605858,Florida International,0,110,0,0
+4687515,Florida International,0,71,96,0
+3917820,Florida State,0,0,0,1
+4035838,Florida State,0,189,0,0
+4038843,Florida State,0,0,0,5
+4039468,Florida State,23,334,3,0
+4042113,Florida State,765,25,76,0
+4240033,Florida State,92,606,10,0
+4360799,Florida State,3368,172,1538,0
+4362905,Florida State,0,0,0,2
+4363032,Florida State,0,508,0,0
+4363044,Florida State,0,39,0,0
+4363045,Florida State,0,412,0,0
+4372519,Florida State,0,212,783,0
+4426396,Florida State,0,0,0,1
+4426429,Florida State,0,0,0,1
+4426448,Florida State,0,0,0,1
+4426817,Florida State,0,0,0,1
+4428307,Florida State,0,0,0,1
+4428783,Florida State,0,336,456,0
+4429072,Florida State,0,366,119,0
+4430153,Florida State,0,0,0,1
+4430411,Florida State,0,0,0,2
+4430636,Florida State,0,27,0,0
+4430885,Florida State,0,609,2,0
+4431486,Florida State,0,0,0,1
+4567216,Florida State,0,0,40,0
+4567253,Florida State,0,112,0,0
+4567706,Florida State,0,0,0,1
+4567962,Florida State,0,0,0,6
+4682509,Florida State,80,252,0,1
+4367790,Fordham,226,0,0,0
+4374099,Fordham,0,54,8,0
+4426863,Fordham,0,111,0,0
+4580157,Fordham,0,21,-11,0
+4876684,Fordham,0,0,38,0
+4036332,Fresno State,0,0,0,2
+4040919,Fresno State,0,0,0,2
+4242994,Fresno State,0,0,0,1
+4242996,Fresno State,0,0,0,6
+4243001,Fresno State,0,342,3,0
+4243003,Fresno State,0,316,749,0
+4243004,Fresno State,0,229,466,0
+4243322,Fresno State,3440,30,161,0
+4243323,Fresno State,0,196,0,0
+4361319,Fresno State,0,147,0,0
+4365839,Fresno State,0,0,0,1
+4426990,Fresno State,76,763,31,0
+4428203,Fresno State,0,69,0,0
+4428241,Fresno State,0,0,0,3
+4428863,Fresno State,0,0,0,1
+4570449,Fresno State,0,501,2,0
+4570456,Fresno State,0,0,0,1
+4570466,Fresno State,5,76,0,0
+4575557,Fresno State,0,0,0,1
+4575558,Fresno State,0,759,20,0
+4575559,Fresno State,0,0,0,1
+4585727,Fresno State,0,0,0,1
+4685784,Fresno State,0,93,0,0
+4696541,Fresno State,0,0,0,2
+4248689,Furman,0,1,26,0
+4369451,Furman,16,0,7,0
+4249680,Gardner-Webb,0,74,0,0
+4368908,Gardner-Webb,315,0,9,0
+4370162,Gardner-Webb,0,164,0,0
+4573849,Gardner-Webb,0,4,26,0
+4710336,Gardner-Webb,0,72,0,0
+4876643,Gardner-Webb,0,0,23,0
+4259553,Georgia,2174,65,249,0
+4259558,Georgia,0,0,0,2
+4259559,Georgia,0,0,0,1
+4360307,Georgia,0,0,0,4
+4361777,Georgia,0,78,623,0
+4361778,Georgia,0,230,37,0
+4361791,Georgia,0,0,0,4
+4374303,Georgia,1418,0,-6,0
+4379392,Georgia,0,0,0,3
+4379399,Georgia,0,188,569,0
+4379401,Georgia,0,48,0,0
+4379405,Georgia,0,38,6,0
+4379413,Georgia,0,0,0,2
+4379414,Georgia,0,0,0,2
+4381558,Georgia,0,0,2,1
+4426331,Georgia,0,0,0,5
+4426340,Georgia,0,0,0,5
+4426349,Georgia,0,0,0,3
+4426354,Georgia,0,46,0,0
+4426536,Georgia,0,0,0,4
+4427391,Georgia,0,173,143,0
+4429012,Georgia,0,2,150,0
+4429033,Georgia,12,532,0,0
+4429105,Georgia,35,73,0,0
+4429142,Georgia,0,0,0,1
+4430802,Georgia,0,145,0,0
+4432665,Georgia,18,961,32,0
+4597500,Georgia,0,504,0,0
+4612826,Georgia,0,450,39,0
+4685759,Georgia,0,0,0,2
+4241145,Georgia Southern,0,95,517,0
+4258622,Georgia Southern,0,0,0,4
+4361375,Georgia Southern,1216,0,351,0
+4361382,Georgia Southern,0,0,0,1
+4361389,Georgia Southern,0,0,0,1
+4361402,Georgia Southern,0,0,0,1
+4361405,Georgia Southern,0,0,0,1
+4361797,Georgia Southern,0,894,435,0
+4382269,Georgia Southern,0,0,0,1
+4427332,Georgia Southern,0,26,281,0
+4430509,Georgia Southern,0,29,0,0
+4430974,Georgia Southern,0,0,0,1
+4563006,Georgia Southern,0,0,0,1
+4565189,Georgia Southern,512,0,64,0
+4568419,Georgia Southern,0,387,66,0
+4568420,Georgia Southern,0,0,0,1
+4568425,Georgia Southern,0,82,0,0
+4602940,Georgia Southern,0,256,2,0
+4610703,Georgia Southern,0,0,188,0
+4613155,Georgia Southern,340,0,47,0
+4872997,Georgia Southern,0,71,0,0
+4032491,Georgia State,0,254,0,0
+4037589,Georgia State,0,0,0,2
+4241273,Georgia State,0,503,0,0
+4241278,Georgia State,0,0,0,3
+4241293,Georgia State,0,0,0,1
+4259506,Georgia State,0,19,746,0
+4291693,Georgia State,4,340,15,0
+4361895,Georgia State,0,0,0,1
+4361897,Georgia State,0,8,180,0
+4361899,Georgia State,0,0,0,2
+4361907,Georgia State,0,0,0,1
+4361911,Georgia State,0,130,27,0
+4361915,Georgia State,0,511,12,0
+4369448,Georgia State,2838,164,1226,0
+4382092,Georgia State,0,4,899,0
+4427763,Georgia State,0,0,0,2
+4428224,Georgia State,0,0,0,1
+4428678,Georgia State,48,697,0,0
+4428752,Georgia State,0,0,0,2
+4429408,Georgia State,0,0,0,1
+4429509,Georgia State,0,0,0,2
+4568411,Georgia State,306,0,37,0
+4575716,Georgia State,0,0,0,1
+4597248,Georgia State,0,36,0,0
+4686271,Georgia State,0,60,20,0
+4690117,Georgia State,112,438,0,0
+4051409,Georgia Tech,0,22,0,0
+4240476,Georgia Tech,0,0,0,1
+4240506,Georgia Tech,23,296,0,0
+4242270,Georgia Tech,26,372,2,0
+4360569,Georgia Tech,6,73,330,0
+4360571,Georgia Tech,0,0,0,1
+4360572,Georgia Tech,0,0,0,1
+4360575,Georgia Tech,0,466,0,0
+4360577,Georgia Tech,0,0,0,1
+4360579,Georgia Tech,0,0,0,1
+4360584,Georgia Tech,0,0,0,1
+4360589,Georgia Tech,0,34,284,0
+4360590,Georgia Tech,0,0,0,1
+4360591,Georgia Tech,0,0,0,1
+4428140,Georgia Tech,0,134,0,0
+4428961,Georgia Tech,729,6,227,0
+4429066,Georgia Tech,1218,49,448,0
+4429795,Georgia Tech,0,343,706,0
+4574777,Georgia Tech,0,39,0,0
+4603746,Georgia Tech,0,35,0,0
+4239697,Grambling,30,0,4,0
+4241057,Grambling,65,0,40,0
+4250931,Grambling,0,0,0,1
+4370976,Grambling,0,25,0,0
+4370978,Grambling,0,18,51,0
+4575085,Grambling,0,10,25,0
+4579039,Grambling,0,0,0,1
+4043136,Hampton,36,0,19,0
+4384952,Hampton,0,29,0,0
+4035682,Hawai'i,0,0,0,3
+4039159,Hawai'i,0,38,0,0
+4050989,Hawai'i,0,0,0,5
+4249917,Hawai'i,0,708,322,0
+4255951,Hawai'i,0,60,0,0
+4256087,Hawai'i,0,22,0,0
+4256089,Hawai'i,0,0,0,2
+4259263,Hawai'i,0,0,0,1
+4361782,Hawai'i,0,0,0,4
+4363647,Hawai'i,0,0,0,2
+4367728,Hawai'i,0,246,619,0
+4373934,Hawai'i,2559,0,465,0
+4373935,Hawai'i,0,0,0,9
+4373938,Hawai'i,0,0,0,1
+4373947,Hawai'i,0,0,0,1
+4373956,Hawai'i,0,0,0,1
+4373959,Hawai'i,0,815,0,0
+4374039,Hawai'i,0,0,0,2
+4427194,Hawai'i,0,51,0,0
+4428072,Hawai'i,0,0,0,9
+4428729,Hawai'i,0,0,0,2
+4570218,Hawai'i,0,132,0,0
+4570219,Hawai'i,0,379,0,0
+4613062,Hawai'i,0,0,0,3
+4613067,Hawai'i,0,257,0,0
+4693791,Hawai'i,0,83,673,0
+4693796,Hawai'i,0,0,0,2
+4709977,Hawai'i,588,0,32,0
+4875786,Hawai'i,0,21,0,0
+4247701,Holy Cross,0,28,0,0
+4368060,Holy Cross,0,0,0,1
+4368073,Holy Cross,0,0,0,1
+4368076,Holy Cross,0,0,73,0
+4571801,Holy Cross,0,24,0,0
+4571803,Holy Cross,0,3,27,0
+4695883,Holy Cross,0,47,0,0
+4695904,Holy Cross,105,0,41,0
+4034772,Houston,0,135,0,0
+4037433,Houston,0,876,0,0
+4039294,Houston,0,26,182,0
+4062810,Houston,0,0,67,0
+4240253,Houston,0,455,0,0
+4240257,Houston,0,0,0,1
+4240261,Houston,0,0,0,3
+4240263,Houston,0,0,0,3
+4241720,Houston,0,109,4,5
+4360175,Houston,3736,0,354,0
+4360176,Houston,126,0,21,0
+4360178,Houston,0,0,0,1
+4360189,Houston,0,0,0,4
+4360193,Houston,0,0,38,3
+4360195,Houston,0,26,0,0
+4360199,Houston,0,357,0,0
+4362161,Houston,0,99,500,0
+4362184,Houston,0,322,6,0
+4366031,Houston,0,1169,5,0
+4567480,Houston,0,0,0,1
+4567482,Houston,0,5,0,1
+4567497,Houston,0,0,0,2
+4569394,Houston,0,0,0,1
+4569420,Houston,0,173,0,0
+4584584,Houston,0,0,0,1
+4606670,Houston,0,0,0,1
+4680018,Houston,0,100,847,0
+4686439,Houston,0,0,0,1
+4689678,Houston,0,0,0,4
+4689685,Houston,0,0,0,1
+4689686,Houston,0,0,0,1
+4573424,Houston Christian,0,49,0,0
+4577577,Houston Christian,0,10,0,2
+4688757,Houston Christian,0,40,0,0
+4886020,Houston Christian,0,0,0,2
+4048249,Idaho,0,0,0,1
+4291400,Idaho,38,0,3,0
+4367417,Idaho,0,22,0,0
+4698302,Idaho,18,0,44,0
+4047422,Idaho State,0,22,5,0
+4240346,Idaho State,0,21,0,0
+4428746,Idaho State,0,0,0,1
+4577841,Idaho State,87,0,3,0
+4695917,Idaho State,0,23,0,0
+4033812,Illinois,0,0,0,1
+4036262,Illinois,1208,16,127,0
+4052609,Illinois,0,0,0,2
+4240543,Illinois,0,6,118,0
+4240560,Illinois,0,0,0,2
+4240563,Illinois,0,0,0,4
+4242158,Illinois,0,0,24,0
+4249535,Illinois,0,368,0,0
+4360370,Illinois,0,10,137,0
+4360383,Illinois,0,0,0,2
+4360386,Illinois,0,0,0,2
+4360389,Illinois,0,0,0,1
+4360400,Illinois,0,207,11,0
+4361530,Illinois,739,0,112,0
+4361663,Illinois,0,0,0,2
+4362238,Illinois,0,147,1148,0
+4379402,Illinois,0,111,0,0
+4428372,Illinois,0,0,0,2
+4428796,Illinois,6,294,0,0
+4429436,Illinois,0,0,0,1
+4430349,Illinois,0,0,0,4
+4430560,Illinois,0,0,0,3
+4569371,Illinois,16,499,63,0
+4575431,Illinois,0,0,0,2
+4600981,Illinois,0,70,0,0
+4682640,Illinois,0,43,632,0
+4696686,Illinois,0,124,0,0
+4696690,Illinois,0,7,114,0
+4696700,Illinois,0,43,0,0
+3908606,Illinois State,22,0,20,0
+4248036,Illinois State,0,0,4,1
+4051468,Incarnate Word,0,66,0,0
+4250175,Incarnate Word,0,0,74,0
+4383163,Incarnate Word,0,113,0,0
+4578351,Incarnate Word,0,0,23,0
+4688364,Incarnate Word,0,33,0,0
+4688367,Incarnate Word,0,132,0,0
+4688380,Incarnate Word,373,0,19,0
+4240034,Indiana,0,149,28,0
+4240906,Indiana,0,20,0,0
+4242430,Indiana,0,0,0,4
+4258237,Indiana,0,0,0,1
+4258238,Indiana,0,467,34,0
+4258242,Indiana,0,0,25,1
+4258248,Indiana,7,474,8,0
+4258567,Indiana,0,0,0,2
+4259633,Indiana,0,186,764,0
+4360423,Indiana,977,0,28,0
+4360435,Indiana,0,47,0,0
+4361025,Indiana,363,7,35,0
+4368138,Indiana,0,8,105,0
+4371955,Indiana,0,0,0,1
+4371961,Indiana,0,0,0,3
+4371968,Indiana,0,287,0,0
+4371970,Indiana,0,69,0,0
+4429243,Indiana,0,0,67,0
+4431425,Indiana,0,70,0,0
+4575436,Indiana,0,52,386,0
+4575437,Indiana,136,0,26,0
+4576297,Indiana,0,38,0,0
+4596347,Indiana,454,0,209,0
+4683178,Indiana,0,0,32,0
+4693615,Indiana,0,0,28,0
+4039469,Indiana State,198,0,20,0
+4051889,Indiana State,0,12,8,0
+4248158,Indiana State,0,78,0,0
+4277618,Indiana State,0,0,0,1
+4368145,Indiana State,0,34,13,0
+4378687,Indiana State,0,66,0,0
+4695984,Indiana State,0,0,0,1
+4240574,Iowa,0,0,0,4
+4240581,Iowa,0,24,133,0
+4257188,Iowa,0,292,8,0
+4266219,Iowa,0,0,0,1
+4360480,Iowa,1597,0,55,0
+4360486,Iowa,0,331,0,0
+4360487,Iowa,0,0,0,2
+4360491,Iowa,0,0,0,3
+4360506,Iowa,0,6,66,0
+4360516,Iowa,0,90,26,0
+4360517,Iowa,0,0,0,1
+4382401,Iowa,0,0,0,4
+4426686,Iowa,0,0,0,1
+4428186,Iowa,597,0,16,0
+4429676,Iowa,0,241,1157,0
+4429747,Iowa,0,0,0,1
+4429888,Iowa,0,0,0,1
+4430027,Iowa,0,523,0,0
+4431035,Iowa,0,26,195,0
+4431049,Iowa,0,0,0,2
+4432338,Iowa,0,106,0,0
+4569465,Iowa,0,0,0,3
+4569474,Iowa,0,0,0,1
+4569479,Iowa,0,0,0,2
+4683158,Iowa,0,182,48,0
+4683237,Iowa,0,352,16,0
+4686906,Iowa,0,0,0,2
+4035289,Iowa State,0,0,0,1
+4035526,Iowa State,0,203,0,0
+4066109,Iowa State,0,0,0,5
+4241244,Iowa State,0,0,0,1
+4241250,Iowa State,0,0,0,1
+4241263,Iowa State,0,478,0,0
+4259197,Iowa State,117,151,0,0
+4361736,Iowa State,0,54,0,0
+4361741,Iowa State,2518,68,331,0
+4361748,Iowa State,0,0,0,1
+4361749,Iowa State,0,56,0,0
+4361762,Iowa State,0,52,0,0
+4361766,Iowa State,0,0,0,1
+4361767,Iowa State,0,0,0,7
+4426780,Iowa State,0,22,103,0
+4427366,Iowa State,0,252,1359,0
+4428966,Iowa State,0,0,0,2
+4565358,Iowa State,114,0,0,0
+4569031,Iowa State,0,90,0,0
+4586312,Iowa State,0,180,0,0
+4684525,Iowa State,0,41,2,0
+4686422,Iowa State,0,945,8,0
+4686424,Iowa State,0,23,0,0
+4039295,Jackson State,0,66,0,0
+4044536,Jackson State,0,16,10,0
+4050499,Jackson State,0,72,0,0
+4262867,Jackson State,0,70,0,0
+4426508,Jackson State,0,0,0,1
+4432762,Jackson State,260,0,27,0
+4887223,Jackson State,0,0,0,1
+4035460,Jacksonville State,76,0,17,0
+4368794,Jacksonville State,0,0,0,1
+4368809,Jacksonville State,0,0,0,1
+4578042,Jacksonville State,0,40,0,0
+4693212,Jacksonville State,0,-1,22,0
+4035912,Kansas,0,619,0,0
+4241302,Kansas,0,0,0,5
+4360900,Kansas,1195,1,458,0
+4373041,Kansas,0,0,0,1
+4427164,Kansas,0,108,0,0
+4427251,Kansas,0,2,80,0
+4427821,Kansas,0,24,87,0
+4427822,Kansas,0,0,0,1
+4429324,Kansas,0,0,0,1
+4430914,Kansas,0,275,0,0
+4432326,Kansas,0,74,0,0
+4433830,Kansas,0,274,0,0
+4570250,Kansas,0,306,42,0
+4570257,Kansas,0,0,0,1
+4573155,Kansas,0,0,0,1
+4596472,Kansas,775,0,130,0
+4682652,Kansas,0,54,643,0
+4686374,Kansas,0,77,3,0
+4686377,Kansas,0,14,132,0
+4686382,Kansas,0,101,0,0
+4887012,Kansas,0,50,0,0
+3682406,Kansas State,0,189,0,0
+4036419,Kansas State,1509,0,108,0
+4045701,Kansas State,0,0,0,2
+4240071,Kansas State,0,0,0,4
+4240819,Kansas State,0,105,0,0
+4241338,Kansas State,0,10,0,3
+4241345,Kansas State,0,0,0,1
+4241365,Kansas State,0,151,0,0
+4360488,Kansas State,0,0,0,1
+4373062,Kansas State,0,403,10,0
+4373077,Kansas State,0,359,116,0
+4426517,Kansas State,0,60,4,0
+4427148,Kansas State,0,12,295,0
+4427797,Kansas State,156,0,18,0
+4429955,Kansas State,328,0,187,0
+4430376,Kansas State,0,0,0,4
+4431453,Kansas State,0,429,1076,0
+4685217,Kansas State,0,0,0,1
+4685218,Kansas State,0,0,0,1
+4690923,Kansas State,0,11,10,0
+4880101,Kansas State,0,87,0,0
+4051806,Kennesaw State,0,0,21,0
+4246731,Kennesaw State,0,12,45,0
+4430474,Kennesaw State,62,0,5,0
+4573889,Kennesaw State,0,22,21,0
+4240408,Kent State,68,1100,208,0
+4243475,Kent State,0,93,0,0
+4244065,Kent State,0,0,0,2
+4244068,Kent State,3290,68,885,0
+4244069,Kent State,0,0,0,1
+4244071,Kent State,0,40,685,0
+4244072,Kent State,0,0,0,3
+4244089,Kent State,0,0,0,1
+4261171,Kent State,0,0,0,2
+4362353,Kent State,0,0,0,1
+4426619,Kent State,0,6,29,0
+4426764,Kent State,0,-5,167,0
+4426892,Kent State,0,1010,0,0
+4428439,Kent State,22,0,11,0
+4430323,Kent State,0,295,36,0
+4430468,Kent State,0,90,1063,0
+4566157,Kent State,0,29,0,0
+4569221,Kent State,0,0,0,1
+4569223,Kent State,0,0,0,1
+4569234,Kent State,0,580,0,0
+4605792,Kent State,0,0,0,3
+4696882,Kent State,0,43,0,0
+4697847,Kent State,0,0,0,1
+4035065,Kentucky,0,178,0,0
+4035066,Kentucky,0,0,0,1
+4259974,Kentucky,0,0,0,3
+4259976,Kentucky,0,601,13,0
+4259980,Kentucky,0,0,0,1
+4259984,Kentucky,0,163,0,0
+4260001,Kentucky,0,0,0,1
+4361418,Kentucky,2510,15,481,0
+4362603,Kentucky,0,50,0,0
+4362619,Kentucky,0,51,736,0
+4362620,Kentucky,0,3,412,0
+4362621,Kentucky,0,0,0,1
+4372415,Kentucky,0,0,0,2
+4428817,Kentucky,0,0,0,6
+4429655,Kentucky,0,0,0,1
+4429751,Kentucky,0,102,0,0
+4431051,Kentucky,0,165,0,0
+4431647,Kentucky,15,17,0,0
+4567981,Kentucky,0,0,0,1
+4569587,Kentucky,0,1143,111,0
+4692185,Kentucky,0,0,0,1
+4035453,LSU,0,0,0,1
+4242209,LSU,0,26,0,0
+4243321,LSU,0,0,0,1
+4362631,LSU,0,0,0,2
+4362636,LSU,0,0,0,2
+4362650,LSU,107,372,0,0
+4372118,LSU,26,0,0,0
+4426407,LSU,244,720,0,0
+4426475,LSU,0,64,1012,0
+4426481,LSU,0,85,0,0
+4427813,LSU,0,0,0,1
+4429011,LSU,0,0,0,1
+4429022,LSU,0,500,0,0
+4429111,LSU,0,0,0,2
+4429128,LSU,0,0,0,1
+4429607,LSU,0,0,0,1
+4431277,LSU,0,71,0,0
+4431286,LSU,0,5,65,0
+4431431,LSU,0,10,201,0
+4431567,LSU,0,0,0,1
+4432773,LSU,0,344,5,0
+4433921,LSU,0,58,0,0
+4567747,LSU,257,29,0,0
+4568007,LSU,0,0,0,1
+4568024,LSU,0,13,61,0
+4568026,LSU,0,51,0,0
+4595348,LSU,0,329,0,0
+4603186,LSU,29,440,0,0
+4685739,LSU,0,0,22,0
+4685740,LSU,2996,351,172,0
+4873170,LSU,0,186,0,0
+4873171,LSU,0,0,0,1
+4247787,Lafayette,0,0,22,0
+4430483,Lafayette,86,0,5,0
+4569628,Lafayette,148,0,-1,0
+4571817,Lafayette,0,147,0,0
+4571821,Lafayette,0,0,38,0
+4696233,Lamar,37,0,15,0
+4034306,Liberty,0,15,330,0
+4040874,Liberty,0,99,0,0
+4060042,Liberty,0,0,0,1
+4242512,Liberty,2191,60,986,0
+4246920,Liberty,44,231,0,0
+4258407,Liberty,0,0,0,2
+4365477,Liberty,0,60,0,0
+4365484,Liberty,0,164,0,0
+4365503,Liberty,27,350,0,0
+4370933,Liberty,0,0,0,2
+4426687,Liberty,50,39,2,0
+4426920,Liberty,0,0,0,1
+4427095,Liberty,0,571,2,0
+4428486,Liberty,0,42,0,0
+4430049,Liberty,0,158,333,0
+4608863,Liberty,0,0,0,3
+4608871,Liberty,0,0,0,1
+4684965,Liberty,0,0,0,1
+4689609,Liberty,0,51,0,0
+4874454,Liberty,0,0,21,0
+4874457,Liberty,0,0,0,1
+4577921,Long Island University,0,3,35,0
+4577934,Long Island University,0,56,0,0
+4577962,Long Island University,178,0,3,0
+4577963,Long Island University,0,67,0,0
+3924316,Louisiana,0,0,0,1
+4035011,Louisiana,0,0,0,3
+4047555,Louisiana,0,136,0,0
+4241556,Louisiana,2516,47,430,0
+4249207,Louisiana,0,0,0,8
+4249214,Louisiana,0,0,0,1
+4362489,Louisiana,2,86,0,0
+4363096,Louisiana,0,0,0,3
+4363097,Louisiana,0,0,0,2
+4363098,Louisiana,0,114,0,0
+4363101,Louisiana,0,0,0,2
+4363104,Louisiana,39,73,838,0
+4363111,Louisiana,0,0,0,5
+4363117,Louisiana,0,51,0,0
+4363129,Louisiana,0,86,0,0
+4366535,Louisiana,27,277,0,0
+4372022,Louisiana,0,0,0,2
+4373655,Louisiana,0,0,0,1
+4427546,Louisiana,0,0,0,1
+4428808,Louisiana,0,25,0,0
+4428860,Louisiana,0,0,0,1
+4429595,Louisiana,26,0,0,0
+4429927,Louisiana,0,277,0,0
+4431219,Louisiana,2,230,0,0
+4565297,Louisiana,0,220,0,0
+4565652,Louisiana,0,177,0,0
+4565761,Louisiana,0,127,558,0
+4570294,Louisiana,0,0,0,1
+4574689,Louisiana,0,0,0,1
+4684625,Louisiana,0,68,750,1
+4035108,Louisiana Tech,0,0,0,1
+4036436,Louisiana Tech,24,382,1572,0
+4037642,Louisiana Tech,2059,24,248,0
+4038532,Louisiana Tech,0,206,0,0
+4079098,Louisiana Tech,0,0,0,2
+4239686,Louisiana Tech,0,0,0,1
+4239689,Louisiana Tech,0,0,0,1
+4239691,Louisiana Tech,0,168,0,0
+4378754,Louisiana Tech,0,181,0,0
+4384187,Louisiana Tech,546,0,17,0
+4384192,Louisiana Tech,0,644,3,0
+4384204,Louisiana Tech,0,50,0,0
+4384211,Louisiana Tech,33,24,0,0
+4426924,Louisiana Tech,0,0,0,2
+4428390,Louisiana Tech,0,0,0,1
+4429733,Louisiana Tech,0,0,0,2
+4431066,Louisiana Tech,0,7,28,0
+4432223,Louisiana Tech,0,0,0,1
+4432380,Louisiana Tech,0,0,27,0
+4433934,Louisiana Tech,0,0,0,2
+4565696,Louisiana Tech,0,0,0,1
+4569181,Louisiana Tech,0,51,0,0
+4575413,Louisiana Tech,0,48,0,0
+4686612,Louisiana Tech,0,416,0,0
+4690937,Louisiana Tech,0,0,0,1
+4690939,Louisiana Tech,0,37,176,0
+4875784,Louisiana Tech,0,0,0,1
+4036018,Louisville,0,0,0,1
+4036650,Louisville,0,24,-18,0
+4240069,Louisville,2357,89,987,0
+4240072,Louisville,0,0,0,1
+4240075,Louisville,0,288,0,0
+4240080,Louisville,0,0,0,1
+4240091,Louisville,0,93,0,0
+4240093,Louisville,0,0,0,2
+4250876,Louisville,0,0,0,1
+4259360,Louisville,0,0,58,0
+4360805,Louisville,0,19,260,0
+4360807,Louisville,0,0,0,5
+4360818,Louisville,59,374,0,0
+4373177,Louisville,0,503,0,0
+4426923,Louisville,0,0,0,2
+4428030,Louisville,0,111,632,0
+4429449,Louisville,0,0,20,0
+4430162,Louisville,0,59,0,0
+4431338,Louisville,0,269,15,0
+4431466,Louisville,21,435,0,0
+4568287,Louisville,0,0,0,1
+4601283,Louisville,0,134,330,0
+4684432,Louisville,0,0,0,2
+4685113,Louisville,0,0,0,1
+4686334,Louisville,0,0,0,1
+4686335,Louisville,0,0,0,1
+4686337,Louisville,0,0,0,1
+4686343,Louisville,54,66,3,0
+4071091,Maine,0,73,0,0
+4250030,Maine,0,150,0,0
+4259306,Maine,0,0,113,0
+4363922,Maine,0,35,-9,0
+4366910,Maine,0,25,0,0
+4427876,Maine,0,0,0,1
+4429582,Maine,209,0,8,0
+4573291,Maine,0,0,0,2
+4696065,Maine,149,0,0,0
+4696071,Maine,0,8,169,0
+4696076,Maine,0,0,0,2
+4696091,Maine,0,62,0,0
+4043606,Marshall,0,287,0,0
+4043607,Marshall,0,332,0,0
+4261917,Marshall,0,66,0,0
+4261933,Marshall,0,28,0,0
+4261936,Marshall,0,0,0,1
+4370345,Marshall,0,113,196,0
+4370348,Marshall,0,536,0,0
+4370353,Marshall,0,250,0,0
+4370359,Marshall,0,0,0,1
+4374334,Marshall,0,0,21,0
+4374337,Marshall,0,0,0,1
+4374338,Marshall,0,0,0,1
+4427563,Marshall,0,0,0,2
+4430126,Marshall,0,0,83,0
+4430686,Marshall,2300,0,128,0
+4567545,Marshall,0,204,0,0
+4571621,Marshall,0,0,0,1
+4690009,Marshall,0,0,0,2
+4690013,Marshall,0,187,748,0
+4690026,Marshall,0,187,0,0
+4241931,Maryland,0,219,0,0
+4241934,Maryland,10,258,603,0
+4360635,Maryland,64,348,0,0
+4360636,Maryland,0,0,0,1
+4360637,Maryland,0,174,0,0
+4360638,Maryland,0,0,0,2
+4372039,Maryland,0,379,0,0
+4372041,Maryland,152,404,-8,0
+4372045,Maryland,0,201,3,0
+4426403,Maryland,0,0,0,3
+4429006,Maryland,0,649,1,0
+4429287,Maryland,0,0,93,0
+4429291,Maryland,0,0,0,1
+4429608,Maryland,11,100,0,0
+4429849,Maryland,0,0,0,1
+4431586,Maryland,0,0,0,1
+4432297,Maryland,0,47,106,0
+4432571,Maryland,0,0,0,3
+4565185,Maryland,0,42,0,0
+4567097,Maryland,3327,237,262,0
+4569497,Maryland,0,0,0,3
+4588200,Maryland,0,6,222,0
+4686255,Maryland,0,191,0,0
+4686911,Maryland,0,0,0,2
+4692805,Maryland,0,0,0,2
+4692806,Maryland,0,71,148,0
+4692810,Maryland,0,0,0,3
+4692812,Maryland,0,0,0,2
+4044521,Massachusetts,0,32,0,0
+4052788,Massachusetts,0,362,38,0
+4243162,Massachusetts,398,0,20,0
+4256236,Massachusetts,0,168,16,0
+4263713,Massachusetts,0,0,0,2
+4360522,Massachusetts,0,988,0,0
+4361713,Massachusetts,0,22,0,0
+4361714,Massachusetts,0,88,50,0
+4361725,Massachusetts,0,0,0,1
+4373925,Massachusetts,0,0,0,1
+4426530,Massachusetts,0,29,77,0
+4426614,Massachusetts,0,0,0,1
+4427118,Massachusetts,462,0,135,0
+4427647,Massachusetts,0,69,22,0
+4433854,Massachusetts,0,0,0,1
+4566314,Massachusetts,0,0,0,1
+4571420,Massachusetts,25,14,0,0
+4577762,Massachusetts,0,22,0,0
+4608003,Massachusetts,0,130,7,0
+4683471,Massachusetts,1454,25,85,0
+4683666,Massachusetts,7,5,83,0
+4685016,Massachusetts,0,158,1128,1
+4695641,Massachusetts,0,7,43,0
+4872936,Massachusetts,0,205,0,0
+4880337,Massachusetts,0,3,33,0
+4051451,McNeese,37,0,1,0
+4243911,McNeese,0,8,124,0
+4883671,McNeese,0,23,0,0
+4039357,Memphis,0,514,0,0
+4039364,Memphis,0,0,0,1
+4039372,Memphis,0,0,0,1
+4039382,Memphis,0,0,0,3
+4240073,Memphis,0,0,0,4
+4243366,Memphis,0,0,0,1
+4243369,Memphis,0,83,132,0
+4243372,Memphis,0,0,0,2
+4243373,Memphis,0,0,0,2
+4243389,Memphis,46,844,69,0
+4250967,Memphis,0,13,48,0
+4361333,Memphis,0,155,83,0
+4361527,Memphis,0,328,0,0
+4371731,Memphis,0,0,0,3
+4371740,Memphis,0,0,0,2
+4427244,Memphis,215,0,99,0
+4430372,Memphis,0,46,0,0
+4431597,Memphis,0,117,0,0
+4565301,Memphis,0,84,0,0
+4567505,Memphis,8,170,32,0
+4567507,Memphis,40,57,251,0
+4567525,Memphis,0,402,0,0
+4567528,Memphis,0,0,0,3
+4594198,Memphis,0,31,0,0
+4606194,Memphis,3238,54,263,0
+4687493,Memphis,0,52,629,0
+4687509,Memphis,0,46,0,0
+4687511,Memphis,0,0,0,2
+4687513,Memphis,0,0,0,1
+4572850,Mercer,0,0,0,1
+4037464,Miami,0,0,0,2
+4039300,Miami,715,0,125,0
+4240625,Miami,0,508,1,0
+4240627,Miami,0,0,0,2
+4241397,Miami,0,1115,0,0
+4242438,Miami,0,0,0,2
+4362503,Miami,0,26,0,0
+4362509,Miami,0,36,411,0
+4362523,Miami,0,292,0,0
+4373583,Miami,0,0,0,1
+4426471,Miami,0,0,0,2
+4427401,Miami,0,0,0,4
+4427408,Miami,0,0,0,1
+4429043,Miami,0,280,505,0
+4431197,Miami,0,73,0,0
+4431353,Miami,0,270,0,0
+4432703,Miami,49,0,45,0
+4567784,Miami,0,139,0,0
+4596363,Miami,0,0,0,1
+4596602,Miami,0,186,16,0
+4678006,Miami,0,66,0,0
+4685184,Miami,0,0,32,0
+4685185,Miami,0,0,0,3
+4685186,Miami,2617,15,181,0
+4873637,Miami,0,0,97,0
+4036126,Miami (OH),0,0,0,3
+4038966,Miami (OH),120,1126,0,0
+4038983,Miami (OH),0,119,0,0
+4038997,Miami (OH),0,0,0,1
+4244300,Miami (OH),0,0,0,4
+4244304,Miami (OH),0,0,44,0
+4244306,Miami (OH),78,294,4,0
+4244310,Miami (OH),0,0,0,2
+4259597,Miami (OH),47,739,0,0
+4363148,Miami (OH),894,0,83,0
+4363153,Miami (OH),0,6,251,0
+4363162,Miami (OH),0,0,0,6
+4426952,Miami (OH),0,213,0,0
+4427154,Miami (OH),0,0,0,1
+4427243,Miami (OH),2154,218,208,0
+4428416,Miami (OH),0,0,0,1
+4430280,Miami (OH),0,0,0,4
+4430314,Miami (OH),0,0,0,5
+4430729,Miami (OH),0,21,0,0
+4430898,Miami (OH),0,1,108,0
+4431432,Miami (OH),0,146,176,0
+4432434,Miami (OH),0,49,426,0
+4576183,Miami (OH),0,177,268,0
+4683052,Miami (OH),0,0,0,1
+4686999,Miami (OH),0,34,0,0
+4258179,Michigan,0,0,0,1
+4262900,Michigan,0,170,0,0
+4372063,Michigan,0,76,0,0
+4372071,Michigan,0,116,1242,0
+4372096,Michigan,0,165,0,0
+4372099,Michigan,0,0,0,1
+4426422,Michigan,0,0,0,4
+4426479,Michigan,87,504,6,0
+4426507,Michigan,0,0,0,2
+4427455,Michigan,2220,199,87,0
+4427834,Michigan,0,328,0,0
+4428414,Michigan,19,250,7,0
+4429053,Michigan,0,67,162,0
+4429096,Michigan,0,138,826,0
+4431492,Michigan,75,291,6,0
+4431536,Michigan,0,251,52,0
+4433970,Michigan,174,17,106,0
+4572036,Michigan,0,0,0,2
+4240471,Michigan State,0,0,0,1
+4241958,Michigan State,0,0,0,3
+4241961,Michigan State,2,273,0,0
+4241971,Michigan State,0,0,0,4
+4277721,Michigan State,0,136,0,0
+4360849,Michigan State,0,0,0,3
+4362249,Michigan State,52,855,34,0
+4371980,Michigan State,0,24,25,0
+4382466,Michigan State,0,591,-3,0
+4382470,Michigan State,0,31,58,0
+4382475,Michigan State,0,0,0,1
+4426345,Michigan State,0,0,0,2
+4427372,Michigan State,0,0,0,1
+4428063,Michigan State,9,417,-1,0
+4429949,Michigan State,0,100,0,0
+4430590,Michigan State,2647,115,301,0
+4430627,Michigan State,0,0,0,5
+4431117,Michigan State,0,0,0,1
+4433837,Michigan State,0,0,0,1
+4567048,Michigan State,0,99,1596,0
+4567405,Michigan State,0,0,0,1
+4600597,Michigan State,52,112,0,0
+4035607,Middle Tennessee,0,16,108,0
+4037377,Middle Tennessee,0,181,0,0
+4046981,Middle Tennessee,0,15,171,0
+4240025,Middle Tennessee,460,0,5,0
+4243955,Middle Tennessee,0,20,78,0
+4243956,Middle Tennessee,0,0,0,4
+4243965,Middle Tennessee,0,0,0,1
+4243966,Middle Tennessee,0,16,227,0
+4243975,Middle Tennessee,0,406,0,0
+4243978,Middle Tennessee,0,0,0,5
+4245579,Middle Tennessee,0,0,0,1
+4262016,Middle Tennessee,0,277,0,0
+4291782,Middle Tennessee,1072,18,215,0
+4360822,Middle Tennessee,0,0,0,3
+4360826,Middle Tennessee,0,0,0,3
+4360829,Middle Tennessee,0,0,0,1
+4360839,Middle Tennessee,0,0,0,1
+4365981,Middle Tennessee,0,208,0,0
+4374358,Middle Tennessee,0,0,0,2
+4428350,Middle Tennessee,0,0,0,2
+4431407,Middle Tennessee,0,0,0,1
+4431651,Middle Tennessee,0,30,0,0
+4570492,Middle Tennessee,0,0,0,2
+4570496,Middle Tennessee,0,0,0,2
+4570497,Middle Tennessee,13,303,0,0
+4575508,Middle Tennessee,0,268,49,0
+4602667,Middle Tennessee,0,353,7,0
+4682518,Middle Tennessee,538,0,42,0
+4686513,Middle Tennessee,0,27,137,0
+4875806,Middle Tennessee,0,0,0,1
+4034779,Minnesota,0,90,0,0
+4240735,Minnesota,14,466,0,0
+4240750,Minnesota,0,0,163,0
+4240756,Minnesota,1833,33,151,0
+4360935,Minnesota,0,0,0,1
+4360943,Minnesota,0,19,185,0
+4360947,Minnesota,0,0,0,2
+4360967,Minnesota,0,296,0,0
+4426383,Minnesota,13,280,0,0
+4426815,Minnesota,0,387,0,0
+4427740,Minnesota,62,0,165,0
+4428263,Minnesota,0,14,555,0
+4429330,Minnesota,0,0,0,1
+4430875,Minnesota,6,208,0,0
+4431445,Minnesota,0,44,625,0
+4596448,Minnesota,0,73,539,0
+4242248,Mississippi State,0,467,0,0
+4245147,Mississippi State,0,188,0,0
+4259819,Mississippi State,0,0,0,1
+4362074,Mississippi State,0,0,0,1
+4362410,Mississippi State,0,0,0,3
+4362893,Mississippi State,0,0,0,1
+4362895,Mississippi State,0,0,0,3
+4362902,Mississippi State,0,0,0,2
+4362910,Mississippi State,0,0,0,1
+4362911,Mississippi State,0,0,0,1
+4426371,Mississippi State,0,0,0,1
+4429059,Mississippi State,0,451,283,0
+4429153,Mississippi State,0,229,0,0
+4429568,Mississippi State,0,0,0,1
+4429767,Mississippi State,0,0,0,2
+4430325,Mississippi State,71,810,0,0
+4566196,Mississippi State,4077,94,102,0
+4568067,Mississippi State,0,0,0,1
+4578654,Mississippi State,18,532,0,0
+4689333,Mississippi State,0,0,0,3
+4689334,Mississippi State,9,404,0,0
+4689338,Mississippi State,0,325,351,0
+4689340,Mississippi State,0,65,14,0
+4697844,Mississippi State,0,129,0,0
+4035106,Missouri,0,9,76,0
+4241784,Missouri,0,0,0,2
+4244607,Missouri,0,0,0,1
+4259800,Missouri,0,154,0,0
+4360163,Missouri,0,0,0,1
+4362546,Missouri,0,0,0,4
+4362748,Missouri,0,320,1551,0
+4362754,Missouri,0,0,0,1
+4362758,Missouri,0,0,0,1
+4362763,Missouri,0,82,0,0
+4362770,Missouri,0,29,0,0
+4381248,Missouri,0,414,0,0
+4390104,Missouri,0,373,15,0
+4426444,Missouri,2330,41,70,0
+4427879,Missouri,0,0,0,2
+4427963,Missouri,0,0,0,1
+4429103,Missouri,0,41,0,0
+4429193,Missouri,0,0,0,1
+4429435,Missouri,10,0,12,0
+4429787,Missouri,41,96,0,0
+4430828,Missouri,0,192,13,0
+4431639,Missouri,0,0,62,0
+4433945,Missouri,0,27,54,0
+4569482,Missouri,0,0,0,1
+4586333,Missouri,0,0,0,1
+4596439,Missouri,0,170,32,0
+4596608,Missouri,0,169,2,0
+4601021,Missouri,0,0,0,1
+4682565,Missouri,9,0,51,0
+4692541,Missouri,0,0,84,0
+4692549,Missouri,0,195,0,0
+4036016,Missouri State,0,16,21,0
+4248322,Missouri State,0,0,0,1
+4368174,Missouri State,0,33,0,0
+4692640,Missouri State,0,1,47,0
+4887787,Missouri State,8,32,0,0
+4887788,Missouri State,225,8,80,0
+4887806,Missouri State,0,76,0,0
+4030372,Monmouth,0,30,0,0
+4240025,Monmouth,0,0,0,2
+4249576,Monmouth,0,47,0,0
+4251359,Monmouth,0,71,0,0
+4366276,Monmouth,0,0,99,0
+4775264,Monmouth,182,0,6,0
+4247807,Montana State,0,0,0,1
+4580540,Montana State,0,0,0,1
+4049852,Morgan State,19,0,2,0
+4361740,Morgan State,0,0,0,1
+4574998,Morgan State,0,0,0,1
+4249970,Murray State,136,0,22,0
+4250005,Murray State,0,13,16,0
+4368847,Murray State,0,0,0,1
+4368859,Murray State,0,20,0,0
+4368863,Murray State,0,24,4,0
+4574674,Murray State,0,0,0,1
+4697099,Murray State,0,5,39,0
+4697117,Murray State,0,58,0,0
+4036168,NC State,0,129,0,0
+4045172,NC State,0,0,0,4
+4240042,NC State,0,0,0,1
+4240105,NC State,0,0,0,1
+4240110,NC State,0,0,0,1
+4240120,NC State,88,574,0,0
+4240121,NC State,26,516,18,0
+4241884,NC State,0,0,0,2
+4259636,NC State,0,0,0,4
+4361653,NC State,3183,145,89,0
+4361655,NC State,0,227,597,0
+4361660,NC State,9,222,48,0
+4361664,NC State,0,0,0,1
+4361679,NC State,22,455,0,0
+4427728,NC State,0,153,721,0
+4427789,NC State,0,66,10,0
+4428448,NC State,0,0,0,2
+4428659,NC State,0,0,0,6
+4430598,NC State,0,165,0,0
+4430846,NC State,0,232,0,0
+4430945,NC State,0,0,0,1
+4432609,NC State,0,0,0,2
+4568315,NC State,0,0,0,2
+4685110,NC State,0,97,0,0
+4371846,Navy,0,4,27,0
+4371852,Navy,0,15,549,0
+4371859,Navy,0,0,0,4
+4371861,Navy,0,0,0,3
+4371863,Navy,16,169,273,0
+4371866,Navy,0,0,4,1
+4371869,Navy,0,0,339,0
+4371870,Navy,0,15,627,0
+4371882,Navy,0,0,0,1
+4371888,Navy,0,0,0,1
+4371891,Navy,0,219,0,0
+4568526,Navy,47,0,7,0
+4568532,Navy,0,0,0,1
+4568540,Navy,0,0,0,1
+4568551,Navy,0,68,0,0
+4686161,Navy,0,0,0,5
+4686164,Navy,438,0,441,0
+4686167,Navy,142,0,186,0
+4686170,Navy,0,44,130,0
+4686178,Navy,0,1,36,0
+4686191,Navy,0,0,0,2
+4686201,Navy,0,0,0,2
+4880675,Navy,0,0,0,2
+4880682,Navy,0,0,0,1
+4880684,Navy,0,24,19,0
+4880700,Navy,0,0,0,1
+4027873,Nebraska,0,728,38,0
+4034841,Nebraska,0,0,0,1
+4050937,Nebraska,13,187,6,0
+4240787,Nebraska,46,487,0,0
+4241798,Nebraska,0,306,2,0
+4258189,Nebraska,0,183,0,0
+4259324,Nebraska,0,116,0,0
+4361160,Nebraska,0,57,48,0
+4361182,Nebraska,2686,112,636,0
+4361195,Nebraska,0,0,6,1
+4361196,Nebraska,0,0,0,2
+4361201,Nebraska,0,0,0,2
+4374306,Nebraska,0,30,54,0
+4427163,Nebraska,0,0,0,1
+4427463,Nebraska,0,36,0,0
+4427609,Nebraska,53,142,467,0
+4430250,Nebraska,0,0,0,2
+4430826,Nebraska,0,256,109,0
+4431374,Nebraska,0,9,36,0
+4431397,Nebraska,205,0,100,0
+4433951,Nebraska,0,5,251,0
+4576218,Nebraska,0,14,60,0
+4595354,Nebraska,0,6,111,0
+4686263,Nebraska,0,0,0,2
+4036798,Nevada,0,0,0,2
+4056796,Nevada,0,0,0,3
+4241588,Nevada,0,68,0,0
+4241597,Nevada,0,0,0,1
+4241605,Nevada,0,0,0,4
+4241607,Nevada,0,0,0,1
+4241609,Nevada,0,0,0,1
+4241617,Nevada,0,0,0,1
+4361430,Nevada,0,63,247,0
+4361432,Nevada,0,1037,4,0
+4361435,Nevada,4046,39,35,0
+4361438,Nevada,0,635,0,0
+4361441,Nevada,0,0,0,1
+4361444,Nevada,0,276,603,0
+4361448,Nevada,0,0,0,1
+4427819,Nevada,0,427,0,0
+4428594,Nevada,0,566,6,0
+4432431,Nevada,0,34,34,0
+4569082,Nevada,0,0,0,4
+4597703,Nevada,44,583,0,0
+4613087,Nevada,0,32,6,0
+4685169,Nevada,0,0,0,1
+4248425,New Hampshire,0,-2,84,0
+4038940,New Mexico,1298,360,192,0
+4243534,New Mexico,0,24,0,0
+4259172,New Mexico,0,0,0,4
+4261168,New Mexico,21,0,-22,0
+4261173,New Mexico,0,35,327,0
+4374062,New Mexico,0,49,36,0
+4374076,New Mexico,68,180,1,0
+4429082,New Mexico,0,22,0,0
+4429523,New Mexico,0,0,52,0
+4432505,New Mexico,0,81,0,0
+4570084,New Mexico,0,0,0,2
+4570088,New Mexico,28,0,12,0
+4570090,New Mexico,0,16,30,0
+4570091,New Mexico,0,0,0,1
+4570100,New Mexico,0,145,0,0
+4570103,New Mexico,0,0,0,5
+4570104,New Mexico,0,0,0,1
+4577781,New Mexico,0,0,0,1
+4589218,New Mexico,0,0,516,0
+4612991,New Mexico,0,0,0,2
+4612994,New Mexico,0,0,0,2
+4613125,New Mexico,0,33,30,0
+4613214,New Mexico,60,36,8,0
+4682761,New Mexico,0,268,85,0
+4683296,New Mexico,0,268,0,0
+4683346,New Mexico,0,0,0,2
+4695616,New Mexico,144,0,102,0
+4695624,New Mexico,0,0,0,1
+4695625,New Mexico,0,0,0,1
+4708878,New Mexico,0,230,0,0
+4710001,New Mexico,49,0,57,0
+4875880,New Mexico,0,53,0,0
+4885978,New Mexico,172,5,50,0
+4035761,New Mexico State,0,495,0,0
+4241638,New Mexico State,0,0,0,3
+4258200,New Mexico State,0,64,209,0
+4361469,New Mexico State,0,298,4,0
+4362753,New Mexico State,0,46,0,0
+4363051,New Mexico State,0,0,0,1
+4373846,New Mexico State,0,24,50,0
+4569953,New Mexico State,0,118,0,0
+4569954,New Mexico State,0,194,0,0
+4569958,New Mexico State,0,0,0,2
+4687554,New Mexico State,0,30,0,0
+4687555,New Mexico State,44,1238,12,0
+4687556,New Mexico State,0,155,2,0
+4687558,New Mexico State,2378,0,409,0
+4687559,New Mexico State,0,0,0,3
+4687561,New Mexico State,0,182,0,0
+4872953,New Mexico State,0,237,0,0
+4890420,New Mexico State,894,0,74,0
+4035430,Nicholls,496,0,164,0
+4250863,Nicholls,0,145,2,0
+4250864,Nicholls,0,305,0,0
+4250866,Nicholls,0,26,0,0
+4371243,Nicholls,0,2,69,0
+4573560,Nicholls,0,52,0,0
+4573563,Nicholls,0,3,23,0
+4698757,Nicholls,0,28,0,0
+4698762,Nicholls,84,0,3,0
+4052217,Norfolk State,0,110,3,0
+4247919,Norfolk State,193,0,67,0
+4368676,Norfolk State,0,6,15,0
+4575333,Norfolk State,0,10,13,0
+4575348,Norfolk State,0,48,0,0
+4575352,Norfolk State,0,0,24,0
+4037520,North Carolina,0,0,0,7
+4037532,North Carolina,0,121,0,0
+4240668,North Carolina,0,0,0,3
+4242431,North Carolina,0,208,1056,0
+4373266,North Carolina,99,440,0,0
+4373268,North Carolina,0,0,0,1
+4373270,North Carolina,0,0,0,2
+4373273,North Carolina,0,0,223,0
+4426466,North Carolina,0,0,0,3
+4426704,North Carolina,0,0,0,1
+4426875,North Carolina,2564,170,1051,0
+4427331,North Carolina,0,75,0,0
+4428050,North Carolina,21,199,0,0
+4428167,North Carolina,17,116,0,0
+4428490,North Carolina,0,243,0,0
+4429026,North Carolina,0,0,0,2
+4429463,North Carolina,125,0,66,0
+4429834,North Carolina,0,0,0,1
+4431452,North Carolina,150,0,42,0
+4431584,North Carolina,0,0,0,1
+4433904,North Carolina,0,0,0,2
+4568668,North Carolina,0,0,0,1
+4568682,North Carolina,0,0,0,1
+4595341,North Carolina,0,0,90,0
+4596596,North Carolina,0,134,0,0
+4602969,North Carolina,0,78,0,0
+4688812,North Carolina,0,0,0,1
+4688813,North Carolina,33,1154,0,0
+4688818,North Carolina,0,61,256,0
+4248641,North Carolina A&T,0,0,0,1
+4369304,North Carolina Central,0,40,0,0
+4376249,North Carolina Central,0,26,0,0
+4384621,North Carolina Central,0,0,0,1
+4576064,North Carolina Central,80,0,11,0
+4247998,North Dakota,13,33,0,0
+4370863,North Dakota,0,0,47,0
+4370883,North Dakota,0,81,0,0
+4579073,North Dakota,345,0,0,0
+4579074,North Dakota,0,74,4,0
+4579078,North Dakota,0,65,0,0
+4696463,North Dakota,0,23,0,0
+4696464,North Dakota,0,51,0,0
+4039082,North Texas,6,285,0,0
+4243833,North Texas,0,0,0,1
+4243835,North Texas,0,0,0,2
+4249745,North Texas,0,0,0,1
+4360163,North Texas,1213,14,311,0
+4360907,North Texas,0,0,0,5
+4360930,North Texas,0,107,0,0
+4360932,North Texas,0,89,986,0
+4361575,North Texas,489,0,67,0
+4362484,North Texas,0,92,10,0
+4374391,North Texas,0,504,18,0
+4379395,North Texas,0,43,0,0
+4427846,North Texas,0,44,0,0
+4428080,North Texas,0,0,0,3
+4428498,North Texas,0,48,0,0
+4428784,North Texas,8,185,0,0
+4430666,North Texas,0,23,332,0
+4430984,North Texas,0,155,0,0
+4432531,North Texas,0,50,0,0
+4432600,North Texas,0,1,31,0
+4565200,North Texas,0,0,0,2
+4567190,North Texas,0,0,0,1
+4686606,North Texas,0,66,292,0
+4875861,North Texas,0,3,289,0
+4697590,Northern Arizona,0,10,94,0
+4731633,Northern Arizona,0,48,4,0
+4876244,Northern Arizona,75,0,43,0
+4046540,Northern Colorado,0,58,13,0
+4248374,Northern Colorado,0,30,0,0
+4258191,Northern Colorado,186,0,10,0
+4365734,Northern Colorado,0,0,0,1
+4373489,Northern Colorado,0,65,0,0
+4570961,Northern Colorado,0,0,0,1
+4031140,Northern Illinois,3,113,450,0
+4039476,Northern Illinois,0,0,0,1
+4241965,Northern Illinois,2383,20,458,0
+4250160,Northern Illinois,0,68,0,0
+4258566,Northern Illinois,0,0,0,1
+4258575,Northern Illinois,0,24,0,0
+4258576,Northern Illinois,0,0,0,3
+4258577,Northern Illinois,0,479,0,0
+4428345,Northern Illinois,0,538,6,0
+4428643,Northern Illinois,0,92,0,0
+4428699,Northern Illinois,0,158,0,0
+4428961,Northern Illinois,0,0,0,1
+4429066,Northern Illinois,0,0,0,2
+4429576,Northern Illinois,0,0,0,2
+4430602,Northern Illinois,0,34,0,0
+4433906,Northern Illinois,20,855,106,0
+4572662,Northern Illinois,0,0,0,1
+4576294,Northern Illinois,0,22,609,0
+4618083,Northern Illinois,17,0,16,0
+4686804,Northern Illinois,0,0,0,2
+4686818,Northern Illinois,0,0,0,2
+4686830,Northern Illinois,0,0,0,3
+4687413,Northern Illinois,0,0,392,0
+4875755,Northern Illinois,0,4,83,0
+4241295,Northern Iowa,0,99,-6,0
+4241303,Northern Iowa,0,8,86,0
+4384603,Northern Iowa,234,0,12,0
+4384604,Northern Iowa,0,65,0,0
+4384608,Northern Iowa,0,39,0,0
+4039238,Northwestern,0,0,0,2
+4239998,Northwestern,483,0,46,0
+4242268,Northwestern,810,31,163,0
+4242285,Northwestern,0,30,0,0
+4243496,Northwestern,0,0,0,2
+4244038,Northwestern,0,26,314,0
+4360329,Northwestern,0,1098,126,0
+4361262,Northwestern,0,61,12,0
+4361278,Northwestern,0,15,-7,0
+4361279,Northwestern,0,67,0,0
+4426657,Northwestern,1172,0,39,0
+4427635,Northwestern,0,0,0,5
+4429994,Northwestern,0,207,4,0
+4566195,Northwestern,0,64,0,0
+4569603,Northwestern,0,507,12,0
+4569609,Northwestern,31,216,928,0
+4602966,Northwestern,0,82,0,0
+4709392,Northwestern,0,4,135,0
+4887029,Northwestern,0,54,0,0
+4032869,Northwestern State,0,65,0,0
+4039394,Northwestern State,0,0,86,0
+4251149,Northwestern State,116,0,21,0
+4713307,Northwestern State,0,36,92,0
+4241990,Notre Dame,0,0,0,2
+4242331,Notre Dame,2415,153,85,0
+4258586,Notre Dame,0,386,21,0
+4258594,Notre Dame,0,0,0,1
+4258601,Notre Dame,0,0,0,1
+4258603,Notre Dame,0,0,0,2
+4361321,Notre Dame,0,0,0,1
+4372755,Notre Dame,0,0,0,1
+4372758,Notre Dame,137,639,8,0
+4372761,Notre Dame,0,0,0,1
+4372762,Notre Dame,0,0,0,2
+4372770,Notre Dame,4,286,69,0
+4372782,Notre Dame,0,61,0,0
+4426457,Notre Dame,0,0,0,3
+4427404,Notre Dame,0,0,0,2
+4427716,Notre Dame,0,0,0,3
+4428872,Notre Dame,0,0,0,1
+4429086,Notre Dame,28,676,0,0
+4429088,Notre Dame,208,16,15,0
+4429101,Notre Dame,0,0,0,2
+4430737,Notre Dame,0,359,975,0
+4430804,Notre Dame,55,88,181,0
+4431213,Notre Dame,0,67,0,0
+4431226,Notre Dame,0,0,0,2
+4431513,Notre Dame,188,55,203,0
+4432246,Notre Dame,0,0,0,1
+4432768,Notre Dame,0,197,37,0
+4575517,Notre Dame,0,0,0,5
+4603192,Notre Dame,0,35,170,0
+4039089,Ohio,0,329,0,0
+4039101,Ohio,0,25,0,0
+4039103,Ohio,0,0,0,3
+4039115,Ohio,0,209,0,0
+4043996,Ohio,0,71,0,0
+4056052,Ohio,319,3,464,0
+4242648,Ohio,0,36,0,0
+4260319,Ohio,20,0,6,0
+4260944,Ohio,0,0,0,1
+4260945,Ohio,0,0,82,0
+4362301,Ohio,58,302,58,0
+4362308,Ohio,0,109,0,0
+4362312,Ohio,0,24,0,0
+4362313,Ohio,25,126,264,0
+4362332,Ohio,0,33,0,0
+4379779,Ohio,0,0,0,1
+4430431,Ohio,1535,155,382,0
+4431499,Ohio,0,46,92,0
+4565547,Ohio,0,0,0,1
+4570276,Ohio,48,110,625,0
+4613076,Ohio,0,0,0,1
+4685230,Ohio,0,112,0,0
+4361340,Ohio State,0,0,0,1
+4361345,Ohio State,0,0,0,1
+4361354,Ohio State,0,7,148,0
+4361357,Ohio State,0,0,0,2
+4361370,Ohio State,171,691,0,0
+4361372,Ohio State,33,203,0,0
+4426412,Ohio State,0,0,0,1
+4426482,Ohio State,0,0,0,1
+4426496,Ohio State,0,24,0,0
+4428471,Ohio State,0,0,0,1
+4429071,Ohio State,0,0,0,1
+4429115,Ohio State,0,28,0,0
+4429481,Ohio State,0,21,19,0
+4430800,Ohio State,0,43,0,0
+4430878,Ohio State,0,1147,0,0
+4431242,Ohio State,0,0,0,1
+4431590,Ohio State,0,0,0,1
+4432577,Ohio State,3190,377,73,0
+4432637,Ohio State,0,60,357,0
+4432668,Ohio State,0,0,0,1
+4432708,Ohio State,0,25,0,0
+4432710,Ohio State,84,201,1107,0
+4433971,Ohio State,229,0,-2,0
+4566154,Ohio State,0,0,0,1
+4569618,Ohio State,88,964,71,0
+4569620,Ohio State,0,0,0,3
+4241371,Oklahoma,0,40,924,0
+4241380,Oklahoma,0,264,22,0
+4241404,Oklahoma,0,0,0,3
+4360174,Oklahoma,0,312,2,0
+4360259,Oklahoma,0,0,0,3
+4360282,Oklahoma,12,165,0,0
+4360287,Oklahoma,0,0,0,1
+4360290,Oklahoma,8,177,0,0
+4426339,Oklahoma,1365,6,141,0
+4426367,Oklahoma,0,147,0,0
+4426370,Oklahoma,34,300,0,0
+4428797,Oklahoma,0,0,0,2
+4431611,Oklahoma,1148,164,341,0
+4431618,Oklahoma,16,297,1,0
+4570561,Oklahoma,0,186,302,0
+4686470,Oklahoma,0,0,0,2
+4686471,Oklahoma,0,0,0,1
+4686472,Oklahoma,110,499,0,0
+4692518,Oklahoma,0,53,0,0
+4692521,Oklahoma,0,0,0,2
+4692550,Oklahoma,0,45,78,0
+4875853,Oklahoma,0,33,0,0
+4035105,Oklahoma State,0,0,0,1
+4038436,Oklahoma State,0,0,0,5
+4038438,Oklahoma State,0,10,78,0
+4241419,Oklahoma State,0,0,0,3
+4241427,Oklahoma State,0,0,0,1
+4245144,Oklahoma State,0,43,0,0
+4361824,Oklahoma State,0,0,0,2
+4361825,Oklahoma State,2400,40,620,0
+4361835,Oklahoma State,0,0,0,4
+4361838,Oklahoma State,0,0,0,1
+4361861,Oklahoma State,0,0,0,3
+4361862,Oklahoma State,0,66,0,0
+4404495,Oklahoma State,0,0,0,1
+4427165,Oklahoma State,0,0,0,1
+4428781,Oklahoma State,0,0,0,1
+4429070,Oklahoma State,316,5,1,0
+4429907,Oklahoma State,0,0,0,1
+4430577,Oklahoma State,0,232,0,0
+4430689,Oklahoma State,0,59,171,0
+4431342,Oklahoma State,33,427,31,0
+4432705,Oklahoma State,0,190,0,0
+4566153,Oklahoma State,0,194,0,0
+4569325,Oklahoma State,0,39,102,0
+4569987,Oklahoma State,0,193,1166,0
+4605483,Oklahoma State,0,0,0,1
+4683059,Oklahoma State,0,0,0,4
+4683719,Oklahoma State,0,241,0,0
+4685183,Oklahoma State,0,99,0,0
+4692530,Oklahoma State,0,0,0,1
+4692839,Oklahoma State,0,0,0,1
+4692846,Oklahoma State,0,24,0,0
+4037432,Old Dominion,0,0,0,1
+4243485,Old Dominion,0,0,0,1
+4243535,Old Dominion,489,0,83,0
+4250764,Old Dominion,0,59,0,0
+4361417,Old Dominion,20,422,0,0
+4361583,Old Dominion,0,82,0,0
+4361587,Old Dominion,0,0,116,0
+4361597,Old Dominion,0,0,0,1
+4361601,Old Dominion,63,22,0,0
+4361604,Old Dominion,0,36,820,0
+4427394,Old Dominion,0,0,0,1
+4427601,Old Dominion,36,791,0,0
+4429757,Old Dominion,0,68,6,0
+4430717,Old Dominion,0,7,32,0
+4430775,Old Dominion,1476,119,3,0
+4565774,Old Dominion,0,0,0,1
+4570148,Old Dominion,0,0,0,1
+4570149,Old Dominion,0,0,0,1
+4602702,Old Dominion,0,0,104,0
+4686556,Old Dominion,0,0,0,1
+4687373,Old Dominion,0,68,10,0
+4710772,Old Dominion,0,0,0,1
+4875867,Old Dominion,0,136,28,0
+4037564,Ole Miss,0,386,7,0
+4047655,Ole Miss,0,0,0,1
+4241566,Ole Miss,0,49,0,0
+4243727,Ole Miss,0,0,0,1
+4249342,Ole Miss,0,0,0,3
+4259908,Ole Miss,68,354,0,0
+4362874,Ole Miss,2898,169,670,0
+4372051,Ole Miss,0,0,0,4
+4372412,Ole Miss,0,0,0,1
+4372413,Ole Miss,0,22,0,2
+4372418,Ole Miss,0,0,0,3
+4379411,Ole Miss,0,0,0,2
+4426330,Ole Miss,15,173,664,0
+4426463,Ole Miss,0,230,0,0
+4426485,Ole Miss,0,214,0,0
+4426494,Ole Miss,0,200,-3,0
+4427694,Ole Miss,0,150,0,0
+4428283,Ole Miss,0,0,0,3
+4430065,Ole Miss,0,0,0,3
+4431310,Ole Miss,0,144,434,0
+4431405,Ole Miss,0,0,0,2
+4567240,Ole Miss,86,712,24,0
+4567242,Ole Miss,0,0,0,8
+4567244,Ole Miss,0,25,0,0
+4567246,Ole Miss,0,52,538,0
+4567249,Ole Miss,0,0,0,1
+4597679,Ole Miss,18,0,8,0
+4690179,Ole Miss,0,0,0,3
+4035312,Oregon,2701,329,748,0
+4048237,Oregon,0,0,0,2
+4240530,Oregon,0,0,0,5
+4240623,Oregon,0,11,0,1
+4242492,Oregon,0,83,397,0
+4242504,Oregon,0,311,0,0
+4242506,Oregon,0,197,29,0
+4360691,Oregon,10,360,1088,0
+4360692,Oregon,0,0,0,7
+4360696,Oregon,0,0,0,2
+4373813,Oregon,0,74,0,0
+4374298,Oregon,284,696,0,0
+4426326,Oregon,0,0,0,4
+4426410,Oregon,0,197,0,0
+4426467,Oregon,0,0,0,3
+4426513,Oregon,0,0,0,1
+4427090,Oregon,0,0,0,1
+4427852,Oregon,0,0,0,2
+4428265,Oregon,0,0,0,1
+4428986,Oregon,0,0,0,2
+4429891,Oregon,0,0,0,2
+4429967,Oregon,7,348,-9,0
+4430822,Oregon,0,0,0,8
+4431280,Oregon,28,116,0,0
+4431424,Oregon,0,0,0,2
+4432339,Oregon,0,0,0,1
+4432731,Oregon,0,75,0,0
+4432774,Oregon,28,0,2,0
+4433968,Oregon,0,-4,365,0
+4570037,Oregon,0,128,0,0
+4040880,Oregon State,95,0,2,0
+4042807,Oregon State,61,466,43,0
+4042810,Oregon State,0,0,0,1
+4240801,Oregon State,34,232,17,0
+4240812,Oregon State,0,0,0,1
+4255986,Oregon State,0,267,11,0
+4255988,Oregon State,0,44,1165,0
+4360705,Oregon State,0,1,98,0
+4360824,Oregon State,2280,107,295,0
+4361111,Oregon State,0,181,263,0
+4362841,Oregon State,0,14,426,0
+4363046,Oregon State,37,260,23,0
+4374030,Oregon State,0,0,21,0
+4374045,Oregon State,5,143,0,0
+4426382,Oregon State,0,24,0,0
+4426599,Oregon State,0,0,0,1
+4428085,Oregon State,4,237,-1,0
+4429684,Oregon State,0,49,40,0
+4430934,Oregon State,0,175,0,0
+4590532,Oregon State,0,14,13,0
+4257591,Penn State,0,0,0,5
+4259180,Penn State,0,38,171,0
+4259585,Penn State,0,0,0,1
+4259592,Penn State,2739,72,291,0
+4259607,Penn State,0,56,0,0
+4260224,Penn State,18,0,-18,0
+4361409,Penn State,100,1041,18,0
+4361419,Penn State,0,0,0,1
+4426420,Penn State,0,18,29,0
+4426506,Penn State,0,0,0,1
+4426658,Penn State,0,102,341,0
+4427313,Penn State,68,0,76,0
+4429077,Penn State,0,117,519,0
+4429097,Penn State,0,18,0,1
+4429148,Penn State,0,190,0,0
+4429743,Penn State,0,0,0,2
+4430539,Penn State,0,245,0,0
+4431459,Penn State,0,32,5,0
+4432612,Penn State,189,17,38,0
+4432620,Penn State,32,702,0,0
+4570044,Penn State,0,0,0,2
+4570636,Penn State,0,78,0,0
+4575416,Penn State,0,0,0,1
+4693644,Penn State,0,0,0,3
+3895797,Pittsburgh,0,31,0,0
+4035847,Pittsburgh,11,169,7,0
+4036051,Pittsburgh,0,0,0,1
+4036052,Pittsburgh,0,0,0,2
+4045291,Pittsburgh,0,414,4,0
+4240703,Pittsburgh,3805,170,404,0
+4240707,Pittsburgh,0,0,0,1
+4240713,Pittsburgh,0,0,0,3
+4360231,Pittsburgh,51,361,0,0
+4361732,Pittsburgh,0,221,42,0
+4373312,Pittsburgh,0,0,0,1
+4373314,Pittsburgh,33,0,0,0
+4373315,Pittsburgh,0,0,0,1
+4373320,Pittsburgh,0,0,0,3
+4373335,Pittsburgh,0,0,0,4
+4373336,Pittsburgh,0,0,0,1
+4427068,Pittsburgh,0,0,0,1
+4427673,Pittsburgh,0,0,0,2
+4428932,Pittsburgh,0,0,0,1
+4429202,Pittsburgh,0,177,538,0
+4429205,Pittsburgh,35,1348,28,0
+4429247,Pittsburgh,22,94,0,0
+4429511,Pittsburgh,0,0,0,4
+4429920,Pittsburgh,0,0,0,1
+4430681,Pittsburgh,56,570,0,0
+4431328,Pittsburgh,22,41,319,0
+4568660,Pittsburgh,0,100,514,0
+4568662,Pittsburgh,0,0,0,1
+4683111,Pittsburgh,0,60,0,0
+4708049,Pittsburgh,9,264,0,0
+4028076,Portland State,548,0,59,0
+4248833,Portland State,0,0,0,1
+4248844,Portland State,25,207,0,0
+4248857,Portland State,0,21,0,0
+4426898,Portland State,0,150,0,0
+4433859,Portland State,0,9,19,0
+4577882,Portland State,0,30,27,0
+4698677,Portland State,0,146,0,0
+4698679,Portland State,0,0,0,1
+4877511,Prairie View A&M,0,0,35,0
+4035721,Purdue,0,472,91,0
+4242974,Purdue,0,0,26,0
+4258471,Purdue,0,0,0,1
+4260390,Purdue,0,0,0,2
+4260394,Purdue,2888,0,26,0
+4260406,Purdue,0,87,255,0
+4361493,Purdue,871,0,52,0
+4362604,Purdue,0,0,0,3
+4372495,Purdue,0,0,0,1
+4372499,Purdue,0,0,0,2
+4372505,Purdue,0,382,0,0
+4426504,Purdue,0,655,18,0
+4426659,Purdue,0,0,0,3
+4428244,Purdue,0,61,0,0
+4428337,Purdue,0,37,0,0
+4428651,Purdue,0,228,0,0
+4429527,Purdue,0,138,462,0
+4430470,Purdue,0,219,0,0
+4431398,Purdue,0,17,91,0
+4433940,Purdue,0,93,0,0
+4566089,Purdue,0,0,0,3
+4570409,Purdue,0,1232,32,0
+4570410,Purdue,0,0,0,1
+4570411,Purdue,0,0,0,2
+4570417,Purdue,0,130,0,0
+4693173,Purdue,0,0,0,1
+4700811,Purdue,0,6,25,0
+4032739,Rhode Island,0,37,0,0
+4241937,Rhode Island,169,0,41,0
+4248505,Rhode Island,0,20,0,0
+4248506,Rhode Island,0,47,0,0
+4372472,Rhode Island,0,55,0,0
+4573454,Rhode Island,0,0,0,1
+4578110,Rhode Island,0,0,25,0
+4696198,Rhode Island,0,0,111,0
+136429,Rice,25,403,40,0
+4039154,Rice,0,250,290,0
+4039170,Rice,0,0,0,2
+4048232,Rice,1166,0,67,0
+4244855,Rice,0,20,119,0
+4244862,Rice,0,0,0,1
+4244872,Rice,0,0,0,3
+4244877,Rice,0,23,30,0
+4362526,Rice,0,0,0,1
+4362528,Rice,262,0,21,0
+4362532,Rice,0,0,0,3
+4362536,Rice,0,60,0,0
+4362541,Rice,0,0,407,0
+4362553,Rice,0,13,25,0
+4362555,Rice,0,171,0,0
+4426948,Rice,179,22,170,0
+4428204,Rice,0,0,0,2
+4429885,Rice,0,28,0,0
+4433828,Rice,0,0,237,0
+4570189,Rice,0,0,0,1
+4570190,Rice,0,584,14,0
+4570200,Rice,0,116,0,0
+4612935,Rice,0,0,0,4
+4051645,Richmond,0,0,29,0
+4239397,Richmond,0,28,0,0
+4250609,Richmond,0,0,0,1
+4250620,Richmond,0,0,0,1
+4360149,Richmond,0,27,0,0
+4367325,Richmond,0,-3,58,0
+4428517,Richmond,0,12,53,0
+4893641,Richmond,92,0,36,0
+4037456,Rutgers,0,109,0,0
+4038732,Rutgers,0,0,0,1
+4243539,Rutgers,1586,75,318,0
+4257589,Rutgers,0,0,0,1
+4259299,Rutgers,0,0,0,2
+4259301,Rutgers,0,0,0,1
+4259304,Rutgers,0,301,10,0
+4259305,Rutgers,0,623,65,0
+4360204,Rutgers,47,88,82,0
+4360968,Rutgers,0,0,0,1
+4361529,Rutgers,0,30,629,0
+4361556,Rutgers,75,146,31,0
+4367207,Rutgers,0,33,0,0
+4367449,Rutgers,0,148,8,0
+4372456,Rutgers,0,0,0,2
+4430604,Rutgers,0,0,0,2
+4431387,Rutgers,81,0,17,0
+4570057,Rutgers,61,0,19,0
+4574730,Rutgers,0,116,-5,0
+4574732,Rutgers,0,94,127,0
+4595352,Rutgers,0,0,0,1
+4606669,Rutgers,0,38,0,0
+4608686,Rutgers,0,41,217,0
+4698113,Rutgers,0,0,0,1
+3895858,SMU,0,0,0,1
+4030676,SMU,0,61,0,0
+4241374,SMU,0,480,0,0
+4241888,SMU,57,329,0,0
+4242497,SMU,0,0,0,1
+4243765,SMU,0,109,0,0
+4243767,SMU,0,0,0,1
+4243779,SMU,0,0,0,1
+4243826,SMU,0,69,647,0
+4360271,SMU,3406,149,312,0
+4360538,SMU,0,0,0,1
+4360558,SMU,0,0,0,2
+4360563,SMU,0,0,0,2
+4426689,SMU,0,89,533,0
+4428331,SMU,0,680,0,0
+4429392,SMU,0,0,0,3
+4429476,SMU,0,0,0,2
+4429981,SMU,26,156,0,0
+4430855,SMU,0,0,0,1
+4568583,SMU,0,113,212,0
+4569654,SMU,0,0,0,1
+4589233,SMU,0,112,0,0
+4594446,SMU,0,174,0,0
+4680023,SMU,0,0,52,0
+4687580,SMU,0,0,0,1
+4689546,SMU,0,865,13,0
+4887772,SMU,0,59,0,0
+4028235,Sacramento State,0,32,2,0
+4248908,Sacramento State,0,121,0,0
+4248909,Sacramento State,0,27,6,0
+4280496,Sacramento State,288,34,0,0
+4374350,Sacramento State,16,9,44,0
+4384259,Sacramento State,34,63,0,0
+4696971,Sacramento State,0,41,0,0
+4034607,Samford,412,16,68,0
+4248798,Samford,0,102,0,0
+4248822,Samford,16,124,19,0
+4369788,Samford,0,21,0,0
+4572912,Samford,0,42,22,0
+4572932,Samford,0,94,0,0
+4036817,San Diego State,0,0,0,1
+4036820,San Diego State,0,0,0,1
+4037293,San Diego State,972,0,233,0
+4241476,San Diego State,0,165,0,0
+4261602,San Diego State,0,21,0,0
+4261605,San Diego State,0,4,226,0
+4261607,San Diego State,0,31,190,0
+4261608,San Diego State,0,0,0,1
+4361159,San Diego State,0,5,761,0
+4361504,San Diego State,0,174,11,0
+4361508,San Diego State,0,0,0,4
+4361510,San Diego State,0,0,0,3
+4361516,San Diego State,0,206,2,0
+4361520,San Diego State,0,387,0,0
+4374141,San Diego State,0,53,180,0
+4379569,San Diego State,0,417,0,0
+4427220,San Diego State,0,0,4,2
+4430158,San Diego State,0,0,0,2
+4430467,San Diego State,0,0,0,2
+4572387,San Diego State,719,0,154,0
+4572397,San Diego State,0,0,0,3
+4683386,San Diego State,27,0,10,0
+4699780,San Diego State,0,0,0,1
+4699782,San Diego State,0,42,0,0
+4035225,San José State,1503,24,5,0
+4036867,San José State,0,0,0,1
+4242312,San José State,0,0,0,1
+4242321,San José State,0,23,713,0
+4255937,San José State,0,0,0,2
+4361544,San José State,0,0,0,1
+4374143,San José State,0,0,0,1
+4374145,San José State,0,337,0,0
+4374147,San José State,0,437,0,0
+4374149,San José State,0,0,0,1
+4374150,San José State,0,356,0,0
+4374153,San José State,0,0,0,1
+4427836,San José State,0,23,0,0
+4427934,San José State,0,116,0,0
+4428010,San José State,0,147,0,0
+4569086,San José State,0,208,0,0
+4570239,San José State,0,45,0,0
+4570242,San José State,670,36,297,0
+4570243,San José State,0,159,271,0
+4571021,San José State,0,31,43,0
+4608855,San José State,0,0,0,1
+4613119,San José State,0,0,0,3
+4036260,South Alabama,0,38,185,0
+4038809,South Alabama,2048,50,107,0
+4040098,South Alabama,0,0,0,3
+4241201,South Alabama,0,0,0,1
+4249417,South Alabama,40,1193,0,0
+4249419,South Alabama,0,0,0,1
+4249423,South Alabama,0,0,0,2
+4249425,South Alabama,0,0,0,1
+4249426,South Alabama,5,629,0,1
+4261074,South Alabama,0,34,0,0
+4373851,South Alabama,476,14,95,0
+4373860,South Alabama,0,0,0,2
+4373862,South Alabama,0,0,0,3
+4373863,South Alabama,0,0,64,1
+4373871,South Alabama,0,0,0,1
+4427464,South Alabama,0,0,0,2
+4428235,South Alabama,0,0,74,0
+4428960,South Alabama,0,0,0,1
+4429482,South Alabama,0,61,0,0
+4430185,South Alabama,0,176,34,0
+4432275,South Alabama,0,48,0,0
+4570509,South Alabama,0,0,0,1
+4570519,South Alabama,14,76,446,0
+4570522,South Alabama,0,0,0,1
+4710014,South Alabama,0,62,0,0
+4876026,South Alabama,0,0,0,1
+4876029,South Alabama,0,30,341,0
+4876030,South Alabama,5,134,0,0
+4029790,South Carolina,0,0,0,6
+4035525,South Carolina,466,7,13,0
+4248558,South Carolina,568,38,12,0
+4249624,South Carolina,4,185,0,0
+4259490,South Carolina,0,0,0,1
+4259501,South Carolina,0,0,0,1
+4259502,South Carolina,0,0,0,1
+4362840,South Carolina,0,0,0,1
+4362852,South Carolina,0,164,4,0
+4362858,South Carolina,0,0,0,1
+4362862,South Carolina,13,562,77,0
+4426332,South Carolina,0,0,0,2
+4426795,South Carolina,0,0,0,1
+4426800,South Carolina,0,20,0,0
+4429023,South Carolina,0,25,189,0
+4429079,South Carolina,840,0,87,0
+4429262,South Carolina,3,303,9,0
+4429979,South Carolina,0,29,0,0
+4430034,South Carolina,0,58,0,0
+4430517,South Carolina,0,0,0,1
+4570674,South Carolina,0,99,431,0
+4692835,South Carolina,0,134,0,0
+4880608,South Carolina,0,41,159,0
+4251052,South Carolina State,0,0,0,1
+4251055,South Carolina State,0,142,0,0
+4384549,South Carolina State,0,0,0,1
+4567037,South Carolina State,20,16,88,0
+4575176,South Carolina State,0,37,0,0
+4575188,South Carolina State,0,24,0,0
+4575193,South Carolina State,0,63,0,0
+4749269,South Carolina State,0,27,0,0
+4883852,South Carolina State,0,0,0,1
+4249736,South Dakota,0,37,0,0
+4572626,South Dakota,0,21,89,0
+4695784,South Dakota,104,0,21,0
+4695787,South Dakota,0,6,73,0
+4044111,South Dakota State,224,0,19,0
+4249836,South Dakota State,0,8,138,0
+4368290,South Dakota State,0,150,0,0
+4695404,South Dakota State,0,0,84,0
+4035169,South Florida,0,69,0,0
+4039482,South Florida,0,314,0,0
+4242491,South Florida,0,21,114,0
+4255716,South Florida,0,0,0,1
+4360864,South Florida,0,0,0,2
+4360873,South Florida,0,49,0,0
+4361573,South Florida,112,0,17,0
+4362876,South Florida,0,169,0,0
+4379608,South Florida,0,101,0,0
+4428640,South Florida,0,57,0,0
+4428811,South Florida,0,686,3,0
+4430067,South Florida,0,50,601,0
+4430926,South Florida,0,24,286,0
+4433969,South Florida,1960,0,402,0
+4565303,South Florida,229,0,20,0
+4565889,South Florida,0,209,2,0
+4568294,South Florida,0,0,0,2
+4571563,South Florida,0,29,0,0
+4574729,South Florida,0,0,0,1
+4611516,South Florida,0,43,0,0
+4690157,South Florida,0,0,36,0
+4708486,South Florida,0,411,22,0
+4889991,South Florida,0,2,149,0
+4906028,South Florida,0,0,68,0
+4368878,Southeast Missouri State,0,0,27,0
+4877296,Southeast Missouri State,13,0,32,0
+4036281,Southern,0,6,19,0
+4047615,Southern,0,21,0,0
+4251242,Southern,0,31,-2,0
+4369944,Southern,77,0,23,0
+4728801,Southern,0,24,0,0
+4429946,Southern Illinois,0,0,0,1
+4035573,Southern Miss,0,139,0,0
+4050374,Southern Miss,0,0,0,1
+4245121,Southern Miss,0,0,0,1
+4248032,Southern Miss,0,0,0,2
+4374504,Southern Miss,0,34,0,0
+4428117,Southern Miss,0,0,0,1
+4428570,Southern Miss,0,0,0,2
+4428904,Southern Miss,60,29,56,0
+4429805,Southern Miss,114,75,573,0
+4430375,Southern Miss,0,28,263,0
+4431418,Southern Miss,297,0,79,0
+4567499,Southern Miss,0,0,0,2
+4570550,Southern Miss,0,149,102,0
+4570551,Southern Miss,0,0,0,2
+4596336,Southern Miss,0,45,8,0
+4689984,Southern Miss,0,106,0,0
+4689988,Southern Miss,29,444,0,0
+4689989,Southern Miss,0,0,0,2
+4689993,Southern Miss,823,20,28,0
+4689995,Southern Miss,0,23,0,0
+4689998,Southern Miss,0,0,0,1
+4880734,Southern Miss,0,79,6,0
+4890388,Southern Miss,87,0,11,0
+4251012,Southern Utah,0,16,8,0
+4365886,Southern Utah,0,28,2,0
+4571184,Southern Utah,187,0,0,0
+4571214,Southern Utah,0,15,18,0
+4698424,Southern Utah,0,4,32,0
+4698427,Southern Utah,0,11,35,0
+4876328,Southern Utah,0,0,0,1
+4883660,Southern Utah,0,20,0,0
+4027943,St. Francis (PA),0,0,0,1
+4248560,St. Francis (PA),0,24,24,0
+4360056,St. Francis (PA),0,0,0,1
+4367945,St. Francis (PA),0,58,0,0
+4367951,St. Francis (PA),0,0,0,1
+4373316,St. Francis (PA),29,0,0,0
+4698606,St. Francis (PA),0,7,33,0
+4239964,Stanford,2,0,104,0
+4242552,Stanford,0,0,0,2
+4242558,Stanford,0,0,0,1
+4242559,Stanford,0,0,0,2
+4360738,Stanford,103,0,4,0
+4360740,Stanford,0,0,0,1
+4360742,Stanford,0,56,0,0
+4360761,Stanford,0,115,0,0
+4360763,Stanford,0,200,0,0
+4426431,Stanford,0,0,0,1
+4426844,Stanford,6,392,0,0
+4427695,Stanford,0,0,0,2
+4428090,Stanford,0,32,0,0
+4428211,Stanford,0,43,449,0
+4429151,Stanford,0,213,0,0
+4429173,Stanford,0,172,8,0
+4430825,Stanford,0,53,60,0
+4431870,Stanford,0,11,51,0
+4432565,Stanford,0,39,0,0
+4569330,Stanford,0,207,303,0
+4569335,Stanford,0,0,0,1
+4592531,Stanford,51,0,31,0
+4685201,Stanford,2139,40,130,0
+4256085,Stephen F. Austin,0,8,20,0
+4259749,Stephen F. Austin,0,78,0,1
+4427278,Stephen F. Austin,0,158,0,0
+4433953,Stephen F. Austin,0,13,7,0
+4578872,Stephen F. Austin,0,20,0,0
+4578873,Stephen F. Austin,0,0,0,1
+4578878,Stephen F. Austin,343,0,16,0
+4691084,Stephen F. Austin,0,0,0,1
+4033850,Stony Brook,120,0,9,0
+4244739,Stony Brook,0,34,0,0
+4248866,Stony Brook,0,0,24,0
+4248871,Stony Brook,0,0,0,1
+4367069,Stony Brook,0,14,53,0
+4573522,Stony Brook,0,67,0,0
+4695306,Stony Brook,0,0,0,1
+4037143,Syracuse,0,0,0,1
+4037631,Syracuse,0,6,56,0
+4039599,Syracuse,0,350,0,0
+4240391,Syracuse,442,0,135,0
+4240405,Syracuse,0,0,0,2
+4240411,Syracuse,0,156,0,0
+4250495,Syracuse,0,0,0,3
+4361936,Syracuse,0,218,0,0
+4361943,Syracuse,0,13,65,0
+4361952,Syracuse,0,162,0,0
+4426692,Syracuse,0,22,0,0
+4426966,Syracuse,1430,57,818,0
+4429249,Syracuse,0,0,0,1
+4430871,Syracuse,0,322,1387,0
+4431467,Syracuse,0,0,0,4
+4565172,Syracuse,12,313,23,0
+4568505,Syracuse,0,0,0,3
+4568506,Syracuse,0,0,0,1
+4569658,Syracuse,0,0,0,1
+4575862,Syracuse,0,69,17,0
+4605489,Syracuse,45,190,0,0
+4682676,Syracuse,0,0,0,2
+4684956,Syracuse,0,0,0,2
+4034860,TCU,11,114,9,0
+4241806,TCU,0,0,0,1
+4362430,TCU,7,407,7,0
+4362477,TCU,0,447,63,0
+4362478,TCU,0,82,395,0
+4374066,TCU,0,0,0,10
+4426965,TCU,0,239,0,0
+4427105,TCU,1860,131,495,0
+4427217,TCU,0,22,23,0
+4427493,TCU,0,0,0,1
+4428914,TCU,0,0,0,1
+4429025,TCU,120,509,12,0
+4429093,TCU,0,107,0,0
+4431158,TCU,0,0,0,1
+4431487,TCU,0,71,0,0
+4431606,TCU,0,41,12,0
+4569350,TCU,0,48,0,0
+4569352,TCU,0,0,0,3
+4599739,TCU,0,83,527,0
+4685035,TCU,0,130,659,0
+4692530,TCU,548,7,76,0
+4044132,Temple,0,0,0,3
+4044143,Temple,0,408,12,0
+4240540,Temple,0,61,102,0
+4242271,Temple,0,0,0,3
+4256917,Temple,0,0,0,4
+4257582,Temple,0,0,0,1
+4257587,Temple,1,152,3,0
+4260415,Temple,0,40,0,0
+4360974,Temple,0,78,0,0
+4360977,Temple,0,0,0,2
+4360978,Temple,0,61,13,0
+4360979,Temple,0,314,44,0
+4360980,Temple,0,13,63,0
+4360993,Temple,0,151,18,0
+4361492,Temple,0,253,-9,0
+4427345,Temple,0,0,0,2
+4427914,Temple,1066,1,146,0
+4428347,Temple,0,0,0,2
+4428438,Temple,0,87,304,0
+4428739,Temple,73,0,22,0
+4568611,Temple,0,27,3,0
+4568613,Temple,0,16,147,0
+4568617,Temple,0,0,0,1
+4568623,Temple,0,0,0,1
+4575900,Temple,0,0,0,1
+4612845,Temple,0,11,40,0
+4683282,Temple,547,0,192,0
+4035693,Tennessee,0,1562,30,0
+4240858,Tennessee,3192,52,673,0
+4242442,Tennessee,0,126,0,0
+4242457,Tennessee,0,0,0,4
+4360698,Tennessee,177,0,158,0
+4360861,Tennessee,0,0,0,1
+4369835,Tennessee,0,0,0,1
+4369842,Tennessee,0,0,0,1
+4369844,Tennessee,0,0,0,1
+4369863,Tennessee,0,694,0,0
+4369864,Tennessee,8,150,0,0
+4426399,Tennessee,0,47,0,0
+4427120,Tennessee,0,0,0,1
+4429165,Tennessee,0,0,99,0
+4429804,Tennessee,44,41,0,0
+4432545,Tennessee,0,75,597,0
+4432732,Tennessee,0,46,0,0
+4568063,Tennessee,0,379,-2,0
+4570567,Tennessee,0,0,0,2
+4682745,Tennessee,0,20,227,0
+4692555,Tennessee,0,0,0,3
+4692590,Tennessee,0,172,10,0
+4875196,Tennessee,0,0,0,2
+4875197,Tennessee,0,57,458,0
+4429925,Tennessee State,0,20,0,0
+4432157,Tennessee State,44,0,0,0
+4575821,Tennessee State,0,2,26,0
+4893905,Tennessee State,0,5,18,0
+4243456,Tennessee Tech,39,0,0,0
+4571228,Tennessee Tech,18,0,40,0
+4571233,Tennessee Tech,0,40,0,0
+4040964,Texas,0,0,0,2
+4051458,Texas,0,0,0,1
+4259346,Texas,0,0,0,1
+4262205,Texas,0,283,2,0
+4361326,Texas,0,0,0,1
+4362073,Texas,5218,244,434,0
+4362076,Texas,0,0,0,1
+4362079,Texas,0,533,0,0
+4362082,Texas,0,0,0,1
+4362086,Texas,0,0,0,2
+4362088,Texas,0,0,0,1
+4362093,Texas,0,0,0,1
+4362117,Texas,0,0,0,1
+4426386,Texas,2,133,547,0
+4426836,Texas,0,0,0,1
+4428617,Texas,0,0,0,1
+4429032,Texas,547,4,50,0
+4430723,Texas,0,86,0,0
+4430807,Texas,52,547,1128,0
+4430835,Texas,0,0,0,2
+4430925,Texas,0,0,0,1
+4431068,Texas,0,147,0,0
+4567095,Texas,0,92,186,0
+4569382,Texas,128,608,8,0
+4570040,Texas,0,0,0,1
+4572454,Texas,64,1156,0,0
+4678008,Texas,0,24,33,0
+4683062,Texas,4,2054,7,0
+4240896,Texas A&M,0,0,0,5
+4240897,Texas A&M,0,0,0,7
+4240927,Texas A&M,0,0,0,3
+4372521,Texas A&M,0,0,0,5
+4372522,Texas A&M,47,169,0,0
+4372541,Texas A&M,0,210,0,0
+4372545,Texas A&M,0,23,0,0
+4426359,Texas A&M,0,0,0,3
+4426459,Texas A&M,0,105,0,0
+4426847,Texas A&M,1887,174,94,0
+4426891,Texas A&M,0,159,976,0
+4426926,Texas A&M,0,0,0,2
+4428532,Texas A&M,0,495,26,0
+4428952,Texas A&M,11,489,0,0
+4428993,Texas A&M,247,0,31,0
+4428995,Texas A&M,70,165,0,0
+4429160,Texas A&M,26,216,794,0
+4429168,Texas A&M,0,0,0,1
+4430715,Texas A&M,0,0,0,1
+4596539,Texas A&M,0,0,45,0
+4602676,Texas A&M,0,0,0,3
+4685144,Texas A&M,20,96,0,0
+4685145,Texas A&M,0,0,0,2
+3915827,Texas Southern,0,52,0,0
+4035545,Texas Southern,0,0,33,0
+4383929,Texas Southern,0,47,0,0
+4578627,Texas Southern,0,181,0,0
+4578631,Texas Southern,0,11,16,0
+4578637,Texas Southern,0,0,0,1
+4749402,Texas Southern,0,67,0,0
+4887151,Texas Southern,366,0,110,0
+4887154,Texas Southern,0,7,30,0
+4035777,Texas State,0,0,0,2
+4040507,Texas State,9,0,0,1
+4241665,Texas State,0,15,32,0
+4241668,Texas State,0,0,0,1
+4241700,Texas State,0,60,0,0
+4360448,Texas State,0,21,254,0
+4361837,Texas State,0,37,427,0
+4362667,Texas State,790,0,233,0
+4362668,Texas State,0,506,0,0
+4362669,Texas State,0,248,0,0
+4362696,Texas State,0,48,0,0
+4371730,Texas State,1508,19,227,0
+4373427,Texas State,0,109,0,0
+4373472,Texas State,0,120,0,0
+4568406,Texas State,0,96,584,0
+4685831,Texas State,0,454,0,0
+4689944,Texas State,0,0,0,1
+4879676,Texas State,0,70,0,0
+4879677,Texas State,2,288,24,0
+4035438,Texas Tech,0,0,0,1
+4240450,Texas Tech,0,0,0,1
+4241602,Texas Tech,0,83,17,0
+4241829,Texas Tech,0,0,0,2
+4241834,Texas Tech,0,0,0,1
+4245685,Texas Tech,0,0,0,2
+4259219,Texas Tech,1012,0,57,0
+4259581,Texas Tech,0,103,9,0
+4360689,Texas Tech,773,53,90,0
+4361558,Texas Tech,0,0,0,2
+4362162,Texas Tech,0,113,451,0
+4362186,Texas Tech,0,604,140,0
+4362191,Texas Tech,0,0,0,1
+4372533,Texas Tech,0,0,0,5
+4427267,Texas Tech,0,397,51,0
+4429299,Texas Tech,0,47,471,0
+4429422,Texas Tech,28,80,0,0
+4429773,Texas Tech,0,76,0,0
+4430656,Texas Tech,0,361,55,0
+4432555,Texas Tech,0,35,0,0
+4565184,Texas Tech,0,35,0,0
+4569391,Texas Tech,0,245,0,0
+4569393,Texas Tech,0,98,263,0
+4569411,Texas Tech,0,0,0,2
+4592572,Texas Tech,25,114,0,0
+4690977,Texas Tech,639,0,150,0
+4383193,The Citadel,0,0,51,0
+3932906,Toledo,0,184,0,0
+4039504,Toledo,0,0,0,2
+4046682,Toledo,0,0,0,1
+4240781,Toledo,0,298,1264,0
+4247942,Toledo,0,381,0,0
+4257248,Toledo,0,0,0,3
+4257253,Toledo,0,164,12,0
+4257255,Toledo,0,138,0,0
+4257257,Toledo,0,83,0,0
+4259550,Toledo,0,377,0,0
+4280416,Toledo,0,0,0,2
+4362260,Toledo,813,0,39,0
+4362276,Toledo,0,0,0,1
+4362280,Toledo,0,0,0,2
+4362294,Toledo,0,0,0,2
+4362298,Toledo,0,0,0,3
+4362299,Toledo,0,0,0,4
+4401311,Toledo,0,536,19,0
+4427191,Toledo,1671,0,521,0
+4428606,Toledo,0,23,122,0
+4429284,Toledo,0,111,0,0
+4429976,Toledo,0,32,176,0
+4430254,Toledo,0,153,0,0
+4431145,Toledo,0,0,0,1
+4570302,Toledo,0,0,0,1
+4686273,Toledo,0,0,0,2
+4034303,Towson,201,0,0,0
+4044128,Towson,0,0,0,1
+4058545,Towson,0,33,0,0
+4240725,Towson,0,24,0,0
+4248986,Towson,0,65,0,0
+4367124,Towson,0,7,18,0
+4574075,Towson,0,49,0,0
+4878137,Towson,0,19,25,0
+4035387,Troy,26,265,35,0
+4039912,Troy,0,115,301,0
+4241193,Troy,1192,4,16,0
+4241737,Troy,0,343,0,0
+4242511,Troy,0,0,0,2
+4262106,Troy,0,37,0,0
+4262107,Troy,0,0,0,1
+4362723,Troy,1429,26,47,0
+4362726,Troy,0,0,0,2
+4362729,Troy,0,0,0,1
+4362738,Troy,0,56,0,0
+4362741,Troy,0,111,0,0
+4371978,Troy,0,0,0,6
+4428548,Troy,0,0,0,8
+4428584,Troy,0,0,0,1
+4428931,Troy,4,67,205,0
+4430550,Troy,0,0,0,1
+4430968,Troy,0,134,642,0
+4568251,Troy,0,0,0,2
+4576119,Troy,0,141,0,0
+4608793,Troy,0,289,8,0
+4608810,Troy,0,725,35,0
+4608829,Troy,0,0,0,1
+4686149,Troy,0,0,0,2
+4872963,Troy,0,306,0,0
+4872965,Troy,0,25,0,0
+3919597,Tulane,0,0,0,2
+4040882,Tulane,0,0,0,1
+4243912,Tulane,0,0,0,1
+4243921,Tulane,5,135,0,0
+4243928,Tulane,0,333,18,0
+4361001,Tulane,0,0,22,0
+4361796,Tulane,0,329,0,0
+4361800,Tulane,14,0,11,0
+4361802,Tulane,11,183,459,0
+4361804,Tulane,0,99,30,0
+4361807,Tulane,0,0,0,1
+4361816,Tulane,0,0,0,1
+4361820,Tulane,0,0,0,5
+4372183,Tulane,0,0,0,2
+4373087,Tulane,0,0,0,1
+4427575,Tulane,0,217,26,0
+4428557,Tulane,0,93,819,0
+4565872,Tulane,0,0,0,1
+4568624,Tulane,0,7,0,1
+4568626,Tulane,0,0,0,4
+4568627,Tulane,0,0,0,3
+4685037,Tulane,21,235,0,0
+4685038,Tulane,0,143,0,0
+4685039,Tulane,2250,36,307,0
+4685049,Tulane,0,0,0,2
+4708067,Tulane,88,0,16,0
+4710706,Tulane,0,0,0,2
+4875825,Tulane,0,376,0,0
+3932443,Tulsa,0,0,0,1
+4029857,Tulsa,0,320,0,0
+4035234,Tulsa,0,0,0,3
+4039668,Tulsa,0,0,0,1
+4244598,Tulsa,0,131,16,0
+4244599,Tulsa,0,81,961,0
+4244600,Tulsa,0,421,0,0
+4244603,Tulsa,0,113,0,0
+4244604,Tulsa,0,0,0,1
+4244614,Tulsa,0,0,0,1
+4244617,Tulsa,0,587,0,0
+4245108,Tulsa,0,0,242,0
+4361739,Tulsa,0,947,-2,0
+4362365,Tulsa,2792,3,163,0
+4362381,Tulsa,0,0,0,1
+4372369,Tulsa,0,0,2,6
+4372371,Tulsa,0,0,0,5
+4372372,Tulsa,0,28,0,0
+4372377,Tulsa,0,0,0,3
+4372378,Tulsa,0,0,0,3
+4372526,Tulsa,0,73,447,0
+4430267,Tulsa,0,0,0,2
+4568639,Tulsa,0,0,0,1
+4568649,Tulsa,0,47,0,0
+4569481,Tulsa,0,13,571,0
+4600403,Tulsa,0,0,39,0
+4044114,UAB,0,0,0,1
+4239793,UAB,298,0,25,0
+4239812,UAB,0,126,0,0
+4239821,UAB,0,37,164,0
+4363410,UAB,1491,15,170,0
+4363416,UAB,0,0,0,2
+4363417,UAB,0,0,0,1
+4363437,UAB,0,0,0,1
+4374359,UAB,0,0,0,1
+4374361,UAB,15,390,0,0
+4428622,UAB,0,0,0,1
+4430388,UAB,0,14,936,0
+4570047,UAB,0,53,12,0
+4570110,UAB,0,0,0,2
+4570115,UAB,0,36,9,0
+4570130,UAB,0,172,444,0
+4570132,UAB,0,57,0,0
+4689648,UAB,0,0,0,1
+4689650,UAB,0,516,0,0
+4366715,UAlbany,69,0,1,0
+4572009,UAlbany,0,0,0,1
+4693925,UAlbany,0,46,0,0
+4029558,UC Davis,0,136,0,0
+4248770,UC Davis,0,21,65,0
+4365938,UC Davis,311,0,13,0
+4579407,UC Davis,0,0,0,1
+4698244,UC Davis,0,0,0,1
+4698252,UC Davis,0,55,7,0
+4035198,UCF,41,405,0,0
+4035493,UCF,0,37,0,0
+4242510,UCF,0,0,0,5
+4243541,UCF,0,0,0,1
+4360278,UCF,0,253,0,0
+4361264,UCF,0,71,506,0
+4361329,UCF,60,0,124,0
+4361779,UCF,0,0,0,2
+4361991,UCF,0,0,0,2
+4362388,UCF,0,0,0,2
+4362393,UCF,0,16,83,0
+4362421,UCF,46,101,0,0
+4362422,UCF,0,0,0,1
+4426698,UCF,0,0,0,2
+4427238,UCF,821,20,161,0
+4427625,UCF,0,76,26,0
+4428343,UCF,0,0,0,2
+4429815,UCF,0,0,0,1
+4430989,UCF,0,0,0,1
+4431426,UCF,0,0,0,1
+4567223,UCF,0,54,242,0
+4568992,UCF,93,547,115,0
+4597499,UCF,1188,111,74,0
+4610131,UCF,0,0,50,0
+4690115,UCF,0,0,0,2
+4690116,UCF,0,0,0,2
+4690120,UCF,0,160,580,0
+4708106,UCF,0,0,0,1
+4710344,UCF,0,86,0,0
+4036032,UCLA,0,132,617,0
+4036219,UCLA,0,0,0,1
+4062711,UCLA,0,0,60,0
+4249118,UCLA,0,0,0,1
+4249122,UCLA,0,0,0,1
+4249128,UCLA,0,0,0,1
+4258590,UCLA,0,0,0,1
+4361090,UCLA,0,0,0,2
+4367175,UCLA,0,731,0,0
+4367177,UCLA,0,0,0,1
+4367178,UCLA,2318,0,729,0
+4367179,UCLA,0,27,0,0
+4367180,UCLA,0,251,93,0
+4367182,UCLA,0,32,0,0
+4367185,UCLA,0,0,0,1
+4367186,UCLA,0,241,0,0
+4367192,UCLA,0,0,0,3
+4367209,UCLA,0,721,0,0
+4426385,UCLA,0,188,1241,0
+4427634,UCLA,0,29,19,0
+4429068,UCLA,287,0,53,0
+4431234,UCLA,0,22,0,0
+4567942,UCLA,0,0,-44,0
+4569383,UCLA,0,0,0,1
+4569426,UCLA,0,0,0,2
+4570683,UCLA,0,231,0,0
+4591235,UCLA,0,0,0,3
+4602926,UCLA,0,0,0,1
+4239127,UConn,0,51,0,0
+4239135,UConn,26,243,0,0
+4239137,UConn,0,0,0,1
+4240094,UConn,25,0,13,0
+4240636,UConn,0,0,23,0
+4257363,UConn,0,50,273,0
+4362139,UConn,0,0,0,1
+4362140,UConn,1043,48,201,0
+4362143,UConn,0,66,24,0
+4426940,UConn,8,214,0,0
+4427981,UConn,0,22,0,0
+4428977,UConn,324,3,28,0
+4501304,UConn,0,49,0,0
+4566700,UConn,0,103,0,0
+4569001,UConn,0,112,0,0
+4569009,UConn,0,0,0,1
+4575859,UConn,0,0,0,1
+4604004,UConn,43,375,0,0
+4605841,UConn,0,120,507,0
+4613059,UConn,0,93,10,0
+4683531,UConn,0,179,0,0
+4684083,UConn,264,0,75,0
+4035711,UL Monroe,0,277,0,0
+4036597,UL Monroe,0,0,0,2
+4037220,UL Monroe,0,0,0,6
+4245679,UL Monroe,796,0,99,0
+4249645,UL Monroe,0,0,0,3
+4257370,UL Monroe,0,78,0,0
+4258408,UL Monroe,0,10,22,0
+4258409,UL Monroe,0,262,0,0
+4258418,UL Monroe,0,0,0,1
+4365311,UL Monroe,0,40,466,0
+4365312,UL Monroe,0,0,0,1
+4365322,UL Monroe,0,8,29,0
+4365325,UL Monroe,31,0,2,0
+4366084,UL Monroe,0,0,0,1
+4384366,UL Monroe,0,0,0,1
+4428354,UL Monroe,0,14,22,0
+4429380,UL Monroe,0,42,0,0
+4430724,UL Monroe,0,51,0,0
+4575767,UL Monroe,0,275,0,0
+4689901,UL Monroe,0,218,-3,0
+4689918,UL Monroe,0,79,0,0
+4887223,UL Monroe,1175,0,444,0
+4887225,UL Monroe,0,88,440,0
+4895117,UL Monroe,40,0,12,0
+4027419,UNLV,0,0,0,1
+4052178,UNLV,0,196,799,0
+4056043,UNLV,0,106,0,0
+4362431,UNLV,411,0,24,0
+4374168,UNLV,0,0,0,2
+4374169,UNLV,0,88,7,0
+4374171,UNLV,0,0,0,2
+4374172,UNLV,0,9,46,0
+4427161,UNLV,0,0,0,4
+4427596,UNLV,0,526,5,0
+4428240,UNLV,0,0,0,1
+4428320,UNLV,0,-5,22,0
+4428909,UNLV,0,0,0,2
+4429516,UNLV,320,0,56,0
+4431369,UNLV,0,0,0,2
+4570183,UNLV,15,62,0,0
+4591236,UNLV,0,0,0,2
+4610705,UNLV,0,0,0,1
+4611352,UNLV,0,0,0,1
+4611985,UNLV,0,151,0,0
+4613202,UNLV,0,361,1,0
+4683451,UNLV,1121,15,33,0
+4686071,UNLV,0,0,0,1
+4689354,UNLV,0,90,0,0
+4696733,UNLV,0,25,0,0
+4035695,USC,0,51,288,0
+4259635,USC,0,0,0,2
+4259649,USC,0,102,0,0
+4259652,USC,0,0,0,2
+4360854,USC,0,0,0,1
+4360855,USC,0,0,0,1
+4362087,USC,0,130,866,0
+4362110,USC,41,99,0,0
+4426357,USC,0,110,0,0
+4426377,USC,0,0,0,2
+4426502,USC,2,956,2,0
+4426635,USC,0,21,246,0
+4428512,USC,1916,41,45,0
+4428921,USC,0,38,0,0
+4429125,USC,0,521,3,0
+4429127,USC,0,0,0,2
+4431274,USC,0,0,0,1
+4431442,USC,0,0,0,2
+4431517,USC,0,0,0,1
+4566198,USC,0,91,0,0
+4567506,USC,0,450,0,0
+4569511,USC,0,0,0,4
+4592573,USC,0,38,0,0
+4594749,USC,0,102,0,0
+4683227,USC,0,49,0,0
+4689114,USC,1119,2,74,0
+4693834,USC,0,0,0,1
+4030627,UT Martin,0,41,0,0
+4040093,UT Martin,0,0,0,1
+4050370,UT Martin,135,0,24,0
+4243365,UT Martin,0,0,25,0
+4250945,UT Martin,0,87,0,0
+4250956,UT Martin,0,-4,69,0
+4040508,UTEP,0,11,129,0
+4245242,UTEP,0,111,518,0
+4362034,UTEP,0,439,0,0
+4362039,UTEP,0,0,0,1
+4362040,UTEP,0,88,40,0
+4362052,UTEP,23,58,0,0
+4374428,UTEP,0,0,0,1
+4379520,UTEP,0,0,0,1
+4575665,UTEP,78,1104,72,0
+4575667,UTEP,0,16,273,0
+4575668,UTEP,2152,101,74,0
+4686540,UTEP,0,0,0,2
+4686541,UTEP,0,0,0,2
+4875687,UTEP,0,212,0,0
+4035300,UTSA,0,0,8,1
+4039601,UTSA,0,0,0,3
+4050390,UTSA,0,0,0,1
+4245185,UTSA,0,0,0,2
+4245186,UTSA,2876,36,652,0
+4245196,UTSA,0,0,71,0
+4245214,UTSA,0,0,0,2
+4362983,UTSA,0,107,0,0
+4362985,UTSA,32,29,166,0
+4362987,UTSA,0,0,0,2
+4362989,UTSA,0,0,0,1
+4363003,UTSA,0,29,0,0
+4363006,UTSA,0,0,0,1
+4426857,UTSA,0,156,0,0
+4426893,UTSA,33,765,11,0
+4426919,UTSA,0,611,7,0
+4426936,UTSA,0,0,0,1
+4427225,UTSA,0,901,0,0
+4428419,UTSA,0,0,0,3
+4428917,UTSA,0,0,0,1
+4430104,UTSA,0,186,1450,0
+4433840,UTSA,0,0,0,1
+4565211,UTSA,0,20,0,0
+4570018,UTSA,0,51,1,0
+4570021,UTSA,0,0,0,2
+4575656,UTSA,0,0,0,6
+3926231,Utah,15,448,76,0
+4035678,Utah,0,0,0,1
+4035818,Utah,4,136,0,0
+4241222,Utah,482,0,53,0
+4241611,Utah,0,0,0,1
+4243247,Utah,0,51,17,0
+4243256,Utah,0,0,0,7
+4243265,Utah,0,0,0,1
+4360083,Utah,0,0,2404,0
+4361006,Utah,0,228,0,0
+4361008,Utah,0,109,0,0
+4361014,Utah,0,508,6,0
+4361018,Utah,0,0,0,1
+4361024,Utah,0,0,0,5
+4362075,Utah,2115,30,413,0
+4362632,Utah,0,0,28,0
+4385690,Utah,11,441,4,0
+4426696,Utah,0,212,398,0
+4429067,Utah,0,0,0,2
+4429727,Utah,0,0,0,2
+4569559,Utah,0,334,0,0
+4608868,Utah,0,0,0,1
+4676004,Utah,0,0,0,3
+4687592,Utah,0,0,0,1
+4690972,Utah,0,0,20,0
+4695607,Utah,0,0,0,1
+4875336,Utah,0,0,0,1
+4035842,Utah State,0,0,0,1
+4036473,Utah State,7966,1492,372,0
+4036475,Utah State,756,2650,0,0
+4048092,Utah State,0,0,0,5
+4048695,Utah State,0,188,0,0
+4255990,Utah State,0,70,640,0
+4258196,Utah State,0,0,0,1
+4259225,Utah State,0,0,0,1
+4259240,Utah State,0,74,20,0
+4259242,Utah State,5,105,0,0
+4361185,Utah State,320,501,0,0
+4361607,Utah State,288,225,163,0
+4362095,Utah State,0,0,0,2
+4362518,Utah State,0,0,0,1
+4374187,Utah State,436,2738,33,0
+4374188,Utah State,0,0,0,2
+4428762,Utah State,0,0,0,1
+4433821,Utah State,0,66,192,0
+4569984,Utah State,0,0,0,1
+4569986,Utah State,0,51,0,0
+4569995,Utah State,200,1433,0,0
+4575457,Utah State,0,20,86,0
+4597527,Utah State,0,0,0,1
+4606001,Utah State,0,120,470,0
+4613199,Utah State,0,42,0,0
+4369912,VMI,0,10,27,0
+4572934,VMI,49,0,8,0
+4572936,VMI,0,0,0,1
+4242652,Vanderbilt,0,0,0,1
+4242661,Vanderbilt,0,531,0,1
+4360240,Vanderbilt,0,0,0,1
+4362785,Vanderbilt,0,84,0,0
+4362788,Vanderbilt,0,77,0,0
+4362794,Vanderbilt,0,201,0,0
+4362798,Vanderbilt,0,0,0,1
+4362802,Vanderbilt,0,35,0,0
+4429501,Vanderbilt,0,11,134,0
+4431375,Vanderbilt,1127,0,60,0
+4433827,Vanderbilt,0,39,488,0
+4433932,Vanderbilt,935,0,391,0
+4565356,Vanderbilt,0,0,0,2
+4567532,Vanderbilt,0,202,8,0
+4567534,Vanderbilt,0,0,0,2
+4567546,Vanderbilt,0,0,0,1
+4608679,Vanderbilt,0,522,0,0
+4683219,Vanderbilt,0,74,303,0
+4688539,Vanderbilt,0,27,23,0
+4051021,Villanova,84,0,3,0
+4379775,Villanova,0,0,21,0
+4574107,Villanova,0,32,0,0
+4694754,Villanova,0,0,0,1
+4032625,Virginia,0,576,0,0
+4037583,Virginia,0,0,0,5
+4240077,Virginia,0,0,0,2
+4240822,Virginia,0,0,0,3
+4240824,Virginia,0,0,0,2
+4240826,Virginia,0,0,0,2
+4241410,Virginia,0,591,1,0
+4242243,Virginia,1,850,247,0
+4248071,Virginia,0,53,181,0
+4360425,Virginia,0,9,11,0
+4370775,Virginia,4227,18,471,0
+4370797,Virginia,0,704,9,0
+4370813,Virginia,0,72,308,0
+4370814,Virginia,0,0,0,2
+4427503,Virginia,0,81,195,0
+4428850,Virginia,18,1112,0,0
+4566094,Virginia,0,65,51,0
+4568492,Virginia,0,0,0,1
+4568500,Virginia,0,0,0,2
+4587724,Virginia,0,0,0,1
+4605835,Virginia,174,0,68,0
+4613165,Virginia,0,86,0,0
+4682648,Virginia,0,172,0,0
+4240004,Virginia Tech,0,0,0,2
+4240901,Virginia Tech,90,16,494,0
+4242490,Virginia Tech,1845,76,713,0
+4259308,Virginia Tech,0,239,707,0
+4260193,Virginia Tech,0,62,0,0
+4260196,Virginia Tech,0,0,0,2
+4260206,Virginia Tech,0,32,176,0
+4361958,Virginia Tech,0,0,0,3
+4361960,Virginia Tech,69,583,64,0
+4361964,Virginia Tech,0,0,0,2
+4361965,Virginia Tech,0,0,0,3
+4361968,Virginia Tech,0,0,0,1
+4361970,Virginia Tech,0,0,0,2
+4361973,Virginia Tech,0,289,0,0
+4361977,Virginia Tech,0,0,0,1
+4361988,Virginia Tech,0,36,1,0
+4427234,Virginia Tech,0,0,0,1
+4427698,Virginia Tech,0,0,0,1
+4427709,Virginia Tech,0,47,23,0
+4428367,Virginia Tech,7,539,48,0
+4429950,Virginia Tech,135,0,11,0
+4430326,Virginia Tech,0,0,0,1
+4568439,Virginia Tech,0,0,0,5
+4568450,Virginia Tech,0,104,0,0
+4568703,Virginia Tech,0,0,0,2
+4680024,Virginia Tech,16,119,0,0
+4686223,Virginia Tech,0,-1,438,0
+4241130,Wagner,48,0,24,0
+4368468,Wagner,0,0,0,1
+4575265,Wagner,0,40,0,0
+4698227,Wagner,0,23,-1,0
+4876405,Wagner,0,0,-20,0
+4876406,Wagner,36,0,15,0
+4876407,Wagner,0,0,79,0
+3914537,Wake Forest,0,0,0,1
+4037212,Wake Forest,0,0,0,1
+4037215,Wake Forest,0,0,0,5
+4037217,Wake Forest,0,170,0,0
+4044454,Wake Forest,0,345,0,0
+4240418,Wake Forest,0,55,569,0
+4240422,Wake Forest,0,0,0,1
+4240429,Wake Forest,0,1037,8,0
+4240434,Wake Forest,0,0,0,1
+4256911,Wake Forest,0,0,0,1
+4258210,Wake Forest,0,0,0,4
+4361994,Wake Forest,3786,34,501,0
+4362001,Wake Forest,0,0,0,1
+4362003,Wake Forest,0,0,0,3
+4362006,Wake Forest,0,0,0,1
+4362009,Wake Forest,0,0,0,1
+4362018,Wake Forest,0,148,0,0
+4362019,Wake Forest,5,1100,0,0
+4372073,Wake Forest,0,29,349,0
+4429439,Wake Forest,0,5,84,0
+4429618,Wake Forest,0,34,473,0
+4431006,Wake Forest,0,0,0,2
+4432272,Wake Forest,0,0,0,1
+4566165,Wake Forest,0,0,0,1
+4567031,Wake Forest,58,0,0,0
+4567042,Wake Forest,0,0,0,1
+4567044,Wake Forest,26,488,1,0
+4568550,Wake Forest,0,0,0,1
+4570738,Wake Forest,0,341,0,0
+4571935,Wake Forest,0,84,0,0
+4690182,Wake Forest,0,0,0,1
+4696211,Wake Forest,0,0,0,1
+4039008,Washington,0,80,288,0
+4039009,Washington,0,41,362,0
+4039015,Washington,0,0,0,1
+4243319,Washington,0,394,8,0
+4243331,Washington,0,164,0,0
+4360276,Washington,0,0,0,1
+4361095,Washington,0,14,82,0
+4361100,Washington,0,44,3,0
+4361105,Washington,0,0,0,1
+4361112,Washington,0,209,0,0
+4361113,Washington,0,0,0,2
+4426380,Washington,0,0,0,1
+4427569,Washington,0,49,18,0
+4429490,Washington,0,0,0,1
+4429503,Washington,0,253,0,0
+4430616,Washington,0,0,0,1
+4430637,Washington,0,89,0,0
+4430834,Washington,0,473,0,0
+4431299,Washington,0,403,13,0
+4567748,Washington,125,0,19,0
+4569594,Washington,0,78,301,0
+4569598,Washington,2170,0,115,0
+4569600,Washington,0,0,0,1
+4035167,Washington State,259,0,49,0
+4039487,Washington State,0,0,0,1
+4043092,Washington State,0,0,0,1
+4046677,Washington State,0,21,539,0
+4245146,Washington State,0,57,0,0
+4245154,Washington State,0,0,0,3
+4245156,Washington State,0,0,0,1
+4245162,Washington State,0,0,0,1
+4245177,Washington State,0,0,0,1
+4361142,Washington State,0,0,837,0
+4372568,Washington State,0,0,42,0
+4373470,Washington State,0,29,3,0
+4373471,Washington State,0,0,0,4
+4373485,Washington State,0,0,0,1
+4428163,Washington State,0,45,0,0
+4569637,Washington State,0,0,0,1
+4693838,Washington State,0,0,0,2
+4697623,Washington State,2562,25,178,0
+4697634,Washington State,0,0,0,1
+4710714,Washington State,0,93,0,0
+4251115,Weber State,0,7,23,0
+4251138,Weber State,0,48,0,0
+4251142,Weber State,0,32,0,0
+4259634,Weber State,0,41,0,0
+4380433,Weber State,0,27,0,0
+4697131,Weber State,163,0,19,0
+4039256,West Virginia,0,0,0,1
+4239389,West Virginia,0,0,0,1
+4241454,West Virginia,0,0,0,1
+4244029,West Virginia,2714,94,98,0
+4360972,West Virginia,0,301,0,0
+4362193,West Virginia,0,51,0,0
+4362196,West Virginia,0,203,1077,0
+4362208,West Virginia,0,403,9,0
+4362217,West Virginia,0,65,0,0
+4362225,West Virginia,0,0,0,2
+4393324,West Virginia,0,327,0,0
+4427916,West Virginia,0,5,259,0
+4429190,West Virginia,0,0,0,1
+4429847,West Virginia,88,0,203,0
+4430747,West Virginia,0,86,0,0
+4431509,West Virginia,0,142,0,0
+4569452,West Virginia,22,570,2,0
+4685194,West Virginia,0,0,0,1
+4709393,West Virginia,0,0,0,2
+4408855,Western Carolina,0,24,0,0
+4408865,Western Carolina,70,0,0,0
+4877557,Western Carolina,0,21,0,0
+4031136,Western Illinois,329,0,14,0
+4037568,Western Illinois,0,19,5,0
+4250441,Western Illinois,0,0,37,0
+4264496,Western Illinois,0,34,0,0
+4572786,Western Illinois,0,188,0,0
+4694674,Western Illinois,0,30,27,0
+4694694,Western Illinois,0,39,0,0
+4034675,Western Kentucky,0,82,0,0
+4037490,Western Kentucky,0,0,0,2
+4037553,Western Kentucky,0,0,0,1
+4037555,Western Kentucky,0,0,0,1
+4040935,Western Kentucky,0,149,299,0
+4052723,Western Kentucky,0,0,0,1
+4242447,Western Kentucky,0,0,0,4
+4242505,Western Kentucky,0,456,0,0
+4243457,Western Kentucky,0,0,0,3
+4243459,Western Kentucky,0,2,33,0
+4243467,Western Kentucky,0,0,0,2
+4250360,Western Kentucky,4439,0,99,0
+4259573,Western Kentucky,0,0,0,3
+4363052,Western Kentucky,0,0,0,3
+4363053,Western Kentucky,0,0,0,1
+4373814,Western Kentucky,0,0,0,2
+4383723,Western Kentucky,0,1337,25,0
+4385055,Western Kentucky,0,77,0,0
+4428527,Western Kentucky,0,68,0,0
+4430482,Western Kentucky,0,45,0,0
+4430903,Western Kentucky,0,86,0,0
+4432631,Western Kentucky,0,47,272,0
+4602009,Western Kentucky,0,0,0,1
+4613104,Western Kentucky,0,464,-6,0
+4688766,Western Kentucky,0,88,0,0
+4690070,Western Kentucky,0,884,0,0
+4690072,Western Kentucky,0,0,0,1
+4690073,Western Kentucky,0,83,0,0
+4690084,Western Kentucky,0,0,0,2
+4691934,Western Kentucky,0,20,17,0
+4880638,Western Kentucky,0,70,131,0
+4886007,Western Kentucky,0,107,0,0
+4895220,Western Kentucky,0,46,0,0
+4036788,Western Michigan,0,11,336,0
+4043043,Western Michigan,0,51,0,0
+4240155,Western Michigan,0,0,0,1
+4240167,Western Michigan,0,0,0,2
+4240176,Western Michigan,0,1642,0,0
+4240179,Western Michigan,0,0,0,3
+4247264,Western Michigan,0,64,0,0
+4362230,Western Michigan,3679,238,195,0
+4362231,Western Michigan,0,0,0,1
+4362237,Western Michigan,0,0,0,3
+4362241,Western Michigan,0,0,0,1
+4362245,Western Michigan,0,0,0,2
+4362248,Western Michigan,0,136,0,0
+4367948,Western Michigan,0,0,0,2
+4382468,Western Michigan,0,38,823,0
+4428732,Western Michigan,4,98,999,0
+4429479,Western Michigan,130,520,6,0
+4429996,Western Michigan,0,0,0,2
+4430191,Western Michigan,104,1139,0,0
+4430699,Western Michigan,20,0,0,0
+4683561,Western Michigan,0,0,75,0
+4881893,Western Michigan,0,0,25,0
+4574129,William & Mary,0,29,46,0
+4694487,William & Mary,0,1,34,0
+4694508,William & Mary,0,20,0,0
+4878151,William & Mary,70,0,24,0
+4035769,Wisconsin,0,0,0,2
+4035770,Wisconsin,0,20,2,0
+4035776,Wisconsin,8,340,34,0
+4035785,Wisconsin,0,0,0,2
+4039308,Wisconsin,0,0,0,4
+4242330,Wisconsin,0,365,1,0
+4242337,Wisconsin,0,0,0,1
+4242355,Wisconsin,0,395,0,0
+4372561,Wisconsin,0,6,143,0
+4372565,Wisconsin,0,0,0,1
+4372569,Wisconsin,0,60,57,0
+4372571,Wisconsin,0,0,0,1
+4372574,Wisconsin,1,22,47,0
+4372576,Wisconsin,0,0,8,2
+4372580,Wisconsin,0,0,0,1
+4426335,Wisconsin,1724,9,57,0
+4426409,Wisconsin,0,66,674,0
+4426901,Wisconsin,0,0,0,6
+4427002,Wisconsin,0,43,0,0
+4429164,Wisconsin,0,0,0,3
+4430843,Wisconsin,0,17,32,0
+4431268,Wisconsin,0,207,22,0
+4570071,Wisconsin,0,0,25,0
+4685247,Wisconsin,0,37,1043,0
+4240999,Wofford,76,0,63,0
+4250129,Wofford,0,42,0,0
+4370169,Wofford,0,8,35,0
+4370172,Wofford,0,0,0,1
+4370173,Wofford,0,0,24,0
+4429971,Wofford,0,0,35,0
+4573061,Wofford,0,0,0,1
+4694363,Wofford,0,14,6,0
+3916389,Wyoming,0,15,7,0
+4048725,Wyoming,0,333,7,0
+4240329,Wyoming,0,0,0,2
+4240333,Wyoming,0,0,0,1
+4240342,Wyoming,0,0,0,2
+4240344,Wyoming,0,0,0,1
+4240350,Wyoming,0,288,841,0
+4361689,Wyoming,0,0,0,1
+4361690,Wyoming,806,0,235,0
+4361698,Wyoming,0,0,0,3
+4361710,Wyoming,0,6,0,1
+4426902,Wyoming,0,62,0,0
+4427265,Wyoming,0,0,0,1
+4427983,Wyoming,0,0,35,0
+4428116,Wyoming,148,949,25,0
+4428890,Wyoming,1504,148,682,0
+4430551,Wyoming,0,25,697,0
+4430684,Wyoming,0,154,0,0
+4569896,Wyoming,0,26,0,0
+4569912,Wyoming,0,120,0,0
+4613193,Wyoming,0,390,0,0
+4248446,Yale,0,23,5,0
+4248457,Yale,0,26,19,0
+4368024,Yale,0,24,14,0
+4368044,Yale,55,0,-4,0
+4573680,Yale,132,0,80,0
+4883118,Yale,0,60,0,0
+4250144,Youngstown State,0,2,48,0
+4430650,Youngstown State,67,0,61,0
+4722893,Youngstown State,0,30,34,0
