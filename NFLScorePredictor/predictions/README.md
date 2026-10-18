@@ -1,6 +1,6 @@
 # NFL score predictions
 
-Updated Sat Oct 17, 2026 04:55 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
+Updated Sun Oct 18, 2026 12:32 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
 
 Expected points blend the model with the betting line using the weight that has predicted best in recent seasons (see Current model fit). The spread and total columns show the model's own numbers next to the line, so you can see where it disagrees.
 
@@ -12,38 +12,37 @@ The model pick is the side the model's own spread favors against the current lin
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Model pick (edge) | Total: model / line | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Sun 10/18 9:30 AM | HOU @ JAX | HOU 20, JAX 23 | JAX 59% | HOU +140 / JAX -140 | 19.8 – 22.3 | 9–31 / 10–34 | JAX -2.7 / JAX -2.5 | no edge | 43.8 / 42.5 | C.J. Stroud / Trevor Lawrence | wind 12 mph |
-| Sun 10/18 1:00 PM | BAL @ CLE | BAL 20, CLE 17 | BAL 60% | BAL -150 / CLE +150 | 21.3 – 18.2 | 10–33 / 7–29 | BAL -4.5 / BAL -3.0 | BAL -3.0 (1.5) | 46.8 / 39.5 | Lamar Jackson / Deshaun Watson |  |
-| Sun 10/18 1:00 PM | CAR @ PHI | CAR 20, PHI 17 | CAR 60% | CAR -145 / PHI +145 | 21.2 – 18.3 | 10–33 / 7–30 | CAR -2.8 / CAR -3.0 | no edge | 41.3 / 39.5 | Bryce Young / Tanner McKee |  |
-| Sun 10/18 1:00 PM | CHI @ ATL | CHI 27, ATL 24 | CHI 54% | CHI -115 / ATL +115 | 27.0 – 25.5 | 15–40 / 14–38 | CHI -2.4 / CHI -1.5 | CHI -1.5 (0.9) | 45.9 / 52.5 | Caleb Williams / Michael Penix Jr. |  |
-| Sun 10/18 1:00 PM | NO @ NYG | NO 23, NYG 20 | NO 53% | NO -115 / NYG +115 | 23.8 – 22.7 | 13–37 / 10–34 | NYG -4.5 / NO -1.5 | NYG +1.5 (6.0) | 44.2 / 46.5 | Tyler Shough / Jameis Winston |  |
+| Sun 10/18 1:00 PM | BAL @ CLE | BAL 20, CLE 17 | BAL 60% | BAL -155 / CLE +155 | 21.3 – 18.2 | 10–33 / 7–30 | BAL -4.5 / BAL -3.0 | BAL -3.0 (1.5) | 46.8 / 39.5 | Lamar Jackson / Deshaun Watson |  |
+| Sun 10/18 1:00 PM | CAR @ PHI | CAR 20, PHI 17 | CAR 60% | CAR -150 / PHI +150 | 21.2 – 18.3 | 10–33 / 7–30 | CAR -2.8 / CAR -3.0 | no edge | 41.3 / 39.5 | Bryce Young / Tanner McKee |  |
+| Sun 10/18 1:00 PM | CHI @ ATL | CHI 27, ATL 24 | CHI 55% | CHI -125 / ATL +125 | 26.5 – 25.0 | 14–38 / 13–37 | CHI -2.4 / CHI -1.5 | CHI -1.5 (0.9) | 45.9 / 51.5 | Caleb Williams / Michael Penix Jr. |  |
+| Sun 10/18 1:00 PM | NO @ NYG | NO 23, NYG 20 | NO 54% | NO -115 / NYG +115 | 23.8 – 22.7 | 13–36 / 10–34 | NYG -4.5 / NO -1.5 | NYG +1.5 (6.0) | 44.2 / 46.5 | Tyler Shough / Jameis Winston |  |
 | Sun 10/18 1:00 PM | NYJ @ NE | NYJ 17, NE 24 | NE 72% | NYJ +260 / NE -260 | 18.0 – 25.5 | 7–30 / 13–38 | NE -6.9 / NE -7.5 | NYJ +7.5 (0.6) | 45.8 / 43.5 | Geno Smith / Drake Maye |  |
-| Sun 10/18 1:00 PM | PIT @ TB | PIT 20, TB 17 | PIT 57% | PIT -130 / TB +130 | 20.0 – 17.6 | 10–31 / 7–29 | PK / PIT -2.5 | TB +2.5 (2.5) | 42.1 / 38.5 | Aaron Rodgers / Jalon Daniels | wind 15 mph |
-| Sun 10/18 1:00 PM | TEN @ IND | TEN 20, IND 27 | IND 71% | TEN +240 / IND -240 | 18.7 – 25.8 | 8–30 / 13–38 | IND -9.7 / IND -7.0 | IND -7.0 (2.7) | 44.7 / 44.5 | Cam Ward / Daniel Jones |  |
-| Sun 10/18 4:05 PM | ARI @ LA | ARI 20, LA 34 | LA 83% | ARI +490 / LA -490 | 19.6 – 31.9 | 9–31 / 20–45 | LA -8.5 / LA -12.5 | ARI +12.5 (4.0) | 48.9 / 51.5 | Jacoby Brissett / Matthew Stafford |  |
-| Sun 10/18 4:25 PM | BUF @ LV | BUF 30, LV 24 | BUF 66% | BUF -190 / LV +190 | 29.5 – 24.0 | 17–42 / 13–37 | BUF -5.9 / BUF -5.5 | no edge | 52.3 / 53.5 | Josh Allen / Kirk Cousins |  |
-| Sun 10/18 4:25 PM | LAC @ KC | LAC 17, KC 23 | KC 73% | LAC +275 / KC -275 | 16.7 – 24.4 | 6–27 / 13–37 | KC -10.6 / KC -7.5 | KC -7.5 (3.1) | 44.1 / 41.5 | Justin Herbert / Patrick Mahomes |  |
-| Sun 10/18 8:20 PM | DAL @ GB | DAL 24, GB 27 | GB 55% | DAL +125 / GB -125 | 25.9 – 27.6 | 14–38 / 16–40 | GB -4.2 / GB -1.5 | GB -1.5 (2.7) | 55.2 / 53.5 | Dak Prescott / Jordan Love |  |
-| Mon 10/19 8:15 PM | WAS @ SF | WAS 23, SF 30 | SF 72% | WAS +260 / SF -260 | 22.5 – 30.0 | 10–34 / 17–43 | SF -7.3 / SF -7.5 | no edge | 53.4 / 52.5 | Jayden Daniels / Brock Purdy |  |
+| Sun 10/18 1:00 PM | PIT @ TB | PIT 20, TB 17 | PIT 54% | PIT -120 / TB +120 | 19.6 – 18.2 | 9–31 / 7–30 | PK / PIT -1.5 | TB +1.5 (1.5) | 42.1 / 38.5 | Aaron Rodgers / Jalon Daniels | wind 14 mph |
+| Sun 10/18 1:00 PM | TEN @ IND | TEN 17, IND 24 | IND 71% | TEN +240 / IND -240 | 18.4 – 25.1 | 7–30 / 13–37 | IND -9.7 / IND -6.5 | IND -6.5 (3.2) | 44.7 / 43.5 | Cam Ward / Daniel Jones |  |
+| Sun 10/18 4:05 PM | ARI @ LA | ARI 20, LA 34 | LA 83% | ARI +485 / LA -485 | 19.6 – 31.9 | 9–31 / 20–45 | LA -8.5 / LA -12.5 | ARI +12.5 (4.0) | 48.9 / 51.5 | Jacoby Brissett / Matthew Stafford |  |
+| Sun 10/18 4:25 PM | BUF @ LV | BUF 30, LV 23 | BUF 67% | BUF -200 / LV +200 | 29.5 – 24.0 | 17–42 / 13–37 | BUF -5.9 / BUF -5.5 | no edge | 52.3 / 53.5 | Josh Allen / Kirk Cousins |  |
+| Sun 10/18 4:25 PM | LAC @ KC | LAC 17, KC 24 | KC 74% | LAC +280 / KC -280 | 16.7 – 24.4 | 6–27 / 13–37 | KC -10.6 / KC -7.5 | KC -7.5 (3.1) | 44.1 / 41.5 | Justin Herbert / Patrick Mahomes |  |
+| Sun 10/18 8:20 PM | DAL @ GB | DAL 27, GB 30 | GB 55% | DAL +120 / GB -120 | 25.9 – 27.6 | 14–38 / 16–40 | GB -4.2 / GB -1.5 | GB -1.5 (2.7) | 55.2 / 53.5 | Dak Prescott / Jordan Love |  |
+| Mon 10/19 8:15 PM | WAS @ SF | WAS 24, SF 31 | SF 72% | WAS +265 / SF -265 | 22.5 – 30.0 | 10–34 / 17–43 | SF -7.3 / SF -7.5 | no edge | 53.4 / 52.5 | Jayden Daniels / Brock Purdy |  |
 
 ## 2026 Week 7
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Model pick (edge) | Total: model / line | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Thu 10/22 8:15 PM | NE @ CHI | NE 24, CHI 27 | CHI 55% | NE +120 / CHI -120 | 23.5 – 25.0 | 13–35 / 13–37 | CHI -0.7 / CHI -1.5 | NE +1.5 (0.8) | 49.3 / 48.5 | Drake Maye / Caleb Williams |  |
-| Sun 10/25 9:30 AM | PIT @ NO | PIT 23, NO 20 | PIT 57% | PIT -135 / NO +135 | 23.5 – 21.0 | 13–35 / 10–33 | PIT -2.3 / PIT -2.5 | no edge | 45.1 / 44.5 | Aaron Rodgers / Tyler Shough |  |
-| Sun 10/25 1:00 PM | CIN @ BAL | CIN 24, BAL 27 | BAL 60% | CIN +150 / BAL -150 | 23.5 – 27.0 | 13–36 / 15–40 | BAL -2.7 / BAL -3.5 | CIN +3.5 (0.8) | 55.1 / 50.5 | Joe Burrow / Lamar Jackson |  |
-| Sun 10/25 1:00 PM | CLE @ TEN | CLE 20, TEN 17 | CLE 56% | CLE -130 / TEN +130 | 19.6 – 17.9 | 9–31 / 7–29 | CLE -4.1 / CLE -1.5 | CLE -1.5 (2.6) | 39.3 / 37.5 | Deshaun Watson / Cam Ward |  |
-| Sun 10/25 1:00 PM | IND @ MIN | IND 20, MIN 23 | MIN 68% | IND +210 / MIN -210 | 19.0 – 24.5 | 9–30 / 13–37 | MIN -6.2 / MIN -5.5 | MIN -5.5 (0.7) | 42.5 / 43.5 | Daniel Jones / Kyler Murray |  |
-| Sun 10/25 1:00 PM | MIA @ NYJ | MIA 17, NYJ 20 | NYJ 64% | MIA +180 / NYJ -180 | 17.0 – 21.5 | 7–28 / 10–33 | NYJ -4.3 / NYJ -4.5 | no edge | 43.0 / 38.5 | Malik Willis / Geno Smith |  |
-| Sun 10/25 1:00 PM | NYG @ HOU | NYG 17, HOU 23 | HOU 71% | NYG +250 / HOU -250 | 17.4 – 24.1 | 7–28 / 13–37 | HOU -3.4 / HOU -7.0 | NYG +7.0 (3.6) | 42.3 / 41.5 | Jameis Winston / C.J. Stroud |  |
-| Sun 10/25 1:00 PM | SF @ ATL | SF 27, ATL 24 | SF 63% | SF -175 / ATL +175 | 27.0 – 22.5 | 15–40 / 10–34 | SF -4.7 / SF -4.5 | no edge | 49.2 / 49.5 | Brock Purdy / Michael Penix Jr. |  |
-| Sun 10/25 1:00 PM | TB @ CAR | TB 20, CAR 23 | CAR 60% | TB +150 / CAR -150 | 20.7 – 23.8 | 10–32 / 13–36 | CAR -5.0 / CAR -3.0 | CAR -3.0 (2.0) | 44.1 / 44.5 | Jalon Daniels / Bryce Young |  |
-| Sun 10/25 4:05 PM | DEN @ ARI | DEN 27, ARI 20 | DEN 67% | DEN -205 / ARI +205 | 25.4 – 20.1 | 13–38 / 9–31 | DEN -3.8 / DEN -5.5 | ARI +5.5 (1.7) | 43.7 / 45.5 | Bo Nix / Jacoby Brissett |  |
-| Sun 10/25 4:25 PM | GB @ DET | GB 24, DET 27 | DET 60% | GB +150 / DET -150 | 24.7 – 27.8 | 13–37 / 16–41 | DET -4.6 / DET -3.0 | DET -3.0 (1.6) | 52.9 / 52.5 | Jordan Love / Jared Goff |  |
-| Sun 10/25 4:25 PM | LA @ LV | LA 27, LV 20 | LA 70% | LA -235 / LV +235 | 27.6 – 20.9 | 16–40 / 10–33 | LA -3.3 / LA -7.0 | LV +7.0 (3.7) | 47.6 / 48.5 | Matthew Stafford / Kirk Cousins |  |
-| Sun 10/25 8:20 PM | KC @ SEA | KC 20, SEA 23 | SEA 58% | KC +135 / SEA -135 | 21.1 – 23.4 | 10–33 / 13–35 | SEA -0.7 / SEA -2.5 | KC +2.5 (1.8) | 42.5 / 44.5 | Patrick Mahomes / Drew Lock |  |
-| Mon 10/26 8:15 PM | DAL @ PHI | DAL 24, PHI 27 | PHI 61% | DAL +155 / PHI -155 | 23.1 – 26.6 | 12–35 / 14–39 | PHI -3.5 / – | – | 49.7 / – | Dak Prescott / Jalen Hurts | no line yet |
+| Thu 10/22 8:15 PM | NE @ CHI | NE 24, CHI 27 | CHI 55% | NE +125 / CHI -125 | 23.5 – 25.0 | 13–36 / 13–37 | CHI -0.7 / CHI -1.5 | NE +1.5 (0.8) | 49.3 / 48.5 | Drake Maye / Caleb Williams |  |
+| Sun 10/25 9:30 AM | PIT @ NO | PIT 23, NO 20 | PIT 58% | PIT -140 / NO +140 | 23.5 – 21.0 | 13–35 / 10–33 | PIT -2.3 / PIT -2.5 | no edge | 45.1 / 44.5 | Aaron Rodgers / Tyler Shough |  |
+| Sun 10/25 1:00 PM | CIN @ BAL | CIN 24, BAL 27 | BAL 61% | CIN +155 / BAL -155 | 23.5 – 27.0 | 13–36 / 16–40 | BAL -2.7 / BAL -3.5 | CIN +3.5 (0.8) | 55.1 / 50.5 | Joe Burrow / Lamar Jackson |  |
+| Sun 10/25 1:00 PM | CLE @ TEN | CLE 20, TEN 17 | CLE 55% | CLE -120 / TEN +120 | 19.6 – 17.9 | 9–31 / 7–29 | CLE -4.1 / CLE -1.5 | CLE -1.5 (2.6) | 39.3 / 37.5 | Deshaun Watson / Cam Ward |  |
+| Sun 10/25 1:00 PM | IND @ MIN | IND 20, MIN 23 | MIN 67% | IND +200 / MIN -200 | 19.0 – 24.5 | 9–31 / 13–37 | MIN -6.2 / MIN -5.5 | MIN -5.5 (0.7) | 42.5 / 43.5 | Daniel Jones / Kyler Murray |  |
+| Sun 10/25 1:00 PM | MIA @ NYJ | MIA 17, NYJ 20 | NYJ 65% | MIA +185 / NYJ -185 | 17.0 – 21.5 | 7–28 / 10–34 | NYJ -4.3 / NYJ -4.5 | no edge | 43.0 / 38.5 | Malik Willis / Geno Smith |  |
+| Sun 10/25 1:00 PM | NYG @ HOU | NYG 17, HOU 24 | HOU 72% | NYG +260 / HOU -260 | 17.1 – 24.4 | 7–28 / 13–37 | HOU -3.4 / HOU -7.5 | NYG +7.5 (4.1) | 42.3 / 41.5 | Jameis Winston / C.J. Stroud |  |
+| Sun 10/25 1:00 PM | SF @ ATL | SF 27, ATL 24 | SF 64% | SF -175 / ATL +175 | 27.0 – 22.5 | 15–40 / 11–34 | SF -4.7 / SF -4.5 | no edge | 49.2 / 49.5 | Brock Purdy / Michael Penix Jr. |  |
+| Sun 10/25 1:00 PM | TB @ CAR | TB 20, CAR 23 | CAR 59% | TB +145 / CAR -145 | 20.7 – 23.8 | 10–33 / 13–36 | CAR -5.0 / CAR -3.0 | CAR -3.0 (2.0) | 44.1 / 44.5 | Jalon Daniels / Bryce Young |  |
+| Sun 10/25 4:05 PM | DEN @ ARI | DEN 23, ARI 20 | DEN 67% | DEN -205 / ARI +205 | 25.4 – 20.1 | 13–38 / 10–31 | DEN -3.8 / DEN -5.5 | ARI +5.5 (1.7) | 43.7 / 45.5 | Bo Nix / Jacoby Brissett |  |
+| Sun 10/25 4:25 PM | GB @ DET | GB 24, DET 27 | DET 59% | GB +145 / DET -145 | 24.7 – 27.8 | 13–37 / 16–41 | DET -4.6 / DET -3.0 | DET -3.0 (1.6) | 52.9 / 52.5 | Jordan Love / Jared Goff |  |
+| Sun 10/25 4:25 PM | LA @ LV | LA 27, LV 20 | LA 70% | LA -230 / LV +230 | 27.6 – 20.9 | 16–41 / 10–33 | LA -3.3 / LA -7.0 | LV +7.0 (3.7) | 47.6 / 48.5 | Matthew Stafford / Kirk Cousins |  |
+| Sun 10/25 8:20 PM | KC @ SEA | KC 20, SEA 23 | SEA 56% | KC +130 / SEA -130 | 21.1 – 23.4 | 10–33 / 12–35 | SEA -0.7 / SEA -2.5 | KC +2.5 (1.8) | 42.5 / 44.5 | Patrick Mahomes / Drew Lock |  |
+| Mon 10/26 8:15 PM | DAL @ PHI | DAL 24, PHI 27 | PHI 61% | DAL +160 / PHI -160 | 23.1 – 26.6 | 12–35 / 14–39 | PHI -3.5 / – | – | 49.7 / – | Dak Prescott / Jalen Hurts | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -64,7 +63,7 @@ MAE is mean absolute error in points (lower is better). Brier scores the win cha
 | Early-week line (first prediction with a line) | 0-0-0 | – |
 | Line at kickoff (last prediction; includes 80 backfilled games) | 38-27-5 | 58.5% |
 
-Line moved toward the model's early pick before kickoff: 0 of 0 games.
+Line moved toward the model's early pick before kickoff: 1 of 3 games (33%).
 
 Break-even at standard -110 odds is 52.4%. Lines moving toward the model's pick (closing line value) is the quickest sign that it knows something the market doesn't yet.
 
