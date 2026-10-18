@@ -29,6 +29,15 @@ ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/football/colleg
 CFBD_LINES = "https://api.collegefootballdata.com/lines"
 FBS_GROUP = "80"
 ODDS_COLUMNS = ["game_id", "spread_line", "total_line", "home_moneyline", "away_moneyline", "line_source"]
+NUMERIC = ["spread_line", "total_line", "home_moneyline", "away_moneyline"]
+
+
+def _frame(rows: list[dict]) -> pd.DataFrame:
+    """Odds rows with numeric columns typed as numbers even when there are none."""
+    out = pd.DataFrame(rows, columns=ODDS_COLUMNS)
+    out["game_id"] = out["game_id"].astype("int64")
+    out[NUMERIC] = out[NUMERIC].astype(float)
+    return out
 
 
 def _num(x) -> float:
@@ -86,7 +95,7 @@ def parse_espn(payload: dict) -> pd.DataFrame:
             "away_moneyline": _num((odds.get("awayTeamOdds") or {}).get("moneyLine")),
             "line_source": "ESPN" + (f" ({odds['provider']['name']})" if (odds.get("provider") or {}).get("name") else ""),
         })
-    return pd.DataFrame(rows, columns=ODDS_COLUMNS)
+    return _frame(rows)
 
 
 def parse_cfbd(payload: list) -> pd.DataFrame:
@@ -104,7 +113,7 @@ def parse_cfbd(payload: list) -> pd.DataFrame:
         rows.append({"game_id": int(game["id"]), "spread_line": median(spread), "total_line": median(total),
                      "home_moneyline": median(home_ml), "away_moneyline": median(away_ml),
                      "line_source": f"CFBD ({len(books)} books)"})
-    return pd.DataFrame(rows, columns=ODDS_COLUMNS)
+    return _frame(rows)
 
 
 def _espn_lines(games: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
@@ -116,7 +125,9 @@ def _espn_lines(games: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
             resp = session.get(ESPN_SCOREBOARD, params={"dates": day, "groups": FBS_GROUP, "limit": 300},
                                timeout=30)
             resp.raise_for_status()
-            frames.append(parse_espn(resp.json()))
+            day_lines = parse_espn(resp.json())
+            if len(day_lines):
+                frames.append(day_lines)
         except requests.ConnectionError:
             raise
         except (requests.RequestException, ValueError) as exc:
@@ -124,7 +135,7 @@ def _espn_lines(games: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
     if errors:
         log.warning("ESPN scoreboard failed for %d of %d days: %s", len(errors), len(days), "; ".join(errors[:3]))
     if not frames:
-        return pd.DataFrame(columns=ODDS_COLUMNS)
+        return _frame([])
     return pd.concat(frames, ignore_index=True).drop_duplicates("game_id")
 
 
@@ -135,7 +146,8 @@ def _cfbd_lines(games: pd.DataFrame, session: requests.Session, key: str) -> pd.
                            headers={"Authorization": f"Bearer {key}"}, timeout=30)
         resp.raise_for_status()
         frames.append(parse_cfbd(resp.json()))
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=ODDS_COLUMNS)
+    frames = [f for f in frames if len(f)]
+    return pd.concat(frames, ignore_index=True) if frames else _frame([])
 
 
 def live_lines(games: pd.DataFrame, session: requests.Session | None = None) -> pd.DataFrame:
@@ -155,6 +167,7 @@ def live_lines(games: pd.DataFrame, session: requests.Session | None = None) -> 
         lines = lines[lines["spread_line"].notna() | lines["total_line"].notna()]
         log.info("%s lines for %d of %d games", name, len(lines), len(games))
         found.append(lines)
+    found = [f for f in found if len(f)]
     if not found:
-        return pd.DataFrame(columns=ODDS_COLUMNS)
+        return _frame([])
     return pd.concat(found, ignore_index=True).drop_duplicates("game_id", keep="first").reset_index(drop=True)

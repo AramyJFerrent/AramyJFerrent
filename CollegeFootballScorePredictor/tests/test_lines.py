@@ -147,16 +147,21 @@ class ScoreboardSession:
                     raise requests.HTTPError("400 Client Error")
 
             def json(self):
+                if day == "20261025":
+                    return {"events": []}             # a day with no FBS games
                 return {"events": [e for e in ESPN_PAYLOAD["events"] if e["id"] == "401"]}
         return Resp()
 
 
 def test_espn_lines_are_fetched_day_by_day(monkeypatch):
     monkeypatch.delenv("CFBD_API_KEY", raising=False)
-    games = pd.DataFrame({"game_id": [401, 402], "season": [2026, 2026], "season_type": ["regular"] * 2,
+    games = pd.DataFrame({"game_id": [401, 402, 403], "season": [2026] * 3, "season_type": ["regular"] * 3,
                           "kickoff": [pd.Timestamp("2026-10-24 23:30", tz="UTC"),       # Saturday ET
-                                      pd.Timestamp("2026-10-24 01:00", tz="UTC")]})    # Friday night ET
+                                      pd.Timestamp("2026-10-24 01:00", tz="UTC"),       # Friday night ET
+                                      pd.Timestamp("2026-10-25 18:00", tz="UTC")]})     # Sunday
     session = ScoreboardSession()
     out = live_lines(games, session=session)
-    assert session.days == ["20261023", "20261024"]
+    assert session.days == ["20261023", "20261024", "20261025"]
     assert list(out["game_id"]) == [401] and out.iloc[0].spread_line == 10.5
+    # Empty days must not turn the numbers into objects (the pick table subtracts them).
+    assert out["spread_line"].dtype == float and out["total_line"].dtype == float

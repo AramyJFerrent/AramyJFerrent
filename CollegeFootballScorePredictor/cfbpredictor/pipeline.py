@@ -62,11 +62,16 @@ FIRST_COLUMNS = ["first_predicted_at", "first_spread_line", "first_model_margin"
 TIME_COLUMNS = ["kickoff", "predicted_at", "first_predicted_at"]
 
 
+TEXT_COLUMNS = ["away_team", "home_team", "away_division", "home_division", "line_source", "source"]
+
+
 def _utc(df: pd.DataFrame) -> pd.DataFrame:
-    """The log's timestamp columns as UTC datetimes (missing ones as NaT)."""
+    """The log with UTC timestamps (missing ones as NaT) and numeric columns as numbers."""
     df = df.copy()
     for col in TIME_COLUMNS:
         df[col] = pd.to_datetime(df[col], utc=True).astype("datetime64[ns, UTC]")
+    for col in df.columns.difference(TIME_COLUMNS + TEXT_COLUMNS + ["start_time_tbd", "neutral"]):
+        df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
 
 
