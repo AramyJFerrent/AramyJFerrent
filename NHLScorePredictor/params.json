@@ -1,0 +1,11 @@
+{
+  "ev_prior_minutes": 500.0,
+  "pp_prior_minutes": 250.0,
+  "goals_prior_games": 100.0,
+  "carryover": 0.8,
+  "half_life_days": 90.0,
+  "goalie_prior_shots": 3000.0,
+  "goalie_prior_value": -0.15,
+  "goalie_half_life_days": 300.0,
+  "fit_window_seasons": 4
+}
