@@ -1,0 +1,48 @@
+{
+  "seasons": [
+    2016,
+    2025
+  ],
+  "picks": {
+    "opening": {
+      "games": 6013,
+      "wins": 3014,
+      "losses": 2896,
+      "pushes": 103,
+      "cover": 0.5099830795262267,
+      "cover_low": 0.49723790600005685,
+      "cover_high": 0.5227282530523965,
+      "moved_toward": 0.5551272166538165,
+      "moved_games": 5188,
+      "span": "2016\u20132025"
+    },
+    "closing": {
+      "games": 6617,
+      "wins": 3227,
+      "losses": 3263,
+      "pushes": 127,
+      "cover": 0.4972265023112481,
+      "cover_low": 0.4850619243593014,
+      "cover_high": 0.5093910802631948,
+      "span": "2016\u20132025"
+    }
+  },
+  "fbs": {
+    "Final (model + market + sim)": {
+      "margin_mae": 12.287,
+      "total_mae": 12.852
+    },
+    "Model only": {
+      "margin_mae": 12.85,
+      "total_mae": 13.309
+    },
+    "Elo baseline": {
+      "margin_mae": 13.419,
+      "total_mae": 14.037
+    },
+    "Closing line": {
+      "margin_mae": 12.28,
+      "total_mae": 12.851
+    }
+  }
+}
