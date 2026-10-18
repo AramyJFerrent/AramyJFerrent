@@ -127,3 +127,36 @@ def test_returning_rebuilds_until_the_season_starts(monkeypatch, tmp_path):
     assert len(second) == 1 and second.iloc[0].ret_pass > first.iloc[0].ret_pass
     frozen = returning.update_returning(2027, started=True)        # games have been played: keep it
     assert len(calls) == 2 and frozen.iloc[0].ret_pass == second.iloc[0].ret_pass
+
+
+class ScoreboardSession:
+    """Answers each day's scoreboard request; one day fails."""
+
+    def __init__(self):
+        self.days = []
+
+    def get(self, url, params=None, headers=None, timeout=None):
+        import requests
+
+        self.days.append(params["dates"])
+        day = params["dates"]
+
+        class Resp:
+            def raise_for_status(self):
+                if day == "20261023":
+                    raise requests.HTTPError("400 Client Error")
+
+            def json(self):
+                return {"events": [e for e in ESPN_PAYLOAD["events"] if e["id"] == "401"]}
+        return Resp()
+
+
+def test_espn_lines_are_fetched_day_by_day(monkeypatch):
+    monkeypatch.delenv("CFBD_API_KEY", raising=False)
+    games = pd.DataFrame({"game_id": [401, 402], "season": [2026, 2026], "season_type": ["regular"] * 2,
+                          "kickoff": [pd.Timestamp("2026-10-24 23:30", tz="UTC"),       # Saturday ET
+                                      pd.Timestamp("2026-10-24 01:00", tz="UTC")]})    # Friday night ET
+    session = ScoreboardSession()
+    out = live_lines(games, session=session)
+    assert session.days == ["20261023", "20261024"]
+    assert list(out["game_id"]) == [401] and out.iloc[0].spread_line == 10.5

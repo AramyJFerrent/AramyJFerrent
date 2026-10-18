@@ -108,14 +108,24 @@ def parse_cfbd(payload: list) -> pd.DataFrame:
 
 
 def _espn_lines(games: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
-    days = games["kickoff"].dropna().dt.tz_convert("America/New_York")
-    if days.empty:
+    """One scoreboard request per game day (ESPN rejects date ranges for college)."""
+    days = sorted(set(games["kickoff"].dropna().dt.tz_convert("America/New_York").dt.strftime("%Y%m%d")))
+    frames, errors = [], []
+    for day in days:
+        try:
+            resp = session.get(ESPN_SCOREBOARD, params={"dates": day, "groups": FBS_GROUP, "limit": 300},
+                               timeout=30)
+            resp.raise_for_status()
+            frames.append(parse_espn(resp.json()))
+        except requests.ConnectionError:
+            raise
+        except (requests.RequestException, ValueError) as exc:
+            errors.append(f"{day}: {exc}")
+    if errors:
+        log.warning("ESPN scoreboard failed for %d of %d days: %s", len(errors), len(days), "; ".join(errors[:3]))
+    if not frames:
         return pd.DataFrame(columns=ODDS_COLUMNS)
-    start, end = days.min() - pd.Timedelta(days=1), days.max() + pd.Timedelta(days=1)
-    params = {"dates": f"{start:%Y%m%d}-{end:%Y%m%d}", "groups": FBS_GROUP, "limit": 1000}
-    resp = session.get(ESPN_SCOREBOARD, params=params, timeout=30)
-    resp.raise_for_status()
-    return parse_espn(resp.json())
+    return pd.concat(frames, ignore_index=True).drop_duplicates("game_id")
 
 
 def _cfbd_lines(games: pd.DataFrame, session: requests.Session, key: str) -> pd.DataFrame:
