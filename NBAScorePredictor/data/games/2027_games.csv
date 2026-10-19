@@ -1,0 +1,1201 @@
+game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods,neutral,venue,city,state
+401909088,2027,R,2026-10-20 19:00:00+00:00,DET,BOS,,,,False,Little Caesars Arena,Detroit,MI
+401909089,2027,R,2026-10-20 23:00:00+00:00,NYK,PHI,,,,False,Madison Square Garden,New York,NY
+401909090,2027,R,2026-10-21 01:30:00+00:00,SAS,OKC,,,,False,Frost Bank Center,San Antonio,TX
+401909834,2027,R,2026-10-21 23:00:00+00:00,ORL,ATL,,,,False,Kia Center,Orlando,FL
+401909835,2027,R,2026-10-21 23:00:00+00:00,WAS,MIL,,,,False,Capital One Arena,Washington,DC
+401909091,2027,R,2026-10-21 23:30:00+00:00,MIA,MIN,,,,False,Kaseya Center,Miami,FL
+401909836,2027,R,2026-10-21 23:30:00+00:00,BKN,CHA,,,,False,Barclays Center,Brooklyn,NY
+401909837,2027,R,2026-10-21 23:30:00+00:00,TOR,CHI,,,,False,Scotiabank Arena,Toronto,ON
+401909838,2027,R,2026-10-22 00:00:00+00:00,MEM,UTA,,,,False,FedExForum,Memphis,TN
+401909839,2027,R,2026-10-22 00:00:00+00:00,NOP,IND,,,,False,Smoothie King Center,New Orleans,LA
+401909840,2027,R,2026-10-22 00:30:00+00:00,HOU,DAL,,,,False,Toyota Center (Houston),Houston,TX
+401909092,2027,R,2026-10-22 02:00:00+00:00,LAL,GSW,,,,False,crypto.com Arena,Los Angeles,CA
+401909841,2027,R,2026-10-22 02:00:00+00:00,POR,PHX,,,,False,Moda Center,Portland,OR
+401909842,2027,R,2026-10-22 02:30:00+00:00,LAC,SAC,,,,False,Intuit Dome,Inglewood,CA
+401909093,2027,R,2026-10-22 23:00:00+00:00,PHI,CLE,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909094,2027,R,2026-10-23 01:30:00+00:00,OKC,DEN,,,,False,Paycom Center,Oklahoma City,OK
+401909848,2027,R,2026-10-23 20:00:00+00:00,MIL,CHI,,,,False,Fiserv Forum,Milwaukee,WI
+401909095,2027,R,2026-10-23 23:00:00+00:00,BOS,NYK,,,,False,TD Garden,Boston,MA
+401909843,2027,R,2026-10-23 23:00:00+00:00,CHA,ATL,,,,False,Spectrum Center,Charlotte,NC
+401909844,2027,R,2026-10-23 23:00:00+00:00,IND,DAL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909845,2027,R,2026-10-23 23:00:00+00:00,ORL,MIN,,,,False,Kia Center,Orlando,FL
+401909846,2027,R,2026-10-23 23:00:00+00:00,WAS,TOR,,,,False,Capital One Arena,Washington,DC
+401909847,2027,R,2026-10-24 00:00:00+00:00,MIA,DET,,,,False,Kaseya Center,Miami,FL
+401909096,2027,R,2026-10-24 01:30:00+00:00,SAS,HOU,,,,False,Moody Center,Austin,TX
+401909849,2027,R,2026-10-24 01:30:00+00:00,UTA,NOP,,,,False,Delta Center,Salt Lake City,UT
+401909850,2027,R,2026-10-24 02:00:00+00:00,GSW,MEM,,,,False,Chase Center,San Francisco,CA
+401909851,2027,R,2026-10-24 02:00:00+00:00,LAL,LAC,,,,False,crypto.com Arena,Los Angeles,CA
+401909852,2027,R,2026-10-24 02:00:00+00:00,SAC,POR,,,,False,Golden 1 Center,Sacramento,CA
+401909853,2027,R,2026-10-24 22:00:00+00:00,CHA,MIA,,,,False,Spectrum Center,Charlotte,NC
+401909854,2027,R,2026-10-24 23:30:00+00:00,CLE,BKN,,,,False,Rocket Arena,Cleveland,OH
+401909855,2027,R,2026-10-24 23:30:00+00:00,PHI,MIL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909857,2027,R,2026-10-25 00:00:00+00:00,CHI,WAS,,,,False,United Center,Chicago,IL
+401909858,2027,R,2026-10-25 00:00:00+00:00,DAL,SAS,,,,False,American Airlines Center,Dallas,TX
+401909856,2027,R,2026-10-25 00:30:00+00:00,ATL,HOU,,,,False,State Farm Arena,Atlanta,GA
+401909859,2027,R,2026-10-25 01:00:00+00:00,DEN,NOP,,,,False,Ball Arena,Denver,CO
+401909860,2027,R,2026-10-25 02:00:00+00:00,PHX,GSW,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909861,2027,R,2026-10-25 21:00:00+00:00,UTA,LAL,,,,False,Delta Center,Salt Lake City,UT
+401909862,2027,R,2026-10-25 22:00:00+00:00,BKN,IND,,,,False,Barclays Center,Brooklyn,NY
+401909863,2027,R,2026-10-25 23:00:00+00:00,NYK,ORL,,,,False,Madison Square Garden,New York,NY
+401909864,2027,R,2026-10-25 23:00:00+00:00,MIN,TOR,,,,False,Target Center,Minneapolis,MN
+401909865,2027,R,2026-10-25 23:00:00+00:00,OKC,LAC,,,,False,Paycom Center,Oklahoma City,OK
+401909866,2027,R,2026-10-25 23:30:00+00:00,PHI,DET,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909867,2027,R,2026-10-26 01:00:00+00:00,SAC,MEM,,,,False,Golden 1 Center,Sacramento,CA
+401909868,2027,R,2026-10-26 23:00:00+00:00,CHA,WAS,,,,False,Spectrum Center,Charlotte,NC
+401909869,2027,R,2026-10-26 23:00:00+00:00,CLE,MIN,,,,False,Rocket Arena,Cleveland,OH
+401909870,2027,R,2026-10-26 23:30:00+00:00,BOS,CHI,,,,False,TD Garden,Boston,MA
+401909871,2027,R,2026-10-26 23:30:00+00:00,MIA,DAL,,,,False,Kaseya Center,Miami,FL
+401909872,2027,R,2026-10-27 00:00:00+00:00,MIL,IND,,,,False,Fiserv Forum,Milwaukee,WI
+401909873,2027,R,2026-10-27 00:00:00+00:00,OKC,PHX,,,,False,Paycom Center,Oklahoma City,OK
+401909874,2027,R,2026-10-27 00:30:00+00:00,HOU,ATL,,,,False,Toyota Center (Houston),Houston,TX
+401909875,2027,R,2026-10-27 01:00:00+00:00,UTA,MEM,,,,False,Delta Center,Salt Lake City,UT
+401909876,2027,R,2026-10-27 02:00:00+00:00,DEN,GSW,,,,False,Ball Arena,Denver,CO
+401909877,2027,R,2026-10-27 23:30:00+00:00,BOS,BKN,,,,False,TD Garden,Boston,MA
+401909878,2027,R,2026-10-28 00:00:00+00:00,NYK,DET,,,,False,Madison Square Garden,New York,NY
+401909879,2027,R,2026-10-28 00:00:00+00:00,SAS,SAC,,,,False,Frost Bank Center,San Antonio,TX
+401909880,2027,R,2026-10-28 03:00:00+00:00,LAL,POR,,,,False,crypto.com Arena,Los Angeles,CA
+401909881,2027,R,2026-10-28 23:00:00+00:00,ATL,MIA,,,,False,State Farm Arena,Atlanta,GA
+401909882,2027,R,2026-10-28 23:00:00+00:00,CLE,WAS,,,,False,Rocket Arena,Cleveland,OH
+401909883,2027,R,2026-10-28 23:00:00+00:00,DET,CHA,,,,False,Little Caesars Arena,Detroit,MI
+401909884,2027,R,2026-10-28 23:00:00+00:00,IND,PHI,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909885,2027,R,2026-10-28 23:30:00+00:00,TOR,ORL,,,,False,Scotiabank Arena,Toronto,ON
+401909886,2027,R,2026-10-29 00:00:00+00:00,CHI,NYK,,,,False,United Center,Chicago,IL
+401909887,2027,R,2026-10-29 00:00:00+00:00,MIL,HOU,,,,False,Fiserv Forum,Milwaukee,WI
+401909888,2027,R,2026-10-29 00:00:00+00:00,MIN,GSW,,,,False,Target Center,Minneapolis,MN
+401909889,2027,R,2026-10-29 00:00:00+00:00,NOP,DEN,,,,False,Smoothie King Center,New Orleans,LA
+401909890,2027,R,2026-10-29 01:00:00+00:00,UTA,SAS,,,,False,Delta Center,Salt Lake City,UT
+401909891,2027,R,2026-10-29 01:30:00+00:00,DAL,OKC,,,,False,American Airlines Center,Dallas,TX
+401909892,2027,R,2026-10-29 02:30:00+00:00,LAC,LAL,,,,False,Intuit Dome,Inglewood,CA
+401909893,2027,R,2026-10-29 23:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
+401909894,2027,R,2026-10-30 00:00:00+00:00,NOP,SAC,,,,False,Smoothie King Center,New Orleans,LA
+401909895,2027,R,2026-10-30 02:00:00+00:00,POR,MEM,,,,False,Moda Center,Portland,OR
+401909277,2027,R,2026-10-30 23:00:00+00:00,WAS,CHA,,,,False,Capital One Arena,Washington,DC
+401909278,2027,R,2026-10-30 23:30:00+00:00,BOS,CHI,,,,False,TD Garden,Boston,MA
+401909279,2027,R,2026-10-30 23:30:00+00:00,BKN,DET,,,,False,Barclays Center,Brooklyn,NY
+401909280,2027,R,2026-10-30 23:30:00+00:00,PHI,NYK,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909281,2027,R,2026-10-30 23:30:00+00:00,TOR,ORL,,,,False,Scotiabank Arena,Toronto,ON
+401909282,2027,R,2026-10-31 00:00:00+00:00,MIA,IND,,,,False,Kaseya Center,Miami,FL
+401909283,2027,R,2026-10-31 00:00:00+00:00,DAL,HOU,,,,False,American Airlines Center,Dallas,TX
+401909284,2027,R,2026-10-31 00:00:00+00:00,MIN,LAC,,,,False,Target Center,Minneapolis,MN
+401909285,2027,R,2026-10-31 02:00:00+00:00,GSW,LAL,,,,False,Chase Center,San Francisco,CA
+401909286,2027,R,2026-10-31 02:00:00+00:00,PHX,DEN,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909896,2027,R,2026-10-31 19:00:00+00:00,UTA,POR,,,,False,Delta Center,Salt Lake City,UT
+401909897,2027,R,2026-10-31 22:00:00+00:00,CHA,PHI,,,,False,Spectrum Center,Charlotte,NC
+401909898,2027,R,2026-10-31 23:00:00+00:00,NOP,ATL,,,,False,Smoothie King Center,New Orleans,LA
+401909899,2027,R,2026-11-01 00:00:00+00:00,MEM,SAC,,,,False,FedExForum,Memphis,TN
+401909900,2027,R,2026-11-01 00:00:00+00:00,MIL,CLE,,,,False,Fiserv Forum,Milwaukee,WI
+401909901,2027,R,2026-11-01 00:00:00+00:00,SAS,MIN,,,,False,Frost Bank Center,San Antonio,TX
+401909902,2027,R,2026-11-01 00:30:00+00:00,HOU,OKC,,,,False,Toyota Center (Houston),Houston,TX
+401909903,2027,R,2026-11-01 20:30:00+00:00,ORL,BOS,,,,False,Kia Center,Orlando,FL
+401909904,2027,R,2026-11-01 22:00:00+00:00,IND,BKN,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909905,2027,R,2026-11-02 01:30:00+00:00,GSW,LAC,,,,False,Chase Center,San Francisco,CA
+401909906,2027,R,2026-11-02 02:00:00+00:00,LAL,TOR,,,,False,crypto.com Arena,Los Angeles,CA
+401909907,2027,R,2026-11-03 00:00:00+00:00,CLE,OKC,,,,False,Rocket Arena,Cleveland,OH
+401909908,2027,R,2026-11-03 00:30:00+00:00,CHA,DET,,,,False,Spectrum Center,Charlotte,NC
+401909909,2027,R,2026-11-03 00:30:00+00:00,IND,ATL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909910,2027,R,2026-11-03 00:30:00+00:00,NYK,BKN,,,,False,Madison Square Garden,New York,NY
+401909911,2027,R,2026-11-03 00:30:00+00:00,ORL,WAS,,,,False,Kia Center,Orlando,FL
+401909912,2027,R,2026-11-03 00:30:00+00:00,PHI,CHI,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909913,2027,R,2026-11-03 01:00:00+00:00,DAL,SAC,,,,False,American Airlines Center,Dallas,TX
+401909914,2027,R,2026-11-03 01:00:00+00:00,MEM,NOP,,,,False,FedExForum,Memphis,TN
+401909915,2027,R,2026-11-03 01:00:00+00:00,MIN,MIL,,,,False,Target Center,Minneapolis,MN
+401909916,2027,R,2026-11-03 01:30:00+00:00,HOU,BOS,,,,False,Toyota Center (Houston),Houston,TX
+401909917,2027,R,2026-11-03 01:30:00+00:00,SAS,UTA,,,,False,Frost Bank Center,San Antonio,TX
+401909918,2027,R,2026-11-03 02:00:00+00:00,DEN,POR,,,,False,Ball Arena,Denver,CO
+401909919,2027,R,2026-11-03 03:00:00+00:00,GSW,PHX,,,,False,Chase Center,San Francisco,CA
+401909920,2027,R,2026-11-03 03:00:00+00:00,LAC,TOR,,,,False,Intuit Dome,Inglewood,CA
+401909921,2027,R,2026-11-03 03:00:00+00:00,LAL,MIA,,,,False,crypto.com Arena,Los Angeles,CA
+401909922,2027,R,2026-11-05 00:00:00+00:00,DET,PHI,,,,False,Little Caesars Arena,Detroit,MI
+401909923,2027,R,2026-11-05 00:00:00+00:00,WAS,ATL,,,,False,Capital One Arena,Washington,DC
+401909924,2027,R,2026-11-05 00:30:00+00:00,BOS,MIL,,,,False,TD Garden,Boston,MA
+401909925,2027,R,2026-11-05 00:30:00+00:00,BKN,CHA,,,,False,Barclays Center,Brooklyn,NY
+401909926,2027,R,2026-11-05 00:30:00+00:00,NYK,CHI,,,,False,Madison Square Garden,New York,NY
+401909927,2027,R,2026-11-05 01:00:00+00:00,MEM,IND,,,,False,FedExForum,Memphis,TN
+401909928,2027,R,2026-11-05 01:00:00+00:00,NOP,UTA,,,,False,Smoothie King Center,New Orleans,LA
+401909929,2027,R,2026-11-05 01:00:00+00:00,OKC,CLE,,,,False,Paycom Center,Oklahoma City,OK
+401909930,2027,R,2026-11-05 01:30:00+00:00,HOU,MIN,,,,False,Toyota Center (Houston),Houston,TX
+401909931,2027,R,2026-11-05 02:00:00+00:00,DEN,TOR,,,,False,Ball Arena,Denver,CO
+401909932,2027,R,2026-11-05 02:00:00+00:00,PHX,POR,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909933,2027,R,2026-11-05 02:30:00+00:00,SAS,DAL,,,,False,Frost Bank Center,San Antonio,TX
+401909934,2027,R,2026-11-05 03:00:00+00:00,SAC,LAL,,,,False,Golden 1 Center,Sacramento,CA
+401909935,2027,R,2026-11-05 03:30:00+00:00,LAC,MIA,,,,False,Intuit Dome,Inglewood,CA
+401909936,2027,R,2026-11-06 02:00:00+00:00,PHX,ORL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909937,2027,R,2026-11-06 03:00:00+00:00,GSW,MIA,,,,False,Chase Center,San Francisco,CA
+401909287,2027,R,2026-11-07 00:00:00+00:00,ATL,WAS,,,,False,State Farm Arena,Atlanta,GA
+401909288,2027,R,2026-11-07 00:00:00+00:00,CHA,BOS,,,,False,Spectrum Center,Charlotte,NC
+401909289,2027,R,2026-11-07 00:30:00+00:00,CLE,PHI,,,,False,Rocket Arena,Cleveland,OH
+401909290,2027,R,2026-11-07 01:00:00+00:00,DAL,UTA,,,,False,American Airlines Center,Dallas,TX
+401909291,2027,R,2026-11-07 01:00:00+00:00,MEM,OKC,,,,False,FedExForum,Memphis,TN
+401909292,2027,R,2026-11-07 01:00:00+00:00,MIL,TOR,,,,False,Fiserv Forum,Milwaukee,WI
+401909293,2027,R,2026-11-07 01:00:00+00:00,NOP,MIN,,,,False,Smoothie King Center,New Orleans,LA
+401909294,2027,R,2026-11-07 03:00:00+00:00,LAL,POR,,,,False,crypto.com Arena,Los Angeles,CA
+401909295,2027,R,2026-11-07 03:00:00+00:00,SAC,SAS,,,,False,Golden 1 Center,Sacramento,CA
+401909938,2027,R,2026-11-07 22:00:00+00:00,IND,DEN,,,,True,Arena CDMX,Mexico City,
+401909939,2027,R,2026-11-08 00:30:00+00:00,ATL,BKN,,,,False,State Farm Arena,Atlanta,GA
+401909940,2027,R,2026-11-08 01:00:00+00:00,CLE,NYK,,,,False,Rocket Arena,Cleveland,OH
+401909941,2027,R,2026-11-08 01:00:00+00:00,OKC,WAS,,,,False,Paycom Center,Oklahoma City,OK
+401909942,2027,R,2026-11-08 01:30:00+00:00,GSW,ORL,,,,False,Chase Center,San Francisco,CA
+401909943,2027,R,2026-11-08 02:00:00+00:00,PHX,HOU,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909944,2027,R,2026-11-08 03:00:00+00:00,POR,SAS,,,,False,Moda Center,Portland,OR
+401909945,2027,R,2026-11-08 20:30:00+00:00,CHI,PHI,,,,False,United Center,Chicago,IL
+401909946,2027,R,2026-11-08 23:00:00+00:00,DET,LAL,,,,False,Little Caesars Arena,Detroit,MI
+401909947,2027,R,2026-11-09 00:00:00+00:00,MIN,UTA,,,,False,Target Center,Minneapolis,MN
+401909948,2027,R,2026-11-09 00:30:00+00:00,DAL,BKN,,,,False,American Airlines Center,Dallas,TX
+401909949,2027,R,2026-11-09 01:00:00+00:00,MIL,BOS,,,,False,Fiserv Forum,Milwaukee,WI
+401909950,2027,R,2026-11-09 02:00:00+00:00,LAC,NOP,,,,False,Intuit Dome,Inglewood,CA
+401909951,2027,R,2026-11-09 02:00:00+00:00,SAC,MIA,,,,False,Golden 1 Center,Sacramento,CA
+401909952,2027,R,2026-11-10 00:00:00+00:00,ATL,LAL,,,,False,State Farm Arena,Atlanta,GA
+401909953,2027,R,2026-11-10 00:00:00+00:00,CHA,CLE,,,,False,Spectrum Center,Charlotte,NC
+401909954,2027,R,2026-11-10 00:00:00+00:00,DET,WAS,,,,False,Little Caesars Arena,Detroit,MI
+401909955,2027,R,2026-11-10 00:30:00+00:00,TOR,MEM,,,,False,Scotiabank Arena,Toronto,ON
+401909956,2027,R,2026-11-10 01:00:00+00:00,DAL,IND,,,,False,American Airlines Center,Dallas,TX
+401909957,2027,R,2026-11-10 01:30:00+00:00,HOU,DEN,,,,False,Toyota Center (Houston),Houston,TX
+401909958,2027,R,2026-11-10 02:00:00+00:00,PHX,SAS,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909959,2027,R,2026-11-10 03:00:00+00:00,GSW,NOP,,,,False,Chase Center,San Francisco,CA
+401909960,2027,R,2026-11-11 00:30:00+00:00,NYK,MIL,,,,False,Madison Square Garden,New York,NY
+401909961,2027,R,2026-11-11 01:00:00+00:00,PHI,BOS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909962,2027,R,2026-11-11 02:00:00+00:00,PHX,LAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909963,2027,R,2026-11-11 02:00:00+00:00,UTA,MIA,,,,False,Delta Center,Salt Lake City,UT
+401909964,2027,R,2026-11-11 03:00:00+00:00,SAC,ORL,,,,False,Golden 1 Center,Sacramento,CA
+401909965,2027,R,2026-11-11 04:00:00+00:00,POR,OKC,,,,False,Moda Center,Portland,OR
+401909966,2027,R,2026-11-12 00:00:00+00:00,IND,WAS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909967,2027,R,2026-11-12 00:00:00+00:00,NYK,CLE,,,,False,Madison Square Garden,New York,NY
+401909968,2027,R,2026-11-12 00:00:00+00:00,TOR,BOS,,,,False,Scotiabank Arena,Toronto,ON
+401909969,2027,R,2026-11-12 01:00:00+00:00,CHI,SAS,,,,False,United Center,Chicago,IL
+401909970,2027,R,2026-11-12 01:00:00+00:00,MEM,DEN,,,,False,FedExForum,Memphis,TN
+401909971,2027,R,2026-11-12 01:00:00+00:00,MIL,LAL,,,,False,Fiserv Forum,Milwaukee,WI
+401909972,2027,R,2026-11-12 01:00:00+00:00,NOP,BKN,,,,False,Smoothie King Center,New Orleans,LA
+401909973,2027,R,2026-11-12 02:00:00+00:00,UTA,ORL,,,,False,Delta Center,Salt Lake City,UT
+401909974,2027,R,2026-11-12 02:30:00+00:00,HOU,GSW,,,,False,Toyota Center (Houston),Houston,TX
+401909975,2027,R,2026-11-12 03:00:00+00:00,POR,OKC,,,,False,Moda Center,Portland,OR
+401909976,2027,R,2026-11-13 00:00:00+00:00,PHI,TOR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909977,2027,R,2026-11-13 00:00:00+00:00,WAS,DET,,,,False,Capital One Arena,Washington,DC
+401909978,2027,R,2026-11-13 01:00:00+00:00,MIN,DAL,,,,False,Target Center,Minneapolis,MN
+401909979,2027,R,2026-11-13 02:00:00+00:00,PHX,CHA,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909296,2027,R,2026-11-14 00:00:00+00:00,IND,NYK,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909297,2027,R,2026-11-14 00:00:00+00:00,ORL,MIL,,,,False,Kia Center,Orlando,FL
+401909298,2027,R,2026-11-14 01:00:00+00:00,MIA,CLE,,,,False,Kaseya Center,Miami,FL
+401909299,2027,R,2026-11-14 01:00:00+00:00,CHI,ATL,,,,False,United Center,Chicago,IL
+401909300,2027,R,2026-11-14 01:00:00+00:00,NOP,MEM,,,,False,Smoothie King Center,New Orleans,LA
+401909301,2027,R,2026-11-14 01:30:00+00:00,HOU,UTA,,,,False,Toyota Center (Houston),Houston,TX
+401909302,2027,R,2026-11-14 02:30:00+00:00,SAS,GSW,,,,False,Frost Bank Center,San Antonio,TX
+401909303,2027,R,2026-11-14 03:00:00+00:00,SAC,POR,,,,False,Golden 1 Center,Sacramento,CA
+401909304,2027,R,2026-11-14 03:30:00+00:00,LAC,OKC,,,,False,Intuit Dome,Inglewood,CA
+401909980,2027,R,2026-11-15 00:00:00+00:00,NOP,DEN,,,,False,Smoothie King Center,New Orleans,LA
+401909981,2027,R,2026-11-15 00:30:00+00:00,CLE,DAL,,,,False,Rocket Arena,Cleveland,OH
+401909982,2027,R,2026-11-15 01:00:00+00:00,MIA,DET,,,,False,Kaseya Center,Miami,FL
+401909983,2027,R,2026-11-15 01:00:00+00:00,MEM,BKN,,,,False,FedExForum,Memphis,TN
+401909984,2027,R,2026-11-15 01:00:00+00:00,MIN,CHI,,,,False,Target Center,Minneapolis,MN
+401909985,2027,R,2026-11-15 18:00:00+00:00,PHI,IND,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909986,2027,R,2026-11-15 21:00:00+00:00,PHX,LAL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909987,2027,R,2026-11-15 21:30:00+00:00,LAC,CHA,,,,False,Intuit Dome,Inglewood,CA
+401909988,2027,R,2026-11-15 22:00:00+00:00,UTA,SAS,,,,False,Delta Center,Salt Lake City,UT
+401909989,2027,R,2026-11-15 23:00:00+00:00,BOS,DAL,,,,False,TD Garden,Boston,MA
+401909990,2027,R,2026-11-15 23:00:00+00:00,TOR,NYK,,,,False,Scotiabank Arena,Toronto,ON
+401909991,2027,R,2026-11-16 00:00:00+00:00,WAS,HOU,,,,False,Capital One Arena,Washington,DC
+401909992,2027,R,2026-11-16 01:00:00+00:00,MIL,ATL,,,,False,Fiserv Forum,Milwaukee,WI
+401909993,2027,R,2026-11-16 02:00:00+00:00,SAC,OKC,,,,False,Golden 1 Center,Sacramento,CA
+401909994,2027,R,2026-11-17 00:00:00+00:00,BOS,ORL,,,,False,TD Garden,Boston,MA
+401909995,2027,R,2026-11-17 00:00:00+00:00,CLE,CHI,,,,False,Rocket Arena,Cleveland,OH
+401909996,2027,R,2026-11-17 00:00:00+00:00,WAS,MEM,,,,False,Capital One Arena,Washington,DC
+401909997,2027,R,2026-11-17 00:30:00+00:00,BKN,PHI,,,,False,Barclays Center,Brooklyn,NY
+401909998,2027,R,2026-11-17 00:30:00+00:00,MIA,HOU,,,,False,Kaseya Center,Miami,FL
+401909999,2027,R,2026-11-17 01:00:00+00:00,MIN,POR,,,,False,Target Center,Minneapolis,MN
+401910000,2027,R,2026-11-17 01:00:00+00:00,NOP,GSW,,,,False,Smoothie King Center,New Orleans,LA
+401910001,2027,R,2026-11-17 02:00:00+00:00,DEN,PHX,,,,False,Ball Arena,Denver,CO
+401910002,2027,R,2026-11-18 00:30:00+00:00,TOR,NYK,,,,False,Scotiabank Arena,Toronto,ON
+401910003,2027,R,2026-11-18 01:00:00+00:00,MIN,POR,,,,False,Target Center,Minneapolis,MN
+401910004,2027,R,2026-11-18 01:00:00+00:00,SAS,DET,,,,False,Frost Bank Center,San Antonio,TX
+401910005,2027,R,2026-11-18 03:00:00+00:00,LAL,CHA,,,,False,crypto.com Arena,Los Angeles,CA
+401910006,2027,R,2026-11-18 04:00:00+00:00,LAC,UTA,,,,False,Intuit Dome,Inglewood,CA
+401910007,2027,R,2026-11-19 00:00:00+00:00,CLE,MEM,,,,False,Rocket Arena,Cleveland,OH
+401910008,2027,R,2026-11-19 00:00:00+00:00,IND,HOU,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910009,2027,R,2026-11-19 00:00:00+00:00,MIA,MIL,,,,False,Kaseya Center,Miami,FL
+401910010,2027,R,2026-11-19 00:00:00+00:00,ORL,PHI,,,,False,Kia Center,Orlando,FL
+401910011,2027,R,2026-11-19 00:30:00+00:00,BKN,CHI,,,,False,Barclays Center,Brooklyn,NY
+401910012,2027,R,2026-11-19 00:30:00+00:00,TOR,WAS,,,,False,Scotiabank Arena,Toronto,ON
+401910013,2027,R,2026-11-19 01:00:00+00:00,NOP,DET,,,,False,Smoothie King Center,New Orleans,LA
+401910014,2027,R,2026-11-19 01:00:00+00:00,OKC,ATL,,,,False,Paycom Center,Oklahoma City,OK
+401910015,2027,R,2026-11-19 02:00:00+00:00,DEN,BOS,,,,False,Ball Arena,Denver,CO
+401910016,2027,R,2026-11-19 02:30:00+00:00,DAL,GSW,,,,False,American Airlines Center,Dallas,TX
+401910017,2027,R,2026-11-19 03:00:00+00:00,LAL,UTA,,,,False,crypto.com Arena,Los Angeles,CA
+401910018,2027,R,2026-11-19 03:00:00+00:00,SAC,PHX,,,,False,Golden 1 Center,Sacramento,CA
+401910019,2027,R,2026-11-20 01:00:00+00:00,MEM,GSW,,,,False,FedExForum,Memphis,TN
+401910020,2027,R,2026-11-20 01:00:00+00:00,MIL,POR,,,,False,Fiserv Forum,Milwaukee,WI
+401910021,2027,R,2026-11-20 01:00:00+00:00,MIN,NYK,,,,False,Target Center,Minneapolis,MN
+401910022,2027,R,2026-11-20 01:00:00+00:00,SAS,LAC,,,,False,Frost Bank Center,San Antonio,TX
+401909305,2027,R,2026-11-21 00:00:00+00:00,ATL,CHA,,,,False,State Farm Arena,Atlanta,GA
+401909306,2027,R,2026-11-21 00:30:00+00:00,BKN,ORL,,,,False,Barclays Center,Brooklyn,NY
+401909307,2027,R,2026-11-21 00:30:00+00:00,CLE,IND,,,,False,Rocket Arena,Cleveland,OH
+401909308,2027,R,2026-11-21 00:30:00+00:00,DET,TOR,,,,False,Little Caesars Arena,Detroit,MI
+401909309,2027,R,2026-11-21 01:00:00+00:00,CHI,WAS,,,,False,United Center,Chicago,IL
+401909310,2027,R,2026-11-21 01:00:00+00:00,OKC,NOP,,,,False,Paycom Center,Oklahoma City,OK
+401909311,2027,R,2026-11-21 02:30:00+00:00,UTA,PHX,,,,False,Delta Center,Salt Lake City,UT
+401909312,2027,R,2026-11-21 03:00:00+00:00,DEN,HOU,,,,False,Ball Arena,Denver,CO
+401909313,2027,R,2026-11-21 03:00:00+00:00,LAL,SAC,,,,False,crypto.com Arena,Los Angeles,CA
+401910023,2027,R,2026-11-21 18:00:00+00:00,PHI,MIL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910024,2027,R,2026-11-22 00:30:00+00:00,NYK,POR,,,,False,Madison Square Garden,New York,NY
+401910025,2027,R,2026-11-22 01:00:00+00:00,DAL,LAC,,,,False,American Airlines Center,Dallas,TX
+401910026,2027,R,2026-11-22 01:00:00+00:00,MIN,MEM,,,,False,Target Center,Minneapolis,MN
+401910027,2027,R,2026-11-22 01:00:00+00:00,SAS,NOP,,,,False,Frost Bank Center,San Antonio,TX
+401910028,2027,R,2026-11-22 03:00:00+00:00,SAC,BOS,,,,False,Golden 1 Center,Sacramento,CA
+401910029,2027,R,2026-11-22 20:30:00+00:00,ATL,DET,,,,False,State Farm Arena,Atlanta,GA
+401910030,2027,R,2026-11-22 23:00:00+00:00,MIA,OKC,,,,False,Kaseya Center,Miami,FL
+401910031,2027,R,2026-11-23 00:00:00+00:00,WAS,ORL,,,,False,Capital One Arena,Washington,DC
+401910032,2027,R,2026-11-23 00:00:00+00:00,CHI,DEN,,,,False,United Center,Chicago,IL
+401910033,2027,R,2026-11-23 00:00:00+00:00,UTA,DAL,,,,False,Delta Center,Salt Lake City,UT
+401910034,2027,R,2026-11-23 01:00:00+00:00,NYK,IND,,,,False,Madison Square Garden,New York,NY
+401910035,2027,R,2026-11-23 01:30:00+00:00,GSW,BOS,,,,False,Chase Center,San Francisco,CA
+401910036,2027,R,2026-11-24 00:00:00+00:00,CHA,MEM,,,,False,Spectrum Center,Charlotte,NC
+401910037,2027,R,2026-11-24 00:00:00+00:00,PHI,POR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910038,2027,R,2026-11-24 00:30:00+00:00,IND,OKC,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910039,2027,R,2026-11-24 00:30:00+00:00,TOR,MIL,,,,False,Scotiabank Arena,Toronto,ON
+401910040,2027,R,2026-11-24 00:30:00+00:00,MIN,BKN,,,,False,Target Center,Minneapolis,MN
+401910041,2027,R,2026-11-24 01:00:00+00:00,CHI,CLE,,,,False,United Center,Chicago,IL
+401910042,2027,R,2026-11-24 01:00:00+00:00,NOP,PHX,,,,False,Smoothie King Center,New Orleans,LA
+401910043,2027,R,2026-11-24 01:30:00+00:00,HOU,LAC,,,,False,Toyota Center (Houston),Houston,TX
+401910044,2027,R,2026-11-24 03:00:00+00:00,LAL,UTA,,,,False,crypto.com Arena,Los Angeles,CA
+401910045,2027,R,2026-11-24 03:00:00+00:00,SAC,SAS,,,,False,Golden 1 Center,Sacramento,CA
+401909314,2027,R,2026-11-25 00:00:00+00:00,ORL,DET,,,,False,Kia Center,Orlando,FL
+401909315,2027,R,2026-11-25 01:00:00+00:00,WAS,BOS,,,,False,Capital One Arena,Washington,DC
+401909316,2027,R,2026-11-25 03:00:00+00:00,DEN,DAL,,,,False,Ball Arena,Denver,CO
+401909317,2027,R,2026-11-25 22:00:00+00:00,PHI,MIA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401909318,2027,R,2026-11-26 00:00:00+00:00,CHA,CHI,,,,False,Spectrum Center,Charlotte,NC
+401909319,2027,R,2026-11-26 00:30:00+00:00,NYK,CLE,,,,False,Madison Square Garden,New York,NY
+401909320,2027,R,2026-11-26 00:30:00+00:00,OKC,MIN,,,,False,Paycom Center,Oklahoma City,OK
+401909321,2027,R,2026-11-26 01:00:00+00:00,MEM,LAC,,,,False,FedExForum,Memphis,TN
+401909322,2027,R,2026-11-26 01:00:00+00:00,MIL,BKN,,,,False,Fiserv Forum,Milwaukee,WI
+401909323,2027,R,2026-11-26 01:30:00+00:00,HOU,PHX,,,,False,Toyota Center (Houston),Houston,TX
+401909324,2027,R,2026-11-26 03:00:00+00:00,GSW,SAC,,,,False,Chase Center,San Francisco,CA
+401909325,2027,R,2026-11-26 03:00:00+00:00,POR,SAS,,,,False,Moda Center,Portland,OR
+401909326,2027,R,2026-11-28 00:00:00+00:00,NYK,MIA,,,,False,Madison Square Garden,New York,NY
+401909327,2027,R,2026-11-28 00:30:00+00:00,DET,MIL,,,,False,Little Caesars Arena,Detroit,MI
+401909328,2027,R,2026-11-28 00:30:00+00:00,IND,PHI,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909329,2027,R,2026-11-28 00:30:00+00:00,TOR,BKN,,,,False,Scotiabank Arena,Toronto,ON
+401909330,2027,R,2026-11-28 01:00:00+00:00,BOS,ATL,,,,False,TD Garden,Boston,MA
+401909331,2027,R,2026-11-28 01:30:00+00:00,MIN,MEM,,,,False,Target Center,Minneapolis,MN
+401909332,2027,R,2026-11-28 02:00:00+00:00,PHX,DAL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909333,2027,R,2026-11-28 02:30:00+00:00,SAS,LAL,,,,False,Frost Bank Center,San Antonio,TX
+401909334,2027,R,2026-11-28 02:30:00+00:00,UTA,DEN,,,,False,Delta Center,Salt Lake City,UT
+401909335,2027,R,2026-11-28 02:30:00+00:00,LAC,NOP,,,,False,Intuit Dome,Inglewood,CA
+401909336,2027,R,2026-11-28 02:30:00+00:00,POR,GSW,,,,False,Moda Center,Portland,OR
+401910046,2027,R,2026-11-28 22:00:00+00:00,WAS,ORL,,,,False,Capital One Arena,Washington,DC
+401910047,2027,R,2026-11-28 23:00:00+00:00,CHA,BKN,,,,False,Spectrum Center,Charlotte,NC
+401910048,2027,R,2026-11-29 01:00:00+00:00,CHI,IND,,,,False,United Center,Chicago,IL
+401910049,2027,R,2026-11-29 01:00:00+00:00,MIL,OKC,,,,False,Fiserv Forum,Milwaukee,WI
+401910050,2027,R,2026-11-29 01:30:00+00:00,HOU,PHI,,,,False,Toyota Center (Houston),Houston,TX
+401910051,2027,R,2026-11-29 21:00:00+00:00,MEM,LAL,,,,False,FedExForum,Memphis,TN
+401910052,2027,R,2026-11-29 21:00:00+00:00,SAS,BOS,,,,False,Frost Bank Center,San Antonio,TX
+401910053,2027,R,2026-11-29 22:00:00+00:00,UTA,PHX,,,,False,Delta Center,Salt Lake City,UT
+401910054,2027,R,2026-11-29 23:00:00+00:00,CLE,MIA,,,,False,Rocket Arena,Cleveland,OH
+401910055,2027,R,2026-11-29 23:00:00+00:00,DET,ORL,,,,False,Little Caesars Arena,Detroit,MI
+401910056,2027,R,2026-11-29 23:00:00+00:00,NYK,ATL,,,,False,Madison Square Garden,New York,NY
+401910057,2027,R,2026-11-29 23:00:00+00:00,TOR,DEN,,,,False,Scotiabank Arena,Toronto,ON
+401910058,2027,R,2026-11-29 23:00:00+00:00,POR,NOP,,,,False,Moda Center,Portland,OR
+401910059,2027,R,2026-11-30 01:30:00+00:00,GSW,LAC,,,,False,Chase Center,San Francisco,CA
+401910060,2027,R,2026-11-30 02:00:00+00:00,SAC,MIN,,,,False,Golden 1 Center,Sacramento,CA
+401910061,2027,R,2026-12-01 00:00:00+00:00,CHA,WAS,,,,False,Spectrum Center,Charlotte,NC
+401910062,2027,R,2026-12-01 00:00:00+00:00,DET,DEN,,,,False,Little Caesars Arena,Detroit,MI
+401910063,2027,R,2026-12-01 00:30:00+00:00,BKN,OKC,,,,False,Barclays Center,Brooklyn,NY
+401910064,2027,R,2026-12-01 00:30:00+00:00,HOU,LAL,,,,False,Toyota Center (Houston),Houston,TX
+401910065,2027,R,2026-12-01 01:00:00+00:00,DAL,BOS,,,,False,American Airlines Center,Dallas,TX
+401910066,2027,R,2026-12-01 01:00:00+00:00,MIL,SAS,,,,False,Fiserv Forum,Milwaukee,WI
+401910067,2027,R,2026-12-01 03:00:00+00:00,SAC,NOP,,,,False,Golden 1 Center,Sacramento,CA
+401910068,2027,R,2026-12-02 00:00:00+00:00,CLE,IND,,,,False,Rocket Arena,Cleveland,OH
+401910069,2027,R,2026-12-02 00:00:00+00:00,PHI,MEM,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910070,2027,R,2026-12-02 00:30:00+00:00,MIA,ATL,,,,False,Kaseya Center,Miami,FL
+401910071,2027,R,2026-12-02 01:00:00+00:00,CHI,NYK,,,,False,United Center,Chicago,IL
+401910072,2027,R,2026-12-02 01:30:00+00:00,HOU,TOR,,,,False,Toyota Center (Houston),Houston,TX
+401910073,2027,R,2026-12-02 02:00:00+00:00,PHX,LAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910074,2027,R,2026-12-02 03:00:00+00:00,POR,MIN,,,,False,Moda Center,Portland,OR
+401910075,2027,R,2026-12-02 04:00:00+00:00,GSW,UTA,,,,False,Chase Center,San Francisco,CA
+401910076,2027,R,2026-12-03 00:00:00+00:00,DET,MEM,,,,False,Little Caesars Arena,Detroit,MI
+401910077,2027,R,2026-12-03 00:00:00+00:00,PHI,DEN,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910078,2027,R,2026-12-03 00:30:00+00:00,BOS,CHA,,,,False,TD Garden,Boston,MA
+401910079,2027,R,2026-12-03 01:00:00+00:00,DAL,ORL,,,,False,American Airlines Center,Dallas,TX
+401910080,2027,R,2026-12-03 01:00:00+00:00,MIL,NYK,,,,False,Fiserv Forum,Milwaukee,WI
+401910081,2027,R,2026-12-03 01:00:00+00:00,NOP,LAL,,,,False,Smoothie King Center,New Orleans,LA
+401910082,2027,R,2026-12-03 01:00:00+00:00,OKC,BKN,,,,False,Paycom Center,Oklahoma City,OK
+401910083,2027,R,2026-12-03 02:00:00+00:00,PHX,SAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910084,2027,R,2026-12-03 03:30:00+00:00,LAC,MIN,,,,False,Intuit Dome,Inglewood,CA
+401910085,2027,R,2026-12-04 00:00:00+00:00,ATL,IND,,,,False,State Farm Arena,Atlanta,GA
+401910086,2027,R,2026-12-04 00:30:00+00:00,MIA,WAS,,,,False,Kaseya Center,Miami,FL
+401910087,2027,R,2026-12-04 01:00:00+00:00,CHI,CLE,,,,False,United Center,Chicago,IL
+401910088,2027,R,2026-12-04 01:00:00+00:00,SAS,TOR,,,,False,Frost Bank Center,San Antonio,TX
+401910089,2027,R,2026-12-04 03:00:00+00:00,POR,UTA,,,,False,Moda Center,Portland,OR
+401910090,2027,R,2026-12-12 22:00:00+00:00,MEM,MIL,,,,False,FedExForum,Memphis,TN
+401910091,2027,R,2026-12-13 00:00:00+00:00,WAS,CHA,,,,False,Capital One Arena,Washington,DC
+401910092,2027,R,2026-12-13 00:30:00+00:00,PHI,ORL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910093,2027,R,2026-12-13 01:00:00+00:00,CLE,GSW,,,,False,Rocket Arena,Cleveland,OH
+401910094,2027,R,2026-12-13 01:30:00+00:00,MIA,NYK,,,,False,Kaseya Center,Miami,FL
+401910095,2027,R,2026-12-13 02:00:00+00:00,PHX,MIN,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910096,2027,R,2026-12-13 02:30:00+00:00,UTA,DEN,,,,False,Delta Center,Salt Lake City,UT
+401910097,2027,R,2026-12-13 03:00:00+00:00,POR,ATL,,,,False,Moda Center,Portland,OR
+401910098,2027,R,2026-12-13 20:00:00+00:00,BKN,BOS,,,,False,Barclays Center,Brooklyn,NY
+401910099,2027,R,2026-12-13 20:30:00+00:00,OKC,TOR,,,,False,Paycom Center,Oklahoma City,OK
+401910100,2027,R,2026-12-13 22:00:00+00:00,IND,DET,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910101,2027,R,2026-12-13 23:00:00+00:00,CHI,HOU,,,,False,United Center,Chicago,IL
+401910102,2027,R,2026-12-14 00:00:00+00:00,SAS,LAC,,,,False,Frost Bank Center,San Antonio,TX
+401910103,2027,R,2026-12-14 02:00:00+00:00,SAC,NOP,,,,False,Golden 1 Center,Sacramento,CA
+401910104,2027,R,2026-12-15 00:00:00+00:00,CHA,TOR,,,,False,Spectrum Center,Charlotte,NC
+401910105,2027,R,2026-12-15 00:00:00+00:00,DET,BKN,,,,False,Little Caesars Arena,Detroit,MI
+401910106,2027,R,2026-12-15 00:00:00+00:00,ORL,PHI,,,,False,Kia Center,Orlando,FL
+401910107,2027,R,2026-12-15 00:30:00+00:00,BOS,WAS,,,,False,TD Garden,Boston,MA
+401910108,2027,R,2026-12-15 01:00:00+00:00,CHI,MIA,,,,False,United Center,Chicago,IL
+401910109,2027,R,2026-12-15 01:00:00+00:00,DAL,MIL,,,,False,American Airlines Center,Dallas,TX
+401910110,2027,R,2026-12-15 01:00:00+00:00,MEM,GSW,,,,False,FedExForum,Memphis,TN
+401910111,2027,R,2026-12-15 01:30:00+00:00,HOU,NYK,,,,False,Toyota Center (Houston),Houston,TX
+401910112,2027,R,2026-12-15 02:00:00+00:00,PHX,ATL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910113,2027,R,2026-12-15 02:00:00+00:00,UTA,MIN,,,,False,Delta Center,Salt Lake City,UT
+401910114,2027,R,2026-12-15 03:00:00+00:00,LAL,NOP,,,,False,crypto.com Arena,Los Angeles,CA
+401910115,2027,R,2026-12-16 01:00:00+00:00,CLE,SAS,,,,False,Rocket Arena,Cleveland,OH
+401910116,2027,R,2026-12-16 04:00:00+00:00,POR,DEN,,,,False,Moda Center,Portland,OR
+401910117,2027,R,2026-12-17 00:00:00+00:00,BOS,WAS,,,,False,TD Garden,Boston,MA
+401910118,2027,R,2026-12-17 00:00:00+00:00,CHA,LAC,,,,False,Spectrum Center,Charlotte,NC
+401910119,2027,R,2026-12-17 00:00:00+00:00,DET,PHX,,,,False,Little Caesars Arena,Detroit,MI
+401910120,2027,R,2026-12-17 00:00:00+00:00,IND,GSW,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910121,2027,R,2026-12-17 00:00:00+00:00,ORL,CLE,,,,False,Kia Center,Orlando,FL
+401910122,2027,R,2026-12-17 00:30:00+00:00,BKN,DAL,,,,False,Barclays Center,Brooklyn,NY
+401910123,2027,R,2026-12-17 00:30:00+00:00,TOR,SAS,,,,False,Scotiabank Arena,Toronto,ON
+401910124,2027,R,2026-12-17 01:00:00+00:00,CHI,UTA,,,,False,United Center,Chicago,IL
+401910125,2027,R,2026-12-17 01:00:00+00:00,MEM,MIA,,,,False,FedExForum,Memphis,TN
+401910126,2027,R,2026-12-17 01:00:00+00:00,NOP,NYK,,,,False,Smoothie King Center,New Orleans,LA
+401910127,2027,R,2026-12-17 01:00:00+00:00,OKC,SAC,,,,False,Paycom Center,Oklahoma City,OK
+401910128,2027,R,2026-12-17 01:30:00+00:00,HOU,MIL,,,,False,Toyota Center (Houston),Houston,TX
+401910129,2027,R,2026-12-17 02:30:00+00:00,MIN,LAL,,,,False,Target Center,Minneapolis,MN
+401910130,2027,R,2026-12-18 00:00:00+00:00,IND,POR,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910131,2027,R,2026-12-18 00:00:00+00:00,PHI,DAL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910132,2027,R,2026-12-18 02:00:00+00:00,DEN,ATL,,,,False,Ball Arena,Denver,CO
+401910133,2027,R,2026-12-19 00:00:00+00:00,CHA,OKC,,,,False,Spectrum Center,Charlotte,NC
+401910134,2027,R,2026-12-19 00:00:00+00:00,MIA,LAC,,,,False,Kaseya Center,Miami,FL
+401910135,2027,R,2026-12-19 00:00:00+00:00,WAS,NYK,,,,False,Capital One Arena,Washington,DC
+401910136,2027,R,2026-12-19 00:30:00+00:00,BOS,UTA,,,,False,TD Garden,Boston,MA
+401910137,2027,R,2026-12-19 00:30:00+00:00,BKN,ORL,,,,False,Barclays Center,Brooklyn,NY
+401910138,2027,R,2026-12-19 00:30:00+00:00,DET,CLE,,,,False,Little Caesars Arena,Detroit,MI
+401910139,2027,R,2026-12-19 00:30:00+00:00,TOR,GSW,,,,False,Scotiabank Arena,Toronto,ON
+401910140,2027,R,2026-12-19 01:00:00+00:00,MEM,HOU,,,,False,FedExForum,Memphis,TN
+401910141,2027,R,2026-12-19 01:00:00+00:00,MIL,PHX,,,,False,Fiserv Forum,Milwaukee,WI
+401910142,2027,R,2026-12-19 01:00:00+00:00,MIN,LAL,,,,False,Target Center,Minneapolis,MN
+401910143,2027,R,2026-12-19 01:00:00+00:00,NOP,SAC,,,,False,Smoothie King Center,New Orleans,LA
+401910144,2027,R,2026-12-19 01:00:00+00:00,SAS,CHI,,,,False,Frost Bank Center,San Antonio,TX
+401910145,2027,R,2026-12-19 23:00:00+00:00,CHA,POR,,,,False,Spectrum Center,Charlotte,NC
+401910146,2027,R,2026-12-20 00:00:00+00:00,ATL,ORL,,,,False,State Farm Arena,Atlanta,GA
+401910147,2027,R,2026-12-20 01:00:00+00:00,DAL,CHI,,,,False,American Airlines Center,Dallas,TX
+401910148,2027,R,2026-12-20 02:00:00+00:00,DEN,LAL,,,,False,Ball Arena,Denver,CO
+401910149,2027,R,2026-12-20 20:00:00+00:00,BKN,WAS,,,,False,Barclays Center,Brooklyn,NY
+401910150,2027,R,2026-12-20 20:30:00+00:00,TOR,HOU,,,,False,Scotiabank Arena,Toronto,ON
+401910151,2027,R,2026-12-20 21:00:00+00:00,MEM,PHX,,,,False,FedExForum,Memphis,TN
+401910152,2027,R,2026-12-20 23:00:00+00:00,CLE,UTA,,,,False,Rocket Arena,Cleveland,OH
+401910153,2027,R,2026-12-20 23:00:00+00:00,MIA,SAC,,,,False,Kaseya Center,Miami,FL
+401910154,2027,R,2026-12-21 00:00:00+00:00,ATL,OKC,,,,False,State Farm Arena,Atlanta,GA
+401910155,2027,R,2026-12-21 00:00:00+00:00,NOP,SAS,,,,False,Smoothie King Center,New Orleans,LA
+401910156,2027,R,2026-12-21 01:00:00+00:00,BOS,DET,,,,False,TD Garden,Boston,MA
+401910157,2027,R,2026-12-21 01:00:00+00:00,MIL,GSW,,,,False,Fiserv Forum,Milwaukee,WI
+401910158,2027,R,2026-12-21 03:00:00+00:00,LAC,IND,,,,False,Intuit Dome,Inglewood,CA
+401910159,2027,R,2026-12-22 00:00:00+00:00,CHA,PHI,,,,False,Spectrum Center,Charlotte,NC
+401910160,2027,R,2026-12-22 00:00:00+00:00,CLE,NYK,,,,False,Rocket Arena,Cleveland,OH
+401910161,2027,R,2026-12-22 00:00:00+00:00,ORL,SAC,,,,False,Kia Center,Orlando,FL
+401910162,2027,R,2026-12-22 00:30:00+00:00,BKN,POR,,,,False,Barclays Center,Brooklyn,NY
+401910163,2027,R,2026-12-22 00:30:00+00:00,MIA,CHI,,,,False,Kaseya Center,Miami,FL
+401910164,2027,R,2026-12-22 01:00:00+00:00,MIN,PHX,,,,False,Target Center,Minneapolis,MN
+401910165,2027,R,2026-12-22 01:00:00+00:00,NOP,MEM,,,,False,Smoothie King Center,New Orleans,LA
+401910166,2027,R,2026-12-22 01:00:00+00:00,SAS,MIL,,,,False,Frost Bank Center,San Antonio,TX
+401910167,2027,R,2026-12-22 03:00:00+00:00,LAL,IND,,,,False,crypto.com Arena,Los Angeles,CA
+401910168,2027,R,2026-12-22 03:30:00+00:00,LAC,DEN,,,,False,Intuit Dome,Inglewood,CA
+401910169,2027,R,2026-12-23 00:00:00+00:00,WAS,TOR,,,,False,Capital One Arena,Washington,DC
+401910170,2027,R,2026-12-23 01:00:00+00:00,OKC,DET,,,,False,Paycom Center,Oklahoma City,OK
+401910171,2027,R,2026-12-23 03:30:00+00:00,GSW,DAL,,,,False,Chase Center,San Francisco,CA
+401910172,2027,R,2026-12-24 00:00:00+00:00,ATL,DET,,,,False,State Farm Arena,Atlanta,GA
+401910173,2027,R,2026-12-24 00:00:00+00:00,ORL,CHA,,,,False,Kia Center,Orlando,FL
+401910174,2027,R,2026-12-24 00:00:00+00:00,WAS,CLE,,,,False,Capital One Arena,Washington,DC
+401910175,2027,R,2026-12-24 00:30:00+00:00,BOS,POR,,,,False,TD Garden,Boston,MA
+401910176,2027,R,2026-12-24 00:30:00+00:00,BKN,SAS,,,,False,Barclays Center,Brooklyn,NY
+401910177,2027,R,2026-12-24 00:30:00+00:00,MIA,CHI,,,,False,Kaseya Center,Miami,FL
+401910178,2027,R,2026-12-24 00:30:00+00:00,NYK,UTA,,,,False,Madison Square Garden,New York,NY
+401910179,2027,R,2026-12-24 00:30:00+00:00,PHI,HOU,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910180,2027,R,2026-12-24 01:00:00+00:00,MEM,TOR,,,,False,FedExForum,Memphis,TN
+401910181,2027,R,2026-12-24 01:00:00+00:00,MIL,MIN,,,,False,Fiserv Forum,Milwaukee,WI
+401910182,2027,R,2026-12-24 01:00:00+00:00,NOP,OKC,,,,False,Smoothie King Center,New Orleans,LA
+401910183,2027,R,2026-12-24 02:00:00+00:00,PHX,IND,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910184,2027,R,2026-12-24 03:00:00+00:00,LAL,DEN,,,,False,crypto.com Arena,Los Angeles,CA
+401910185,2027,R,2026-12-24 03:00:00+00:00,SAC,DAL,,,,False,Golden 1 Center,Sacramento,CA
+401910186,2027,R,2026-12-24 03:30:00+00:00,LAC,GSW,,,,False,Intuit Dome,Inglewood,CA
+401909097,2027,R,2026-12-25 17:00:00+00:00,NYK,SAS,,,,False,Madison Square Garden,New York,NY
+401909098,2027,R,2026-12-25 19:30:00+00:00,BOS,MIA,,,,False,TD Garden,Boston,MA
+401909099,2027,R,2026-12-25 22:00:00+00:00,LAL,PHI,,,,False,crypto.com Arena,Los Angeles,CA
+401909100,2027,R,2026-12-26 01:00:00+00:00,MIN,OKC,,,,False,Target Center,Minneapolis,MN
+401909101,2027,R,2026-12-26 03:30:00+00:00,GSW,DEN,,,,False,Chase Center,San Francisco,CA
+401910187,2027,R,2026-12-26 18:00:00+00:00,WAS,POR,,,,False,Capital One Arena,Washington,DC
+401910188,2027,R,2026-12-26 20:30:00+00:00,ATL,CHA,,,,False,State Farm Arena,Atlanta,GA
+401910189,2027,R,2026-12-26 22:00:00+00:00,UTA,IND,,,,False,Delta Center,Salt Lake City,UT
+401910190,2027,R,2026-12-26 23:00:00+00:00,BKN,NOP,,,,False,Barclays Center,Brooklyn,NY
+401910191,2027,R,2026-12-27 00:00:00+00:00,ORL,TOR,,,,False,Kia Center,Orlando,FL
+401910192,2027,R,2026-12-27 01:00:00+00:00,CHI,DET,,,,False,United Center,Chicago,IL
+401910193,2027,R,2026-12-27 01:00:00+00:00,DAL,PHX,,,,False,American Airlines Center,Dallas,TX
+401910194,2027,R,2026-12-27 03:30:00+00:00,LAC,MEM,,,,False,Intuit Dome,Inglewood,CA
+401910195,2027,R,2026-12-27 20:30:00+00:00,HOU,OKC,,,,False,Toyota Center (Houston),Houston,TX
+401910196,2027,R,2026-12-27 23:00:00+00:00,CLE,WAS,,,,False,Rocket Arena,Cleveland,OH
+401910197,2027,R,2026-12-27 23:00:00+00:00,MIA,CHA,,,,False,Kaseya Center,Miami,FL
+401910198,2027,R,2026-12-27 23:00:00+00:00,NYK,BKN,,,,False,Madison Square Garden,New York,NY
+401910199,2027,R,2026-12-27 23:00:00+00:00,ORL,MIL,,,,False,Kia Center,Orlando,FL
+401910200,2027,R,2026-12-27 23:00:00+00:00,SAC,UTA,,,,False,Golden 1 Center,Sacramento,CA
+401910201,2027,R,2026-12-28 00:00:00+00:00,DET,POR,,,,False,Little Caesars Arena,Detroit,MI
+401910202,2027,R,2026-12-28 00:00:00+00:00,SAS,ATL,,,,False,Frost Bank Center,San Antonio,TX
+401910203,2027,R,2026-12-28 01:00:00+00:00,DEN,IND,,,,False,Ball Arena,Denver,CO
+401910204,2027,R,2026-12-28 01:30:00+00:00,GSW,MIN,,,,False,Chase Center,San Francisco,CA
+401910205,2027,R,2026-12-28 02:00:00+00:00,LAC,PHI,,,,False,Intuit Dome,Inglewood,CA
+401910206,2027,R,2026-12-28 02:00:00+00:00,LAL,MEM,,,,False,crypto.com Arena,Los Angeles,CA
+401910207,2027,R,2026-12-29 00:30:00+00:00,TOR,NOP,,,,False,Scotiabank Arena,Toronto,ON
+401910208,2027,R,2026-12-29 01:00:00+00:00,BOS,CLE,,,,False,TD Garden,Boston,MA
+401910209,2027,R,2026-12-29 02:00:00+00:00,PHX,GSW,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910210,2027,R,2026-12-29 03:30:00+00:00,DEN,MIN,,,,False,Ball Arena,Denver,CO
+401910211,2027,R,2026-12-30 00:00:00+00:00,ATL,CHI,,,,False,State Farm Arena,Atlanta,GA
+401910212,2027,R,2026-12-30 00:00:00+00:00,CHA,ORL,,,,False,Spectrum Center,Charlotte,NC
+401910213,2027,R,2026-12-30 00:00:00+00:00,IND,LAC,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910214,2027,R,2026-12-30 01:00:00+00:00,DAL,MIA,,,,False,American Airlines Center,Dallas,TX
+401910215,2027,R,2026-12-30 01:00:00+00:00,MEM,SAS,,,,False,FedExForum,Memphis,TN
+401910216,2027,R,2026-12-30 01:00:00+00:00,OKC,MIL,,,,False,Paycom Center,Oklahoma City,OK
+401910217,2027,R,2026-12-30 03:00:00+00:00,POR,BKN,,,,False,Moda Center,Portland,OR
+401910218,2027,R,2026-12-30 03:00:00+00:00,SAC,PHI,,,,False,Golden 1 Center,Sacramento,CA
+401910219,2027,R,2026-12-30 03:30:00+00:00,LAL,HOU,,,,False,crypto.com Arena,Los Angeles,CA
+401910220,2027,R,2026-12-31 00:00:00+00:00,DET,NOP,,,,False,Little Caesars Arena,Detroit,MI
+401910221,2027,R,2026-12-31 00:30:00+00:00,TOR,WAS,,,,False,Scotiabank Arena,Toronto,ON
+401910222,2027,R,2026-12-31 01:00:00+00:00,CHI,BOS,,,,False,United Center,Chicago,IL
+401910223,2027,R,2026-12-31 02:00:00+00:00,PHX,PHI,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910224,2027,R,2026-12-31 02:00:00+00:00,UTA,NYK,,,,False,Delta Center,Salt Lake City,UT
+401910225,2027,R,2026-12-31 03:00:00+00:00,GSW,HOU,,,,False,Chase Center,San Francisco,CA
+401910226,2027,R,2026-12-31 18:00:00+00:00,CHA,SAS,,,,False,Spectrum Center,Charlotte,NC
+401910227,2027,R,2026-12-31 20:00:00+00:00,ATL,MIL,,,,False,State Farm Arena,Atlanta,GA
+401910228,2027,R,2026-12-31 20:00:00+00:00,CLE,LAC,,,,False,Rocket Arena,Cleveland,OH
+401910229,2027,R,2026-12-31 20:00:00+00:00,IND,ORL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910230,2027,R,2026-12-31 21:00:00+00:00,MIN,DEN,,,,False,Target Center,Minneapolis,MN
+401910231,2027,R,2026-12-31 23:00:00+00:00,SAC,BKN,,,,False,Golden 1 Center,Sacramento,CA
+401910232,2027,R,2027-01-01 01:00:00+00:00,NOP,LAL,,,,False,Smoothie King Center,New Orleans,LA
+401910233,2027,R,2027-01-01 01:00:00+00:00,OKC,MIA,,,,False,Paycom Center,Oklahoma City,OK
+401910234,2027,R,2027-01-01 02:00:00+00:00,PHX,NYK,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910235,2027,R,2027-01-01 22:00:00+00:00,WAS,SAS,,,,False,Capital One Arena,Washington,DC
+401910236,2027,R,2027-01-02 00:30:00+00:00,DET,ORL,,,,False,Little Caesars Arena,Detroit,MI
+401910237,2027,R,2027-01-02 00:30:00+00:00,TOR,LAC,,,,False,Scotiabank Arena,Toronto,ON
+401910238,2027,R,2027-01-02 01:00:00+00:00,MIL,PHI,,,,False,Fiserv Forum,Milwaukee,WI
+401910239,2027,R,2027-01-02 01:30:00+00:00,HOU,DAL,,,,False,Toyota Center (Houston),Houston,TX
+401910240,2027,R,2027-01-02 02:30:00+00:00,UTA,BOS,,,,False,Delta Center,Salt Lake City,UT
+401910241,2027,R,2027-01-02 18:00:00+00:00,CHA,CLE,,,,False,Spectrum Center,Charlotte,NC
+401910242,2027,R,2027-01-02 22:00:00+00:00,DEN,NYK,,,,False,Ball Arena,Denver,CO
+401910243,2027,R,2027-01-03 00:00:00+00:00,IND,MIN,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910244,2027,R,2027-01-03 00:00:00+00:00,NOP,MIA,,,,False,Smoothie King Center,New Orleans,LA
+401910245,2027,R,2027-01-03 00:30:00+00:00,ATL,DAL,,,,False,State Farm Arena,Atlanta,GA
+401910246,2027,R,2027-01-03 01:00:00+00:00,CHI,LAL,,,,False,United Center,Chicago,IL
+401910247,2027,R,2027-01-03 01:00:00+00:00,OKC,UTA,,,,False,Paycom Center,Oklahoma City,OK
+401910248,2027,R,2027-01-03 01:30:00+00:00,GSW,BKN,,,,False,Chase Center,San Francisco,CA
+401910249,2027,R,2027-01-03 02:00:00+00:00,PHX,SAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910250,2027,R,2027-01-03 03:00:00+00:00,POR,BOS,,,,False,Moda Center,Portland,OR
+401910251,2027,R,2027-01-03 22:00:00+00:00,DEN,DET,,,,False,Ball Arena,Denver,CO
+401910252,2027,R,2027-01-03 22:30:00+00:00,MIL,CHA,,,,False,Fiserv Forum,Milwaukee,WI
+401910253,2027,R,2027-01-03 23:00:00+00:00,ORL,MEM,,,,False,Kia Center,Orlando,FL
+401910254,2027,R,2027-01-04 00:00:00+00:00,TOR,LAL,,,,False,Scotiabank Arena,Toronto,ON
+401910255,2027,R,2027-01-04 00:00:00+00:00,WAS,LAC,,,,False,Capital One Arena,Washington,DC
+401910256,2027,R,2027-01-04 00:00:00+00:00,HOU,CLE,,,,False,Toyota Center (Houston),Houston,TX
+401910257,2027,R,2027-01-04 00:00:00+00:00,MIN,SAS,,,,False,Target Center,Minneapolis,MN
+401910258,2027,R,2027-01-04 01:00:00+00:00,OKC,SAC,,,,False,Paycom Center,Oklahoma City,OK
+401910259,2027,R,2027-01-05 00:00:00+00:00,IND,CHI,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910260,2027,R,2027-01-05 00:00:00+00:00,PHI,ATL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910261,2027,R,2027-01-05 01:00:00+00:00,NOP,DAL,,,,False,Smoothie King Center,New Orleans,LA
+401910262,2027,R,2027-01-05 02:00:00+00:00,PHX,BOS,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910263,2027,R,2027-01-05 02:00:00+00:00,UTA,BKN,,,,False,Delta Center,Salt Lake City,UT
+401910264,2027,R,2027-01-05 03:00:00+00:00,POR,NYK,,,,False,Moda Center,Portland,OR
+401910265,2027,R,2027-01-06 00:00:00+00:00,CHA,ATL,,,,False,Spectrum Center,Charlotte,NC
+401910266,2027,R,2027-01-06 00:00:00+00:00,CLE,TOR,,,,False,Rocket Arena,Cleveland,OH
+401910267,2027,R,2027-01-06 00:00:00+00:00,ORL,LAC,,,,False,Kia Center,Orlando,FL
+401910268,2027,R,2027-01-06 00:00:00+00:00,WAS,LAL,,,,False,Capital One Arena,Washington,DC
+401910269,2027,R,2027-01-06 00:30:00+00:00,MIA,MEM,,,,False,Kaseya Center,Miami,FL
+401910270,2027,R,2027-01-06 01:00:00+00:00,CHI,MIL,,,,False,United Center,Chicago,IL
+401910271,2027,R,2027-01-06 01:00:00+00:00,HOU,MIN,,,,False,Toyota Center (Houston),Houston,TX
+401910272,2027,R,2027-01-06 03:00:00+00:00,DEN,PHX,,,,False,Ball Arena,Denver,CO
+401910273,2027,R,2027-01-06 03:00:00+00:00,SAC,DET,,,,False,Golden 1 Center,Sacramento,CA
+401910274,2027,R,2027-01-07 00:30:00+00:00,BKN,UTA,,,,False,Barclays Center,Brooklyn,NY
+401910275,2027,R,2027-01-07 00:30:00+00:00,PHI,OKC,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910276,2027,R,2027-01-07 01:00:00+00:00,NOP,POR,,,,False,Smoothie King Center,New Orleans,LA
+401910277,2027,R,2027-01-07 01:00:00+00:00,SAS,IND,,,,False,Frost Bank Center,San Antonio,TX
+401910278,2027,R,2027-01-07 03:00:00+00:00,GSW,NYK,,,,False,Chase Center,San Francisco,CA
+401910279,2027,R,2027-01-08 00:00:00+00:00,ATL,IND,,,,False,State Farm Arena,Atlanta,GA
+401910280,2027,R,2027-01-08 00:00:00+00:00,CHA,DEN,,,,False,Spectrum Center,Charlotte,NC
+401910281,2027,R,2027-01-08 00:00:00+00:00,ORL,CLE,,,,False,Kia Center,Orlando,FL
+401910282,2027,R,2027-01-08 00:00:00+00:00,WAS,OKC,,,,False,Capital One Arena,Washington,DC
+401910283,2027,R,2027-01-08 00:30:00+00:00,BKN,MIA,,,,False,Barclays Center,Brooklyn,NY
+401910284,2027,R,2027-01-08 00:30:00+00:00,TOR,MIN,,,,False,Scotiabank Arena,Toronto,ON
+401910285,2027,R,2027-01-08 01:00:00+00:00,DAL,POR,,,,False,American Airlines Center,Dallas,TX
+401910286,2027,R,2027-01-08 01:00:00+00:00,MIL,LAC,,,,False,Fiserv Forum,Milwaukee,WI
+401910287,2027,R,2027-01-08 01:30:00+00:00,HOU,MEM,,,,False,Toyota Center (Houston),Houston,TX
+401910288,2027,R,2027-01-08 03:00:00+00:00,GSW,DET,,,,False,Chase Center,San Francisco,CA
+401910289,2027,R,2027-01-08 03:00:00+00:00,LAL,BOS,,,,False,crypto.com Arena,Los Angeles,CA
+401910290,2027,R,2027-01-08 03:00:00+00:00,SAC,CHI,,,,False,Golden 1 Center,Sacramento,CA
+401910291,2027,R,2027-01-09 00:00:00+00:00,PHI,MIA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910292,2027,R,2027-01-09 00:00:00+00:00,WAS,MIN,,,,False,Capital One Arena,Washington,DC
+401910293,2027,R,2027-01-09 00:30:00+00:00,TOR,UTA,,,,False,Scotiabank Arena,Toronto,ON
+401910294,2027,R,2027-01-09 01:00:00+00:00,NOP,ORL,,,,False,Smoothie King Center,New Orleans,LA
+401910295,2027,R,2027-01-09 01:00:00+00:00,SAS,MEM,,,,False,Frost Bank Center,San Antonio,TX
+401910296,2027,R,2027-01-09 02:30:00+00:00,DAL,PHX,,,,False,American Airlines Center,Dallas,TX
+401910297,2027,R,2027-01-09 03:00:00+00:00,LAL,DET,,,,False,crypto.com Arena,Los Angeles,CA
+401910298,2027,R,2027-01-09 03:00:00+00:00,SAC,NYK,,,,False,Golden 1 Center,Sacramento,CA
+401910299,2027,R,2027-01-09 22:00:00+00:00,CLE,DEN,,,,False,Rocket Arena,Cleveland,OH
+401910300,2027,R,2027-01-09 23:00:00+00:00,BKN,HOU,,,,False,Barclays Center,Brooklyn,NY
+401910301,2027,R,2027-01-10 00:00:00+00:00,IND,MIL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910302,2027,R,2027-01-10 01:30:00+00:00,GSW,CHI,,,,False,Chase Center,San Francisco,CA
+401910303,2027,R,2027-01-10 03:00:00+00:00,POR,CHA,,,,False,Moda Center,Portland,OR
+401910304,2027,R,2027-01-10 03:30:00+00:00,LAC,BOS,,,,False,Intuit Dome,Inglewood,CA
+401910305,2027,R,2027-01-10 20:00:00+00:00,ATL,SAS,,,,False,State Farm Arena,Atlanta,GA
+401910306,2027,R,2027-01-10 23:00:00+00:00,DET,UTA,,,,False,Little Caesars Arena,Detroit,MI
+401910307,2027,R,2027-01-10 23:00:00+00:00,MIA,NOP,,,,False,Kaseya Center,Miami,FL
+401910308,2027,R,2027-01-10 23:00:00+00:00,ORL,OKC,,,,False,Kia Center,Orlando,FL
+401910309,2027,R,2027-01-10 23:00:00+00:00,TOR,PHI,,,,False,Scotiabank Arena,Toronto,ON
+401910310,2027,R,2027-01-10 23:00:00+00:00,MEM,DAL,,,,False,FedExForum,Memphis,TN
+401910311,2027,R,2027-01-11 00:00:00+00:00,PHX,CHI,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910312,2027,R,2027-01-11 02:00:00+00:00,SAC,CHA,,,,False,Golden 1 Center,Sacramento,CA
+401910313,2027,R,2027-01-12 00:00:00+00:00,IND,BKN,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910314,2027,R,2027-01-12 00:00:00+00:00,WAS,ATL,,,,False,Capital One Arena,Washington,DC
+401910315,2027,R,2027-01-12 00:30:00+00:00,BOS,HOU,,,,False,TD Garden,Boston,MA
+401910316,2027,R,2027-01-12 00:30:00+00:00,NYK,DEN,,,,False,Madison Square Garden,New York,NY
+401910317,2027,R,2027-01-12 01:00:00+00:00,MIN,CLE,,,,False,Target Center,Minneapolis,MN
+401910318,2027,R,2027-01-12 03:00:00+00:00,LAC,LAL,,,,False,Intuit Dome,Inglewood,CA
+401910319,2027,R,2027-01-13 00:30:00+00:00,MIA,BKN,,,,False,Kaseya Center,Miami,FL
+401910320,2027,R,2027-01-13 00:30:00+00:00,TOR,DET,,,,False,Scotiabank Arena,Toronto,ON
+401910321,2027,R,2027-01-13 01:00:00+00:00,PHI,WAS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910322,2027,R,2027-01-13 01:00:00+00:00,MEM,DAL,,,,False,FedExForum,Memphis,TN
+401910323,2027,R,2027-01-13 01:00:00+00:00,MIL,DEN,,,,False,Fiserv Forum,Milwaukee,WI
+401910324,2027,R,2027-01-13 02:00:00+00:00,UTA,CHI,,,,False,Delta Center,Salt Lake City,UT
+401910325,2027,R,2027-01-13 03:00:00+00:00,POR,ORL,,,,False,Moda Center,Portland,OR
+401910326,2027,R,2027-01-13 04:00:00+00:00,GSW,SAC,,,,False,Chase Center,San Francisco,CA
+401910327,2027,R,2027-01-14 00:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
+401910328,2027,R,2027-01-14 00:00:00+00:00,BOS,NYK,,,,False,TD Garden,Boston,MA
+401910329,2027,R,2027-01-14 00:00:00+00:00,IND,MIL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910330,2027,R,2027-01-14 00:30:00+00:00,TOR,PHX,,,,False,Scotiabank Arena,Toronto,ON
+401910331,2027,R,2027-01-14 02:30:00+00:00,OKC,HOU,,,,False,Paycom Center,Oklahoma City,OK
+401910332,2027,R,2027-01-14 03:00:00+00:00,GSW,CHA,,,,False,Chase Center,San Francisco,CA
+401910333,2027,R,2027-01-14 03:00:00+00:00,POR,LAL,,,,False,Moda Center,Portland,OR
+401910334,2027,R,2027-01-14 19:00:00+00:00,SAS,NOP,,,,True,Accor Arena,Paris,
+401910335,2027,R,2027-01-15 00:00:00+00:00,DET,DAL,,,,False,Little Caesars Arena,Detroit,MI
+401910336,2027,R,2027-01-15 00:00:00+00:00,PHI,BKN,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910337,2027,R,2027-01-15 00:30:00+00:00,NYK,MIA,,,,False,Madison Square Garden,New York,NY
+401910338,2027,R,2027-01-15 01:00:00+00:00,CHI,MIN,,,,False,United Center,Chicago,IL
+401910339,2027,R,2027-01-15 02:00:00+00:00,DEN,MEM,,,,False,Ball Arena,Denver,CO
+401910340,2027,R,2027-01-15 02:00:00+00:00,UTA,CHA,,,,False,Delta Center,Salt Lake City,UT
+401910341,2027,R,2027-01-15 03:00:00+00:00,LAL,ORL,,,,False,crypto.com Arena,Los Angeles,CA
+401910342,2027,R,2027-01-15 03:00:00+00:00,SAC,LAC,,,,False,Golden 1 Center,Sacramento,CA
+401910343,2027,R,2027-01-16 00:00:00+00:00,ATL,GSW,,,,False,State Farm Arena,Atlanta,GA
+401910344,2027,R,2027-01-16 00:00:00+00:00,IND,PHX,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910345,2027,R,2027-01-16 00:30:00+00:00,TOR,MIA,,,,False,Scotiabank Arena,Toronto,ON
+401910346,2027,R,2027-01-16 01:00:00+00:00,MIL,CLE,,,,False,Fiserv Forum,Milwaukee,WI
+401910347,2027,R,2027-01-16 01:00:00+00:00,OKC,UTA,,,,False,Paycom Center,Oklahoma City,OK
+401910348,2027,R,2027-01-16 01:30:00+00:00,HOU,WAS,,,,False,Toyota Center (Houston),Houston,TX
+401910349,2027,R,2027-01-16 03:00:00+00:00,POR,SAC,,,,False,Moda Center,Portland,OR
+401910350,2027,R,2027-01-16 03:30:00+00:00,LAC,ORL,,,,False,Intuit Dome,Inglewood,CA
+401910351,2027,R,2027-01-16 17:30:00+00:00,PHI,MIN,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910352,2027,R,2027-01-17 00:00:00+00:00,BOS,BKN,,,,False,TD Garden,Boston,MA
+401910353,2027,R,2027-01-17 00:30:00+00:00,NYK,DAL,,,,False,Madison Square Garden,New York,NY
+401910354,2027,R,2027-01-17 01:00:00+00:00,MEM,CLE,,,,False,FedExForum,Memphis,TN
+401910355,2027,R,2027-01-17 01:30:00+00:00,HOU,DET,,,,False,Toyota Center (Houston),Houston,TX
+401910356,2027,R,2027-01-17 02:00:00+00:00,DEN,CHA,,,,False,Ball Arena,Denver,CO
+401910357,2027,R,2027-01-17 15:30:00+00:00,NOP,SAS,,,,True,Co-op Live,Manchester,
+401910358,2027,R,2027-01-17 18:00:00+00:00,WAS,IND,,,,False,Capital One Arena,Washington,DC
+401910359,2027,R,2027-01-17 20:30:00+00:00,CHI,TOR,,,,False,United Center,Chicago,IL
+401910360,2027,R,2027-01-17 20:30:00+00:00,OKC,POR,,,,False,Paycom Center,Oklahoma City,OK
+401910361,2027,R,2027-01-17 22:00:00+00:00,UTA,SAC,,,,False,Delta Center,Salt Lake City,UT
+401910362,2027,R,2027-01-17 23:00:00+00:00,MIA,GSW,,,,False,Kaseya Center,Miami,FL
+401910363,2027,R,2027-01-18 01:00:00+00:00,DEN,ORL,,,,False,Ball Arena,Denver,CO
+401910364,2027,R,2027-01-18 02:00:00+00:00,LAL,MIL,,,,False,crypto.com Arena,Los Angeles,CA
+401909473,2027,R,2027-01-18 17:00:00+00:00,CLE,DET,,,,False,Rocket Arena,Cleveland,OH
+401909474,2027,R,2027-01-18 19:30:00+00:00,ATL,PHI,,,,False,State Farm Arena,Atlanta,GA
+401910365,2027,R,2027-01-18 20:00:00+00:00,WAS,BOS,,,,False,Capital One Arena,Washington,DC
+401909475,2027,R,2027-01-18 22:00:00+00:00,NYK,MIN,,,,False,Madison Square Garden,New York,NY
+401909476,2027,R,2027-01-19 00:30:00+00:00,MEM,HOU,,,,False,FedExForum,Memphis,TN
+401910366,2027,R,2027-01-19 01:00:00+00:00,DAL,OKC,,,,False,American Airlines Center,Dallas,TX
+401910367,2027,R,2027-01-19 03:30:00+00:00,LAC,PHX,,,,False,Intuit Dome,Inglewood,CA
+401910368,2027,R,2027-01-20 00:00:00+00:00,ORL,GSW,,,,False,Kia Center,Orlando,FL
+401910369,2027,R,2027-01-20 00:00:00+00:00,PHI,IND,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910370,2027,R,2027-01-20 00:00:00+00:00,TOR,CHI,,,,False,Scotiabank Arena,Toronto,ON
+401910371,2027,R,2027-01-20 00:30:00+00:00,MIA,POR,,,,False,Kaseya Center,Miami,FL
+401910372,2027,R,2027-01-20 01:00:00+00:00,DAL,CHA,,,,False,American Airlines Center,Dallas,TX
+401910373,2027,R,2027-01-20 03:00:00+00:00,DEN,UTA,,,,False,Ball Arena,Denver,CO
+401910374,2027,R,2027-01-20 03:00:00+00:00,SAC,LAL,,,,False,Golden 1 Center,Sacramento,CA
+401910375,2027,R,2027-01-21 00:00:00+00:00,ATL,POR,,,,False,State Farm Arena,Atlanta,GA
+401910376,2027,R,2027-01-21 00:00:00+00:00,BKN,CHI,,,,False,Barclays Center,Brooklyn,NY
+401910377,2027,R,2027-01-21 00:30:00+00:00,BOS,IND,,,,False,TD Garden,Boston,MA
+401910378,2027,R,2027-01-21 00:30:00+00:00,NYK,TOR,,,,False,Madison Square Garden,New York,NY
+401910379,2027,R,2027-01-21 01:00:00+00:00,MIN,HOU,,,,False,Target Center,Minneapolis,MN
+401910380,2027,R,2027-01-21 01:00:00+00:00,NOP,OKC,,,,False,Smoothie King Center,New Orleans,LA
+401910381,2027,R,2027-01-21 02:00:00+00:00,PHX,MEM,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910382,2027,R,2027-01-21 02:00:00+00:00,UTA,LAC,,,,False,Delta Center,Salt Lake City,UT
+401910383,2027,R,2027-01-21 02:30:00+00:00,SAS,MIA,,,,False,Frost Bank Center,San Antonio,TX
+401910384,2027,R,2027-01-21 03:00:00+00:00,SAC,MIL,,,,False,Golden 1 Center,Sacramento,CA
+401910385,2027,R,2027-01-22 00:30:00+00:00,BOS,PHI,,,,False,TD Garden,Boston,MA
+401910386,2027,R,2027-01-22 00:30:00+00:00,BKN,CLE,,,,False,Barclays Center,Brooklyn,NY
+401910387,2027,R,2027-01-22 02:00:00+00:00,DEN,WAS,,,,False,Ball Arena,Denver,CO
+401910388,2027,R,2027-01-22 03:00:00+00:00,GSW,LAL,,,,False,Chase Center,San Francisco,CA
+401910389,2027,R,2027-01-23 00:00:00+00:00,ATL,NYK,,,,False,State Farm Arena,Atlanta,GA
+401910390,2027,R,2027-01-23 00:00:00+00:00,CHA,HOU,,,,False,Spectrum Center,Charlotte,NC
+401910391,2027,R,2027-01-23 00:00:00+00:00,ORL,POR,,,,False,Kia Center,Orlando,FL
+401910392,2027,R,2027-01-23 00:30:00+00:00,DET,IND,,,,False,Little Caesars Arena,Detroit,MI
+401910393,2027,R,2027-01-23 01:00:00+00:00,NOP,DAL,,,,False,Smoothie King Center,New Orleans,LA
+401910394,2027,R,2027-01-23 01:00:00+00:00,OKC,MEM,,,,False,Paycom Center,Oklahoma City,OK
+401910395,2027,R,2027-01-23 02:00:00+00:00,PHX,UTA,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910396,2027,R,2027-01-23 02:30:00+00:00,SAS,MIN,,,,False,Frost Bank Center,San Antonio,TX
+401910397,2027,R,2027-01-23 03:00:00+00:00,GSW,MIL,,,,False,Chase Center,San Francisco,CA
+401910398,2027,R,2027-01-23 03:00:00+00:00,LAL,SAC,,,,False,crypto.com Arena,Los Angeles,CA
+401910399,2027,R,2027-01-23 03:30:00+00:00,LAC,WAS,,,,False,Intuit Dome,Inglewood,CA
+401910400,2027,R,2027-01-23 22:00:00+00:00,CHI,PHI,,,,False,United Center,Chicago,IL
+401910401,2027,R,2027-01-23 23:00:00+00:00,BKN,TOR,,,,False,Barclays Center,Brooklyn,NY
+401910402,2027,R,2027-01-24 00:00:00+00:00,BOS,CHA,,,,False,TD Garden,Boston,MA
+401910403,2027,R,2027-01-24 01:00:00+00:00,MIA,ATL,,,,False,Kaseya Center,Miami,FL
+401910404,2027,R,2027-01-24 01:00:00+00:00,DAL,CLE,,,,False,American Airlines Center,Dallas,TX
+401910405,2027,R,2027-01-24 02:00:00+00:00,DEN,MIL,,,,False,Ball Arena,Denver,CO
+401910406,2027,R,2027-01-24 20:30:00+00:00,SAS,POR,,,,False,Frost Bank Center,San Antonio,TX
+401910407,2027,R,2027-01-24 21:00:00+00:00,PHX,UTA,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910408,2027,R,2027-01-24 21:00:00+00:00,LAL,WAS,,,,False,crypto.com Arena,Los Angeles,CA
+401910409,2027,R,2027-01-24 23:00:00+00:00,DET,MIN,,,,False,Little Caesars Arena,Detroit,MI
+401910410,2027,R,2027-01-24 23:00:00+00:00,ORL,HOU,,,,False,Kia Center,Orlando,FL
+401910411,2027,R,2027-01-25 00:00:00+00:00,NYK,LAC,,,,False,Madison Square Garden,New York,NY
+401910412,2027,R,2027-01-25 01:30:00+00:00,GSW,OKC,,,,False,Chase Center,San Francisco,CA
+401910413,2027,R,2027-01-26 00:00:00+00:00,BOS,TOR,,,,False,TD Garden,Boston,MA
+401910414,2027,R,2027-01-26 00:00:00+00:00,CHA,ORL,,,,False,Spectrum Center,Charlotte,NC
+401910415,2027,R,2027-01-26 00:00:00+00:00,PHI,LAC,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910416,2027,R,2027-01-26 00:30:00+00:00,BKN,MIA,,,,False,Barclays Center,Brooklyn,NY
+401910417,2027,R,2027-01-26 01:00:00+00:00,CHI,DAL,,,,False,United Center,Chicago,IL
+401910418,2027,R,2027-01-26 01:00:00+00:00,MEM,MIN,,,,False,FedExForum,Memphis,TN
+401910419,2027,R,2027-01-26 01:00:00+00:00,NOP,CLE,,,,False,Smoothie King Center,New Orleans,LA
+401910420,2027,R,2027-01-26 02:30:00+00:00,DEN,SAC,,,,False,Ball Arena,Denver,CO
+401910421,2027,R,2027-01-27 00:00:00+00:00,DET,ATL,,,,False,Little Caesars Arena,Detroit,MI
+401910422,2027,R,2027-01-27 00:00:00+00:00,IND,CHI,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910423,2027,R,2027-01-27 00:30:00+00:00,NYK,PHX,,,,False,Madison Square Garden,New York,NY
+401910424,2027,R,2027-01-27 01:00:00+00:00,SAS,HOU,,,,False,Frost Bank Center,San Antonio,TX
+401910425,2027,R,2027-01-27 02:00:00+00:00,UTA,MIL,,,,False,Delta Center,Salt Lake City,UT
+401910426,2027,R,2027-01-27 03:00:00+00:00,POR,WAS,,,,False,Moda Center,Portland,OR
+401910427,2027,R,2027-01-27 04:00:00+00:00,LAL,OKC,,,,False,crypto.com Arena,Los Angeles,CA
+401910428,2027,R,2027-01-28 00:00:00+00:00,CLE,DET,,,,False,Rocket Arena,Cleveland,OH
+401910429,2027,R,2027-01-28 00:00:00+00:00,PHI,SAC,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910430,2027,R,2027-01-28 00:30:00+00:00,BOS,LAC,,,,False,TD Garden,Boston,MA
+401910431,2027,R,2027-01-28 00:30:00+00:00,BKN,PHX,,,,False,Barclays Center,Brooklyn,NY
+401910432,2027,R,2027-01-28 00:30:00+00:00,TOR,DAL,,,,False,Scotiabank Arena,Toronto,ON
+401910433,2027,R,2027-01-28 01:00:00+00:00,SAS,CHA,,,,False,Frost Bank Center,San Antonio,TX
+401910434,2027,R,2027-01-28 01:30:00+00:00,HOU,NOP,,,,False,Toyota Center (Houston),Houston,TX
+401910435,2027,R,2027-01-28 02:30:00+00:00,MIN,DEN,,,,False,Target Center,Minneapolis,MN
+401910436,2027,R,2027-01-28 03:00:00+00:00,POR,GSW,,,,False,Moda Center,Portland,OR
+401910437,2027,R,2027-01-29 00:00:00+00:00,IND,LAL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910438,2027,R,2027-01-29 00:00:00+00:00,NYK,ATL,,,,False,Madison Square Garden,New York,NY
+401910439,2027,R,2027-01-29 00:00:00+00:00,ORL,CHI,,,,False,Kia Center,Orlando,FL
+401910440,2027,R,2027-01-29 00:00:00+00:00,WAS,SAC,,,,False,Capital One Arena,Washington,DC
+401910441,2027,R,2027-01-29 01:00:00+00:00,NOP,PHI,,,,False,Smoothie King Center,New Orleans,LA
+401910442,2027,R,2027-01-29 01:00:00+00:00,OKC,MEM,,,,False,Paycom Center,Oklahoma City,OK
+401910443,2027,R,2027-01-29 02:00:00+00:00,UTA,GSW,,,,False,Delta Center,Salt Lake City,UT
+401910444,2027,R,2027-01-29 02:30:00+00:00,MIL,MIA,,,,False,Fiserv Forum,Milwaukee,WI
+401910445,2027,R,2027-01-30 00:00:00+00:00,TOR,CLE,,,,False,Scotiabank Arena,Toronto,ON
+401910446,2027,R,2027-01-30 00:30:00+00:00,BOS,PHX,,,,False,TD Garden,Boston,MA
+401910447,2027,R,2027-01-30 00:30:00+00:00,BKN,LAC,,,,False,Barclays Center,Brooklyn,NY
+401910448,2027,R,2027-01-30 01:00:00+00:00,DAL,DET,,,,False,American Airlines Center,Dallas,TX
+401910449,2027,R,2027-01-30 01:30:00+00:00,HOU,ORL,,,,False,Toyota Center (Houston),Houston,TX
+401910450,2027,R,2027-01-30 02:30:00+00:00,MIN,CHA,,,,False,Target Center,Minneapolis,MN
+401910451,2027,R,2027-01-30 17:30:00+00:00,MIA,PHI,,,,False,Kaseya Center,Miami,FL
+401910452,2027,R,2027-01-30 20:00:00+00:00,OKC,DEN,,,,False,Paycom Center,Oklahoma City,OK
+401910453,2027,R,2027-01-30 22:30:00+00:00,GSW,SAS,,,,False,Chase Center,San Francisco,CA
+401910454,2027,R,2027-01-31 00:00:00+00:00,IND,WAS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910455,2027,R,2027-01-31 00:30:00+00:00,CLE,NOP,,,,False,Rocket Arena,Cleveland,OH
+401910456,2027,R,2027-01-31 01:00:00+00:00,MIL,ATL,,,,False,Fiserv Forum,Milwaukee,WI
+401910457,2027,R,2027-01-31 01:30:00+00:00,NYK,LAL,,,,False,Madison Square Garden,New York,NY
+401910458,2027,R,2027-01-31 02:30:00+00:00,UTA,MEM,,,,False,Delta Center,Salt Lake City,UT
+401910459,2027,R,2027-01-31 20:00:00+00:00,DET,SAC,,,,False,Little Caesars Arena,Detroit,MI
+401910460,2027,R,2027-01-31 23:00:00+00:00,ORL,BKN,,,,False,Kia Center,Orlando,FL
+401910461,2027,R,2027-01-31 23:00:00+00:00,TOR,BOS,,,,False,Scotiabank Arena,Toronto,ON
+401910462,2027,R,2027-01-31 23:00:00+00:00,MIN,PHX,,,,False,Target Center,Minneapolis,MN
+401910463,2027,R,2027-01-31 23:00:00+00:00,OKC,CHI,,,,False,Paycom Center,Oklahoma City,OK
+401910464,2027,R,2027-02-01 00:00:00+00:00,CHA,LAL,,,,False,Spectrum Center,Charlotte,NC
+401910465,2027,R,2027-02-01 01:00:00+00:00,DEN,POR,,,,False,Ball Arena,Denver,CO
+401910466,2027,R,2027-02-01 01:30:00+00:00,DAL,HOU,,,,False,American Airlines Center,Dallas,TX
+401910467,2027,R,2027-02-02 00:00:00+00:00,ATL,WAS,,,,False,State Farm Arena,Atlanta,GA
+401910468,2027,R,2027-02-02 00:00:00+00:00,PHI,NOP,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910469,2027,R,2027-02-02 00:30:00+00:00,BKN,NYK,,,,False,Barclays Center,Brooklyn,NY
+401910470,2027,R,2027-02-02 00:30:00+00:00,IND,MIA,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910471,2027,R,2027-02-02 01:00:00+00:00,MIL,MEM,,,,False,Fiserv Forum,Milwaukee,WI
+401910472,2027,R,2027-02-02 02:00:00+00:00,UTA,CLE,,,,False,Delta Center,Salt Lake City,UT
+401910473,2027,R,2027-02-02 03:00:00+00:00,GSW,SAS,,,,False,Chase Center,San Francisco,CA
+401910474,2027,R,2027-02-03 00:00:00+00:00,DET,CHI,,,,False,Little Caesars Arena,Detroit,MI
+401910475,2027,R,2027-02-03 00:00:00+00:00,ORL,NOP,,,,False,Kia Center,Orlando,FL
+401910476,2027,R,2027-02-03 00:30:00+00:00,MIA,CHA,,,,False,Kaseya Center,Miami,FL
+401910477,2027,R,2027-02-03 01:00:00+00:00,BOS,LAL,,,,False,TD Garden,Boston,MA
+401910478,2027,R,2027-02-03 01:00:00+00:00,DAL,TOR,,,,False,American Airlines Center,Dallas,TX
+401910479,2027,R,2027-02-03 02:00:00+00:00,DEN,OKC,,,,False,Ball Arena,Denver,CO
+401910480,2027,R,2027-02-03 03:30:00+00:00,LAC,SAS,,,,False,Intuit Dome,Inglewood,CA
+401910481,2027,R,2027-02-03 04:00:00+00:00,POR,MIN,,,,False,Moda Center,Portland,OR
+401910482,2027,R,2027-02-04 00:00:00+00:00,DET,NYK,,,,False,Little Caesars Arena,Detroit,MI
+401910483,2027,R,2027-02-04 00:00:00+00:00,IND,ATL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910484,2027,R,2027-02-04 01:00:00+00:00,MEM,PHI,,,,False,FedExForum,Memphis,TN
+401910485,2027,R,2027-02-04 02:00:00+00:00,PHX,CLE,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910486,2027,R,2027-02-04 02:30:00+00:00,HOU,UTA,,,,False,Toyota Center (Houston),Houston,TX
+401910487,2027,R,2027-02-04 03:30:00+00:00,LAC,GSW,,,,False,Intuit Dome,Inglewood,CA
+401910488,2027,R,2027-02-05 00:00:00+00:00,WAS,NOP,,,,False,Capital One Arena,Washington,DC
+401910489,2027,R,2027-02-05 00:30:00+00:00,BKN,LAL,,,,False,Barclays Center,Brooklyn,NY
+401910490,2027,R,2027-02-05 00:30:00+00:00,CHA,BOS,,,,False,Spectrum Center,Charlotte,NC
+401910491,2027,R,2027-02-05 00:30:00+00:00,MIA,MIL,,,,False,Kaseya Center,Miami,FL
+401910492,2027,R,2027-02-05 00:30:00+00:00,NYK,TOR,,,,False,Madison Square Garden,New York,NY
+401910493,2027,R,2027-02-05 01:00:00+00:00,CHI,OKC,,,,False,United Center,Chicago,IL
+401910494,2027,R,2027-02-05 01:00:00+00:00,SAS,ORL,,,,False,Frost Bank Center,San Antonio,TX
+401910495,2027,R,2027-02-05 03:00:00+00:00,DEN,DAL,,,,False,Ball Arena,Denver,CO
+401910496,2027,R,2027-02-05 03:00:00+00:00,POR,CLE,,,,False,Moda Center,Portland,OR
+401910497,2027,R,2027-02-05 03:00:00+00:00,SAC,MIN,,,,False,Golden 1 Center,Sacramento,CA
+401910498,2027,R,2027-02-06 00:00:00+00:00,ATL,BOS,,,,False,State Farm Arena,Atlanta,GA
+401910499,2027,R,2027-02-06 00:00:00+00:00,CHA,GSW,,,,False,Spectrum Center,Charlotte,NC
+401910500,2027,R,2027-02-06 00:00:00+00:00,PHI,DET,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910501,2027,R,2027-02-06 02:00:00+00:00,DEN,LAC,,,,False,Ball Arena,Denver,CO
+401910502,2027,R,2027-02-06 02:00:00+00:00,PHX,HOU,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910503,2027,R,2027-02-06 02:30:00+00:00,OKC,IND,,,,False,Paycom Center,Oklahoma City,OK
+401910504,2027,R,2027-02-06 20:00:00+00:00,DAL,UTA,,,,False,American Airlines Center,Dallas,TX
+401910505,2027,R,2027-02-06 20:00:00+00:00,MIN,MIA,,,,False,Target Center,Minneapolis,MN
+401910506,2027,R,2027-02-06 22:30:00+00:00,MEM,POR,,,,False,FedExForum,Memphis,TN
+401910507,2027,R,2027-02-06 23:00:00+00:00,BKN,WAS,,,,False,Barclays Center,Brooklyn,NY
+401910508,2027,R,2027-02-07 00:30:00+00:00,CLE,ORL,,,,False,Rocket Arena,Cleveland,OH
+401910509,2027,R,2027-02-07 00:30:00+00:00,TOR,MIL,,,,False,Scotiabank Arena,Toronto,ON
+401910510,2027,R,2027-02-07 01:00:00+00:00,CHI,NOP,,,,False,United Center,Chicago,IL
+401910511,2027,R,2027-02-07 01:30:00+00:00,SAS,LAL,,,,False,Frost Bank Center,San Antonio,TX
+401910512,2027,R,2027-02-07 03:00:00+00:00,SAC,PHX,,,,False,Golden 1 Center,Sacramento,CA
+401910513,2027,R,2027-02-07 20:00:00+00:00,ATL,DEN,,,,False,State Farm Arena,Atlanta,GA
+401910514,2027,R,2027-02-07 20:00:00+00:00,DET,GSW,,,,False,Little Caesars Arena,Detroit,MI
+401910515,2027,R,2027-02-07 20:30:00+00:00,MIN,UTA,,,,False,Target Center,Minneapolis,MN
+401910516,2027,R,2027-02-07 21:30:00+00:00,DAL,LAC,,,,False,American Airlines Center,Dallas,TX
+401910517,2027,R,2027-02-07 23:00:00+00:00,TOR,CHA,,,,False,Scotiabank Arena,Toronto,ON
+401910518,2027,R,2027-02-08 00:00:00+00:00,PHI,BOS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910519,2027,R,2027-02-08 02:30:00+00:00,OKC,NYK,,,,False,Paycom Center,Oklahoma City,OK
+401910520,2027,R,2027-02-08 03:30:00+00:00,SAC,HOU,,,,False,Golden 1 Center,Sacramento,CA
+401910521,2027,R,2027-02-09 00:00:00+00:00,ATL,MIA,,,,False,State Farm Arena,Atlanta,GA
+401910522,2027,R,2027-02-09 00:00:00+00:00,IND,NOP,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910523,2027,R,2027-02-09 00:00:00+00:00,PHI,BKN,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910524,2027,R,2027-02-09 00:00:00+00:00,WAS,CHI,,,,False,Capital One Arena,Washington,DC
+401910525,2027,R,2027-02-09 01:00:00+00:00,MEM,POR,,,,False,FedExForum,Memphis,TN
+401910526,2027,R,2027-02-09 01:00:00+00:00,MIL,ORL,,,,False,Fiserv Forum,Milwaukee,WI
+401910527,2027,R,2027-02-09 02:30:00+00:00,PHX,LAL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910528,2027,R,2027-02-10 00:00:00+00:00,CLE,TOR,,,,False,Rocket Arena,Cleveland,OH
+401910529,2027,R,2027-02-10 00:30:00+00:00,BOS,DEN,,,,False,TD Garden,Boston,MA
+401910530,2027,R,2027-02-10 00:30:00+00:00,BKN,MIN,,,,False,Barclays Center,Brooklyn,NY
+401910531,2027,R,2027-02-10 00:30:00+00:00,NYK,CHA,,,,False,Madison Square Garden,New York,NY
+401910532,2027,R,2027-02-10 01:00:00+00:00,CHI,GSW,,,,False,United Center,Chicago,IL
+401910533,2027,R,2027-02-10 01:00:00+00:00,DAL,SAS,,,,False,American Airlines Center,Dallas,TX
+401910534,2027,R,2027-02-10 01:00:00+00:00,MIL,SAC,,,,False,Fiserv Forum,Milwaukee,WI
+401910535,2027,R,2027-02-10 01:00:00+00:00,OKC,POR,,,,False,Paycom Center,Oklahoma City,OK
+401910536,2027,R,2027-02-10 03:00:00+00:00,UTA,HOU,,,,False,Delta Center,Salt Lake City,UT
+401910537,2027,R,2027-02-10 03:30:00+00:00,LAC,DET,,,,False,Intuit Dome,Inglewood,CA
+401910538,2027,R,2027-02-11 00:00:00+00:00,ATL,NOP,,,,False,State Farm Arena,Atlanta,GA
+401910539,2027,R,2027-02-11 00:00:00+00:00,IND,CLE,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910540,2027,R,2027-02-11 00:00:00+00:00,WAS,MIA,,,,False,Capital One Arena,Washington,DC
+401910541,2027,R,2027-02-11 00:30:00+00:00,BOS,GSW,,,,False,TD Garden,Boston,MA
+401910542,2027,R,2027-02-11 01:00:00+00:00,MEM,ORL,,,,False,FedExForum,Memphis,TN
+401910543,2027,R,2027-02-11 02:00:00+00:00,PHX,DET,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910544,2027,R,2027-02-11 03:00:00+00:00,LAL,LAC,,,,False,crypto.com Arena,Los Angeles,CA
+401910545,2027,R,2027-02-12 00:00:00+00:00,CHA,MIL,,,,False,Spectrum Center,Charlotte,NC
+401910546,2027,R,2027-02-12 00:00:00+00:00,IND,UTA,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910547,2027,R,2027-02-12 00:00:00+00:00,PHI,NYK,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910548,2027,R,2027-02-12 01:00:00+00:00,DAL,POR,,,,False,American Airlines Center,Dallas,TX
+401910549,2027,R,2027-02-12 01:30:00+00:00,HOU,SAC,,,,False,Toyota Center (Houston),Houston,TX
+401910550,2027,R,2027-02-12 02:00:00+00:00,DEN,CHI,,,,False,Ball Arena,Denver,CO
+401910551,2027,R,2027-02-12 02:30:00+00:00,OKC,SAS,,,,False,Paycom Center,Oklahoma City,OK
+401910552,2027,R,2027-02-13 00:00:00+00:00,ATL,PHX,,,,False,State Farm Arena,Atlanta,GA
+401910553,2027,R,2027-02-13 00:00:00+00:00,ORL,MIA,,,,False,Kia Center,Orlando,FL
+401910554,2027,R,2027-02-13 00:00:00+00:00,WAS,BKN,,,,False,Capital One Arena,Washington,DC
+401910555,2027,R,2027-02-13 00:30:00+00:00,TOR,CLE,,,,False,Scotiabank Arena,Toronto,ON
+401910556,2027,R,2027-02-13 01:00:00+00:00,BOS,MIN,,,,False,TD Garden,Boston,MA
+401910557,2027,R,2027-02-13 01:00:00+00:00,MEM,LAC,,,,False,FedExForum,Memphis,TN
+401910558,2027,R,2027-02-13 01:00:00+00:00,NOP,HOU,,,,False,Smoothie King Center,New Orleans,LA
+401910559,2027,R,2027-02-13 03:30:00+00:00,LAL,DEN,,,,False,crypto.com Arena,Los Angeles,CA
+401910560,2027,R,2027-02-13 19:00:00+00:00,IND,SAC,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910561,2027,R,2027-02-13 20:00:00+00:00,CHA,DAL,,,,False,Spectrum Center,Charlotte,NC
+401910562,2027,R,2027-02-13 20:30:00+00:00,POR,DET,,,,False,Moda Center,Portland,OR
+401910563,2027,R,2027-02-13 22:30:00+00:00,OKC,PHI,,,,False,Paycom Center,Oklahoma City,OK
+401910564,2027,R,2027-02-14 00:00:00+00:00,ORL,SAS,,,,False,Kia Center,Orlando,FL
+401910565,2027,R,2027-02-14 00:00:00+00:00,WAS,MIL,,,,False,Capital One Arena,Washington,DC
+401910566,2027,R,2027-02-14 01:30:00+00:00,NYK,GSW,,,,False,Madison Square Garden,New York,NY
+401910567,2027,R,2027-02-14 18:00:00+00:00,ATL,SAC,,,,False,State Farm Arena,Atlanta,GA
+401910568,2027,R,2027-02-14 18:00:00+00:00,BOS,TOR,,,,False,TD Garden,Boston,MA
+401910569,2027,R,2027-02-14 18:00:00+00:00,CLE,PHX,,,,False,Rocket Arena,Cleveland,OH
+401910570,2027,R,2027-02-14 18:00:00+00:00,MIA,BKN,,,,False,Kaseya Center,Miami,FL
+401910571,2027,R,2027-02-14 19:00:00+00:00,HOU,DEN,,,,False,Toyota Center (Houston),Houston,TX
+401910572,2027,R,2027-02-14 19:00:00+00:00,NOP,LAC,,,,False,Smoothie King Center,New Orleans,LA
+401910573,2027,R,2027-02-14 20:30:00+00:00,POR,CHI,,,,False,Moda Center,Portland,OR
+401909477,2027,R,2027-02-15 17:00:00+00:00,CHA,MIN,,,,False,Spectrum Center,Charlotte,NC
+401909478,2027,R,2027-02-15 19:30:00+00:00,DAL,PHI,,,,False,American Airlines Center,Dallas,TX
+401909479,2027,R,2027-02-15 22:00:00+00:00,MIA,SAS,,,,False,Kaseya Center,Miami,FL
+401910574,2027,R,2027-02-16 00:00:00+00:00,WAS,PHX,,,,False,Capital One Arena,Washington,DC
+401909480,2027,R,2027-02-16 00:30:00+00:00,GSW,IND,,,,False,Chase Center,San Francisco,CA
+401910575,2027,R,2027-02-16 01:00:00+00:00,MEM,NYK,,,,False,FedExForum,Memphis,TN
+401910576,2027,R,2027-02-16 01:00:00+00:00,OKC,ORL,,,,False,Paycom Center,Oklahoma City,OK
+401910577,2027,R,2027-02-16 02:00:00+00:00,UTA,DET,,,,False,Delta Center,Salt Lake City,UT
+401910578,2027,R,2027-02-17 00:00:00+00:00,CLE,MIL,,,,False,Rocket Arena,Cleveland,OH
+401910579,2027,R,2027-02-17 01:00:00+00:00,ATL,TOR,,,,False,State Farm Arena,Atlanta,GA
+401910580,2027,R,2027-02-17 03:00:00+00:00,LAL,CHI,,,,False,crypto.com Arena,Los Angeles,CA
+401910581,2027,R,2027-02-17 03:00:00+00:00,POR,NOP,,,,False,Moda Center,Portland,OR
+401910582,2027,R,2027-02-17 04:00:00+00:00,LAC,HOU,,,,False,Intuit Dome,Inglewood,CA
+401910583,2027,R,2027-02-18 00:00:00+00:00,CHA,TOR,,,,False,Spectrum Center,Charlotte,NC
+401910584,2027,R,2027-02-18 00:00:00+00:00,CLE,MIL,,,,False,Rocket Arena,Cleveland,OH
+401910585,2027,R,2027-02-18 00:00:00+00:00,DET,NYK,,,,False,Little Caesars Arena,Detroit,MI
+401910586,2027,R,2027-02-18 00:00:00+00:00,ORL,DAL,,,,False,Kia Center,Orlando,FL
+401910587,2027,R,2027-02-18 00:00:00+00:00,PHI,PHX,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910588,2027,R,2027-02-18 00:00:00+00:00,WAS,MIA,,,,False,Capital One Arena,Washington,DC
+401910589,2027,R,2027-02-18 00:30:00+00:00,BKN,ATL,,,,False,Barclays Center,Brooklyn,NY
+401910590,2027,R,2027-02-18 01:00:00+00:00,MEM,SAS,,,,False,FedExForum,Memphis,TN
+401910591,2027,R,2027-02-18 02:00:00+00:00,DEN,UTA,,,,False,Ball Arena,Denver,CO
+401910592,2027,R,2027-02-18 02:30:00+00:00,OKC,BOS,,,,False,Paycom Center,Oklahoma City,OK
+401910593,2027,R,2027-02-18 03:00:00+00:00,GSW,NOP,,,,False,Chase Center,San Francisco,CA
+401910594,2027,R,2027-02-18 03:00:00+00:00,SAC,IND,,,,False,Golden 1 Center,Sacramento,CA
+401910595,2027,R,2027-02-18 03:30:00+00:00,LAC,CHI,,,,False,Intuit Dome,Inglewood,CA
+401910596,2027,R,2027-02-19 00:30:00+00:00,MIN,SAS,,,,False,Target Center,Minneapolis,MN
+401910597,2027,R,2027-02-19 01:00:00+00:00,MEM,BOS,,,,False,FedExForum,Memphis,TN
+401910598,2027,R,2027-02-19 03:00:00+00:00,LAL,HOU,,,,False,crypto.com Arena,Los Angeles,CA
+401910599,2027,R,2027-02-19 03:00:00+00:00,POR,IND,,,,False,Moda Center,Portland,OR
+401910600,2027,R,2027-02-26 00:00:00+00:00,CLE,SAC,,,,False,Rocket Arena,Cleveland,OH
+401910601,2027,R,2027-02-26 00:00:00+00:00,DET,MIA,,,,False,Little Caesars Arena,Detroit,MI
+401910602,2027,R,2027-02-26 00:00:00+00:00,ORL,CHA,,,,False,Kia Center,Orlando,FL
+401910603,2027,R,2027-02-26 00:30:00+00:00,BKN,PHI,,,,False,Barclays Center,Brooklyn,NY
+401910604,2027,R,2027-02-26 00:30:00+00:00,NYK,OKC,,,,False,Madison Square Garden,New York,NY
+401910605,2027,R,2027-02-26 01:00:00+00:00,CHI,ATL,,,,False,United Center,Chicago,IL
+401910606,2027,R,2027-02-26 01:00:00+00:00,MIL,WAS,,,,False,Fiserv Forum,Milwaukee,WI
+401910607,2027,R,2027-02-26 01:00:00+00:00,NOP,PHX,,,,False,Smoothie King Center,New Orleans,LA
+401910608,2027,R,2027-02-26 03:00:00+00:00,GSW,DAL,,,,False,Chase Center,San Francisco,CA
+401910609,2027,R,2027-02-26 03:30:00+00:00,LAC,UTA,,,,False,Intuit Dome,Inglewood,CA
+401910610,2027,R,2027-02-27 00:30:00+00:00,BOS,CLE,,,,False,TD Garden,Boston,MA
+401910611,2027,R,2027-02-27 00:30:00+00:00,TOR,ATL,,,,False,Scotiabank Arena,Toronto,ON
+401910612,2027,R,2027-02-27 01:00:00+00:00,MIN,IND,,,,False,Target Center,Minneapolis,MN
+401910613,2027,R,2027-02-27 01:00:00+00:00,SAS,MEM,,,,False,Moody Center,Austin,TX
+401910614,2027,R,2027-02-27 01:30:00+00:00,HOU,CHA,,,,False,Toyota Center (Houston),Houston,TX
+401910615,2027,R,2027-02-27 03:00:00+00:00,DEN,LAL,,,,False,Ball Arena,Denver,CO
+401910616,2027,R,2027-02-27 03:00:00+00:00,POR,DAL,,,,False,Moda Center,Portland,OR
+401910617,2027,R,2027-02-27 20:00:00+00:00,UTA,WAS,,,,False,Delta Center,Salt Lake City,UT
+401910618,2027,R,2027-02-27 22:30:00+00:00,DET,OKC,,,,False,Little Caesars Arena,Detroit,MI
+401910619,2027,R,2027-02-28 01:00:00+00:00,CHI,BKN,,,,False,United Center,Chicago,IL
+401910620,2027,R,2027-02-28 01:00:00+00:00,MEM,SAC,,,,False,FedExForum,Memphis,TN
+401910621,2027,R,2027-02-28 01:30:00+00:00,NYK,PHI,,,,False,Madison Square Garden,New York,NY
+401910622,2027,R,2027-02-28 02:00:00+00:00,PHX,NOP,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910623,2027,R,2027-02-28 18:00:00+00:00,SAS,DEN,,,,False,Moody Center,Austin,TX
+401910624,2027,R,2027-02-28 20:30:00+00:00,DAL,LAL,,,,False,American Airlines Center,Dallas,TX
+401910625,2027,R,2027-02-28 21:00:00+00:00,IND,TOR,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910626,2027,R,2027-02-28 21:30:00+00:00,ORL,ATL,,,,False,Kia Center,Orlando,FL
+401910627,2027,R,2027-03-01 00:00:00+00:00,CHA,SAC,,,,False,Spectrum Center,Charlotte,NC
+401910628,2027,R,2027-03-01 00:00:00+00:00,MIN,BOS,,,,False,Target Center,Minneapolis,MN
+401910629,2027,R,2027-03-01 00:30:00+00:00,NYK,MIL,,,,False,Madison Square Garden,New York,NY
+401910630,2027,R,2027-03-01 02:30:00+00:00,HOU,MIA,,,,False,Toyota Center (Houston),Houston,TX
+401910631,2027,R,2027-03-01 03:30:00+00:00,LAC,POR,,,,False,Intuit Dome,Inglewood,CA
+401910632,2027,R,2027-03-02 00:00:00+00:00,CLE,PHI,,,,False,Rocket Arena,Cleveland,OH
+401910633,2027,R,2027-03-02 00:00:00+00:00,DET,CHI,,,,False,Little Caesars Arena,Detroit,MI
+401910634,2027,R,2027-03-02 01:00:00+00:00,NOP,UTA,,,,False,Smoothie King Center,New Orleans,LA
+401910635,2027,R,2027-03-02 01:30:00+00:00,HOU,GSW,,,,False,Toyota Center (Houston),Houston,TX
+401910636,2027,R,2027-03-02 02:00:00+00:00,DEN,BKN,,,,False,Ball Arena,Denver,CO
+401910637,2027,R,2027-03-02 02:30:00+00:00,PHX,WAS,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910638,2027,R,2027-03-03 00:00:00+00:00,IND,BOS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910639,2027,R,2027-03-03 00:00:00+00:00,ORL,LAL,,,,False,Kia Center,Orlando,FL
+401910640,2027,R,2027-03-03 00:30:00+00:00,MIA,TOR,,,,False,Kaseya Center,Miami,FL
+401910641,2027,R,2027-03-03 00:30:00+00:00,NYK,MEM,,,,False,Madison Square Garden,New York,NY
+401910642,2027,R,2027-03-03 01:00:00+00:00,DAL,GSW,,,,False,American Airlines Center,Dallas,TX
+401910643,2027,R,2027-03-03 01:00:00+00:00,MIL,DET,,,,False,Fiserv Forum,Milwaukee,WI
+401910644,2027,R,2027-03-03 01:00:00+00:00,OKC,MIN,,,,False,Paycom Center,Oklahoma City,OK
+401910645,2027,R,2027-03-03 03:00:00+00:00,SAC,WAS,,,,False,Golden 1 Center,Sacramento,CA
+401910646,2027,R,2027-03-03 04:00:00+00:00,POR,LAC,,,,False,Moda Center,Portland,OR
+401910647,2027,R,2027-03-04 00:00:00+00:00,ATL,CHI,,,,False,State Farm Arena,Atlanta,GA
+401910648,2027,R,2027-03-04 00:00:00+00:00,PHI,CHA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910649,2027,R,2027-03-04 00:30:00+00:00,MIA,TOR,,,,False,Kaseya Center,Miami,FL
+401910650,2027,R,2027-03-04 01:00:00+00:00,MIL,UTA,,,,False,Fiserv Forum,Milwaukee,WI
+401910651,2027,R,2027-03-04 01:30:00+00:00,HOU,NOP,,,,False,Toyota Center (Houston),Houston,TX
+401910652,2027,R,2027-03-04 02:00:00+00:00,PHX,BKN,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910653,2027,R,2027-03-04 03:00:00+00:00,DEN,SAS,,,,False,Ball Arena,Denver,CO
+401910654,2027,R,2027-03-05 00:00:00+00:00,CLE,POR,,,,False,Rocket Arena,Cleveland,OH
+401910655,2027,R,2027-03-05 00:00:00+00:00,ORL,IND,,,,False,Kia Center,Orlando,FL
+401910656,2027,R,2027-03-05 00:00:00+00:00,PHI,LAL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910657,2027,R,2027-03-05 00:30:00+00:00,ATL,MEM,,,,False,State Farm Arena,Atlanta,GA
+401910658,2027,R,2027-03-05 02:30:00+00:00,DAL,NYK,,,,False,American Airlines Center,Dallas,TX
+401910659,2027,R,2027-03-05 03:00:00+00:00,GSW,WAS,,,,False,Chase Center,San Francisco,CA
+401910660,2027,R,2027-03-05 03:00:00+00:00,SAC,OKC,,,,False,Golden 1 Center,Sacramento,CA
+401910661,2027,R,2027-03-05 03:30:00+00:00,LAC,BKN,,,,False,Intuit Dome,Inglewood,CA
+401910662,2027,R,2027-03-06 00:00:00+00:00,DET,BOS,,,,False,Little Caesars Arena,Detroit,MI
+401910663,2027,R,2027-03-06 00:00:00+00:00,ORL,UTA,,,,False,Kia Center,Orlando,FL
+401910664,2027,R,2027-03-06 00:30:00+00:00,TOR,POR,,,,False,Scotiabank Arena,Toronto,ON
+401910665,2027,R,2027-03-06 01:00:00+00:00,NOP,MIL,,,,False,Smoothie King Center,New Orleans,LA
+401910666,2027,R,2027-03-06 02:00:00+00:00,PHX,MIN,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910667,2027,R,2027-03-06 02:30:00+00:00,HOU,SAS,,,,False,Toyota Center (Houston),Houston,TX
+401910668,2027,R,2027-03-06 20:00:00+00:00,MIA,IND,,,,False,Kaseya Center,Miami,FL
+401910669,2027,R,2027-03-06 22:00:00+00:00,CHI,CHA,,,,False,United Center,Chicago,IL
+401910670,2027,R,2027-03-06 22:30:00+00:00,CLE,ATL,,,,False,Rocket Arena,Cleveland,OH
+401910671,2027,R,2027-03-07 00:00:00+00:00,WAS,UTA,,,,False,Capital One Arena,Washington,DC
+401910672,2027,R,2027-03-07 01:00:00+00:00,MEM,NOP,,,,False,FedExForum,Memphis,TN
+401910673,2027,R,2027-03-07 01:30:00+00:00,LAL,OKC,,,,False,crypto.com Arena,Los Angeles,CA
+401910674,2027,R,2027-03-07 03:00:00+00:00,SAC,LAC,,,,False,Golden 1 Center,Sacramento,CA
+401910675,2027,R,2027-03-07 18:00:00+00:00,BOS,PHI,,,,False,TD Garden,Boston,MA
+401910676,2027,R,2027-03-07 20:30:00+00:00,DEN,MIN,,,,False,Ball Arena,Denver,CO
+401910677,2027,R,2027-03-07 22:00:00+00:00,CHI,POR,,,,False,United Center,Chicago,IL
+401910678,2027,R,2027-03-08 00:30:00+00:00,SAS,NYK,,,,False,Frost Bank Center,San Antonio,TX
+401910679,2027,R,2027-03-08 03:00:00+00:00,GSW,HOU,,,,False,Chase Center,San Francisco,CA
+401910680,2027,R,2027-03-08 03:30:00+00:00,LAL,BKN,,,,False,crypto.com Arena,Los Angeles,CA
+401910681,2027,R,2027-03-09 00:00:00+00:00,IND,CHA,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910682,2027,R,2027-03-09 00:00:00+00:00,PHI,UTA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910683,2027,R,2027-03-09 00:30:00+00:00,MIA,PHX,,,,False,Kaseya Center,Miami,FL
+401910684,2027,R,2027-03-09 01:00:00+00:00,MEM,ATL,,,,False,FedExForum,Memphis,TN
+401910685,2027,R,2027-03-09 01:00:00+00:00,MIN,NOP,,,,False,Target Center,Minneapolis,MN
+401910686,2027,R,2027-03-09 02:30:00+00:00,OKC,DAL,,,,False,Paycom Center,Oklahoma City,OK
+401910687,2027,R,2027-03-09 03:00:00+00:00,SAC,DEN,,,,False,Golden 1 Center,Sacramento,CA
+401910688,2027,R,2027-03-09 03:30:00+00:00,LAC,HOU,,,,False,Intuit Dome,Inglewood,CA
+401910689,2027,R,2027-03-10 00:00:00+00:00,ORL,PHX,,,,False,Kia Center,Orlando,FL
+401910690,2027,R,2027-03-10 00:30:00+00:00,BKN,MIL,,,,False,Barclays Center,Brooklyn,NY
+401910691,2027,R,2027-03-10 01:00:00+00:00,DET,CLE,,,,False,Little Caesars Arena,Detroit,MI
+401910692,2027,R,2027-03-10 01:00:00+00:00,CHI,BOS,,,,False,United Center,Chicago,IL
+401910693,2027,R,2027-03-10 01:00:00+00:00,DAL,MEM,,,,False,American Airlines Center,Dallas,TX
+401910694,2027,R,2027-03-10 01:00:00+00:00,SAS,WAS,,,,False,Frost Bank Center,San Antonio,TX
+401910695,2027,R,2027-03-10 04:00:00+00:00,GSW,POR,,,,False,Chase Center,San Francisco,CA
+401910696,2027,R,2027-03-11 00:00:00+00:00,CHA,NOP,,,,False,Spectrum Center,Charlotte,NC
+401910697,2027,R,2027-03-11 00:00:00+00:00,MIA,ORL,,,,False,Kaseya Center,Miami,FL
+401910698,2027,R,2027-03-11 00:30:00+00:00,TOR,OKC,,,,False,Scotiabank Arena,Toronto,ON
+401910699,2027,R,2027-03-11 02:00:00+00:00,UTA,HOU,,,,False,Delta Center,Salt Lake City,UT
+401910700,2027,R,2027-03-11 02:30:00+00:00,MIN,ATL,,,,False,Target Center,Minneapolis,MN
+401910701,2027,R,2027-03-11 03:00:00+00:00,POR,DEN,,,,False,Moda Center,Portland,OR
+401910702,2027,R,2027-03-11 03:00:00+00:00,SAC,GSW,,,,False,Golden 1 Center,Sacramento,CA
+401910703,2027,R,2027-03-11 03:30:00+00:00,LAC,NYK,,,,False,Intuit Dome,Inglewood,CA
+401910704,2027,R,2027-03-12 00:00:00+00:00,CHA,IND,,,,False,Spectrum Center,Charlotte,NC
+401910705,2027,R,2027-03-12 00:00:00+00:00,DET,MIL,,,,False,Little Caesars Arena,Detroit,MI
+401910706,2027,R,2027-03-12 00:30:00+00:00,BOS,MEM,,,,False,TD Garden,Boston,MA
+401910707,2027,R,2027-03-12 00:30:00+00:00,SAS,PHI,,,,False,Frost Bank Center,San Antonio,TX
+401910708,2027,R,2027-03-12 01:00:00+00:00,ATL,BKN,,,,False,State Farm Arena,Atlanta,GA
+401910709,2027,R,2027-03-12 01:00:00+00:00,CHI,PHX,,,,False,United Center,Chicago,IL
+401910710,2027,R,2027-03-12 01:00:00+00:00,DAL,WAS,,,,False,American Airlines Center,Dallas,TX
+401910711,2027,R,2027-03-12 03:00:00+00:00,LAL,NYK,,,,False,crypto.com Arena,Los Angeles,CA
+401910712,2027,R,2027-03-12 03:30:00+00:00,LAC,CLE,,,,False,Intuit Dome,Inglewood,CA
+401910713,2027,R,2027-03-13 00:30:00+00:00,BOS,OKC,,,,False,TD Garden,Boston,MA
+401910714,2027,R,2027-03-13 01:00:00+00:00,MIL,MIA,,,,False,Fiserv Forum,Milwaukee,WI
+401910715,2027,R,2027-03-13 01:00:00+00:00,NOP,TOR,,,,False,Smoothie King Center,New Orleans,LA
+401910716,2027,R,2027-03-13 02:30:00+00:00,UTA,SAC,,,,False,Delta Center,Salt Lake City,UT
+401910717,2027,R,2027-03-13 03:00:00+00:00,DEN,GSW,,,,False,Ball Arena,Denver,CO
+401910718,2027,R,2027-03-13 03:00:00+00:00,LAL,CLE,,,,False,crypto.com Arena,Los Angeles,CA
+401910719,2027,R,2027-03-13 20:00:00+00:00,ATL,ORL,,,,False,State Farm Arena,Atlanta,GA
+401910720,2027,R,2027-03-13 20:00:00+00:00,DET,BKN,,,,False,Little Caesars Arena,Detroit,MI
+401910721,2027,R,2027-03-13 22:30:00+00:00,HOU,IND,,,,False,Toyota Center (Houston),Houston,TX
+401910722,2027,R,2027-03-13 23:00:00+00:00,CHA,PHX,,,,False,Spectrum Center,Charlotte,NC
+401910723,2027,R,2027-03-14 01:00:00+00:00,CHI,MEM,,,,False,United Center,Chicago,IL
+401910724,2027,R,2027-03-14 01:00:00+00:00,DAL,NOP,,,,False,American Airlines Center,Dallas,TX
+401910725,2027,R,2027-03-14 01:30:00+00:00,MIN,PHI,,,,False,Target Center,Minneapolis,MN
+401910726,2027,R,2027-03-14 03:30:00+00:00,POR,LAC,,,,False,Moda Center,Portland,OR
+401910727,2027,R,2027-03-14 16:00:00+00:00,NYK,BOS,,,,False,Madison Square Garden,New York,NY
+401910728,2027,R,2027-03-14 18:30:00+00:00,OKC,SAS,,,,False,Paycom Center,Oklahoma City,OK
+401910729,2027,R,2027-03-14 21:00:00+00:00,TOR,DET,,,,False,Scotiabank Arena,Toronto,ON
+401910730,2027,R,2027-03-14 22:00:00+00:00,SAC,CLE,,,,False,Golden 1 Center,Sacramento,CA
+401910731,2027,R,2027-03-14 23:30:00+00:00,DEN,MIA,,,,False,Ball Arena,Denver,CO
+401910732,2027,R,2027-03-15 00:00:00+00:00,MIN,WAS,,,,False,Target Center,Minneapolis,MN
+401910733,2027,R,2027-03-15 02:00:00+00:00,LAL,GSW,,,,False,crypto.com Arena,Los Angeles,CA
+401910734,2027,R,2027-03-15 23:00:00+00:00,PHI,TOR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910735,2027,R,2027-03-15 23:30:00+00:00,BKN,IND,,,,False,Barclays Center,Brooklyn,NY
+401910736,2027,R,2027-03-16 00:00:00+00:00,CHI,ORL,,,,False,United Center,Chicago,IL
+401910737,2027,R,2027-03-16 00:00:00+00:00,MEM,PHX,,,,False,FedExForum,Memphis,TN
+401910738,2027,R,2027-03-16 01:30:00+00:00,DAL,ATL,,,,False,American Airlines Center,Dallas,TX
+401910739,2027,R,2027-03-16 23:00:00+00:00,WAS,NYK,,,,False,Capital One Arena,Washington,DC
+401910740,2027,R,2027-03-16 23:30:00+00:00,BOS,SAC,,,,False,TD Garden,Boston,MA
+401910741,2027,R,2027-03-17 00:00:00+00:00,IND,DET,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910742,2027,R,2027-03-17 00:00:00+00:00,MIL,ORL,,,,False,Fiserv Forum,Milwaukee,WI
+401910743,2027,R,2027-03-17 00:00:00+00:00,NOP,MIN,,,,False,Smoothie King Center,New Orleans,LA
+401910744,2027,R,2027-03-17 00:00:00+00:00,OKC,CHA,,,,False,Paycom Center,Oklahoma City,OK
+401910745,2027,R,2027-03-17 00:30:00+00:00,HOU,SAS,,,,False,Toyota Center (Houston),Houston,TX
+401910746,2027,R,2027-03-17 02:00:00+00:00,GSW,CLE,,,,False,Chase Center,San Francisco,CA
+401910747,2027,R,2027-03-17 02:00:00+00:00,POR,LAL,,,,False,Moda Center,Portland,OR
+401910748,2027,R,2027-03-17 03:00:00+00:00,LAC,DEN,,,,False,Intuit Dome,Inglewood,CA
+401910749,2027,R,2027-03-17 23:00:00+00:00,PHI,CHI,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910750,2027,R,2027-03-17 23:30:00+00:00,NYK,SAC,,,,False,Madison Square Garden,New York,NY
+401910751,2027,R,2027-03-17 23:30:00+00:00,OKC,DAL,,,,False,Paycom Center,Oklahoma City,OK
+401910752,2027,R,2027-03-18 00:30:00+00:00,HOU,BKN,,,,False,Toyota Center (Houston),Houston,TX
+401910753,2027,R,2027-03-18 01:00:00+00:00,UTA,ATL,,,,False,Delta Center,Salt Lake City,UT
+401910754,2027,R,2027-03-18 02:00:00+00:00,GSW,MEM,,,,False,Chase Center,San Francisco,CA
+401910755,2027,R,2027-03-18 02:00:00+00:00,LAL,PHX,,,,False,crypto.com Arena,Los Angeles,CA
+401910756,2027,R,2027-03-18 02:00:00+00:00,POR,MIA,,,,False,Moda Center,Portland,OR
+401910757,2027,R,2027-03-18 23:00:00+00:00,IND,TOR,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910758,2027,R,2027-03-18 23:00:00+00:00,WAS,PHI,,,,False,Capital One Arena,Washington,DC
+401910759,2027,R,2027-03-18 23:30:00+00:00,BOS,ORL,,,,False,TD Garden,Boston,MA
+401910760,2027,R,2027-03-19 00:00:00+00:00,MIL,DET,,,,False,Fiserv Forum,Milwaukee,WI
+401910761,2027,R,2027-03-19 00:00:00+00:00,NOP,CHA,,,,False,Smoothie King Center,New Orleans,LA
+401910762,2027,R,2027-03-19 00:00:00+00:00,SAS,BKN,,,,False,Frost Bank Center,San Antonio,TX
+401910763,2027,R,2027-03-19 01:00:00+00:00,DEN,CLE,,,,False,Ball Arena,Denver,CO
+401910764,2027,R,2027-03-19 01:00:00+00:00,UTA,MIN,,,,False,Delta Center,Salt Lake City,UT
+401910765,2027,R,2027-03-19 02:30:00+00:00,LAC,MEM,,,,False,Intuit Dome,Inglewood,CA
+401910766,2027,R,2027-03-19 23:30:00+00:00,TOR,SAC,,,,False,Scotiabank Arena,Toronto,ON
+401910767,2027,R,2027-03-20 00:00:00+00:00,NOP,HOU,,,,False,Smoothie King Center,New Orleans,LA
+401910768,2027,R,2027-03-20 00:00:00+00:00,SAS,DAL,,,,False,Frost Bank Center,San Antonio,TX
+401910769,2027,R,2027-03-20 02:00:00+00:00,GSW,POR,,,,False,Chase Center,San Francisco,CA
+401910770,2027,R,2027-03-20 02:00:00+00:00,LAL,ATL,,,,False,crypto.com Arena,Los Angeles,CA
+401910771,2027,R,2027-03-20 02:30:00+00:00,PHX,MIA,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910772,2027,R,2027-03-20 17:00:00+00:00,NYK,WAS,,,,False,Madison Square Garden,New York,NY
+401910773,2027,R,2027-03-20 23:00:00+00:00,ORL,DEN,,,,False,Kia Center,Orlando,FL
+401910774,2027,R,2027-03-20 23:30:00+00:00,CLE,CHI,,,,False,Rocket Arena,Cleveland,OH
+401910775,2027,R,2027-03-21 00:00:00+00:00,DET,CHA,,,,False,Little Caesars Arena,Detroit,MI
+401910776,2027,R,2027-03-21 00:00:00+00:00,MEM,OKC,,,,False,FedExForum,Memphis,TN
+401910777,2027,R,2027-03-21 00:00:00+00:00,MIL,IND,,,,False,Fiserv Forum,Milwaukee,WI
+401910778,2027,R,2027-03-21 02:30:00+00:00,LAC,ATL,,,,False,Intuit Dome,Inglewood,CA
+401910779,2027,R,2027-03-21 19:00:00+00:00,BOS,NOP,,,,False,TD Garden,Boston,MA
+401910780,2027,R,2027-03-21 19:00:00+00:00,BKN,SAC,,,,False,Barclays Center,Brooklyn,NY
+401910781,2027,R,2027-03-21 21:00:00+00:00,UTA,TOR,,,,False,Delta Center,Salt Lake City,UT
+401910782,2027,R,2027-03-21 21:00:00+00:00,PHX,POR,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910783,2027,R,2027-03-21 22:00:00+00:00,MIA,DEN,,,,False,Kaseya Center,Miami,FL
+401910784,2027,R,2027-03-21 23:30:00+00:00,PHI,SAS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910785,2027,R,2027-03-22 02:00:00+00:00,LAL,DAL,,,,False,crypto.com Arena,Los Angeles,CA
+401910786,2027,R,2027-03-22 23:00:00+00:00,CLE,HOU,,,,False,Rocket Arena,Cleveland,OH
+401910787,2027,R,2027-03-22 23:00:00+00:00,ORL,IND,,,,False,Kia Center,Orlando,FL
+401910788,2027,R,2027-03-23 00:00:00+00:00,CHI,SAC,,,,False,United Center,Chicago,IL
+401910789,2027,R,2027-03-23 00:00:00+00:00,MEM,CHA,,,,False,FedExForum,Memphis,TN
+401910790,2027,R,2027-03-23 00:00:00+00:00,MIL,WAS,,,,False,Fiserv Forum,Milwaukee,WI
+401910791,2027,R,2027-03-23 01:30:00+00:00,MIN,DET,,,,False,Target Center,Minneapolis,MN
+401910792,2027,R,2027-03-23 02:00:00+00:00,GSW,ATL,,,,False,Chase Center,San Francisco,CA
+401910793,2027,R,2027-03-23 02:30:00+00:00,LAC,DAL,,,,False,Intuit Dome,Inglewood,CA
+401910794,2027,R,2027-03-23 23:30:00+00:00,BKN,BOS,,,,False,Barclays Center,Brooklyn,NY
+401910795,2027,R,2027-03-23 23:30:00+00:00,NYK,NOP,,,,False,Madison Square Garden,New York,NY
+401910796,2027,R,2027-03-24 00:00:00+00:00,MIA,LAL,,,,False,Kaseya Center,Miami,FL
+401910797,2027,R,2027-03-24 01:00:00+00:00,UTA,PHI,,,,False,Delta Center,Salt Lake City,UT
+401910798,2027,R,2027-03-24 02:00:00+00:00,POR,TOR,,,,False,Moda Center,Portland,OR
+401910799,2027,R,2027-03-24 03:00:00+00:00,PHX,OKC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910800,2027,R,2027-03-24 23:00:00+00:00,CHA,DET,,,,False,Spectrum Center,Charlotte,NC
+401910801,2027,R,2027-03-24 23:00:00+00:00,IND,MEM,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910802,2027,R,2027-03-24 23:00:00+00:00,WAS,DEN,,,,False,Capital One Arena,Washington,DC
+401910803,2027,R,2027-03-24 23:30:00+00:00,BOS,SAS,,,,False,TD Garden,Boston,MA
+401910804,2027,R,2027-03-24 23:30:00+00:00,NYK,HOU,,,,False,Madison Square Garden,New York,NY
+401910805,2027,R,2027-03-25 00:00:00+00:00,CHI,ORL,,,,False,United Center,Chicago,IL
+401910806,2027,R,2027-03-25 00:00:00+00:00,MIN,DAL,,,,False,Target Center,Minneapolis,MN
+401910807,2027,R,2027-03-25 02:00:00+00:00,GSW,PHI,,,,False,Chase Center,San Francisco,CA
+401910808,2027,R,2027-03-25 02:00:00+00:00,PHX,OKC,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910809,2027,R,2027-03-25 02:00:00+00:00,SAC,ATL,,,,False,Golden 1 Center,Sacramento,CA
+401910810,2027,R,2027-03-25 02:30:00+00:00,LAC,MIL,,,,False,Intuit Dome,Inglewood,CA
+401910811,2027,R,2027-03-25 23:00:00+00:00,CLE,LAL,,,,False,Rocket Arena,Cleveland,OH
+401910812,2027,R,2027-03-25 23:00:00+00:00,DET,HOU,,,,False,Little Caesars Arena,Detroit,MI
+401910813,2027,R,2027-03-25 23:00:00+00:00,IND,SAS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910814,2027,R,2027-03-25 23:30:00+00:00,BKN,DEN,,,,False,Barclays Center,Brooklyn,NY
+401910815,2027,R,2027-03-25 23:30:00+00:00,MIA,UTA,,,,False,Kaseya Center,Miami,FL
+401910816,2027,R,2027-03-26 00:00:00+00:00,MEM,CHI,,,,False,FedExForum,Memphis,TN
+401910817,2027,R,2027-03-26 02:00:00+00:00,GSW,TOR,,,,False,Chase Center,San Francisco,CA
+401910818,2027,R,2027-03-26 23:00:00+00:00,CHA,NYK,,,,False,Spectrum Center,Charlotte,NC
+401910819,2027,R,2027-03-27 00:00:00+00:00,DAL,NOP,,,,False,American Airlines Center,Dallas,TX
+401910820,2027,R,2027-03-27 00:00:00+00:00,MIN,ORL,,,,False,Target Center,Minneapolis,MN
+401910821,2027,R,2027-03-27 00:00:00+00:00,OKC,LAC,,,,False,Paycom Center,Oklahoma City,OK
+401910822,2027,R,2027-03-27 02:00:00+00:00,PHX,MIL,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910823,2027,R,2027-03-27 02:00:00+00:00,POR,PHI,,,,False,Moda Center,Portland,OR
+401910824,2027,R,2027-03-27 19:00:00+00:00,DET,SAS,,,,False,Little Caesars Arena,Detroit,MI
+401910825,2027,R,2027-03-27 23:00:00+00:00,ATL,UTA,,,,False,State Farm Arena,Atlanta,GA
+401910826,2027,R,2027-03-27 23:00:00+00:00,WAS,GSW,,,,False,Capital One Arena,Washington,DC
+401910827,2027,R,2027-03-28 00:00:00+00:00,MIA,BOS,,,,False,Kaseya Center,Miami,FL
+401910828,2027,R,2027-03-28 00:00:00+00:00,CHI,LAC,,,,False,United Center,Chicago,IL
+401910829,2027,R,2027-03-28 02:00:00+00:00,POR,MIL,,,,False,Moda Center,Portland,OR
+401910830,2027,R,2027-03-28 02:00:00+00:00,SAC,TOR,,,,False,Golden 1 Center,Sacramento,CA
+401910831,2027,R,2027-03-28 16:30:00+00:00,ORL,NYK,,,,False,Kia Center,Orlando,FL
+401910832,2027,R,2027-03-28 19:00:00+00:00,BKN,MEM,,,,False,Barclays Center,Brooklyn,NY
+401910833,2027,R,2027-03-28 19:00:00+00:00,HOU,LAL,,,,False,Toyota Center (Houston),Houston,TX
+401910834,2027,R,2027-03-28 22:00:00+00:00,CHA,UTA,,,,False,Spectrum Center,Charlotte,NC
+401910835,2027,R,2027-03-28 22:00:00+00:00,WAS,DAL,,,,False,Capital One Arena,Washington,DC
+401910836,2027,R,2027-03-28 23:00:00+00:00,NOP,BOS,,,,False,Smoothie King Center,New Orleans,LA
+401910837,2027,R,2027-03-28 23:30:00+00:00,MIN,OKC,,,,False,Target Center,Minneapolis,MN
+401910838,2027,R,2027-03-29 01:00:00+00:00,PHX,TOR,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910839,2027,R,2027-03-29 02:00:00+00:00,DEN,PHI,,,,False,Ball Arena,Denver,CO
+401910840,2027,R,2027-03-29 23:00:00+00:00,ATL,MIN,,,,False,State Farm Arena,Atlanta,GA
+401910841,2027,R,2027-03-29 23:00:00+00:00,CLE,MIA,,,,False,Rocket Arena,Cleveland,OH
+401910842,2027,R,2027-03-29 23:00:00+00:00,DET,LAC,,,,False,Little Caesars Arena,Detroit,MI
+401910843,2027,R,2027-03-29 23:30:00+00:00,BKN,GSW,,,,False,Barclays Center,Brooklyn,NY
+401910844,2027,R,2027-03-30 00:00:00+00:00,CHI,IND,,,,False,United Center,Chicago,IL
+401910845,2027,R,2027-03-30 00:00:00+00:00,MIL,DAL,,,,False,Fiserv Forum,Milwaukee,WI
+401910846,2027,R,2027-03-30 01:30:00+00:00,SAS,PHX,,,,False,Frost Bank Center,San Antonio,TX
+401910847,2027,R,2027-03-30 02:00:00+00:00,SAC,DEN,,,,False,Golden 1 Center,Sacramento,CA
+401910848,2027,R,2027-03-30 23:00:00+00:00,CHA,MIA,,,,False,Spectrum Center,Charlotte,NC
+401910849,2027,R,2027-03-31 00:00:00+00:00,IND,BOS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910850,2027,R,2027-03-31 00:00:00+00:00,ORL,NYK,,,,False,Kia Center,Orlando,FL
+401910851,2027,R,2027-03-31 00:00:00+00:00,MEM,LAL,,,,False,FedExForum,Memphis,TN
+401910852,2027,R,2027-03-31 01:00:00+00:00,UTA,OKC,,,,False,Delta Center,Salt Lake City,UT
+401910853,2027,R,2027-03-31 03:00:00+00:00,POR,HOU,,,,False,Moda Center,Portland,OR
+401910854,2027,R,2027-03-31 23:00:00+00:00,ATL,LAC,,,,False,State Farm Arena,Atlanta,GA
+401910855,2027,R,2027-03-31 23:00:00+00:00,DET,TOR,,,,False,Little Caesars Arena,Detroit,MI
+401910856,2027,R,2027-03-31 23:00:00+00:00,PHI,GSW,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910857,2027,R,2027-03-31 23:00:00+00:00,WAS,CHI,,,,False,Capital One Arena,Washington,DC
+401910858,2027,R,2027-03-31 23:30:00+00:00,BKN,CLE,,,,False,Barclays Center,Brooklyn,NY
+401910859,2027,R,2027-04-01 00:00:00+00:00,MIL,NOP,,,,False,Fiserv Forum,Milwaukee,WI
+401910860,2027,R,2027-04-01 00:00:00+00:00,MIN,SAC,,,,False,Target Center,Minneapolis,MN
+401910861,2027,R,2027-04-01 00:00:00+00:00,SAS,PHX,,,,False,Frost Bank Center,San Antonio,TX
+401910862,2027,R,2027-04-01 01:30:00+00:00,DAL,DEN,,,,False,American Airlines Center,Dallas,TX
+401910863,2027,R,2027-04-01 02:00:00+00:00,POR,HOU,,,,False,Moda Center,Portland,OR
+401910864,2027,R,2027-04-01 23:00:00+00:00,CLE,BOS,,,,False,Rocket Arena,Cleveland,OH
+401910865,2027,R,2027-04-01 23:00:00+00:00,IND,ORL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910866,2027,R,2027-04-01 23:30:00+00:00,NYK,CHA,,,,False,Madison Square Garden,New York,NY
+401910867,2027,R,2027-04-02 01:30:00+00:00,OKC,LAL,,,,False,Paycom Center,Oklahoma City,OK
+401910868,2027,R,2027-04-02 23:00:00+00:00,WAS,PHI,,,,False,Capital One Arena,Washington,DC
+401910869,2027,R,2027-04-02 23:30:00+00:00,BOS,MIA,,,,False,TD Garden,Boston,MA
+401910870,2027,R,2027-04-02 23:30:00+00:00,BKN,NYK,,,,False,Barclays Center,Brooklyn,NY
+401910871,2027,R,2027-04-02 23:30:00+00:00,MIN,GSW,,,,False,Target Center,Minneapolis,MN
+401910872,2027,R,2027-04-03 00:00:00+00:00,CHI,DET,,,,False,United Center,Chicago,IL
+401910873,2027,R,2027-04-03 00:00:00+00:00,DAL,SAC,,,,False,American Airlines Center,Dallas,TX
+401910874,2027,R,2027-04-03 00:00:00+00:00,MIL,CHA,,,,False,Fiserv Forum,Milwaukee,WI
+401910875,2027,R,2027-04-03 00:30:00+00:00,TOR,ATL,,,,False,Scotiabank Arena,Toronto,ON
+401910876,2027,R,2027-04-03 00:30:00+00:00,HOU,MEM,,,,False,Toyota Center (Houston),Houston,TX
+401910877,2027,R,2027-04-03 02:00:00+00:00,PHX,DEN,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910878,2027,R,2027-04-03 02:00:00+00:00,POR,UTA,,,,False,Moda Center,Portland,OR
+401910879,2027,R,2027-04-03 02:30:00+00:00,LAC,SAS,,,,False,Intuit Dome,Inglewood,CA
+401910880,2027,R,2027-04-03 21:00:00+00:00,OKC,NOP,,,,False,Paycom Center,Oklahoma City,OK
+401910881,2027,R,2027-04-03 23:00:00+00:00,ORL,WAS,,,,False,Kia Center,Orlando,FL
+401910882,2027,R,2027-04-04 17:00:00+00:00,PHI,ATL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910883,2027,R,2027-04-04 18:00:00+00:00,MIL,BKN,,,,False,Fiserv Forum,Milwaukee,WI
+401910884,2027,R,2027-04-04 19:00:00+00:00,CLE,CHA,,,,False,Rocket Arena,Cleveland,OH
+401910885,2027,R,2027-04-04 19:00:00+00:00,DET,MIA,,,,False,Little Caesars Arena,Detroit,MI
+401910886,2027,R,2027-04-04 19:00:00+00:00,DAL,MIN,,,,False,American Airlines Center,Dallas,TX
+401910887,2027,R,2027-04-04 19:30:00+00:00,TOR,IND,,,,False,Scotiabank Arena,Toronto,ON
+401910888,2027,R,2027-04-04 20:00:00+00:00,HOU,CHI,,,,False,Toyota Center (Houston),Houston,TX
+401910889,2027,R,2027-04-04 20:30:00+00:00,LAC,PHX,,,,False,Intuit Dome,Inglewood,CA
+401910890,2027,R,2027-04-04 21:00:00+00:00,DEN,MEM,,,,False,Ball Arena,Denver,CO
+401910891,2027,R,2027-04-04 21:00:00+00:00,UTA,POR,,,,False,Delta Center,Salt Lake City,UT
+401910892,2027,R,2027-04-04 22:00:00+00:00,SAC,GSW,,,,False,Golden 1 Center,Sacramento,CA
+401910893,2027,R,2027-04-04 23:30:00+00:00,NYK,BOS,,,,False,Madison Square Garden,New York,NY
+401910894,2027,R,2027-04-05 02:00:00+00:00,LAL,SAS,,,,False,crypto.com Arena,Los Angeles,CA
+401910895,2027,R,2027-04-05 23:00:00+00:00,CLE,BKN,,,,False,Rocket Arena,Cleveland,OH
+401910896,2027,R,2027-04-05 23:00:00+00:00,ORL,MIA,,,,False,Kia Center,Orlando,FL
+401910897,2027,R,2027-04-06 00:00:00+00:00,NOP,WAS,,,,False,Smoothie King Center,New Orleans,LA
+401910898,2027,R,2027-04-06 23:00:00+00:00,CHA,IND,,,,False,Spectrum Center,Charlotte,NC
+401910899,2027,R,2027-04-06 23:30:00+00:00,TOR,PHI,,,,False,Scotiabank Arena,Toronto,ON
+401910900,2027,R,2027-04-07 00:00:00+00:00,ATL,NYK,,,,False,State Farm Arena,Atlanta,GA
+401910901,2027,R,2027-04-07 00:00:00+00:00,MEM,DET,,,,False,FedExForum,Memphis,TN
+401910902,2027,R,2027-04-07 00:00:00+00:00,MIL,CHI,,,,False,Fiserv Forum,Milwaukee,WI
+401910903,2027,R,2027-04-07 00:00:00+00:00,SAS,SAC,,,,False,Frost Bank Center,San Antonio,TX
+401910904,2027,R,2027-04-07 01:00:00+00:00,DEN,NOP,,,,False,Ball Arena,Denver,CO
+401910905,2027,R,2027-04-07 01:00:00+00:00,UTA,OKC,,,,False,Delta Center,Salt Lake City,UT
+401910906,2027,R,2027-04-07 02:00:00+00:00,LAL,DAL,,,,False,crypto.com Arena,Los Angeles,CA
+401910907,2027,R,2027-04-07 02:30:00+00:00,LAC,MIN,,,,False,Intuit Dome,Inglewood,CA
+401910908,2027,R,2027-04-07 03:00:00+00:00,GSW,PHX,,,,False,Chase Center,San Francisco,CA
+401910909,2027,R,2027-04-07 23:00:00+00:00,DET,IND,,,,False,Little Caesars Arena,Detroit,MI
+401910910,2027,R,2027-04-07 23:00:00+00:00,ORL,BOS,,,,False,Kia Center,Orlando,FL
+401910911,2027,R,2027-04-07 23:30:00+00:00,TOR,BKN,,,,False,Scotiabank Arena,Toronto,ON
+401910912,2027,R,2027-04-07 23:30:00+00:00,SAS,CLE,,,,False,Frost Bank Center,San Antonio,TX
+401910913,2027,R,2027-04-08 00:00:00+00:00,CHI,CHA,,,,False,United Center,Chicago,IL
+401910914,2027,R,2027-04-08 00:00:00+00:00,MEM,WAS,,,,False,FedExForum,Memphis,TN
+401910915,2027,R,2027-04-08 00:30:00+00:00,HOU,SAC,,,,False,Toyota Center (Houston),Houston,TX
+401910916,2027,R,2027-04-08 02:00:00+00:00,LAL,MIN,,,,False,crypto.com Arena,Los Angeles,CA
+401910917,2027,R,2027-04-08 02:00:00+00:00,POR,DAL,,,,False,Moda Center,Portland,OR
+401910918,2027,R,2027-04-08 23:00:00+00:00,MIA,PHI,,,,False,Kaseya Center,Miami,FL
+401910919,2027,R,2027-04-09 00:00:00+00:00,MIL,NYK,,,,False,Fiserv Forum,Milwaukee,WI
+401910920,2027,R,2027-04-09 01:00:00+00:00,DEN,LAC,,,,False,Ball Arena,Denver,CO
+401910921,2027,R,2027-04-09 01:00:00+00:00,UTA,NOP,,,,False,Delta Center,Salt Lake City,UT
+401910922,2027,R,2027-04-09 01:30:00+00:00,OKC,GSW,,,,False,Paycom Center,Oklahoma City,OK
+401910923,2027,R,2027-04-09 23:00:00+00:00,ATL,BOS,,,,False,State Farm Arena,Atlanta,GA
+401910924,2027,R,2027-04-09 23:00:00+00:00,CHA,BKN,,,,False,Spectrum Center,Charlotte,NC
+401910925,2027,R,2027-04-09 23:00:00+00:00,IND,CLE,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
+401910926,2027,R,2027-04-09 23:00:00+00:00,NYK,DET,,,,False,Madison Square Garden,New York,NY
+401910927,2027,R,2027-04-09 23:00:00+00:00,ORL,TOR,,,,False,Kia Center,Orlando,FL
+401910928,2027,R,2027-04-10 00:00:00+00:00,MIA,WAS,,,,False,Kaseya Center,Miami,FL
+401910929,2027,R,2027-04-10 00:00:00+00:00,CHI,MIL,,,,False,United Center,Chicago,IL
+401910930,2027,R,2027-04-10 00:00:00+00:00,OKC,GSW,,,,False,Paycom Center,Oklahoma City,OK
+401910931,2027,R,2027-04-10 00:30:00+00:00,HOU,POR,,,,False,Toyota Center (Houston),Houston,TX
+401910932,2027,R,2027-04-10 01:30:00+00:00,SAS,DEN,,,,False,Frost Bank Center,San Antonio,TX
+401910933,2027,R,2027-04-10 01:30:00+00:00,UTA,LAC,,,,False,Delta Center,Salt Lake City,UT
+401910934,2027,R,2027-04-10 02:00:00+00:00,LAL,MIN,,,,False,crypto.com Arena,Los Angeles,CA
+401910935,2027,R,2027-04-10 02:00:00+00:00,PHX,MEM,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401910936,2027,R,2027-04-10 02:00:00+00:00,SAC,DAL,,,,False,Golden 1 Center,Sacramento,CA
+401910937,2027,R,2027-04-11 22:00:00+00:00,BOS,MIL,,,,False,TD Garden,Boston,MA
+401910938,2027,R,2027-04-11 22:00:00+00:00,BKN,TOR,,,,False,Barclays Center,Brooklyn,NY
+401910939,2027,R,2027-04-11 22:00:00+00:00,CLE,ATL,,,,False,Rocket Arena,Cleveland,OH
+401910940,2027,R,2027-04-11 22:00:00+00:00,MIA,ORL,,,,False,Kaseya Center,Miami,FL
+401910941,2027,R,2027-04-11 22:00:00+00:00,NYK,IND,,,,False,Madison Square Garden,New York,NY
+401910942,2027,R,2027-04-11 22:00:00+00:00,PHI,CHA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
+401910943,2027,R,2027-04-11 22:00:00+00:00,WAS,DET,,,,False,Capital One Arena,Washington,DC
+401910944,2027,R,2027-04-11 22:00:00+00:00,NOP,CHI,,,,False,Smoothie King Center,New Orleans,LA
+401910945,2027,R,2027-04-12 00:30:00+00:00,DAL,MEM,,,,False,American Airlines Center,Dallas,TX
+401910946,2027,R,2027-04-12 00:30:00+00:00,MIN,HOU,,,,False,Target Center,Minneapolis,MN
+401910947,2027,R,2027-04-12 00:30:00+00:00,SAS,POR,,,,False,Frost Bank Center,San Antonio,TX
+401910948,2027,R,2027-04-12 00:30:00+00:00,DEN,OKC,,,,False,Ball Arena,Denver,CO
+401910949,2027,R,2027-04-12 00:30:00+00:00,GSW,UTA,,,,False,Chase Center,San Francisco,CA
+401910950,2027,R,2027-04-12 00:30:00+00:00,LAC,SAC,,,,False,Intuit Dome,Inglewood,CA
+401910951,2027,R,2027-04-12 00:30:00+00:00,LAL,PHX,,,,False,crypto.com Arena,Los Angeles,CA
