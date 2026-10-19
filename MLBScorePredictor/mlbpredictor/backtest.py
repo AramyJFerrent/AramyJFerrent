@@ -174,8 +174,11 @@ def load_pinnacle() -> pd.DataFrame:
 
 
 def market_comparison(bt: pd.DataFrame, feats: pd.DataFrame, fb: FeatureBuilder, window: int,
-                      n_sims: int = 2000) -> dict | None:
-    """The model next to Pinnacle's 2016 closing (and opening) lines, and blended with them."""
+                      n_sims: int = 8000) -> dict | None:
+    """The model next to Pinnacle's 2016 closing (and opening) lines, and blended with them.
+
+    Uses more simulations than the rest of the backtest, so the blend is not
+    graded on simulation noise."""
     lines = load_pinnacle()
     if lines.empty or not (bt["season"] == 2016).any():
         return None

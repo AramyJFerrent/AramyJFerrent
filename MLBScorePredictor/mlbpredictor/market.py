@@ -48,7 +48,7 @@ def devig(price_a, price_b) -> np.ndarray:
 
 
 class MarketInverter:
-    def __init__(self, params: SimParams, profile: np.ndarray, ghost: bool = True, n_sims: int = 2000,
+    def __init__(self, params: SimParams, profile: np.ndarray, ghost: bool = True, n_sims: int = 8000,
                  seed: int = 11):
         """``profile``: each inning's share of nine-inning runs (innings 1-9),
         the last also used for extra innings."""

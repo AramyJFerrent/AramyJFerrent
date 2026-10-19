@@ -39,7 +39,7 @@ def cmd_backtest(args) -> None:
     boot = {"Model vs Elo with starting pitchers": backtest.paired_bootstrap(losses["model"], losses["elo"]),
             "Model vs team runs ratings only": backtest.paired_bootstrap(losses["model"], losses["team"])}
     checks = backtest.distribution_checks(bt)
-    market = backtest.market_comparison(bt, feats, fb, hp.fit_window_seasons, n_sims=args.sims)
+    market = backtest.market_comparison(bt, feats, fb, hp.fit_window_seasons, n_sims=max(args.sims, 8000))
     lineup_seasons = [s for s in range(max(args.start, args.end - 2), args.end + 1)]
     lineups = backtest.lineup_comparison(fb, feats, lineup_seasons, hp.fit_window_seasons, args.sims) \
         if not args.skip_lineups else None

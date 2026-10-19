@@ -93,21 +93,21 @@ scores 0.693 log loss and 0.250 Brier.
 
 | Predictor | Log loss | Brier | Winners |
 |---|---|---|---|
-| Model + simulator | 0.6744 | 0.2408 | 57.9% |
+| Model + simulator | 0.6746 | 0.2409 | 57.6% |
 | Elo with starting pitchers | 0.6754 | 0.2413 | 57.6% |
 | Team runs ratings only | 0.6785 | 0.2428 | 56.8% |
 | Home team every time | 0.6910 | 0.2489 | 53.3% |
 
 - The model beats FiveThirtyEight-style Elo with its starting-pitcher
-  adjustment by 0.0010 log loss per game (95% interval 0.0002 to 0.0018) and
-  team ratings alone by 0.0041, and holds up on the seasons since 2021
-  (0.6758 against Elo's 0.6765). Elo is also one of the model's inputs; the
+  adjustment by 0.0009 log loss per game (95% interval 0.0001 to 0.0017) and
+  team ratings alone by 0.0040, and holds up on the seasons since 2021
+  (0.6759 against Elo's 0.6765). Elo is also one of the model's inputs; the
   Elo row is Elo on its own.
 - Baseball edges are as thin as the report warns: everything the model knows
-  moves log loss 0.017 from always picking the home team, and its edge over
+  moves log loss 0.016 from always picking the home team, and its edge over
   Elo is a tenth of a percent.
-- Win probabilities are well calibrated: games given 60–70% were won 64.3%
-  of the time (predicted 63.9%), and 40–50% games 44.9% (predicted 45.8%).
+- Win probabilities are well calibrated: games given 60–70% were won 63.9%
+  of the time (predicted 63.9%), and 40–50% games 45.3% (predicted 45.8%).
 - The simulator gets the shape of baseball scores right:
 
   | Check | Simulator | Actual |
@@ -116,13 +116,13 @@ scores 0.693 log loss and 0.250 Brier.
   | Team shut out | 6.2% | 6.2% |
   | Decided by one run | 28.2% | 27.8% |
   | Extra innings (regular season) | 8.5% | 8.5% |
-  | Home team skips the bottom of the ninth | 45.2% | 44.7% |
+  | Home team skips the bottom of the ninth | 45.1% | 44.7% |
   | Walk-off win | 8.2% | 8.5% |
   | Home team wins by 2+ (run line) | 36.5% | 36.6% |
 
 - 80% ranges contain each team's runs 85.7% of the time (runs are whole
   numbers, so a range covers a bit more than 80%). The headline score is
-  exactly right in 2.7% of games, so read the win chance first.
+  exactly right in 2.5% of games, so read the win chance first.
 
 What mattered, from development runs on 2017-2025 (a faster approximation
 of the same model, without the simulator):
@@ -135,8 +135,8 @@ of the same model, without the simulator):
 - The ratings' half-lives and shrinkage barely mattered (within ±0.0003),
   and a separate bullpen-workload term added nothing once tired relievers
   are marked down inside the bullpen rating.
-- Posted lineups did not beat projected ones: on 2023-2025, log loss 0.6788
-  with the actual lineups against 0.6790 with each team's last lineup
+- Posted lineups did not beat projected ones: on 2023-2025, log loss 0.6792
+  with the actual lineups against 0.6791 with each team's last lineup
   against a starter of the same hand, a difference within noise. Most
   lineups look like the team's last one, and one changed spot moves a
   team's runs by a few percent. The posted lineup is still used once it is
@@ -155,19 +155,21 @@ On Pinnacle's complete 2016 line history (2,461 games, de-vigged):
 
 | Predictor | Log loss | Brier |
 |---|---|---|
-| Model + simulator | 0.6762 | 0.2416 |
+| Model + simulator | 0.6764 | 0.2417 |
 | Elo with starting pitchers | 0.6787 | – |
 | Opening line | 0.6770 | – |
 | Closing line | 0.6735 | 0.2403 |
-| Model blended with the closing line | 0.6734 | 0.2403 |
+| Model blended with the closing line | 0.6740 | 0.2406 |
 
-- The model on its own is as good as the opening line (0.0008 better,
-  within noise) and 0.0027 behind the closing line (95% interval -0.0003 to
-  +0.0058), as the report expects: the market sharpens as starters and
+- The model on its own is as good as the opening line (0.0006 better,
+  within noise) and 0.0029 behind the closing line (95% interval 0.0000 to
+  +0.0059), as the report expects: the market sharpens as starters and
   lineups are confirmed, and the close already knows what the model knows.
-- Blended with the closing line it adds almost nothing (0.6734 against
-  0.6735). The best weight on the model was 22%, which is where the live
-  blend starts.
+- Blended with the closing line it adds nothing measurable (0.6740 against
+  0.6735, a difference within noise): a sharp closing line already holds
+  what the model knows. The best weight on the model was 19%, which is
+  where the live blend starts; the opening lines and softer books it will
+  mostly see live are where a model has more room to help.
 - No free source has betting lines for the other seasons, so the live log
   keeps testing it: every prediction records the line it was made against,
   and the predictions page grades the model, the market and the blend on the
@@ -190,6 +192,7 @@ python -m mlbpredictor update              # refresh and predict the next two ga
 python -m mlbpredictor update --days 1 --offline
 python -m mlbpredictor ratings             # power ratings by lineup, rotation, bullpen and the rest
 python -m mlbpredictor check               # read the live sources once and print what was parsed
+python -m mlbpredictor audit               # consistency checks on this season's data, next to last season's
 python -m mlbpredictor backtest            # walk-forward 2016-2025, writes predictions/backtest.md
 python -m mlbpredictor summarize           # rebuild the Retrosheet seasons from play-by-play
 python -m pytest -q tests
