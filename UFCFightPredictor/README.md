@@ -33,9 +33,12 @@ Each run:
 2. Rebuilds every fighter's rating and style profile from the full history
    and refits the win, calibration, market-blend, method and round models on
    the last ten years, including every fight so far this year.
-3. Reads the cards for the next 15 days: bouts and fighter ids from UFCStats,
-   start times and moneylines from ESPN, plus anything in
-   `data/manual_card.csv`.
+3. Reads the cards for the next 15 days from ESPN: every announced bout, when
+   its part of the card starts, and DraftKings moneylines from ESPN's odds
+   API. Fighters are matched to the UFCStats history by name; anyone with no
+   UFC bouts is a debutant. UFCStats' own upcoming pages are used when they
+   can be read (they answer GitHub's runners with a browser check), and
+   `data/manual_card.csv` adds or overrides bouts by hand.
 4. Predicts every bout that has not started and writes it to
    `predictions/log.csv`, replacing the earlier prediction for that bout. A
    bout's prediction locks when its part of the card starts, so the logged
@@ -68,7 +71,7 @@ Actions tab with **Run workflow**.
 | Market blend | Out-of-fold model log-odds blended with the de-vigged moneyline on the log-odds scale. The fitted weight is about 80% market, with a total slope of about 1.2–1.3 that stretches favorites, correcting the favorite-longshot bias. Bouts without a price use the model alone. | `model.py` |
 | Method | For each fighter as the winner, a multinomial model over KO/TKO, submission and decision. It starts from the division's base rates (heavyweights get knocked out, strawweights go the distance) and adjusts for the winner's finishing record, the loser's durability, how big a favorite the winner is, and five-round and title fights. | `model.py` |
 | Round | Per-round finish hazards for three- and five-round fights, shifted so the chance of a finish matches the method model. Big finishers finish earlier as well as more often. | `model.py` |
-| Cards | UFCStats upcoming events (exact fighter ids), ESPN start times and prices (name-matched), and a hand-edited card for anything the sites miss | `cards.py`, `names.py` |
+| Cards | ESPN's scoreboard (bouts, start times, divisions, scheduled rounds, belts) and odds API (moneylines tied to each fighter by id), names matched to the history; UFCStats upcoming pages when reachable; a hand-edited card for anything the sites miss | `cards.py`, `names.py` |
 | Backtest | Walk-forward by year, scored next to the market on the same fights | `backtest.py` |
 
 The win probability is settled first, and each fighter's three method
@@ -184,4 +187,5 @@ Manual rows replace the same bout from the other sources. Only `event`,
 Fight results and statistics from [UFCStats](http://ufcstats.com), via the
 [Scrape UFC Stats](https://github.com/Greco1899/scrape_ufc_stats) repository.
 Historical odds from the [Ultimate UFC Dataset](https://github.com/shortlikeafox/ultimate_ufc_dataset).
-Upcoming start times and prices from ESPN's public scoreboard.
+Upcoming cards, start times and prices from ESPN's public scoreboard and odds
+API (prices from its sportsbook partner, DraftKings).
