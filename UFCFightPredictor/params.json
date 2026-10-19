@@ -1,0 +1,14 @@
+{
+  "glicko_debut_rd": 500.0,
+  "glicko_vol": 0.06,
+  "glicko_tau": 0.5,
+  "glicko_period_days": 30.0,
+  "score_decision": 0.8,
+  "score_split": 0.5,
+  "prior_minutes": 8.0,
+  "prior_attempts": 40.0,
+  "prior_fights": 3.0,
+  "profile_half_life_years": 3.0,
+  "ridge": 100.0,
+  "fit_window_years": 10
+}

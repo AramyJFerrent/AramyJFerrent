@@ -1,0 +1,75 @@
+name: UFC fight predictor
+
+on:
+  schedule:
+    - cron: "41 13 * * *"     # every morning (about 9:40 AM ET): new results, cards and prices
+    - cron: "41 19 * * 5"     # Friday about 3:40 PM ET, after weigh-ins and late replacements
+    - cron: "11 16 * * 6"     # Saturday about noon ET, before afternoon cards abroad
+    - cron: "11 19 * * 6"     # Saturday about 3 PM ET, final prices before US prelims
+  workflow_dispatch:
+    inputs:
+      backtest:
+        description: "Also rerun the walk-forward backtest"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - "UFCFightPredictor/**"
+      - ".github/workflows/ufc-fight-predictor.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ufc-fight-predictor
+  cancel-in-progress: false
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: UFCFightPredictor
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: UFCFightPredictor/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest -q tests
+
+      # On pushes, read the live card sources without predicting or committing,
+      # so a change to the parsers shows whether UFCStats and ESPN still read cleanly.
+      - name: Check card sources
+        if: github.event_name == 'push'
+        run: python -m ufcpredictor -v card
+
+      - name: Update predictions
+        if: github.event_name != 'push'
+        run: python -m ufcpredictor -v update
+
+      - name: Rerun backtest
+        if: github.event_name == 'workflow_dispatch' && inputs.backtest
+        run: python -m ufcpredictor -v backtest
+
+      - name: Commit results
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add predictions data
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "Update UFC predictions ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
