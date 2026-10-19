@@ -123,14 +123,16 @@ def parse_event_page(page: str) -> tuple[dict, pd.DataFrame]:
 
 def ufcstats_cards(now: pd.Timestamp, days: int, session: requests.Session | None = None) -> pd.DataFrame:
     session = session or requests.Session()
-    events = parse_upcoming_list(_get(session, UFCSTATS_UPCOMING_URL).text)
+    listed = parse_upcoming_list(_get(session, UFCSTATS_UPCOMING_URL).text)
     today = now.tz_convert(DISPLAY_TZ).normalize().tz_localize(None)
-    events = events[(events["date"] >= today - pd.Timedelta(days=1))
-                    & (events["date"] <= today + pd.Timedelta(days=days))]
+    events = listed[(listed["date"] >= today - pd.Timedelta(days=1))
+                    & (listed["date"] <= today + pd.Timedelta(days=days))]
+    log.info("UFCStats lists %d upcoming events, %d in the next %d days", len(listed), len(events), days)
     frames = []
     for ev in events.itertuples(index=False):
         info, bouts = parse_event_page(_get(session, ev.url).text)
         if bouts.empty:
+            log.warning("UFCStats page for %s lists no bouts", ev.event)
             continue
         date = pd.to_datetime(info.get("date"), errors="coerce")
         bouts["event"] = info.get("event") or ev.event

@@ -83,8 +83,54 @@ def cmd_ratings(args) -> None:
         print(table.drop(columns="rank_score").head(args.top).to_string(index=False))
 
 
+def _raw_sources() -> None:
+    """Print what the card sources return, for checking the parsers against the live pages."""
+    import json
+    import re
+
+    import requests
+
+    from .cards import HEADERS, parse_event_page, parse_upcoming_list
+    from .config import ESPN_SCOREBOARD_URL, UFCSTATS_UPCOMING_URL
+
+    try:
+        page = requests.get(UFCSTATS_UPCOMING_URL, headers=HEADERS, timeout=30)
+        print(f"UFCStats upcoming: HTTP {page.status_code}, {len(page.text)} bytes")
+        events = parse_upcoming_list(page.text)
+        print(events.to_string(index=False) if len(events) else "  no events parsed")
+        m = re.search(r".{0,300}event-details.{0,500}", page.text, re.S)
+        print("  sample:", repr(m.group(0)) if m else repr(page.text[:800]))
+        if len(events):
+            ev = requests.get(events["url"].iloc[0], headers=HEADERS, timeout=30)
+            info, bouts = parse_event_page(ev.text)
+            print(f"  first event page: HTTP {ev.status_code}, {info}, {len(bouts)} bouts")
+            m = re.search(r"<tr[^>]*>(?:(?!</tr>).)*fighter-details(?:(?!</tr>).)*</tr>", ev.text, re.S)
+            print("  first bout row:", repr(m.group(0)[:1500]) if m else repr(ev.text[:1500]))
+    except requests.RequestException as exc:
+        print("UFCStats failed:", exc)
+    try:
+        board = requests.get(ESPN_SCOREBOARD_URL, timeout=30).json()
+        cal = (board.get("leagues") or [{}])[0].get("calendar") or []
+        print(f"ESPN: {len(board.get('events') or [])} events, calendar entries {len(cal)}:",
+              json.dumps(cal[:3])[:600])
+        for event in (board.get("events") or [])[:1]:
+            comps = event.get("competitions") or []
+            print(f"  {event.get('name')}: {len(comps)} competitions")
+            for comp in comps[-1:]:
+                slim = {k: v for k, v in comp.items() if k not in ("competitors", "odds")}
+                print("  competition:", json.dumps(slim)[:1500])
+                for c in comp.get("competitors") or []:
+                    print("  competitor:", json.dumps({k: v for k, v in c.items() if k != "statistics"})[:800])
+                print("  odds:", json.dumps(comp.get("odds"))[:2500])
+    except (requests.RequestException, ValueError) as exc:
+        print("ESPN failed:", exc)
+
+
 def cmd_card(args) -> None:
     from .cards import fetch_card
+
+    if args.raw:
+        _raw_sources()
 
     _, _, _, fb = _history(args.max_age_hours, refresh=False)
     fb.build()
@@ -130,6 +176,7 @@ def main(argv=None) -> None:
 
     p = sub.add_parser("card", help="print the upcoming cards as read from the sources")
     sources(p)
+    p.add_argument("--raw", action="store_true", help="also print what each source returned")
     p.set_defaults(func=cmd_card)
 
     args = parser.parse_args(argv)
