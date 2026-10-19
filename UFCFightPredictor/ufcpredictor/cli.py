@@ -122,6 +122,17 @@ def _raw_sources() -> None:
                 for c in comp.get("competitors") or []:
                     print("  competitor:", json.dumps({k: v for k, v in c.items() if k != "statistics"})[:800])
                 print("  odds:", json.dumps(comp.get("odds"))[:2500])
+                for url in (f"https://sports.core.api.espn.com/v2/sports/mma/leagues/ufc/events/{event.get('id')}"
+                            f"/competitions/{comp.get('id')}/odds",
+                            f"https://site.api.espn.com/apis/site/v2/sports/mma/ufc/summary?event={event.get('id')}"):
+                    try:
+                        resp = requests.get(url, timeout=30)
+                        body = resp.json()
+                        print(f"  {url}: HTTP {resp.status_code}, keys {list(body)[:20]}")
+                        part = body.get("items") or body.get("odds") or body.get("pickcenter") or body
+                        print("   ", json.dumps(part)[:3000])
+                    except (requests.RequestException, ValueError) as exc:
+                        print(f"  {url} failed: {exc}")
     except (requests.RequestException, ValueError) as exc:
         print("ESPN failed:", exc)
 

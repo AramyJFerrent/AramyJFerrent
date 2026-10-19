@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-from .config import DATA_DIR, DISPLAY_TZ, ESPN_SCOREBOARD_URL, UFCSTATS_UPCOMING_URL
+from .config import DATA_DIR, DISPLAY_TZ, DIVISIONS, ESPN_SCOREBOARD_URL, UFCSTATS_UPCOMING_URL
 from .data import parse_weightclass
 from .names import match_name, normalize_name, pair_key
 
@@ -123,7 +123,11 @@ def parse_event_page(page: str) -> tuple[dict, pd.DataFrame]:
 
 def ufcstats_cards(now: pd.Timestamp, days: int, session: requests.Session | None = None) -> pd.DataFrame:
     session = session or requests.Session()
-    listed = parse_upcoming_list(_get(session, UFCSTATS_UPCOMING_URL).text)
+    page = _get(session, UFCSTATS_UPCOMING_URL).text
+    if "Checking your browser" in page or "requires JavaScript" in page:
+        log.warning("UFCStats answered with a browser check instead of the event list")
+        return pd.DataFrame()
+    listed = parse_upcoming_list(page)
     today = now.tz_convert(DISPLAY_TZ).normalize().tz_localize(None)
     events = listed[(listed["date"] >= today - pd.Timedelta(days=1))
                     & (listed["date"] <= today + pd.Timedelta(days=days))]
@@ -350,7 +354,25 @@ def resolve_card_ids(card: pd.DataFrame, known: pd.Series) -> pd.DataFrame:
             ids.append(hit if hit is not None else (fid if isinstance(fid, str) else
                                                     "x-" + normalize_name(name).replace(" ", "-")))
         card[f"{side}_id"] = ids
+    new = sorted({n for s in "ab" for n, i in zip(card[f"fighter_{s}"], card[f"{s}_id"]) if i not in known.index})
+    log.info("Matched %d of %d card fighters to UFC history; no UFC bouts yet: %s",
+             2 * len(card) - len(new), 2 * len(card), ", ".join(new) or "none")
     return card
+
+
+def settle_division(division, last_a, last_b) -> str:
+    """The bout's division, using the fighters' last UFC divisions where the source is vague.
+
+    ESPN sometimes names a women's bout by the bare weight ("Flyweight"), so a
+    bout between fighters last seen in a women's division is a women's bout.
+    """
+    known = [d for d in (last_a, last_b) if isinstance(d, str) and d]
+    if not isinstance(division, str) or not division:
+        return known[0] if known else "Catch Weight"
+    if any(d.startswith("Women's") for d in known) and not division.startswith("Women's"):
+        women = "Women's " + division
+        return women if women in DIVISIONS else next(d for d in known if d.startswith("Women's"))
+    return division
 
 
 def load_manual(today: pd.Timestamp) -> pd.DataFrame:
@@ -409,10 +431,8 @@ def fetch_card(now: pd.Timestamp, days: int, known: pd.Series, last_division: di
     if card.empty:
         return pd.DataFrame(columns=CARD_COLUMNS)
     card = resolve_card_ids(card.reset_index(drop=True), known)
-    # Division and gender from the fighters' last UFC bout when the source left them out.
-    for idx, r in card.iterrows():
-        if not isinstance(r.get("division"), str) or not r["division"]:
-            card.at[idx, "division"] = last_division.get(r["a_id"]) or last_division.get(r["b_id"]) or "Catch Weight"
+    card["division"] = [settle_division(d, last_division.get(a), last_division.get(b))
+                        for d, a, b in zip(card["division"], card["a_id"], card["b_id"])]
     card["gender"] = np.where(card["division"].astype(str).str.startswith("Women"), "F", "M")
     card["title"] = card["title"].fillna(False).astype(bool)
     for col in ("rounds_espn", "rounds", "start", "location"):

@@ -214,3 +214,14 @@ def test_event_rows_without_fight_links_still_parse():
     page = EVENT.replace('data-link="http://ufcstats.com/fight-details/f002"', "")
     _, bouts = parse_event_page(page)
     assert list(bouts["bout_id"]) == ["f001", "id-ana-id-bea"]
+
+
+def test_settle_division_recognizes_womens_bouts():
+    from ufcpredictor.cards import settle_division
+
+    assert settle_division("Flyweight", "Women's Flyweight", None) == "Women's Flyweight"
+    assert settle_division("Bantamweight", None, "Women's Bantamweight") == "Women's Bantamweight"
+    assert settle_division("Lightweight", "Women's Strawweight", None) == "Women's Strawweight"
+    assert settle_division("Flyweight", "Flyweight", "Bantamweight") == "Flyweight"
+    assert settle_division(None, None, "Middleweight") == "Middleweight"
+    assert settle_division(np.nan, None, None) == "Catch Weight"
