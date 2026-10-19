@@ -83,7 +83,7 @@ def margin_points(model: ScoreModel, feats: pd.DataFrame, side: str, prefix: str
 def missing_players(a: pd.DataFrame) -> dict[tuple, str]:
     """The regulars each team will likely be without, with their status."""
     out = {}
-    hurt = a[(a["play_prob"] < 0.9) & (a["proj_minutes"] >= MISSING_MINUTES)]
+    hurt = a[(a["play_prob"] < 0.9) & (a["proj_minutes"] >= MISSING_MINUTES) & a["has_history"]]
     for (gid, team), grp in hurt.groupby(["game_id", "team"]):
         grp = grp.sort_values("proj_minutes", ascending=False)
         out[(gid, team)] = "; ".join(f"{r.name} ({str(r.status).lower()})" for r in grp.itertuples())

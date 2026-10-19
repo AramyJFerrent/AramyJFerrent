@@ -53,9 +53,14 @@ def test_minutes_projection_skips_injuries_and_counts_healthy_scratches():
 
 
 def test_rescaled_minutes_fill_240_without_overloading_anyone():
-    m = rescale_minutes([40, 38, 30, 20, 10, 8, 6, 4])
-    assert np.isclose(m.sum(), 240) and np.isclose(m.max(), 42) and np.isclose(m[1], 42)
-    assert m[3] > 20 and np.all(np.diff(m) <= 1e-9)            # the order of the rotation is kept
+    short = [40, 38, 30, 20, 10, 8, 6, 4]                      # 156 minutes: someone is missing
+    m = rescale_minutes(short)
+    assert np.isclose(m.sum(), 240) and m.max() <= 42 and np.all(np.diff(m) <= 1e-9)
+    assert m[0] - 40 < m[-1] - 4                               # the bench absorbs most of the gap
+    p = rescale_minutes(short, how="proportional")
+    assert np.isclose(p.sum(), 240) and np.isclose(p.max(), 42) and np.isclose(p[1], 42)
+    deep = rescale_minutes([36, 34, 32, 30, 28, 24, 20, 16, 12, 8, 6, 4])   # 250 minutes
+    assert np.isclose(deep.sum(), 240) and np.isclose(deep[0] / deep[-1], 9.0)
     assert np.allclose(rescale_minutes([30, 20, 10, 5, 5]), 48)  # five players play the whole game
     off = {1: 3.0, 2: -1.0}
     de = {1: -1.0, 2: 0.5}

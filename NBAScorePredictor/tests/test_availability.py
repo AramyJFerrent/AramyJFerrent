@@ -40,6 +40,7 @@ def test_build_uses_the_roster_injuries_and_recent_minutes():
     bos = a[a["team"] == "BOS"].set_index("player_id")
     assert bos.loc[1, "play_prob"] == 0.0 and bos.loc[2, "play_prob"] == 0.55 and bos.loc[3, "play_prob"] == 1.0
     assert bos.loc[1, "proj_minutes"] == 36 and bos.loc[6, "proj_minutes"] == DEBUT_MINUTES
+    assert bos.loc[1, "has_history"] and not bos.loc[6, "has_history"]
     # Miami has no roster listed, so it falls back to players whose latest game was for Miami.
     mia = a[a["team"] == "MIA"]
     assert sorted(mia["player_id"]) == [4, 5]

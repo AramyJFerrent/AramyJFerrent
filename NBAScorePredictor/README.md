@@ -71,7 +71,7 @@ Actions tab with **Run workflow**.
 | Data | ESPN schedules, box scores and play-by-play since 2007-08, compiled by sportsdataverse, reduced to one row per game, team-game and player-game (healthy scratches and injury absences included), plus every **stint**: a stretch of a game with the same ten players on the floor, rebuilt from the substitutions. Changes between quarters are not logged, so each period's opening five are inferred from who appears in it. Reconstructed minutes match the box score within a minute for 99.97% of player-games, and stint points add up to the final score in 99.9% of games. Possessions are counted from the play-by-play (they agree with the box-score estimate within 1%). | `data.py` |
 | Garbage time | Cleaning the Glass's rule: fourth-quarter stints from the moment the lead reaches 25 with 9 to 12 minutes left, 20 with 6 to 9, or 10 under 6, with two or fewer starters on the floor between the two teams, and only if the game stays that lopsided to the end. About 3.5% of possessions. It is left out of every rating. | `data.py` |
 | Player ratings | Regularized adjusted plus-minus on the stints: each side's points per 100 possessions in a stint is the league level plus home court plus the five offensive ratings plus the five opposing defensive ratings, fitted by ridge regression weighted by possessions. Each player is pulled toward a prior worth 3,000 possessions on offense and 4,000 on defense: 85% of last season's rating, or a newcomer value of −6 net points per 100 for a player with no rating yet. Stints have a 365-day half-life, so a player's rating moves through the season without forgetting his last one. | `players.py` |
-| Minutes and availability | Each player's minutes are projected from his recent games for any team (1.5-game half-life), both minutes when he plays and expected minutes counting healthy scratches as zero. A team's lineup strength is the minutes-weighted sum of its players' ratings, rescaled to 240 minutes with no one above 42, so missing minutes go to whoever is left. Live, the candidates are ESPN's current roster (falling back to recent box scores, then the preseason roster), and the injury report turns each status into a chance of playing: out 0, doubtful 15%, questionable 55%, day-to-day 70%, probable 95%. A questionable star counts with about half his minutes, which weighs the two scenarios by how likely each is. | `players.py`, `availability.py` |
+| Minutes and availability | Each player's minutes are projected from his recent games for any team (1.5-game half-life), both minutes when he plays and expected minutes counting healthy scratches as zero. A team's lineup strength is the minutes-weighted sum of its players' ratings, with minutes rescaled to 240 and no one above 42; minutes left by an absent player go to the others in proportion to how far each is below 42, so the bench absorbs most of them. Live, the candidates are ESPN's current roster (falling back to recent box scores, then the preseason roster), and the injury report turns each status into a chance of playing: out 0, doubtful 15%, questionable 55%, day-to-day 70%, probable 95%. A questionable star counts with about half his minutes, which weighs the two scenarios by how likely each is. | `players.py`, `availability.py` |
 | Team ratings | Ridge ratings of each offense's and defense's points per 100 possessions (garbage time removed, opponent-adjusted, 30-day half-life) and of pace (15-day half-life, since pace changes faster than quality), each pulled toward 60% of last season's rating | `ratings.py` |
 | Points map | Points per 100 possessions for each offense from both teams' lineup strength and efficiency ratings, home court, back-to-backs and playoffs, on top of the league's current level; possessions from both teams' pace ratings. Expected points are pace times efficiency. Refitted on the last four seasons every run. | `model.py` |
 | Market blend | `final = w × model + (1 − w) × line`, separately for the margin and the total, with `w` fitted on past closing lines | `model.py` |
@@ -93,7 +93,7 @@ box score. All 13,332 games have an archived closing line; a coin flip scores
 
 | Predictor | Margin MAE | Total MAE | Team-points MAE | Log loss | Brier | Winners |
 |---|---|---|---|---|---|---|
-| Final (model + market + simulator) | 10.12 | 14.22 | 8.82 | 0.600 | 0.207 | 67.6% |
+| Final (model + market + simulator) | 10.12 | 14.22 | 8.82 | 0.600 | 0.207 | 67.5% |
 | Model only | 10.29 | 14.47 | 8.95 | 0.607 | 0.210 | 67.0% |
 | Team ratings only | 10.51 | 14.59 | 9.07 | 0.623 | 0.217 | 65.3% |
 | Elo | 10.53 | 15.84 | 9.58 | 0.624 | 0.217 | 65.0% |
@@ -101,7 +101,7 @@ box score. All 13,332 games have an archived closing line; a coin flip scores
 
 - The player layer is where the model's skill comes from, as the report
   predicts. Rating the players who will actually be on the floor cuts the
-  margin error by 0.22 points against team efficiency ratings alone (95%
+  margin error by 0.23 points against team efficiency ratings alone (95%
   interval 0.18 to 0.27). Once lineup strength is in, the team efficiency
   ratings keep only a small weight (about 0.15, against about 0.75 for the
   lineup ratings): the players already carry most of what they know.
@@ -109,18 +109,18 @@ box score. All 13,332 games have an archived closing line; a coin flip scores
   10.97 against the closing line's 10.50, almost exactly the report's 11.0
   against 10.5; the full model closes most of that gap (10.69).
 - On its own the model trails the closing line by 0.18 points a game (95%
-  interval 0.14 to 0.23). The final prediction tracks the line, as the fitted
-  blend puts most of the weight on it, and ends up 0.015 behind it on the
+  interval 0.14 to 0.22). The final prediction tracks the line, as the fitted
+  blend puts most of the weight on it, and ends up 0.016 behind it on the
   margin and 0.02 on the total: the closing line already knows what the
   model knows, injuries included.
-- Win probabilities are well calibrated: games given 60–70% were won 65.9%
-  of the time (predicted 65.0%), and 40–50% games 45.2% (predicted 44.5%).
+- Win probabilities are well calibrated: games given 60–70% were won 65.7%
+  of the time (predicted 65.0%), and 40–50% games 45.3% (predicted 44.5%).
   80% ranges contain each team's points 81.4% of the time, the margin 80.7%
-  and the total 81.2%. The simulator sends 5.1% of regular-season games to
+  and the total 81.3%. The simulator sends 5.1% of regular-season games to
   overtime, against 5.4% in reality.
 - Knowing who plays matters: assuming each team's previous lineup instead
   (a morning run before injury news) raises the model's margin error by
-  0.06 points (95% interval 0.03 to 0.09). That is why the schedule reruns
+  0.07 points (95% interval 0.04 to 0.10). That is why the schedule reruns
   around every injury-report deadline.
 - Things that did not earn a place, tested on the same games: travel distance
   and time zones crossed, and rest beyond the back-to-back flag.
@@ -140,10 +140,10 @@ line differ by a point or more. Break-even at standard −110 odds is 52.4%.
 
 | Picks against | Record (W-L-P) | Cover rate | 95% range | Line then moved toward the pick |
 |---|---|---|---|---|
-| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | 2926-2753-94 | 51.5% | 50.2%–52.8% | 58.8% of 4,867 moves |
-| Opening line, same seasons, knowing who played | 2973-2808-103 | 51.4% | 50.1%–52.7% | 66.8% of 4,991 moves |
-| Closing line, same games | 2845-2877-96 | 49.7% | 48.4%–51.0% | – |
-| Closing line, 2015-16 to 2025-26 | 4494-4486-132 | 50.0% | 49.0%–51.1% | – |
+| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | 2926-2743-94 | 51.6% | 50.3%–52.9% | 59.0% of 4,860 moves |
+| Opening line, same seasons, knowing who played | 2984-2774-97 | 51.8% | 50.5%–53.1% | 68.0% of 4,964 moves |
+| Closing line, same games | 2811-2862-97 | 49.6% | 48.2%–50.9% | – |
+| Closing line, 2015-16 to 2025-26 | 4447-4465-131 | 49.9% | 48.9%–50.9% | – |
 
 What this means:
 
@@ -153,7 +153,7 @@ What this means:
   knows), and the line then moved toward the pick 59% of the time. It is
   still below break-even, and the 95% range includes it, so it is not a
   proven money-maker.
-- Against closing lines there is no edge at all: 50.0%. By tip-off the
+- Against closing lines there is no edge at all: 49.9%. By tip-off the
   market has priced in what the model knows, injuries included.
 
 So the honest answer is the same as the NFL predictor's: better than the

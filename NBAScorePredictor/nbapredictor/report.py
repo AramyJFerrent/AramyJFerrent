@@ -75,7 +75,7 @@ def model_pick(model_margin: float, spread: float, home: str, away: str) -> str:
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
         "| Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | "
-        "Total: model / line | 80% range | Overtime | Missing (cost in points) | Model pick vs line (edge) |",
+        "Total: model / line | 80% range | Overtime | Missing (effect on margin) | Model pick vs line (edge) |",
         "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
@@ -226,7 +226,7 @@ def results_table(rows: pd.DataFrame) -> str:
 
 
 def ratings_table(table: pd.DataFrame) -> str:
-    lines = ["| # | Team | Net per 100 | Net per game | Offense | Defense | Pace | Injuries now | Elo |",
+    lines = ["| # | Team | Net per 100 | Net per game | Offense | Defense | Pace | Injury effect now | Elo |",
              "|---|---|---|---|---|---|---|---|---|"]
     for i, r in enumerate(table.itertuples(index=False), 1):
         lines.append(f"| {i} | {r.team} | {_signed(r.net)} | {_signed(r.net_per_game)} | {_signed(r.offense)} "
@@ -261,9 +261,10 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "points around the forecast, so read the win chance and the ranges too.",
         "",
         "Missing players come from the injury report: out players are left out, and doubtful, questionable "
-        "and probable ones count with the share of their minutes their chance of playing implies. The cost "
-        "is how many points of margin the team loses against its full-strength roster. Predictions are "
-        "rerun when the report changes, up to tip-off.",
+        "and probable ones count with the share of their minutes their chance of playing implies, and their "
+        "minutes go mostly to the bench. The effect is how many points of margin the team gains or loses "
+        "against its full-strength roster: negative when it is missing good players, positive when the "
+        "minutes go to better ones. Predictions are rerun when the report changes, up to tip-off.",
         "",
         "The fair moneyline is the American odds that match the win chance exactly, with no bookmaker "
         "margin: -150 means risk $150 to win $100, +150 means risk $100 to win $150. The model pick is the "
@@ -307,8 +308,8 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
     parts += ["## Power ratings", "",
               "Points per 100 possessions better than an average team on a neutral floor, combining "
               "opponent-adjusted team efficiency (garbage time removed) with the ratings of the team's healthy "
-              "roster, through the fitted points map. Net per game uses the team's pace. Injuries now is what "
-              "its current injury report costs in points of margin.", "",
+              "roster, through the fitted points map. Net per game uses the team's pace. Injury effect now is "
+              "what its current injury report does to its margin, in points.", "",
               ratings_table(ratings), ""]
     if len(stars):
         parts += ["## Top players", "",

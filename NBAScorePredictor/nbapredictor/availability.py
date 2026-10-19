@@ -29,7 +29,8 @@ PLAY_PROB = [
     ("game time", 0.55), ("probable", 0.95), ("available", 1.0), ("active", 1.0),
 ]
 RECENT_DAYS = 30
-AVAILABILITY_COLUMNS = ["game_id", "team", "player_id", "name", "proj_minutes", "play_prob", "status", "detail"]
+AVAILABILITY_COLUMNS = ["game_id", "team", "player_id", "name", "proj_minutes", "play_prob", "status", "detail",
+                        "has_history"]
 
 
 def play_probability(status) -> float:
@@ -94,16 +95,22 @@ def build(games: pd.DataFrame, fb, today, roster: pd.DataFrame | None, injuries:
     status, detail = statuses(injuries)
     teams = pd.unique(games[["home_team", "away_team"]].to_numpy().ravel())
     team_players = candidates(fb, today, roster, season_roster, teams)
+    # Players who have never played are named from ESPN's roster and injury report.
+    listed = [f.dropna(subset=["player_id", "name"]).set_index("player_id")["name"]
+              for f in (injuries, roster) if f is not None and len(f) and "name" in f]
+    names = pd.concat(listed) if listed else pd.Series(dtype=object)
+    names = names[~names.index.duplicated()]
     rows = []
     for g in games.itertuples(index=False):
         for team in (g.home_team, g.away_team):
             for pid in team_players.get(team, []):
-                st = status.get(int(pid), "")
-                rows.append({"game_id": g.game_id, "team": team, "player_id": int(pid),
-                             "name": fb.names.get(int(pid), str(pid)),
-                             "proj_minutes": float(expected.get(int(pid), DEBUT_MINUTES)),
+                pid = int(pid)
+                st = status.get(pid, "")
+                rows.append({"game_id": g.game_id, "team": team, "player_id": pid,
+                             "name": fb.names.get(pid) or names.get(pid, str(pid)),
+                             "proj_minutes": float(expected.get(pid, DEBUT_MINUTES)),
                              "play_prob": play_probability(st), "status": st or None,
-                             "detail": detail.get(int(pid))})
+                             "detail": detail.get(pid), "has_history": pid in expected.index})
     return pd.DataFrame(rows, columns=AVAILABILITY_COLUMNS)
 
 

@@ -248,14 +248,26 @@ def minutes_history(players: pd.DataFrame, games: pd.DataFrame, half_life_games:
     return p
 
 
-def rescale_minutes(proj: np.ndarray, total: float = TEAM_MINUTES, cap: float = MAX_MINUTES) -> np.ndarray:
-    """Scale projected minutes to the team's total, capping heavy loads and
-    handing the excess to everyone below the cap in proportion."""
+# How a team's minutes are made to add up to 240: "headroom" hands missing
+# minutes to each player in proportion to how far he is below the cap (the
+# bench absorbs most of an absent starter's minutes); "proportional" scales
+# everyone alike. Too many minutes are always scaled down proportionally.
+REDISTRIBUTION = "headroom"
+
+
+def rescale_minutes(proj: np.ndarray, total: float = TEAM_MINUTES, cap: float = MAX_MINUTES,
+                    how: str | None = None) -> np.ndarray:
+    """Scale projected minutes to the team's total without anyone above the cap."""
     m = np.clip(np.asarray(proj, dtype=float), 0.0, None)
     if len(m) == 0:
         return m
     if m.sum() <= 0 or len(m) * cap <= total:
         return np.full(len(m), total / len(m))
+    how = how or REDISTRIBUTION
+    if how == "headroom" and m.sum() < total:
+        m = np.minimum(m, cap)
+        room = cap - m
+        return m + (total - m.sum()) * room / room.sum()
     m = m * total / m.sum()
     fixed = np.zeros(len(m), dtype=bool)
     for _ in range(len(m)):
