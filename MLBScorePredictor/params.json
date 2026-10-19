@@ -1,0 +1,15 @@
+{
+  "batter_half_life": 300.0,
+  "pitcher_half_life": 250.0,
+  "batter_shrink": 1.0,
+  "pitcher_shrink": 1.0,
+  "starter_outs_prior": 4.0,
+  "starter_outs_half_life": 60.0,
+  "park_seasons": 3,
+  "park_prior_games": 120.0,
+  "team_prior_games": 40.0,
+  "team_carryover": 0.6,
+  "team_half_life": 60.0,
+  "market_weight": 0.19,
+  "fit_window_seasons": 3
+}
