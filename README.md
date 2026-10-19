@@ -1,11 +1,12 @@
 # Sports Predictors
 
-Self-updating models that predict the outcome of every game in five sports: the NFL, college football (FBS), MLB, the NHL and the UFC. Each one rates teams or fighters from detailed historical data, blends its own view with the betting market, and simulates every game or bout thousands of times to produce a full forecast, not just a pick. Scheduled GitHub Actions keep the data, the models and the predictions current through each season, and every predictor grades its own finished games and is scored by a walk-forward backtest against the betting market or a strong baseline such as Elo.
+Self-updating models that predict the outcome of every game in six sports: the NFL, college football (FBS), the NBA, MLB, the NHL and the UFC. Each one rates teams or fighters from detailed historical data, blends its own view with the betting market, and simulates every game or bout thousands of times to produce a full forecast, not just a pick. Scheduled GitHub Actions keep the data, the models and the predictions current through each season, and every predictor grades its own finished games and is scored by a walk-forward backtest against the betting market or a strong baseline such as Elo.
 
 | Predictor | Predicts | Latest predictions | Backtest |
 | --- | --- | --- | --- |
 | [NFL](NFLScorePredictor) | Final score, win probability, 80% points range | [Predictions](NFLScorePredictor/predictions/README.md) | 2015–2025 |
 | [College football](CollegeFootballScorePredictor) | Final score, win probability, 80% points range | [Predictions](CollegeFootballScorePredictor/predictions/README.md) | 2016–2025 |
+| [NBA](NBAScorePredictor) | Final score, win probability, overtime, spread and total, missing players, 80% points range | [Predictions](NBAScorePredictor/predictions/README.md) | 2015-16 – 2025-26 |
 | [MLB](MLBScorePredictor) | Final score, win probability, extra innings, run line, 80% runs range | [Predictions](MLBScorePredictor/predictions/README.md) | 2016–2025 |
 | [NHL](NHLScorePredictor) | Final score, win probability, overtime, 80% goals range | [Predictions](NHLScorePredictor/predictions/README.md) | 2016-17 – 2025-26 |
 | [UFC](UFCFightPredictor) | Win probability by KO/TKO, submission and decision, and by round | [Predictions](UFCFightPredictor/predictions/README.md) | 2015–2026 |
@@ -17,7 +18,7 @@ Each predictor is a standalone Python 3.12 package in its own folder:
 ```bash
 cd NFLScorePredictor            # or any other predictor folder
 pip install -r requirements.txt
-python -m nflpredictor update   # cfbpredictor, mlbpredictor, nhlpredictor, ufcpredictor
+python -m nflpredictor update   # cfbpredictor, nbapredictor, mlbpredictor, nhlpredictor, ufcpredictor
 ```
 
 See each predictor's README for its data sources, model details, backtest results and other commands. The workflows in [`.github/workflows`](.github/workflows) run the same `update` command on a schedule and commit the refreshed predictions.
@@ -29,6 +30,10 @@ This Python project predicts the final score of every NFL game during the season
 ## College football
 
 This Python project predicts the final score of every FBS college football game during the season, along with each team's win probability and an 80% range for its points. It starts each team from a preseason prior fitted on past seasons (last year's rating, program history and returning production that counts transfer-portal arrivals), rates every offense, defense and special-teams unit from opponent-adjusted play-by-play efficiency (EPA) with garbage time removed, gives FCS opponents ratings of their own, blends the result with the betting line, and simulates each game 10,000 times drive by drive, overtime included, to get realistic scores. A scheduled GitHub Action refreshes the data, refits the model, re-predicts upcoming games and grades finished ones every day and several times on Saturdays, so it keeps itself current through the season. A walk-forward backtest over 2016 to 2025 scores it against the closing betting line, overall and by kind of game. See [CollegeFootballScorePredictor](CollegeFootballScorePredictor) and the [latest predictions](CollegeFootballScorePredictor/predictions/README.md).
+
+## NBA
+
+This Python project predicts the final score of every NBA game during the season, along with each team's win probability, the chance of overtime, the spread and total, the players each team will be missing and an 80% range for its points. It rates every player by regularized adjusted plus-minus on every lineup stint rebuilt from play-by-play, with garbage time removed and priors carried from season to season, projects tonight's minutes from each player's recent games and the injury report (weighing a questionable player by his chance of playing), turns that lineup into each team's expected possessions and points per possession alongside opponent-adjusted team efficiency, home court and back-to-backs, blends the margin and total with the betting line, and simulates each game 10,000 times from correlated scores weighted to real late-game margins, with overtime. A scheduled GitHub Action pulls new box scores and play-by-play, ESPN's injury report, rosters and lines several times a day around the injury report's deadlines, refits the model, re-predicts the next two days of games and grades finished ones, so it keeps itself current through the season. A walk-forward backtest over 2015-16 to 2025-26 scores it against the closing betting line, team ratings alone and Elo. See [NBAScorePredictor](NBAScorePredictor) and the [latest predictions](NBAScorePredictor/predictions/README.md).
 
 ## MLB
 

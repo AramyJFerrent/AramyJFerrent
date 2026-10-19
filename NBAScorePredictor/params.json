@@ -1,0 +1,14 @@
+{
+  "team_prior_poss": 1500.0,
+  "pace_prior_games": 2.5,
+  "team_carryover": 0.6,
+  "half_life_days": 30.0,
+  "pace_half_life_days": 15.0,
+  "player_off_prior_poss": 3000.0,
+  "player_def_prior_poss": 4000.0,
+  "player_carryover": 0.85,
+  "player_half_life_days": 365.0,
+  "newcomer_net": -6.0,
+  "minutes_half_life_games": 1.5,
+  "fit_window_seasons": 4
+}

@@ -1,0 +1,81 @@
+name: NBA score predictor
+
+on:
+  schedule:
+    - cron: "33 13 * 10-12,1-6 *"   # about 9:30 AM ET: last night's box scores and play-by-play, new ratings
+    - cron: "48 17 * 10-12,1-6 *"   # about 1:45 PM ET: after the game-day injury report (due 11 AM-1 PM local)
+    - cron: "33 21 * 10-12,1-6 *"   # about 5:30 PM ET: updated statuses and lines before the 7 PM games
+    - cron: "13 23 * 10-12,1-6 *"   # about 7:15 PM ET: late scratches before the 7:30 and 8 PM games
+    - cron: "3 1 * 10-12,1-6 *"     # about 9 PM ET: before the late West Coast games
+    - cron: "33 14 * 7-9 1"         # Mondays in the off-season: final data, then next season's schedule
+  workflow_dispatch:
+    inputs:
+      backtest:
+        description: "Also rerun the walk-forward backtest"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - "NBAScorePredictor/**"
+      - ".github/workflows/nba-score-predictor.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nba-score-predictor
+  cancel-in-progress: false
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: NBAScorePredictor
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: NBAScorePredictor/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest -q tests
+
+      # On pushes, read ESPN's lines, injury report and rosters once and run a
+      # full update without committing, so a change shows whether the live
+      # sources still read cleanly and the predictions page builds.
+      - name: Check live sources
+        if: github.event_name == 'push'
+        run: python -m nbapredictor -v check --raw 1500
+
+      - name: Update predictions
+        run: python -m nbapredictor -v update
+
+      - name: Show the predictions page
+        if: github.event_name == 'push'
+        run: head -c 8000 predictions/README.md
+
+      - name: Rerun backtest
+        if: github.event_name == 'workflow_dispatch' && inputs.backtest
+        run: python -m nbapredictor -v backtest
+
+      - name: Commit results
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add predictions data params.json
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "Update NBA predictions ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
