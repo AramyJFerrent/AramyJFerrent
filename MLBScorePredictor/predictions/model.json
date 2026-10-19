@@ -1,0 +1,62 @@
+{
+  "hyperparams": {
+    "batter_half_life": 300.0,
+    "pitcher_half_life": 250.0,
+    "batter_shrink": 1.0,
+    "pitcher_shrink": 1.0,
+    "starter_outs_prior": 4.0,
+    "starter_outs_half_life": 60.0,
+    "park_seasons": 3,
+    "park_prior_games": 120.0,
+    "team_prior_games": 40.0,
+    "team_carryover": 0.6,
+    "team_half_life": 60.0,
+    "market_weight": 0.19,
+    "fit_window_seasons": 3
+  },
+  "blend_weight": 0.19,
+  "blend_games": 0,
+  "coef": {
+    "const": -0.018912493457394725,
+    "x_sp": 0.8305556540731239,
+    "x_bp": 0.7002781422972265,
+    "log_pf": 0.6770863613517003,
+    "h": 0.06009488299432382,
+    "temp_x": 0.04454968864831122,
+    "wind_x": 0.03555641915422442,
+    "team_off": 0.21532094975981292,
+    "team_def": 0.43230574735238364,
+    "elo": 0.13064659954685737
+  },
+  "inning": [
+    0.0,
+    -0.12411775447986344,
+    -0.02047470993798167,
+    -0.031760491226761764,
+    -0.002965258573425684,
+    0.003105233205142246,
+    -0.0369123949790271,
+    -0.018046531870184342,
+    -0.0021765869634189326
+  ],
+  "sim": {
+    "frailty": 20.0,
+    "walkoff_hr": 0.25,
+    "extra_mult": 1.0,
+    "closer_mult": 0.7,
+    "closer_share": 0.2614116434827409
+  },
+  "fit_games": 9873,
+  "fit_seasons": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "targets": {
+    "team_runs_var": 10.150509949466704,
+    "shutout": 0.06492454167932746,
+    "extra_innings": 0.08601153687680264,
+    "walkoff_multi": 0.11884753901560624
+  }
+}
