@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Mon Oct 19, 2026 05:10 AM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Mon Oct 19, 2026 03:28 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -17,14 +17,14 @@ Saturday, October 24, 2026 · first bout locks Sat Oct 24, 10:00 AM ET
 | **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 49% – 51% Evloev | +105 / -105 | Volkanovski 50% (-110 / -110) | Volkanovski 44% | Volkanovski 16% / 5% / 28%<br>Evloev 13% / 6% / 33% | 60% | Evloev by decision (33%) | none |
 | **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 60% – 40% Dvalishvili | -150 / +150 | Yan 59% (-162 / +136) | Yan 51% | Yan 16% / 5% / 38%<br>Dvalishvili 6% / 6% / 29% | 67% | Yan by decision (38%) | none |
 | **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 49% – 51% Temirov | +105 / -105 | Kavanagh 50% (-112 / -108) | Kavanagh 43% | Kavanagh 10% / 6% / 32%<br>Temirov 24% / 4% / 22% | 55% | Kavanagh by decision (32%) | none |
-| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 51% – 49% Kuniev | -100 / +100 | Volkov 52% (-118 / -102) | Volkov 45% | Volkov 22% / 3% / 25%<br>Kuniev 24% / 3% / 22% | 47% | Volkov by decision (25%) | none |
+| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 51% – 49% Kuniev | -105 / +105 | Volkov 52% (-120 / +100) | Volkov 45% | Volkov 23% / 3% / 25%<br>Kuniev 24% / 3% / 22% | 47% | Volkov by decision (25%) | none |
 | **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 48% – 52% Keita | +110 / -110 | Pico 51% (-115 / -105) | Pico 37% | Pico 10% / 5% / 33%<br>Keita 26% / 4% / 22% | 55% | Pico by decision (33%) | none |
-| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 64% – 36% Reyes | -175 / +175 | Murzakanov 65% (-205 / +180) | Murzakanov 40% | Murzakanov 42% / 5% / 16%<br>Reyes 22% / 2% / 12% | 28% | Murzakanov by KO/TKO (42%) | none |
-| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 19% – 81% Yakhyaev | +435 / -435 | Krylov 22% (+340 / -440) | Krylov 35% | Krylov 8% / 3% / 8%<br>Yakhyaev 46% / 25% / 10% | 18% | Yakhyaev by KO/TKO (46%) | none |
+| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 63% – 37% Reyes | -170 / +170 | Murzakanov 64% (-205 / +170) | Murzakanov 40% | Murzakanov 42% / 5% / 16%<br>Reyes 22% / 3% / 12% | 28% | Murzakanov by KO/TKO (42%) | none |
+| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 17% – 83% Yakhyaev | +500 / -500 | Krylov 20% (+390 / -520) | Krylov 35% | Krylov 7% / 3% / 7%<br>Yakhyaev 47% / 26% / 10% | 17% | Yakhyaev by KO/TKO (47%) | none |
 | **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 48% – 52% Rowston | +105 / -105 | Magomedov 53% (-122 / +102) | Magomedov 32% | Magomedov 13% / 12% / 23%<br>Rowston 23% / 6% / 23% | 46% | Magomedov by decision (23%) | Rowston +102 (2 pts) |
-| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 51% – 49% Aliev | -105 / +105 | Dawson 52% (-120 / +100) | Dawson 44% | Dawson 9% / 17% / 25%<br>Aliev 11% / 8% / 31% | 56% | Aliev by decision (31%) | none |
-| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 63% – 37% Chopurov | -170 / +170 | no line yet | Thicknesse 63% | Thicknesse 17% / 15% / 31%<br>Chopurov 9% / 6% / 22% | 54% | Thicknesse by decision (31%) | – |
-| **Abubakar Vagaev** vs. **Jacob Malkoun**<br>MW, 3 rds | Vagaev 38% – 62% Malkoun | +165 / -165 | no line yet | Vagaev 38% | Vagaev 9% / 6% / 23%<br>Malkoun 18% / 11% / 32% | 55% | Malkoun by decision (32%) | – |
+| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 51% – 49% Aliev | -105 / +105 | Dawson 53% (-122 / +102) | Dawson 44% | Dawson 9% / 17% / 26%<br>Aliev 10% / 8% / 31% | 56% | Aliev by decision (31%) | none |
+| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 21% – 79% Chopurov | +380 / -380 | Thicknesse 20% (+390 / -520) | Thicknesse 63% | Thicknesse 6% / 4% / 11%<br>Chopurov 19% / 14% / 46% | 57% | Chopurov by decision (46%) | none |
+| **Abubakar Vagaev** vs. **Jacob Malkoun**<br>MW, 3 rds | Vagaev 57% – 43% Malkoun | -135 / +135 | Vagaev 60% (-166 / +140) | Vagaev 38% | Vagaev 14% / 9% / 34%<br>Malkoun 13% / 7% / 23% | 57% | Vagaev by decision (34%) | none |
 
 When it ends (either fighter):
 
@@ -36,11 +36,11 @@ When it ends (either fighter):
 | Volkov vs. Kuniev | 28% | 17% | 8% |  |  | 47% |
 | Pico vs. Keita | 22% | 15% | 8% |  |  | 55% |
 | Murzakanov vs. Reyes | 41% | 21% | 9% |  |  | 28% |
-| Krylov vs. Yakhyaev | 51% | 23% | 9% |  |  | 18% |
+| Krylov vs. Yakhyaev | 51% | 23% | 9% |  |  | 17% |
 | Magomedov vs. Rowston | 28% | 17% | 9% |  |  | 46% |
 | Dawson vs. Aliev | 22% | 14% | 7% |  |  | 56% |
-| Thicknesse vs. Chopurov | 23% | 15% | 8% |  |  | 54% |
-| Vagaev vs. Malkoun | 22% | 15% | 8% |  |  | 55% |
+| Thicknesse vs. Chopurov | 21% | 14% | 7% |  |  | 57% |
+| Vagaev vs. Malkoun | 22% | 14% | 7% |  |  | 57% |
 
 ## UFC Fight Night: Moicano vs. Nolan
 
@@ -147,16 +147,16 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 | Middleweight | 1 | Dricus Du Plessis | 2231 | 253 | 10-1 | 2026-07-18 |
 |  | 2 | Khamzat Chimaev | 2255 | 277 | 9-1 | 2026-05-09 |
 |  | 3 | Kamaru Usman | 2181 | 239 | 16-4 | 2026-07-18 |
-|  | 4 | Nassourdine Imavov | 2173 | 276 | 9-2 | 2025-09-06 |
+|  | 4 | Nassourdine Imavov | 2173 | 277 | 9-2 | 2025-09-06 |
 |  | 5 | Brendan Allen | 2123 | 228 | 16-4 | 2026-10-10 |
 | Light Heavyweight | 1 | Magomed Ankalaev | 2188 | 241 | 13-2-1 | 2026-07-25 |
 |  | 2 | Robert Whittaker | 2156 | 230 | 18-7 | 2026-07-11 |
 |  | 3 | Carlos Ulberg | 2126 | 272 | 10-1 | 2026-04-11 |
 |  | 4 | Jiri Prochazka | 2174 | 329 | 6-3 | 2026-04-11 |
-|  | 5 | Paulo Costa | 2107 | 267 | 8-4 | 2026-04-11 |
+|  | 5 | Paulo Costa | 2107 | 268 | 8-4 | 2026-04-11 |
 | Heavyweight | 1 | Jon Jones | 2438 | 281 | 22-1 | 2024-11-16 |
 |  | 2 | Ciryl Gane | 2336 | 272 | 11-2 | 2026-06-14 |
-|  | 3 | Stipe Miocic | 2319 | 277 | 14-5 | 2024-11-16 |
+|  | 3 | Stipe Miocic | 2319 | 278 | 14-5 | 2024-11-16 |
 |  | 4 | Alex Pereira | 2268 | 254 | 10-3 | 2026-06-14 |
 |  | 5 | Alexander Volkov | 2221 | 237 | 14-5 | 2026-05-09 |
 | Women's Strawweight | 1 | Tatiana Suarez | 2011 | 315 | 9-1 | 2026-04-11 |
