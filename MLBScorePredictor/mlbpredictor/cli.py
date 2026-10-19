@@ -132,6 +132,67 @@ def cmd_check(args) -> None:
               .to_string(index=False))
 
 
+def audit_season(summaries: dict, season: int) -> dict:
+    """Consistency checks on one season's summaries (each should be near 100%)."""
+    import numpy as np
+
+    g = summaries["games"]
+    g = g[(g["season"] == season) & g["completed"]]
+    bat = summaries["batting"][summaries["batting"]["game_id"].isin(g["game_id"])]
+    pit = summaries["pitching"][summaries["pitching"]["game_id"].isin(g["game_id"])]
+    players = summaries["players"].drop_duplicates("player_id").set_index("player_id")
+    line_sum = {side: g[f"{side}_line"].fillna("").str.split().map(lambda p: sum(int(v) for v in p if v != "x"))
+                for side in ("home", "away")}
+    sides = []
+    for side, other in (("home", "away"), ("away", "home")):
+        sides.append(pd.DataFrame({"game_id": g["game_id"], "team": g[f"{side}_team"], "opp": g[f"{other}_team"],
+                                   "score": g[f"{side}_score"]}))
+    tg = pd.concat(sides, ignore_index=True)
+    b = bat.groupby(["game_id", "team"])[["pa", "k", "bb", "hr"]].sum()
+    p = pit.groupby(["game_id", "team"])[["bf", "k", "bb", "hr", "r", "outs"]].sum()
+    tg = tg.join(b, on=["game_id", "team"]).join(p.add_prefix("opp_"), on=["game_id", "opp"])
+    starters = bat[bat["slot"].between(1, 9)].groupby(["game_id", "team"])["slot"].nunique()
+    sp = pit.groupby(["game_id", "team"])["starter"].sum()
+    known = lambda ids: float(pd.Series(ids).map(players["throws"]).isin(["L", "R"]).mean())
+    open_air = g[g["dome"].fillna(0).eq(0)]
+    return {
+        "finished games": len(g),
+        "line score adds up to the final": float((line_sum["home"] == g["home_score"]).mean()
+                                                  * (line_sum["away"] == g["away_score"]).mean()),
+        "innings recorded": float(g["innings"].notna().mean()),
+        "plate appearances match batters faced": float((tg["pa"] == tg["opp_bf"]).mean()),
+        "strikeouts, walks and homers match": float(((tg["k"] == tg["opp_k"]) & (tg["bb"] == tg["opp_bb"])
+                                                     & (tg["hr"] == tg["opp_hr"])).mean()),
+        "runs charged match the score": float((tg["opp_r"] == tg["score"]).mean()),
+        "outs per team-game": float(tg["opp_outs"].mean()),
+        "nine-man starting lineups": float((starters == 9).mean()),
+        "one starting pitcher per team": float((sp == 1).mean()),
+        "starters named in the schedule": float(g[["home_starter", "away_starter"]].notna().all(axis=1).mean()),
+        "batters with a known hand": known(bat["player_id"].unique()),
+        "pitchers with a known hand": known(pit["player_id"].unique()),
+        "temperature at open-air games": float(open_air["temp"].notna().mean()) if len(open_air) else np.nan,
+        "games under a roof": float(g["dome"].fillna(0).mean()),
+        "neutral-site games": int(g["neutral"].sum()),
+        "parks": int(g["park_id"].nunique()),
+        "extra-inning games (regular season)": float((g.loc[g["game_type"] == "R", "innings"] > 9).mean()),
+        "runs per game": float((g["home_score"] + g["away_score"]).mean()),
+    }
+
+
+def cmd_audit(args) -> None:
+    from .data import load_summaries
+
+    season = args.season or current_season()
+    summaries = load_summaries(season - 1, season)
+    rows = {s: audit_season(summaries, s) for s in (season - 1, season)}
+    table = pd.DataFrame(rows)
+    with pd.option_context("display.float_format", "{:.3f}".format, "display.width", 200):
+        print(table.to_string())
+    g = summaries["games"]
+    g = g[g["season"] == season]
+    print(g.groupby("home_team")["park_id"].agg(lambda s: s.value_counts().to_dict()).to_string())
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="mlbpredictor", description=__doc__)
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -165,6 +226,10 @@ def main(argv=None) -> None:
     p.add_argument("--back", type=int, default=2, help="days back to read (default 2)")
     p.add_argument("--ahead", type=int, default=2, help="days ahead to read (default 2)")
     p.set_defaults(func=cmd_check)
+
+    p = sub.add_parser("audit", help="consistency checks on a season's data, next to the season before")
+    p.add_argument("--season", type=int)
+    p.set_defaults(func=cmd_audit)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,

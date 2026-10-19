@@ -165,45 +165,46 @@ class RunModel:
         return out, sim
 
     # ---- simulator calibration ----------------------------------------------
-    def calibrate(self, f: pd.DataFrame, params: SimParams, max_games: int = 1500, n_sims: int = 200,
+    def calibrate(self, f: pd.DataFrame, params: SimParams, max_games: int = 3000, n_sims: int = 200,
                   seed: int = 3) -> SimParams:
         """Pick the game-level spread so simulated team scores spread like real
         ones, the closer effect so as many games reach extra innings, then the
-        walk-off home-run share so walk-off margins match."""
-        rng = np.random.default_rng(seed)
-        f = f.iloc[rng.permutation(len(f))[:max_games]].reset_index(drop=True)
+        walk-off home-run share so walk-off margins match.
+
+        Targets come from every training game; the simulations use a sample."""
         actual = np.concatenate([f["home_score"], f["away_score"]]).astype(float)
-        target_var = float(np.var(actual))
-        target_zero = float(np.mean(actual == 0))
+        reg = f[(f["game_type"] == "R") & (f["sched_innings"] == 9)]
+        self.targets = {"team_runs_var": float(np.var(actual)), "shutout": float(np.mean(actual == 0)),
+                        "extra_innings": float((reg["innings"] > 9).mean()) if len(reg) else float("nan"),
+                        "walkoff_multi": walkoff_margins(f)}
+        rng = np.random.default_rng(seed)
+        sample = f.iloc[rng.permutation(len(f))[:max_games]].reset_index(drop=True)
+        sample_reg = reg.iloc[rng.permutation(len(reg))[:max_games]].reset_index(drop=True)
+        # The sample's own spread, so sampling noise in which games were drawn cancels out.
+        own = np.concatenate([sample["home_score"], sample["away_score"]]).astype(float)
         best, best_err = params, np.inf
         for k in FRAILTY_GRID:
             trial = replace(params, frailty=k)
-            _, sim = replace(self, sim=trial).predict(f, n_sims=n_sims, seed=seed)
+            _, sim = replace(self, sim=trial).predict(sample, n_sims=n_sims, seed=seed)
             pooled = np.concatenate([sim["home"].ravel(), sim["away"].ravel()]).astype(float)
-            err = (np.var(pooled) / target_var - 1) ** 2 + ((np.mean(pooled == 0) - target_zero) / 0.02) ** 2 * 0.1
+            err = (np.var(pooled) / np.var(own) - 1) ** 2 \
+                + ((np.mean(pooled == 0) - self.targets["shutout"]) / 0.02) ** 2 * 0.1
             if err < best_err:
                 best, best_err = trial, err
-        # The closer effect, so as many regular-season games go to extra innings as in history.
-        reg = f[(f["game_type"] == "R") & (f["sched_innings"] == 9)]
-        extra = float((reg["innings"] > 9).mean()) if len(reg) else float("nan")
-        if np.isfinite(extra):
+        if np.isfinite(self.targets["extra_innings"]):
             best = replace(best, closer_share=closer_share(reg))
             errs = {}
             for c in CLOSER_GRID:
                 trial = replace(best, closer_mult=c)
-                _, sim = replace(self, sim=trial).predict(reg.reset_index(drop=True), n_sims=n_sims, seed=seed + 2)
-                errs[c] = abs(float((sim["innings"] > 9).mean()) - extra)
+                _, sim = replace(self, sim=trial).predict(sample_reg, n_sims=n_sims, seed=seed + 2)
+                errs[c] = abs(float((sim["innings"] > 9).mean()) - self.targets["extra_innings"])
             best = replace(best, closer_mult=min(errs, key=errs.get))
-            self.targets["extra_innings"] = extra
-        target = self.targets.get("walkoff_multi")
-        walk = walkoff_margins(f)
-        self.targets.update({"team_runs_var": target_var, "shutout": target_zero,
-                             "walkoff_multi": walk if target is None else target})
+        walk = self.targets["walkoff_multi"]
         if np.isfinite(walk):
             errs = {}
             for q in WALKOFF_GRID:
                 trial = replace(best, walkoff_hr=q)
-                _, sim = replace(self, sim=trial).predict(f, n_sims=n_sims, seed=seed + 1)
+                _, sim = replace(self, sim=trial).predict(sample, n_sims=n_sims, seed=seed + 1)
                 wo = sim["walkoff"]
                 margin = sim["home"] - sim["away"]
                 share = float(np.sum(wo & (margin >= 2)) / max(np.sum(wo), 1))

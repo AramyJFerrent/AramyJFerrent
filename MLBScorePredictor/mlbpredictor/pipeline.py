@@ -266,8 +266,8 @@ def run_update(now: dt.datetime | None = None, days: int = 2, n_sims: int = 1000
                        & (pd.to_datetime(games["date"]) < pd.Timestamp(today))]
     history = fb.build(hist_games)
     model = RunModel.fit(history, fb.chain(season))
-    log.info("Fitted on %d games; game spread %.0f, walk-off home runs %.0f%%", model.fit_games,
-             model.sim.frailty, 100 * model.sim.walkoff_hr)
+    log.info("Fitted on %d games; game spread %.0f, closer effect %.2f, walk-off home runs %.0f%%",
+             model.fit_games, model.sim.frailty, model.sim.closer_mult, 100 * model.sim.walkoff_hr)
 
     entries = load_log()
     filled = backfill(entries, history, fb, season, min(n_sims, 2000), hp)

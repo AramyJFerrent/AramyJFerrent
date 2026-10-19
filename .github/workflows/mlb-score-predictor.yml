@@ -50,13 +50,18 @@ jobs:
 
       # On pushes, read the live sources and run a full update without
       # committing, so a change shows whether the MLB Stats API, ESPN and
-      # Open-Meteo still read cleanly and the predictions page builds.
+      # Open-Meteo still read cleanly, the season's data checks out against
+      # last season's, and the predictions page builds.
       - name: Check live sources
         if: github.event_name == 'push'
         run: python -m mlbpredictor -v check
 
       - name: Update predictions
         run: python -m mlbpredictor -v update
+
+      - name: Audit this season's data
+        if: github.event_name == 'push'
+        run: python -m mlbpredictor audit
 
       - name: Show the predictions page
         if: github.event_name == 'push'
