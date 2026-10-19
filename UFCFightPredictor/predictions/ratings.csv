@@ -18,7 +18,7 @@ f00ac08ab056af5d,Tagir Ulanbekov,Flyweight,1739.3,172.7,6-2,2025-11-22,1393.9
 814e5233e2acf2ee,Charles Johnson,Flyweight,1633.2,123.0,9-7,2026-08-15,1387.2
 2fe9032955c2e013,Joseph Morales,Flyweight,1768.1,190.6,3-3,2026-09-12,1386.9
 1a31ef98efce7a79,Matheus Nicolau,Flyweight,1649.8,145.4,7-4,2024-10-19,1358.9
-3fa97913cfd205d3,Alessandro Costa,Flyweight,1688.0,170.3,5-3,2026-07-11,1347.4
+3fa97913cfd205d3,Alessandro Costa,Flyweight,1688.0,170.3,5-3,2026-07-11,1347.3
 294aa73dbf37d281,Bruno Silva,Flyweight,1614.5,143.2,5-6,2026-06-06,1328.1
 6e8349a0a0476d60,Imanol Rodriguez,Flyweight,1840.6,276.5,2-0,2026-10-03,1287.6
 3cf18e01cb6cbde3,Sumudaerji,Flyweight,1571.6,146.2,7-4,2026-08-29,1279.2
@@ -81,7 +81,7 @@ f1d64ae34e088832,Charles Jourdain,Bantamweight,1792.7,117.3,9-8-1,2026-09-19,155
 fe2babf95de24fb1,Raul Rosas Jr.,Bantamweight,1884.7,163.4,7-1,2026-09-26,1557.8
 0fd5f4b838e890cc,Said Nurmagomedov,Bantamweight,1857.4,150.1,7-4,2025-07-26,1557.2
 a09ed60aa67a3f67,Farid Basharat,Bantamweight,1911.0,177.0,7-0,2026-07-11,1557.0
-45f0cc9d18f35137,Chris Gutierrez,Bantamweight,1818.7,135.1,10-4-1,2025-10-04,1548.6
+45f0cc9d18f35137,Chris Gutierrez,Bantamweight,1818.7,135.1,10-4-1,2025-10-04,1548.5
 0232cabbc30a2372,Adrian Yanez,Bantamweight,1832.2,143.6,7-3-1,2026-07-11,1544.9
 d8c7c61b176e3994,Cody Garbrandt,Bantamweight,1787.8,124.3,10-8,2026-07-11,1539.2
 60425d07ef4b91a7,Kyler Phillips,Bantamweight,1817.7,150.6,6-4,2026-04-18,1516.6
@@ -92,7 +92,7 @@ ffd3224638c01b57,Jean Matsumoto,Bantamweight,1859.7,177.0,4-2,2026-06-27,1505.6
 da22387a0407a2dc,Da'Mon Blackshear,Bantamweight,1742.3,149.0,5-4-1,2025-07-26,1444.4
 5fa2974cbd18e05c,John Castaneda,Bantamweight,1736.7,154.0,4-5-1,2026-09-26,1428.6
 d776b5814f2400b4,Ethyn Ewing,Bantamweight,2019.2,297.3,2-0,2026-04-04,1424.5
-bf7ad5628363eec9,Cody Stamann,Bantamweight,1677.0,134.7,7-7-1,2024-11-09,1407.5
+bf7ad5628363eec9,Cody Stamann,Bantamweight,1677.0,134.8,7-7-1,2024-11-09,1407.5
 1897b7b913736a7c,Alatengheili,Bantamweight,1680.4,152.3,6-3-1,2026-09-26,1375.8
 7478b7f959ba61f5,Elijah Smith,Bantamweight,1848.9,240.1,3-0,2026-03-14,1368.8
 eb8d8c2a95cfccb8,Victor Henry,Bantamweight,1706.5,180.1,4-2,2025-04-05,1346.3
@@ -152,7 +152,7 @@ d1053e55f00e53fe,AJ Cunningham,Bantamweight,1311.2,295.9,0-2,2025-03-15,719.4
 07797f10b9569cfc,Angel Pacheco,Bantamweight,1354.9,326.0,0-2,2026-02-28,702.8
 9c27f3217891f3f0,Kris Moutinho,Bantamweight,1180.1,245.1,0-4,2026-02-28,689.9
 a1ad35b98a9136e5,Lawrence Lui,Bantamweight,1323.2,339.7,1-1,2026-08-29,643.8
-3c4320a1b6106611,Cody Chovancek,Bantamweight,1313.3,336.7,0-1,2026-10-17,640.0
+3c4320a1b6106611,Cody Chovancek,Bantamweight,1313.3,336.7,0-1,2026-10-17,639.9
 91cd52cb92dfdd52,Louis Jourdain,Bantamweight,1242.1,322.1,0-1,2026-10-17,598.0
 72ea1984c52019b5,Saimon Oliveira,Bantamweight,1080.0,244.4,0-4,2025-10-11,591.3
 8173f134396cb971,Cortavious Romious,Bantamweight,1179.6,309.0,0-2,2025-04-05,561.6
@@ -187,7 +187,7 @@ ffe9703408fb5964,David Onama,Featherweight,1844.2,164.2,6-3,2025-11-01,1515.8
 480779d7f9a424d3,Mairon Santos,Featherweight,1933.7,224.2,4-0,2025-12-06,1485.3
 e93b04e308913c2e,Dooho Choi,Featherweight,1783.9,149.3,6-4-1,2026-09-19,1485.3
 92a9aa9c93192871,Darren Elkins,Featherweight,1715.7,119.3,19-12,2026-08-08,1477.0
-e0c6edcb5b5d0b90,Chepe Mariscal,Featherweight,1839.3,186.5,5-1,2025-11-15,1466.2
+e0c6edcb5b5d0b90,Chepe Mariscal,Featherweight,1839.3,186.6,5-1,2025-11-15,1466.2
 8fd808923cffff82,Andre Fili,Featherweight,1655.3,111.2,14-13,2026-10-10,1432.8
 e1d40e8782d80bc2,William Gomis,Featherweight,1814.5,193.7,5-2,2026-05-09,1427.1
 e00a3dee329a51f7,Jamall Emmers,Featherweight,1756.3,164.9,6-4,2026-08-22,1426.5
@@ -241,7 +241,7 @@ b909a9a9688b5284,Gabriel Miranda,Featherweight,1404.3,221.0,1-3,2025-03-29,962.3
 x-sean-king,Sean King III,Featherweight,1741.5,396.9,1-0,2026-09-12,947.8
 2b266e623e20737a,Rodrigo Vera,Featherweight,1741.5,397.3,1-0,2026-05-30,946.8
 3618e0632ecdba9c,Keiichiro Nakamura,Featherweight,1741.5,397.9,1-0,2026-01-31,945.7
-0bc697c5936a2d0a,Trevor Peek,Featherweight,1358.1,215.4,2-4,2026-09-05,927.3
+0bc697c5936a2d0a,Trevor Peek,Featherweight,1358.1,215.4,2-4,2026-09-05,927.2
 d7c4956d61ae76a9,Jose Delano,Featherweight,1658.5,368.4,1-0,2026-04-04,921.7
 c5ccd878231c5407,Ramon Taveras,Featherweight,1421.4,251.8,1-2,2025-09-27,917.8
 c4d039123e62f6a9,Dennis Buzukja,Featherweight,1293.6,199.7,1-5,2026-08-01,894.2
@@ -306,7 +306,7 @@ e132d47bd9efbbe0,Rafa Garcia,Lightweight,1778.9,134.0,7-5,2026-09-12,1510.9
 1d2d98ddd05b38fb,Axel Sola,Lightweight,1873.3,193.4,3-1,2026-09-05,1486.6
 5b86d491d63890c5,Ludovit Klein,Lightweight,1769.5,142.3,8-4-1,2026-08-01,1484.9
 d945aae53e3e54e6,Thiago Moises,Lightweight,1729.8,129.9,8-8,2026-04-18,1469.9
-ca28cdf526d6b6e9,Nurullo Aliev,Lightweight,1897.6,215.1,4-0,2026-07-25,1467.5
+ca28cdf526d6b6e9,Nurullo Aliev,Lightweight,1897.6,215.1,4-0,2026-07-25,1467.4
 d747eb273a40a920,Claudio Puelles,Lightweight,1796.3,165.8,5-4,2025-09-13,1464.7
 de83f920fd302871,Tommy Gantt,Lightweight,2035.4,285.6,2-0,2026-09-12,1464.2
 fd406a32a6fb3a29,Chris Duncan,Lightweight,1785.0,161.4,6-2,2026-04-04,1462.1
@@ -388,7 +388,7 @@ dfcadfcbd3a3f097,Milos Janicic,Lightweight,1258.5,397.1,0-1,2026-08-01,464.4
 275aca31f61ba28c,Islam Makhachev,Welterweight,2277.5,116.3,18-1,2026-08-15,2045.0
 01afe0916a40c7c5,Shavkat Rakhmonov,Welterweight,2400.8,203.6,7-0,2024-12-07,1993.6
 150ff4cc642270b9,Max Holloway,Welterweight,2189.9,105.2,24-9,2026-07-11,1979.4
-7ee0fd831c0fe7c3,Carlos Prates,Welterweight,2235.6,140.7,7-1,2026-05-02,1954.1
+7ee0fd831c0fe7c3,Carlos Prates,Welterweight,2235.6,140.8,7-1,2026-05-02,1954.1
 c32aeb1a59e6272d,Michael Morales,Welterweight,2244.9,161.1,7-0,2025-11-15,1922.7
 45f7cb591c3ab00b,Sean Brady,Welterweight,2132.2,130.9,9-2,2026-05-09,1870.3
 442c9011034ae1fd,Ian Machado Garry,Welterweight,2124.6,132.4,10-2,2026-08-15,1859.8
@@ -424,7 +424,7 @@ f626118b6da0e020,Bryan Battle,Welterweight,1965.8,179.0,7-1,2024-12-07,1607.8
 85497ffd934ecf7e,Jacobe Smith,Welterweight,2060.4,235.9,4-0,2026-10-03,1588.5
 2558ae2e5671e318,Khaos Williams,Welterweight,1901.6,157.9,7-5,2026-10-03,1585.7
 9d19d9e4aa2662e8,Nicolas Dalby,Welterweight,1856.5,139.9,8-5-1,2025-11-22,1576.7
-447f9858ae78f921,Muslim Salikhov,Welterweight,1817.7,122.0,9-6,2026-09-12,1573.6
+447f9858ae78f921,Muslim Salikhov,Welterweight,1817.7,122.1,9-6,2026-09-12,1573.6
 5442f1bc4b47eaf3,Chris Curtis,Welterweight,1863.9,146.2,6-5,2026-03-14,1571.5
 b0d6a1d8ac3d563d,Max Griffin,Welterweight,1814.3,125.7,8-11,2026-04-25,1563.0
 cdb96af67d096b1e,Alex Morono,Welterweight,1788.0,114.9,13-10,2026-02-07,1558.2
@@ -568,7 +568,7 @@ x-yisak-lee,YiSak Lee,Middleweight,1258.5,397.3,0-1,2026-05-30,463.8
 x-ben-johnston,Ben Johnston,Middleweight,1122.6,388.0,0-1,2026-05-02,346.7
 cd0dfd9846bd03b9,Julien Leblanc,Middleweight,1012.3,335.4,0-2,2026-10-17,341.5
 d802174b0c0c1f4e,Magomed Ankalaev,Light Heavyweight,2187.9,120.5,13-2-1,2026-07-25,1946.8
-e1147d3d2dabe1ce,Robert Whittaker,Light Heavyweight,2155.6,114.8,18-7,2026-07-11,1926.1
+e1147d3d2dabe1ce,Robert Whittaker,Light Heavyweight,2155.6,114.8,18-7,2026-07-11,1926.0
 9014c02eff8b3d62,Carlos Ulberg,Light Heavyweight,2126.0,136.2,10-1,2026-04-11,1853.6
 009341ed974bad72,Jiri Prochazka,Light Heavyweight,2174.1,164.4,6-3,2026-04-11,1845.3
 2e5c2aa8e4ab9d82,Paulo Costa,Light Heavyweight,2106.7,133.7,8-4,2026-04-11,1839.2
