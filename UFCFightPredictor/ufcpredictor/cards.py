@@ -7,8 +7,10 @@ Three sources, merged:
    but not start times or rounds; the main event and title fights are five
    rounds, everything else three.
 2. **ESPN's** public scoreboard (no key needed) adds each card segment's start
-   time and moneylines from its odds provider, and stands in for UFCStats if
-   that site is down. ESPN names are matched to UFCStats names.
+   time, and its odds API each bout's moneylines from its sportsbook partner.
+   It stands in for UFCStats when that site is down or, as it does for
+   GitHub's runners, answers with a browser check. ESPN names are matched to
+   UFCStats names.
 3. **``data/manual_card.csv``**, if present, adds or overrides bouts by hand
    (for example a late replacement either site has not caught up with).
 
@@ -26,7 +28,8 @@ import numpy as np
 import pandas as pd
 import requests
 
-from .config import DATA_DIR, DISPLAY_TZ, DIVISIONS, ESPN_SCOREBOARD_URL, UFCSTATS_UPCOMING_URL
+from .config import (DATA_DIR, DISPLAY_TZ, DIVISIONS, ESPN_ODDS_URL, ESPN_SCOREBOARD_URL,
+                     UFCSTATS_UPCOMING_URL)
 from .data import parse_weightclass
 from .names import match_name, normalize_name, pair_key
 
@@ -236,6 +239,18 @@ def _espn_division(kind: str) -> str | None:
     return division if division != "Catch Weight" or "Catch" in kind else None
 
 
+def _title_fight(people: list[dict], kind: str, rounds) -> bool:
+    """Named a title fight, or five rounds with a fighter holding that weight's belt."""
+    if "title" in kind.lower() or "championship" in kind.lower():
+        return True
+    if rounds != 5 or not kind:
+        return False
+    division = parse_weightclass(kind)[0].replace("Women's ", "")
+    belts = [a.get("name") or "" for c in people for a in _dig(c, "athlete", "accolades") or []
+             if isinstance(a, dict) and ("Title" in (a.get("name") or "") or a.get("type") == "Belt")]
+    return any(division in b for b in belts)
+
+
 def parse_espn(payload: dict) -> pd.DataFrame:
     rows = []
     for event in payload.get("events") or []:
@@ -256,6 +271,9 @@ def parse_espn(payload: dict) -> pd.DataFrame:
                                               comp.get("note"), *notes) if x)
             rows.append({
                 "espn_id": str(comp.get("id") or f"{event.get('id')}-{i}"),
+                "espn_event": str(event.get("id") or ""),
+                "espn_a": str(people[0].get("id") or _dig(people[0], "athlete", "id") or ""),
+                "espn_b": str(people[1].get("id") or _dig(people[1], "athlete", "id") or ""),
                 "event": event.get("name"),
                 "start": pd.to_datetime(comp.get("date") or comp.get("startDate") or event.get("date"),
                                         utc=True, errors="coerce"),
@@ -265,13 +283,59 @@ def parse_espn(payload: dict) -> pd.DataFrame:
                 "a_record": _dig(people[0], "records", 0, "summary"),
                 "b_record": _dig(people[1], "records", 0, "summary"),
                 "division": _espn_division(kind),
-                "title": "title" in kind.lower() or "championship" in kind.lower(),
+                "title": _title_fight(people, kind, _dig(comp, "format", "regulation", "periods")),
                 "rounds_espn": _dig(comp, "format", "regulation", "periods"),
                 "state": _dig(comp, "status", "type", "state"),
                 # ESPN lists the card from the first prelim to the main event.
                 "espn_order": len(comps) - 1 - i,
             })
     return pd.DataFrame(rows)
+
+
+def parse_core_odds(payload: dict, ids: tuple[str, str]) -> tuple[float, float, str | None]:
+    """Moneylines for the two ESPN athlete ``ids`` from ESPN's odds API.
+
+    Each provider's entry names the athlete behind each price, so prices are
+    tied to fighters by id; entries that do not name both fighters are skipped.
+    The highest-priority provider with both prices wins.
+    """
+    items = sorted((i for i in payload.get("items") or [] if isinstance(i, dict)),
+                   key=lambda i: _dig(i, "provider", "priority") or 99)
+    for item in items:
+        prices = {}
+        for side in ("home", "away"):
+            side_odds = item.get(f"{side}AthleteOdds") or {}
+            ref = str(_dig(side_odds, "athlete", "$ref") or _dig(side_odds, "athlete", "id") or "")
+            m = re.search(r"athletes/(\d+)", ref) or re.fullmatch(r"(\d+)", ref)
+            price = _num(side_odds.get("moneyLine"))
+            if np.isnan(price):
+                price = _num(_dig(side_odds, "current", "moneyLine", "american"))
+            if m and not np.isnan(price):
+                prices[m.group(1)] = price
+        if all(i in prices for i in ids) and ids[0] != ids[1]:
+            return prices[ids[0]], prices[ids[1]], _dig(item, "provider", "name")
+    return np.nan, np.nan, None
+
+
+def attach_core_odds(espn: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
+    """Fill in prices from ESPN's odds API for bouts the scoreboard left without them."""
+    espn = espn.copy()
+    errors = []
+    for idx, r in espn.iterrows():
+        if not np.isnan(r["odds_a"]) or r.get("state") not in (None, "pre") or not r["espn_event"]:
+            continue
+        url = ESPN_ODDS_URL.format(event=r["espn_event"], competition=r["espn_id"])
+        try:
+            a, b, provider = parse_core_odds(_get(session, url).json(), (r["espn_a"], r["espn_b"]))
+        except (requests.RequestException, ValueError) as exc:
+            errors.append(str(exc))
+            continue
+        if not np.isnan(a):
+            espn.at[idx, "odds_a"], espn.at[idx, "odds_b"] = a, b
+            espn.at[idx, "odds_source"] = "ESPN" + (f" ({provider})" if provider else "")
+    if errors:
+        log.warning("ESPN odds failed for %d bouts: %s", len(errors), "; ".join(errors[:2]))
+    return espn
 
 
 def espn_cards(now: pd.Timestamp, days: int, session: requests.Session | None = None) -> pd.DataFrame:
@@ -294,8 +358,9 @@ def espn_cards(now: pd.Timestamp, days: int, session: requests.Session | None = 
         return out
     out = out.drop_duplicates("espn_id")
     out = out[(out["start"] >= now - pd.Timedelta(hours=12)) & (out["start"] <= now + pd.Timedelta(days=days))]
+    out = attach_core_odds(out.reset_index(drop=True), session)
     log.info("ESPN: %d upcoming bouts, %d with moneylines", len(out), int(out["odds_a"].notna().sum()))
-    return out.reset_index(drop=True)
+    return out
 
 
 # ---- merging --------------------------------------------------------------

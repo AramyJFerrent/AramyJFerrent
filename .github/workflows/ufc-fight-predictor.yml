@@ -50,7 +50,7 @@ jobs:
       # so a change to the parsers shows whether UFCStats and ESPN still read cleanly.
       - name: Check card sources
         if: github.event_name == 'push'
-        run: python -m ufcpredictor -v card --raw
+        run: python -m ufcpredictor -v card
 
       - name: Update predictions
         if: github.event_name != 'push'

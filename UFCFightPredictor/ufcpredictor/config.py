@@ -19,9 +19,12 @@ SCRAPE_FILES = ["ufc_event_details", "ufc_fight_results", "ufc_fight_stats", "uf
 ODDS_URL = "https://raw.githubusercontent.com/shortlikeafox/ultimate_ufc_dataset/master/ufc-master.csv"
 
 # Upcoming cards: UFCStats lists every announced bout with the same fighter ids
-# as the history; ESPN adds bout start times and moneylines.
+# as the history; ESPN adds bout start times and moneylines (and carries the
+# card when UFCStats is unreachable).
 UFCSTATS_UPCOMING_URL = "http://ufcstats.com/statistics/events/upcoming"
 ESPN_SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard"
+ESPN_ODDS_URL = ("https://sports.core.api.espn.com/v2/sports/mma/leagues/ufc/events/{event}"
+                 "/competitions/{competition}/odds")
 
 DISPLAY_TZ = "America/New_York"
 

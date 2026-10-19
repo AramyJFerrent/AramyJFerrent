@@ -119,6 +119,14 @@ def test_espn_odds_need_a_known_side():
     assert main.division == "Light Heavyweight" and main.title and main.rounds_espn == 5
     assert main.a_record == "20-3-0" and main.espn_order == 0       # last listed is the main event
 
+    # Five rounds and the champion's belt make a title fight even when the text says nothing.
+    belt = espn_payload(competitors_extra=lambda s, j: s["athlete"].update(
+        accolades=[{"name": "UFC Light Heavyweight Title", "type": "Belt"}]))
+    belt["events"][0]["competitions"][1]["type"] = {"abbreviation": "Light Heavyweight"}
+    assert parse_espn(belt).set_index("espn_id").loc["401", "title"]
+    belt["events"][0]["competitions"][1]["format"]["regulation"]["periods"] = 3
+    assert not parse_espn(belt).set_index("espn_id").loc["401", "title"]
+
     # No home/away flags and no athlete ids on the prices: refuse rather than guess.
     blind = parse_espn(espn_payload({"homeAthleteOdds": {"moneyLine": 200}, "awayAthleteOdds": {"moneyLine": -250}},
                                     home_first=False))
@@ -225,3 +233,57 @@ def test_settle_division_recognizes_womens_bouts():
     assert settle_division("Flyweight", "Flyweight", "Bantamweight") == "Flyweight"
     assert settle_division(None, None, "Middleweight") == "Middleweight"
     assert settle_division(np.nan, None, None) == "Catch Weight"
+
+
+CORE_ODDS = {"count": 2, "items": [
+    {"provider": {"id": "200", "name": "Other Book", "priority": 2},
+     "homeAthleteOdds": {"moneyLine": -300, "athlete": {"$ref": "http://x/v2/sports/mma/athletes/3949584?lang=en"}},
+     "awayAthleteOdds": {"moneyLine": 240, "athlete": {"$ref": "http://x/v2/sports/mma/athletes/4029275?lang=en"}}},
+    {"provider": {"id": "100", "name": "DraftKings", "priority": 1}, "overUnder": 4.5,
+     "awayAthleteOdds": {"favorite": False, "moneyLine": 150,
+                         "open": {"moneyLine": {"american": "-112"}}, "current": {"moneyLine": {"american": "+150"}},
+                         "athlete": {"$ref": "http://sports.core.api.espn.com/v2/sports/mma/athletes/4029275?lang=en"}},
+     "homeAthleteOdds": {"favorite": True,
+                         "current": {"moneyLine": {"american": "-180"}},
+                         "athlete": {"$ref": "http://sports.core.api.espn.com/v2/sports/mma/athletes/3949584?lang=en"}}},
+]}
+
+
+def test_core_odds_follow_athlete_ids():
+    from ufcpredictor.cards import parse_core_odds
+
+    a, b, provider = parse_core_odds(CORE_ODDS, ("3949584", "4029275"))
+    assert (a, b, provider) == (-180.0, 150.0, "DraftKings")       # priority 1; nested current price
+    a, b, _ = parse_core_odds(CORE_ODDS, ("4029275", "3949584"))
+    assert (a, b) == (150.0, -180.0)
+    assert np.isnan(parse_core_odds(CORE_ODDS, ("3949584", "999"))[0])
+    assert np.isnan(parse_core_odds({"items": []}, ("1", "2"))[0])
+
+
+def test_scoreboard_bouts_get_core_odds(monkeypatch):
+    from ufcpredictor import cards
+
+    class Resp:
+        def __init__(self, body):
+            self.body = body
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self.body
+
+    calls = []
+
+    class Session:
+        def get(self, url, **kw):
+            calls.append(url)
+            return Resp(CORE_ODDS if "/competitions/401/odds" in url else {"items": []})
+
+    espn = parse_espn(espn_payload())
+    espn.loc[espn["espn_id"] == "401", ["espn_a", "espn_b"]] = ["3949584", "4029275"]
+    out = cards.attach_core_odds(espn, Session()).set_index("espn_id")
+    assert (out.loc["401", "odds_a"], out.loc["401", "odds_b"]) == (-180.0, 150.0)
+    assert out.loc["401", "odds_source"] == "ESPN (DraftKings)"
+    assert np.isnan(out.loc["400", "odds_a"])
+    assert any("events/9/competitions/401/odds" in c for c in calls)
