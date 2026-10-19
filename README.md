@@ -1,6 +1,6 @@
 # Sports Predictors
 
-Self-updating models that predict the outcome of every game in five sports: the NFL, college football (FBS), MLB, the NHL and the UFC. Each one rates teams or fighters from detailed historical data, blends its own view with the betting market, and simulates every game or bout thousands of times to produce a full forecast, not just a pick. Scheduled GitHub Actions keep the data, the models and the predictions current through each season, and every predictor grades its own finished games and is scored by a walk-forward backtest against the betting line.
+Self-updating models that predict the outcome of every game in five sports: the NFL, college football (FBS), MLB, the NHL and the UFC. Each one rates teams or fighters from detailed historical data, blends its own view with the betting market, and simulates every game or bout thousands of times to produce a full forecast, not just a pick. Scheduled GitHub Actions keep the data, the models and the predictions current through each season, and every predictor grades its own finished games and is scored by a walk-forward backtest against the betting market or a strong baseline such as Elo.
 
 | Predictor | Predicts | Latest predictions | Backtest |
 | --- | --- | --- | --- |
