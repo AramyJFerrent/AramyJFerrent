@@ -64,16 +64,24 @@ Paired bootstrap of the per-game absolute margin error (negative favors the firs
 - Spread of real results around the prediction: margin 13.1 points, total 18.0.
 - The headline score picked the winner 67.6% of the time.
 
-## Model picks against the spread
+## Betting edges
 
-Picking a side whenever the model's own spread and the line differ by 1 point or more. Break-even at standard -110 prices is 52.4%.
+Every side of each market is checked for expected value with the model's own chances (its simulated scores before blending with the line), and the best side is bet, 1 unit flat, whenever its EV is 3% or more. The archives carry moneylines but no spread or total prices, so those are assumed to be -110 on both sides. ROI is units won per unit bet, with a 95% bootstrap range over the bets.
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range | Line moved toward the pick |
-|---|---|---|---|---|
-| Closing line | 4447-4465-131 | 49.9% | 48.9%–50.9% | – |
-| Opening line, 2015-16 to 2021-22, knowing who played | 2984-2774-97 | 51.8% | 50.5%–53.1% | 68.0% of 4964 |
-| Closing line, same games | 2811-2862-97 | 49.6% | 48.2%–50.9% | – |
-| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | 2926-2743-94 | 51.6% | 50.3%–52.9% | 59.0% of 4860 |
+| Lines | Market | Edges | Record (W-L-P) | Units | ROI | 95% range | Line moved toward the edge |
+|---|---|---|---|---|---|---|---|
+| Closing line | Spread | 7928 | 3946-3862-120 | -274.7 | -3.5% | -5.5% to -1.3% | – |
+| Closing line | Moneyline | 8837 | 3137-5700-0 | +119.2 | +1.3% | -2.2% to +4.9% | – |
+| Closing line | Total | 8133 | 4036-3995-102 | -325.9 | -4.0% | -6.1% to -2.0% | – |
+| Opening line, 2015-16 to 2021-22, knowing who played | Spread | 5225 | 2700-2436-89 | +18.5 | +0.4% | -2.3% to +2.8% | 71.8% of 4482 |
+| Opening line, 2015-16 to 2021-22, knowing who played | Moneyline | no historical prices | | | | | |
+| Opening line, 2015-16 to 2021-22, knowing who played | Total | 5342 | 2884-2398-60 | +223.8 | +4.2% | +1.7% to +6.9% | – |
+| Closing line, same games | Spread | 5035 | 2483-2469-83 | -211.7 | -4.2% | -6.9% to -1.7% | – |
+| Closing line, same games | Moneyline | 5732 | 2057-3675-0 | +93.4 | +1.6% | -2.8% to +6.1% | – |
+| Closing line, same games | Total | 5197 | 2557-2565-75 | -240.5 | -4.6% | -7.2% to -2.2% | – |
+| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | Spread | 5151 | 2656-2407-88 | +7.5 | +0.1% | -2.3% to +2.8% | 62.6% of 4401 |
+| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | Moneyline | no historical prices | | | | | |
+| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | Total | 5249 | 2778-2414-57 | +111.5 | +2.1% | -0.4% to +4.7% | – |
 
 ## Knowing who plays
 
