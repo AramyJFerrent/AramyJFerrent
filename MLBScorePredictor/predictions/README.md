@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Tue Oct 20, 2026 01:56 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Oct 20, 2026 09:42 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -8,19 +8,19 @@ Lineups marked ✓ are the posted ones; "proj." is the lineup the team last used
 
 The fair moneyline is the American odds that match the win chance exactly, with no bookmaker margin: -150 means risk $150 to win $100, +150 means risk $100 to win $150. A sportsbook's price is a little worse on both sides because of its cut, so a book only offers value on a team when its price beats the fair line. The run line is the favorite's chance to win by two or more.
 
-The model pick is the side where the model's own win chance (before blending with the market) beats the de-vigged moneyline by 3% or more. Treat it as an experiment: its record is tracked live below.
+The edge columns give the expected value of a bet per $1 staked at the posted price, from the model's own numbers before they are blended with the betting line: its win chance for the moneyline, and its own simulation's chance of covering the posted run line and of going over or under the total (a push on a whole-number total returns the stake). A side counts as an edge when its EV is 3% or more; each market shows its best side, as "pick (price): EV, the model's chance". A total with no posted price is assumed to be -110 on both sides and marked -110*; run-line and moneyline prices are never assumed, so without one the run line shows the model's fair odds instead. Treat the edges as an experiment: the model alone was 0.003 log loss behind Pinnacle's 2016 closing moneyline, and in the backtest its moneyline edges against those closing prices lost 4.5% per bet (95% range -10.8% to +1.7%) while its total edges broke even, so an apparent edge against a sharp line is more often the model's error than the market's. Their record is tracked live below.
 
 ## Friday, October 23 — World Series
 
-| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Moneyline / model pick (edge) |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / TBD | TB 2, MIL 3 | MIL 60% | TB +145 / MIL -145 | 3.0 – 3.7 | 0–6 / 1–7 | MIL -1.5 39% | 6.7 / 6 (over 52%) | 11% | proj. / proj. | TB +135 / MIL -164; TB +135 (3%) |
+| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 60% | TB +150 / MIL -150 | TB +135 / MIL -164 | 3.0 – 3.7 | 0–6 / 1–7 | MIL -1.5 39% | 6.7 / 6 (over 52%) | 11% | proj. / proj. | no edge | TB (+135): EV +3.3%, model 44% | Over 6 (-105): EV +29.3%, model 62% |
 
 ## Saturday, October 24 — World Series
 
-| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Moneyline / model pick (edge) |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 56% | TB +130 / MIL -130 | 4.0 – 4.4 | 1–8 / 1–9 | MIL -1.5 38% | 8.5 | 9% | proj. / proj. | no line yet |
+| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 56% | TB +125 / MIL -125 | – | 4.0 – 4.4 | 1–8 / 1–9 | MIL -1.5 38% | 8.4 | 9% | proj. / proj. | no line yet; fair MIL -1.5 +160, TB +1.5 -160 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -39,16 +39,17 @@ Extra innings: predicted in 8.6% of regular-season games, happened in 8.6%.
 
 2463 of these games were played before the predictor went live (or while it was not running). They are backfilled walk-forward (each day predicted from earlier days only, with the run model fitted on earlier seasons) with the actual lineups and starting pitchers and no betting line. Every other game is graded on the prediction logged before first pitch.
 
-### Model picks against the moneyline
+### Betting edges
 
-| Picks against | Bets | Record (W-L) | Units won | Return per bet |
+| Market | Edges | Record (W-L-P) | Units | ROI |
 |---|---|---|---|---|
-| First line seen | 0 | 0-0 | +0.00 | – |
-| Last line before first pitch | 0 | 0-0 | +0.00 | – |
+| Run line | 0 | 0-0-0 | +0.00 | – |
+| Moneyline | 0 | 0-0-0 | +0.00 | – |
+| Total | 0 | 0-0-0 | +0.00 | – |
 
-Market moved toward the model's first pick before first pitch: 0 of 0 games.
+Moneyline moved toward the model's edge at the first line seen, before first pitch: 0 of 0 games.
 
-One unit on each pick at the logged price. The market moving toward the model's pick (closing line value) is the quickest sign that it knows something the market doesn't yet.
+One unit on each edge at the price logged with the last prediction before first pitch (live predictions only; ROI is units per bet). The market moving toward the model's side (closing line value) is the quickest sign that it knows something the market doesn't yet.
 
 ### Results, Monday, October 19
 
