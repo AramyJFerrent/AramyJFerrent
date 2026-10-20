@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Mon Oct 19, 2026 09:50 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Tue Oct 20, 2026 01:39 AM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -12,9 +12,9 @@ The fair moneyline is the American odds that match the win chance exactly, with 
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Model pick vs line (edge) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 3:00 PM | BOS @ DET | BOS 112, DET 111 | BOS 55% | BOS -120 / DET +120 | BOS -1.7 / BOS -1.5 (fav covers 52%) | 222.7 / 222.5 (over 50%) | 98–127 / 96–125 | 5% | BOS: Devin Carter (out) (+1.0)<br>DET: Taurean Prince (day-to-day) (+0.2) | BOS -1.5 (1.2) |
+| 3:00 PM | BOS @ DET | BOS 112, DET 110 | BOS 55% | BOS -120 / DET +120 | BOS -1.7 / BOS -1.5 (fav covers 52%) | 221.7 / 221.5 (over 50%) | 97–126 / 96–124 | 5% | BOS: Devin Carter (out) (+1.0)<br>DET: Taurean Prince (day-to-day) (+0.2) | BOS -1.5 (1.2) |
 | 7:00 PM | PHI @ NYK | PHI 114, NYK 119 | NYK 64% | PHI +175 / NYK -175 | NYK -5 / NYK -4.5 (fav covers 53%) | 232.6 / 232.5 (over 50%) | 99–129 / 105–133 | 5% | PHI: Dean Wade (day-to-day); Anfernee Simons (day-to-day); Dominick Barlow (out) (-0.2) | NYK -4.5 (3.4) |
-| 9:30 PM | OKC @ SAS | OKC 115, SAS 117 | SAS 58% | OKC +135 / SAS -135 | SAS -2.6 / SAS -2.5 (fav covers 52%) | 231.8 / 231.5 (over 50%) | 100–129 / 103–132 | 6% | SAS: Tobias Harris (out) (+0.6) | no edge |
+| 9:30 PM | OKC @ SAS | OKC 115, SAS 117 | SAS 55% | OKC +120 / SAS -120 | SAS -1.7 / SAS -1.5 (fav covers 52%) | 232.7 / 232.5 (over 49%) | 101–130 / 103–132 | 5% | SAS: Tobias Harris (out) (+0.6) | SAS -1.5 (1.0) |
 
 ## Wednesday, October 21
 
@@ -28,7 +28,7 @@ The fair moneyline is the American odds that match the win chance exactly, with 
 | 8:00 PM | UTA @ MEM | UTA 121, MEM 122 | MEM 53% | UTA +115 / MEM -115 | MEM -1.1 / MEM -1.5 (fav covers 51%) | 242.8 / 242.5 (over 50%) | 106–136 / 107–137 | 6% | UTA: Kyle Filipowski (day-to-day); Blake Hinson (day-to-day); Trey Alexander (day-to-day); Jusuf Nurkic (out) (-0.1)<br>MEM: Jerami Grant (day-to-day); GG Jackson (day-to-day) (-0.2) | UTA +1.5 (1.6) |
 | 8:00 PM | IND @ NOP | IND 122, NOP 119 | IND 59% | IND -145 / NOP +145 | IND -3.4 / IND -3.5 (fav covers 51%) | 240.7 / 240.5 (over 50%) | 108–137 / 104–133 | 5% | IND: Aaron Nesmith (day-to-day); Jarace Walker (day-to-day); Johnny Furphy (out); T.J. McConnell (day-to-day) (+0.4) | no edge |
 | 8:30 PM | DAL @ HOU | DAL 110, HOU 119 | HOU 74% | DAL +280 / HOU -280 | HOU -8.5 / HOU -8.5 (fav covers 50%) | 229.2 / 229.5 (over 49%) | 96–125 / 105–133 | 4% | DAL: Santi Aldama (day-to-day); Dereck Lively II (day-to-day) (-0.1) | no edge |
-| 10:00 PM | GSW @ LAL | GSW 115, LAL 120 | LAL 66% | GSW +195 / LAL -195 | LAL -5.6 / LAL -6.5 (fav covers 47%) | 234.7 / 234.5 (over 50%) | 100–129 / 105–135 | 5% | GSW: Brandin Podziemski (day-to-day); Stephen Curry (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.5)<br>LAL: Collin Sexton (day-to-day) (+0.4) | GSW +6.5 (4.5) |
+| 10:00 PM | GSW @ LAL | GSW 115, LAL 120 | LAL 64% | GSW +175 / LAL -175 | LAL -4.8 / LAL -5.5 (fav covers 49%) | 234.5 / 234.5 (over 49%) | 100–130 / 105–134 | 4% | GSW: Brandin Podziemski (day-to-day); Stephen Curry (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.5)<br>LAL: Collin Sexton (day-to-day) (+0.4) | GSW +5.5 (3.5) |
 | 10:00 PM | PHX @ POR | PHX 115, POR 118 | POR 58% | PHX +140 / POR -140 | POR -3 / POR -3.5 (fav covers 50%) | 232.9 / 232.5 (over 50%) | 100–130 / 103–133 | 5% | PHX: Oso Ighodaro (day-to-day); Luke Kennard (day-to-day); Mark Williams (out) (+0.4)<br>POR: Jrue Holiday (day-to-day); Micah Potter (day-to-day) (+0.0) | PHX +3.5 (1.8) |
 | 10:30 PM | SAC @ LAC | SAC 112, LAC 117 | LAC 63% | SAC +170 / LAC -170 | LAC -4.5 / LAC -4.5 (fav covers 52%) | 228.6 / 228.5 (over 49%) | 97–127 / 102–131 | 5% | SAC: Maxime Raynaud (out); Dylan Cardwell (out); Malik Monk (day-to-day) (+1.0)<br>LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+0.7) | LAC -4.5 (1.0) |
 
