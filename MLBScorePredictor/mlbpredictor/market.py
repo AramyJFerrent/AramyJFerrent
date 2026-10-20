@@ -25,6 +25,7 @@ import pandas as pd
 from scipy.interpolate import RectBivariateSpline
 from scipy.stats import poisson
 
+from .edges import implied_prob
 from .simulate import TOTAL_LINES, SimParams, simulate
 
 GRID = np.round(np.arange(2.0, 8.01, 0.25), 2)
@@ -32,12 +33,6 @@ FINE = np.round(np.arange(2.0, 8.0001, 0.02), 3)
 # Weight on the model when no fitted value exists, worth this many games.
 PRIOR_WEIGHT = 0.3
 PRIOR_GAMES = 400.0
-
-
-def implied_prob(american) -> np.ndarray:
-    ml = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return np.where(ml < 0, -ml / (-ml + 100.0), 100.0 / (ml + 100.0))
 
 
 def devig(price_a, price_b) -> np.ndarray:

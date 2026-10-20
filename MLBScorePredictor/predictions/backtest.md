@@ -80,6 +80,17 @@ Each team's runs scored against its full simulated distribution (ranked probabil
 - 80% ranges contained the team's actual runs 85.7% of the time (runs are whole numbers, so a range covers a little more than 80%).
 - Headline score exactly right: 2.5% of games.
 
+## Betting edges against Pinnacle, 2016
+
+The same edges as the predictions page, walk-forward: the model's own chances before any blending (its win chance, and its simulation's chance of going over or under the total, with pushes on whole-number totals), against Pinnacle's posted prices; an edge needs EV of 3% or more per $1, and each game bets the market's best side for one unit. The ROI range is a 95% bootstrap interval over the bets.
+
+| Market | Edges | Record (W-L-P) | Units | ROI | 95% range on ROI |
+|---|---|---|---|---|---|
+| Moneyline, closing line | 1306 | 544-761-1 | -59.13 | -4.5% | -10.8% to +1.7% |
+| Moneyline, opening line | 1083 | 504-578-1 | +49.31 | +4.6% | -2.1% to +11.5% |
+| Total, closing line | 1628 | 785-769-74 | +2.29 | +0.1% | -4.6% to +5.0% |
+| Run line | no historical prices | | | | |
+
 ## Posted lineups against projected ones
 
 On 7420 games, log loss with the actual lineups is 0.6792; with each team's lineup projected from its last game against a starter of the same hand (what a morning run uses) it is 0.6791 (difference -0.0001, 95% interval -0.0006 to +0.0004).

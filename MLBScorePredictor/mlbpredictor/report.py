@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 
 from .config import DISPLAY_TZ
+from .edges import (DEFAULT_RUN_LINE, EDGE_MIN_EV, MARKET_NAMES, MARKETS, american, best_side, edge_record,
+                    fair_american)
 
-# Smallest gap between the model's win chance and the market's that counts as a pick.
-PICK_MIN_EDGE = 0.03
 SERIES = {"F": "Wild Card Series", "D": "Division Series", "L": "League Championship Series", "W": "World Series"}
 
 
@@ -29,39 +29,49 @@ def _num(x, fmt="{:.1f}") -> str:
     return "–" if x is None or pd.isna(x) else fmt.format(x)
 
 
-def american_odds(p: float) -> int:
-    """Fair (no-vig) American moneyline for win probability ``p``, rounded to 5."""
-    p = min(max(p, 0.01), 0.99)
-    raw = -100.0 * p / (1.0 - p) if p > 0.5 else 100.0 * (1.0 - p) / p
-    return int(5 * math.floor(raw / 5 + 0.5))
-
-
-def _moneyline(odds) -> str:
-    if odds is None or pd.isna(odds):
-        return "–"
-    odds = int(round(odds))
-    return f"+{odds}" if odds > 0 else str(odds)
-
-
 def fair_moneyline(home_win: float, home: str, away: str) -> str:
-    return f"{away} {_moneyline(american_odds(1 - home_win))} / {home} {_moneyline(american_odds(home_win))}"
+    return f"{away} {american(fair_american(1 - home_win))} / {home} {american(fair_american(home_win))}"
 
 
-def payout(price: float) -> float:
-    """Profit on a one-unit winning bet at American odds ``price``."""
-    return price / 100.0 if price > 0 else 100.0 / -price
+def _has(x) -> bool:
+    return x is not None and not pd.isna(x)
 
 
-def model_pick(model_prob: float, market_prob: float, home_ml: float, away_ml: float,
-               home: str, away: str) -> str:
-    """The side the model's own win chance favors against the de-vigged market, with the gap."""
-    if pd.isna(market_prob) or pd.isna(model_prob):
-        return "–"
-    edge = model_prob - market_prob
-    if abs(edge) < PICK_MIN_EDGE:
-        return "no edge"
-    team, price = (home, home_ml) if edge > 0 else (away, away_ml)
-    return f"{team} {_moneyline(price)} ({abs(edge):.0%})"
+def _assumed(r, market: str) -> bool:
+    """Whether the logged edge's price was assumed (-110 on a total with no posted price)."""
+    if market != "total":
+        return False
+    return not _has(getattr(r, "over_price" if r.total_edge_side == "over" else "under_price"))
+
+
+def _run_line_fair(r) -> str:
+    """The model's fair odds on both sides of the posted run line, or of its favorite's -1.5."""
+    hl = r.home_run_line if _has(r.home_run_line) else (
+        -DEFAULT_RUN_LINE if r.model_home_prob >= 0.5 else DEFAULT_RUN_LINE)
+    if not (_has(r.model_home_cover_prob) and _has(r.model_away_cover_prob)):
+        return ""
+    return (f"fair {r.home_team} {hl:+g} {american(fair_american(r.model_home_cover_prob))}, "
+            f"{r.away_team} {-hl:+g} {american(fair_american(r.model_away_cover_prob))}")
+
+
+def edge_cell(r, market: str) -> str:
+    """One market's edge for an upcoming game: the pick with its price, EV and the model's
+    chance; "no edge" when no priced side clears the bar; otherwise why there is none."""
+    pick = getattr(r, f"{market}_edge_pick")
+    if _has(pick) and str(pick):
+        price = american(getattr(r, f"{market}_edge_price")) + ("*" if _assumed(r, market) else "")
+        return (f"{pick} ({price}): EV {getattr(r, f'{market}_edge_ev'):+.1%}, "
+                f"model {getattr(r, f'{market}_edge_prob'):.0%}")
+    if market == "spread":
+        priced = _has(r.home_run_line) and (_has(r.home_run_line_price) or _has(r.away_run_line_price))
+        if priced:
+            return "no edge"
+        fair = _run_line_fair(r)
+        reason = "no price yet" if _has(r.home_run_line) else "no line yet"
+        return f"{reason}; {fair}" if fair else reason
+    if market == "moneyline":
+        return "no edge" if _has(r.home_moneyline) or _has(r.away_moneyline) else "no line yet"
+    return "no edge" if _has(r.total_line) else "no line yet"
 
 
 def _lineups(away: str, home: str) -> str:
@@ -72,9 +82,10 @@ def _lineups(away: str, home: str) -> str:
 
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
-        "| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Expected runs "
-        "| 80% range | Run line | Total: model / line | Extra innings | Lineups | Moneyline / model pick (edge) |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline "
+        "| Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups "
+        "| Run line edge | Moneyline edge | Total edge |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
         fav, p = (r.home_team, r.home_win_prob) if r.home_win_prob >= 0.5 else (r.away_team, r.away_win_prob)
@@ -83,16 +94,16 @@ def upcoming_table(rows: pd.DataFrame) -> str:
         total = f"{r.pred_total:.1f}"
         if not pd.isna(r.total_line):
             total += f" / {r.total_line:g}" + (f" (over {r.over_prob:.0%})" if not pd.isna(r.over_prob) else "")
-        market = (f"{r.away_team} {_moneyline(r.away_moneyline)} / {r.home_team} {_moneyline(r.home_moneyline)}; "
-                  + model_pick(r.model_home_prob, r.market_home_prob, r.home_moneyline, r.away_moneyline,
-                               r.home_team, r.away_team)) if not pd.isna(r.home_moneyline) else "no line yet"
+        posted = (f"{r.away_team} {american(r.away_moneyline)} / {r.home_team} {american(r.home_moneyline)}"
+                  if _has(r.home_moneyline) or _has(r.away_moneyline) else "–")
+        edges = " | ".join(edge_cell(r, m) for m in MARKETS)
         lines.append(
             f"| {_time(r.start)} | {r.away_team} @ {r.home_team} | {r.away_starter} / {r.home_starter} "
             f"| {r.away_team} {int(r.headline_away)}, {r.home_team} {int(r.headline_home)} "
-            f"| {fav} {p:.0%} | {fair_moneyline(r.home_win_prob, r.home_team, r.away_team)} "
+            f"| {fav} {p:.0%} | {fair_moneyline(r.home_win_prob, r.home_team, r.away_team)} | {posted} "
             f"| {r.pred_away:.1f} – {r.pred_home:.1f} "
             f"| {int(r.away_low)}–{int(r.away_high)} / {int(r.home_low)}–{int(r.home_high)} "
-            f"| {cover} | {total} | {r.extra_prob:.0%} | {_lineups(r.away_lineup, r.home_lineup)} | {market} |"
+            f"| {cover} | {total} | {r.extra_prob:.0%} | {_lineups(r.away_lineup, r.home_lineup)} | {edges} |"
         )
     return "\n".join(lines)
 
@@ -139,36 +150,36 @@ def grade(entries: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def pick_record(d: pd.DataFrame, model_col: str, market_col: str, home_ml: str, away_ml: str) -> dict:
-    """Moneyline record and units won betting one unit on each model pick."""
-    d = d.dropna(subset=[model_col, market_col, home_ml, away_ml])
-    edge = d[model_col] - d[market_col]
-    picked = d[edge.abs() >= PICK_MIN_EDGE]
-    edge = edge[picked.index]
-    home_won = picked["home_score"] > picked["away_score"]
-    won = np.where(edge > 0, home_won, ~home_won)
-    price = np.where(edge > 0, picked[home_ml], picked[away_ml])
-    units = float(np.sum(np.where(won, [payout(p) for p in price], -1.0))) if len(picked) else 0.0
-    return {"bets": len(picked), "wins": int(np.sum(won)), "losses": int(len(picked) - np.sum(won)),
-            "units": units, "roi": units / len(picked) if len(picked) else float("nan")}
+def record_row(label: str, r: dict) -> str:
+    roi = f"{r['roi']:+.1%}" if r["bets"] else "–"
+    return f"| {label} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} | {r['units']:+.2f} | {roi} |"
 
 
-def pick_table(entries: pd.DataFrame) -> str:
-    g = entries.dropna(subset=["home_score", "away_score"])
-    first = pick_record(g, "first_model_home_prob", "first_market_home_prob", "first_home_moneyline",
-                        "first_away_moneyline")
-    last = pick_record(g, "model_home_prob", "market_home_prob", "home_moneyline", "away_moneyline")
-    lines = ["| Picks against | Bets | Record (W-L) | Units won | Return per bet |", "|---|---|---|---|---|"]
-    for label, r in (("First line seen", first), ("Last line before first pitch", last)):
-        roi = f"{r['roi']:+.1%}" if r["bets"] else "–"
-        lines.append(f"| {label} | {r['bets']} | {r['wins']}-{r['losses']} | {r['units']:+.2f} | {roi} |")
+def first_moneyline_moves(entries: pd.DataFrame) -> tuple[int, int]:
+    """Of the games with a moneyline edge at the first line seen whose market then moved, how many
+    moved toward that edge's side before first pitch (closing line value)."""
     e = entries.dropna(subset=["first_market_home_prob", "market_home_prob", "first_model_home_prob"])
-    edge = e["first_model_home_prob"] - e["first_market_home_prob"]
-    move = e["market_home_prob"] - e["first_market_home_prob"]
-    moved = (edge.abs() >= PICK_MIN_EDGE) & (move.abs() >= 0.005)
-    toward = int((np.sign(move[moved]) == np.sign(edge[moved])).sum())
-    lines += ["", f"Market moved toward the model's first pick before first pitch: {toward} of {int(moved.sum())} games"
-              + (f" ({toward / moved.sum():.0%})." if moved.sum() else ".")]
+    toward = moved = 0
+    for r in e.itertuples(index=False):
+        p = r.first_model_home_prob
+        pick = best_side([{"side": "home", "price": r.first_home_moneyline, "p_win": p, "p_push": 0.0},
+                          {"side": "away", "price": r.first_away_moneyline, "p_win": 1 - p, "p_push": 0.0}])
+        move = r.market_home_prob - r.first_market_home_prob
+        if pick is None or abs(move) < 0.005:
+            continue
+        moved += 1
+        toward += int((move > 0) == (pick["side"] == "home"))
+    return toward, moved
+
+
+def edge_table(entries: pd.DataFrame) -> str:
+    """Record of each market's edges on live predictions, at the price logged before first pitch."""
+    live = entries[entries["source"] == "live"]
+    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    lines += [record_row(MARKET_NAMES[m], edge_record(live, m)) for m in MARKETS]
+    toward, moved = first_moneyline_moves(live)
+    lines += ["", f"Moneyline moved toward the model's edge at the first line seen, before first pitch: {toward} of "
+              f"{moved} games" + (f" ({toward / moved:.0%})." if moved else ".")]
     return "\n".join(lines)
 
 
@@ -241,9 +252,18 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "is a little worse on both sides because of its cut, so a book only offers value on a team when its "
         "price beats the fair line. The run line is the favorite's chance to win by two or more.",
         "",
-        "The model pick is the side where the model's own win chance (before blending with the market) beats "
-        f"the de-vigged moneyline by {PICK_MIN_EDGE:.0%} or more. Treat it as an experiment: its record is "
-        "tracked live below.",
+        "The edge columns give the expected value of a bet per $1 staked at the posted price, from the "
+        "model's own numbers before they are blended with the betting line: its win chance for the "
+        "moneyline, and its own simulation's chance of covering the posted run line and of going over or "
+        "under the total (a push on a whole-number total returns the stake). A side counts as an edge when "
+        f"its EV is {EDGE_MIN_EV:.0%} or more; each market shows its best side, as \"pick (price): EV, the "
+        "model's chance\". A total with no posted price is assumed to be -110 on both sides and marked "
+        "-110*; run-line and moneyline prices are never assumed, so without one the run line shows the "
+        "model's fair odds instead. Treat the edges as an experiment: the model alone was 0.003 log loss "
+        "behind Pinnacle's 2016 closing moneyline, and in the backtest its moneyline edges against those "
+        "closing prices lost 4.5% per bet (95% range -10.8% to +1.7%) while its total edges broke even, so an "
+        "apparent edge against a sharp line is more often the model's error than the market's. Their record "
+        "is tracked live below.",
         "",
     ]
     if len(upcoming):
@@ -251,6 +271,9 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
             kinds = sorted(set(rows["game_type"]) - {"R"})
             title = _day(date) + (f" — {', '.join(SERIES[k] for k in kinds if k in SERIES)}" if kinds else "")
             parts += [f"## {title}", "", upcoming_table(rows), ""]
+            if any(_assumed(r, "total") for r in rows.itertuples(index=False) if _has(r.total_edge_pick)
+                   and str(r.total_edge_pick)):
+                parts += ["\\* price not posted; assumed -110.", ""]
     elif next_game is not None and not pd.isna(next_game):
         parts += [f"No games in the next few days. The next scheduled game is on {_day(next_game)}; predictions "
                   "resume a couple of days before it.", ""]
@@ -279,9 +302,11 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
                       "pitchers and no betting line. Every other game is graded on the prediction logged before "
                       "first pitch.", ""]
         if graded["market_home_prob"].notna().any():
-            parts += ["### Model picks against the moneyline", "", pick_table(season_log), "",
-                      "One unit on each pick at the logged price. The market moving toward the model's pick "
-                      "(closing line value) is the quickest sign that it knows something the market doesn't yet.", ""]
+            parts += ["### Betting edges", "", edge_table(season_log), "",
+                      "One unit on each edge at the price logged with the last prediction before first pitch "
+                      "(live predictions only; ROI is units per bet). The market moving toward the model's side "
+                      "(closing line value) is the quickest sign that it knows something the market doesn't yet.",
+                      ""]
         last_day = graded["date"].max()
         parts += [f"### Results, {_day(last_day)}", "", results_table(graded[graded["date"] == last_day]), ""]
     else:
@@ -317,6 +342,18 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "",
     ]
     return "\n".join(p for p in parts if p is not None)
+
+
+def backtest_edge_table(edges: dict) -> str:
+    """Edge records by market with a range on ROI; a market without prices says so."""
+    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI | 95% range on ROI |", "|---|---|---|---|---|---|"]
+    for label, r in edges.items():
+        if r is None:
+            lines.append(f"| {label} | no historical prices | | | | |")
+            continue
+        span = f"{r['roi_low']:+.1%} to {r['roi_high']:+.1%}" if r["bets"] else "–"
+        lines.append(record_row(label, r) + f" {span} |")
+    return "\n".join(lines)
 
 
 def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple, market: dict | None,
@@ -385,6 +422,14 @@ def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple,
               f"- 80% ranges contained the team's actual runs {c['range_coverage']:.1%} of the time "
               "(runs are whole numbers, so a range covers a little more than 80%).",
               f"- Headline score exactly right: {c['headline_exact']:.1%} of games.", ""]
+    if market and market.get("edges"):
+        parts += ["## Betting edges against Pinnacle, 2016", "",
+                  "The same edges as the predictions page, walk-forward: the model's own chances before any "
+                  "blending (its win chance, and its simulation's chance of going over or under the total, with "
+                  f"pushes on whole-number totals), against Pinnacle's posted prices; an edge needs EV of "
+                  f"{EDGE_MIN_EV:.0%} or more per $1, and each game bets the market's best side for one unit. "
+                  "The ROI range is a 95% bootstrap interval over the bets.", "",
+                  backtest_edge_table(market["edges"]), ""]
     if lineups:
         mean, lo, hi = lineups["bootstrap"]
         parts += ["## Posted lineups against projected ones", "",

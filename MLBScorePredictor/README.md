@@ -1,8 +1,9 @@
 # MLB Score Predictor
 
 Predicts the final score of every MLB game, postseason included, with win
-probabilities, the run line, the chance of extra innings and a realistic
-range for each team, and keeps itself current through the season. A
+probabilities, the run line, the chance of extra innings, a realistic range
+for each team and any betting edge on the run line, moneyline and total,
+and keeps itself current through the season. A
 scheduled GitHub Action pulls the newest box scores, probable pitchers,
 posted lineups, weather and lines several times a day, refits the model,
 re-predicts the next two days of games, and grades each prediction once the
@@ -41,15 +42,16 @@ Each run:
    every game played so far this season.
 3. Reads the next two game days: probable pitchers, posted lineups and
    game-time weather from the MLB Stats API, first-pitch temperature
-   forecasts from Open-Meteo for the rest, and moneylines and totals from
-   ESPN.
-4. Predicts every game in that window that has not started and writes the
-   predictions to `predictions/log.csv`, replacing earlier ones for the same
-   game. A game's prediction stops changing at first pitch, so the logged one
-   is always the last made before the game, with the lineups and line it was
-   made against.
+   forecasts from Open-Meteo for the rest, and moneylines, run lines and
+   totals, with their prices, from ESPN.
+4. Predicts every game in that window that has not started, works out the
+   betting edge (if any) on each market, and writes the predictions to
+   `predictions/log.csv`, replacing earlier ones for the same game. A game's
+   prediction stops changing at first pitch, so the logged one is always the
+   last made before the game, with the lineups, lines, prices and edges it
+   was made against.
 5. Fills in final scores and grades the season so far, against Elo and, once
-   lines are logged, the betting market.
+   lines are logged, the betting market, and grades each logged edge.
 6. Commits the results back to the repo (only when something besides a
    timestamp changed).
 
@@ -80,7 +82,8 @@ scores, which takes a few minutes; later runs read only new games.
 | Run model | Each team's expected runs in each inning: the league's current scoring level times the inning's own level, times the starter's and the bullpen's matchups mixed by the starter's expected share of that inning, times park, home field, temperature, wind, team ratings and Elo. Fitted by Poisson likelihood on the runs of every inning 1-8 in the last three seasons. | `model.py` |
 | Market | De-vigs ESPN's moneyline and total, backs each team's expected runs out of them through the same simulator, and blends `log runs = w × model + (1 − w) × market`. `w` starts from the value fitted on Pinnacle's 2016 closing lines and is refitted on logged games as they accumulate. | `market.py` |
 | Simulator | 10,000 games per matchup, inning by inning. Innings come from a base-out Markov chain built from Retrosheet's transitions (runner advances, double plays, steals and pickoffs included), scaled to each inning's expected runs, so an inning's run distribution is exact rather than assumed; extra innings start from a runner on second in the regular season. A shared game factor lets whole games run hot or cold, a team trailing by one to three from the ninth on faces the other side's closer, the home team skips the bottom of the ninth when ahead and walk-offs stop at the winning run unless they are home runs. Each setting is tuned so simulated scores match history. | `simulate.py` |
-| Backtest | Walk-forward by day over 2016-2025, scored against Elo, team ratings alone and Pinnacle's 2016 lines | `backtest.py` |
+| Edges | Expected value per $1 of each side of the run line, moneyline and total at the posted price, `EV = p × (decimal price − 1) − (1 − p − push)`, from the model's own numbers before blending: its win chance, and a simulation of its own expected runs for the chance of covering the posted run line (whichever side gives the 1.5 runs) and of going over or under the total, pushes on whole-number totals included. A side is an edge at EV ≥ 3%; each market shows its best side. Totals without a posted price are assumed -110 (marked `-110*`); run-line and moneyline prices are never assumed, so without one there is no edge and the run line shows the model's fair odds. | `edges.py` |
+| Backtest | Walk-forward by day over 2016-2025, scored against Elo, team ratings alone and Pinnacle's 2016 lines, with the edges graded on Pinnacle's moneylines and totals | `backtest.py` |
 
 ## Backtest, 2016 to 2025
 
@@ -170,13 +173,29 @@ On Pinnacle's complete 2016 line history (2,461 games, de-vigged):
   what the model knows. The best weight on the model was 19%, which is
   where the live blend starts; the opening lines and softer books it will
   mostly see live are where a model has more room to help.
+- Betting edges on the same games, walk-forward, from the model alone
+  (before blending) against Pinnacle's prices: one unit on each market's
+  best side whenever its expected value is 3% or more.
+
+  | Market | Edges | Record (W-L-P) | Units | ROI | 95% range on ROI |
+  |---|---|---|---|---|---|
+  | Moneyline, closing line | 1306 | 544-761-1 | -59.13 | -4.5% | -10.8% to +1.7% |
+  | Moneyline, opening line | 1083 | 504-578-1 | +49.31 | +4.6% | -2.1% to +11.5% |
+  | Total, closing line | 1628 | 785-769-74 | +2.29 | +0.1% | -4.6% to +5.0% |
+  | Run line | no historical prices | | | | |
+
+  Against the close the moneyline edges lose about the margin, and against
+  the opening line they win; neither is clear of noise in one season. The
+  live log grades the same edges against ESPN's lines.
 - No free source has betting lines for the other seasons, so the live log
   keeps testing it: every prediction records the line it was made against,
   and the predictions page grades the model, the market and the blend on the
-  same games, and tracks the model's picks (the side where its own win
-  chance beats the de-vigged moneyline by 3 points or more) with units won
-  at the logged price and how often the line then moves toward the pick. The
-  blend weight is refitted from those games as they accumulate. Live lines
+  same games, and tracks the model's betting edges on the run line,
+  moneyline and total (sides whose expected value at the posted price is 3%
+  or more, from the model alone) with their record and units won at the
+  price logged before first pitch, and how often the moneyline then moves
+  toward the model's side. The blend weight is refitted from those games as
+  they accumulate. Live lines
   come from ESPN's provider rather than Pinnacle, so the weight may settle
   somewhere else.
 
@@ -191,7 +210,7 @@ pip install -r requirements.txt
 python -m mlbpredictor update              # refresh and predict the next two game days
 python -m mlbpredictor update --days 1 --offline
 python -m mlbpredictor ratings             # power ratings by lineup, rotation, bullpen and the rest
-python -m mlbpredictor check               # read the live sources once and print what was parsed
+python -m mlbpredictor check --raw         # read the live sources once and print what was parsed (and ESPN's raw odds)
 python -m mlbpredictor audit               # consistency checks on this season's data, next to last season's
 python -m mlbpredictor backtest            # walk-forward 2016-2025, writes predictions/backtest.md
 python -m mlbpredictor summarize           # rebuild the Retrosheet seasons from play-by-play
@@ -204,9 +223,9 @@ Downloads are cached in `.cache/` (ignored by git).
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games, season grading, model picks, latest results, power ratings |
+| `predictions/README.md` | Upcoming games with run-line, moneyline and total edges, season grading, edge record, latest results, power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before first pitch), with the lineups and line it was made against and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before first pitch), with the lineups, lines and prices it was made against, the model's own cover and over chances, each market's edge (`spread_edge_*` for the run line, `moneyline_edge_*`, `total_edge_*`) and the final score once known |
 | `predictions/ratings.csv` | Power ratings in runs per game, by unit |
 | `predictions/model.json` | The fitted coefficients, blend weight and simulator settings |
 | `data/games/` | Per-season games, batting, pitching, transition and platoon summaries (finished seasons gzipped) |

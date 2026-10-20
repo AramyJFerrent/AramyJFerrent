@@ -3,7 +3,8 @@ import pandas as pd
 import pytest
 
 from mlbpredictor.data import read_summary, GAMES_DIR, TRANSITION_COLUMNS
-from mlbpredictor.simulate import THETAS, MarkovChain, SimParams, headline_score, over_prob, simulate, summarize
+from mlbpredictor.simulate import (THETAS, MarkovChain, SimParams, headline_score, line_probs, over_prob, simulate,
+                                   summarize)
 
 
 @pytest.fixture(scope="module")
@@ -74,3 +75,26 @@ def test_summary_headline_and_totals(params):
     assert a > h
     p = over_prob(sim, np.array([8.5]))[0]
     assert 0.35 < p < 0.65
+
+
+def test_line_probs_handle_either_favorite_and_pushes():
+    sim = {"home": np.array([[5, 3, 4, 2], [1, 1, 1, 1]]), "away": np.array([[2, 3, 3, 4], [0, 0, 0, 0]])}
+    p = line_probs(sim, np.array([-1.5, 1.5]), np.array([7.0, np.nan]))
+    # Home -1.5 covers only the 5-2 game; home +1.5 covers every 1-0 game.
+    assert p.loc[0, "model_home_cover_prob"] == 0.25 and p.loc[0, "model_away_cover_prob"] == 0.75
+    assert p.loc[1, "model_home_cover_prob"] == 1.0 and p.loc[1, "model_away_cover_prob"] == 0.0
+    # Totals 7, 6, 7, 6 against 7: half push, half under.
+    assert tuple(p.loc[0, ["model_over_prob", "model_under_prob", "model_total_push_prob"]]) == (0.0, 0.5, 0.5)
+    assert p.loc[[1], ["model_over_prob", "model_under_prob", "model_total_push_prob"]].isna().all(axis=None)
+    assert np.isnan(line_probs(sim, np.array([np.nan, 1.5]), np.array([7.0, 7.0])).loc[0, "model_home_cover_prob"])
+
+
+def test_model_only_cover_and_over_follow_the_models_runs(params):
+    # The live pipeline simulates the model's own runs (no market scaling) for the edges: more home
+    # runs mean a better home cover chance at -1.5 and a higher over chance, from the same simulator.
+    lo = simulate(profile(4.5), profile(4.5), np.array([0.5]), np.array([0.5]), params, n_sims=20000, seed=6)
+    hi = simulate(profile(5.5), profile(4.5), np.array([0.6]), np.array([0.5]), params, n_sims=20000, seed=6)
+    a, b = (line_probs(s, np.array([-1.5]), np.array([9.0])).iloc[0] for s in (lo, hi))
+    assert b.model_home_cover_prob > a.model_home_cover_prob + 0.05 and b.model_over_prob > a.model_over_prob
+    assert 0.03 < a.model_total_push_prob < 0.15
+    assert np.isclose(a.model_home_cover_prob, summarize(lo).loc[0, "home_cover_prob"])
