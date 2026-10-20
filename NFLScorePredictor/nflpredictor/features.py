@@ -25,6 +25,7 @@ GAME_COLUMNS = [
     "game_id", "season", "week", "game_type", "playoff", "neutral", "div_game", "kickoff",
     "home_team", "away_team", "roof", "wind", "temp", "stadium_id", "home_rest", "away_rest",
     "spread_line", "total_line", "home_moneyline", "away_moneyline",
+    "home_spread_odds", "away_spread_odds", "over_odds", "under_odds",
     "completed", "home_score", "away_score",
 ]
 

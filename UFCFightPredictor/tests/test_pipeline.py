@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
 
+from ufcpredictor.edges import fair_american
 from ufcpredictor.pipeline import LOG_COLUMNS, grade, update_log
-from ufcpredictor.report import american_odds, grade as grade_table, value_side
+from ufcpredictor.report import grade as grade_table
 
 NOW = pd.Timestamp("2026-10-22 12:00", tz="UTC")
 FIGHT_NIGHT = pd.Timestamp("2026-10-24")
@@ -107,16 +108,4 @@ def test_grade_table_and_fair_odds():
     expected = -(np.log(0.7) + np.log(0.4)) / 2
     assert abs(table.loc["Final prediction", "Log loss"] - expected) < 1e-9
     assert table.loc["Market price when predicted", "Fights"] == 1
-    assert american_odds(0.75) == -300 and american_odds(0.25) == 300 and american_odds(0.5) == 100
-
-
-def test_value_side_needs_the_edge_after_the_margin():
-    row = pd.Series({"odds_a": 150.0, "odds_b": -180.0, "p_a": 0.43, "fighter_a": "Ann Lee",
-                     "fighter_b": "Bea Cruz"})
-    assert value_side(row) == "Lee +150 (3 pts)"            # 43% vs 40% implied
-    row["p_a"] = 0.41
-    assert value_side(row) == "none"
-    row["p_a"] = 0.30
-    assert value_side(row) == "Cruz -180 (6 pts)"           # 70% vs 64% implied
-    row["odds_a"] = np.nan
-    assert value_side(row) == "–"
+    assert fair_american(0.75) == -300 and fair_american(0.25) == 300 and fair_american(0.5) == 100

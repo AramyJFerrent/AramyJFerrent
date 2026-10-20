@@ -9,10 +9,13 @@ around the injury report's deadlines). Each run:
    every game played so far this season.
 3. Reads lines, the injury report and current rosters from ESPN for the next
    few days of games, and projects each team's lineup and minutes.
-4. Predicts every game in that window that has not started and writes the
-   predictions to the log, overwriting earlier ones for the same game, so the
-   logged prediction is always the last one made before tip-off.
-5. Fills in final scores for finished games and grades the season so far.
+4. Predicts every game in that window that has not started, finds any
+   betting edge on the spread, moneyline and total from the model's own
+   numbers, and writes the predictions to the log, overwriting earlier ones
+   for the same game, so the logged prediction (and edge) is always the last
+   one made before tip-off.
+5. Fills in final scores for finished games and grades the season so far,
+   edges included.
 """
 
 from __future__ import annotations
@@ -25,14 +28,14 @@ import numpy as np
 import pandas as pd
 
 from . import availability as avail
-from . import espn, report
+from . import edges, espn, report
 from .backtest import devig
 from .config import DISPLAY_TZ, ESPN_TEAM_IDS, FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_raw, load_summaries, team_code, update_summaries
 from .features import FeatureBuilder
 from .lines import load_lines
 from .model import ScoreModel
-from .simulate import cover_prob, over_prob
+from .simulate import cover_prob, line_probs, over_prob
 
 log = logging.getLogger(__name__)
 
@@ -53,10 +56,18 @@ LOG_COLUMNS = [
     "elo_spread", "elo_home_prob", "predicted_at", "source",
     "first_predicted_at", "first_spread", "first_total", "first_model_margin", "first_model_total",
     "away_score", "home_score", "periods",
+    # Prices of each side, and the model's own chances against the line (before blending).
+    "home_spread_price", "away_spread_price", "over_price", "under_price",
+    "model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob",
+    *edges.EDGE_COLUMNS, "first_spread_edge_side",
 ]
-# The first prediction made once a line exists, kept so picks can be graded
-# against the opening line and line movement measured up to tip-off.
-FIRST_COLUMNS = ["first_predicted_at", "first_spread", "first_total", "first_model_margin", "first_model_total"]
+# The first prediction made once a line exists, kept so line movement can be
+# measured up to tip-off against it.
+FIRST_COLUMNS = ["first_predicted_at", "first_spread", "first_total", "first_model_margin", "first_model_total",
+                 "first_spread_edge_side"]
+PRICE_COLUMNS = ["home_spread_price", "away_spread_price", "over_price", "under_price"]
+MODEL_LINE_COLUMNS = ["model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob"]
+TEXT_COLUMNS = ["first_spread_edge_side"] + [f"{m}_edge_{f}" for m in edges.MARKETS for f in ("pick", "side")]
 TIME_COLUMNS = ["start", "predicted_at", "first_predicted_at"]
 # A player is listed as missing when he would usually play this much.
 MISSING_MINUTES = 12.0
@@ -107,8 +118,9 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, own: pd.DataFrame,
         rows[col] = preds[col].to_numpy()
     for col in ("spread", "total", "home_moneyline", "away_moneyline", "line_source", "market_home_prob",
                 "home_cover_prob", "over_prob", "away_missing", "home_missing", "away_injury_cost",
-                "home_injury_cost"):
+                "home_injury_cost", *PRICE_COLUMNS, *MODEL_LINE_COLUMNS):
         rows[col] = feats[col].to_numpy() if col in feats else np.nan
+    rows = pd.concat([rows, edges.edge_columns(rows)], axis=1)
     rows["predicted_at"] = pd.to_datetime(rows["predicted_at"], utc=True)
     has_line = rows["spread"].notna()
     rows["first_predicted_at"] = rows["predicted_at"].where(has_line)
@@ -116,6 +128,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, own: pd.DataFrame,
     rows["first_total"] = rows["total"]
     rows["first_model_margin"] = rows["model_margin"].where(has_line)
     rows["first_model_total"] = rows["model_total"].where(has_line)
+    rows["first_spread_edge_side"] = rows["spread_edge_side"].where(has_line).astype(object)
     rows["away_score"] = np.nan
     rows["home_score"] = np.nan
     rows["periods"] = np.nan
@@ -131,6 +144,8 @@ def load_log() -> pd.DataFrame:
             entries[col] = "live" if col == "source" else np.nan
     for col in TIME_COLUMNS:
         entries[col] = pd.to_datetime(entries[col], utc=True, format="ISO8601")
+    for col in TEXT_COLUMNS:
+        entries[col] = entries[col].astype(object)
     return entries[LOG_COLUMNS]
 
 
@@ -150,10 +165,12 @@ def backfill(entries: pd.DataFrame, history: pd.DataFrame, season: int, n_sims: 
         return pd.DataFrame(columns=LOG_COLUMNS)
     model = ScoreModel.fit(past)
     preds, _ = model.predict(done, n_sims=n_sims, seed=season)
-    own, _ = model.predict(done, n_sims=n_sims, seed=season, market=False)
+    own, own_sim = model.predict(done, n_sims=n_sims, seed=season, market=False)
     done = done.copy()
     done["market_home_prob"] = devig(done["home_moneyline"], done["away_moneyline"]) if "home_moneyline" in done \
         else np.nan
+    for col, v in line_probs(own_sim, done["spread"], done["total"]).items():
+        done[col] = v
     rows = prediction_rows(done, preds, own, pd.NaT)
     rows["source"] = "backfill"
     rows[FIRST_COLUMNS] = np.nan
@@ -303,11 +320,15 @@ def run_update(now: dt.datetime | None = None, days: int = 2, n_sims: int = 1000
             feats[f"{side}_injury_cost"] = cost
             feats[f"{side}_missing"] = [missing.get((g, t)) for g, t in zip(feats["game_id"], feats[f"{side}_team"])]
         preds, sim = model.predict(feats, n_sims=n_sims)
-        own, _ = model.predict(feats, n_sims=n_sims, market=False)
+        # The model's own simulation, before blending with the line: its win
+        # chance and its chances against the line are what the edges use.
+        own, own_sim = model.predict(feats, n_sims=n_sims, market=False)
         spread = feats["spread"].to_numpy(float)
         total = feats["total"].to_numpy(float)
         feats["home_cover_prob"] = np.where(np.isnan(spread), np.nan, cover_prob(sim, np.nan_to_num(spread)))
         feats["over_prob"] = np.where(np.isnan(total), np.nan, over_prob(sim, np.nan_to_num(total)))
+        for col, v in line_probs(own_sim, spread, total).items():
+            feats[col] = v
         new = prediction_rows(feats, preds, own, now)
     else:
         new = pd.DataFrame(columns=LOG_COLUMNS)

@@ -61,3 +61,39 @@ def test_attach_adds_lines_and_starters_to_matching_games():
     assert out.loc[10, "home_goalie_id"] == 1 and out.loc[10, "home_goalie_source"] == "ESPN confirmed"
     assert out.loc[10, "away_goalie_id"] == 2              # matched across the league
     assert out.loc[11, "home_moneyline"] == -175 and np.isnan(out.loc[11, "home_goalie_id"])
+
+
+def odds_board(*odds_list):
+    return {"events": [{"id": str(i), "date": "2026-10-19T23:00Z", "competitions": [{
+        "competitors": [competitor("home", "BOS"), competitor("away", f"T{i}")], "odds": [odds]}]}
+        for i, odds in enumerate(odds_list)]}
+
+
+def test_parses_the_puck_line_in_new_and_old_formats():
+    new = {"pointSpread": {
+        "home": {"open": {"line": "-1.5", "odds": "+160"}, "close": {"line": "-1.5", "odds": "+145"}},
+        "away": {"open": {"line": "+1.5", "odds": "-190"}, "close": {"line": "+1.5", "odds": "-175"}}}}
+    away_fav = {"pointSpread": {"away": {"current": {"line": "-1.5", "odds": "+210"}},
+                                "home": {"current": {"odds": "-260"}}}}
+    old = {"spread": 1.5, "homeTeamOdds": {"moneyLine": 150, "spreadOdds": -200.0},
+           "awayTeamOdds": {"moneyLine": -170, "spreadOdds": 165.0}}
+    opening = {"pointSpread": {"home": {"open": {"line": "+1.5", "odds": "EVEN"}},
+                               "away": {"open": {"line": "-1.5", "odds": "-120"}}}}
+    board = parse_scoreboard(odds_board(new, away_fav, old, opening, {})).set_index("away_team")
+    assert tuple(board.loc["T0", ["home_spread_line", "home_spread_price", "away_spread_price"]]) == (-1.5, 145, -175)
+    assert tuple(board.loc["T1", ["home_spread_line", "home_spread_price", "away_spread_price"]]) == (1.5, -260, 210)
+    assert tuple(board.loc["T2", ["home_spread_line", "home_spread_price", "away_spread_price"]]) == (1.5, -200, 165)
+    assert board.loc["T2", "home_moneyline"] == 150
+    assert tuple(board.loc["T3", ["home_spread_line", "home_spread_price", "away_spread_price"]]) == (1.5, 100, -120)
+    assert board.loc["T4", ["home_spread_line", "home_spread_price", "away_spread_price"]].isna().all()
+
+
+def test_total_prices_fall_back_from_close_to_current_and_old_fields():
+    current = {"total": {"over": {"current": {"line": "o6.5", "odds": "+100"}},
+                         "under": {"current": {"line": "u6.5", "odds": "-120"}}}}
+    old = {"overUnder": 5.5, "overOdds": -105.0, "underOdds": -115.0}
+    no_prices = {"overUnder": 6.0}
+    board = parse_scoreboard(odds_board(current, old, no_prices)).set_index("away_team")
+    assert tuple(board.loc["T0", ["total_line", "over_price", "under_price"]]) == (6.5, 100, -120)
+    assert tuple(board.loc["T1", ["total_line", "over_price", "under_price"]]) == (5.5, -105, -115)
+    assert board.loc["T2", "total_line"] == 6.0 and board.loc["T2", ["over_price", "under_price"]].isna().all()

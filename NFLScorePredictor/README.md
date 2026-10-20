@@ -35,7 +35,8 @@ Each run:
 4. Writes the predictions to `predictions/log.csv`, replacing earlier ones for
    the same game. A game's prediction stops changing at kickoff, so the logged
    one is always the last made before the game.
-5. Fills in final scores and grades the season so far against the betting line.
+5. Fills in final scores and grades the season so far against the betting line,
+   including every betting edge logged before kickoff.
 6. Commits the results back to the repo (only when something besides a
    timestamp changed).
 
@@ -63,6 +64,7 @@ Actions tab with **Run workflow**.
 | Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons | `model.py` |
 | Weather | Kickoff wind forecast (Open-Meteo) for open-air games lowers the total by the amount the market has historically missed | `weather.py`, `model.py` |
 | Score simulator | 10,000 simulated games per matchup. Each team's scoring chances end in a touchdown (then a kick or two-point try), a field goal or nothing, with overtime and ties. Dispersion is calibrated to real prediction errors and key margins (3, 7, 10, 14) to real frequencies. | `simulate.py` |
+| Betting edges | Expected value of each side of the spread, moneyline and total at the posted price, from a second simulation of the model's own expected points (before the market blend). An edge needs EV of at least +3%. | `edges.py`, `model.py` |
 | Backtest | Walk-forward by week, scored next to the closing line | `backtest.py` |
 
 Ratings knobs were tuned on 2013–2018 (`python -m nflpredictor tune`).
@@ -90,38 +92,56 @@ prior, with the points map, blend and simulator fitted on earlier seasons only.
 
 ## Can it beat the betting line?
 
-Picking a side whenever the model's own spread and the line differ by half a
-point or more. Starting QBs here are each team's previous starter, so nothing
-is used that a Wednesday line could not know. Break-even at standard −110 odds
-is 52.4%.
+The predictions page shows a betting edge for the spread, moneyline and total
+of every game. Each side is priced with the model alone, before it is blended
+with the line: the model's own expected points are run through the same score
+simulator, giving its chance to win, cover, go over and push. The expected
+value of a side is `p × (decimal odds − 1) − (1 − p − push)` per unit staked
+at the posted price, and a side is an edge when that is at least +3%. Prices
+are the ones in the nflverse schedule (`home_spread_odds`, `away_spread_odds`,
+`over_odds`, `under_odds`, `home_moneyline`, `away_moneyline`); when a spread or
+total has no price it is assumed to be −110 (shown as `-110*`), and a missing
+moneyline means no edge. Ties refund moneyline bets and whole-number lines can
+push. Each game's edges are logged with its prediction, frozen at kickoff and
+graded once it is final.
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range |
-|---|---|---|---|
-| Wednesday line, 2015–2020 (Westgate SuperContest lines) | 687-593-39 | 53.7% | 50.9%–56.4% |
-| Closing line, same 2015–2020 games | 683-608-34 | 52.9% | 50.2%–55.6% |
-| Closing line, 2015–2025 | 1308-1224-65 | 51.7% | 49.7%–53.6% |
+Walk-forward backtest, betting one unit on every edge. Starting QBs here are
+each team's previous starter, so nothing is used that a Wednesday line could
+not know.
+
+| Market | Lines | Edges | Record (W-L-P) | ROI | 95% range |
+|---|---|---|---|---|---|
+| Spread | Wednesday, 2015–2020 (Westgate SuperContest, −110 assumed) | 1032 | 537-466-29 | +2.1% | −3.7% to +7.8% |
+| Spread | Closing, same 2015–2020 games | 1195 | 622-543-30 | +4.2% | −1.2% to +9.6% |
+| Spread | Closing, 2015–2025 | 2288 | 1156-1075-57 | +0.7% | −3.2% to +4.5% |
+| Moneyline | Closing, 2015–2025 | 2320 | 822-1492-6 | −4.4% | −10.3% to +1.6% |
+| Total | Closing, 2015–2025 | 2197 | 1081-1096-20 | −3.3% | −7.5% to +0.7% |
 
 What this means:
 
-- Against Wednesday lines the model has a small, real edge (better than a coin
-  flip in five of six seasons). It is just above break-even, and the 95% range
-  still includes it, so it is not a proven money-maker.
-- Against closing lines it has no edge that pays: 51.7% overall, and about 50%
-  in 2021–2025. The line at kickoff already knows what the model knows.
-- The special-teams rating is where the edge comes from. Without it, picks
-  covered 52.9% against Wednesday lines. Lines did not move toward its picks
-  before kickoff, which suggests the market underweights special teams rather
-  than catching up to them.
-- Things tried that did not hold up out of sample: separate passing and rushing
-  ratings, success rate, pace, and adjustments for home underdogs, big
-  favorites, divisional games, rest, primetime, temperature and the level of the
-  total. Wind trims totals error slightly but only with measured game-day wind.
+- The model's own spread and total often sit several points from the line,
+  which is why the final prediction puts over 90% of its weight on the line.
+  So the +3% bar is cleared in about three games of four; most of those edges
+  are noise.
+- Spread edges came out slightly ahead, mostly in 2015–2020, but every 95%
+  range includes zero. Lines did not move
+  toward the Wednesday edges before kickoff (48.7% of the games where they
+  moved), so this is not the market catching up.
+- Moneyline and total edges lost money. Moneyline edges were mostly
+  underdogs (they won 36% of the time), where the model's disagreements with
+  the market are biggest.
+- In earlier tests of the model's spread against the line, the special-teams
+  rating was where the signal came from: the market underweights it. Things
+  tried that did not hold up out of sample: separate passing and rushing
+  ratings, success rate, pace, and adjustments for home underdogs, big favorites, divisional games, rest, primetime, temperature and
+  the level of the total. Wind trims totals error slightly but only with
+  measured game-day wind.
 
-So the honest answer is: better than the line early in the week, by a margin
-too thin to count on yet, and not better than the closing line. The predictions
-page tracks the model's picks live against the first line each game had, and
-how often the line then moves toward the pick, so this keeps being tested on
-games the model has never seen.
+So the honest answer is: maybe a thin spread edge, not one to count on, and no
+edge on moneylines or totals. The predictions page tracks every logged edge
+live, with units won and ROI per market, and how often the spread line moves
+toward the model's early spread edge, so this keeps being tested on games the
+model has never seen.
 
 Full tables, calibration buckets and bootstrap intervals are in
 [`predictions/backtest.md`](predictions/backtest.md). The backtest's remaining
@@ -139,7 +159,7 @@ pip install -r requirements.txt
 python -m nflpredictor update            # refresh and predict the next two weeks
 python -m nflpredictor update --weeks 1 --no-weather
 python -m nflpredictor ratings           # current ratings (EPA per play; special teams per game)
-python -m nflpredictor backtest          # walk-forward 2015-2025 plus pick records, writes predictions/backtest.md
+python -m nflpredictor backtest          # walk-forward 2015-2025 plus edge records, writes predictions/backtest.md
 python -m nflpredictor tune --save       # re-tune the ratings engine on 2013-2018
 python -m pytest -q tests
 ```
@@ -150,9 +170,9 @@ Downloads are cached in `.cache/` (ignored by git).
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games, season grading, last week's results, power ratings |
+| `predictions/README.md` | Upcoming games with spread, moneyline and total edges, season grading and edge record, last week's results, power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before kickoff) with the final score once known |
+| `predictions/log.csv` | Every prediction (last one before kickoff) with the posted prices, model-only win/cover/over chances and the edge in each market, and the final score once known |
 | `predictions/ratings.csv` | Team ratings in points per game |
 | `predictions/model.json` | The fitted coefficients, blend weights and simulator settings |
 | `data/epa/` | Per-season team-game and QB-game efficiency summaries |

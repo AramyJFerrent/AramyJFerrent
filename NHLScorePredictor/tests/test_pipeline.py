@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from nhlpredictor.pipeline import LOG_COLUMNS, result_label, select_upcoming, update_log
-from nhlpredictor.report import american_odds, fair_moneyline, grade, model_pick, pick_record, pick_table
+from nhlpredictor.report import edge_table, fair_moneyline, grade
 
 
 def schedule():
@@ -69,31 +69,24 @@ def test_grade_compares_model_market_and_elo():
     assert table.loc["Final prediction", "80% range hit"] == 1.0
 
 
-def test_fair_moneyline_and_picks():
-    assert american_odds(0.6) == -150 and american_odds(0.4) == 150 and american_odds(0.5) == 100
+def test_fair_moneyline_and_result_labels():
     assert fair_moneyline(0.6, "BOS", "NYR") == "NYR +150 / BOS -150"
-    assert model_pick(0.62, 0.55, -120, 100, "BOS", "NYR") == "BOS -120 (7%)"
-    assert model_pick(0.50, 0.56, -130, 110, "BOS", "NYR") == "NYR +110 (6%)"
-    assert model_pick(0.56, 0.55, -120, 100, "BOS", "NYR") == "no edge"
     assert result_label(3, 0) == "REG" and result_label(4, 0) == "OT" and result_label(5, -1) == "SO"
 
 
-def test_pick_record_counts_units():
-    d = pd.DataFrame({"home_score": [4, 1, 3], "away_score": [2, 3, 2],
-                      "model": [0.60, 0.40, 0.51], "market": [0.50, 0.50, 0.50],
-                      "hml": [110, -120, -110], "aml": [-130, 100, -110]})
-    rec = pick_record(d, "model", "market", "hml", "aml")
-    assert rec["bets"] == 2 and rec["wins"] == 2
-    assert np.isclose(rec["units"], 1.10 + 1.00)
-
-
-def test_pick_table_reports_market_moves():
+def test_edge_table_records_each_market_and_moneyline_moves():
     g = schedule()
+    # Final 4-2 home: home -1.5 at +150 wins, the away moneyline loses, under 6.0 pushes.
     log = update_log(pd.DataFrame([entry("a", g.start[0], model_home_prob=0.62, market_home_prob=0.6,
                                          home_moneyline=-150, away_moneyline=130,
                                          first_model_home_prob=0.62, first_market_home_prob=0.55,
-                                         first_home_moneyline=-120, first_away_moneyline=100)]),
+                                         first_home_moneyline=-120, first_away_moneyline=100,
+                                         spread_edge_side="home", spread_edge_line=-1.5, spread_edge_price=150,
+                                         moneyline_edge_side="away", moneyline_edge_price=130,
+                                         total_edge_side="under", total_edge_line=6.0, total_edge_price=-110)]),
                      pd.DataFrame(columns=LOG_COLUMNS), g)
-    text = pick_table(log)
-    assert "| First line seen | 1 | 1-0 | +0.83 | +83.3% |" in text
-    assert "1 of 1 games" in text
+    text = edge_table(log)
+    assert "| Puck line | 1 | 1-0-0 | +1.50 | +150.0% |" in text
+    assert "| Moneyline | 1 | 0-1-0 | -1.00 | -100.0% |" in text
+    assert "| Total | 1 | 0-0-1 | +0.00 | +0.0% |" in text
+    assert "1 of 1 games" in text                        # first-line edge on the home side, line moved toward it

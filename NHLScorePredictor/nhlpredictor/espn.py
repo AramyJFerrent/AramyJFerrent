@@ -1,7 +1,7 @@
 """Betting lines and probable starting goalies for upcoming games, from ESPN.
 
 ESPN's public scoreboard needs no key and lists, for each game, the line from
-its odds provider (moneylines and the total) and, closer to game time, each
+its odds provider (moneylines, the puck line and the total, with prices) and, closer to game time, each
 team's probable starting goalie. One request per game day. Any failure leaves
 the affected games without a line or a named starter, and the prediction
 falls back to the model alone and the projected starter.
@@ -26,9 +26,10 @@ SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboar
 ESPN_TEAMS = {"NJ": "NJD", "SJ": "SJS", "TB": "TBL", "LA": "LAK", "UTAH": "UTA", "ARI": "UTA",
               "PHX": "UTA", "VEG": "VGK", "WAS": "WSH", "MON": "MTL", "CLB": "CBJ", "NAS": "NSH"}
 COLUMNS = ["date", "home_team", "away_team", "home_moneyline", "away_moneyline", "total_line",
-           "over_price", "under_price", "line_source", "home_probable", "away_probable",
-           "home_probable_status", "away_probable_status"]
-NUMERIC = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price"]
+           "over_price", "under_price", "home_spread_line", "home_spread_price", "away_spread_price",
+           "line_source", "home_probable", "away_probable", "home_probable_status", "away_probable_status"]
+NUMERIC = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price",
+           "home_spread_line", "home_spread_price", "away_spread_price"]
 
 
 def _num(x) -> float:
@@ -64,14 +65,42 @@ def _price(odds: dict, side: str) -> float:
 
 
 def _total(odds: dict) -> tuple[float, float, float]:
+    """The total and its over and under prices: closing, then current, then the
+    older top-level fields, then opening."""
     line = _num(odds.get("overUnder"))
-    if np.isnan(line):
-        line = _num(_dig(odds, "total", "over", "close", "line"))
-    over = _num(_dig(odds, "total", "over", "close", "odds"))
-    under = _num(_dig(odds, "total", "under", "close", "odds"))
-    if np.isnan(over):
-        over, under = _num(odds.get("overOdds")), _num(odds.get("underOdds"))
+    for stage in ("close", "current", "open"):
+        if np.isnan(line):
+            line = _num(_dig(odds, "total", "over", stage, "line"))
+    over = under = np.nan
+    for stage in ("close", "current", None, "open"):
+        if stage is None:
+            over, under = _num(odds.get("overOdds")), _num(odds.get("underOdds"))
+        else:
+            over = _num(_dig(odds, "total", "over", stage, "odds"))
+            under = _num(_dig(odds, "total", "under", stage, "odds"))
+        if not (np.isnan(over) and np.isnan(under)):
+            break
     return line, over, under
+
+
+def _spread(odds: dict) -> tuple[float, float, float]:
+    """The puck line: the home team's line (-1.5 when it is favored to win by
+    two) and both prices. The current format nests them under ``pointSpread``;
+    the older one has ``spread`` (the home line) and each team's ``spreadOdds``."""
+    for stage in ("close", "current", None, "open"):
+        if stage is None:
+            line = _num(odds.get("spread"))
+            home = _num(_dig(odds, "homeTeamOdds", "spreadOdds"))
+            away = _num(_dig(odds, "awayTeamOdds", "spreadOdds"))
+        else:
+            line = _num(_dig(odds, "pointSpread", "home", stage, "line"))
+            if np.isnan(line):
+                line = -_num(_dig(odds, "pointSpread", "away", stage, "line"))
+            home = _num(_dig(odds, "pointSpread", "home", stage, "odds"))
+            away = _num(_dig(odds, "pointSpread", "away", stage, "odds"))
+        if not np.isnan(line):
+            return line, home, away
+    return np.nan, np.nan, np.nan
 
 
 def _team(code) -> str:
@@ -104,6 +133,7 @@ def parse_scoreboard(payload: dict) -> pd.DataFrame:
         row["home_moneyline"] = _price(odds, "home")
         row["away_moneyline"] = _price(odds, "away")
         row["total_line"], row["over_price"], row["under_price"] = _total(odds)
+        row["home_spread_line"], row["home_spread_price"], row["away_spread_price"] = _spread(odds)
         provider = _dig(odds, "provider", "name")
         row["line_source"] = ("ESPN" + (f" ({provider})" if provider else "")) if odds else None
         for side in ("home", "away"):

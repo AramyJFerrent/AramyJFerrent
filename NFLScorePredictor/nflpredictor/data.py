@@ -48,6 +48,9 @@ TEAM_COLUMNS = [
     "tds", "fgs", "xp_att", "xp_made", "two_att", "two_made", "safeties",
 ]
 SPECIAL_TEAMS = ["kickoff", "punt", "field_goal", "extra_point"]
+# American prices posted with the closing (or current) lines in the schedule.
+ODDS_COLUMNS = ["home_moneyline", "away_moneyline", "home_spread_odds", "away_spread_odds",
+                "over_odds", "under_odds"]
 QB_COLUMNS = ["game_id", "season", "week", "team", "qb_id", "qb_name", "dropbacks", "w", "epa"]
 
 
@@ -106,6 +109,9 @@ def prepare_games(raw: pd.DataFrame) -> pd.DataFrame:
     g["kickoff"] = local.dt.tz_localize(KICKOFF_TZ, ambiguous="NaT", nonexistent="NaT").dt.tz_convert("UTC")
     for col in ("home_rest", "away_rest"):
         g[col] = g[col].fillna(7)
+    for col in ODDS_COLUMNS:
+        if col not in g:
+            g[col] = np.nan
     g = g.sort_values(["season", "week", "kickoff", "game_id"]).reset_index(drop=True)
     return g
 

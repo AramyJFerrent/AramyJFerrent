@@ -153,6 +153,34 @@ def summarize(home: np.ndarray, away: np.ndarray, home_mean, away_mean,
     return pd.DataFrame(rows)
 
 
+def line_probs(home: np.ndarray, away: np.ndarray, model: ScoringModel, spread_line, total_line) -> pd.DataFrame:
+    """Win, cover and over chances for each simulated game against its lines.
+
+    ``spread_line`` is the expected home margin (home -3 is +3): the home side
+    covers when it wins by more, and pushes when it wins by exactly that.
+    Missing lines give missing cover or over chances.
+    """
+    w = model.weights(home, away)
+    w = w / w.sum(axis=1, keepdims=True)
+    margin, total = home - away, home + away
+    spread = np.atleast_1d(np.asarray(spread_line, dtype=float))[:, None]
+    tot = np.atleast_1d(np.asarray(total_line, dtype=float))[:, None]
+
+    def chance(mask, line=None):
+        p = (w * mask).sum(axis=1)
+        return p if line is None else np.where(np.isnan(line[:, 0]), np.nan, p)
+
+    return pd.DataFrame({
+        "home_win_prob": chance(margin > 0),
+        "away_win_prob": chance(margin < 0),
+        "tie_prob": chance(margin == 0),
+        "home_cover_prob": chance(margin > spread, spread),
+        "spread_push_prob": chance(margin == spread, spread),
+        "over_prob": chance(total > tot, tot),
+        "total_push_prob": chance(total == tot, tot),
+    })
+
+
 def headline_score(home: np.ndarray, away: np.ndarray, home_mean: float, away_mean: float,
                    weights: np.ndarray | None = None, candidates: int = 40) -> tuple[int, int]:
     """The most frequent scoreline whose margin and total sit near the means."""

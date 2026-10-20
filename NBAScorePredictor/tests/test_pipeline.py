@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 
 from nbapredictor.pipeline import LOG_COLUMNS, select_upcoming, update_log
-from nbapredictor.report import american_odds, fair_moneyline, grade, model_pick, pick_record, spread_text
+from nbapredictor.edges import fair_american
+from nbapredictor.report import fair_moneyline, grade, spread_text
 
 
 def schedule():
@@ -62,19 +63,8 @@ def test_grade_compares_the_prediction_and_the_line():
     assert table.loc["Final prediction", "80% range hit"] == 1.0
 
 
-def test_spreads_moneylines_and_picks_read_like_a_sportsbook():
+def test_spreads_and_moneylines_read_like_a_sportsbook():
     assert spread_text(4.46, "NYK", "BOS") == "NYK -4.5" and spread_text(-3.0, "NYK", "BOS") == "BOS -3"
     assert spread_text(0.1, "NYK", "BOS") == "pick'em"
-    assert american_odds(0.6) == -150 and american_odds(0.4) == 150
+    assert fair_american(0.6) == -150 and fair_american(0.4) == 150
     assert fair_moneyline(0.6, "NYK", "BOS") == "BOS +150 / NYK -150"
-    assert model_pick(6.0, 3.5, "NYK", "BOS") == "NYK -3.5 (2.5)"
-    assert model_pick(1.0, 3.5, "NYK", "BOS") == "BOS +3.5 (2.5)"
-    assert model_pick(-4.0, -3.0, "NYK", "BOS") == "BOS -3 (1.0)"
-    assert model_pick(3.8, 3.5, "NYK", "BOS") == "no edge"
-
-
-def test_pick_record_counts_covers_and_pushes():
-    d = pd.DataFrame({"home_score": [110, 100, 105], "away_score": [100, 104, 100],
-                      "model": [8.0, 2.0, 7.0], "line": [5.0, 3.0, 5.0]})
-    rec = pick_record(d, "model", "line")
-    assert rec["picks"] == 3 and rec["wins"] == 2 and rec["pushes"] == 1 and rec["losses"] == 0

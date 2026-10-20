@@ -21,6 +21,11 @@ Fitted on recent years each time it runs:
 
 The win probability is settled first; each fighter's method chances are that
 probability times the method split, so the six outcomes always sum to one.
+
+The same method and round machinery is also run on the model's own win chance
+(``p_model``, before the market blend), giving ``model_a_ko`` ... ``model_b_dec``,
+``model_distance`` and ``model_r1`` ... ``model_r5``: the model-alone view that
+betting edges are measured with (see edges.py).
 """
 
 from __future__ import annotations
@@ -41,6 +46,9 @@ METHOD_FEATURES = ["w_ko_win", "w_sub_win", "w_dec_win", "l_ko_loss", "l_sub_los
 # Prior strength, in fights, of the gender-wide method split behind each division's.
 DIVISION_PRIOR_FIGHTS = 60.0
 MAX_ROUNDS = 5
+# Model-alone outcome columns (method and round machinery run on ``p_model``).
+MODEL_ONLY = ([f"model_{s}_{m}" for s in "ab" for m in METHODS] + ["model_distance"]
+              + [f"model_r{r}" for r in range(1, MAX_ROUNDS + 1)])
 
 
 # ---- fitting helpers ------------------------------------------------------
@@ -307,28 +315,41 @@ class FightModel:
         p_mkt = market_prob(f)
         z_mkt = np.where(np.isnan(p_mkt), np.nan, logit(p_mkt))
         z = self.calibration.apply(z_raw, z_mkt)
+        z_own = self.calibration.model_slope * z_raw
         p_a = sigmoid(z)
-        split_a = self.method.split(f, "a", z)
-        split_b = self.method.split(f, "b", z)
         out = pd.DataFrame({
             "p_a": p_a,
-            "p_model": sigmoid(self.calibration.model_slope * z_raw),
+            "p_model": sigmoid(z_own),
             "p_market": p_mkt,
             # The rating alone, rescaled to a win chance: the baseline the full model has to beat.
             "p_glicko": sigmoid(self.glicko_slope * f["glicko_logit"].to_numpy(float)),
         })
-        for i, m in enumerate(METHODS):
-            out[f"a_{m}"] = p_a * split_a[:, i]
-            out[f"b_{m}"] = (1 - p_a) * split_b[:, i]
-        out["p_distance"] = out["a_dec"] + out["b_dec"]
-        by_round = self.rounds.split(1 - out["p_distance"].to_numpy(), f["rounds"].to_numpy())
-        for r in range(MAX_ROUNDS):
-            out[f"r{r + 1}"] = by_round[:, r]
+        out = out.join(self.outcomes(f, z))
+        # The same split on the model alone: the method model takes the win
+        # log-odds as an input, so it is rerun rather than rescaled.
+        own = self.outcomes(f, z_own)
+        out = out.join(own.rename(columns=lambda c: "model_distance" if c == "p_distance" else f"model_{c}"))
         six = out[[f"{s}_{m}" for s in "ab" for m in METHODS]].to_numpy()
         best = six.argmax(axis=1)
         out["best_side"] = np.where(best < 3, "a", "b")
         out["best_method"] = [METHODS[i % 3] for i in best]
         out["best_prob"] = six.max(axis=1)
+        return out
+
+    def outcomes(self, f: pd.DataFrame, z: np.ndarray) -> pd.DataFrame:
+        """Six-way method chances, the distance and the finish round for win log-odds ``z``."""
+        p_a = sigmoid(z)
+        split_a = self.method.split(f, "a", z)
+        split_b = self.method.split(f, "b", z)
+        out = pd.DataFrame(index=f.index)
+        for i, m in enumerate(METHODS):
+            out[f"a_{m}"] = p_a * split_a[:, i]
+        for i, m in enumerate(METHODS):
+            out[f"b_{m}"] = (1 - p_a) * split_b[:, i]
+        out["p_distance"] = out["a_dec"] + out["b_dec"]
+        by_round = self.rounds.split(1 - out["p_distance"].to_numpy(), f["rounds"].to_numpy())
+        for r in range(MAX_ROUNDS):
+            out[f"r{r + 1}"] = by_round[:, r]
         return out
 
     # ---- persistence ---------------------------------------------------------

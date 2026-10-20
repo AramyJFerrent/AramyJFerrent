@@ -21,19 +21,16 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
+from . import edges
 from .config import Hyperparams
+from .edges import implied_prob
 from .features import FeatureBuilder
 from .model import ScoreModel
+from .simulate import line_probs
 
 log = logging.getLogger(__name__)
 
 TEAM_ONLY_FEATURES = ["eff_off", "eff_def", "home", "b2b", "b2b_opp", "playoff"]
-
-
-def implied_prob(american) -> np.ndarray:
-    ml = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return np.where(ml < 0, -ml / (-ml + 100.0), 100.0 / (ml + 100.0))
 
 
 def devig(price_a, price_b) -> np.ndarray:
@@ -53,8 +50,13 @@ def predict_seasons(features: pd.DataFrame, seasons, window: int, n_sims: int = 
             continue
         model = ScoreModel.fit(train)
         pred, _ = model.predict(test, n_sims=n_sims, seed=season)
-        own, _ = model.predict(test, n_sims=n_sims, seed=season, market=False)
+        own, own_sim = model.predict(test, n_sims=n_sims, seed=season, market=False)
         pred["model_home_prob"] = own["home_win_prob"]
+        # The model's own chances against the closing and the opening lines, for the betting edges.
+        for col, v in line_probs(own_sim, test["spread"], test["total"]).items():
+            pred[col] = v
+        for col, v in line_probs(own_sim, test["open_spread"], test["open_total"]).items():
+            pred[f"open_{col}"] = v
         team = ScoreModel.fit(train, eff_features=TEAM_ONLY_FEATURES, calibrate_sim=False, use_market=False)
         tm = team.model_means(test)
         pred["team_margin"] = tm["margin"]
@@ -163,25 +165,37 @@ def distribution_checks(bt: pd.DataFrame) -> dict:
     }
 
 
-def pick_record(df: pd.DataFrame, line_col: str, closing_col: str | None = None, min_edge: float = 1.0) -> dict:
-    """Against-the-spread record of model picks where the model's own margin
-    and the line differ by ``min_edge`` points or more."""
-    line = df[line_col]
-    margin = df["home_score"] - df["away_score"]
-    edge, res = df["pred_model_margin"] - line, margin - line
-    picked = line.notna() & (edge.abs() >= min_edge)
-    push = picked & (res == 0)
-    win = picked & ~push & (np.sign(edge) == np.sign(res))
-    w, l = int(win.sum()), int((picked & ~push & ~win).sum())
-    rate = w / (w + l) if w + l else float("nan")
-    half = 1.96 * np.sqrt(rate * (1 - rate) / (w + l)) if w + l else float("nan")
-    out = {"games": int(picked.sum()), "wins": w, "losses": l, "pushes": int(push.sum()),
-           "cover": rate, "cover_low": rate - half, "cover_high": rate + half}
-    if closing_col:
-        move = df[closing_col] - line
-        moved = picked & move.notna() & (move != 0)
-        out["moved_toward"] = float((np.sign(move[moved]) == np.sign(edge[moved])).mean()) if moved.any() else np.nan
-        out["moved_games"] = int(moved.sum())
+def edge_records(bt: pd.DataFrame, lines: str = "close") -> dict:
+    """Walk-forward record of the betting edges in each market, against the
+    closing lines or the opening ones (``lines="open"``).
+
+    The archives have closing moneylines but no spread or total prices, so
+    those are assumed to be -110; opening lines have no moneyline, so that
+    market is left out there. Opening-line spread edges also report how often
+    the line then moved toward the edge's side by the close.
+    """
+    d = bt[["home_team", "away_team", "home_score", "away_score", "model_home_prob"]].copy()
+    if lines == "open":
+        d["spread"], d["total"] = bt["open_spread"], bt["open_total"]
+        for col in ("model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob"):
+            d[col] = bt[f"open_{col}"]
+        d["home_moneyline"] = d["away_moneyline"] = np.nan
+    else:
+        for col in ("spread", "total", "home_moneyline", "away_moneyline", "model_home_cover_prob",
+                    "model_spread_push_prob", "model_over_prob", "model_total_push_prob"):
+            d[col] = bt[col]
+    d = pd.concat([d, edges.edge_columns(d)], axis=1)
+    out = {}
+    for m in edges.MARKETS:
+        if m == "moneyline" and lines == "open":
+            continue
+        r = edges.record(d, m)
+        r["roi_low"], r["roi_high"] = edges.roi_interval(r.pop("per_bet"))
+        if m == "spread" and lines == "open":
+            toward, moved = edges.moved_toward(d["spread_edge_side"], bt["open_spread"], bt["spread"])
+            r["moved_toward"] = toward / moved if moved else np.nan
+            r["moved_games"] = moved
+        out[m] = r
     return out
 
 

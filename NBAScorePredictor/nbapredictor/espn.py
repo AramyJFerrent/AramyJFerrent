@@ -3,8 +3,9 @@
 ESPN's public endpoints need no key:
 
 - The scoreboard lists, for each game, the line from its odds provider: the
-  spread, the total and both moneylines, with the opening numbers once the
-  closing ones exist. One request per game day.
+  spread, the total and both moneylines, the price of each side of the spread
+  and the total, and the opening numbers once the closing ones exist. One
+  request per game day.
 - The injury report lists every player each team has reported, with a status
   (out, doubtful, questionable, probable or day-to-day). One request.
 - Each team's roster lists its current players, so trades and signings count
@@ -33,8 +34,10 @@ SCOREBOARD = BASE + "/scoreboard"
 INJURIES = BASE + "/injuries"
 ROSTER = BASE + "/teams/{team_id}/roster"
 COLUMNS = ["date", "start", "home_team", "away_team", "spread", "total", "home_moneyline", "away_moneyline",
-           "open_spread", "open_total", "line_source"]
-NUMERIC = ["spread", "total", "home_moneyline", "away_moneyline", "open_spread", "open_total"]
+           "home_spread_price", "away_spread_price", "over_price", "under_price", "open_spread", "open_total",
+           "line_source"]
+NUMERIC = ["spread", "total", "home_moneyline", "away_moneyline", "home_spread_price", "away_spread_price",
+           "over_price", "under_price", "open_spread", "open_total"]
 INJURY_COLUMNS = ["team", "player_id", "name", "status", "detail", "return_date"]
 ROSTER_COLUMNS = ["team", "player_id", "name", "position", "status"]
 
@@ -65,17 +68,39 @@ def team_code(code) -> str:
     return TEAM_ALIASES.get(code, code)
 
 
+def _first(odds: dict, paths) -> float:
+    for path in paths:
+        v = _num(_dig(odds, *path))
+        if not np.isnan(v):
+            return v
+    return np.nan
+
+
 def _price(odds: dict, side: str, when: str = "close") -> float:
     """A side's moneyline: the current format nests open and close prices
     under ``moneyline``; the older one puts it on the team odds."""
     paths = [("moneyline", side, when, "odds")]
     if when == "close":
         paths += [("moneyline", side, "current", "odds"), (f"{side}TeamOdds", "moneyLine")]
-    for path in paths:
-        v = _num(_dig(odds, *path))
-        if not np.isnan(v):
-            return v
-    return np.nan
+    return _first(odds, paths)
+
+
+def _spread_price(odds: dict, side: str, when: str = "close") -> float:
+    """The price of a side's point spread: under ``pointSpread`` in the
+    current format, ``spreadOdds`` on the team odds in the older one."""
+    paths = [("pointSpread", side, when, "odds")]
+    if when == "close":
+        paths += [("pointSpread", side, "current", "odds"), (f"{side}TeamOdds", "spreadOdds")]
+    return _first(odds, paths)
+
+
+def _total_price(odds: dict, side: str, when: str = "close") -> float:
+    """The price of the over or the under (``side``): under ``total`` in the
+    current format, ``overOdds``/``underOdds`` in the older one."""
+    paths = [("total", side, when, "odds")]
+    if when == "close":
+        paths += [("total", side, "current", "odds"), (f"{side}Odds",)]
+    return _first(odds, paths)
 
 
 def _home_spread(odds: dict, home: str, away: str, when: str = "close") -> float:
@@ -126,6 +151,10 @@ def parse_scoreboard(payload: dict) -> pd.DataFrame:
         row["total"] = _total(odds) if odds else np.nan
         row["home_moneyline"] = _price(odds, "home")
         row["away_moneyline"] = _price(odds, "away")
+        row["home_spread_price"] = _spread_price(odds, "home")
+        row["away_spread_price"] = _spread_price(odds, "away")
+        row["over_price"] = _total_price(odds, "over")
+        row["under_price"] = _total_price(odds, "under")
         row["open_spread"] = _home_spread(odds, home, away, "open") if odds else np.nan
         row["open_total"] = _total(odds, "open") if odds else np.nan
         provider = _dig(odds, "provider", "name")

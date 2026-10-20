@@ -47,10 +47,11 @@ jobs:
         run: python -m pytest -q tests
 
       # On pushes, read the live card sources without predicting or committing,
-      # so a change to the parsers shows whether UFCStats and ESPN still read cleanly.
+      # so a change to the parsers shows whether UFCStats and ESPN still read cleanly
+      # (--raw also prints ESPN's raw odds items and prop bets).
       - name: Check card sources
         if: github.event_name == 'push'
-        run: python -m ufcpredictor -v card
+        run: python -m ufcpredictor -v card --raw
 
       - name: Update predictions
         if: github.event_name != 'push'

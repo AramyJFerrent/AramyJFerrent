@@ -35,12 +35,14 @@ Each run:
    the last ten years, including every fight so far this year.
 3. Reads the cards for the next 15 days from ESPN: every announced bout, when
    its part of the card starts, and DraftKings moneylines from ESPN's odds
-   API. Fighters are matched to the UFCStats history by name; anyone with no
-   UFC bouts is a debutant. UFCStats' own upcoming pages are used when they
+   API, plus round-total and method-of-victory prices when ESPN posts them.
+   Fighters are matched to the UFCStats history by name; anyone with no UFC
+   bouts is a debutant. UFCStats' own upcoming pages are used when they
    can be read (they answer GitHub's runners with a browser check), and
    `data/manual_card.csv` adds or overrides bouts by hand.
-4. Predicts every bout that has not started and writes it to
-   `predictions/log.csv`, replacing the earlier prediction for that bout. A
+4. Predicts every bout that has not started, values the betting edge on
+   each market (see below) and writes it to `predictions/log.csv`, replacing
+   the earlier prediction for that bout. A
    bout's prediction locks when its part of the card starts, so the logged
    one is always the last made before the fight. A bout that drops off its
    card is removed, and a replacement opponent gets a new prediction.
@@ -71,7 +73,8 @@ Actions tab with **Run workflow**.
 | Market blend | Out-of-fold model log-odds blended with the de-vigged moneyline on the log-odds scale. The fitted weight is about 80% market, with a total slope of about 1.2–1.3 that stretches favorites, correcting the favorite-longshot bias. Bouts without a price use the model alone. | `model.py` |
 | Method | For each fighter as the winner, a multinomial model over KO/TKO, submission and decision. It starts from the division's base rates (heavyweights get knocked out, strawweights go the distance) and adjusts for the winner's finishing record, the loser's durability, how big a favorite the winner is, and five-round and title fights. | `model.py` |
 | Round | Per-round finish hazards for three- and five-round fights, shifted so the chance of a finish matches the method model. Big finishers finish earlier as well as more often. | `model.py` |
-| Cards | ESPN's scoreboard (bouts, start times, divisions, scheduled rounds, belts) and odds API (moneylines tied to each fighter by id), names matched to the history; UFCStats upcoming pages when reachable; a hand-edited card for anything the sites miss | `cards.py`, `names.py` |
+| Cards | ESPN's scoreboard (bouts, start times, divisions, scheduled rounds, belts) and odds API (moneylines tied to each fighter by id, round totals, and method props from its `propBets` link), names matched to the history; UFCStats upcoming pages when reachable; a hand-edited card for anything the sites miss | `cards.py`, `names.py` |
+| Edges | Expected value of every side of the moneyline, round total and method markets at the posted price, from the model alone; an edge needs EV of at least 3% | `edges.py` |
 | Backtest | Walk-forward by year, scored next to the market on the same fights | `backtest.py` |
 
 The win probability is settled first, and each fighter's three method
@@ -107,27 +110,45 @@ the Ultimate UFC Dataset (through March 2026).
   how a fight will end.
 - Round: it beats division base rates for both three- and five-round fights.
 
-## Can it beat the price?
+## Betting edges
 
-One-unit moneyline bets whenever the final win chance beats the price's
-implied chance, bookmaker margin included, by 2 points or more:
+The predictions page has three edge columns per bout: moneyline, round total
+(over/under x.5 rounds) and method of victory (each fighter by KO/TKO,
+submission or decision). Each side of each market is valued at its posted
+price by expected value, the average profit per $1 staked:
+`EV = p × (decimal odds − 1) − (1 − p − push)`. The probabilities come from
+the model alone, before the blend with the betting market: the "model alone"
+win chance, with the method and round models rerun on it (the method model
+takes the win chance as an input, so this is not a rescaling of the blended
+split). The best side is an edge when its EV is at least 3%.
 
-| Bets | Return per bet | 95% range | Share on favorites |
-|---|---|---|---|
-| 734 | +7.5% | +0.7% to +14.2% | 73% |
+- Round totals: over 1.5 rounds means the fight passes 2:30 of round 2, and a
+  decision is always over. The model gives the chance of a finish in each
+  round but not when within it, so finishes are assumed spread evenly over
+  the five minutes (since 2015 about 45% came in the first half of their
+  round, so this slightly understates overs).
+- Prices are never assumed: without one, the moneyline cell says "no line
+  yet", the round-total cell gives the model's fair odds at the x.5 line
+  closest to even, and the method cell each fighter's fair KO/TKO,
+  submission and decision odds.
+- Edges are logged with the prediction, frozen when the bout starts, graded
+  after the result (a no contest voids every bet; a draw refunds the
+  moneyline and loses method bets) and tracked per market on the page.
 
-What this means:
+In the walk-forward backtest, at the dataset's moneylines and method props
+(round totals have no historical prices):
 
-- The edge comes from the favorite-longshot bias: heavy favorites win more
-  often than their prices imply, and the blend's calibration stretches them.
-  It held at every edge threshold tried (see backtest.md).
-- Bets on the model's own view against the market lose about 7% a bet. The
-  market knows more than the model about everything except that bias.
-- It is not a proven money-maker. The thresholds were compared after the
-  fact, the dataset does not say when its prices were captured or whether
-  they are one book's or the best available, and the range above is wide.
-  The predictions page flags these sides live and tracks their record on the
-  prices it logged before each fight, which is the test that counts.
+| Market | Edges | ROI | 95% range | Model's average EV |
+|---|---|---|---|---|
+| Moneyline | 3,972 of 4,986 fights | −7.4% | −11.7% to −3.3% | +37.8% |
+| Method of victory | 4,244 of 4,488 fights | −15.7% | −23.3% to −7.9% | +61.6% |
+
+The model alone is well behind the market (log loss 0.643 against 0.609), so
+it disagrees with the price on nearly every fight and those disagreements
+lose: what it knows that the market does not is outweighed by what the market
+knows that it does not. The edges are tracked live as a test of the model,
+not as betting advice. (The blended final prediction, about 80% market, does
+beat the closing price slightly on log loss, but it is not what the edges use.)
 
 ## Running it yourself
 
@@ -139,6 +160,7 @@ pip install -r requirements.txt
 
 python -m ufcpredictor update             # refresh, predict the next 15 days of cards, grade results
 python -m ufcpredictor card               # show the upcoming cards as read from UFCStats and ESPN
+python -m ufcpredictor card --raw         # ...plus the raw pages, odds items and prop bets ESPN returned
 python -m ufcpredictor ratings --division Lightweight
 python -m ufcpredictor backtest           # walk-forward 2015-2026, writes predictions/backtest.md
 python -m ufcpredictor tune --save        # re-tune ratings and profiles on 2010-2014
@@ -162,11 +184,11 @@ Manual rows replace the same bout from the other sources. Only `event`,
 |---|---|
 | `predictions/README.md` | Upcoming cards, the year's grading, latest results, top fighters by division |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (the last one before the fight) with the result once known |
+| `predictions/log.csv` | Every prediction (the last one before the fight): the blended and model-alone probabilities, the prices, each market's edge (`moneyline_edge_*`, `rounds_edge_*`, `method_edge_*`), and the result once known |
 | `predictions/ratings.csv` | Glicko-2 ratings of every active fighter |
 | `predictions/model.json` | Fitted coefficients, blend weights, method base rates and round hazards |
 | `data/bouts.csv`, `data/fight_stats.csv`, `data/fighters.csv` | The reduced UFCStats history |
-| `data/odds_log.csv` | Every price the predictor has seen, with when it saw it |
+| `data/odds_log.csv` | Every price the predictor has seen (moneylines, method props, round totals), with when it saw it |
 
 ## Not modeled yet
 
@@ -174,8 +196,9 @@ Manual rows replace the same bout from the other sources. Only `event`,
   wide deviation and a debut term, and the market blend brings in what the
   price knows about their regional careers. Sherdog and Tapology records would
   help, but those sites' terms rule out scraping them here.
-- Method and round props as an input. The ESPN feed carries moneylines only,
-  and props are where the model trails the market most.
+- Method and round props as an input to the prediction. They are read for
+  the edge columns when ESPN posts them, but props are where the model trails
+  the market most.
 - Fight-week news beyond the card itself: missed weight, short-notice
   replacements as a feature, and injuries reach the prediction only through
   the price.

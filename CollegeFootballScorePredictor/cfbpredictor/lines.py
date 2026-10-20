@@ -12,6 +12,13 @@ Two sources, both from cfbfastR:
 
 Lines are stored as the expected home margin (positive when the home team is
 favored) and the expected total, like the model's own predictions.
+
+Prices for the betting-edge backtest come from the same file: each side's
+spread and total price is the median price of the books quoting exactly the
+consensus (median) line, and each moneyline is the median across books.
+Medians of prices are taken on break-even probability (American odds jump
+from -100 to +100). The file has spread and total prices through 2019 and
+moneylines in most seasons; the play-by-play line has no prices.
 """
 
 from __future__ import annotations
@@ -23,13 +30,15 @@ import pandas as pd
 
 from .config import CACHE_DIR, LINES_PATH, LINES_URL
 from .data import fetch, summary_paths
+from .edges import median_price
 
 log = logging.getLogger(__name__)
 
 # Projection sites listed alongside the books; they are models, not markets.
 NOT_BOOKS = {"teamrankings", "numberfire"}
+PRICE_COLUMNS = ["home_spread_price", "away_spread_price", "over_price", "under_price"]
 LINE_COLUMNS = ["game_id", "season", "spread_line", "total_line", "home_moneyline", "away_moneyline",
-                "spread_open", "total_open", "books"]
+                "spread_open", "total_open", "books", *PRICE_COLUMNS]
 
 
 def _resolve_sides(odds: pd.DataFrame) -> pd.Series:
@@ -72,12 +81,13 @@ def consensus_lines(odds: pd.DataFrame) -> pd.DataFrame:
     spread = sp.groupby(["game_id", "book"])[["close", "open"]].mean().groupby("game_id").agg(
         spread_line=("close", "median"), spread_open=("open", "median"), books=("close", "count"))
 
-    tot = o[o["market_type"].eq("total") & o["abbr"].astype(str).str.lower().eq("over")]
+    side = o["abbr"].astype(str).str.lower()
+    tot = o[o["market_type"].eq("total") & side.eq("over")]
     total = tot.groupby(["game_id", "book"])[["lines", "opening_lines"]].mean().groupby("game_id").agg(
         total_line=("lines", "median"), total_open=("opening_lines", "median"))
 
     ml = o[o["market_type"].eq("money_line") & o["side"].notna()]
-    money = ml.pivot_table(index="game_id", columns="side", values="odds", aggfunc="median")
+    money = ml.pivot_table(index="game_id", columns="side", values="odds", aggfunc=median_price)
     money = money.rename(columns={"home": "home_moneyline", "away": "away_moneyline"})
 
     seasons = o.groupby("game_id")["season"].first().astype(int)
@@ -90,6 +100,21 @@ def consensus_lines(odds: pd.DataFrame) -> pd.DataFrame:
     # A median of a single quarter-point quote can land on .25; real lines move in halves.
     for col in ("spread_line", "total_line", "spread_open", "total_open"):
         out[col] = (out[col] * 2).round() / 2
+
+    # Prices: books quoting exactly the consensus line, per side.
+    sp_line = sp["game_id"].map(out.set_index("game_id")["spread_line"])
+    at = sp[(sp["close"] - sp_line).abs() < 0.01]
+    tot_all = o[o["market_type"].eq("total") & side.isin(["over", "under"])]
+    at_total = tot_all[(tot_all["lines"] - tot_all["game_id"].map(out.set_index("game_id")["total_line"])).abs() < 0.01]
+    prices = pd.concat([
+        at.assign(col=at["side"] + "_spread_price"),
+        at_total.assign(col=side[at_total.index] + "_price"),
+    ])
+    if len(prices):
+        table = prices.pivot_table(index="game_id", columns="col", values="odds", aggfunc=median_price)
+        for col in PRICE_COLUMNS:
+            if col in table:
+                out[col] = out["game_id"].map(table[col])
     return out[LINE_COLUMNS].sort_values(["season", "game_id"], ignore_index=True)
 
 

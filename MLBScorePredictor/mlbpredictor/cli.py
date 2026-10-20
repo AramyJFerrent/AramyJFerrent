@@ -118,9 +118,24 @@ def cmd_check(args) -> None:
                 print("Runs allowed by the other side's pitchers:", runs)
         people = statsapi.fetch_people(sched["home_starter"].dropna().head(3).tolist())
         print(people.to_string(index=False))
-    board = espn.fetch_scoreboards(pd.date_range(today, today + pd.Timedelta(days=args.ahead)).date)
+    days = pd.date_range(today, today + pd.Timedelta(days=args.ahead)).date
+    board = espn.fetch_scoreboards(days)
     print(f"ESPN lines: {len(board)} games")
-    print(board.to_string(index=False))
+    with pd.option_context("display.width", 250, "display.max_columns", 30):
+        print(board.to_string(index=False))
+    if args.raw:
+        import json
+
+        # The raw odds objects behind those lines, to check the fields the parser reads.
+        for day in days:
+            try:
+                odds = espn.raw_odds(espn.fetch_payload(day))
+            except Exception as exc:
+                print(f"ESPN raw odds {day}: {exc}")
+                continue
+            for name, raw in odds[:args.raw]:
+                print(f"ESPN raw odds {day} {name}:")
+                print(json.dumps(raw, indent=1, default=str)[:6000])
     upcoming = sched[sched["status"] == "scheduled"].copy() if len(sched) else sched
     if len(upcoming):
         history = pd.concat([read_summary(summary_paths(s)["games"], GAME_COLUMNS)
@@ -225,6 +240,8 @@ def main(argv=None) -> None:
     p = sub.add_parser("check", help="read the live sources once and print what was parsed")
     p.add_argument("--back", type=int, default=2, help="days back to read (default 2)")
     p.add_argument("--ahead", type=int, default=2, help="days ahead to read (default 2)")
+    p.add_argument("--raw", type=int, nargs="?", const=3, default=0,
+                   help="also print the raw ESPN odds objects of the first N games each day (default 3)")
     p.set_defaults(func=cmd_check)
 
     p = sub.add_parser("audit", help="consistency checks on a season's data, next to the season before")

@@ -3,7 +3,9 @@
 Every bout in year Y is predicted from features built on earlier fights only,
 with the win model, calibration, market blend, method and round models fitted
 on the ``fit_window_years`` before Y. Benchmarks are scored on the same fights:
-the de-vigged moneyline, Glicko-2 alone and a UFC-only Elo.
+the de-vigged moneyline, Glicko-2 alone and a UFC-only Elo. Betting edges are
+valued as on the live page (edges.py): from the model alone, at the dataset's
+moneylines and method props; round totals have no historical prices.
 """
 
 from __future__ import annotations
@@ -15,10 +17,11 @@ from dataclasses import replace
 import numpy as np
 import pandas as pd
 
-from .config import FIRST_TRAIN_YEAR, VALUE_EDGE, Hyperparams
+from .config import FIRST_TRAIN_YEAR, Hyperparams
+from .edges import MARKETS, PICKERS, implied_prob, outcome, priced, settle
 from .features import FeatureBuilder
 from .model import METHODS, FightModel, RoundModel, WinModel, decided, division_method_rates
-from .odds import decimal, devig, devig_methods, implied_prob
+from .odds import METHOD_ODDS, devig, devig_methods
 
 log = logging.getLogger(__name__)
 
@@ -179,40 +182,66 @@ def bootstraps(bt: pd.DataFrame) -> dict:
     }
 
 
-def betting(bt: pd.DataFrame, prob_col: str = "p_a", edge: float = VALUE_EDGE) -> dict:
-    """Flat one-unit moneyline bets wherever ``prob_col`` beats the price's implied chance by ``edge``.
+# Markets with prices in the historical dataset.
+PRICED_MARKETS = ["moneyline", "method"]
+STATUS = {"a": "final", "b": "final", "draw": "draw", "nc": "no contest"}
 
-    Prices are the dataset's (approximate closing) moneylines with the
-    bookmaker's margin left in, so this is what the bets would have returned.
+
+def usable_method_prices(bt: pd.DataFrame) -> pd.DataFrame:
+    """Drop method props whose six prices imply less than 100% in total.
+
+    A real book's prices always carry a margin. The dataset's 2025-26 method
+    props often do not (KO prices of +5000 for heavy favorites), so those rows
+    are not prices anyone could have bet.
     """
-    d = decided(bt).dropna(subset=["odds_a", "odds_b"])
-    p = d[prob_col].to_numpy(float)
-    rows = []
-    for side, ps, odds in (("a", p, d["odds_a"]), ("b", 1 - p, d["odds_b"])):
-        implied = implied_prob(odds)
-        pick = ps - implied >= edge
-        won = (d["winner"] == side).to_numpy()
-        profit = np.where(won, decimal(odds) - 1, -1.0)
-        rows.append(pd.DataFrame({"profit": profit[pick], "dog": (np.asarray(odds) > 0)[pick]}))
-    bets = pd.concat(rows, ignore_index=True)
-    if bets.empty:
-        return {"bets": 0}
-    rng = np.random.default_rng(1)
-    idx = rng.integers(0, len(bets), size=(5000, len(bets)))
-    roi = bets["profit"].to_numpy()[idx].mean(axis=1)
-    return {"bets": len(bets), "roi": float(bets["profit"].mean()), "units": float(bets["profit"].sum()),
-            "roi_low": float(np.percentile(roi, 2.5)), "roi_high": float(np.percentile(roi, 97.5)),
-            "underdogs": float(bets["dog"].mean()), "fights": len(d)}
+    if not set(METHOD_ODDS) <= set(bt.columns):
+        return bt
+    total = sum(np.nan_to_num(implied_prob(bt[c]), nan=0.0) for c in METHOD_ODDS)
+    bad = bt[METHOD_ODDS].notna().any(axis=1).to_numpy() & (total < 1.0)
+    bt = bt.copy()
+    bt.loc[bad, METHOD_ODDS] = np.nan
+    return bt
 
 
-def betting_grid(bt: pd.DataFrame, edges=(0.0, 0.02, 0.03, 0.05, 0.08)) -> pd.DataFrame:
-    """Betting returns for the final and the model-alone win chances at several edges."""
+def edge_bets(bt: pd.DataFrame) -> pd.DataFrame:
+    """Every model-alone edge on the dataset's prices, graded: one row per one-unit bet."""
+    d = usable_method_prices(bt[bt["winner"].isin(list(STATUS))])
     rows = []
-    for label, col in (("Final win chance", "p_a"), ("Model alone", "p_model")):
-        for e in edges:
-            r = betting(bt, col, e)
-            if r.get("bets"):
-                rows.append({"chance": label, "edge": e, **r})
+    for r in d.itertuples(index=False):
+        for market in PRICED_MARKETS:
+            pick = PICKERS[market](r)
+            if pick is None:
+                continue
+            res = outcome(market, pick.side, pick.line, STATUS[r.winner], r.winner, r.method, r.end_round, np.nan)
+            if res is None:
+                continue
+            rows.append({"market": market, "year": r.date.year, "side": pick.side, "price": pick.price,
+                         "prob": pick.prob, "ev": pick.ev, "result": res, "profit": settle(res, pick.price)})
+    return pd.DataFrame(rows, columns=["market", "year", "side", "price", "prob", "ev", "result", "profit"])
+
+
+def edge_summary(bt: pd.DataFrame, bets: pd.DataFrame | None = None, n: int = 5000, seed: int = 1) -> pd.DataFrame:
+    """Per-market edges, W-L-P, units and ROI with a 95% bootstrap range over bets."""
+    bets = edge_bets(bt) if bets is None else bets
+    d = usable_method_prices(bt[bt["winner"].isin(list(STATUS))])
+    rng = np.random.default_rng(seed)
+    rows = []
+    for market in MARKETS:
+        if market not in PRICED_MARKETS:
+            rows.append({"market": market, "fights": 0, "edges": 0})
+            continue
+        fights = int(sum(priced(r, market) for r in d.itertuples(index=False)))
+        b = bets[bets["market"] == market]
+        row = {"market": market, "fights": fights, "edges": len(b)}
+        if len(b):
+            profit = b["profit"].to_numpy(float)
+            roi = profit[rng.integers(0, len(b), size=(n, len(b)))].mean(axis=1)
+            row.update(wins=int((b["result"] == "win").sum()), losses=int((b["result"] == "loss").sum()),
+                       pushes=int((b["result"] == "push").sum()), units=float(profit.sum()),
+                       roi=float(profit.mean()), roi_low=float(np.percentile(roi, 2.5)),
+                       roi_high=float(np.percentile(roi, 97.5)), mean_ev=float(b["ev"].mean()),
+                       underdogs=float((b["price"] > 0).mean()))
+        rows.append(row)
     return pd.DataFrame(rows)
 
 

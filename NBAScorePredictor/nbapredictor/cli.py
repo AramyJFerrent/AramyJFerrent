@@ -43,14 +43,13 @@ def cmd_backtest(args) -> None:
         "Final vs closing line": backtest.paired_bootstrap(err["final"], err["line"]),
     }
     checks = backtest.distribution_checks(bt)
-    picks = {"Closing line": backtest.pick_record(bt, "spread")}
+    edge_records = {"Closing line": backtest.edge_records(bt)}
     has_open = bt["open_spread"].notna()
     open_seasons = sorted(bt.loc[has_open, "season"].unique())
     open_label = f"{season_label(open_seasons[0])} to {season_label(open_seasons[-1])}" if open_seasons else ""
     if has_open.any():
-        picks[f"Opening line, {open_label}, knowing who played"] = backtest.pick_record(bt[has_open], "open_spread",
-                                                                                      "spread")
-        picks["Closing line, same games"] = backtest.pick_record(bt[has_open], "spread")
+        edge_records[f"Opening line, {open_label}, knowing who played"] = backtest.edge_records(bt[has_open], "open")
+        edge_records["Closing line, same games"] = backtest.edge_records(bt[has_open])
     extra = {}
     if not args.skip_blind:
         # The same seasons with availability projected from each team's previous game.
@@ -59,8 +58,8 @@ def cmd_backtest(args) -> None:
         b = backtest.errors(blind)
         if has_open.any():
             # The fair test against openers: the line did not know tonight's lineups either.
-            picks[f"Opening line, {open_label}, assuming each team's previous lineup"] = backtest.pick_record(
-                blind[blind["open_spread"].notna()], "open_spread", "spread")
+            edge_records[f"Opening line, {open_label}, assuming each team's previous lineup"] = \
+                backtest.edge_records(blind[blind["open_spread"].notna()], "open")
         mean, lo, hi = backtest.paired_bootstrap(b["model"], err["model"])
         extra["Knowing who plays"] = [
             f"Model-only margin MAE {err['model'].mean():.3f} knowing who played, {b['model'].mean():.3f} "
@@ -69,13 +68,17 @@ def cmd_backtest(args) -> None:
         ]
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), picks, extra))
+    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), edge_records, extra))
     with pd.option_context("display.width", 200):
         for label, df in scores.items():
             print(label)
             print(df.round(4).to_string(index=False))
-    for name, v in {**boot, **{k: (v["cover"], v["cover_low"], v["cover_high"]) for k, v in picks.items()}}.items():
+    for name, v in boot.items():
         print(name, [round(x, 4) for x in v])
+    for label, markets in edge_records.items():
+        for m, r in markets.items():
+            print(f"{label}, {m}: {r['edges']} edges, {r['wins']}-{r['losses']}-{r['pushes']}, "
+                  f"ROI {r['roi']:+.4f} ({r['roi_low']:+.4f} to {r['roi_high']:+.4f})")
     for lines in extra.values():
         print("\n".join(lines))
     print(f"Wrote {path}")
@@ -174,6 +177,22 @@ def cmd_check(args) -> None:
     print(f"Published season roster: {0 if published is None else len(published)} players")
     if args.raw:
         import requests
+        # The odds objects the line parser reads, in full, for the first game with odds on each day.
+        for day in dates:
+            try:
+                resp = requests.get(espn.SCOREBOARD, params={"dates": pd.Timestamp(day).strftime("%Y%m%d")},
+                                    timeout=30)
+                events = resp.json().get("events") or []
+            except (requests.RequestException, ValueError, AttributeError) as exc:
+                print(f"--- odds {day}: {exc}")
+                continue
+            for event in events:
+                odds = ((event.get("competitions") or [{}])[0]).get("odds")
+                if odds:
+                    print(f"--- odds {day} {event.get('shortName')}\n{json.dumps(odds)}")
+                    break
+            else:
+                print(f"--- odds {day}: none of {len(events)} games has odds")
         for url in (espn.SCOREBOARD, espn.INJURIES, espn.ROSTER.format(team_id="2")):
             try:
                 text = requests.get(url, timeout=30).text

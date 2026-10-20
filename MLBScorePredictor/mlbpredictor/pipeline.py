@@ -11,9 +11,11 @@ Each run:
    lineups and game-time weather, temperature forecasts for the rest, and
    betting lines from ESPN; backs the market's expected runs out of the lines
    and blends them with the model's.
-4. Predicts every game in that window that has not started and writes the
-   predictions to the log, overwriting earlier ones for the same game, so the
-   logged prediction is always the last one made before first pitch.
+4. Predicts every game in that window that has not started, finds any
+   betting edge on the run line, moneyline and total from the model's own
+   numbers (see ``edges``), and writes the predictions to the log,
+   overwriting earlier ones for the same game, so the logged prediction (and
+   edge) is always the last one made before first pitch.
 5. Fills in final scores for finished games and grades the season so far.
 """
 
@@ -29,11 +31,12 @@ import pandas as pd
 from . import espn, report, statsapi, weather
 from .config import DISPLAY_TZ, FIRST_SEASON, OUTPUT_DIR, Hyperparams, current_season
 from .data import load_summaries, update_summaries
+from .edges import DEFAULT_RUN_LINE, EDGE_COLUMNS, add_edges
 from .features import SLOTS, FeatureBuilder
 from .market import MarketInverter, blend, devig, fit_blend
 from .model import RunModel
 from .players import season_time
-from .simulate import over_prob
+from .simulate import line_probs, over_prob
 
 log = logging.getLogger(__name__)
 
@@ -55,13 +58,23 @@ LOG_COLUMNS = [
     "first_predicted_at", "first_home_moneyline", "first_away_moneyline", "first_market_home_prob",
     "first_model_home_prob",
     "away_score", "home_score", "innings",
+    # The run line (home side's line, e.g. -1.5) and its prices, the model's
+    # own (unblended) chances at the posted run line and total, and the best
+    # side of each market when its expected value clears the edge bar.
+    "home_run_line", "home_run_line_price", "away_run_line_price",
+    "model_home_cover_prob", "model_away_cover_prob", "model_over_prob", "model_under_prob",
+    "model_total_push_prob",
+    *EDGE_COLUMNS,
 ]
-# The first prediction made once a line exists, kept so picks can be graded
-# against the opening line and line movement measured up to first pitch.
+MODEL_LINE_COLUMNS = ["model_home_cover_prob", "model_away_cover_prob", "model_over_prob", "model_under_prob",
+                      "model_total_push_prob"]
+# The first prediction made once a line exists, kept so line movement toward
+# the model's moneyline edge can be measured up to first pitch.
 FIRST_COLUMNS = ["first_predicted_at", "first_home_moneyline", "first_away_moneyline",
                  "first_market_home_prob", "first_model_home_prob"]
 TIME_COLUMNS = ["start", "predicted_at", "first_predicted_at"]
-LINE_COLUMNS = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price", "line_source"]
+LINE_COLUMNS = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price", "home_run_line",
+                "home_run_line_price", "away_run_line_price", "line_source"]
 
 
 def select_upcoming(games: pd.DataFrame, season: int, now: pd.Timestamp, days: int) -> pd.DataFrame:
@@ -126,6 +139,8 @@ def refresh_upcoming(games: pd.DataFrame, upcoming: pd.DataFrame, now: pd.Timest
 
 def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, model_only: pd.DataFrame, names: pd.Series,
                     now: pd.Timestamp) -> pd.DataFrame:
+    """Log rows for predicted games. ``model_only`` holds the model's unblended
+    numbers (``home_win_prob`` and any of ``MODEL_LINE_COLUMNS``), which the edges use."""
     rows = pd.DataFrame({
         "game_id": feats["game_id"], "season": feats["season"], "game_type": feats["game_type"],
         "date": feats["date"].astype(str), "start": feats["start"],
@@ -154,7 +169,25 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, model_only: pd.Dat
     rows["away_score"] = np.nan
     rows["home_score"] = np.nan
     rows["innings"] = np.nan
-    return rows[LOG_COLUMNS]
+    for col in MODEL_LINE_COLUMNS:
+        rows[col] = model_only[col].to_numpy() if col in model_only else np.nan
+    return add_edges(rows)[LOG_COLUMNS]
+
+
+def model_lines(feats: pd.DataFrame, model_home_prob, own_sim: dict, blended_sim: dict, has) -> pd.DataFrame:
+    """The model's own chances at each game's posted run line (or its favorite's -1.5 when none
+    is posted) and total, for the edges. ``own_sim`` simulates the model's runs before blending;
+    games without a market line were never blended, so, as with their win chance, their numbers
+    come from ``blended_sim`` and each game has one set of numbers."""
+    model_home_prob = np.asarray(model_home_prob, dtype=float)
+    run_line = feats["home_run_line"].to_numpy(float)
+    run_line = np.where(np.isnan(run_line), np.where(model_home_prob >= 0.5, -DEFAULT_RUN_LINE, DEFAULT_RUN_LINE),
+                        run_line)
+    out = line_probs(own_sim, run_line, feats["total_line"])
+    has = np.asarray(has, dtype=bool)
+    if own_sim is not blended_sim and not has.all():
+        out.loc[~has] = line_probs(blended_sim, run_line, feats["total_line"]).loc[~has].to_numpy()
+    return out
 
 
 def load_log() -> pd.DataFrame:
@@ -234,7 +267,7 @@ def first_eight(games: pd.DataFrame) -> pd.DataFrame:
     for side in ("home", "away"):
         n = games["sched_innings"].fillna(9).astype(int) - 1
         out[f"{side}_r8"] = [sum(int(v) for v in str(line).split()[:k] if v != "x")
-                             for line, k in zip(games[f"{side}_line"], n)]
+                             for line, k in zip(games[f"{side}_line"].fillna(""), n)]
     return pd.DataFrame(out, index=games["game_id"]).where(games.set_index("game_id")["completed"])
 
 
@@ -302,11 +335,13 @@ def run_update(now: dt.datetime | None = None, days: int = 2, n_sims: int = 1000
         lines = feats["total_line"].to_numpy(float)
         feats["over_prob"] = np.where(np.isnan(lines), np.nan, over_prob(sim, np.nan_to_num(lines)))
         has = feats["market_home_runs"].notna().to_numpy()
-        model_only = preds
+        model_only, own_sim = preds.copy(), sim
         if has.any():
-            model_only, _ = model.predict(feats, n_sims=n_sims)
+            model_only, own_sim = model.predict(feats, n_sims=n_sims)
             # Games without a line were never blended: keep one set of numbers for them.
             model_only.loc[~has, "home_win_prob"] = preds.loc[~has, "home_win_prob"]
+        model_only[MODEL_LINE_COLUMNS] = model_lines(feats, model_only["home_win_prob"], own_sim, sim,
+                                                     has).to_numpy()
         new = prediction_rows(feats, preds, model_only, fb.names, now)
     else:
         new = pd.DataFrame(columns=LOG_COLUMNS)

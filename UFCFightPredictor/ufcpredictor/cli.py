@@ -40,7 +40,7 @@ def cmd_backtest(args) -> None:
     years = (args.start, args.end)
     bt = backtest.predict_years(feats, range(args.start, args.end + 1), hp.fit_window_years, hp.ridge)
     win, method, rounds = backtest.win_scores(bt), backtest.method_scores(bt), backtest.round_scores(bt)
-    calib, boot, bets = backtest.calibration(bt), backtest.bootstraps(bt), backtest.betting_grid(bt)
+    calib, boot, bets = backtest.calibration(bt), backtest.bootstraps(bt), backtest.edge_summary(bt)
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(report.render_backtest(win, method, rounds, calib, boot, bets, years))
@@ -90,7 +90,7 @@ def _raw_sources() -> None:
 
     import requests
 
-    from .cards import HEADERS, parse_event_page, parse_upcoming_list
+    from .cards import HEADERS, _dig, parse_event_page, parse_upcoming_list, round_total
     from .config import ESPN_ODDS_URL, ESPN_SCOREBOARD_URL, UFCSTATS_UPCOMING_URL
 
     try:
@@ -122,14 +122,56 @@ def _raw_sources() -> None:
                 for c in comp.get("competitors") or []:
                     print("  competitor:", json.dumps({k: v for k, v in c.items() if k != "statistics"})[:800])
                 print("  odds:", json.dumps(comp.get("odds"))[:2500])
+                print("  scoreboard round total (line, over, under):", round_total(_dig(comp, "odds", 0) or {}))
                 url = ESPN_ODDS_URL.format(event=event.get("id"), competition=comp.get("id"))
                 try:
                     resp = requests.get(url, timeout=30)
-                    print(f"  odds API: HTTP {resp.status_code}", json.dumps(resp.json().get("items"))[:3000])
+                    payload = resp.json()
+                    print(f"  odds API: HTTP {resp.status_code}", json.dumps(payload.get("items"))[:3000])
+                    _raw_props(payload, comp)
                 except (requests.RequestException, ValueError) as exc:
                     print(f"  odds API failed: {exc}")
     except (requests.RequestException, ValueError) as exc:
         print("ESPN failed:", exc)
+
+
+def _raw_props(payload: dict, comp: dict) -> None:
+    """Print each odds item's fields and links, then one ``propBets`` page, for checking the prop parsers."""
+    import json
+
+    import requests
+
+    from .cards import _dig, parse_core_props, parse_props
+
+    people = sorted(comp.get("competitors") or [], key=lambda c: c.get("order", 0) or 0)
+    ids = tuple(str(c.get("id") or _dig(c, "athlete", "id") or "") for c in people[:2])
+    names = tuple(_dig(c, "athlete", "displayName") or "" for c in people[:2])
+    for item in (payload.get("items") or [])[:4]:
+        if not isinstance(item, dict):
+            continue
+        links = {k: v["$ref"] for k, v in item.items() if isinstance(v, dict) and "$ref" in v}
+        print(f"  odds item {_dig(item, 'provider', 'name')}: keys {sorted(item)}")
+        print("    links:", json.dumps(links)[:1500])
+        for key in ("overUnder", "overOdds", "underOdds", "total", "current", "propBets", "props"):
+            if key in item:
+                print(f"    {key}:", json.dumps(item[key])[:800])
+    if len(ids) < 2:
+        return
+    props, link = parse_core_props(payload, ids)
+    print(f"  parsed from odds items for {names}:", {k: v for k, v in props.items() if v == v}, "propBets link:", link)
+    if not link:
+        return
+    try:
+        resp = requests.get(link, params={"limit": 500}, timeout=30)
+        listed = resp.json()
+        items = listed.get("items") or []
+        print(f"  propBets: HTTP {resp.status_code}, count {listed.get('count')}, pages {listed.get('pageCount')}")
+        print("  propBets items:", json.dumps(items[:12])[:5000])
+        kinds = sorted({json.dumps(i.get("type"))[:120] for i in items if isinstance(i, dict)})
+        print("  propBets types:", kinds[:40])
+        print("  parsed from propBets:", {k: v for k, v in parse_props(items, ids, names).items() if v == v})
+    except (requests.RequestException, ValueError, AttributeError) as exc:
+        print(f"  propBets failed: {exc}")
 
 
 def cmd_card(args) -> None:
@@ -144,6 +186,9 @@ def cmd_card(args) -> None:
                       use_ufcstats=not args.no_ufcstats, use_espn=not args.no_espn)
     cols = ["date", "start", "event", "fighter_a", "fighter_b", "division", "rounds", "title", "odds_a",
             "odds_b", "source"]
+    if args.raw:
+        cols += ["odds_a_ko", "odds_a_sub", "odds_a_dec", "odds_b_ko", "odds_b_sub", "odds_b_dec", "rounds_line",
+                 "over_price", "under_price"]
     with pd.option_context("display.width", 200, "display.max_rows", 200):
         print(card[cols].to_string(index=False) if len(card) else "No upcoming bouts found.")
 
@@ -182,7 +227,8 @@ def main(argv=None) -> None:
 
     p = sub.add_parser("card", help="print the upcoming cards as read from the sources")
     sources(p)
-    p.add_argument("--raw", action="store_true", help="also print what each source returned")
+    p.add_argument("--raw", action="store_true",
+                   help="also print what each source returned, including ESPN's odds items and prop bets")
     p.set_defaults(func=cmd_card)
 
     args = parser.parse_args(argv)

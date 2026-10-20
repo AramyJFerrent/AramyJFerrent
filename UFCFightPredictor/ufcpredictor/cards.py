@@ -7,7 +7,10 @@ Three sources, merged:
    but not start times or rounds; the main event and title fights are five
    rounds, everything else three.
 2. **ESPN's** public scoreboard (no key needed) adds each card segment's start
-   time, and its odds API each bout's moneylines from its sportsbook partner.
+   time, and its odds API each bout's moneylines from its sportsbook partner,
+   plus the round total and method-of-victory props when it posts them (read
+   from the odds items and the ``propBets`` link on them, one extra request a
+   bout at most).
    It stands in for UFCStats when that site is down or, as it does for
    GitHub's runners, answers with a browser check. ESPN names are matched to
    UFCStats names.
@@ -31,16 +34,21 @@ import requests
 from .config import (DATA_DIR, DISPLAY_TZ, DIVISIONS, ESPN_ODDS_URL, ESPN_SCOREBOARD_URL,
                      UFCSTATS_UPCOMING_URL)
 from .data import parse_weightclass
+from .edges import implied_prob
 from .names import match_name, normalize_name, pair_key
+from .odds import METHOD_ODDS, ROUND_ODDS
 
 log = logging.getLogger(__name__)
 
 MANUAL_PATH = DATA_DIR / "manual_card.csv"
 CARD_COLUMNS = [
     "bout_key", "event", "date", "start", "location", "order", "fighter_a", "fighter_b", "a_id", "b_id",
-    "division", "gender", "title", "rounds", "odds_a", "odds_b", "odds_source", "a_record", "b_record",
-    "source",
+    "division", "gender", "title", "rounds", "odds_a", "odds_b", *METHOD_ODDS, *ROUND_ODDS, "odds_source",
+    "a_record", "b_record", "source",
 ]
+PROP_COLUMNS = METHOD_ODDS + ROUND_ODDS
+# Most prop requests (``propBets`` links) one card read may make.
+MAX_PROP_REQUESTS = 40
 HEADERS = {"User-Agent": "Mozilla/5.0 (UFCFightPredictor; +https://github.com)"}
 # Without a start time from ESPN, lock predictions at this hour UTC on fight
 # day: cards in Asia and Oceania start early, the Americas late.
@@ -191,6 +199,44 @@ def _side_price(odds: dict, side: str) -> float:
     return np.nan
 
 
+def _line(x) -> float:
+    """A round-total line such as 1.5, "o2.5" or "Over 1.5"; NaN unless it is x.5 between 0.5 and 4.5."""
+    if isinstance(x, str):
+        m = re.search(r"(\d+(?:\.\d+)?)", x)
+        x = m.group(1) if m else None
+    try:
+        v = float(x)
+    except (TypeError, ValueError):
+        return np.nan
+    return v if 0.5 <= v <= 4.5 and abs(v - np.floor(v) - 0.5) < 1e-9 else np.nan
+
+
+def round_total(odds: dict) -> tuple[float, float, float]:
+    """Round-total line and over and under prices from an ESPN odds object (scoreboard or core API).
+
+    Tries the nested ``total.{over,under}.{close,current,open}`` format first,
+    then the older ``overUnder`` with ``overOdds``/``underOdds`` and the
+    ``current.{over,under}`` blocks. Missing pieces are NaN.
+    """
+    for when in ("close", "current", "open"):
+        line = _line(_dig(odds, "total", "over", when, "line"))
+        if np.isnan(line):
+            line = _line(_dig(odds, "total", "under", when, "line"))
+        over, under = _num(_dig(odds, "total", "over", when, "odds")), _num(_dig(odds, "total", "under", when, "odds"))
+        if not np.isnan(line) and not (np.isnan(over) and np.isnan(under)):
+            return line, over, under
+    line = _line(odds.get("overUnder"))
+    if np.isnan(line):
+        line = _line(_dig(odds, "current", "total", "alternateDisplayValue"))
+    def price(side: str) -> float:
+        for path in ((f"{side}Odds",), ("current", side, "american"), ("current", side, "alternateDisplayValue")):
+            v = _num(_dig(odds, *path))
+            if not np.isnan(v):
+                return v
+        return np.nan
+    return line, price("over"), price("under")
+
+
 def _ids(competitor: dict) -> set:
     return {str(x) for x in (competitor.get("id"), _dig(competitor, "athlete", "id")) if x is not None}
 
@@ -265,6 +311,7 @@ def parse_espn(payload: dict) -> pd.DataFrame:
                 continue
             odds = _dig(comp, "odds", 0) or {}
             a, b = _orient(odds, people, names) if odds else (np.nan, np.nan)
+            line, over, under = round_total(odds) if odds else (np.nan, np.nan, np.nan)
             provider = _dig(odds, "provider", "name")
             notes = [n.get("headline") for n in comp.get("notes") or [] if isinstance(n, dict)]
             kind = " ".join(str(x) for x in (_dig(comp, "type", "text"), _dig(comp, "type", "abbreviation"),
@@ -279,6 +326,8 @@ def parse_espn(payload: dict) -> pd.DataFrame:
                                         utc=True, errors="coerce"),
                 "fighter_a": names[0], "fighter_b": names[1],
                 "odds_a": a, "odds_b": b,
+                **{c: np.nan for c in METHOD_ODDS},
+                "rounds_line": line, "over_price": over, "under_price": under,
                 "odds_source": ("ESPN" + (f" ({provider})" if provider else "")) if not np.isnan(a) else None,
                 "a_record": _dig(people[0], "records", 0, "summary"),
                 "b_record": _dig(people[1], "records", 0, "summary"),
@@ -317,22 +366,177 @@ def parse_core_odds(payload: dict, ids: tuple[str, str]) -> tuple[float, float, 
     return np.nan, np.nan, None
 
 
+def _athlete(item: dict) -> str | None:
+    for path in (("athlete", "$ref"), ("athlete", "id"), ("athleteId",), ("competitor", "$ref"), ("competitor", "id")):
+        ref = str(_dig(item, *path) or "")
+        m = re.search(r"athletes/(\d+)", ref) or re.search(r"competitors/(\d+)", ref) or re.fullmatch(r"(\d+)", ref)
+        if m:
+            return m.group(1)
+    return None
+
+
+def _prop_text(item: dict) -> str:
+    parts = [_dig(item, "type", "name"), _dig(item, "type", "displayName"), _dig(item, "type", "description"),
+             item.get("name"), item.get("displayName"), item.get("shortName"), item.get("description"),
+             item.get("details"), _dig(item, "propBet", "name")]
+    return " ".join(str(x) for x in parts if isinstance(x, (str, int, float)) and x != "").lower()
+
+
+def _prop_price(item) -> float:
+    if not isinstance(item, dict):
+        return _num(item)
+    for path in (("odds", "american", "value"), ("odds", "american"), ("current", "american"),
+                 ("current", "odds", "american"), ("american", "value"), ("american",), ("price", "american"),
+                 ("moneyLine",), ("odds", "value"), ("odds",), ("value",)):
+        v = _dig(item, *path)
+        if isinstance(v, dict):
+            v = v.get("value") or v.get("displayValue")
+        v = _num(v)
+        if not np.isnan(v):
+            return v
+    return np.nan
+
+
+def _prop_line(item: dict, text: str) -> float:
+    for path in (("odds", "total", "value"), ("current", "target", "value"), ("target", "value"), ("target",),
+                 ("line",), ("total",), ("current", "line")):
+        v = _line(_dig(item, *path))
+        if not np.isnan(v):
+            return v
+    m = re.search(r"(\d\.5)", text)
+    return _line(m.group(1)) if m else np.nan
+
+
+METHOD_PATTERNS = {"ko": r"\b(?:t?ko|ko/tko|tko/ko|knockout|ko-tko)\b", "sub": r"\bsubmission\b",
+                   "dec": r"\b(?:decision|points)\b"}
+# Props that mention a method but are not a plain "fighter wins by method" market.
+NOT_METHOD = r"\b(?:round \d|in round|not|draw|split|unanimous|majority|distance|goes|inside|finish)\b"
+
+
+def parse_props(items: list, ids: tuple[str, str], names: tuple[str, str] = ("", "")) -> dict:
+    """Method-of-victory and round-total prices from ESPN prop entries, in ``ids`` order.
+
+    Written against the shapes ESPN uses for other sports' ``propBets`` (a
+    market name under ``type`` or ``name``, the athlete as a ``$ref``, the
+    American price under ``odds`` or ``current``, the line under ``target`` or
+    ``total``), since the UFC payload could not be inspected: anything that
+    does not clearly match is ignored. A method price must name its fighter by
+    athlete id (or surname); a round total must give a x.5 line and say over
+    or under. The first price seen for each outcome wins. Of several round
+    lines, the one with both prices closest to even is the main line.
+    """
+    out = {c: np.nan for c in PROP_COLUMNS}
+    surnames = [normalize_name(n).split()[-1] if normalize_name(n).split() else "" for n in names]
+    lines: dict[float, dict] = {}
+    for item in items or []:
+        if not isinstance(item, dict):
+            continue
+        text = _prop_text(item)
+        if not text:
+            continue
+        who = _athlete(item)
+        side = None
+        if who is not None and who in ids and ids[0] != ids[1]:
+            side = "ab"[ids.index(who)]
+        else:
+            hits = [i for i, n in enumerate(surnames) if n and re.search(rf"\b{re.escape(n)}\b", normalize_name(text))]
+            side = "ab"[hits[0]] if len(hits) == 1 else None
+        if "round" in text and side is None and re.search(r"\b(?:total|over|under)\b", text):
+            line = _prop_line(item, text)
+            if np.isnan(line):
+                continue
+            got = lines.setdefault(line, {})
+            for ou in ("over", "under"):
+                block = item.get(ou) if isinstance(item.get(ou), dict) else None
+                price = _prop_price(block) if block else _num(item.get(f"{ou}Odds"))
+                if np.isnan(price) and re.search(rf"\b{ou}\b", text) and not re.search(
+                        r"\bover\b.*\bunder\b|\bunder\b.*\bover\b", text):
+                    price = _prop_price(item)
+                if not np.isnan(price):
+                    got.setdefault(ou, price)
+            continue
+        if side is None or re.search(NOT_METHOD, text):
+            continue
+        kinds = [m for m, pat in METHOD_PATTERNS.items() if re.search(pat, text)]
+        if len(kinds) != 1:
+            continue
+        col = f"odds_{side}_{kinds[0]}"
+        price = _prop_price(item)
+        if np.isnan(out[col]) and not np.isnan(price):
+            out[col] = price
+    both = [(abs(implied_prob(p["over"]) - implied_prob(p["under"])), line, p)
+            for line, p in lines.items() if "over" in p and "under" in p]
+    if both:
+        _, line, p = min(both)
+        out.update(rounds_line=line, over_price=p["over"], under_price=p["under"])
+    return out
+
+
+def parse_core_props(payload: dict, ids: tuple[str, str]) -> tuple[dict, str | None]:
+    """Props carried on ESPN's odds API items, and the first ``propBets`` link to follow.
+
+    Takes the round total from the highest-priority provider that has one,
+    and any method prices listed inline (``propBets`` given as a list).
+    """
+    out = {c: np.nan for c in PROP_COLUMNS}
+    link = None
+    items = sorted((i for i in payload.get("items") or [] if isinstance(i, dict)),
+                   key=lambda i: _dig(i, "provider", "priority") or 99)
+    for item in items:
+        line, over, under = round_total(item)
+        if np.isnan(out["rounds_line"]) and not np.isnan(line) and not (np.isnan(over) and np.isnan(under)):
+            out.update(rounds_line=line, over_price=over, under_price=under)
+        props = item.get("propBets") or item.get("props")
+        if isinstance(props, list):
+            inline = parse_props(props, ids)
+            for c in METHOD_ODDS:
+                if np.isnan(out[c]):
+                    out[c] = inline[c]
+        elif isinstance(props, dict) and props.get("$ref") and link is None:
+            link = props["$ref"]
+    return out, link
+
+
 def attach_core_odds(espn: pd.DataFrame, session: requests.Session) -> pd.DataFrame:
-    """Fill in prices from ESPN's odds API for bouts the scoreboard left without them."""
+    """Fill in prices from ESPN's odds API: moneylines the scoreboard left out, and the props.
+
+    One odds request per bout that has not started, plus at most one
+    ``propBets`` request per bout (``MAX_PROP_REQUESTS`` per card read).
+    """
     espn = espn.copy()
+    for col in PROP_COLUMNS:
+        if col not in espn:
+            espn[col] = np.nan
     errors = []
+    prop_requests = 0
     for idx, r in espn.iterrows():
-        if not np.isnan(r["odds_a"]) or r.get("state") not in (None, "pre") or not r["espn_event"]:
+        if r.get("state") not in (None, "pre") or not r["espn_event"]:
             continue
         url = ESPN_ODDS_URL.format(event=r["espn_event"], competition=r["espn_id"])
+        ids = (r["espn_a"], r["espn_b"])
         try:
-            a, b, provider = parse_core_odds(_get(session, url).json(), (r["espn_a"], r["espn_b"]))
-        except (requests.RequestException, ValueError) as exc:
+            payload = _get(session, url).json()
+            a, b, provider = parse_core_odds(payload, ids)
+            props, link = parse_core_props(payload, ids)
+            if link and prop_requests < MAX_PROP_REQUESTS:
+                prop_requests += 1
+                listed = _get(session, link, params={"limit": 500}).json()
+                more = parse_props(listed.get("items") or [], ids, (r["fighter_a"], r["fighter_b"]))
+                props = {c: props[c] if not np.isnan(props[c]) else more[c] for c in PROP_COLUMNS}
+        except (requests.RequestException, ValueError, AttributeError) as exc:
             errors.append(str(exc))
             continue
-        if not np.isnan(a):
+        if np.isnan(r["odds_a"]) and not np.isnan(a):
             espn.at[idx, "odds_a"], espn.at[idx, "odds_b"] = a, b
             espn.at[idx, "odds_source"] = "ESPN" + (f" ({provider})" if provider else "")
+        for col in METHOD_ODDS:
+            if pd.isna(espn.at[idx, col]) and not np.isnan(props[col]):
+                espn.at[idx, col] = props[col]
+        # The round line and its prices travel together.
+        if pd.isna(espn.at[idx, "over_price"]) and pd.isna(espn.at[idx, "under_price"]) \
+                and not (np.isnan(props["over_price"]) and np.isnan(props["under_price"])):
+            for col in ROUND_ODDS:
+                espn.at[idx, col] = props[col]
     if errors:
         log.warning("ESPN odds failed for %d bouts: %s", len(errors), "; ".join(errors[:2]))
     return espn
@@ -359,7 +563,9 @@ def espn_cards(now: pd.Timestamp, days: int, session: requests.Session | None = 
     out = out.drop_duplicates("espn_id")
     out = out[(out["start"] >= now - pd.Timedelta(hours=12)) & (out["start"] <= now + pd.Timedelta(days=days))]
     out = attach_core_odds(out.reset_index(drop=True), session)
-    log.info("ESPN: %d upcoming bouts, %d with moneylines", len(out), int(out["odds_a"].notna().sum()))
+    log.info("ESPN: %d upcoming bouts, %d with moneylines, %d with method props, %d with round totals", len(out),
+             int(out["odds_a"].notna().sum()), int(out[METHOD_ODDS].notna().any(axis=1).sum()),
+             int(out["rounds_line"].notna().sum()))
     return out
 
 
@@ -367,17 +573,20 @@ def espn_cards(now: pd.Timestamp, days: int, session: requests.Session | None = 
 
 def _flip_odds(row: pd.Series) -> pd.Series:
     row = row.copy()
-    row["odds_a"], row["odds_b"] = row["odds_b"], row["odds_a"]
-    row["a_record"], row["b_record"] = row["b_record"], row["a_record"]
+    for a, b in [("odds_a", "odds_b"), ("a_record", "b_record")] + [(f"odds_a_{m}", f"odds_b_{m}")
+                                                                   for m in ("ko", "sub", "dec")]:
+        if a in row:
+            row[a], row[b] = row[b], row[a]
     return row
 
 
 def attach_espn(card: pd.DataFrame, espn: pd.DataFrame) -> pd.DataFrame:
     """Add ESPN start times and prices to UFCStats bouts, matching names within each date."""
     card = card.copy()
-    for col in ("start", "odds_a", "odds_b", "odds_source", "a_record", "b_record"):
+    taken = ["start", "odds_a", "odds_b", *PROP_COLUMNS, "odds_source", "a_record", "b_record"]
+    for col in taken:
         if col not in card:
-            card[col] = np.nan if col in ("odds_a", "odds_b") else None
+            card[col] = None if col in ("start", "odds_source", "a_record", "b_record") else np.nan
     if espn.empty or card.empty:
         return card
     espn = espn.assign(day=espn["start"].dt.tz_convert(DISPLAY_TZ).dt.tz_localize(None).dt.normalize())
@@ -394,8 +603,9 @@ def attach_espn(card: pd.DataFrame, espn: pd.DataFrame) -> pd.DataFrame:
         row = near.loc[int(hit_a.split(":")[0])]
         if hit_a.endswith(":b"):
             row = _flip_odds(row)
-        for col in ("start", "odds_a", "odds_b", "odds_source", "a_record", "b_record"):
-            card.at[idx, col] = row[col]
+        for col in taken:
+            if col in row:
+                card.at[idx, col] = row[col]
         matched += 1
     log.info("Matched %d of %d bouts to ESPN", matched, len(card))
     return card
@@ -455,7 +665,10 @@ def load_manual(today: pd.Timestamp) -> pd.DataFrame:
     m["gender"] = np.where(m["division"].astype(str).str.startswith("Women"), "F", "M")
     m["title"] = m["title"].fillna(False).astype(bool)
     m["order"] = m.groupby("event").cumcount()
-    m["odds_source"] = np.where(m["odds_a"].notna(), "manual", None)
+    for col in PROP_COLUMNS:
+        if col not in m:
+            m[col] = np.nan
+    m["odds_source"] = np.where(m[["odds_a", *METHOD_ODDS, "over_price"]].notna().any(axis=1), "manual", None)
     m["source"] = "manual"
     return m
 
@@ -514,4 +727,6 @@ def fetch_card(now: pd.Timestamp, days: int, known: pd.Series, last_division: di
     for col in CARD_COLUMNS:
         if col not in card:
             card[col] = None
+    for col in ("odds_a", "odds_b", *PROP_COLUMNS):
+        card[col] = pd.to_numeric(card[col], errors="coerce")
     return card[CARD_COLUMNS].sort_values(["date", "event", "order"], ignore_index=True)

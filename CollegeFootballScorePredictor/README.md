@@ -33,17 +33,20 @@ Each run:
    and rebuilds this season's efficiency summary in `data/team_games/`.
 2. Rebuilds this season's returning production from the latest rosters, until
    the season's first game is played (then it stays fixed).
-3. Fetches current lines for the games ahead: CollegeFootballData (median
-   across books) if a `CFBD_API_KEY` secret is set, otherwise ESPN's public
-   scoreboard. If neither answers, games are predicted from the model alone.
+3. Fetches current lines and prices for the games ahead: CollegeFootballData
+   (median across books) if a `CFBD_API_KEY` secret is set, otherwise ESPN's
+   public scoreboard. If neither answers, games are predicted from the model
+   alone.
 4. Refits the preseason prior, the margin and total models, the market blend
    and the score simulator on the last four seasons plus every game played so
    far this season.
 5. Predicts every game in the next two weeks that has not kicked off.
 6. Writes the predictions to `predictions/log.csv`, replacing earlier ones for
-   the same game. A game's prediction stops changing at kickoff, so the logged
-   one is always the last made before the game.
-7. Fills in final scores and grades the season so far against the betting line.
+   the same game, with the prices and any betting edge. A game's prediction
+   stops changing at kickoff, so the logged one (and its edges) is always the
+   last made before the game.
+7. Fills in final scores and grades the season so far against the betting line,
+   and the logged betting edges at their logged prices.
 8. Commits the results back to the repo (only when something besides a
    timestamp changed).
 
@@ -76,7 +79,8 @@ Actions tab with **Run workflow** so the upcoming games pick up their lines.
 | Margin and total models | Two linear maps fitted separately: the margin from offense, defense, net special teams, home field (smaller in conference games), the FBS-vs-FCS gap and Elo; the total from offense, defense and pace on top of the current scoring level | `model.py` |
 | Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons | `model.py` |
 | Score simulator | 10,000 simulated games per matchup. Each team's scoring chances end in a touchdown (then a kick or two-point try), a field goal or nothing; tied games go to overtime, which always produces a winner, with margins drawn from real overtime games. Dispersion is calibrated to real prediction errors and key margins to real frequencies. | `simulate.py` |
-| Lines | History: the median across books of closing and opening lines (2013–2025), else the line in the play-by-play. Live: CFBD or ESPN. | `lines.py`, `odds.py` |
+| Lines | History: the median across books of closing and opening lines (2013–2025), else the line in the play-by-play. Live: CFBD or ESPN. Prices: each side's price is the median of the books quoting the consensus line (medians of prices taken on break-even probability); moneylines are the median across books. | `lines.py`, `odds.py` |
+| Betting edges | The model's own expected points (before the market blend) run through the same simulator give its chance of winning, covering and going over, pushes included. Each side of the spread, moneyline and total is valued at its price: EV = p × (decimal odds − 1) − (1 − p − push) per unit. The best side is an edge when EV ≥ 3%. Unposted spread and total prices are assumed to be −110 (marked −110\*); moneylines never are. | `edges.py`, `model.py` |
 | Backtest | Walk-forward by week, scored next to the closing line, broken out by kind of game | `backtest.py` |
 
 Ratings knobs were tuned on 2016–2020 (`python -m cfbpredictor tune`), and
@@ -146,21 +150,27 @@ total error over 2016–2025:
 
 ## Can it beat the betting line?
 
-Picking a side whenever the model's own spread and the line differ by half a
-point or more, on FBS-vs-FBS games. Break-even at standard −110 odds is 52.4%.
+The betting edges come from the model's own numbers before the market blend,
+run through the same score simulator, and count a side when its expected value
+at the price is at least +3% (the **Betting edges** row above). Walk-forward against
+the consensus closing line on every game with one, one unit per edge. The odds
+file has spread and total prices only through 2019, so later seasons are
+scored at an assumed −110 and shown separately.
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range |
-|---|---|---|---|
-| Opening line, 2016–2025 (games with one) | 3014-2896-103 | 51.0% | 49.7%–52.3% |
-| Closing line, same games | 2935-3010-114 | 49.4% | 48.1%–50.6% |
-| Closing line, 2016–2025 | 3227-3263-127 | 49.7% | 48.5%–50.9% |
+| Market | Prices | Seasons | Edges | Record (W-L-P) | ROI | 95% range |
+|---|---|---|---|---|---|---|
+| Spread | Posted | 2016–2019 | 2089 | 1008-1037-44 | −5.6% | −9.5% to −1.5% |
+| Spread | −110 assumed | 2016–2025 | 4069 | 2005-1993-71 | −4.2% | −6.9% to −1.2% |
+| Moneyline | Posted | 2016–2025 | 4463 | 1659-2804-0 | +7.5% | −9.4% to +35.4% |
+| Total | Posted | 2016–2019 | 2367 | 1204-1137-26 | −1.7% | −5.2% to +2.0% |
+| Total | −110 assumed | 2016–2025 | 3693 | 1928-1722-43 | +0.8% | −2.2% to +3.8% |
 
-No. The model does not cover often enough to profit against either line. It
-does see something the market later agrees with: when the opening line and
-the model disagreed, the line moved toward the model's side before kickoff
-55.5% of the time (5,188 games). The predictions page tracks the live picks
-against the first line each game had, and that line movement, so this keeps
-being tested on games the model has never seen.
+No, not reliably. Spread edges lose clearly more than the bookmaker's margin,
+and total edges are within noise of break-even. Moneyline edges are mostly
+long underdogs (they won 37% of the time), so a handful of big upsets carry the
+positive ROI and the range runs from a loss to a large win. The predictions
+page grades every logged edge live, with units won and ROI per market, so this
+keeps being tested on games the model has never seen.
 
 ## Running it yourself
 
@@ -176,6 +186,7 @@ python -m cfbpredictor ratings           # current FBS ratings (add --all for FC
 python -m cfbpredictor backtest          # walk-forward 2016-2025, writes predictions/backtest.md
 python -m cfbpredictor tune --save       # re-tune the ratings engine on 2016-2020
 python -m cfbpredictor build-data        # rebuild every file in data/ from the sources
+python -m cfbpredictor check --raw       # print this week's parsed lines and raw odds objects
 python -m pytest -q tests
 ```
 
@@ -188,13 +199,13 @@ committed `data/` files plus the schedules, which it downloads.
 |---|---|
 | `predictions/README.md` | Upcoming games, season grading, last week's results, FBS power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before kickoff) with the final score once known |
+| `predictions/log.csv` | Every prediction (last one before kickoff) with the final score once known, plus the prices, the model-only win/cover/over chances and the betting edge in each market (`spread_edge_*`, `moneyline_edge_*`, `total_edge_*`: pick, side, line, price, model chance, EV) |
 | `predictions/ratings.csv` | FBS ratings in points per game |
 | `predictions/model.json` | The fitted coefficients, prior regression, blend weights and simulator settings |
 | `predictions/backtest.md`, `backtest_summary.json` | The latest backtest |
 | `data/team_games/` | Per-season team-game efficiency summaries and play-by-play lines |
 | `data/production/`, `data/returning.csv` | Player production and returning production by team |
-| `data/lines.csv`, `data/venues.csv` | Consensus historical lines; home stadiums |
+| `data/lines.csv`, `data/venues.csv` | Consensus historical lines and prices; home stadiums |
 
 ## Not modeled yet
 

@@ -1,8 +1,8 @@
 """Betting lines for upcoming games, from ESPN's public scoreboard.
 
 ESPN's scoreboard needs no key and lists, for each game, the line from its
-odds provider: moneylines, the total and the run line. One request per game
-day. Any failure leaves the affected games without a line, and the
+odds provider: moneylines, the total and the run line, each with its prices.
+One request per game day. Any failure leaves the affected games without a line, and the
 prediction falls back to the model alone.
 """
 
@@ -24,8 +24,12 @@ SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scorebo
 ESPN_TEAMS = {"CHW": "CWS", "OAK": "ATH", "AZ": "ARI", "WAS": "WSH", "SDP": "SD", "SFG": "SF", "TBR": "TB",
               "KCR": "KC", "LV": "ATH"}
 COLUMNS = ["date", "start", "home_team", "away_team", "home_moneyline", "away_moneyline", "total_line",
-           "over_price", "under_price", "line_source"]
-NUMERIC = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price"]
+           "over_price", "under_price", "home_run_line", "home_run_line_price", "away_run_line_price", "line_source"]
+NUMERIC = ["home_moneyline", "away_moneyline", "total_line", "over_price", "under_price", "home_run_line",
+           "home_run_line_price", "away_run_line_price"]
+# Where the current format keeps each price, most recent first; the older
+# format's fields are tried after "current" and before the opening line.
+PERIODS = ("close", "current", None, "open")
 
 
 def _num(x) -> float:
@@ -61,14 +65,47 @@ def _price(odds: dict, side: str) -> float:
 
 
 def _total(odds: dict) -> tuple[float, float, float]:
-    line = _num(odds.get("overUnder"))
-    if np.isnan(line):
-        line = _num(_dig(odds, "total", "over", "close", "line"))
-    over = _num(_dig(odds, "total", "over", "close", "odds"))
-    under = _num(_dig(odds, "total", "under", "close", "odds"))
-    if np.isnan(over):
-        over, under = _num(odds.get("overOdds")), _num(odds.get("underOdds"))
-    return line, over, under
+    """The total and its over and under prices, all from the same snapshot
+    (close, current, the older ``overUnder``/``overOdds``/``underOdds``, open)."""
+    for period in PERIODS:
+        if period is None:
+            line, over, under = (_num(odds.get(k)) for k in ("overUnder", "overOdds", "underOdds"))
+        else:
+            line = _num(_dig(odds, "total", "over", period, "line"))
+            if np.isnan(line):
+                line = _num(_dig(odds, "total", "under", period, "line"))
+            over = _num(_dig(odds, "total", "over", period, "odds"))
+            under = _num(_dig(odds, "total", "under", period, "odds"))
+        if not np.isnan(line):
+            if np.isnan(over) and np.isnan(under) and _num(odds.get("overUnder")) == line:
+                over, under = _num(odds.get("overOdds")), _num(odds.get("underOdds"))
+            return line, over, under
+    return np.nan, np.nan, np.nan
+
+
+def _run_line(odds: dict) -> tuple[float, float, float]:
+    """The home side's run line (usually -1.5 or +1.5) and both sides' prices,
+    from one snapshot: ``pointSpread`` close, current, the older ``spread`` with
+    each team's ``spreadOdds``, then open. Never guesses a missing price.
+
+    The older ``spread`` is read as the home side's line, but where the team
+    odds flag a favorite, the favorite is the one giving the runs."""
+    for period in PERIODS:
+        if period is None:
+            line = _num(odds.get("spread"))
+            home, away = _num(_dig(odds, "homeTeamOdds", "spreadOdds")), _num(_dig(odds, "awayTeamOdds", "spreadOdds"))
+            fav = [_dig(odds, f"{side}TeamOdds", "favorite") is True for side in ("home", "away")]
+            if fav[0] != fav[1]:
+                line = -abs(line) if fav[0] else abs(line)
+        else:
+            line = _num(_dig(odds, "pointSpread", "home", period, "line"))
+            if np.isnan(line):
+                line = -_num(_dig(odds, "pointSpread", "away", period, "line"))
+            home = _num(_dig(odds, "pointSpread", "home", period, "odds"))
+            away = _num(_dig(odds, "pointSpread", "away", period, "odds"))
+        if not np.isnan(line) and line != 0:
+            return line, home, away
+    return np.nan, np.nan, np.nan
 
 
 def _team(code) -> str:
@@ -91,11 +128,28 @@ def parse_scoreboard(payload: dict) -> pd.DataFrame:
         row["home_moneyline"] = _price(odds, "home")
         row["away_moneyline"] = _price(odds, "away")
         row["total_line"], row["over_price"], row["under_price"] = _total(odds)
+        row["home_run_line"], row["home_run_line_price"], row["away_run_line_price"] = _run_line(odds)
         provider = _dig(odds, "provider", "name")
         row["line_source"] = ("ESPN" + (f" ({provider})" if provider else "")) if odds else None
         rows.append(row)
     out = pd.DataFrame(rows, columns=COLUMNS)
     out[NUMERIC] = out[NUMERIC].astype(float)
+    return out
+
+
+def fetch_payload(day, session: requests.Session | None = None) -> dict:
+    """The raw scoreboard for one ET date."""
+    resp = (session or requests).get(SCOREBOARD, params={"dates": pd.Timestamp(day).strftime("%Y%m%d")}, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def raw_odds(payload: dict) -> list[tuple[str, dict]]:
+    """Each game's matchup and the raw odds object the parser reads, for checking the format."""
+    out = []
+    for event in payload.get("events") or []:
+        comp = (event.get("competitions") or [{}])[0]
+        out.append((event.get("shortName") or event.get("name") or "", (comp.get("odds") or [None])[0] or {}))
     return out
 
 
@@ -105,9 +159,7 @@ def fetch_scoreboards(dates, session: requests.Session | None = None) -> pd.Data
     frames, errors = [], []
     for day in sorted(set(dates)):
         try:
-            resp = session.get(SCOREBOARD, params={"dates": pd.Timestamp(day).strftime("%Y%m%d")}, timeout=30)
-            resp.raise_for_status()
-            frames.append(parse_scoreboard(resp.json()))
+            frames.append(parse_scoreboard(fetch_payload(day, session)))
         except (requests.RequestException, ValueError, KeyError, TypeError, AttributeError) as exc:
             errors.append(f"{day}: {exc}")
     if errors:

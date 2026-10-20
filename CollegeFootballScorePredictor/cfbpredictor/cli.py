@@ -59,28 +59,17 @@ def cmd_backtest(args) -> None:
     }
     checks = backtest.distribution_checks(bt)
 
-    margins = backtest.model_margins(feats, seasons, hp.fit_window_seasons, FIRST_FIT_SEASON)
-    margins = margins[backtest.segments(margins)["FBS vs FBS"] & margins["spread_line"].notna()]
-    opened = margins[margins["spread_open"].notna()]
-    span = f"{int(opened['season'].min())}–{int(opened['season'].max())}" if len(opened) else ""
-    picks = {
-        f"Opening line, {span} (games with one)": backtest.pick_record(opened, "spread_open", closing_col="spread_line"),
-        f"Closing line, same {span} games": backtest.pick_record(opened, "spread_line"),
-        f"Closing line, {args.start}–{args.end}": backtest.pick_record(margins, "spread_line"),
-    }
+    edges = backtest.edge_record(bt)
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(report.render_backtest(scores, backtest.segment_table(bt), checks, boot,
-                                           (args.start, args.end), picks))
-    opening, _, closing = picks.values()
-    summary = {"seasons": [args.start, args.end],
-               "picks": {"opening": {**opening, "span": span},
-                         "closing": {**closing, "span": f"{args.start}–{args.end}"}},
+                                           (args.start, args.end), edges))
+    summary = {"seasons": [args.start, args.end], "edges": edges,
                "fbs": backtest.score(fbs).set_index("predictor")[["margin_mae", "total_mae"]].round(3).to_dict("index")}
-    report.BACKTEST_SUMMARY_PATH.write_text(json.dumps(summary, indent=2) + "\n")
-    for label, rec in picks.items():
-        print(f"{label}: {rec['wins']}-{rec['losses']}-{rec['pushes']} ({rec['cover']:.1%})"
-              + (f", line moved toward pick {rec['moved_toward']:.1%}" if "moved_toward" in rec else ""))
+    report.BACKTEST_SUMMARY_PATH.write_text(json.dumps(summary, indent=2, default=float) + "\n")
+    for r in edges:
+        print(f"{r['market']} ({r['prices']}, {r['span']}): {r['edges']} edges of {r['games']} games, "
+              f"{r['wins']}-{r['losses']}-{r['pushes']}, ROI {r['roi']:+.1%}")
     for label, df in scores.items():
         print(label)
         print(df.round(3).to_string(index=False))
@@ -146,6 +135,50 @@ def cmd_build_data(args) -> None:
     print("Rebuilt season summaries, lines, returning production and venues")
 
 
+def cmd_check(args) -> None:
+    """Read this week's lines once and print what was parsed (and, with --raw, the odds objects)."""
+    import os
+
+    import requests
+
+    from . import odds
+
+    session = requests.Session()
+    resp = session.get(odds.ESPN_SCOREBOARD, params={"groups": odds.FBS_GROUP, "limit": 300}, timeout=30)
+    resp.raise_for_status()
+    payload = resp.json()
+    parsed = odds.parse_espn(payload)
+    print(f"ESPN scoreboard: {len(payload.get('events') or [])} games, {len(parsed)} with odds, "
+          f"{int(parsed['home_spread_price'].notna().sum())} with spread prices, "
+          f"{int(parsed['over_price'].notna().sum())} with total prices, "
+          f"{int(parsed['home_moneyline'].notna().sum())} with moneylines")
+    with pd.option_context("display.width", 250, "display.max_columns", 30, "display.max_rows", 40):
+        print(parsed.head(40).to_string(index=False))
+    if args.raw:
+        shown = 0
+        for event in payload.get("events") or []:
+            comp = (event.get("competitions") or [{}])[0]
+            if comp.get("odds") and shown < args.raw:
+                print(f"--- ESPN odds for {event.get('id')} {event.get('shortName')}")
+                print(json.dumps(comp["odds"], indent=1))
+                shown += 1
+    key = os.environ.get("CFBD_API_KEY", "").strip()
+    if key:
+        from .data import current_season
+
+        resp = session.get(odds.CFBD_LINES, params={"year": current_season(), "seasonType": "regular"},
+                           headers={"Authorization": f"Bearer {key}"}, timeout=30)
+        resp.raise_for_status()
+        games = resp.json()
+        cfbd = odds.parse_cfbd(games)
+        print(f"CFBD lines: {len(cfbd)} games, {int(cfbd['home_spread_price'].notna().sum())} with spread prices")
+        if args.raw:
+            priced = [g for g in games if g.get("lines")][-args.raw:]
+            print("--- CFBD line objects\n" + json.dumps(priced, indent=1))
+    else:
+        print("No CFBD_API_KEY; skipped CFBD lines")
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="cfbpredictor", description=__doc__)
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -175,6 +208,11 @@ def main(argv=None) -> None:
     p = sub.add_parser("ratings", help="print current team ratings (EPA per play; special teams per game)")
     p.add_argument("--all", action="store_true", help="include FCS teams")
     p.set_defaults(func=cmd_ratings)
+
+    p = sub.add_parser("check", help="read this week's betting lines once and print what was parsed")
+    p.add_argument("--raw", type=int, nargs="?", const=3, default=0,
+                   help="also print the raw odds objects of this many games (default 3)")
+    p.set_defaults(func=cmd_check)
 
     p = sub.add_parser("build-data", help="rebuild all committed data files from the sources")
     p.add_argument("--drop-raw", action="store_true", help="delete raw play-by-play after summarizing")

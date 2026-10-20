@@ -3,18 +3,15 @@
 from __future__ import annotations
 
 import json
-import math
 
 import numpy as np
 import pandas as pd
 
 from .config import DISPLAY_TZ, OUTPUT_DIR
+from .edges import EDGE_MIN_EV, MARKETS, american_text, assumed_price, edge_results, fair_american, record
 
 BACKTEST_SUMMARY_PATH = OUTPUT_DIR / "backtest_summary.json"
-# Smallest gap between the model's spread and the line that counts as a pick.
-PICK_MIN_EDGE = 0.5
-# Cover rate needed to profit at standard -110 odds.
-BREAK_EVEN = 110 / 210
+MARKET_NAMES = {"spread": "Spread", "moneyline": "Moneyline", "total": "Total"}
 
 
 def _kickoff(ts, tbd=False) -> str:
@@ -34,37 +31,29 @@ def _num(x, fmt="{:.1f}") -> str:
     return "–" if pd.isna(x) else fmt.format(x)
 
 
-def american_odds(p: float) -> int:
-    """Fair (no-vig) American moneyline for win probability ``p``, rounded to 5."""
-    p = min(max(p, 0.01), 0.99)
-    raw = -100.0 * p / (1.0 - p) if p > 0.5 else 100.0 * (1.0 - p) / p
-    return int(5 * math.floor(raw / 5 + 0.5))
-
-
-def _moneyline(odds: int) -> str:
-    return f"+{odds}" if odds > 0 else str(odds)
-
-
 def fair_moneyline(home_win: float, away_win: float, home: str, away: str) -> str:
     """Both sides' fair moneylines."""
     home_p = home_win / (home_win + away_win)
-    return (f"{away} {_moneyline(american_odds(1 - home_p))} / "
-            f"{home} {_moneyline(american_odds(home_p))}")
+    return (f"{away} {american_text(fair_american(1 - home_p))} / "
+            f"{home} {american_text(fair_american(home_p))}")
 
 
-def _line(points: float) -> str:
-    return "PK" if abs(points) < 0.05 else f"{points:+.1f}"
-
-
-def model_pick(model_margin: float, line: float, home: str, away: str) -> str:
-    """The side the model's own spread favors against ``line`` (home margin), with the gap."""
-    if pd.isna(line) or pd.isna(model_margin):
-        return "–"
-    edge = model_margin - line
-    if abs(edge) < PICK_MIN_EDGE:
-        return "no edge"
-    team, spread = (home, -line) if edge > 0 else (away, line)
-    return f"{team} {_line(spread)} ({abs(edge):.1f})"
+def edge_cell(r, market: str) -> str:
+    """The logged edge in ``market`` for one game, 'no edge', or 'no line yet'."""
+    pick = getattr(r, f"{market}_edge_pick")
+    if isinstance(pick, str) and pick:
+        star = "*" if assumed_price(r._asdict(), market) else ""
+        return (f"{pick} ({american_text(getattr(r, f'{market}_edge_price'))}{star}): "
+                f"EV {getattr(r, f'{market}_edge_ev'):+.1%}, model {getattr(r, f'{market}_edge_prob'):.0%}")
+    if market == "moneyline":
+        if pd.notna(r.home_moneyline) or pd.notna(r.away_moneyline):
+            return "no edge"
+        p = r.model_home_win_prob
+        if pd.isna(p):
+            return "no line yet"
+        team, p = (r.home_team, p) if p >= 0.5 else (r.away_team, 1 - p)
+        return f"no line yet (model fair: {team} {american_text(fair_american(p))})"
+    return "no edge" if pd.notna(r.spread_line if market == "spread" else r.total_line) else "no line yet"
 
 
 def _matchup(r) -> str:
@@ -75,8 +64,9 @@ def _matchup(r) -> str:
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
         "| Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | "
-        "80% range | Spread: model / line | Model pick (edge) | Total: model / line | Notes |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
+        "80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge "
+        "| Notes |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
         home_p = r.home_win_prob / (r.home_win_prob + r.away_win_prob)
@@ -86,8 +76,9 @@ def upcoming_table(rows: pd.DataFrame) -> str:
             notes.append("FCS opponent")
         if bool(r.neutral):
             notes.append("neutral site")
-        if pd.isna(r.spread_line):
-            notes.append("no line yet")
+        if any(isinstance(getattr(r, f"{m}_edge_pick"), str) and getattr(r, f"{m}_edge_pick")
+               and assumed_price(r._asdict(), m) for m in ("spread", "total")):
+            notes.append("* price not posted; assumed -110")
         lines.append(
             f"| {_kickoff(r.kickoff, getattr(r, 'start_time_tbd', False))} | {_matchup(r)} "
             f"| {r.away_team} {int(r.headline_away)}, {r.home_team} {int(r.headline_home)} "
@@ -95,8 +86,8 @@ def upcoming_table(rows: pd.DataFrame) -> str:
             f"| {r.pred_away:.1f} – {r.pred_home:.1f} "
             f"| {int(r.away_low)}–{int(r.away_high)} / {int(r.home_low)}–{int(r.home_high)} "
             f"| {_spread(r.model_margin, r.home_team, r.away_team)} / {_spread(r.spread_line, r.home_team, r.away_team)} "
-            f"| {model_pick(r.model_margin, r.spread_line, r.home_team, r.away_team)} "
-            f"| {r.model_total:.1f} / {_num(r.total_line)} | {', '.join(notes)} |"
+            f"| {r.model_total:.1f} / {_num(r.total_line)} "
+            f"| {' | '.join(edge_cell(r, m) for m in MARKETS)} | {', '.join(notes)} |"
         )
     return "\n".join(lines)
 
@@ -156,40 +147,20 @@ def grade(entries: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def _record(margin: pd.Series, line: pd.Series, model: pd.Series) -> tuple[int, int, int]:
-    """Wins, losses and pushes for model picks against ``line``."""
-    edge, res = model - line, margin - line
-    picked = line.notna() & model.notna() & (edge.abs() >= PICK_MIN_EDGE)
-    push = picked & (res == 0)
-    win = picked & ~push & (np.sign(edge) == np.sign(res))
-    return int(win.sum()), int((picked & ~push & ~win).sum()), int(push.sum())
-
-
-def pick_table(entries: pd.DataFrame) -> str:
-    """Against-the-spread record of the model's picks, and whether lines moved toward them."""
-    g = entries.dropna(subset=["home_score", "away_score"])
-    margin = g["home_score"] - g["away_score"]
-    early = g["first_spread_line"].notna()
-    rows = [
-        ("Early-week line (first prediction with a line)",
-         _record(margin[early], g.loc[early, "first_spread_line"], g.loc[early, "first_model_margin"])),
-        ("Line at kickoff (last prediction)", _record(margin, g["spread_line"], g["model_margin"])),
-    ]
-    backfilled = int((g["source"] == "backfill").sum())
-    if backfilled:
-        rows[1] = (f"Line at kickoff (last prediction; includes {backfilled} backfilled games)", rows[1][1])
-    lines = ["| Picks against | Record (W-L-P) | Cover rate |", "|---|---|---|"]
-    for label, (w, l, p) in rows:
-        rate = f"{w / (w + l):.1%}" if w + l else "–"
-        lines.append(f"| {label} | {w}-{l}-{p} | {rate} |")
-    e = entries[entries["first_spread_line"].notna() & entries["spread_line"].notna()]
-    edge = e["first_model_margin"] - e["first_spread_line"]
-    move = e["spread_line"] - e["first_spread_line"]
-    moved = (edge.abs() >= PICK_MIN_EDGE) & (move != 0)
-    toward = int((np.sign(move[moved]) == np.sign(edge[moved])).sum())
-    lines += ["", f"Line moved toward the model's early pick before kickoff: "
-              f"{toward} of {int(moved.sum())} games"
-              + (f" ({toward / moved.sum():.0%})." if moved.sum() else ".")]
+def edge_table(entries: pd.DataFrame) -> str:
+    """Record of the edges logged with live predictions, at the price logged before kickoff."""
+    live = entries[entries["source"] == "live"]
+    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    assumed = 0
+    for market in MARKETS:
+        res = edge_results(live, market)
+        assumed += int(res["assumed"].sum())
+        r = record(res)
+        roi = f"{r['roi']:+.1%}" if r["edges"] else "–"
+        lines.append(f"| {MARKET_NAMES[market]} | {r['edges']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                     f"| {r['units']:+.2f} | {roi} |")
+    if assumed:
+        lines += ["", f"{assumed} of these edges were priced at an assumed -110 (price not posted)."]
     return "\n".join(lines)
 
 
@@ -245,16 +216,29 @@ def _backtest_summary() -> dict:
         return {}
 
 
-def _pick_note(summary: dict) -> str:
+def _edge_note(summary: dict) -> str:
+    """An honest caution drawn from the backtest's edge record (or its older spread-pick record)."""
+    tail = ("The live record is tracked below, graded at the price logged with the last prediction "
+            "before kickoff.")
+    rows = summary.get("edges") or []
+    if rows:
+        parts = [f"{MARKET_NAMES.get(r['market'], r['market']).lower()} {r['roi']:+.1%} on {r['edges']} bets "
+                 f"({r['prices']} prices, {r['span']})" for r in rows if r["edges"]]
+        clear = [r for r in rows if r["edges"] and r["roi_low"] > 0]
+        verdict = ("Only the " + ", ".join(MARKET_NAMES.get(r["market"], r["market"]).lower() for r in clear)
+                   + " stayed above zero across its 95% range, and closing lines are the hardest test, "
+                   "so treat these edges as an experiment."
+                   if clear else "None of these is clearly above zero, so treat these edges as an experiment, "
+                   "not a betting system.")
+        return (f"In the walk-forward backtest against closing lines, model-only edges returned "
+                f"{'; '.join(parts)}. {verdict} " + tail)
     picks = summary.get("picks") or {}
-    tail = "The live record is tracked below, graded against the first line each game had."
-    if "opening" not in picks or "closing" not in picks:
-        return "Treat it as an experiment: 52.4% against the spread is break-even at standard -110 odds. " + tail
-    o, c = picks["opening"], picks["closing"]
-    return (f"Treat it as an experiment. In walk-forward backtests on FBS games these picks covered "
-            f"{o['cover']:.1%} against opening lines ({o['span']}) and {c['cover']:.1%} against closing "
-            f"lines ({c['span']}), short of the 52.4% needed to profit at standard -110 odds, although "
-            f"the line moved toward the pick before kickoff {o['moved_toward']:.0%} of the time. " + tail)
+    if "closing" in picks:
+        c = picks["closing"]
+        return (f"Treat them as an experiment: in walk-forward backtests the model's own spread covered "
+                f"{c['cover']:.1%} against closing lines ({c['span']}), short of the 52.4% needed to profit "
+                f"at -110. " + tail)
+    return "Treat them as an experiment. " + tail
 
 
 def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame, model, now,
@@ -280,8 +264,13 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "A sportsbook's price will be a little worse on both sides because of its cut, so a book "
         "only offers value on a team when its price beats the fair line.",
         "",
-        "The model pick is the side the model's own spread favors against the current line, with "
-        "the gap in points (under half a point is no edge). " + _pick_note(summary),
+        "The edge columns judge each bet by its expected value per $1 staked at the posted price, "
+        "using the model's own numbers before any blending with the line (its spread, total and win "
+        "chance run through the same score simulator, pushes included). The side with the higher "
+        f"value is shown when it reaches {EDGE_MIN_EV:.0%} (+3 cents per $1), as the team or side, "
+        "the price, the expected value and the model's chance of winning the bet; anything short is "
+        "no edge. Where a book posts no price for a spread or total it is assumed to be -110 and "
+        "marked -110*; moneylines are never assumed. " + _edge_note(summary),
         "",
     ]
     if len(upcoming):
@@ -305,10 +294,10 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
                       "They are backfilled walk-forward (each week predicted from earlier weeks only) "
                       "but with closing lines, so they flatter the model slightly. Every game since "
                       "is graded on the prediction logged before kickoff.", ""]
-        parts += ["### Model picks against the spread", "", pick_table(season_log), "",
-                  f"Break-even at standard -110 odds is {BREAK_EVEN:.1%}. Lines moving toward the "
-                  "model's pick (closing line value) is the quickest sign that it knows something "
-                  "the market doesn't yet.", ""]
+        parts += ["### Betting edges", "", edge_table(season_log), "",
+                  "One unit staked on every edge logged before kickoff (backfilled games are not "
+                  "included). Units are profit at the logged price; ROI is units per unit staked, "
+                  "pushes returning the stake.", ""]
         last_week = graded["week"].max()
         label = f"Week {int(last_week)}" if last_week < 17 else "Latest bowl and playoff"
         parts += [f"### {label} results", "",
@@ -340,7 +329,7 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
 
 
 def render_backtest(scores: dict, segments: pd.DataFrame, checks: dict, bootstrap: dict,
-                    seasons: tuple, picks: dict | None = None) -> str:
+                    seasons: tuple, edges: list[dict] | None = None) -> str:
     parts = [
         "# Walk-forward backtest",
         "",
@@ -365,17 +354,27 @@ def render_backtest(scores: dict, segments: pd.DataFrame, checks: dict, bootstra
               "| Comparison | Mean difference | 95% interval |", "|---|---|---|"]
     for name, (mean, lo, hi) in bootstrap.items():
         parts.append(f"| {name} | {mean:+.3f} | {lo:+.3f} to {hi:+.3f} |")
-    if picks:
-        parts += ["", "## Model picks against the spread", "",
-                  "The model's own spread (no market blend) against the line, picking whenever they "
-                  "differ by half a point or more, on FBS vs FBS games. "
-                  f"Break-even at standard -110 odds is {BREAK_EVEN:.1%}.", "",
-                  "| Picks against | Record (W-L-P) | Cover rate | 95% range | Line moved toward pick by kickoff |",
-                  "|---|---|---|---|---|"]
-        for label, r in picks.items():
-            moved = f"{r['moved_toward']:.1%} of {r['moved_games']}" if "moved_toward" in r else "–"
-            parts.append(f"| {label} | {r['wins']}-{r['losses']}-{r['pushes']} | {r['cover']:.1%} "
-                         f"| {r['cover_low']:.1%}–{r['cover_high']:.1%} | {moved} |")
+    if edges is not None:
+        parts += ["", "## Betting edges against closing lines", "",
+                  "The model's own numbers (no market blend), run through the same score simulator, "
+                  "priced at the consensus closing line on every game with one. A bet is an edge when "
+                  f"its expected value is at least {EDGE_MIN_EV:.0%} per unit staked; one unit on each, "
+                  "pushes returning the stake. Prices are the median of the books quoting the consensus "
+                  "line; the odds file has spread and total prices only through 2019, so later seasons "
+                  "are scored at an assumed -110 and shown separately. The 95% range on ROI is a "
+                  "bootstrap over bets.", "",
+                  "| Market | Prices | Seasons | Games priced | Edges | Record (W-L-P) | Units | ROI | 95% range |",
+                  "|---|---|---|---|---|---|---|---|---|"]
+        for r in edges:
+            if not r["games"]:
+                parts.append(f"| {MARKET_NAMES.get(r['market'], r['market'])} | no historical prices "
+                             "| – | 0 | – | – | – | – | – |")
+                continue
+            rng = f"{r['roi_low']:+.1%} to {r['roi_high']:+.1%}" if r["edges"] else "–"
+            roi = f"{r['roi']:+.1%}" if r["edges"] else "–"
+            parts.append(f"| {MARKET_NAMES.get(r['market'], r['market'])} | {r['prices']} | {r['span']} "
+                         f"| {r['games']} | {r['edges']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                         f"| {r['units']:+.1f} | {roi} | {rng} |")
     calib = checks["calibration"]
     parts += ["", "## Win-probability calibration", "",
               "| Predicted | Games | Mean predicted | Actual |", "|---|---|---|---|"]

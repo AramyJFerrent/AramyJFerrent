@@ -9,7 +9,7 @@ Seasons 2016–2025. Every game is predicted using only earlier weeks of its sea
 | Final (model + market + sim) | 7270 | 12.29 | 15.58 | 12.85 | 8.98 | 0.173 | 0.515 | 73.5% |
 | Model only | 7270 | 12.85 | 16.21 | 13.31 | 9.35 | 0.180 | 0.533 | 72.3% |
 | Elo baseline | 7270 | 13.42 | 16.90 | 14.04 | 9.85 | 0.188 | 0.554 | 70.6% |
-| Closing line | 7270 | 12.28 | 15.58 | 12.85 | 8.97 | 0.174 | 0.519 | 73.3% |
+| Closing line | 7270 | 12.28 | 15.58 | 12.85 | 8.97 | 0.172 | 0.514 | 73.3% |
 
 ## All games with a line (FCS opponents included), 2016–2025
 
@@ -18,7 +18,7 @@ Seasons 2016–2025. Every game is predicted using only earlier weeks of its sea
 | Final (model + market + sim) | 8284 | 12.27 | 15.53 | 12.82 | 8.93 | 0.157 | 0.472 | 76.0% |
 | Model only | 8284 | 12.96 | 16.34 | 13.29 | 9.36 | 0.164 | 0.492 | 75.0% |
 | Elo baseline | 8284 | 13.62 | 17.13 | 13.96 | 9.87 | 0.172 | 0.513 | 73.4% |
-| Closing line | 8284 | 12.26 | 15.53 | 12.82 | 8.93 | 0.158 | 0.477 | 75.9% |
+| Closing line | 8284 | 12.26 | 15.53 | 12.82 | 8.93 | 0.157 | 0.472 | 75.9% |
 
 ## FBS vs FBS, 2021–2025 (seasons not used for tuning)
 
@@ -27,7 +27,7 @@ Seasons 2016–2025. Every game is predicted using only earlier weeks of its sea
 | Final (model + market + sim) | 3864 | 12.13 | 15.29 | 12.50 | 8.76 | 0.177 | 0.527 | 72.7% |
 | Model only | 3864 | 12.73 | 15.97 | 12.99 | 9.14 | 0.185 | 0.546 | 71.2% |
 | Elo baseline | 3864 | 13.30 | 16.69 | 13.54 | 9.57 | 0.192 | 0.564 | 69.4% |
-| Closing line | 3864 | 12.12 | 15.29 | 12.51 | 8.75 | 0.179 | 0.533 | 72.5% |
+| Closing line | 3864 | 12.12 | 15.29 | 12.51 | 8.75 | 0.177 | 0.526 | 72.5% |
 
 ## By kind of game
 
@@ -56,15 +56,17 @@ Paired bootstrap of the per-game absolute margin error, FBS vs FBS games (negati
 | Model only vs Elo | -0.569 | -0.673 to -0.467 |
 | Model only vs closing line | +0.570 | +0.465 to +0.669 |
 
-## Model picks against the spread
+## Betting edges against closing lines
 
-The model's own spread (no market blend) against the line, picking whenever they differ by half a point or more, on FBS vs FBS games. Break-even at standard -110 odds is 52.4%.
+The model's own numbers (no market blend), run through the same score simulator, priced at the consensus closing line on every game with one. A bet is an edge when its expected value is at least 3% per unit staked; one unit on each, pushes returning the stake. Prices are the median of the books quoting the consensus line; the odds file has spread and total prices only through 2019, so later seasons are scored at an assumed -110 and shown separately. The 95% range on ROI is a bootstrap over bets.
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range | Line moved toward pick by kickoff |
-|---|---|---|---|---|
-| Opening line, 2016–2025 (games with one) | 3014-2896-103 | 51.0% | 49.7%–52.3% | 55.5% of 5188 |
-| Closing line, same 2016–2025 games | 2935-3010-114 | 49.4% | 48.1%–50.6% | – |
-| Closing line, 2016–2025 | 3227-3263-127 | 49.7% | 48.5%–50.9% | – |
+| Market | Prices | Seasons | Games priced | Edges | Record (W-L-P) | Units | ROI | 95% range |
+|---|---|---|---|---|---|---|---|---|
+| Spread | posted | 2016–2019 | 2876 | 2089 | 1008-1037-44 | -116.0 | -5.6% | -9.5% to -1.5% |
+| Spread | assumed -110 | 2016–2025 | 5408 | 4069 | 2005-1993-71 | -170.3 | -4.2% | -6.9% to -1.2% |
+| Moneyline | posted | 2016–2025 | 7072 | 4463 | 1659-2804-0 | +332.8 | +7.5% | -9.4% to +35.4% |
+| Total | posted | 2016–2019 | 3196 | 2367 | 1204-1137-26 | -40.6 | -1.7% | -5.2% to +2.0% |
+| Total | assumed -110 | 2016–2025 | 5088 | 3693 | 1928-1722-43 | +30.7 | +0.8% | -2.2% to +3.8% |
 
 ## Win-probability calibration
 

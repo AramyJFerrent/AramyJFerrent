@@ -3,30 +3,78 @@
     2016,
     2025
   ],
-  "picks": {
-    "opening": {
-      "games": 6013,
-      "wins": 3014,
-      "losses": 2896,
-      "pushes": 103,
-      "cover": 0.5099830795262267,
-      "cover_low": 0.49723790600005685,
-      "cover_high": 0.5227282530523965,
-      "moved_toward": 0.5551272166538165,
-      "moved_games": 5188,
-      "span": "2016\u20132025"
+  "edges": [
+    {
+      "market": "spread",
+      "prices": "posted",
+      "span": "2016\u20132019",
+      "games": 2876,
+      "edges": 2089,
+      "wins": 1008,
+      "losses": 1037,
+      "pushes": 44,
+      "units": -116.02786096638934,
+      "roi": -0.05554229821272826,
+      "roi_low": -0.09503671997939732,
+      "roi_high": -0.015179366278035527
     },
-    "closing": {
-      "games": 6617,
-      "wins": 3227,
-      "losses": 3263,
-      "pushes": 127,
-      "cover": 0.4972265023112481,
-      "cover_low": 0.4850619243593014,
-      "cover_high": 0.5093910802631948,
-      "span": "2016\u20132025"
+    {
+      "market": "spread",
+      "prices": "assumed -110",
+      "span": "2016\u20132025",
+      "games": 5408,
+      "edges": 4069,
+      "wins": 2005,
+      "losses": 1993,
+      "pushes": 71,
+      "units": -170.2720959976453,
+      "roi": -0.04184617743859555,
+      "roi_low": -0.06944938225070181,
+      "roi_high": -0.01188877716815524
+    },
+    {
+      "market": "moneyline",
+      "prices": "posted",
+      "span": "2016\u20132025",
+      "games": 7072,
+      "edges": 4463,
+      "wins": 1659,
+      "losses": 2804,
+      "pushes": 0,
+      "units": 332.75465825859476,
+      "roi": 0.07455851630262038,
+      "roi_low": -0.0936777665773759,
+      "roi_high": 0.3535409969094666
+    },
+    {
+      "market": "total",
+      "prices": "posted",
+      "span": "2016\u20132019",
+      "games": 3196,
+      "edges": 2367,
+      "wins": 1204,
+      "losses": 1137,
+      "pushes": 26,
+      "units": -40.60688434937235,
+      "roi": -0.01715542220083327,
+      "roi_low": -0.05247558698669614,
+      "roi_high": 0.02017905103487883
+    },
+    {
+      "market": "total",
+      "prices": "assumed -110",
+      "span": "2016\u20132025",
+      "games": 5088,
+      "edges": 3693,
+      "wins": 1928,
+      "losses": 1722,
+      "pushes": 43,
+      "units": 30.72727272727289,
+      "roi": 0.00832040962016596,
+      "roi_low": -0.022230632892696212,
+      "roi_high": 0.037786475641877794
     }
-  },
+  ],
   "fbs": {
     "Final (model + market + sim)": {
       "margin_mae": 12.287,

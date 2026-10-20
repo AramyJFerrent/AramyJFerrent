@@ -9,7 +9,9 @@ is the recorded game-time weather, a little better than a forecast.
 
 Pinnacle's complete 2016 line history is the market benchmark: its closing
 moneyline is scored on the same games, the model is blended with it, and the
-blend weight found there seeds the live predictor's.
+blend weight found there seeds the live predictor's. The same lines grade the
+model's betting edges on the moneyline (opening and closing) and the total;
+Pinnacle's file has no run lines.
 """
 
 from __future__ import annotations
@@ -22,9 +24,11 @@ from scipy.optimize import minimize
 from scipy.stats import nbinom, poisson
 
 from .config import PINNACLE_PATH
+from .edges import add_edges, edge_record
 from .features import FeatureBuilder
 from .market import MarketInverter, blend, devig, fit_blend
 from .model import RunModel
+from .simulate import line_probs
 
 log = logging.getLogger(__name__)
 
@@ -167,6 +171,37 @@ def paired_bootstrap(loss_a, loss_b, n: int = 5000, seed: int = 0) -> tuple:
     return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
 
 
+def roi_interval(units, n: int = 5000, seed: int = 0) -> tuple[float, float]:
+    """95% bootstrap interval on the return per bet."""
+    units = np.asarray(units, dtype=float)
+    if not len(units):
+        return float("nan"), float("nan")
+    rng = np.random.default_rng(seed)
+    means = np.array([units[rng.integers(0, len(units), len(units))].mean() for _ in range(n)])
+    return float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
+
+
+def edge_backtest(test: pd.DataFrame, own: pd.DataFrame) -> dict:
+    """Edge records on Pinnacle's lines from the model's own chances (``own``: ``home_win_prob``
+    and ``line_probs`` at each game's total), by market; None where there are no prices."""
+    lines = test[["game_id", "home_team", "away_team", "home_score", "away_score", "total_line", "over_price",
+                  "under_price"]].copy()
+    lines["model_home_prob"] = own["home_win_prob"].to_numpy()
+    for col in ("model_over_prob", "model_under_prob", "model_total_push_prob"):
+        lines[col] = own[col].to_numpy()
+    out = {}
+    for label, prefix in (("Moneyline, closing line", ""), ("Moneyline, opening line", "open_")):
+        frame = lines.assign(home_moneyline=test[f"{prefix}home_moneyline"].to_numpy(),
+                             away_moneyline=test[f"{prefix}away_moneyline"].to_numpy())
+        out[label] = edge_record(add_edges(frame), "moneyline")
+    out["Total, closing line"] = edge_record(add_edges(lines.assign(home_moneyline=np.nan, away_moneyline=np.nan)),
+                                             "total")
+    for r in out.values():
+        r["roi_low"], r["roi_high"] = roi_interval(r["per_bet"])
+    out["Run line"] = None
+    return out
+
+
 def load_pinnacle() -> pd.DataFrame:
     if not PINNACLE_PATH.exists():
         return pd.DataFrame()
@@ -188,6 +223,11 @@ def market_comparison(bt: pd.DataFrame, feats: pd.DataFrame, fb: FeatureBuilder,
     train = feats[feats["season"].between(2016 - window, 2015) & feats["completed"]]
     model = RunModel.fit(train, fb.chain(2016))
     test = test.reset_index(drop=True)
+    # The model's own chances for the edges, from its unblended simulation at Pinnacle's totals.
+    own_pred, own_sim = model.predict(test, n_sims=n_sims, seed=11)
+    own_pred = pd.concat([own_pred, line_probs(own_sim, np.full(len(test), np.nan), test["total_line"])], axis=1)
+    del own_sim
+    edges = edge_backtest(test, own_pred)
     own = model.expected_runs(test)
     inv = MarketInverter(model.sim, np.exp(np.asarray(model.inning)), ghost=False)
     market = inv.rates(test)
@@ -207,7 +247,7 @@ def market_comparison(bt: pd.DataFrame, feats: pd.DataFrame, fb: FeatureBuilder,
     total = test["home_score"] + test["away_score"]
     has_total = test["total_line"].notna()
     return {
-        "games": len(test), "weight": raw, "losses": losses,
+        "games": len(test), "weight": raw, "losses": losses, "edges": edges,
         "brier": {"model": float(np.mean((test["home_win_prob"] - y) ** 2)),
                   "close": float(np.mean((p_close - y) ** 2)),
                   "blend": float(np.mean((blended["home_win_prob"] - y) ** 2))},

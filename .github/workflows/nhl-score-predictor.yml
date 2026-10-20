@@ -46,6 +46,12 @@ jobs:
       - name: Run tests
         run: python -m pytest -q tests
 
+      # On pushes, read ESPN's scoreboard once and print the parsed lines and the
+      # raw odds objects, so a change shows whether the live lines still read cleanly.
+      - name: Check live sources
+        if: github.event_name == 'push'
+        run: python -m nhlpredictor -v check --raw
+
       - name: Update predictions
         if: github.event_name != 'push'
         run: python -m nhlpredictor -v update

@@ -54,7 +54,7 @@ jobs:
       # last season's, and the predictions page builds.
       - name: Check live sources
         if: github.event_name == 'push'
-        run: python -m mlbpredictor -v check
+        run: python -m mlbpredictor -v check --raw
 
       - name: Update predictions
         run: python -m mlbpredictor -v update

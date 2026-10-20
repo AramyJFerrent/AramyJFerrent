@@ -18,6 +18,7 @@ from scipy.stats import norm
 
 from .config import CACHE_DIR, TEAM_ALIASES, Hyperparams
 from .data import fetch
+from .edges import edge_frame, edge_record, has_edge
 from .features import FeatureBuilder
 from .model import ScoreModel
 
@@ -152,39 +153,71 @@ def without_starters(games: pd.DataFrame) -> pd.DataFrame:
     return games
 
 
-def model_margins(features: pd.DataFrame, seasons, window: int) -> pd.DataFrame:
-    """Out-of-sample model-only margins (no market, no simulation) for finished games."""
+def model_only_probs(features: pd.DataFrame, seasons, window: int, n_sims: int = 4000) -> pd.DataFrame:
+    """Out-of-sample model-only win, cover and over chances for finished games.
+
+    Each season's model (points map, blend and simulator) is fitted on earlier
+    seasons; the chances come from simulating its own expected points, before
+    the market blend, against the closing lines and, where ``features`` has a
+    ``midweek_line``, against the Wednesday line too.
+    """
     out = []
     for season in seasons:
         train = features[(features["season"] >= season - window) & (features["season"] < season)]
         test = features[(features["season"] == season) & features["completed"]].reset_index(drop=True)
         if test.empty or train.empty:
             continue
-        model = ScoreModel.fit(train, calibrate_scores=False)
-        out.append(test.assign(model_margin=model.model_means(test)["margin"]))
+        model = ScoreModel.fit(train)
+        own = model.model_only_means(test)
+        probs = model.model_only(test, n_sims=n_sims, seed=season)
+        test = test.assign(model_margin=own["margin"], model_total=own["total"],
+                           **{f"model_{c}": probs[c].to_numpy() for c in probs})
+        if "midweek_line" in test:
+            mid = model.model_only(test, n_sims=n_sims, seed=season, spread_line=test["midweek_line"])
+            test["midweek_home_cover_prob"] = mid["home_cover_prob"].to_numpy()
+            test["midweek_spread_push_prob"] = mid["spread_push_prob"].to_numpy()
+        out.append(test)
+        log.info("Model-only chances for %s: %d games", season, len(test))
     return pd.concat(out, ignore_index=True)
 
 
-def pick_record(df: pd.DataFrame, line_col: str, closing_col: str | None = None,
-                min_edge: float = 0.5) -> dict:
-    """Against-the-spread record of model picks where the model and line differ by ``min_edge``."""
-    line = df[line_col]
-    margin = df["home_score"] - df["away_score"]
-    edge, res = df["model_margin"] - line, margin - line
-    picked = line.notna() & (edge.abs() >= min_edge)
-    push = picked & (res == 0)
-    win = picked & ~push & (np.sign(edge) == np.sign(res))
-    w, l = int(win.sum()), int((picked & ~push & ~win).sum())
-    rate = w / (w + l) if w + l else float("nan")
-    half = 1.96 * np.sqrt(rate * (1 - rate) / (w + l)) if w + l else float("nan")
-    out = {"games": int(picked.sum()), "wins": w, "losses": l, "pushes": int(push.sum()),
-           "cover": rate, "cover_low": rate - half, "cover_high": rate + half}
+def closing_edges(df: pd.DataFrame) -> pd.DataFrame:
+    """Edges in every market at the closing lines and the prices posted with them."""
+    rows = df.rename(columns={"home_spread_odds": "home_spread_price", "away_spread_odds": "away_spread_price",
+                              "over_odds": "over_price", "under_odds": "under_price"})
+    return pd.concat([rows, edge_frame(rows)], axis=1)
+
+
+def midweek_edges(df: pd.DataFrame) -> pd.DataFrame:
+    """Spread edges at the Wednesday line. Those lines carry no prices, so -110 is assumed."""
+    rows = df[df["midweek_line"].notna()].assign(
+        closing_line=lambda d: d["spread_line"], spread_line=lambda d: d["midweek_line"],
+        home_spread_price=np.nan, away_spread_price=np.nan,
+        model_home_cover_prob=lambda d: d["midweek_home_cover_prob"],
+        model_spread_push_prob=lambda d: d["midweek_spread_push_prob"])
+    return pd.concat([rows, edge_frame(rows, markets=("spread",))], axis=1)
+
+
+def edge_summary(df: pd.DataFrame, market: str, closing_col: str | None = None, n_boot: int = 5000,
+                 seed: int = 0) -> dict:
+    """Edge record in ``market`` with a 95% bootstrap range on ROI and, for spreads graded at an
+    early line, how often the line then moved toward the edge by ``closing_col``."""
+    rec = edge_record(df, market)
+    units = rec.pop("unit_results")
+    rec["roi_low"] = rec["roi_high"] = float("nan")
+    if len(units):
+        idx = np.random.default_rng(seed).integers(0, len(units), size=(n_boot, len(units)))
+        rois = units[idx].mean(axis=1)
+        rec["roi_low"], rec["roi_high"] = float(np.percentile(rois, 2.5)), float(np.percentile(rois, 97.5))
     if closing_col:
-        move = df[closing_col] - line
-        moved = picked & (move != 0)
-        out["moved_toward"] = float((np.sign(move[moved]) == np.sign(edge[moved])).mean())
-        out["moved_games"] = int(moved.sum())
-    return out
+        picked = df[df[f"{market}_edge_pick"].map(has_edge)]
+        move = picked[closing_col] - picked["spread_line"]
+        sign = np.where(picked[f"{market}_edge_side"] == "home", 1.0, -1.0)
+        moved = (move != 0).to_numpy()
+        rec["moved_toward"] = float((np.sign(move.to_numpy()[moved]) == sign[moved]).mean()) \
+            if moved.any() else float("nan")
+        rec["moved_games"] = int(moved.sum())
+    return rec
 
 
 def tune(games, team_games, qbs, seasons, grid: dict, base: Hyperparams | None = None) -> pd.DataFrame:

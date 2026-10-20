@@ -302,7 +302,7 @@ def summarize(sim: dict) -> pd.DataFrame:
         "home_shutout_prob": (a == 0).mean(axis=1), "away_shutout_prob": (h == 0).mean(axis=1),
         "skip_bottom_prob": (~sim["home_batted_last"]).mean(axis=1),
         "walkoff_prob": sim["walkoff"].mean(axis=1),
-        "home_cover_prob": (margin >= 2).mean(axis=1),     # home -1.5
+        "home_cover_prob": (margin >= 2).mean(axis=1),     # home -1.5 (see line_probs for a posted line)
         "away_cover_prob": (margin <= -2).mean(axis=1),    # away -1.5
         "f5_home_win_prob": (f5 > 0).mean(axis=1), "f5_tie_prob": (f5 == 0).mean(axis=1),
         "f5_total": (sim["f5_home"] + sim["f5_away"]).mean(axis=1),
@@ -318,6 +318,28 @@ def over_prob(sim: dict, lines: np.ndarray) -> np.ndarray:
     total = sim["home"] + sim["away"]
     lines = np.asarray(lines, dtype=float)[:, None]
     return np.mean(total > lines, axis=1) + 0.5 * np.mean(total == lines, axis=1)
+
+
+def line_probs(sim: dict, home_line, total_line) -> pd.DataFrame:
+    """Win and push chances for each side of a run line and a total, from simulated scores.
+
+    ``home_line`` is the home side's run line (-1.5 when the home team gives
+    the runs, +1.5 when it gets them; the away side's line is its negative),
+    ``total_line`` the posted total. A whole-number line can push; NaN lines
+    give NaN."""
+    h, a = sim["home"], sim["away"]
+    hl = np.asarray(home_line, dtype=float)[:, None]
+    tl = np.asarray(total_line, dtype=float)[:, None]
+    cover = (h - a) + np.nan_to_num(hl)
+    total = (h + a) - np.nan_to_num(tl)
+    out = pd.DataFrame({
+        "model_home_cover_prob": (cover > 0).mean(axis=1), "model_away_cover_prob": (cover < 0).mean(axis=1),
+        "model_over_prob": (total > 0).mean(axis=1), "model_under_prob": (total < 0).mean(axis=1),
+        "model_total_push_prob": (total == 0).mean(axis=1),
+    })
+    out.loc[np.isnan(hl[:, 0]), ["model_home_cover_prob", "model_away_cover_prob"]] = np.nan
+    out.loc[np.isnan(tl[:, 0]), ["model_over_prob", "model_under_prob", "model_total_push_prob"]] = np.nan
+    return out
 
 
 def with_tables(params: SimParams, chain: MarkovChain) -> SimParams:

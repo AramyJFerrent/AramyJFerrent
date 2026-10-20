@@ -30,15 +30,19 @@ Paired bootstrap of the per-game absolute margin error (negative favors the firs
 | Model only vs Elo | -0.102 | -0.197 to -0.008 |
 | Model only vs closing line | +0.267 | +0.170 to +0.364 |
 
-## Model picks against the spread
+## Betting edges
 
-The model's own spread (no market blend) against the line, picking whenever they differ by half a point or more. Starting QBs here are each team's previous starter, so nothing is used that a Wednesday line could not know. Break-even at standard -110 odds is 52.4%.
+Each side of each market priced with the model alone (its own expected points run through the score simulator, before any blend with the line), betting one unit on the best side whenever its expected value is at least +3% at the price. Pushes return the stake. Starting QBs here are each team's previous starter, so nothing is used that a Wednesday line could not know. Closing lines and prices come from the nflverse schedule; the Wednesday lines (Westgate SuperContest) carry no prices, so -110 is assumed for them. The ROI range is a 95% bootstrap over bets.
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range | Line moved toward pick by kickoff |
-|---|---|---|---|---|
-| Wednesday line, 2015–2020 | 687-593-39 | 53.7% | 50.9%–56.4% | 50.0% of 1006 |
-| Closing line, same 2015–2020 games | 683-608-34 | 52.9% | 50.2%–55.6% | – |
-| Closing line, 2015–2025 | 1308-1224-65 | 51.7% | 49.7%–53.6% | – |
+| Market | Lines | Edges | Record (W-L-P) | Units | ROI | 95% range | Line moved toward edge by kickoff |
+|---|---|---|---|---|---|---|---|
+| Spread | Wednesday, 2015–2020 (-110 assumed) | 1032 | 537-466-29 | +22.2 | +2.1% | -3.7% to +7.8% | 48.7% of 788 |
+| Spread | closing, same 2015–2020 games | 1195 | 622-543-30 | +50.0 | +4.2% | -1.2% to +9.6% | – |
+| Spread | closing, 2015–2025 | 2288 | 1156-1075-57 | +15.4 | +0.7% | -3.2% to +4.5% | – |
+| Moneyline | closing, 2015–2025 | 2320 | 822-1492-6 | -102.4 | -4.4% | -10.3% to +1.6% | – |
+| Total | closing, 2015–2025 | 2197 | 1081-1096-20 | -73.6 | -3.3% | -7.5% to +0.7% | – |
+| Moneyline | Wednesday, 2015–2020 | no historical prices | | | | | |
+| Total | Wednesday, 2015–2020 | no historical prices | | | | | |
 
 ## Win-probability calibration
 

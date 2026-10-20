@@ -202,6 +202,28 @@ def over_prob(sim: dict, lines: np.ndarray) -> np.ndarray:
     return np.mean(total > lines, axis=1) + 0.5 * np.mean(total == lines, axis=1)
 
 
+def line_probs(sim: dict, home_lines, total_lines) -> pd.DataFrame:
+    """Puck-line and total outcome chances at each game's lines, overtime and the
+    shootout goal included. ``home_lines`` is the home team's line (-1.5 when it
+    gives the goal and a half); pushes are only possible on whole-number lines.
+    A missing line leaves that market's chances missing."""
+    margin = sim["home"] - sim["away"]
+    total = sim["home"] + sim["away"]
+    hl = np.asarray(home_lines, dtype=float)
+    tl = np.asarray(total_lines, dtype=float)
+    cover = margin + np.nan_to_num(hl)[:, None]
+    over = total - np.nan_to_num(tl)[:, None]
+    out = pd.DataFrame({
+        "model_home_cover_prob": np.mean(cover > 0, axis=1), "model_away_cover_prob": np.mean(cover < 0, axis=1),
+        "model_spread_push_prob": np.mean(cover == 0, axis=1),
+        "model_over_prob": np.mean(over > 0, axis=1), "model_under_prob": np.mean(over < 0, axis=1),
+        "model_total_push_prob": np.mean(over == 0, axis=1),
+    })
+    out.loc[np.isnan(hl), ["model_home_cover_prob", "model_away_cover_prob", "model_spread_push_prob"]] = np.nan
+    out.loc[np.isnan(tl), ["model_over_prob", "model_under_prob", "model_total_push_prob"]] = np.nan
+    return out
+
+
 # ---- fitting -------------------------------------------------------------
 
 def fit_from_states(states: pd.DataFrame, params: SimParams | None = None) -> SimParams:
