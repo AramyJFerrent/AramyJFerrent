@@ -1,30 +1,35 @@
 # UFC fight predictions
 
-Updated Mon Oct 19, 2026 03:28 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Tue Oct 20, 2026 09:43 AM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
 The fair odds are the American odds that match the win chance with no bookmaker margin: -200 means risk $200 to win $100, +200 means risk $100 to win $200. A sportsbook only offers value on a fighter when its price beats the fair line.
 
-Value vs. price flags a fighter whose price implies a chance at least 2 points below the final win chance, bookmaker margin included. In the walk-forward backtest these bets made money, mostly by backing favorites the market underrates (see backtest.md), but on approximate closing prices; treat it as an experiment, tracked live below.
+The three edge columns value every side of each market at its posted price: expected value (EV) is the average profit per $1 staked, from the model alone, before it is blended with the betting line (the "Model alone" win chance, with the same method and round models applied to it). A side is an edge when its EV is at least 3%; each cell names the best side if one clears that bar, else "no edge". Moneylines and props are never priced near -110, so a missing price is never assumed: without one, the round-total cell shows the model's fair odds at the line closest to even and the method cell each fighter's fair KO/TKO, submission and decision odds. Over 1.5 rounds means the fight passes 2:30 of round 2 (a decision is always over); finishes are assumed spread evenly within a round.
+
+A caution from the backtest (backtest.md): the model alone is well behind the market, so it finds a 3% edge in most fights, and those edges lost money against the dataset's closing prices, about 7% a bet on moneylines and 16% on method props, 2015–2026. Treat these columns as a live test of the model, tracked below, not as betting advice.
 
 ## UFC 333: Volkanovski vs. Evloev
 
 Saturday, October 24, 2026 · first bout locks Sat Oct 24, 10:00 AM ET
 
-| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Value vs. price |
-|---|---|---|---|---|---|---|---|---|
-| **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 49% – 51% Evloev | +105 / -105 | Volkanovski 50% (-110 / -110) | Volkanovski 44% | Volkanovski 16% / 5% / 28%<br>Evloev 13% / 6% / 33% | 60% | Evloev by decision (33%) | none |
-| **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 60% – 40% Dvalishvili | -150 / +150 | Yan 59% (-162 / +136) | Yan 51% | Yan 16% / 5% / 38%<br>Dvalishvili 6% / 6% / 29% | 67% | Yan by decision (38%) | none |
-| **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 49% – 51% Temirov | +105 / -105 | Kavanagh 50% (-112 / -108) | Kavanagh 43% | Kavanagh 10% / 6% / 32%<br>Temirov 24% / 4% / 22% | 55% | Kavanagh by decision (32%) | none |
-| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 51% – 49% Kuniev | -105 / +105 | Volkov 52% (-120 / +100) | Volkov 45% | Volkov 23% / 3% / 25%<br>Kuniev 24% / 3% / 22% | 47% | Volkov by decision (25%) | none |
-| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 48% – 52% Keita | +110 / -110 | Pico 51% (-115 / -105) | Pico 37% | Pico 10% / 5% / 33%<br>Keita 26% / 4% / 22% | 55% | Pico by decision (33%) | none |
-| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 63% – 37% Reyes | -170 / +170 | Murzakanov 64% (-205 / +170) | Murzakanov 40% | Murzakanov 42% / 5% / 16%<br>Reyes 22% / 3% / 12% | 28% | Murzakanov by KO/TKO (42%) | none |
-| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 17% – 83% Yakhyaev | +500 / -500 | Krylov 20% (+390 / -520) | Krylov 35% | Krylov 7% / 3% / 7%<br>Yakhyaev 47% / 26% / 10% | 17% | Yakhyaev by KO/TKO (47%) | none |
-| **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 48% – 52% Rowston | +105 / -105 | Magomedov 53% (-122 / +102) | Magomedov 32% | Magomedov 13% / 12% / 23%<br>Rowston 23% / 6% / 23% | 46% | Magomedov by decision (23%) | Rowston +102 (2 pts) |
-| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 51% – 49% Aliev | -105 / +105 | Dawson 53% (-122 / +102) | Dawson 44% | Dawson 9% / 17% / 26%<br>Aliev 10% / 8% / 31% | 56% | Aliev by decision (31%) | none |
-| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 21% – 79% Chopurov | +380 / -380 | Thicknesse 20% (+390 / -520) | Thicknesse 63% | Thicknesse 6% / 4% / 11%<br>Chopurov 19% / 14% / 46% | 57% | Chopurov by decision (46%) | none |
-| **Abubakar Vagaev** vs. **Jacob Malkoun**<br>MW, 3 rds | Vagaev 57% – 43% Malkoun | -135 / +135 | Vagaev 60% (-166 / +140) | Vagaev 38% | Vagaev 14% / 9% / 34%<br>Malkoun 13% / 7% / 23% | 57% | Vagaev by decision (34%) | none |
+| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 49% – 51% Evloev | +105 / -105 | Volkanovski 50% (-112 / -108) | Volkanovski 44% (+130) | Volkanovski 16% / 5% / 28%<br>Evloev 13% / 5% / 32% | 60% | Evloev by decision (32%) | Evloev (-108): EV +8.0%, model 56% | Under 4.5 rounds (+210): EV +16.6%, model 38% | no prices yet; fair KO / Sub / Dec<br>Volkanovski +580 / +2315 / +300<br>Evloev +585 / +1540 / +185 |
+| **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 62% – 38% Dvalishvili | -160 / +160 | Yan 61% (-175 / +145) | Yan 51% (-105) | Yan 16% / 6% / 39%<br>Dvalishvili 5% / 6% / 28% | 67% | Yan by decision (39%) | Dvalishvili (+145): EV +19.6%, model 49% | Under 4.5 rounds (+250): EV +7.1%, model 31% | no prices yet; fair KO / Sub / Dec<br>Yan +635 / +2090 / +205<br>Dvalishvili +1370 / +1275 / +190 |
+| **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 48% – 52% Temirov | +105 / -105 | Kavanagh 50% (-110 / -110) | Kavanagh 43% (+130) | Kavanagh 10% / 6% / 32%<br>Temirov 25% / 4% / 23% | 55% | Kavanagh by decision (32%) | Temirov (-110): EV +8.8%, model 57% | Over 2.5 rounds (-115): EV +7.3%, model 57% | no prices yet; fair KO / Sub / Dec<br>Kavanagh +1005 / +1775 / +250<br>Temirov +265 / +1950 / +300 |
+| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 52% – 48% Kuniev | -110 / +110 | Volkov 53% (-125 / +105) | Volkov 45% (+125) | Volkov 23% / 3% / 26%<br>Kuniev 24% / 3% / 21% | 47% | Volkov by decision (26%) | Kuniev (+105): EV +13.4%, model 55% | Under 2.5 rounds (+185): EV +40.6%, model 49% | no prices yet; fair KO / Sub / Dec<br>Volkov +405 / +3610 / +350<br>Kuniev +265 / +2565 / +315 |
+| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 48% – 52% Keita | +110 / -110 | Pico 51% (-115 / -105) | Pico 37% (+170) | Pico 10% / 5% / 33%<br>Keita 26% / 4% / 22% | 55% | Pico by decision (33%) | Keita (-105): EV +22.7%, model 63% | Over 1.5 rounds (-180): EV +5.7%, model 68% | no prices yet; fair KO / Sub / Dec<br>Pico +1260 / +2525 / +285<br>Keita +220 / +1795 / +280 |
+| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 65% – 35% Reyes | -185 / +185 | Murzakanov 66% (-225 / +185) | Murzakanov 40% (+150) | Murzakanov 43% / 5% / 17%<br>Reyes 21% / 2% / 12% | 28% | Murzakanov by KO/TKO (43%) | Reyes (+185): EV +70.3%, model 60% | no edge | no prices yet; fair KO / Sub / Dec<br>Murzakanov +275 / +3335 / +840<br>Reyes +175 / +2205 / +420 |
+| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 17% – 83% Yakhyaev | +485 / -485 | Krylov 20% (+380 / -500) | Krylov 35% (+185) | Krylov 7% / 3% / 7%<br>Yakhyaev 47% / 26% / 10% | 17% | Yakhyaev by KO/TKO (47%) | Krylov (+380): EV +68.7%, model 35% | Over 1.5 rounds (+200): EV +28.5%, model 43% | no prices yet; fair KO / Sub / Dec<br>Krylov +585 / +1455 / +610<br>Yakhyaev +170 / +425 / +1080 |
+| **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 48% – 52% Rowston | +110 / -110 | Magomedov 52% (-120 / +100) | Magomedov 32% (+210) | Magomedov 13% / 12% / 23%<br>Rowston 23% / 6% / 23% | 46% | Rowston by KO/TKO (23%) | Rowston (+100): EV +35.8%, model 68% | no edge | no prices yet; fair KO / Sub / Dec<br>Magomedov +1080 / +1200 / +525<br>Rowston +230 / +1130 / +240 |
+| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 52% – 48% Aliev | -105 / +105 | Dawson 53% (-125 / +105) | Dawson 44% (+130) | Dawson 9% / 17% / 26%<br>Aliev 10% / 8% / 30% | 56% | Aliev by decision (30%) | Aliev (+105): EV +15.8%, model 56% | Under 2.5 rounds (+190): EV +13.2%, model 39% | no prices yet; fair KO / Sub / Dec<br>Dawson +1260 / +610 / +355<br>Aliev +730 / +990 / +185 |
+| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 20% – 80% Chopurov | +400 / -400 | Thicknesse 19% (+410 / -550) | Thicknesse 63% (-170) | Thicknesse 5% / 4% / 11%<br>Chopurov 19% / 14% / 46% | 57% | Chopurov by decision (46%) | Thicknesse (+410): EV +220.6%, model 63% | Over 2.5 rounds (+124): EV +29.0%, model 58% | no prices yet; fair KO / Sub / Dec<br>Thicknesse +490 / +580 / +220<br>Chopurov +1030 / +1620 / +345 |
+| **Abubakar Vagaev** vs. **Jacob Malkoun**<br>MW, 3 rds | Vagaev 58% – 42% Malkoun | -135 / +135 | Vagaev 60% (-170 / +142) | Vagaev 38% (+165) | Vagaev 14% / 9% / 34%<br>Malkoun 12% / 7% / 22% | 57% | Vagaev by decision (34%) | Malkoun (+142): EV +50.1%, model 62% | Under 2.5 rounds (+250): EV +43.4%, model 41% | no prices yet; fair KO / Sub / Dec<br>Vagaev +990 / +1605 / +335<br>Malkoun +450 / +770 / +210 |
+| **Bolaji Oki** vs. **Daniel Santos**<br>FW, 3 rds | Oki 44% – 56% Santos | +125 / -125 | Oki 47% (+105 / -125) | Oki 40% (+150) | Oki 17% / 3% / 24%<br>Santos 26% / 6% / 24% | 49% | Santos by KO/TKO (26%) | Santos (-125): EV +7.6%, model 60% | Over 2.5 rounds (+135): EV +23.4%, model 52% | no prices yet; fair KO / Sub / Dec<br>Oki +555 / +3605 / +350<br>Santos +265 / +1520 / +285 |
+| **Kody Steele** vs. **Noah Gugnon**<br>LW, 3 rds | Steele 53% – 47% Gugnon | -110 / +110 | Steele 58% (-155 / +130) | Steele 27% (+275) | Steele 12% / 18% / 22%<br>Gugnon 14% / 18% / 15% | 37% | Steele by decision (22%) | Gugnon (+130): EV +68.7%, model 73% | no edge | no prices yet; fair KO / Sub / Dec<br>Steele +1545 / +1040 / +750<br>Gugnon +370 / +235 / +355 |
+| **Iasmin Lucindo** vs. **Nicolle Caliari**<br>W-SW, 3 rds | Lucindo 81% – 19% Caliari | -420 / +420 | Lucindo 76% (-375 / +295) | Lucindo 75% (-300) | Lucindo 9% / 11% / 60%<br>Caliari 2% / 4% / 14% | 74% | Lucindo by decision (60%) | no edge | no price yet; fair Over 2.5 -330, Under +330 | no prices yet; fair KO / Sub / Dec<br>Lucindo +1055 / +875 / -125<br>Caliari +4770 / +1985 / +445 |
 
 When it ends (either fighter):
 
@@ -38,27 +43,30 @@ When it ends (either fighter):
 | Murzakanov vs. Reyes | 41% | 21% | 9% |  |  | 28% |
 | Krylov vs. Yakhyaev | 51% | 23% | 9% |  |  | 17% |
 | Magomedov vs. Rowston | 28% | 17% | 9% |  |  | 46% |
-| Dawson vs. Aliev | 22% | 14% | 7% |  |  | 56% |
+| Dawson vs. Aliev | 22% | 15% | 7% |  |  | 56% |
 | Thicknesse vs. Chopurov | 21% | 14% | 7% |  |  | 57% |
-| Vagaev vs. Malkoun | 22% | 14% | 7% |  |  | 57% |
+| Vagaev vs. Malkoun | 21% | 14% | 7% |  |  | 57% |
+| Oki vs. Santos | 26% | 17% | 8% |  |  | 49% |
+| Steele vs. Gugnon | 34% | 20% | 9% |  |  | 37% |
+| Lucindo vs. Caliari | 12% | 9% | 5% |  |  | 74% |
 
 ## UFC Fight Night: Moicano vs. Nolan
 
 Saturday, October 31, 2026 · first bout locks Sat Oct 31, 5:00 PM ET
 
-| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Value vs. price |
-|---|---|---|---|---|---|---|---|---|
-| **Renato Moicano** vs. **Tom Nolan**<br>LW, 5 rds | Moicano 40% – 60% Nolan | +150 / -150 | no line yet | Moicano 40% | Moicano 16% / 10% / 14%<br>Nolan 25% / 15% / 20% | 35% | Nolan by KO/TKO (25%) | – |
-| **Randy Brown** vs. **Carlos Leal**<br>WW, 3 rds | Brown 51% – 49% Leal | -100 / +100 | no line yet | Brown 51% | Brown 22% / 5% / 24%<br>Leal 21% / 3% / 25% | 49% | Leal by decision (25%) | – |
-| **Yana Santos** vs. **Luana Santos**<br>W-BW, 3 rds | Santos 20% – 80% Santos | +410 / -410 | no line yet | Santos 20% | Santos 2% / 1% / 16%<br>Santos 9% / 19% / 52% | 68% | Santos by decision (52%) | – |
-| **Jean-Paul Lebosnoyani** vs. **Farman Hasanov**<br>WW, 3 rds | Lebosnoyani 62% – 38% Hasanov | -165 / +165 | no line yet | Lebosnoyani 62% | Lebosnoyani 15% / 13% / 34%<br>Hasanov 5% / 7% / 26% | 60% | Lebosnoyani by decision (34%) | – |
-| **Francis Marshall** vs. **Gaston Bolaños**<br>FW, 3 rds | Marshall 71% – 29% Bolaños | -240 / +240 | no line yet | Marshall 71% | Marshall 19% / 17% / 34%<br>Bolaños 7% / 2% / 21% | 55% | Marshall by decision (34%) | – |
-| **Azamat Bekoev** vs. **Andre Petroski**<br>MW, 3 rds | Bekoev 41% – 59% Petroski | +145 / -145 | no line yet | Bekoev 41% | Bekoev 20% / 5% / 16%<br>Petroski 19% / 20% / 20% | 36% | Petroski by decision (20%) | – |
-| **Rodrigo Sezinando** vs. **Theodor Berggren**<br>WW, 3 rds | Sezinando 41% – 59% Berggren | +145 / -145 | no line yet | Sezinando 41% | Sezinando 22% / 6% / 13%<br>Berggren 30% / 8% / 21% | 34% | Berggren by KO/TKO (30%) | – |
-| **Julian Erosa** vs. **JeongYeong Lee**<br>FW, 3 rds | Erosa 49% – 51% Lee | +105 / -105 | no line yet | Erosa 49% | Erosa 16% / 7% / 26%<br>Lee 21% / 5% / 25% | 51% | Erosa by decision (26%) | – |
-| **Nick Klein** vs. **Joe Kropschot**<br>MW, 3 rds, UFC debut: Kropschot | Klein 46% – 54% Kropschot | +115 / -115 | no line yet | Klein 46% | Klein 13% / 15% / 18%<br>Kropschot 26% / 12% / 16% | 33% | Kropschot by KO/TKO (26%) | – |
-| **Talita Alencar** vs. **Piera Rodriguez**<br>W-SW, 3 rds | Alencar 42% – 58% Rodriguez | +135 / -135 | no line yet | Alencar 42% | Alencar 3% / 7% / 32%<br>Rodriguez 5% / 4% / 49% | 81% | Rodriguez by decision (49%) | – |
-| **Lucia Szabová** vs. **Tainara Lisboa**<br>W-FLW, 3 rds, UFC debut: Szabová | Szabová 67% – 33% Lisboa | -205 / +205 | no line yet | Szabová 67% | Szabová 11% / 18% / 38%<br>Lisboa 4% / 7% / 23% | 60% | Szabová by decision (38%) | – |
+| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Renato Moicano** vs. **Tom Nolan**<br>LW, 5 rds | Moicano 40% – 60% Nolan | +150 / -150 | no line yet | Moicano 40% (+150) | Moicano 16% / 10% / 14%<br>Nolan 25% / 15% / 20% | 35% | Nolan by KO/TKO (25%) | no line yet | no price yet; fair Over 2.5 -105, Under +105 | no prices yet; fair KO / Sub / Dec<br>Moicano +540 / +895 / +605<br>Nolan +305 / +555 / +390 |
+| **Randy Brown** vs. **Carlos Leal**<br>WW, 3 rds | Brown 51% – 49% Leal | -100 / +100 | no line yet | Brown 51% (-100) | Brown 22% / 5% / 24%<br>Leal 21% / 3% / 25% | 49% | Leal by decision (25%) | no line yet | no price yet; fair Over 2.5 -115, Under +115 | no prices yet; fair KO / Sub / Dec<br>Brown +355 / +2030 / +320<br>Leal +375 / +3130 / +295 |
+| **Yana Santos** vs. **Luana Santos**<br>W-BW, 3 rds | Santos 20% – 80% Santos | +410 / -410 | no line yet | Santos 20% (+410) | Santos 2% / 1% / 16%<br>Santos 9% / 19% / 52% | 68% | Santos by decision (52%) | no line yet | no price yet; fair Over 2.5 -245, Under +245 | no prices yet; fair KO / Sub / Dec<br>Santos +4190 / +9065 / +515<br>Santos +955 / +425 / -105 |
+| **Jean-Paul Lebosnoyani** vs. **Farman Hasanov**<br>WW, 3 rds | Lebosnoyani 62% – 38% Hasanov | -165 / +165 | no line yet | Lebosnoyani 62% (-165) | Lebosnoyani 15% / 13% / 34%<br>Hasanov 5% / 7% / 26% | 60% | Lebosnoyani by decision (34%) | no line yet | no price yet; fair Over 2.5 -170, Under +170 | no prices yet; fair KO / Sub / Dec<br>Lebosnoyani +565 / +645 / +195<br>Hasanov +1770 / +1430 / +290 |
+| **Francis Marshall** vs. **Gaston Bolaños**<br>FW, 3 rds | Marshall 71% – 29% Bolaños | -240 / +240 | no line yet | Marshall 71% (-240) | Marshall 19% / 17% / 34%<br>Bolaños 7% / 2% / 21% | 55% | Marshall by decision (34%) | no line yet | no price yet; fair Over 2.5 -145, Under +145 | no prices yet; fair KO / Sub / Dec<br>Marshall +430 / +480 / +190<br>Bolaños +1400 / +4245 / +390 |
+| **Azamat Bekoev** vs. **Andre Petroski**<br>MW, 3 rds | Bekoev 41% – 59% Petroski | +145 / -145 | no line yet | Bekoev 41% (+145) | Bekoev 20% / 5% / 16%<br>Petroski 19% / 20% / 20% | 36% | Petroski by decision (20%) | no line yet | no price yet; fair Over 1.5 -125, Under +125 | no prices yet; fair KO / Sub / Dec<br>Bekoev +405 / +1865 / +530<br>Petroski +415 / +405 / +395 |
+| **Rodrigo Sezinando** vs. **Theodor Berggren**<br>WW, 3 rds | Sezinando 41% – 59% Berggren | +145 / -145 | no line yet | Sezinando 41% (+145) | Sezinando 22% / 6% / 13%<br>Berggren 30% / 8% / 21% | 34% | Berggren by KO/TKO (30%) | no line yet | no price yet; fair Over 1.5 -115, Under +115 | no prices yet; fair KO / Sub / Dec<br>Sezinando +355 / +1555 / +660<br>Berggren +240 / +1080 / +380 |
+| **Julian Erosa** vs. **JeongYeong Lee**<br>FW, 3 rds | Erosa 49% – 51% Lee | +105 / -105 | no line yet | Erosa 49% (+105) | Erosa 16% / 7% / 26%<br>Lee 21% / 5% / 25% | 51% | Erosa by decision (26%) | no line yet | no price yet; fair Over 2.5 -125, Under +125 | no prices yet; fair KO / Sub / Dec<br>Erosa +540 / +1265 / +285<br>Lee +385 / +1795 / +300 |
+| **Nick Klein** vs. **Joe Kropschot**<br>MW, 3 rds, UFC debut: Kropschot | Klein 46% – 54% Kropschot | +115 / -115 | no line yet | Klein 46% (+115) | Klein 13% / 15% / 18%<br>Kropschot 26% / 12% / 16% | 33% | Kropschot by KO/TKO (26%) | no line yet | no price yet; fair Over 1.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Klein +650 / +555 / +460<br>Kropschot +280 / +755 / +545 |
+| **Talita Alencar** vs. **Piera Rodriguez**<br>W-SW, 3 rds | Alencar 42% – 58% Rodriguez | +135 / -135 | no line yet | Alencar 42% (+135) | Alencar 3% / 7% / 32%<br>Rodriguez 5% / 4% / 49% | 81% | Rodriguez by decision (49%) | no line yet | no price yet; fair Over 2.5 -490, Under +490 | no prices yet; fair KO / Sub / Dec<br>Alencar +3155 / +1360 / +210<br>Rodriguez +2090 / +2235 / +105 |
+| **Lucia Szabová** vs. **Tainara Lisboa**<br>W-FLW, 3 rds, UFC debut: Szabová | Szabová 67% – 33% Lisboa | -205 / +205 | no line yet | Szabová 67% (-205) | Szabová 11% / 18% / 38%<br>Lisboa 4% / 7% / 23% | 60% | Szabová by decision (38%) | no line yet | no price yet; fair Over 2.5 -175, Under +175 | no prices yet; fair KO / Sub / Dec<br>Szabová +810 / +450 / +165<br>Lisboa +2540 / +1405 / +345 |
 
 When it ends (either fighter):
 
@@ -91,9 +99,18 @@ Log loss scores the win chances (lower is better; a coin flip scores 0.693, and 
 
 - Winner and method (six outcomes): log loss 1.585 on 448 fights, against 1.792 for guessing uniformly. The single most likely result happened 33% of the time.
 - Went the distance: predicted 48% on average, actual 41%.
-- Value-vs-price sides: 10-4, -0.3 units at one unit a bet.
 
 449 of these fights happened before the predictor went live. They are backfilled walk-forward (each fight predicted from earlier fights only, with models fitted on earlier years) using the odds dataset's approximate closing prices, which run only through March 2026, so later backfilled fights use the model alone. Every fight since is graded on the prediction logged before it started.
+
+### Edge record
+
+Every edge logged with a live prediction (the last one before the fight), one unit a bet at the price logged with it. Pushes return the stake (a no contest voids every bet; a draw refunds the moneyline).
+
+| Market | Edges | Record (W-L-P) | Units | ROI |
+|---|---|---|---|---|
+| Moneyline | 0 | 0-0-0 | +0.00 | – |
+| Round total | 0 | 0-0-0 | +0.00 | – |
+| Method of victory | 0 | 0-0-0 | +0.00 | – |
 
 ### Latest results: UFC Fight Night: Buckley vs. Malott
 
@@ -141,7 +158,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 5 | Dustin Poirier | 2096 | 229 | 22-9 | 2025-07-19 |
 | Welterweight | 1 | Islam Makhachev | 2278 | 233 | 18-1 | 2026-08-15 |
 |  | 2 | Shavkat Rakhmonov | 2401 | 407 | 7-0 | 2024-12-07 |
-|  | 3 | Max Holloway | 2190 | 210 | 24-9 | 2026-07-11 |
+|  | 3 | Max Holloway | 2190 | 211 | 24-9 | 2026-07-11 |
 |  | 4 | Carlos Prates | 2236 | 282 | 7-1 | 2026-05-02 |
 |  | 5 | Michael Morales | 2245 | 322 | 7-0 | 2025-11-15 |
 | Middleweight | 1 | Dricus Du Plessis | 2231 | 253 | 10-1 | 2026-07-18 |
