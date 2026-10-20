@@ -167,6 +167,22 @@ def over_prob(sim: Simulation, total: np.ndarray) -> np.ndarray:
     return ((sim.weights * (t > line)).sum(axis=1) + 0.5 * (sim.weights * (t == line)).sum(axis=1))
 
 
+def line_probs(sim: Simulation, spread, total) -> dict:
+    """The chances a bet needs, from one simulation: the home team beating
+    ``spread`` (its expected margin in the line) outright and landing on it,
+    and the total going over ``total`` and landing on it. NaN where there is no line. Named for its use on
+    the model-only simulation, where the betting edges come from."""
+    out = {}
+    for name, values, line in (("spread", sim.home - sim.away, spread), ("total", sim.home + sim.away, total)):
+        line = np.atleast_1d(np.asarray(line, dtype=float))
+        at = np.nan_to_num(line)[:, None]
+        above = (sim.weights * (values > at)).sum(axis=1)
+        on = (sim.weights * (values == at)).sum(axis=1)
+        out[name] = (np.where(np.isnan(line), np.nan, above), np.where(np.isnan(line), np.nan, on))
+    return {"model_home_cover_prob": out["spread"][0], "model_spread_push_prob": out["spread"][1],
+            "model_over_prob": out["total"][0], "model_total_push_prob": out["total"][1]}
+
+
 def spread_params(margin_sd: float, total_sd: float) -> tuple[float, float]:
     """Per-team SD and correlation that give these margin and total SDs."""
     sd = float(np.sqrt((margin_sd ** 2 + total_sd ** 2) / 4.0))

@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nbapredictor.espn import attach_lines, parse_injuries, parse_roster, parse_scoreboard
+from nbapredictor.espn import (_spread_price, _total_price, attach_lines, parse_injuries, parse_roster,
+                               parse_scoreboard)
 
 
 def competitor(side, abbr):
@@ -17,14 +18,15 @@ def payload():
                                     "away": {"open": {"odds": "+135"}, "close": {"odds": "+155"}}},
                       "pointSpread": {"home": {"open": {"line": "-3.5", "odds": "-110"},
                                                "close": {"line": "-4.5", "odds": "-110"}},
-                                      "away": {"open": {"line": "+3.5"}, "close": {"line": "+4.5"}}},
+                                      "away": {"open": {"line": "+3.5"}, "close": {"line": "+4.5", "odds": "-105"}}},
                       "total": {"over": {"open": {"line": "o222.5"}, "close": {"line": "o224.5", "odds": "-110"}},
-                                "under": {"open": {"line": "u222.5"}, "close": {"line": "u224.5"}}}}],
+                                "under": {"open": {"line": "u222.5"}, "close": {"line": "u224.5", "odds": "EVEN"}}}}],
         }]},
         {"id": "2", "date": "2026-10-21T02:30Z", "competitions": [{
             "competitors": [competitor("home", "GS"), competitor("away", "LAL")],
             "odds": [{"provider": {"name": "ESPN BET"}, "details": "LAL -2", "overUnder": 230.0, "spread": 2.0,
-                      "homeTeamOdds": {"moneyLine": 110}, "awayTeamOdds": {"moneyLine": -130}}],
+                      "homeTeamOdds": {"moneyLine": 110, "spreadOdds": -112.0},
+                      "awayTeamOdds": {"moneyLine": -130, "spreadOdds": -108.0}, "overOdds": -115.0}],
         }]},
         {"id": "3", "date": "2026-10-21T00:00Z", "competitions": [{
             "competitors": [competitor("home", "UTAH"), competitor("away", "SA")]}]},
@@ -78,3 +80,15 @@ def test_roster_lists_players_and_their_injuries_in_either_layout():
     assert list(roster["player_id"]) == [1, 2] and list(hurt["player_id"]) == [2]
     roster, hurt = parse_roster(grouped, "MIA")
     assert list(roster["player_id"]) == [3] and hurt.empty
+
+
+def test_reads_spread_and_total_prices_in_every_format():
+    board = parse_scoreboard(payload()).set_index("home_team")
+    ny, gs, ut = board.loc["NYK"], board.loc["GSW"], board.loc["UTA"]
+    assert (ny.home_spread_price, ny.away_spread_price, ny.over_price, ny.under_price) == (-110, -105, -110, 100)
+    assert (gs.home_spread_price, gs.away_spread_price, gs.over_price) == (-112, -108, -115)
+    assert np.isnan(gs.under_price) and np.isnan(ut.home_spread_price) and np.isnan(ut.over_price)
+    current = {"pointSpread": {"away": {"current": {"line": "+2.5", "odds": "+100"}}},
+               "total": {"under": {"current": {"line": "u230.5", "odds": "-120"}}}}
+    assert _spread_price(current, "away") == 100 and _total_price(current, "under") == -120
+    assert np.isnan(_spread_price(current, "away", "open")) and np.isnan(_total_price({}, "over"))

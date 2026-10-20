@@ -42,13 +42,14 @@ Each run:
    season.
 3. Reads ESPN's injury report, current rosters and lines for the next two
    game days, and projects each team's lineup and minutes.
-4. Predicts every game in that window that has not started and writes the
+4. Predicts every game in that window that has not started, checks the
+   spread, moneyline and total for a betting edge, and writes the
    predictions to `predictions/log.csv`, replacing earlier ones for the same
    game. A game's prediction stops changing at tip-off, so the logged one is
-   always the last made before the game, with the injury news and line it
-   was made against.
+   always the last made before the game, with the injury news, line, prices
+   and edges it was made against.
 5. Fills in final scores and grades the season so far against the betting
-   line and Elo.
+   line and Elo, and grades the edges.
 6. Commits the results back to the repo (only when something changed).
 
 Nothing needs to be done between seasons. A weekly off-season run picks up
@@ -133,10 +134,44 @@ those seasons (they match in 99% of games), so the closing benchmark uses
 sportsbookreview's own closing lines there: 10.11 points of margin error
 from 2015-16 on, against 10.2 in the report.
 
+## Betting edges
+
+For every game the predictions page checks each side of three markets, the
+spread, the moneyline and the total, for expected value: the profit per $1
+bet at the posted price,
+
+    EV = P(win) × (decimal odds − 1) − P(lose)
+
+where a push returns the stake. The chances come from the model alone,
+before it is blended with the line: the model-only simulation that gives
+its own win chance also gives its chance of covering, landing exactly on
+the spread, going over and landing on the total. The best side is an edge
+when its EV is 3% or more (`EDGE_MIN_EV` in `nbapredictor/edges.py`), and
+the page shows it as `NYK -4.5 (-110): EV +5.0%, model 55%`, or "no edge",
+or "no line yet".
+
+Prices come from ESPN's odds: both moneylines and the price of each side of
+the spread and the total. When a spread or total price is missing it is
+assumed to be −110 and marked `-110*`; a moneyline is never assumed. The
+edge of each market is logged with every prediction, so the one that counts
+is the last before tip-off, and it is graded once the game is final: 1 unit
+flat, at the logged price. The page keeps a season record per market
+(edges, W-L-P, units, ROI) and how often the spread moved toward the
+model's first spread edge before tip-off.
+
+The backtest (`python -m nbapredictor backtest`) computes the same edges
+walk-forward against the archived closing lines (closing moneylines;
+spreads and totals at an assumed −110, since the archives have no prices
+for them) and against opening spreads and totals, and writes the record of
+each market with a 95% bootstrap range on its ROI to
+[`predictions/backtest.md`](predictions/backtest.md).
+
 ## Can it beat the betting line?
 
-Picking a side whenever the model's own spread (before blending) and the
-line differ by a point or more. Break-even at standard −110 odds is 52.4%.
+Before the edges were based on expected value, the predictor picked a side
+whenever the model's own spread (before blending) and the line differed by a
+point or more. The walk-forward test of those picks, against break-even of
+52.4% at standard −110 odds:
 
 | Picks against | Record (W-L-P) | Cover rate | 95% range | Line then moved toward the pick |
 |---|---|---|---|---|
@@ -158,10 +193,9 @@ What this means:
 
 So the honest answer is the same as the NFL predictor's: better than the
 line early, by a margin too thin to count on, and not better than the
-closing line. The predictions page tracks the model's picks live against
-the first line each game had and the last one before tip-off, and how often
-the line moves toward the pick, so this keeps being tested on games the
-model has never seen.
+closing line. The predictions page now tracks the expected-value edges
+live, with how often the spread moves toward the model's first spread edge,
+so this keeps being tested on games the model has never seen.
 
 ## Running it yourself
 
@@ -189,9 +223,9 @@ Downloads are cached in `.cache/` (ignored by git).
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games with missing players, season grading, model picks, latest results, power ratings, top players |
+| `predictions/README.md` | Upcoming games with missing players and betting edges, season grading, edge record, latest results, power ratings, top players |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before tip-off), with the line and injury news it was made against and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before tip-off), with the line, prices, model-only chances against the line, betting edges and injury news it was made against, and the final score once known |
 | `predictions/ratings.csv` | Team power ratings in points per 100 possessions, with today's injury cost |
 | `predictions/players.csv` | The top-rated players and their expected minutes |
 | `predictions/model.json` | The fitted coefficients, blend weights and simulator settings |
