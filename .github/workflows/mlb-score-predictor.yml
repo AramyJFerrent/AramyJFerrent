@@ -82,5 +82,14 @@ jobs:
             exit 0
           fi
           git commit -m "Update MLB predictions ($(date -u +'%Y-%m-%d %H:%M UTC'))"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # The other predictors commit to the same branch, and their runs
+          # often finish together; rebase and retry if one pushes first.
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "Push rejected (attempt ${attempt}); retrying."
+            sleep $((attempt * 5))
+          done
+          exit 1
