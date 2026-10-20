@@ -42,10 +42,6 @@ DIVISION_ABBR = {
     "Women's Featherweight": "W-FW", "Catch Weight": "CW", "Open Weight": "OW",
 }
 
-# Smallest gap between the final win chance and the chance a price implies
-# (bookmaker margin included) that counts as a value side.
-VALUE_EDGE = 0.02
-
 # First year scored in backtests, and the first year whose fights train models.
 # Ratings and profiles are built from every fight since 1994.
 FIRST_TRAIN_YEAR = 2005

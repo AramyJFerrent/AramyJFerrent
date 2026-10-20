@@ -58,23 +58,16 @@ Chance given to the predicted favorite against how often favorites won.
 | 85–90% | 210 | 87.2% | 92.4% |
 | 90–100% | 64 | 91.7% | 90.6% |
 
-## Can it beat the price?
+## Betting edges
 
-One-unit moneyline bets on a fighter whenever a win chance beats the chance the price implies by at least the edge shown, at the dataset's prices with the bookmaker margin left in. The live page flags the final win chance at a 2-point edge.
+The live page's edges, valued the same way: every side of each market at the dataset's price (approximate closing lines, bookmaker margin left in), with the model alone, before the market blend. A side is bet, one unit, when its expected value is at least 3%; only the best side of each market per fight. The 95% range resamples the bets.
 
-| Win chance used | Edge | Bets | Return per bet | 95% range | Units | On underdogs |
-|---|---|---|---|---|---|---|
-| Final win chance | 0 pts | 2269 | +2.6% | -1.4% to +6.7% | +59 | 30% |
-| Final win chance | 2 pts | 734 | +7.5% | +0.7% to +14.2% | +55 | 27% |
-| Final win chance | 3 pts | 387 | +13.4% | +3.8% to +23.0% | +52 | 31% |
-| Final win chance | 5 pts | 113 | +19.4% | +0.1% to +38.2% | +22 | 40% |
-| Final win chance | 8 pts | 19 | +47.3% | -6.2% to +106.7% | +9 | 42% |
-| Model alone | 0 pts | 4376 | -7.1% | -11.0% to -3.2% | -312 | 75% |
-| Model alone | 2 pts | 3810 | -7.1% | -11.4% to -2.8% | -269 | 78% |
-| Model alone | 3 pts | 3546 | -7.3% | -11.8% to -2.9% | -260 | 79% |
-| Model alone | 5 pts | 3039 | -6.1% | -11.0% to -1.2% | -186 | 82% |
-| Model alone | 8 pts | 2313 | -4.6% | -10.3% to +1.3% | -106 | 85% |
+| Market | Fights with prices | Edges | Record (W-L-P) | Units | ROI | 95% range | Model's average EV | On underdogs |
+|---|---|---|---|---|---|---|---|---|
+| Moneyline | 4986 | 3972 | 1476-2480-16 | -293.2 | -7.4% | -11.7% to -3.3% | +37.8% | 78% |
+| Round total | no historical prices | – | – | – | – | – | – | – |
+| Method of victory | 4488 | 4244 | 554-3681-9 | -665.4 | -15.7% | -23.3% to -7.9% | +61.6% | 100% |
 
-- The model alone loses money against the price: what it knows that the market does not is outweighed by what the market knows that it does not (debutants' regional records, injuries, camp news). Its edges are mostly on underdogs.
-- The final win chance, which keeps most of the market's view and stretches favorites, made money at every edge, mostly on favorites the market underrates: the favorite-longshot bias.
-- Caveats: the edge thresholds were compared after the fact; the dataset does not say when its prices were captured or whether they are one book's or the best available; and real stakes would move real prices. The live page tracks these bets on the prices it logged before each fight, which is the test that counts.
+- "Model's average EV" is what the model expected to make per unit on the bets it took; the ROI is what they made. The gap is how much the model overrates its own edges: what it knows that the market does not is outweighed by what the market knows that it does not (debutants' regional records, injuries, camp news).
+- Method props whose six prices add up to less than 100% implied (no bookmaker margin, so not prices anyone could bet; about a third of the dataset's 2025–26 props) are left out.
+- Caveats: the dataset does not say when its prices were captured or whether they are one book's or the best available, and real stakes would move real prices. The live page tracks these edges on the prices it logged before each fight, which is the test that counts.

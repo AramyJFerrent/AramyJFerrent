@@ -2,7 +2,8 @@
 
 Historical moneylines and method props come from the Ultimate UFC Dataset
 (2010 onward; its capture time is undocumented, so treat them as approximate
-closing prices). Live prices seen by the predictor are appended to
+closing prices). Live prices seen by the predictor (moneylines, and method
+and round-total props when ESPN posts them) are appended to
 ``data/odds_log.csv`` with a timestamp, so the record of prices keeps growing
 after the dataset stops.
 """
@@ -17,20 +18,18 @@ import requests
 
 from .config import CACHE_DIR, DATA_DIR, ODDS_URL
 from .data import fetch
+from .edges import implied_prob
 from .names import normalize_name, pair_key
 
 log = logging.getLogger(__name__)
 
 ODDS_LOG_PATH = DATA_DIR / "odds_log.csv"
-ODDS_LOG_COLUMNS = ["captured_at", "bout_key", "date", "fighter_a", "fighter_b", "odds_a", "odds_b", "source"]
 METHOD_ODDS = ["odds_a_ko", "odds_a_sub", "odds_a_dec", "odds_b_ko", "odds_b_sub", "odds_b_dec"]
+# Round total: the x.5 line and the over and under prices.
+ROUND_ODDS = ["rounds_line", "over_price", "under_price"]
+PRICE_COLUMNS = ["odds_a", "odds_b", *METHOD_ODDS, *ROUND_ODDS]
+ODDS_LOG_COLUMNS = ["captured_at", "bout_key", "date", "fighter_a", "fighter_b", *PRICE_COLUMNS, "source"]
 ODDS_COLUMNS = ["odds_a", "odds_b", *METHOD_ODDS, "odds_source"]
-
-
-def implied_prob(american) -> np.ndarray:
-    ml = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return np.where(ml < 0, -ml / (-ml + 100.0), 100.0 / (ml + 100.0))
 
 
 def devig(price_a, price_b) -> np.ndarray:
@@ -46,12 +45,6 @@ def devig_methods(df: pd.DataFrame) -> pd.DataFrame | None:
         return None
     p = pd.DataFrame({c.removeprefix("odds_"): implied_prob(df[c]) for c in METHOD_ODDS}, index=df.index)
     return p.div(p.sum(axis=1), axis=0)
-
-
-def decimal(american) -> np.ndarray:
-    ml = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return np.where(ml < 0, 1 + 100.0 / -ml, 1 + ml / 100.0)
 
 
 def load_dataset_odds(max_age_hours: float = 24.0) -> pd.DataFrame:
@@ -109,29 +102,36 @@ def load_odds_log() -> pd.DataFrame:
     if not ODDS_LOG_PATH.exists():
         return pd.DataFrame(columns=ODDS_LOG_COLUMNS)
     lg = pd.read_csv(ODDS_LOG_PATH)
+    for col in ODDS_LOG_COLUMNS:          # logs from before the props were kept
+        if col not in lg:
+            lg[col] = np.nan
     lg["captured_at"] = pd.to_datetime(lg["captured_at"], utc=True)
     lg["date"] = pd.to_datetime(lg["date"])
-    return lg
+    return lg[ODDS_LOG_COLUMNS]
 
 
 def append_odds_log(rows: pd.DataFrame, now: pd.Timestamp) -> pd.DataFrame:
     """Record live prices, skipping ones unchanged since the last capture of that bout."""
     lg = load_odds_log()
-    rows = rows.dropna(subset=["odds_a", "odds_b"])
+    rows = rows.copy()
+    for col in PRICE_COLUMNS:
+        rows[col] = pd.to_numeric(rows[col], errors="coerce") if col in rows else np.nan
+    rows = rows[rows[PRICE_COLUMNS].notna().any(axis=1)]
     if rows.empty:
         return lg
     new = pd.DataFrame({
         "captured_at": now, "bout_key": rows["bout_key"].to_numpy(),
         "date": pd.to_datetime(rows["date"]).to_numpy(),
         "fighter_a": rows["fighter_a"].to_numpy(), "fighter_b": rows["fighter_b"].to_numpy(),
-        "odds_a": rows["odds_a"].astype(float).to_numpy(), "odds_b": rows["odds_b"].astype(float).to_numpy(),
+        **{col: rows[col].astype(float).to_numpy() for col in PRICE_COLUMNS},
         "source": rows["odds_source"].to_numpy(),
     })
     if len(lg):
         last = lg.sort_values("captured_at").drop_duplicates("bout_key", keep="last").set_index("bout_key")
-        same = (new["bout_key"].map(last["odds_a"]) == new["odds_a"]) & \
-               (new["bout_key"].map(last["odds_b"]) == new["odds_b"]) & \
-               (new["bout_key"].map(last["fighter_a"]) == new["fighter_a"])
+        same = new["bout_key"].map(last["fighter_a"]) == new["fighter_a"]
+        for col in PRICE_COLUMNS:
+            before = new["bout_key"].map(last[col])
+            same &= (before == new[col]) | (before.isna() & new[col].isna())
         new = new[~same]
     if new.empty:
         return lg
@@ -145,7 +145,7 @@ def append_odds_log(rows: pd.DataFrame, now: pd.Timestamp) -> pd.DataFrame:
 
 
 def attach_logged_odds(bouts: pd.DataFrame, odds: pd.DataFrame, lg: pd.DataFrame) -> pd.DataFrame:
-    """Fill bouts the dataset misses with the last logged live price before the bout."""
+    """Fill bouts the dataset misses with the last logged live prices (moneyline and method) before the bout."""
     if lg.empty:
         return odds
     last = lg.sort_values("captured_at").drop_duplicates(["bout_key", "date"], keep="last").copy()
@@ -156,8 +156,13 @@ def attach_logged_odds(bouts: pd.DataFrame, odds: pd.DataFrame, lg: pd.DataFrame
     rows = last.loc[which[hit].astype(int)].set_index(which.index[hit])
     flipped = rows["fighter_a"].map(normalize_name).to_numpy() != bouts.loc[hit, "fighter_a"].map(normalize_name).to_numpy()
     odds = odds.copy()
-    odds.loc[hit, "odds_a"] = np.where(flipped, rows["odds_b"], rows["odds_a"])
-    odds.loc[hit, "odds_b"] = np.where(flipped, rows["odds_a"], rows["odds_b"])
+    pairs = [("odds_a", "odds_b")] + [(f"odds_a_{m}", f"odds_b_{m}") for m in ("ko", "sub", "dec")]
+    for a_col, b_col in pairs:
+        if a_col not in rows:
+            continue
+        a, b = pd.to_numeric(rows[a_col], errors="coerce"), pd.to_numeric(rows[b_col], errors="coerce")
+        odds.loc[hit, a_col] = np.where(flipped, b, a)
+        odds.loc[hit, b_col] = np.where(flipped, a, b)
     odds.loc[hit, "odds_source"] = rows["source"].to_numpy()
     return odds
 

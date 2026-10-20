@@ -10,12 +10,15 @@ on fight week). Each run:
    last ten years, including every fight so far this year.
 3. Reads the upcoming cards (UFCStats, ESPN, ``data/manual_card.csv``) and
    predicts every bout that has not started, with current prices.
-4. Writes those predictions to the log. A bout's prediction is replaced on
-   every run until its card segment starts, then locked, so the logged one is
-   always the last made before the fight. Bouts that drop off a card before
+4. Writes those predictions to the log, with the betting edge on each market
+   (moneyline, round total, method; see edges.py) at the prices of the
+   moment. A bout's prediction is replaced on every run until its card
+   segment starts, then locked, so the logged one (and its edges) is always
+   the last made before the fight. Bouts that drop off a card before
    they start (injuries, replacements) are removed, and a replacement bout
    gets its own prediction.
-5. Fills in results for finished bouts and grades the year so far.
+5. Fills in results for finished bouts and grades the year so far,
+   including the record of the logged edges.
 """
 
 from __future__ import annotations
@@ -31,10 +34,11 @@ from . import report
 from .cards import fetch_card
 from .config import DIVISIONS, OUTPUT_DIR, Hyperparams
 from .data import current_year, load_data, refresh_data
+from .edges import EDGE_COLUMNS, attach_edges
 from .features import FeatureBuilder
-from .model import METHODS, FightModel
+from .model import METHODS, MODEL_ONLY, FightModel
 from .names import match_name, normalize_name, pair_key
-from .odds import append_odds_log, market_odds
+from .odds import METHOD_ODDS, ROUND_ODDS, append_odds_log, market_odds
 
 log = logging.getLogger(__name__)
 
@@ -45,7 +49,11 @@ RATINGS_PATH = OUTPUT_DIR / "ratings.csv"
 README_PATH = OUTPUT_DIR / "README.md"
 
 PRED_COLUMNS = (["p_a", "p_model", "p_market", "p_glicko"] + [f"{s}_{m}" for s in "ab" for m in METHODS]
-                + ["p_distance"] + [f"r{r}" for r in range(1, 6)] + ["best_side", "best_method", "best_prob"])
+                + ["p_distance"] + [f"r{r}" for r in range(1, 6)] + ["best_side", "best_method", "best_prob"]
+                + MODEL_ONLY)
+# Prices of the props (method of victory, round total) and the model-alone
+# over chance at the posted round line; then each market's frozen edge.
+PROP_PRICES = [*METHOD_ODDS, *ROUND_ODDS]
 LOG_COLUMNS = [
     "bout_key", "event", "order", "date", "start", "division", "rounds", "title", "fighter_a", "fighter_b",
     "a_id", "b_id",
@@ -53,13 +61,15 @@ LOG_COLUMNS = [
     "a_fights", "b_fights", "predicted_at", "source",
     "first_predicted_at", "first_odds_a", "first_odds_b", "first_p_model",
     "status", "winner", "method", "end_round",
+    *PROP_PRICES, "model_over_prob", *EDGE_COLUMNS, "end_seconds",
 ]
 # The first prediction made once a price exists, kept so the model's early
 # view can be compared with where the price moved by fight time.
 FIRST_COLUMNS = ["first_predicted_at", "first_odds_a", "first_odds_b", "first_p_model"]
 TIME_COLUMNS = ["start", "predicted_at", "first_predicted_at"]
 ROUNDED = [c for c in PRED_COLUMNS if c not in ("best_side", "best_method")] + [
-    "elo_prob", "a_age", "b_age", "first_p_model"]
+    "elo_prob", "a_age", "b_age", "first_p_model", "model_over_prob"] + [
+    c for c in EDGE_COLUMNS if c.endswith(("_prob", "_ev"))]
 # How far ahead to look for cards. UFC runs most weeks, so this covers the
 # next card and usually the one after.
 DEFAULT_DAYS = 15
@@ -84,9 +94,11 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, now, source: str) 
     rows["first_odds_b"] = rows["odds_b"]
     rows["first_p_model"] = rows["p_model"].where(has_price)
     rows["status"] = "upcoming"
-    for col in ("winner", "method", "end_round"):
+    for col in ("winner", "method", "end_round", "end_seconds"):
         rows[col] = np.nan
-    return rows[LOG_COLUMNS]
+    for col in ("odds_a", "odds_b", *PROP_PRICES):
+        rows[col] = pd.to_numeric(rows[col], errors="coerce")
+    return attach_edges(rows)[LOG_COLUMNS]
 
 
 def load_log() -> pd.DataFrame:
@@ -195,6 +207,7 @@ def grade(entries: pd.DataFrame, bouts: pd.DataFrame) -> pd.DataFrame:
         entries.at[idx, "winner"] = winner
         entries.at[idx, "method"] = r.method
         entries.at[idx, "end_round"] = r.end_round
+        entries.at[idx, "end_seconds"] = getattr(r, "end_seconds", np.nan)
         entries.at[idx, "status"] = {"draw": "draw", "nc": "no contest"}.get(r.winner, "final")
     return entries
 
@@ -225,6 +238,7 @@ def backfill(entries: pd.DataFrame, feats: pd.DataFrame, year: int, window: int,
     rows["winner"] = done["winner"].to_numpy()
     rows["method"] = done["method"].to_numpy()
     rows["end_round"] = done["end_round"].to_numpy()
+    rows["end_seconds"] = done["end_seconds"].to_numpy() if "end_seconds" in done else np.nan
     rows["status"] = done["winner"].map({"draw": "draw", "nc": "no contest"}).fillna("final").to_numpy()
     return rows
 
