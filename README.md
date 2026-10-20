@@ -2,14 +2,18 @@
 
 Self-updating models that predict the outcome of every game in six sports: the NFL, college football (FBS), the NBA, MLB, the NHL and the UFC. Each one rates teams or fighters from detailed historical data, blends its own view with the betting market, and simulates every game or bout thousands of times to produce a full forecast, not just a pick. Scheduled GitHub Actions keep the data, the models and the predictions current through each season, and every predictor grades its own finished games and is scored by a walk-forward backtest against the betting market or a strong baseline such as Elo.
 
-| Predictor | Predicts | Latest predictions | Backtest |
-| --- | --- | --- | --- |
-| [NFL](NFLScorePredictor) | Final score, win probability, 80% points range | [Predictions](NFLScorePredictor/predictions/README.md) | 2015–2025 |
-| [College football](CollegeFootballScorePredictor) | Final score, win probability, 80% points range | [Predictions](CollegeFootballScorePredictor/predictions/README.md) | 2016–2025 |
-| [NBA](NBAScorePredictor) | Final score, win probability, overtime, spread and total, missing players, 80% points range | [Predictions](NBAScorePredictor/predictions/README.md) | 2015-16 – 2025-26 |
-| [MLB](MLBScorePredictor) | Final score, win probability, extra innings, run line, 80% runs range | [Predictions](MLBScorePredictor/predictions/README.md) | 2016–2025 |
-| [NHL](NHLScorePredictor) | Final score, win probability, overtime, 80% goals range | [Predictions](NHLScorePredictor/predictions/README.md) | 2016-17 – 2025-26 |
-| [UFC](UFCFightPredictor) | Win probability by KO/TKO, submission and decision, and by round | [Predictions](UFCFightPredictor/predictions/README.md) | 2015–2026 |
+| Predictor | Predicts | Betting edges | Latest predictions | Backtest |
+| --- | --- | --- | --- | --- |
+| [NFL](NFLScorePredictor) | Final score, win probability, 80% points range | Spread, moneyline, total | [Predictions](NFLScorePredictor/predictions/README.md) | 2015–2025 |
+| [College football](CollegeFootballScorePredictor) | Final score, win probability, 80% points range | Spread, moneyline, total | [Predictions](CollegeFootballScorePredictor/predictions/README.md) | 2016–2025 |
+| [NBA](NBAScorePredictor) | Final score, win probability, overtime, spread and total, missing players, 80% points range | Spread, moneyline, total | [Predictions](NBAScorePredictor/predictions/README.md) | 2015-16 – 2025-26 |
+| [MLB](MLBScorePredictor) | Final score, win probability, extra innings, run line, 80% runs range | Run line, moneyline, total | [Predictions](MLBScorePredictor/predictions/README.md) | 2016–2025 |
+| [NHL](NHLScorePredictor) | Final score, win probability, overtime, 80% goals range | Puck line, moneyline, total | [Predictions](NHLScorePredictor/predictions/README.md) | 2016-17 – 2025-26 |
+| [UFC](UFCFightPredictor) | Win probability by KO/TKO, submission and decision, and by round | Moneyline, round total, method of victory | [Predictions](UFCFightPredictor/predictions/README.md) | 2015–2026 |
+
+## Betting edges
+
+Every predictions page also says, for each game or bout, whether the model sees an edge in each market in the table above. An edge is a bet whose expected return at the posted price is at least 3% of the stake, judged by the model's own forecast before it is blended with the betting line (the blended forecast leans so heavily on the market that it seldom disagrees with it). Posted prices are used wherever the source gives them; a spread or total without one is assumed to be -110, and any other market without a price shows the model's fair odds instead. Each edge is frozen at the start of the game, graded afterward and tallied by market in units won and ROI, and each backtest scores the same rule wherever historical prices exist. The backtests mostly find the closing line hard to beat, so treat the edges as an experiment, not betting advice.
 
 ## Running a predictor
 
