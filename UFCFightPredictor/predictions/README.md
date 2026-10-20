@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Tue Oct 20, 2026 09:43 AM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Tue Oct 20, 2026 02:06 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -16,11 +16,11 @@ Saturday, October 24, 2026 · first bout locks Sat Oct 24, 10:00 AM ET
 
 | Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 49% – 51% Evloev | +105 / -105 | Volkanovski 50% (-112 / -108) | Volkanovski 44% (+130) | Volkanovski 16% / 5% / 28%<br>Evloev 13% / 5% / 32% | 60% | Evloev by decision (32%) | Evloev (-108): EV +8.0%, model 56% | Under 4.5 rounds (+210): EV +16.6%, model 38% | no prices yet; fair KO / Sub / Dec<br>Volkanovski +580 / +2315 / +300<br>Evloev +585 / +1540 / +185 |
-| **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 62% – 38% Dvalishvili | -160 / +160 | Yan 61% (-175 / +145) | Yan 51% (-105) | Yan 16% / 6% / 39%<br>Dvalishvili 5% / 6% / 28% | 67% | Yan by decision (39%) | Dvalishvili (+145): EV +19.6%, model 49% | Under 4.5 rounds (+250): EV +7.1%, model 31% | no prices yet; fair KO / Sub / Dec<br>Yan +635 / +2090 / +205<br>Dvalishvili +1370 / +1275 / +190 |
+| **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 48% – 52% Evloev | +110 / -110 | Volkanovski 50% (-108 / -112) | Volkanovski 44% (+130) | Volkanovski 16% / 5% / 27%<br>Evloev 14% / 6% / 33% | 60% | Evloev by decision (33%) | Evloev (-112): EV +6.1%, model 56% | Under 4.5 rounds (+210): EV +16.6%, model 38% | no prices yet; fair KO / Sub / Dec<br>Volkanovski +580 / +2315 / +300<br>Evloev +585 / +1540 / +185 |
+| **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 60% – 40% Dvalishvili | -150 / +150 | Yan 59% (-162 / +136) | Yan 51% (-105) | Yan 16% / 5% / 38%<br>Dvalishvili 6% / 6% / 29% | 67% | Yan by decision (38%) | Dvalishvili (+136): EV +15.2%, model 49% | Under 4.5 rounds (+250): EV +7.1%, model 31% | no prices yet; fair KO / Sub / Dec<br>Yan +635 / +2090 / +205<br>Dvalishvili +1370 / +1275 / +190 |
 | **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 48% – 52% Temirov | +105 / -105 | Kavanagh 50% (-110 / -110) | Kavanagh 43% (+130) | Kavanagh 10% / 6% / 32%<br>Temirov 25% / 4% / 23% | 55% | Kavanagh by decision (32%) | Temirov (-110): EV +8.8%, model 57% | Over 2.5 rounds (-115): EV +7.3%, model 57% | no prices yet; fair KO / Sub / Dec<br>Kavanagh +1005 / +1775 / +250<br>Temirov +265 / +1950 / +300 |
 | **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 52% – 48% Kuniev | -110 / +110 | Volkov 53% (-125 / +105) | Volkov 45% (+125) | Volkov 23% / 3% / 26%<br>Kuniev 24% / 3% / 21% | 47% | Volkov by decision (26%) | Kuniev (+105): EV +13.4%, model 55% | Under 2.5 rounds (+185): EV +40.6%, model 49% | no prices yet; fair KO / Sub / Dec<br>Volkov +405 / +3610 / +350<br>Kuniev +265 / +2565 / +315 |
-| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 48% – 52% Keita | +110 / -110 | Pico 51% (-115 / -105) | Pico 37% (+170) | Pico 10% / 5% / 33%<br>Keita 26% / 4% / 22% | 55% | Pico by decision (33%) | Keita (-105): EV +22.7%, model 63% | Over 1.5 rounds (-180): EV +5.7%, model 68% | no prices yet; fair KO / Sub / Dec<br>Pico +1260 / +2525 / +285<br>Keita +220 / +1795 / +280 |
+| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 50% – 50% Keita | -100 / +100 | Pico 53% (-125 / +105) | Pico 37% (+170) | Pico 10% / 5% / 35%<br>Keita 25% / 4% / 21% | 56% | Pico by decision (35%) | Keita (+105): EV +28.8%, model 63% | Over 1.5 rounds (-180): EV +5.7%, model 68% | no prices yet; fair KO / Sub / Dec<br>Pico +1260 / +2525 / +285<br>Keita +220 / +1795 / +280 |
 | **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 65% – 35% Reyes | -185 / +185 | Murzakanov 66% (-225 / +185) | Murzakanov 40% (+150) | Murzakanov 43% / 5% / 17%<br>Reyes 21% / 2% / 12% | 28% | Murzakanov by KO/TKO (43%) | Reyes (+185): EV +70.3%, model 60% | no edge | no prices yet; fair KO / Sub / Dec<br>Murzakanov +275 / +3335 / +840<br>Reyes +175 / +2205 / +420 |
 | **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 17% – 83% Yakhyaev | +485 / -485 | Krylov 20% (+380 / -500) | Krylov 35% (+185) | Krylov 7% / 3% / 7%<br>Yakhyaev 47% / 26% / 10% | 17% | Yakhyaev by KO/TKO (47%) | Krylov (+380): EV +68.7%, model 35% | Over 1.5 rounds (+200): EV +28.5%, model 43% | no prices yet; fair KO / Sub / Dec<br>Krylov +585 / +1455 / +610<br>Yakhyaev +170 / +425 / +1080 |
 | **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 48% – 52% Rowston | +110 / -110 | Magomedov 52% (-120 / +100) | Magomedov 32% (+210) | Magomedov 13% / 12% / 23%<br>Rowston 23% / 6% / 23% | 46% | Rowston by KO/TKO (23%) | Rowston (+100): EV +35.8%, model 68% | no edge | no prices yet; fair KO / Sub / Dec<br>Magomedov +1080 / +1200 / +525<br>Rowston +230 / +1130 / +240 |
@@ -39,7 +39,7 @@ When it ends (either fighter):
 | Yan vs. Dvalishvili | 10% | 9% | 7% | 4% | 3% | 67% |
 | Kavanagh vs. Temirov | 23% | 15% | 8% |  |  | 55% |
 | Volkov vs. Kuniev | 28% | 17% | 8% |  |  | 47% |
-| Pico vs. Keita | 22% | 15% | 8% |  |  | 55% |
+| Pico vs. Keita | 22% | 15% | 8% |  |  | 56% |
 | Murzakanov vs. Reyes | 41% | 21% | 9% |  |  | 28% |
 | Krylov vs. Yakhyaev | 51% | 23% | 9% |  |  | 17% |
 | Magomedov vs. Rowston | 28% | 17% | 9% |  |  | 46% |
@@ -138,7 +138,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |---|---|---|---|---|---|---|
 | Flyweight | 1 | Manel Kape | 1978 | 283 | 8-3 | 2026-06-20 |
 |  | 2 | Joshua Van | 1942 | 260 | 11-1 | 2026-09-19 |
-|  | 3 | Brandon Moreno | 1895 | 236 | 12-7-2 | 2026-09-12 |
+|  | 3 | Brandon Moreno | 1895 | 237 | 12-7-2 | 2026-09-12 |
 |  | 4 | Alexandre Pantoja | 1894 | 237 | 14-5 | 2026-09-19 |
 |  | 5 | Tatsuro Taira | 1963 | 317 | 8-2 | 2026-05-09 |
 | Bantamweight | 1 | Merab Dvalishvili | 2150 | 235 | 14-3 | 2025-12-06 |
@@ -168,7 +168,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 5 | Brendan Allen | 2123 | 228 | 16-4 | 2026-10-10 |
 | Light Heavyweight | 1 | Magomed Ankalaev | 2188 | 241 | 13-2-1 | 2026-07-25 |
 |  | 2 | Robert Whittaker | 2156 | 230 | 18-7 | 2026-07-11 |
-|  | 3 | Carlos Ulberg | 2126 | 272 | 10-1 | 2026-04-11 |
+|  | 3 | Carlos Ulberg | 2126 | 273 | 10-1 | 2026-04-11 |
 |  | 4 | Jiri Prochazka | 2174 | 329 | 6-3 | 2026-04-11 |
 |  | 5 | Paulo Costa | 2107 | 268 | 8-4 | 2026-04-11 |
 | Heavyweight | 1 | Jon Jones | 2438 | 281 | 22-1 | 2024-11-16 |
