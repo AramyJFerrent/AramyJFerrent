@@ -58,7 +58,9 @@ def cmd_backtest(args) -> None:
     ]}
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), extra))
+    # No free history of NHL prices exists, so every market's edges are graded live only.
+    edges = {market: None for market in ("spread", "moneyline", "total")}
+    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), extra, edges))
     for label, df in scores.items():
         print(label)
         print(df.round(4).to_string(index=False))
@@ -133,6 +135,39 @@ def cmd_ratings(args) -> None:
         print(goalie_table(fb, season, today).to_string(index=False))
 
 
+def cmd_check(args) -> None:
+    """Read ESPN's scoreboard once and print what was parsed, without predicting."""
+    import json
+
+    import requests
+
+    from . import espn
+    from .config import DISPLAY_TZ
+
+    today = pd.Timestamp.now(tz=DISPLAY_TZ).normalize()
+    dates = pd.date_range(today, today + pd.Timedelta(days=args.ahead)).date
+    board = espn.fetch_scoreboards(dates)
+    print(f"ESPN scoreboard {dates[0]} to {dates[-1]}: {len(board)} games, "
+          f"{int(board['home_moneyline'].notna().sum())} with a moneyline, "
+          f"{int(board['home_spread_line'].notna().sum())} with a puck line, "
+          f"{int(board['total_line'].notna().sum())} with a total")
+    with pd.option_context("display.width", 250, "display.max_columns", 30):
+        print(board.to_string(index=False))
+    if args.raw:
+        # The odds objects as ESPN sends them, so a change in their layout shows in the log.
+        for day in dates:
+            params = {"dates": pd.Timestamp(day).strftime("%Y%m%d")}
+            try:
+                payload = requests.get(espn.SCOREBOARD, params=params, timeout=30).json()
+            except (requests.RequestException, ValueError) as exc:
+                print(f"--- {day}: {exc}")
+                continue
+            for event in (payload.get("events") or [])[:args.raw]:
+                comp = (event.get("competitions") or [{}])[0]
+                print(f"--- {event.get('shortName') or event.get('name')} odds:")
+                print(json.dumps(comp.get("odds"), indent=1)[:6000])
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="nhlpredictor", description=__doc__)
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -166,6 +201,12 @@ def main(argv=None) -> None:
     p = sub.add_parser("summarize", help="rebuild season summaries from play-by-play")
     p.add_argument("--all", action="store_true", help="rebuild every season, not just the current one")
     p.set_defaults(func=cmd_summarize)
+
+    p = sub.add_parser("check", help="read ESPN's lines and probable goalies once and print them")
+    p.add_argument("--ahead", type=int, default=2, help="days after today to read (default 2)")
+    p.add_argument("--raw", type=int, nargs="?", const=2, default=0,
+                   help="also print the raw odds objects of this many games a day (default 2)")
+    p.set_defaults(func=cmd_check)
 
     p = sub.add_parser("ratings", help="print current team ratings and likely starting goalies")
     p.set_defaults(func=cmd_ratings)

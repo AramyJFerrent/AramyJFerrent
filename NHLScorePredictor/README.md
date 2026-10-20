@@ -34,14 +34,15 @@ Each run:
    rebuilds this season's summaries in `data/games/`.
 2. Refits the goal-rate model and the score simulator on the last four seasons
    plus every game played so far this season.
-3. Fetches moneylines, totals and probable starting goalies from ESPN for the
-   next three game days.
-4. Predicts every game in that window that has not started and writes the
-   predictions to `predictions/log.csv`, replacing earlier ones for the same
-   game. A game's prediction stops changing at puck drop, so the logged one is
-   always the last made before the game.
+3. Fetches moneylines, the puck line, totals (with their prices) and probable
+   starting goalies from ESPN for the next three game days.
+4. Predicts every game in that window that has not started, looks for betting
+   edges on the puck line, moneyline and total, and writes the predictions and
+   edges to `predictions/log.csv`, replacing earlier ones for the same game. A
+   game's prediction stops changing at puck drop, so the logged one is always
+   the last made before the game.
 5. Fills in final scores and grades the season so far, against the betting
-   line once lines are logged.
+   line once lines are logged, and grades each logged edge.
 6. Commits the results back to the repo (only when something besides a
    timestamp changed).
 
@@ -69,6 +70,7 @@ Actions tab with **Run workflow**.
 | Goal rates | Poisson regression of each team's regulation goals (both goalies in) on the ratings, the opposing starter, Elo, home ice, back-to-backs and playoffs, on top of the current league scoring level | `model.py` |
 | Market | Backs each team's goal rate out of the de-vigged moneyline and total, through the same simulator, and blends `w × model + (1 − w) × market`. `w` is fitted on logged games with lines (an even split until a few hundred exist). | `market.py` |
 | Simulator | 10,000 games per matchup, minute by minute. Score effects (tied teams play for overtime late; trailing teams press), goalie pulls at the rate teams really pull at each deficit and minute, empty-net and six-on-five goals, three-on-three overtime and shootouts, or sudden-death playoff overtime. Fitted on recent seasons' game states and tuned so the overtime rate matches history. | `simulate.py` |
+| Edges | Expected value of each side of the puck line, moneyline and total at the posted price, from the model's own numbers before the blend (see below) | `edges.py` |
 | Backtest | Walk-forward by day, scored against Elo and a goals-only Poisson model | `backtest.py` |
 
 Ratings knobs were tuned on 2013-14 to 2016-17 (`python -m nhlpredictor tune`).
@@ -128,12 +130,28 @@ Full tables and calibration buckets are in
 
 Not known yet. No free source has a long history of NHL lines, so the model
 could not be backtested against the market. Instead every live prediction
-logs the moneyline and total it was made against, and the predictions page
-grades the model, the market and the blend on the same games, and tracks the
-model's picks: the side where its own win chance beats the de-vigged
-moneyline by 3 points or more, with units won at the logged price and how
-often the line moves toward the pick before puck drop. The blend weight starts
-at an even split and is refitted from these games as they accumulate.
+logs the lines and prices it was made against, and the predictions page
+grades the model, the market and the blend on the same games.
+
+It also shows and tracks betting edges on three markets: the puck line
+(±1.5), the moneyline and the total, all including overtime and the shootout
+(the shootout winner is credited with one goal, as in the official score).
+Each side is priced with the model's own numbers, before blending with the
+market: the win chance from the model's goal rates, and the puck-line cover
+and over/under chances from a separate simulation of those same rates, at the
+posted line and with pushes on whole-number totals. A side is an edge when
+its expected value per unit staked at the posted price is at least 3%:
+
+    EV = p_win × (decimal odds − 1) − p_loss      (a push returns the stake)
+
+and the side with the highest EV is shown. A total whose prices are missing
+is assumed to be -110 (marked `-110*`); the puck line and moneyline are never
+assumed, so without a price the page shows the model's fair odds instead.
+Edges are refreshed with every run until puck drop, frozen there, graded on
+the final score, and summed per market (W-L-P, units, return per bet) at the
+logged price; the page also counts how often the moneyline moves toward the
+edge the model saw on the first line. The blend weight starts at an even
+split and is refitted from these games as they accumulate.
 
 ## Running it yourself
 
@@ -146,6 +164,7 @@ pip install -r requirements.txt
 python -m nhlpredictor update              # refresh and predict the next three game days
 python -m nhlpredictor update --days 1 --no-espn
 python -m nhlpredictor ratings             # current ratings and likely starting goalies
+python -m nhlpredictor check --raw         # print ESPN's parsed lines and the raw odds objects
 python -m nhlpredictor backtest            # walk-forward 2016-17 to 2025-26, writes predictions/backtest.md
 python -m nhlpredictor tune --save         # re-tune the ratings engine on 2013-14 to 2016-17
 python -m nhlpredictor summarize --all     # rebuild every season's summaries from play-by-play
@@ -160,9 +179,9 @@ Downloads are cached in `.cache/` (ignored by git).
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games, season grading, model picks, latest results, power ratings, goalies |
+| `predictions/README.md` | Upcoming games with puck-line, moneyline and total edges, season grading, edge record, latest results, power ratings, goalies |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before puck drop), with the line it was made against and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before puck drop), with the lines and prices it was made against, the model-only cover and over/under chances, each market's edge (`{spread,moneyline,total}_edge_{pick,side,line,price,prob,ev}`) and the final score once known |
 | `predictions/ratings.csv` | Team ratings in goals per game |
 | `predictions/model.json` | The fitted coefficients, blend weight and simulator settings |
 | `data/games/` | Per-season schedules, team-game, goalie-game and game-state summaries |
@@ -176,7 +195,7 @@ Downloads are cached in `.cache/` (ignored by git).
   the signal in testing; a time-zone feature is the next candidate.
 - A history of betting lines. No free source has one for the NHL, so the blend
   weight starts at an even split and is fitted as the live log fills, and the
-  model's record against the line is tested live, not in the backtest.
+  model's edges against the line are tested live, not in the backtest.
 - Goalie news before ESPN lists it. Until a starter is named, the prediction
   uses the probability-weighted value of the likely starters.
 
