@@ -25,6 +25,7 @@ import pandas as pd
 from . import report
 from .config import FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_games, load_summaries, update_summaries
+from .edges import EDGE_COLUMNS, edge_frame
 from .features import FeatureBuilder
 from .model import ScoreModel
 from .weather import forecast_wind
@@ -37,18 +38,29 @@ MODEL_PATH = OUTPUT_DIR / "model.json"
 RATINGS_PATH = OUTPUT_DIR / "ratings.csv"
 README_PATH = OUTPUT_DIR / "README.md"
 
+# Posted American prices for each side (nflverse schedule); spread and total
+# prices can be missing, and edges then assume -110.
+PRICE_COLUMNS = ["home_spread_price", "away_spread_price", "over_price", "under_price",
+                 "home_moneyline", "away_moneyline"]
+# Model-only chances (simulated from the model before the market blend) behind the edges.
+MODEL_PROB_COLUMNS = ["model_home_win_prob", "model_away_win_prob", "model_tie_prob", "model_home_cover_prob",
+                      "model_spread_push_prob", "model_over_prob", "model_total_push_prob"]
 LOG_COLUMNS = [
     "game_id", "season", "week", "kickoff", "away_team", "home_team", "away_qb", "home_qb",
     "pred_away", "pred_home", "pred_margin", "pred_total", "model_margin", "model_total",
     "headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
     "one_score_prob", "away_low", "away_high", "home_low", "home_high",
-    "spread_line", "total_line", "wind_forecast", "elo_spread", "predicted_at", "source",
-    "first_predicted_at", "first_spread_line", "first_model_margin",
+    "spread_line", "total_line", *PRICE_COLUMNS, *MODEL_PROB_COLUMNS, *EDGE_COLUMNS,
+    "wind_forecast", "elo_spread", "predicted_at", "source",
+    "first_predicted_at", "first_spread_line", "first_model_margin", "first_spread_edge_side",
     "away_score", "home_score",
 ]
-# The first prediction made once a line exists, kept so picks can be graded
-# against the early-week line and line movement measured up to kickoff.
-FIRST_COLUMNS = ["first_predicted_at", "first_spread_line", "first_model_margin"]
+# The first prediction made once a line exists, kept so line movement can be
+# measured from it up to kickoff.
+FIRST_COLUMNS = ["first_predicted_at", "first_spread_line", "first_model_margin", "first_spread_edge_side"]
+# Text columns that may be entirely empty, kept as plain objects so an empty
+# column read back as numbers can still take text.
+TEXT_COLUMNS = [c for c in EDGE_COLUMNS if c.endswith(("_pick", "_side"))] + ["first_spread_edge_side"]
 
 
 def select_upcoming(games: pd.DataFrame, season: int, now: pd.Timestamp, weeks: int) -> pd.DataFrame:
@@ -72,11 +84,17 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, wind: pd.Series | 
         "elo_spread": feats["elo_spread"], "predicted_at": now, "source": "live",
     })
     for col in ("headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
-                "one_score_prob", "away_low", "away_high", "home_low", "home_high"):
+                "one_score_prob", "away_low", "away_high", "home_low", "home_high", *MODEL_PROB_COLUMNS):
         rows[col] = preds[col].to_numpy()
+    for col, source in zip(PRICE_COLUMNS, ("home_spread_odds", "away_spread_odds", "over_odds", "under_odds",
+                                           "home_moneyline", "away_moneyline")):
+        rows[col] = feats[source].to_numpy()
+    rows = pd.concat([rows, edge_frame(rows)], axis=1)
     rows["first_predicted_at"] = rows["predicted_at"]
     rows["first_spread_line"] = rows["spread_line"]
     rows["first_model_margin"] = rows["model_margin"]
+    rows["first_spread_edge_side"] = rows["spread_edge_side"]
+    rows[TEXT_COLUMNS] = rows[TEXT_COLUMNS].astype(object)
     rows["away_score"] = np.nan
     rows["home_score"] = np.nan
     return rows[LOG_COLUMNS]
@@ -91,6 +109,7 @@ def load_log() -> pd.DataFrame:
             entries[col] = "live" if col == "source" else np.nan
     for col in ("kickoff", "predicted_at", "first_predicted_at"):
         entries[col] = pd.to_datetime(entries[col], utc=True)
+    entries[TEXT_COLUMNS] = entries[TEXT_COLUMNS].astype(object)
     return entries[LOG_COLUMNS]
 
 
@@ -122,7 +141,7 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) ->
     columns, which keep the first prediction that had a betting line.
     """
     if len(new) and len(entries):
-        new = new.copy()
+        new = new.astype({c: object for c in TEXT_COLUMNS})
         prev = entries.drop_duplicates("game_id", keep="last").set_index("game_id")
         seen = new["game_id"].map(prev["first_spread_line"]).notna()
         for col in FIRST_COLUMNS:

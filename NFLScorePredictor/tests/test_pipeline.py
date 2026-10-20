@@ -1,9 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nflpredictor.backtest import pick_record
 from nflpredictor.pipeline import LOG_COLUMNS, select_upcoming, update_log
-from nflpredictor.report import grade, model_pick, pick_table
+from nflpredictor.report import grade
 
 
 def schedule():
@@ -63,14 +62,15 @@ def test_grade_compares_model_and_line():
 
 
 def test_fair_moneyline_matches_win_chance():
-    from nflpredictor.report import american_odds, fair_moneyline
+    from nflpredictor.edges import fair_american
+    from nflpredictor.report import fair_moneyline
 
-    assert american_odds(0.75) == -300
-    assert american_odds(0.25) == 300
-    assert american_odds(0.5) == 100
-    assert american_odds(0.6) == -150
-    assert american_odds(0.73) == -270          # -270.4 rounds to the nearest 5
-    assert american_odds(0.999) == -9900        # capped at 99%
+    assert fair_american(0.75) == -300
+    assert fair_american(0.25) == 300
+    assert fair_american(0.5) == 100
+    assert fair_american(0.6) == -150
+    assert fair_american(0.73) == -270          # -270.4 rounds to the nearest 5
+    assert fair_american(0.999) == -9900        # capped at 99%
     assert fair_moneyline(0.75, 0.25, "NE", "NYJ") == "NYJ +300 / NE -300"
     # Ties are refunded, so the 2% tie chance is spread over both sides.
     assert fair_moneyline(0.588, 0.392, "KC", "LV") == "LV +150 / KC -150"
@@ -95,28 +95,3 @@ def test_first_line_fills_in_once_a_line_appears():
                                     first_model_margin=5.0)])
     row = update_log(no_line, with_line, g).set_index("game_id").loc["c"]
     assert row.first_spread_line == 3.0 and row.first_model_margin == 5.0
-
-
-def test_model_pick_names_the_side_and_gap():
-    assert model_pick(9.0, 7.0, "IND", "TEN") == "IND -7.0 (2.0)"     # model likes the favorite
-    assert model_pick(4.0, 7.5, "NE", "NYJ") == "NYJ +7.5 (3.5)"      # model likes the dog
-    assert model_pick(-2.0, 1.5, "CLE", "BAL") == "BAL +1.5 (3.5)"    # home favored, model likes away
-    assert model_pick(-5.0, -1.5, "CLE", "BAL") == "BAL -1.5 (3.5)"   # away favorite
-    assert model_pick(3.2, 3.0, "A", "B") == "no edge"
-    assert model_pick(3.0, np.nan, "A", "B") == "–"
-
-
-def test_pick_grading_and_line_movement():
-    g = schedule()
-    # Home won by 4. Early line home -2.5, model said +5: a win. Line closed at -3.5 (moved toward the pick).
-    graded = update_log(pd.DataFrame([entry("a", g.kickoff[0], spread_line=3.5, model_margin=5.0,
-                                            first_spread_line=2.5, first_model_margin=5.0)]),
-                        pd.DataFrame(columns=LOG_COLUMNS), g)
-    text = pick_table(graded)
-    assert "| Early-week line (first prediction with a line) | 1-0-0 | 100.0% |" in text
-    assert "1 of 1 games" in text
-    rec = pick_record(pd.DataFrame({"home_score": [24, 20, 17], "away_score": [20, 20, 21],
-                                    "model_margin": [5.0, 2.0, 0.2], "line": [2.5, 1.0, 0.0],
-                                    "close": [3.5, 1.0, 0.0]}), "line", closing_col="close")
-    assert (rec["wins"], rec["losses"], rec["pushes"]) == (1, 1, 0)   # third game: edge under 0.5
-    assert rec["moved_toward"] == 1.0 and rec["moved_games"] == 1

@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 
 from .qb import DROPBACKS_PER_GAME
-from .simulate import ScoringModel, calibrate, fit_margin_weights, simulate, summarize
+from .simulate import ScoringModel, calibrate, fit_margin_weights, line_probs, simulate, summarize
 
 POINT_FEATURES = ["off", "def_opp", "st", "st_opp", "home", "home_div", "rest", "qb"]
 WIND_THRESHOLD_MPH = 10.0
@@ -146,6 +146,28 @@ class ScoreModel:
             "has_market": b["has_market"],
         }
 
+    def model_only_means(self, f: pd.DataFrame, wind: pd.Series | None = None) -> dict:
+        """The model's own expected points with no market blend: what it predicts without a line."""
+        pred = self.model_means(f)
+        total = pred["total"] + wind_excess(f, wind) * self.wind_model
+        return {"home": (total + pred["margin"]) / 2, "away": (total - pred["margin"]) / 2,
+                "margin": pred["margin"], "total": total}
+
+    def model_only(self, f: pd.DataFrame, n_sims: int = 10000, wind: pd.Series | None = None, seed: int = 0,
+                   spread_line=None, total_line=None) -> pd.DataFrame:
+        """Win, cover and over chances from simulating the model's own expected points.
+
+        Same simulator and dispersion as the final prediction, centered on the
+        model before blending with the market, against the given lines (default:
+        the lines in ``f``). These are the probabilities betting edges use.
+        """
+        means = self.model_only_means(f, wind)
+        home, away = simulate(means["home"], means["away"], self.scoring, n_sims=n_sims,
+                              playoff=f["playoff"].to_numpy(), seed=seed)
+        spread = f["spread_line"] if spread_line is None else spread_line
+        total = f["total_line"] if total_line is None else total_line
+        return line_probs(home, away, self.scoring, spread, total)
+
     def predict(self, f: pd.DataFrame, n_sims: int = 10000, wind: pd.Series | None = None,
                 seed: int = 0) -> pd.DataFrame:
         means = self.means(f, wind)
@@ -155,6 +177,9 @@ class ScoreModel:
         out.insert(0, "game_id", f["game_id"].to_numpy())
         for key in ("home", "away", "margin", "total", "model_margin", "model_total"):
             out[f"pred_{key}"] = means[key]
+        own = self.model_only(f, n_sims=n_sims, wind=wind, seed=seed + 1)
+        for col in own:
+            out[f"model_{col}"] = own[col].to_numpy()
         return out
 
     # ---- persistence ---------------------------------------------------
