@@ -165,3 +165,77 @@ def test_espn_lines_are_fetched_day_by_day(monkeypatch):
     assert list(out["game_id"]) == [401] and out.iloc[0].spread_line == 10.5
     # Empty days must not turn the numbers into objects (the pick table subtracts them).
     assert out["spread_line"].dtype == float and out["total_line"].dtype == float
+
+
+ESPN_NEW = {"events": [{"id": "501", "competitions": [{
+    "competitors": [{"homeAway": "home", "team": {"abbreviation": "UGA"}},
+                    {"homeAway": "away", "team": {"abbreviation": "BAMA"}}],
+    "odds": [{"provider": {"name": "ESPN BET"}, "details": "UGA -3.5", "overUnder": 48.5, "spread": -3.5,
+              "homeTeamOdds": {"favorite": True, "moneyLine": -170, "spreadOdds": -112.0},
+              "awayTeamOdds": {"favorite": False, "moneyLine": 145, "spreadOdds": -108.0},
+              "overOdds": -110.0, "underOdds": -110.0,
+              "moneyline": {"home": {"open": {"odds": "-150"}, "close": {"odds": "-165"}},
+                            "away": {"open": {"odds": "+125"}, "close": {"odds": "+140"}}},
+              "pointSpread": {"home": {"open": {"line": "-3", "odds": "-110"}, "close": {"line": "-3.5", "odds": "-105"}},
+                              "away": {"open": {"line": "+3", "odds": "-110"}, "close": {"line": "+3.5", "odds": "-115"}}},
+              "total": {"over": {"open": {"line": "o47.5", "odds": "-110"}, "close": {"line": "o49.5", "odds": "EVEN"}},
+                        "under": {"open": {"line": "u47.5", "odds": "-110"},
+                                  "close": {"line": "u49.5", "odds": "-120"}}}}]}]}]}
+
+
+def test_parse_espn_reads_prices_from_the_newer_format():
+    out = parse_espn(ESPN_NEW).iloc[0]
+    assert out.spread_line == 3.5 and out.total_line == 48.5
+    # Close quotes at the predicted spread win over the flat fields.
+    assert out.home_spread_price == -105 and out.away_spread_price == -115
+    assert out.home_moneyline == -165 and out.away_moneyline == 140
+    # The close total (49.5) is not the line being predicted (48.5): use the flat prices quoted with it.
+    assert out.over_price == -110 and out.under_price == -110
+
+
+def test_parse_espn_reads_prices_from_the_older_format_and_nested_lines_alone():
+    old = parse_espn(ESPN_PAYLOAD).set_index("game_id")
+    assert np.isnan(old.loc[401, "home_spread_price"]) and np.isnan(old.loc[401, "over_price"])
+    assert old.loc[401, "away_moneyline"] == 300
+    odds = ESPN_NEW["events"][0]["competitions"][0]["odds"][0]
+    flat = {**odds, "pointSpread": {}, "total": {}, "moneyline": {}}
+    out = parse_espn({"events": [{**ESPN_NEW["events"][0], "competitions": [
+        {**ESPN_NEW["events"][0]["competitions"][0], "odds": [flat]}]}]}).iloc[0]
+    assert out.home_spread_price == -112 and out.away_spread_price == -108 and out.home_moneyline == -170
+    nested = {k: v for k, v in odds.items() if k in ("pointSpread", "total", "moneyline")}
+    out = parse_espn({"events": [{**ESPN_NEW["events"][0], "competitions": [
+        {**ESPN_NEW["events"][0]["competitions"][0], "odds": [nested]}]}]}).iloc[0]
+    assert out.spread_line == 3.5 and out.total_line == 49.5
+    assert out.over_price == 100 and out.under_price == -120 and out.home_spread_price == -105
+
+
+def test_parse_cfbd_prices_come_from_books_at_the_consensus_line():
+    payload = [{"id": 601, "lines": [
+        {"spread": -7.5, "overUnder": 55.5, "homeMoneyline": -105, "awayMoneyline": -115,
+         "homeSpreadOdds": -110, "awaySpreadOdds": -110, "overOdds": -105, "underOdds": -115},
+        {"spread": -7.5, "overUnder": 55.5, "homeMoneyline": 105, "awayMoneyline": -125,
+         "homeSpreadOdds": -120, "awaySpreadOdds": 100},
+        {"spread": -6.5, "overUnder": 54.5, "homeSpreadOdds": -150, "awaySpreadOdds": 130},
+    ]}]
+    out = parse_cfbd(payload).iloc[0]
+    assert out.spread_line == 7.5 and out.total_line == 55.5
+    assert out.home_spread_price == -115 and out.away_spread_price == -105    # medians of the -7.5 books only
+    assert out.over_price == -105 and out.under_price == -115
+    assert out.home_moneyline == 100                                            # -105 and +105, not 0
+    out = parse_cfbd([{"id": 602, "lines": [{"spread": -3.0, "overUnder": 50.0}]}]).iloc[0]
+    assert np.isnan(out.home_spread_price) and np.isnan(out.home_moneyline)
+
+
+def test_consensus_prices_at_the_consensus_line():
+    rows = odds_rows(1, "Hawaii@California", "California", "Hawaii",
+                     [("A", -22.5, 63.5, -21.0), ("B", -23.0, 64.0, -21.0), ("C", -22.5, 64.5, -20.0)])
+    frame = pd.DataFrame(rows)
+    spread = frame["market_type"].eq("spread")
+    frame.loc[spread & frame["abbr"].eq("California"), "odds"] = [-105, -110, -115]
+    frame.loc[spread & frame["abbr"].eq("Hawaii"), "odds"] = [-115, -110, -105]
+    under = frame[frame["market_type"].eq("total")].assign(abbr="under", odds=-120)
+    frame.loc[frame["market_type"].eq("total"), "odds"] = 100
+    out = consensus_lines(pd.concat([frame, under], ignore_index=True)).iloc[0]
+    assert out.spread_line == 22.5
+    assert out.home_spread_price == -110 and out.away_spread_price == -110      # books A and C at -22.5
+    assert out.over_price == 100 and out.under_price == -120                     # book B at the 64.0 median

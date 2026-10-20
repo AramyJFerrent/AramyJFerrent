@@ -13,6 +13,8 @@ times on Saturdays). Each run:
 5. Predicts every game in the next two weeks that has not kicked off.
 6. Writes those predictions to the log, overwriting earlier ones for the same
    game, so the logged prediction is always the last one made before kickoff.
+   Each carries the prices and the model-only chances behind it, and the
+   betting edge (if any) in each market, so edges freeze at kickoff too.
 7. Fills in final scores for finished games and grades the season so far.
 """
 
@@ -28,6 +30,7 @@ import pandas as pd
 from . import report
 from .config import ELO_FIRST_SEASON, FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_games, load_summaries, update_summaries
+from .edges import TEXT_FIELDS, edge_columns, edge_frame
 from .elo import EloParams
 from .features import FeatureBuilder
 from .lines import load_lines
@@ -46,6 +49,12 @@ README_PATH = OUTPUT_DIR / "README.md"
 # The first season with a preseason prior behind it; earlier ones only seed ratings.
 FIRST_FIT_SEASON = FIRST_SEASON + 1
 
+# Posted prices (NaN when not posted) and the model-only chances against the
+# logged lines, behind each game's betting edges (see edges.py).
+PRICE_COLUMNS = ["home_moneyline", "away_moneyline", "home_spread_price", "away_spread_price", "over_price",
+                 "under_price"]
+MODEL_PROB_COLUMNS = ["model_home_win_prob", "model_home_cover_prob", "model_spread_push_prob", "model_over_prob",
+                      "model_total_push_prob"]
 LOG_COLUMNS = [
     "game_id", "season", "week", "kickoff", "start_time_tbd", "away_team", "home_team",
     "away_division", "home_division",
@@ -55,14 +64,16 @@ LOG_COLUMNS = [
     "spread_line", "total_line", "line_source", "elo_spread", "predicted_at", "source",
     "first_predicted_at", "first_spread_line", "first_model_margin",
     "away_score", "home_score",
+    *PRICE_COLUMNS, *MODEL_PROB_COLUMNS, *edge_columns(),
 ]
-# The first prediction made once a line exists, kept so picks can be graded
-# against the early-week line and line movement measured up to kickoff.
+# The first prediction made once a line exists, kept so line movement up to
+# kickoff can be measured against the early-week line.
 FIRST_COLUMNS = ["first_predicted_at", "first_spread_line", "first_model_margin"]
 TIME_COLUMNS = ["kickoff", "predicted_at", "first_predicted_at"]
 
 
-TEXT_COLUMNS = ["away_team", "home_team", "away_division", "home_division", "line_source", "source"]
+TEXT_COLUMNS = ["away_team", "home_team", "away_division", "home_division", "line_source", "source",
+                *edge_columns(TEXT_FIELDS)]
 
 
 def _utc(df: pd.DataFrame) -> pd.DataFrame:
@@ -70,6 +81,9 @@ def _utc(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     for col in TIME_COLUMNS:
         df[col] = pd.to_datetime(df[col], utc=True).astype("datetime64[ns, UTC]")
+    for col in edge_columns(TEXT_FIELDS):
+        if col in df:
+            df[col] = df[col].fillna("").astype(str)
     for col in df.columns.difference(TIME_COLUMNS + TEXT_COLUMNS + ["start_time_tbd", "neutral"]):
         df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
@@ -106,6 +120,14 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, now: pd.Timestamp)
     rows["first_model_margin"] = rows["model_margin"].where(lined)
     rows["away_score"] = np.nan
     rows["home_score"] = np.nan
+    for col in PRICE_COLUMNS:
+        rows[col] = feats[col].to_numpy(float) if col in feats else np.nan
+    for col in MODEL_PROB_COLUMNS:
+        rows[col] = preds[col].to_numpy()
+    if len(rows):
+        rows[edge_columns()] = edge_frame(rows)
+    else:
+        rows = rows.reindex(columns=LOG_COLUMNS)
     return _utc(rows[LOG_COLUMNS])
 
 

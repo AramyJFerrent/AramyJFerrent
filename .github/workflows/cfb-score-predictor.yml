@@ -51,6 +51,11 @@ jobs:
       - name: Run tests
         run: python -m pytest -q tests
 
+      - name: Check live lines
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: python -m cfbpredictor -v check --raw 3
+
       - name: Update predictions
         if: github.event_name != 'push'
         run: python -m cfbpredictor -v update

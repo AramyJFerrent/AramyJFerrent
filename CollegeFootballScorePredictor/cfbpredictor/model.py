@@ -76,6 +76,31 @@ def game_view(f: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, np.ndarray]:
     return home - away, home + away, 2 * tv["env"].to_numpy()[:n]
 
 
+def market_probs(home: np.ndarray, away: np.ndarray, spread_line: np.ndarray, total_line: np.ndarray,
+                 scoring: ScoringModel) -> dict:
+    """Win, cover and over chances (with pushes) from simulated scores, against each game's lines.
+
+    ``spread_line`` is the expected home margin; the home team covers when it
+    wins by more. Simulations carry the key-number weights, as in ``summarize``.
+    Games without a line get NaN for that market.
+    """
+    w = scoring.weights(home, away)
+    w = w / w.sum(axis=1, keepdims=True)
+    margin, total = home - away, home + away
+    spread, tot = spread_line[:, None], total_line[:, None]
+
+    def share(mask, line=None):
+        p = (w * mask).sum(axis=1)
+        return p if line is None else np.where(np.isnan(line), np.nan, p)
+    return {
+        "model_home_win_prob": share(margin > 0),
+        "model_home_cover_prob": share(margin > spread, spread_line),
+        "model_spread_push_prob": share(margin == spread, spread_line),
+        "model_over_prob": share(total > tot, total_line),
+        "model_total_push_prob": share(total == tot, total_line),
+    }
+
+
 def _convex_weight(model: np.ndarray, market: np.ndarray, actual: np.ndarray) -> float:
     gap = model - market
     denom = float(gap @ gap)
@@ -166,6 +191,14 @@ class ScoreModel:
         out.insert(0, "game_id", f["game_id"].to_numpy())
         for key in ("home", "away", "margin", "total", "model_margin", "model_total"):
             out[f"pred_{key}"] = means[key]
+        # Betting edges are judged on the model alone: the same simulator run on
+        # the model's own expected points, before any blending with the line.
+        own = self.model_means(f)
+        home, away = simulate(own["home"], own["away"], self.scoring, n_sims=n_sims, seed=seed)
+        probs = market_probs(home, away, f["spread_line"].to_numpy(float), f["total_line"].to_numpy(float),
+                             self.scoring)
+        for key, values in probs.items():
+            out[key] = values
         return out
 
     # ---- persistence ---------------------------------------------------

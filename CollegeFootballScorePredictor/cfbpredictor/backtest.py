@@ -7,6 +7,10 @@ leaks in except the closing lines themselves (see README).
 
 Every metric is reported by segment as well as overall, because a model can
 match the market overall while being badly wrong in one kind of game.
+
+Betting edges are scored the same way as live ones: model-only chances from
+the simulator against each closing line, at the books' prices where the odds
+file has them (see edges.py and lines.py).
 """
 
 from __future__ import annotations
@@ -20,6 +24,7 @@ import pandas as pd
 from scipy.stats import norm
 
 from .config import Hyperparams
+from .edges import MARKETS, STANDARD_MARKETS, edge_columns, edge_frame, edge_results, record, valid_price
 from .features import FeatureBuilder
 from .model import ScoreModel
 
@@ -185,39 +190,43 @@ def paired_bootstrap(errors_a: np.ndarray, errors_b: np.ndarray, n: int = 5000, 
     return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
 
 
-def model_margins(features: pd.DataFrame, seasons, window: int, first_fit_season: int) -> pd.DataFrame:
-    """Out-of-sample model-only margins (no market, no simulation) for finished games."""
+def edge_record(bt: pd.DataFrame, n_boot: int = 2000, seed: int = 0) -> list[dict]:
+    """Walk-forward betting edges in each market, split by posted and assumed (-110) prices.
+
+    ``bt`` holds out-of-sample predictions (with the model-only chances from
+    ``ScoreModel.predict``), the closing lines and their prices, and final
+    scores. Each row of the result is one market and kind of price, with the
+    games that had one, the edges, their record, units, ROI and a bootstrap
+    95% range on ROI over bets.
+    """
+    df = pd.concat([bt.drop(columns=[c for c in edge_columns() if c in bt]), edge_frame(bt)], axis=1)
+    rng = np.random.default_rng(seed)
+    posted = {
+        "spread": df["home_spread_price"].map(valid_price) & df["away_spread_price"].map(valid_price),
+        "total": df["over_price"].map(valid_price) & df["under_price"].map(valid_price),
+        "moneyline": df["home_moneyline"].map(valid_price) | df["away_moneyline"].map(valid_price),
+    }
+    has_line = {"spread": df["spread_line"].notna(), "total": df["total_line"].notna(),
+                "moneyline": posted["moneyline"]}
     out = []
-    for season in seasons:
-        train = features[(features["season"] >= max(first_fit_season, season - window))
-                         & (features["season"] < season)]
-        test = features[(features["season"] == season) & features["completed"]].reset_index(drop=True)
-        if test.empty or train.empty:
-            continue
-        model = ScoreModel.fit(train, calibrate_scores=False)
-        out.append(test.assign(model_margin=model.model_means(test)["margin"]))
-    return pd.concat(out, ignore_index=True)
-
-
-def pick_record(df: pd.DataFrame, line_col: str, closing_col: str | None = None,
-                min_edge: float = 0.5) -> dict:
-    """Against-the-spread record of model picks where the model and line differ by ``min_edge``."""
-    line = df[line_col]
-    margin = df["home_score"] - df["away_score"]
-    edge, res = df["model_margin"] - line, margin - line
-    picked = line.notna() & (edge.abs() >= min_edge)
-    push = picked & (res == 0)
-    win = picked & ~push & (np.sign(edge) == np.sign(res))
-    w, l = int(win.sum()), int((picked & ~push & ~win).sum())
-    rate = w / (w + l) if w + l else float("nan")
-    half = 1.96 * np.sqrt(rate * (1 - rate) / (w + l)) if w + l else float("nan")
-    out = {"games": int(picked.sum()), "wins": w, "losses": l, "pushes": int(push.sum()),
-           "cover": rate, "cover_low": rate - half, "cover_high": rate + half}
-    if closing_col:
-        move = df[closing_col] - line
-        moved = picked & (move != 0) & df[closing_col].notna()
-        out["moved_toward"] = float((np.sign(move[moved]) == np.sign(edge[moved])).mean()) if moved.any() else np.nan
-        out["moved_games"] = int(moved.sum())
+    for market in MARKETS:
+        groups = [("posted", has_line[market] & posted[market])]
+        if market in STANDARD_MARKETS:
+            groups.append(("assumed -110", has_line[market] & ~posted[market]))
+        for prices, mask in groups:
+            games = df[mask]
+            if prices != "posted" and games.empty:
+                continue
+            res = edge_results(games, market)
+            rec = record(res)
+            lo = hi = np.nan
+            if len(res):
+                units = res["units"].to_numpy(float)
+                means = units[rng.integers(0, len(units), size=(n_boot, len(units)))].mean(axis=1)
+                lo, hi = float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
+            span = f"{int(games['season'].min())}–{int(games['season'].max())}" if len(games) else ""
+            out.append({"market": market, "prices": prices, "span": span, "games": int(len(games)), **rec,
+                        "roi_low": lo, "roi_high": hi})
     return out
 
 
