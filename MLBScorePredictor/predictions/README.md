@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Tue Oct 20, 2026 02:05 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Oct 20, 2026 08:49 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,7 +14,7 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 60% | TB +145 / MIL -145 | TB +134 / MIL -162 | 3.1 – 3.7 | 0–7 / 1–7 | MIL -1.5 39% | 6.8 / 6 (over 53%) | 11% | proj. / proj. | no edge | no edge | Over 6 (-111): EV +26.2%, model 62% |
+| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 59% | TB +145 / MIL -145 | TB +134 / MIL -162 | 3.1 – 3.7 | 0–7 / 1–7 | MIL -1.5 39% | 6.8 / 6 (over 53%) | 11% | proj. / proj. | no edge | no edge | Over 6 (-111): EV +26.4%, model 62% |
 
 ## Saturday, October 24 — World Series
 
