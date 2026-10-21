@@ -1,7 +1,7 @@
 game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods,neutral,venue,city,state
-401909088,2027,R,2026-10-20 19:00:00+00:00,DET,BOS,,,,False,Little Caesars Arena,Detroit,MI
-401909089,2027,R,2026-10-20 23:00:00+00:00,NYK,PHI,,,,False,Madison Square Garden,New York,NY
-401909090,2027,R,2026-10-21 01:30:00+00:00,SAS,OKC,,,,False,Frost Bank Center,San Antonio,TX
+401909088,2027,R,2026-10-20 19:00:00+00:00,DET,BOS,121.0,113.0,4.0,False,Little Caesars Arena,Detroit,MI
+401909089,2027,R,2026-10-20 23:00:00+00:00,NYK,PHI,100.0,106.0,4.0,False,Madison Square Garden,New York,NY
+401909090,2027,R,2026-10-21 01:50:00+00:00,SAS,OKC,104.0,116.0,4.0,False,Frost Bank Center,San Antonio,TX
 401909834,2027,R,2026-10-21 23:00:00+00:00,ORL,ATL,,,,False,Kia Center,Orlando,FL
 401909835,2027,R,2026-10-21 23:00:00+00:00,WAS,MIL,,,,False,Capital One Arena,Washington,DC
 401909091,2027,R,2026-10-21 23:30:00+00:00,MIA,MIN,,,,False,Kaseya Center,Miami,FL
