@@ -59,3 +59,13 @@ Paired bootstrap of the per-game log loss (negative favors the first).
 
 - Projected starter was the actual starter 65.5% of the time.
 - Log loss with projected starters: 0.6667, against 0.6672 with the confirmed starter (difference +0.0004, 95% interval -0.0001 to +0.0010).
+
+## Betting edges
+
+Edges are sides whose expected value at the posted price is at least 3%, priced from the model alone. No free source has a history of NHL puck-line, moneyline or total prices, so none can be backtested here; the predictions page grades them live.
+
+| Market | Edges | Record (W-L-P) | Units | ROI | 95% range of ROI |
+|---|---|---|---|---|---|
+| Puck line | no historical prices | – | – | – | – |
+| Moneyline | no historical prices | – | – | – | – |
+| Total | no historical prices | – | – | – | – |
