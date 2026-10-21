@@ -1,6 +1,6 @@
 # NHL score predictions
 
-Updated Wed Oct 21, 2026 11:02 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
+Updated Wed Oct 21, 2026 02:10 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
 
 Each game is simulated 10,000 times minute by minute, with pulled goalies, empty-net goals, overtime and shootouts. The predicted score is the most common final score in which the likelier winner wins; as in the official result, a shootout winner gets one extra goal. Hockey is low-scoring and luck-heavy, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,31 +14,31 @@ The edge columns price each side of the puck line, moneyline and total with the 
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:30 PM | PHI @ BUF | PHI 2, BUF 3 | BUF 62% | PHI +165 / BUF -165 | 2.7 – 3.5 | 1–5 / 1–6 | 21% | BUF -1.5 40% | 6.1 / 6.5 (over 44%) | Dan Vladar (expected) / Ukko-Pekka Luukkonen (expected) | PHI +154 / BUF -185 | no edge | no edge | no edge |
-| 7:30 PM | FLA @ OTT | FLA 3, OTT 2 | FLA 50% | FLA -100 / OTT +100 | 3.0 – 2.9 | 1–5 / 1–5 | 23% | FLA -1.5 29% | 5.9 / 5.5 (over 51%) | Akira Schmid (expected) / Linus Ullmark (expected) | FLA -112 / OTT -108 | no edge | no edge | Under 5.5 (+105): EV +5.7%, model 52% |
+| 7:30 PM | PHI @ BUF | PHI 2, BUF 3 | BUF 62% | PHI +165 / BUF -165 | 2.7 – 3.5 | 1–5 / 1–6 | 21% | BUF -1.5 40% | 6.1 / 5.5 (over 55%) | Dan Vladar (confirmed) / Ukko-Pekka Luukkonen (confirmed) | PHI +160 / BUF -192 | no edge | no edge | no edge |
+| 7:30 PM | FLA @ OTT | FLA 2, OTT 3 | OTT 50% | FLA +100 / OTT -100 | 3.0 – 2.9 | 1–5 / 1–5 | 23% | OTT -1.5 29% | 5.9 / 5.5 (over 51%) | Akira Schmid (confirmed) / Linus Ullmark (expected) | FLA -108 / OTT -112 | no edge | no edge | Under 5.5 (+100): EV +3.1%, model 52% |
 
 ## Thursday, October 22
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | NSH @ BOS | NSH 2, BOS 3 | BOS 58% | NSH +135 / BOS -135 | 2.8 – 3.3 | 1–5 / 1–6 | 22% | BOS -1.5 36% | 6.1 | Juuse Saros (expected) / Jeremy Swayman (expected) | – | no line yet (model fair BOS -1.5 +175 / NSH +1.5 -175) | no line yet | no line yet |
-| 7:00 PM | NYR @ TOR | NYR 4, TOR 3 | NYR 53% | NYR -115 / TOR +115 | 3.3 – 3.1 | 1–6 / 1–5 | 21% | NYR -1.5 33% | 6.4 | Dylan Garand (expected) / Sergei Bobrovsky (expected) | – | no line yet (model fair TOR +1.5 -205 / NYR -1.5 +205) | no line yet | no line yet |
-| 7:00 PM | SJS @ OTT | SJS 3, OTT 4 | OTT 58% | SJS +135 / OTT -135 | 2.9 – 3.4 | 1–5 / 1–6 | 23% | OTT -1.5 36% | 6.3 | Yaroslav Askarov (expected) / Samuel Ersson (expected) | – | no line yet (model fair OTT -1.5 +175 / SJS +1.5 -175) | no line yet | no line yet |
-| 7:00 PM | ANA @ NJD | ANA 3, NJD 4 | NJD 62% | ANA +165 / NJD -165 | 2.9 – 3.7 | 1–5 / 1–6 | 21% | NJD -1.5 42% | 6.6 | Lukas Dostal (expected) / Jake Allen (expected) | – | no line yet (model fair NJD -1.5 +140 / ANA +1.5 -140) | no line yet | no line yet |
-| 7:00 PM | FLA @ PIT | FLA 3, PIT 4 | PIT 55% | FLA +120 / PIT -120 | 3.0 – 3.3 | 1–5 / 1–6 | 22% | PIT -1.5 33% | 6.3 | Jacob Markstrom (65%?) / Sergei Murashov (expected) | – | no line yet (model fair PIT -1.5 +200 / FLA +1.5 -200) | no line yet | no line yet |
-| 7:30 PM | LAK @ NYI | LAK 2, NYI 3 | NYI 54% | LAK +120 / NYI -120 | 2.7 – 2.9 | 1–5 / 1–5 | 24% | NYI -1.5 32% | 5.6 | Darcy Kuemper (expected) / Ilya Sorokin (expected) | – | no line yet (model fair NYI -1.5 +215 / LAK +1.5 -215) | no line yet | no line yet |
-| 8:00 PM | VGK @ STL | VGK 3, STL 2 | VGK 52% | VGK -110 / STL +110 | 3.0 – 2.9 | 1–5 / 1–5 | 23% | VGK -1.5 30% | 6.0 | Carter Hart (expected) / Joel Hofer (expected) | – | no line yet (model fair STL +1.5 -230 / VGK -1.5 +230) | no line yet | no line yet |
-| 8:00 PM | WPG @ DAL | WPG 2, DAL 3 | DAL 59% | WPG +145 / DAL -145 | 2.6 – 3.2 | 1–5 / 1–5 | 23% | DAL -1.5 36% | 5.8 | Stuart Skinner (expected) / Jake Oettinger (expected) | – | no line yet (model fair DAL -1.5 +175 / WPG +1.5 -175) | no line yet | no line yet |
-| 9:00 PM | MIN @ CGY | MIN 4, CGY 3 | MIN 61% | MIN -155 / CGY +155 | 3.6 – 2.9 | 1–6 / 1–5 | 21% | MIN -1.5 40% | 6.5 | Jesper Wallstedt (expected) / Dustin Wolf (expected) | – | no line yet (model fair CGY +1.5 -150 / MIN -1.5 +150) | no line yet | no line yet |
-| 9:00 PM | CAR @ EDM | CAR 4, EDM 3 | CAR 57% | CAR -130 / EDM +130 | 3.6 – 3.1 | 1–6 / 1–6 | 22% | CAR -1.5 37% | 6.7 | Brandon Bussi (expected) / Devon Levi (expected) | – | no line yet (model fair EDM +1.5 -170 / CAR -1.5 +170) | no line yet | no line yet |
-| 10:00 PM | UTA @ SEA | UTA 4, SEA 3 | UTA 63% | UTA -170 / SEA +170 | 3.7 – 2.9 | 1–6 / 1–5 | 21% | UTA -1.5 42% | 6.6 | Karel Vejmelka (expected) / Joey Daccord (expected) | – | no line yet (model fair SEA +1.5 -140 / UTA -1.5 +140) | no line yet | no line yet |
-| 10:00 PM | DET @ VAN | DET 4, VAN 3 | DET 63% | DET -165 / VAN +165 | 3.7 – 2.9 | 1–6 / 1–5 | 21% | DET -1.5 41% | 6.7 | John Gibson (expected) / Kevin Lankinen (expected) | – | no line yet (model fair VAN +1.5 -140 / DET -1.5 +140) | no line yet | no line yet |
+| 7:00 PM | NSH @ BOS | NSH 2, BOS 3 | BOS 59% | NSH +145 / BOS -145 | 2.8 – 3.4 | 1–5 / 1–6 | 22% | BOS -1.5 37% | 6.1 / 5.5 (over 55%) | Juuse Saros (expected) / Jeremy Swayman (expected) | NSH +140 / BOS -166 | no edge | no edge | no edge |
+| 7:00 PM | NYR @ TOR | NYR 4, TOR 3 | NYR 51% | NYR -105 / TOR +105 | 3.3 – 3.2 | 1–6 / 1–6 | 22% | NYR -1.5 31% | 6.5 / 6.5 (over 49%) | Dylan Garand (expected) / Sergei Bobrovsky (expected) | NYR -108 / TOR -112 | NYR -1.5 (+220): EV +5.2%, model 33% | no edge | no edge |
+| 7:00 PM | SJS @ OTT | SJS 3, OTT 4 | OTT 56% | SJS +130 / OTT -130 | 2.9 – 3.4 | 1–5 / 1–6 | 22% | OTT -1.5 35% | 6.3 / 6.5 (over 46%) | Yaroslav Askarov (expected) / Samuel Ersson (expected) | SJS +110 / OTT -130 | no edge | no edge | no edge |
+| 7:00 PM | ANA @ NJD | ANA 3, NJD 4 | NJD 64% | ANA +175 / NJD -175 | 2.8 – 3.7 | 1–5 / 1–6 | 21% | NJD -1.5 42% | 6.6 / 6.5 (over 51%) | Lukas Dostal (expected) / Jake Allen (expected) | ANA +164 / NJD -198 | no edge | no edge | no edge |
+| 7:00 PM | FLA @ PIT | FLA 3, PIT 4 | PIT 53% | FLA +110 / PIT -110 | 3.2 – 3.4 | 1–6 / 1–6 | 22% | PIT -1.5 32% | 6.5 / 6.5 (over 50%) | Jacob Markstrom (65%?) / Sergei Murashov (expected) | FLA -105 / PIT -115 | no edge | no edge | Under 6.5 (+105): EV +8.7%, model 53% |
+| 7:30 PM | LAK @ NYI | LAK 2, NYI 3 | NYI 53% | LAK +110 / NYI -110 | 2.8 – 2.9 | 1–5 / 1–5 | 23% | NYI -1.5 31% | 5.7 / 5.5 (over 47%) | Darcy Kuemper (expected) / Ilya Sorokin (expected) | LAK +100 / NYI -120 | no edge | no edge | no edge |
+| 8:00 PM | VGK @ STL | VGK 3, STL 2 | VGK 52% | VGK -105 / STL +105 | 3.1 – 3.0 | 1–5 / 1–5 | 22% | VGK -1.5 31% | 6.1 / 6.5 (over 43%) | Carter Hart (expected) / Joel Hofer (expected) | VGK -120 / STL +100 | no edge | no edge | no edge |
+| 8:00 PM | WPG @ DAL | WPG 2, DAL 3 | DAL 61% | WPG +155 / DAL -155 | 2.6 – 3.3 | 1–5 / 1–6 | 21% | DAL -1.5 39% | 5.9 / 5.5 (over 51%) | Stuart Skinner (expected) / Jake Oettinger (expected) | WPG +170 / DAL -205 | WPG +1.5 (-155): EV +4.2%, model 63% | WPG (+170): EV +10.3%, model 41% | no edge |
+| 9:00 PM | MIN @ CGY | MIN 3, CGY 2 | MIN 63% | MIN -170 / CGY +170 | 3.5 – 2.7 | 1–6 / 1–5 | 21% | MIN -1.5 40% | 6.2 / 5.5 (over 56%) | Jesper Wallstedt (expected) / Dustin Wolf (expected) | MIN -192 / CGY +160 | no edge | no edge | Over 5.5 (-122): EV +8.0%, model 59% |
+| 9:00 PM | CAR @ EDM | CAR 4, EDM 3 | CAR 53% | CAR -115 / EDM +115 | 3.4 – 3.2 | 1–6 / 1–6 | 21% | CAR -1.5 34% | 6.6 / 6.5 (over 52%) | Brandon Bussi (expected) / Devon Levi (expected) | CAR -115 / EDM -105 | CAR -1.5 (+220): EV +17.9%, model 37% | CAR (-115): EV +7.3%, model 57% | no edge |
+| 10:00 PM | UTA @ SEA | UTA 4, SEA 3 | UTA 62% | UTA -160 / SEA +160 | 3.6 – 2.9 | 1–6 / 1–5 | 21% | UTA -1.5 41% | 6.5 / 6.5 (over 50%) | Karel Vejmelka (expected) / Joey Daccord (expected) | UTA -162 / SEA +136 | no edge | no edge | no edge |
+| 10:00 PM | DET @ VAN | DET 4, VAN 3 | DET 62% | DET -160 / VAN +160 | 3.7 – 2.9 | 1–6 / 1–5 | 21% | DET -1.5 41% | 6.6 / 6.5 (over 51%) | John Gibson (expected) / Kevin Lankinen (expected) | DET -170 / VAN +142 | no edge | no edge | Over 6.5 (-105): EV +3.7%, model 53% |
 
 ## Friday, October 23
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MTL @ CHI | MTL 4, CHI 3 | MTL 61% | MTL -155 / CHI +155 | 3.6 – 2.8 | 1–6 / 1–5 | 22% | MTL -1.5 40% | 6.4 | Jakub Dobes (expected) / Spencer Knight (expected) | – | no line yet (model fair CHI +1.5 -150 / MTL -1.5 +150) | no line yet | no line yet |
+| 8:00 PM | MTL @ CHI | MTL 4, CHI 3 | MTL 62% | MTL -160 / CHI +160 | 3.6 – 2.8 | 1–6 / 1–5 | 21% | MTL -1.5 40% | 6.4 | Jakub Dobes (expected) / Spencer Knight (expected) | – | no line yet (model fair CHI +1.5 -150 / MTL -1.5 +150) | no line yet | no line yet |
 | 9:00 PM | TBL @ COL | TBL 3, COL 4 | COL 51% | TBL +105 / COL -105 | 3.1 – 3.2 | 1–6 / 1–6 | 22% | COL -1.5 30% | 6.3 | Andrei Vasilevskiy (expected) / Mackenzie Blackwood (expected) | – | no line yet (model fair COL -1.5 +230 / TBL +1.5 -230) | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
