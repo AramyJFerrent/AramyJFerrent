@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Wed Oct 21, 2026 02:12 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Thu Oct 22, 2026 02:01 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,13 +14,13 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / Jacob Misiorowski | TB 2, MIL 3 | MIL 60% | TB +150 / MIL -150 | TB +133 / MIL -161 | 3.0 – 3.7 | 0–6 / 1–7 | MIL -1.5 39% | 6.7 / 6 (over 52%) | 10% | proj. / proj. | MIL -1.5 (+152): EV +6.7%, model 42% | no edge | Over 6 (-110): EV +21.9%, model 60% |
+| 8:00 PM | TB @ MIL | TBD / Jacob Misiorowski | TB 2, MIL 3 | MIL 60% | TB +150 / MIL -150 | TB +133 / MIL -161 | 3.0 – 3.7 | 0–6 / 1–7 | MIL -1.5 39% | 6.7 / 6 (over 52%) | 10% | proj. / proj. | MIL -1.5 (+149): EV +5.5%, model 42% | no edge | Over 6 (-110): EV +21.0%, model 59% |
 
 ## Saturday, October 24 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / TBD | TB 4, MIL 5 | MIL 56% | TB +125 / MIL -125 | – | 4.1 – 4.4 | 1–8 / 1–9 | MIL -1.5 38% | 8.5 | 9% | proj. / proj. | no line yet; fair MIL -1.5 +160, TB +1.5 -160 | no line yet | no line yet |
+| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 56% | TB +125 / MIL -125 | – | 4.0 – 4.4 | 1–8 / 1–9 | MIL -1.5 38% | 8.4 | 9% | proj. / proj. | no line yet; fair MIL -1.5 +165, TB +1.5 -165 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -63,9 +63,9 @@ Runs per game better than an average team against an average opponent at a neutr
 
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
-| 1 | LAD | +1.38 | +0.66 | +0.36 | +0.10 | +0.27 | 5.2 | 1576 |
+| 1 | LAD | +1.38 | +0.66 | +0.36 | +0.10 | +0.26 | 5.2 | 1576 |
 | 2 | MIL | +0.94 | +0.48 | +0.14 | +0.09 | +0.23 | 4.9 | 1606 |
-| 3 | TB | +0.86 | +0.35 | +0.22 | +0.09 | +0.20 | 5.2 | 1559 |
+| 3 | TB | +0.88 | +0.35 | +0.22 | +0.11 | +0.20 | 5.2 | 1559 |
 | 4 | CHC | +0.74 | +0.61 | +0.06 | +0.01 | +0.07 | 5.3 | 1539 |
 | 5 | NYY | +0.66 | +0.16 | +0.20 | +0.08 | +0.23 | 5.2 | 1560 |
 | 6 | ATL | +0.66 | +0.26 | +0.14 | +0.10 | +0.16 | 5.1 | 1529 |
@@ -75,7 +75,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 10 | ARI | +0.45 | +0.31 | +0.07 | +0.10 | -0.03 | 5.2 | 1512 |
 | 11 | SEA | +0.41 | +0.39 | +0.09 | +0.03 | -0.09 | 5.3 | 1475 |
 | 12 | NYM | +0.41 | +0.46 | -0.04 | +0.02 | -0.04 | 5.2 | 1497 |
-| 13 | CLE | +0.36 | +0.01 | +0.11 | +0.12 | +0.12 | 4.6 | 1514 |
+| 13 | CLE | +0.35 | +0.01 | +0.11 | +0.11 | +0.12 | 4.6 | 1514 |
 | 14 | BOS | +0.27 | -0.04 | +0.08 | +0.06 | +0.17 | 5.0 | 1531 |
 | 15 | CWS | +0.26 | +0.26 | -0.03 | +0.05 | -0.02 | 4.3 | 1507 |
 | 16 | DET | +0.23 | +0.09 | -0.01 | +0.08 | +0.07 | 5.0 | 1512 |
