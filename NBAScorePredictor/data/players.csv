@@ -1239,7 +1239,7 @@ player_id,name,position
 3136193,Devin Booker,G
 3136194,Tyler Ulis,G
 3136195,Karl-Anthony Towns,C
-3136196,Trey Lyles,PF
+3136196,Trey Lyles,F
 3136469,Ben Bentil,PF
 3136477,Isaiah Whitehead,G
 3136479,Angel Delgado,C
@@ -1278,7 +1278,7 @@ player_id,name,position
 3149036,Matt Mooney,SG
 3149059,Tariq Owens,F
 3149673,Pascal Siakam,F
-3150844,Moritz Wagner,F
+3150844,Moritz Wagner,C
 3151568,Trayvon Palmer,G
 3152335,Keljin Blevins,SF
 3153165,Chris McCullough,F
@@ -1719,7 +1719,7 @@ player_id,name,position
 4431673,Matt Hurt,F
 4431675,Trendon Watford,F
 4431678,Tyrese Maxey,G
-4431679,Precious Achiuwa,PF
+4431679,Precious Achiuwa,F
 4431680,Onyeka Okongwu,F
 4431684,Trayce Jackson-Davis,F
 4431686,Cassius Stanley,G
@@ -1790,6 +1790,7 @@ player_id,name,position
 4432645,Trevor Keels,G
 4432646,Kennedy Chandler,G
 4432735,Dariq Whitehead,F
+4432737,Jaden Bradley,G
 4432808,James Wiseman,C
 4432809,Cole Anthony,G
 4432810,Isaiah Stewart,F
@@ -1975,6 +1976,7 @@ player_id,name,position
 4702745,Amari Williams,F
 4702785,Jahmyl Telfort,F
 4702972,Chris Manon,G
+4703396,Graham Ike,F
 4703421,Taelon Peter,G
 4703530,Mark Sears,G
 4703889,Jayson Kent,G
@@ -2008,6 +2010,7 @@ player_id,name,position
 4871145,Josh Giddey,G
 4873090,Labaron Philon Jr.,G
 4873138,Ace Bailey,G
+4873153,Morez Johnson Jr.,F
 4873201,Asa Newell,F
 4888725,Ryan Dunn,F
 4895499,Wayne Selden,F
@@ -2018,6 +2021,7 @@ player_id,name,position
 4897262,Will Richard,G
 4897449,Malevy Leons,F
 4897943,Dalton Knecht,F
+4898010,Jaylin Sellers,G
 4898237,Bez Mbeng,G
 4898238,John Poulakidas,G
 4898369,Curtis Jones,G
@@ -2027,6 +2031,7 @@ player_id,name,position
 4906923,Bobi Klintman,F
 4909710,Phillip Wheeler,F
 4914336,Shaedon Sharpe,G
+4917149,Alex Karaban,F
 4981257,Gabriel Lundberg,F
 4997526,Ousmane Dieng,F
 4997528,Nikola Jovic,F
@@ -2037,22 +2042,32 @@ player_id,name,position
 5023693,Tyrese Proctor,G
 5037871,Dylan Harper,G
 5037873,Drake Powell,G
+5041935,Cameron Boozer,F
 5041939,Cooper Flagg,F
+5041953,Koa Peat,F
+5041955,Darryn Peterson,G
 5044385,Leonard Miller,F
 5060631,Adou Thiero,F
+5060701,Christian Anderson,G
 5061568,Carter Bryant,F
 5061575,Kon Knueppel,G
+5061585,Isaiah Evans,F
 5061589,Yves Missi,C
 5075393,Trevor Hudgins,G
+5075626,Baba Miller,F
 5081727,Sidy Cissoko,G
+5082206,Brayden Burries,G
 5093267,Collin Murray-Boyles,F
+5095151,Caleb Wilson,F
 5099752,Rayan Rupert,G
+5101761,Mikel Brown Jr.,G
 5104155,Bilal Coulibaly,G
 5104156,Armel Traore,F
 5104157,Victor Wembanyama,F
 5105337,Maliq Brown,F
 5105550,GG Jackson,F
 5105553,Julian Phillips,F
+5105555,Tobe Awaka,F
 5105565,Donovan Clingan,C
 5105592,Cam Whitmore,F
 5105623,Kel'el Ware,C
@@ -2060,12 +2075,19 @@ player_id,name,position
 5105638,Amari Bailey,G
 5105806,Jett Howard,G
 5105809,Tarris Reed Jr.,C
+5105832,Nick Martinelli,F
+5105837,Bruce Thornton,G
 5105839,Brice Sensabaugh,F
+5105841,Felix Okpara,F
 5105977,Rasheer Fleming,F
+5106040,Tobi Lawal,F
+5106058,Emanuel Sharp,G
 5106060,Jarace Walker,F
 5106258,Gradey Dick,G
+5106262,Zuby Ejiofor,F
 5106268,Nae'Qwan Tomlin,F
 5107156,Lachlan Olbrich,C
+5107157,Ryan Conwell,G
 5107173,Danny Wolf,F
 5107199,Daniss Jenkins,G
 5107818,Isaac Jones,C
@@ -2074,15 +2096,19 @@ player_id,name,position
 5108024,Yanic Konan Niederhauser,C
 5112087,Jaylen Wells,F
 5124612,VJ Edgecombe,G
+5142620,Darius Acuff Jr.,G
 5142621,Chris Cenac Jr.,F
 5144091,Jeremiah Fears,G
 5144126,Will Riley,G
+5149077,Kingston Flemings,G
+5149115,Allen Graves,F
 5157066,Johnny Furphy,G
 5157587,Rocco Zikarsky,C
 5159486,Yongxi Cui,G
 5159895,Yuki Kawamura,G
 5159925,Nikola Topic,G
 5160992,Alex Sarr,C
+5164559,Nate Ament,F
 5165257,Trentyn Flowers,F
 5167876,Tyler Smith,F
 5170947,AJ Johnson,G
@@ -2091,6 +2117,7 @@ player_id,name,position
 5174983,Aday Mara,C
 5175643,Egor Demin,G
 5175647,Hugo Gonzalez,G
+5175737,Yaxel Lendeborg,F
 5176420,Hayden Gray,G
 5177362,Riley Minix,F
 5184018,Maozinha Pereira,F
@@ -2101,14 +2128,19 @@ player_id,name,position
 5211984,Ulrich Chomche,C
 5214637,Noah Penda,F
 5214640,Kasparas Jakucionis,G
+5214989,Bogoljub Markovic,F
 5217746,Yang Hansen,C
+5231919,Karim Lopez,F
 5238230,Tre Johnson,G
 5239561,Jase Richardson,G
 5239590,Liam McNeeley,G
 5241364,Bennett Stirtz,G
 5242496,Noa Essengue,F
 5242502,Ben Saraf,G
+5254165,Keaton Wagler,G
 5258459,Ebuka Okorie,G
+5279129,Sergio de Larrea,F
 5279130,Nolan Traore,G
 5279133,Joan Beringer,F
+5281370,Hannes Steinbach,F
 5289900,Mohamed Diawara,F

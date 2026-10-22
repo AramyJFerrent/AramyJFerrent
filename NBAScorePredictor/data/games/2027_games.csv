@@ -2,17 +2,17 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909088,2027,R,2026-10-20 19:00:00+00:00,DET,BOS,121.0,113.0,4.0,False,Little Caesars Arena,Detroit,MI
 401909089,2027,R,2026-10-20 23:00:00+00:00,NYK,PHI,100.0,106.0,4.0,False,Madison Square Garden,New York,NY
 401909090,2027,R,2026-10-21 01:50:00+00:00,SAS,OKC,104.0,116.0,4.0,False,Frost Bank Center,San Antonio,TX
-401909834,2027,R,2026-10-21 23:00:00+00:00,ORL,ATL,,,,False,Kia Center,Orlando,FL
-401909835,2027,R,2026-10-21 23:00:00+00:00,WAS,MIL,,,,False,Capital One Arena,Washington,DC
-401909091,2027,R,2026-10-21 23:30:00+00:00,MIA,MIN,,,,False,Kaseya Center,Miami,FL
-401909836,2027,R,2026-10-21 23:30:00+00:00,BKN,CHA,,,,False,Barclays Center,Brooklyn,NY
-401909837,2027,R,2026-10-21 23:30:00+00:00,TOR,CHI,,,,False,Scotiabank Arena,Toronto,ON
-401909838,2027,R,2026-10-22 00:00:00+00:00,MEM,UTA,,,,False,FedExForum,Memphis,TN
-401909839,2027,R,2026-10-22 00:00:00+00:00,NOP,IND,,,,False,Smoothie King Center,New Orleans,LA
-401909840,2027,R,2026-10-22 00:30:00+00:00,HOU,DAL,,,,False,Toyota Center (Houston),Houston,TX
-401909092,2027,R,2026-10-22 02:00:00+00:00,LAL,GSW,,,,False,crypto.com Arena,Los Angeles,CA
-401909841,2027,R,2026-10-22 02:00:00+00:00,POR,PHX,,,,False,Moda Center,Portland,OR
-401909842,2027,R,2026-10-22 02:30:00+00:00,LAC,SAC,,,,False,Intuit Dome,Inglewood,CA
+401909834,2027,R,2026-10-21 23:00:00+00:00,ORL,ATL,125.0,132.0,4.0,False,Kia Center,Orlando,FL
+401909835,2027,R,2026-10-21 23:00:00+00:00,WAS,MIL,128.0,116.0,4.0,False,Capital One Arena,Washington,DC
+401909091,2027,R,2026-10-21 23:30:00+00:00,MIA,MIN,106.0,131.0,4.0,False,Kaseya Center,Miami,FL
+401909836,2027,R,2026-10-21 23:30:00+00:00,BKN,CHA,103.0,110.0,4.0,False,Barclays Center,Brooklyn,NY
+401909837,2027,R,2026-10-21 23:30:00+00:00,TOR,CHI,135.0,92.0,4.0,False,Scotiabank Arena,Toronto,ON
+401909838,2027,R,2026-10-22 00:00:00+00:00,MEM,UTA,123.0,103.0,4.0,False,FedExForum,Memphis,TN
+401909839,2027,R,2026-10-22 00:00:00+00:00,NOP,IND,120.0,123.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909840,2027,R,2026-10-22 00:30:00+00:00,HOU,DAL,128.0,110.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909092,2027,R,2026-10-22 02:00:00+00:00,LAL,GSW,127.0,105.0,4.0,False,crypto.com Arena,Los Angeles,CA
+401909841,2027,R,2026-10-22 02:00:00+00:00,POR,PHX,124.0,83.0,4.0,False,Moda Center,Portland,OR
+401909842,2027,R,2026-10-22 02:30:00+00:00,LAC,SAC,121.0,96.0,4.0,False,Intuit Dome,Inglewood,CA
 401909093,2027,R,2026-10-22 23:00:00+00:00,PHI,CLE,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401909094,2027,R,2026-10-23 01:30:00+00:00,OKC,DEN,,,,False,Paycom Center,Oklahoma City,OK
 401909848,2027,R,2026-10-23 20:00:00+00:00,MIL,CHI,,,,False,Fiserv Forum,Milwaukee,WI
