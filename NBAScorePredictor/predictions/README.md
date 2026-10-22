@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Wed Oct 21, 2026 08:08 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Wed Oct 21, 2026 09:32 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -14,17 +14,16 @@ The edge columns check every side of the spread, the moneyline and the total for
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:30 PM | DAL @ HOU | DAL 111, HOU 120 | HOU 76% | DAL +310 / HOU -310<br>posted DAL +330 / HOU -425 | HOU -9.3 / HOU -9.5 (fav covers 49%) | 230.5 / 230.5 (over 49%) | 96–125 / 106–134 | 4% | DAL: Santi Aldama (out); Dereck Lively II (out) (-0.3)<br>HOU: Steven Adams (out) (-0.6) | DAL +9.5 (-102): EV +5.6%, model 53% | DAL ML (+330): EV +9.9%, model 26% | Under 230.5 (-118): EV +17.1%, model 63% |
-| 10:00 PM | GSW @ LAL | GSW 114, LAL 120 | LAL 67% | GSW +200 / LAL -200<br>posted GSW +190 / LAL -230 | LAL -5.8 / LAL -6.5 (fav covers 49%) | 234.4 / 234.5 (over 48%) | 100–129 / 106–135 | 5% | GSW: Brandin Podziemski (out); Stephen Curry (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.3)<br>LAL: Collin Sexton (out) (+1.4) | GSW +6.5 (-108): EV +14.9%, model 60% | GSW ML (+190): EV +21.1%, model 42% | Under 234.5 (-108): EV +32.9%, model 69% |
-| 10:00 PM | PHX @ POR | PHX 115, POR 117 | POR 58% | PHX +135 / POR -135<br>posted PHX +120 / POR -142 | POR -2.6 / POR -2.5 (fav covers 52%) | 231.7 / 231.5 (over 49%) | 100–130 / 103–132 | 5% | PHX: Luke Kennard (day-to-day); Mark Williams (out) (+0.4)<br>POR: Deni Avdija (day-to-day); Micah Potter (day-to-day); Branden Carlson (out) (+1.3) | no edge | no edge | Under 231.5 (-108): EV +24.0%, model 64% |
-| 10:30 PM | SAC @ LAC | SAC 111, LAC 116 | LAC 66% | SAC +195 / LAC -195<br>posted SAC +154 / LAC -185 | LAC -5.4 / LAC -5.5 (fav covers 50%) | 226.5 / 226.5 (over 49%) | 96–125 / 102–131 | 5% | SAC: Maxime Raynaud (out); Dylan Cardwell (out); Malik Monk (day-to-day) (+1.0)<br>LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+0.7) | no edge | no edge | Under 226.5 (-108): EV +6.4%, model 55% |
+| 10:00 PM | GSW @ LAL | GSW 114, LAL 120 | LAL 66% | GSW +195 / LAL -195<br>posted GSW +190 / LAL -230 | LAL -5.7 / LAL -6.5 (fav covers 48%) | 233.6 / 233.5 (over 49%) | 99–129 / 105–134 | 5% | GSW: Brandin Podziemski (out); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-0.9)<br>LAL: Collin Sexton (out) (+1.4) | GSW +6.5 (-108): EV +18.5%, model 62% | GSW ML (+190): EV +24.5%, model 43% | Under 233.5 (-105): EV +26.2%, model 65% |
+| 10:00 PM | PHX @ POR | PHX 115, POR 118 | POR 60% | PHX +150 / POR -150<br>posted PHX +130 / POR -155 | POR -3.4 / POR -3.5 (fav covers 51%) | 232.7 / 232.5 (over 49%) | 100–130 / 104–132 | 5% | PHX: Luke Kennard (out); Mark Williams (out) (+0.3)<br>POR: Branden Carlson (out) (+1.3) | no edge | no edge | Under 232.5 (-110): EV +26.3%, model 66% |
+| 10:30 PM | SAC @ LAC | SAC 111, LAC 116 | LAC 66% | SAC +195 / LAC -195<br>posted SAC +154 / LAC -185 | LAC -5.5 / LAC -5.5 (fav covers 51%) | 226.6 / 226.5 (over 50%) | 96–125 / 102–130 | 5% | SAC: Maxime Raynaud (out); Dylan Cardwell (out); Malik Monk (day-to-day) (+1.0)<br>LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+0.7) | no edge | no edge | Under 226.5 (-108): EV +4.8%, model 54% |
 
 ## Thursday, October 22
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | CLE @ PHI | CLE 116, PHI 119 | PHI 59% | CLE +145 / PHI -145<br>posted CLE +130 / PHI -155 | PHI -3.2 / PHI -3.5 (fav covers 51%) | 235.4 / 235.5 (over 49%) | 101–131 / 105–134 | 5% | CLE: Jarrett Allen (day-to-day) (+0.3)<br>PHI: Dean Wade (day-to-day); Dominick Barlow (out) (-0.1) | no edge | no edge | Under 235.5 (-108): EV +30.3%, model 68% |
-| 9:30 PM | DEN @ OKC | DEN 114, OKC 121 | OKC 70% | DEN +235 / OKC -235<br>posted DEN +250 / OKC -298 | OKC -7.2 / OKC -7.5 (fav covers 49%) | 235.5 / 235.5 (over 49%) | 99–129 / 107–136 | 5% | DEN: Spencer Jones (day-to-day) (+0.4) | no edge | DEN ML (+250): EV +12.6%, model 32% | Under 235.5 (-110): EV +22.8%, model 64% |
+| 7:00 PM | CLE @ PHI | CLE 116, PHI 119 | PHI 60% | CLE +145 / PHI -145<br>posted CLE +130 / PHI -155 | PHI -3.2 / PHI -3.5 (fav covers 51%) | 235.5 / 235.5 (over 49%) | 101–131 / 104–134 | 5% | CLE: Jarrett Allen (day-to-day) (+0.3)<br>PHI: Dean Wade (day-to-day); Dominick Barlow (out) (-0.1) | no edge | no edge | Under 235.5 (-108): EV +29.9%, model 67% |
+| 9:30 PM | DEN @ OKC | DEN 114, OKC 121 | OKC 70% | DEN +235 / OKC -235<br>posted DEN +250 / OKC -298 | OKC -7.2 / OKC -7.5 (fav covers 50%) | 235.4 / 235.5 (over 49%) | 99–129 / 107–136 | 5% | DEN: Spencer Jones (day-to-day) (+0.4) | no edge | DEN ML (+250): EV +11.9%, model 32% | Under 235.5 (-110): EV +24.2%, model 65% |
 
 ## How the 2026-27 predictions have done
 
@@ -75,13 +74,13 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 6 | DEN | +3.3 | +3.5 | +4.5 | -1.1 | 103.8 | +0.4 | 1596 |
 | 7 | DET | +3.2 | +3.3 | +1.7 | +1.5 | 102.0 | +0.2 | 1623 |
 | 8 | ORL | +2.9 | +3.0 | -0.5 | +3.5 | 104.3 | +1.8 | 1551 |
-| 9 | POR | +2.3 | +2.4 | +0.8 | +1.5 | 104.1 | +1.4 | 1522 |
-| 10 | PHX | +2.3 | +2.4 | +2.0 | +0.3 | 103.5 | +0.4 | 1526 |
+| 9 | POR | +2.3 | +2.4 | +0.8 | +1.5 | 104.1 | +1.3 | 1522 |
+| 10 | PHX | +2.3 | +2.4 | +2.0 | +0.3 | 103.5 | +0.3 | 1526 |
 | 11 | PHI | +1.9 | +2.0 | +0.4 | +1.5 | 105.5 | -0.1 | 1550 |
 | 12 | TOR | +1.6 | +1.7 | +0.6 | +1.0 | 104.5 | +0.6 | 1546 |
 | 13 | MIA | +1.5 | +1.6 | +1.2 | +0.3 | 103.8 | +0.0 | 1522 |
 | 14 | CLE | +1.5 | +1.6 | +1.7 | -0.2 | 103.0 | +0.3 | 1579 |
-| 15 | GSW | +1.5 | +1.5 | +1.1 | +0.4 | 103.5 | -1.3 | 1452 |
+| 15 | GSW | +1.5 | +1.5 | +1.1 | +0.4 | 103.5 | -0.9 | 1452 |
 | 16 | ATL | -0.3 | -0.3 | -0.1 | -0.1 | 105.2 | +0.6 | 1531 |
 | 17 | LAL | -0.5 | -0.5 | +0.2 | -0.7 | 102.4 | +1.4 | 1569 |
 | 18 | MIN | -0.5 | -0.5 | -0.1 | -0.4 | 105.2 | -0.4 | 1558 |
