@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Thu Oct 22, 2026 02:01 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Fri Oct 23, 2026 02:58 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -8,19 +8,19 @@ Lineups marked ✓ are the posted ones; "proj." is the lineup the team last used
 
 The fair moneyline is the American odds that match the win chance exactly, with no bookmaker margin: -150 means risk $150 to win $100, +150 means risk $100 to win $150. A sportsbook's price is a little worse on both sides because of its cut, so a book only offers value on a team when its price beats the fair line. The run line is the favorite's chance to win by two or more.
 
-The edge columns give the expected value of a bet per $1 staked at the posted price, from the model's own numbers before they are blended with the betting line: its win chance for the moneyline, and its own simulation's chance of covering the posted run line and of going over or under the total (a push on a whole-number total returns the stake). A side counts as an edge when its EV is 3% or more; each market shows its best side, as "pick (price): EV, the model's chance". A total with no posted price is assumed to be -110 on both sides and marked -110*; run-line and moneyline prices are never assumed, so without one the run line shows the model's fair odds instead. Treat the edges as an experiment: the model alone was 0.003 log loss behind Pinnacle's 2016 closing moneyline, and in the backtest its moneyline edges against those closing prices lost 4.5% per bet (95% range -10.8% to +1.7%) while its total edges broke even, so an apparent edge against a sharp line is more often the model's error than the market's. Their record is tracked live below.
+The edge columns give the expected value of a bet per $1 staked at the posted price, from the final prediction: the model's runs blended with the market's, simulated against the posted run line and total (a push on a whole-number total returns the stake), and anchored to the market's own chances so only what the blend moves off the market counts. The model alone disagrees with the line in most games, but the blend keeps only the share of that disagreement the model has earned, so edges are rare. A side counts as an edge when its EV is 3% or more; each market shows its best side, as "pick (price): EV, its chance, its stake", the stake being a 25% share of the Kelly stake in units of 1% of the bankroll, with at most 3 units on one game. A total with no posted price is assumed to be -110 on both sides and marked -110*; run-line and moneyline prices are never assumed, so without one the run line shows the model's fair odds instead. Treat the edges as an experiment, not betting advice; see the backtest for how they have done on past seasons. Their record is tracked live below.
 
 ## Friday, October 23 — World Series
 
-| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / Jacob Misiorowski | TB 2, MIL 3 | MIL 60% | TB +150 / MIL -150 | TB +133 / MIL -161 | 3.0 – 3.7 | 0–6 / 1–7 | MIL -1.5 39% | 6.7 / 6 (over 52%) | 10% | proj. / proj. | MIL -1.5 (+149): EV +5.5%, model 42% | no edge | Over 6 (-110): EV +21.0%, model 59% |
+| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8:00 PM | TB @ MIL | Nick Martínez / Jacob Misiorowski | TB 3, MIL 4 | MIL 63% | TB +170 / MIL -170 | TB +158 / MIL -192 | 3.0 – 4.0 | 0–6 / 1–8 | MIL -1.5 42% | 7.0 / 6.5 (over 50%) | MIL -170, 3.8 runs | 10% | proj. / proj. | no edge | no edge | no edge |
 
 ## Saturday, October 24 — World Series
 
-| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | TBD / TBD | TB 3, MIL 4 | MIL 56% | TB +125 / MIL -125 | – | 4.0 – 4.4 | 1–8 / 1–9 | MIL -1.5 38% | 8.4 | 9% | proj. / proj. | no line yet; fair MIL -1.5 +165, TB +1.5 -165 | no line yet | no line yet |
+| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8:00 PM | TB @ MIL | Drew Rasmussen / Logan Henderson | TB 3, MIL 4 | MIL 53% | TB +115 / MIL -115 | – | 3.8 – 3.9 | 1–8 / 1–8 | MIL -1.5 34% | 7.7 | MIL -110, 4.2 runs | 10% | proj. / proj. | no line yet; fair MIL -1.5 +190, TB +1.5 -190 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -41,15 +41,15 @@ Extra innings: predicted in 8.6% of regular-season games, happened in 8.6%.
 
 ### Betting edges
 
-| Market | Edges | Record (W-L-P) | Units | ROI |
-|---|---|---|---|---|
-| Run line | 0 | 0-0-0 | +0.00 | – |
-| Moneyline | 0 | 0-0-0 | +0.00 | – |
-| Total | 0 | 0-0-0 | +0.00 | – |
+| Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |
+|---|---|---|---|---|---|---|
+| Run line | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
+| Moneyline | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
+| Total | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
 
 Moneyline moved toward the model's edge at the first line seen, before first pitch: 0 of 0 games.
 
-One unit on each edge at the price logged with the last prediction before first pitch (live predictions only; ROI is units per bet). The market moving toward the model's side (closing line value) is the quickest sign that it knows something the market doesn't yet.
+Each edge at the stake and price logged with the last prediction before first pitch (live predictions only; edges logged before edges were priced from the final prediction are left out). Units are 1% of the bankroll; ROI is units won per unit staked, and expected ROI is what the edges' EVs promised. The market moving toward the model's side (closing line value) is the quickest sign that it knows something the market doesn't yet.
 
 ### Results, Monday, October 19
 
@@ -63,43 +63,43 @@ Runs per game better than an average team against an average opponent at a neutr
 
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
-| 1 | LAD | +1.38 | +0.66 | +0.36 | +0.10 | +0.26 | 5.2 | 1576 |
-| 2 | MIL | +0.94 | +0.48 | +0.14 | +0.09 | +0.23 | 4.9 | 1606 |
-| 3 | TB | +0.88 | +0.35 | +0.22 | +0.11 | +0.20 | 5.2 | 1559 |
-| 4 | CHC | +0.74 | +0.61 | +0.06 | +0.01 | +0.07 | 5.3 | 1539 |
-| 5 | NYY | +0.66 | +0.16 | +0.20 | +0.08 | +0.23 | 5.2 | 1560 |
-| 6 | ATL | +0.66 | +0.26 | +0.14 | +0.10 | +0.16 | 5.1 | 1529 |
-| 7 | SD | +0.62 | +0.38 | +0.01 | +0.11 | +0.13 | 5.0 | 1546 |
-| 8 | PHI | +0.52 | +0.19 | +0.16 | +0.07 | +0.09 | 5.6 | 1531 |
-| 9 | HOU | +0.49 | +0.45 | +0.03 | +0.06 | -0.05 | 4.9 | 1489 |
-| 10 | ARI | +0.45 | +0.31 | +0.07 | +0.10 | -0.03 | 5.2 | 1512 |
-| 11 | SEA | +0.41 | +0.39 | +0.09 | +0.03 | -0.09 | 5.3 | 1475 |
-| 12 | NYM | +0.41 | +0.46 | -0.04 | +0.02 | -0.04 | 5.2 | 1497 |
-| 13 | CLE | +0.35 | +0.01 | +0.11 | +0.11 | +0.12 | 4.6 | 1514 |
-| 14 | BOS | +0.27 | -0.04 | +0.08 | +0.06 | +0.17 | 5.0 | 1531 |
-| 15 | CWS | +0.26 | +0.26 | -0.03 | +0.05 | -0.02 | 4.3 | 1507 |
-| 16 | DET | +0.23 | +0.09 | -0.01 | +0.08 | +0.07 | 5.0 | 1512 |
-| 17 | PIT | +0.22 | +0.02 | +0.10 | +0.05 | +0.04 | 4.6 | 1508 |
-| 18 | TOR | +0.17 | +0.02 | +0.03 | +0.03 | +0.08 | 4.8 | 1502 |
-| 19 | TEX | +0.16 | +0.06 | +0.05 | +0.07 | -0.02 | 5.0 | 1489 |
-| 20 | MIN | +0.06 | +0.06 | +0.08 | +0.03 | -0.10 | 5.3 | 1470 |
-| 21 | BAL | +0.02 | +0.00 | -0.08 | +0.05 | +0.04 | 5.4 | 1496 |
-| 22 | KC | -0.19 | -0.09 | +0.03 | -0.03 | -0.10 | 5.2 | 1460 |
-| 23 | WSH | -0.28 | +0.03 | -0.10 | -0.05 | -0.16 | 4.6 | 1475 |
-| 24 | MIA | -0.29 | -0.24 | -0.03 | +0.00 | -0.02 | 4.8 | 1502 |
-| 25 | STL | -0.34 | -0.26 | -0.05 | +0.00 | -0.03 | 5.1 | 1481 |
-| 26 | CIN | -0.47 | -0.09 | -0.17 | +0.01 | -0.23 | 5.0 | 1456 |
-| 27 | SF | -0.48 | -0.43 | -0.05 | -0.00 | -0.00 | 4.8 | 1461 |
-| 28 | LAA | -0.62 | -0.48 | -0.06 | -0.03 | -0.05 | 5.3 | 1434 |
-| 29 | ATH | -0.73 | +0.06 | -0.24 | -0.06 | -0.49 | 4.8 | 1405 |
-| 30 | COL | -0.93 | -0.20 | -0.15 | +0.01 | -0.59 | 4.9 | 1379 |
+| 1 | LAD | +1.52 | +0.75 | +0.40 | +0.11 | +0.25 | 5.2 | 1576 |
+| 2 | MIL | +0.86 | +0.39 | +0.15 | +0.10 | +0.22 | 4.9 | 1606 |
+| 3 | TB | +0.78 | +0.25 | +0.24 | +0.11 | +0.19 | 5.2 | 1559 |
+| 4 | ATL | +0.72 | +0.32 | +0.15 | +0.09 | +0.16 | 5.1 | 1529 |
+| 5 | CHC | +0.69 | +0.59 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
+| 6 | NYY | +0.67 | +0.18 | +0.20 | +0.07 | +0.22 | 5.2 | 1560 |
+| 7 | SD | +0.63 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
+| 8 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.6 | 1531 |
+| 9 | NYM | +0.49 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
+| 10 | ARI | +0.49 | +0.40 | +0.01 | +0.11 | -0.03 | 5.2 | 1512 |
+| 11 | HOU | +0.45 | +0.37 | +0.04 | +0.07 | -0.04 | 4.9 | 1489 |
+| 12 | CLE | +0.44 | +0.05 | +0.13 | +0.14 | +0.12 | 4.6 | 1514 |
+| 13 | SEA | +0.43 | +0.34 | +0.14 | +0.04 | -0.08 | 5.3 | 1475 |
+| 14 | BOS | +0.28 | -0.05 | +0.08 | +0.08 | +0.16 | 5.0 | 1531 |
+| 15 | DET | +0.27 | +0.12 | -0.00 | +0.08 | +0.07 | 5.0 | 1512 |
+| 16 | PIT | +0.25 | +0.01 | +0.14 | +0.05 | +0.04 | 4.6 | 1508 |
+| 17 | CWS | +0.18 | +0.20 | -0.04 | +0.03 | -0.02 | 4.3 | 1507 |
+| 18 | TEX | +0.13 | +0.04 | +0.05 | +0.06 | -0.02 | 5.0 | 1489 |
+| 19 | MIN | +0.11 | +0.09 | +0.09 | +0.02 | -0.10 | 5.3 | 1470 |
+| 20 | TOR | +0.11 | -0.04 | +0.03 | +0.04 | +0.08 | 4.8 | 1502 |
+| 21 | BAL | +0.03 | +0.01 | -0.08 | +0.06 | +0.04 | 5.4 | 1496 |
+| 22 | KC | -0.20 | -0.03 | -0.04 | -0.04 | -0.10 | 5.2 | 1460 |
+| 23 | WSH | -0.23 | +0.07 | -0.08 | -0.06 | -0.15 | 4.6 | 1475 |
+| 24 | MIA | -0.33 | -0.27 | -0.05 | +0.01 | -0.02 | 4.8 | 1502 |
+| 25 | STL | -0.35 | -0.22 | -0.10 | -0.01 | -0.03 | 5.1 | 1481 |
+| 26 | CIN | -0.62 | -0.19 | -0.21 | +0.00 | -0.22 | 5.0 | 1456 |
+| 27 | SF | -0.66 | -0.52 | -0.11 | -0.03 | -0.00 | 4.8 | 1461 |
+| 28 | LAA | -0.66 | -0.56 | -0.02 | -0.04 | -0.05 | 5.3 | 1434 |
+| 29 | ATH | -0.73 | -0.02 | -0.18 | -0.07 | -0.47 | 4.8 | 1405 |
+| 30 | COL | -0.99 | -0.18 | -0.24 | -0.00 | -0.56 | 4.9 | 1379 |
 
 ## Current model fit
 
 - Fitted on 9874 games from 2023 to 2026.
-- Home field: +6.2% runs for the home team relative to the visitor.
-- Park: each 10% of park run factor moves runs by +6.7%.
-- Weather: +4.5% runs per 10°F above 70°F, +3.6% per 10 mph of wind blowing out (open-air parks).
-- Matchups: a lineup's edge over the starter counts 0.83 times its face value and over the bullpen 0.70 times.
-- Blend: 81% on the betting line wherever there is one (fitted on 1 logged games, shrunk toward the 2016 backtest value).
+- Home field: +6.5% runs for the home team relative to the visitor.
+- Park: each 10% of park run factor moves runs by +6.4%.
+- Weather: +4.6% runs per 10°F above 70°F, +3.7% per 10 mph of wind blowing out (open-air parks).
+- Matchups: a lineup's edge over the starter counts 0.91 times its face value and over the bullpen 0.80 times.
+- Blend: 90% on the betting line wherever there is one (fitted on 1 logged games, shrunk toward the backtest value).
 - Simulator: games share a hot-or-cold factor with spread 1/√20, and 25% of walk-offs are home runs that count in full.
