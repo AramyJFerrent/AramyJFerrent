@@ -34,6 +34,17 @@ def fair_moneyline(home_win: float, home: str, away: str) -> str:
     return f"{away} {american(fair_american(1 - home_win))} / {home} {american(fair_american(home_win))}"
 
 
+def first_five(r) -> str:
+    """Fair first-five-innings moneyline for the side favored over five, with ties refunded (as most
+    books settle it), and the expected runs over five innings."""
+    tie, home = getattr(r, "f5_tie_prob", np.nan), getattr(r, "f5_home_win_prob", np.nan)
+    if pd.isna(tie) or pd.isna(home) or tie >= 1:
+        return "–"
+    p = home / (1.0 - tie)
+    team, p = (r.home_team, p) if p >= 0.5 else (r.away_team, 1.0 - p)
+    return f"{team} {american(fair_american(p))}, {r.f5_total:.1f} runs"
+
+
 def _has(x) -> bool:
     return x is not None and not pd.isna(x)
 
@@ -85,9 +96,9 @@ def _lineups(away: str, home: str) -> str:
 def upcoming_table(rows: pd.DataFrame) -> str:
     lines = [
         "| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline "
-        "| Expected runs | 80% range | Run line | Total: model / line | Extra innings | Lineups "
+        "| Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups "
         "| Run line edge | Moneyline edge | Total edge |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows.itertuples(index=False):
         fav, p = (r.home_team, r.home_win_prob) if r.home_win_prob >= 0.5 else (r.away_team, r.away_win_prob)
@@ -105,7 +116,8 @@ def upcoming_table(rows: pd.DataFrame) -> str:
             f"| {fav} {p:.0%} | {fair_moneyline(r.home_win_prob, r.home_team, r.away_team)} | {posted} "
             f"| {r.pred_away:.1f} – {r.pred_home:.1f} "
             f"| {int(r.away_low)}–{int(r.away_high)} / {int(r.home_low)}–{int(r.home_high)} "
-            f"| {cover} | {total} | {r.extra_prob:.0%} | {_lineups(r.away_lineup, r.home_lineup)} | {edges} |"
+            f"| {cover} | {total} | {first_five(r)} | {r.extra_prob:.0%} | {_lineups(r.away_lineup, r.home_lineup)} "
+            f"| {edges} |"
         )
     return "\n".join(lines)
 

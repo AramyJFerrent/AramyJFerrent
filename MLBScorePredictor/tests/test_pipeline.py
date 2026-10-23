@@ -6,7 +6,7 @@ from types import SimpleNamespace
 from mlbpredictor import pipeline
 from mlbpredictor.edges import EDGE_COLUMNS, add_edges
 from mlbpredictor.pipeline import LOG_COLUMNS, lineup_frame, load_log, model_lines, select_upcoming, update_log
-from mlbpredictor.report import edge_cell, edge_table, fair_moneyline, grade, render, upcoming_table
+from mlbpredictor.report import edge_cell, edge_table, fair_moneyline, first_five, grade, render, upcoming_table
 
 
 def schedule():
@@ -124,6 +124,13 @@ def test_edge_cells():
     table = upcoming_table(rows)
     assert "| Run line edge | Moneyline edge | Total edge |" in table
     assert "| BOS +110 / NYY -120 |" in table and "| no edge | NYY (-120): EV +10.0%, 60%, stake" in table
+    assert "| First 5 (fair) |" in table
+    # Over five innings ties are refunded: 45% home, 15% tie is 52.9% of the decided games.
+    f5 = SimpleNamespace(home_team="NYY", away_team="BOS", f5_home_win_prob=0.45, f5_tie_prob=0.15, f5_total=4.6)
+    assert first_five(f5) == "NYY -115, 4.6 runs"                  # fair -112.5, shown to the nearest 5
+    assert first_five(SimpleNamespace(home_team="NYY", away_team="BOS", f5_home_win_prob=0.3, f5_tie_prob=0.2,
+                                      f5_total=4.0)) == "BOS -165, 4.0 runs"
+    assert first_five(SimpleNamespace(home_team="NYY", away_team="BOS")) == "–"
     model = SimpleNamespace(coef={}, fit_seasons=[2023, 2026], fit_games=100,
                             sim=SimpleNamespace(frailty=30.0, walkoff_hr=0.3))
     page = render(pd.DataFrame(columns=LOG_COLUMNS), rows, pd.DataFrame(), model, 0.2, 0,

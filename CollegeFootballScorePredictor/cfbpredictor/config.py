@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 TEAM_GAMES_DIR = DATA_DIR / "team_games"
 PRODUCTION_DIR = DATA_DIR / "production"
+QB_DIR = DATA_DIR / "qbs"
 LINES_PATH = DATA_DIR / "lines.csv"
 RETURNING_PATH = DATA_DIR / "returning.csv"
 VENUES_PATH = DATA_DIR / "venues.csv"
@@ -67,6 +68,12 @@ class Hyperparams:
     # Weight on plays in garbage time (CFBD definition: a lead of more than 38
     # points in the second quarter, 28 in the third or 22 in the fourth).
     garbage_weight: float = 0.0
+    # Quarterbacks: the prior's strength in dropbacks, its value (EPA per
+    # dropback against the league) and the half-life of past dropbacks, in
+    # weeks (a season spans 25).
+    qb_prior_dropbacks: float = 800.0
+    qb_prior_value: float = -0.15
+    qb_half_life_weeks: float = 80.0
     # Seasons of history used to fit the points map, blend and dispersion.
     fit_window_seasons: int = 4
 

@@ -22,6 +22,7 @@ NHL_DATA_RAW = "https://raw.githubusercontent.com/sportsdataverse/fastRhockey-nh
 SCHEDULE_URL = NHL_DATA_RAW + "/schedules/parquet/nhl_schedule_{season}.parquet"
 PBP_URL = NHL_DATA_RAW + "/pbp_lite/parquet/play_by_play_lite_{season}.parquet"
 GOALIE_BOX_URL = NHL_DATA_RAW + "/goalie_box/parquet/goalie_box_{season}.parquet"
+SKATER_BOX_URL = NHL_DATA_RAW + "/skater_box/parquet/skater_box_{season}.parquet"
 
 # First season summarized from play-by-play (2009-10). Ratings need a few
 # seasons of burn-in before the backtest window so preseason priors mean something.

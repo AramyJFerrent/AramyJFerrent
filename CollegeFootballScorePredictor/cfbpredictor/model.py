@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 from bettingcore import anchored, market_chance, no_push, with_push
 
+from .qb import DROPBACKS_PER_GAME
 from .simulate import ScoringModel, calibrate, fit_margin_weights, simulate, summarize
 
 MARGIN_FEATURES = ["off", "def_opp", "st", "home", "home_conf", "fcs", "elo"]
@@ -51,6 +52,7 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             if "home_rest" in f else np.zeros(n)
         shift = f[f"{side}_tz_shift"].fillna(0.0).to_numpy() if f"{side}_tz_shift" in f else np.zeros(n)
         miles = f[f"{side}_miles"].fillna(0.0).to_numpy() if f"{side}_miles" in f else np.zeros(n)
+        qb = f[f"{side}_qb_adj"].fillna(0.0).to_numpy() * DROPBACKS_PER_GAME if f"{side}_qb_adj" in f else np.zeros(n)
         sides.append(pd.DataFrame({
             "game_id": f["game_id"].to_numpy(),
             "side": side,
@@ -68,6 +70,7 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             "tz_west": np.clip(-shift, 0, None),
             "tz_east": np.clip(shift, 0, None),
             "rest": rest,
+            "qb": qb,
             "env": f["env_points"].to_numpy(),
             "points": f[f"{side}_score"].to_numpy(),
         }))

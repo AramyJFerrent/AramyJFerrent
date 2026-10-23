@@ -238,7 +238,7 @@ Downloads are cached in `.cache/` (ignored by git), the line archive for a month
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games with run-line, moneyline and total edges, season grading, edge record, latest results, power ratings |
+| `predictions/README.md` | Upcoming games with run-line, moneyline and total edges, fair first-five-innings odds, season grading, edge record, latest results, power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
 | `predictions/log.csv` | Every prediction (last one before first pitch), with the lineups, lines and prices it was made against, the model's own and the final (anchored) cover and over chances, each market's edge (`spread_edge_*` for the run line, `moneyline_edge_*`, `total_edge_*`: pick, side, line, price, chance, EV and stake in units) and the final score once known |
 | `predictions/ratings.csv` | Power ratings in runs per game, by unit |
@@ -255,6 +255,9 @@ Downloads are cached in `.cache/` (ignored by git), the line archive for a month
   in the betting line.
 - Statcast pitch and batted-ball quality. Ratings use outcomes only; pitch
   tracking would make young players' ratings settle faster.
+- First-five-innings edges. The page shows fair first-five odds from the
+  simulator (the moneyline with ties refunded, and expected runs), but no
+  free source has first-five prices to bet or backtest them against.
 - Wind direction for upcoming games. The wind term is fitted on
   Retrosheet's recorded wind, but forecasts do not say whether it blows in
   or out at each park, so wind only counts once MLB posts game-time

@@ -14,6 +14,7 @@ from .config import Hyperparams
 from .elo import run_elo
 from .lines import LINE_COLUMNS
 from .prior import PriorModel, members_from
+from .qb import QBModel
 from .ratings import Ratings, RatingsEngine, prepare_rows, targets
 from .travel import travel_features
 
@@ -45,8 +46,11 @@ def rest_days(games: pd.DataFrame) -> pd.DataFrame:
 
 class FeatureBuilder:
     def __init__(self, games: pd.DataFrame, team_games: pd.DataFrame, returning: pd.DataFrame,
-                 lines: pd.DataFrame, venues: pd.DataFrame, hp: Hyperparams):
+                 lines: pd.DataFrame, venues: pd.DataFrame, hp: Hyperparams, qbs: pd.DataFrame | None = None):
+        """``qbs``: quarterback-game summaries (``data.summarize_qbs``); without them the
+        quarterback adjustment is zero."""
         self.hp = hp
+        self.qb = QBModel(qbs, hp) if qbs is not None and len(qbs) else None
         self.members = members_from(team_games, games)
         self.engines = {}
         for name, target in targets(hp).items():
@@ -90,6 +94,8 @@ class FeatureBuilder:
         out["fcs_gap"] = main.fcs_gap
         out["env_points"] = self.scoring_environment(season, week)
         out = out.join(self.elo, on="game_id")
+        if self.qb is not None:
+            out = out.join(self.qb.adjustments(games, season, week))
         return out
 
     def walk_forward(self, seasons) -> pd.DataFrame:
