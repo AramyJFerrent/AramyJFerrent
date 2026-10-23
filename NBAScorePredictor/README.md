@@ -75,7 +75,7 @@ Actions tab with **Run workflow**.
 | Minutes and availability | Each player's minutes are projected from his recent games for any team (1.5-game half-life), both minutes when he plays and expected minutes counting healthy scratches as zero. A team's lineup strength is the minutes-weighted sum of its players' ratings, with minutes rescaled to 240 and no one above 42; minutes left by an absent player go to the others in proportion to how far each is below 42, so the bench absorbs most of them. Live, the candidates are ESPN's current roster (falling back to recent box scores, then the preseason roster), and the injury report turns each status into a chance of playing: out 0, doubtful 15%, questionable 55%, day-to-day 70%, probable 95%. A questionable star counts with about half his minutes, which weighs the two scenarios by how likely each is. | `players.py`, `availability.py` |
 | Team ratings | Ridge ratings of each offense's and defense's points per 100 possessions (garbage time removed, opponent-adjusted, 30-day half-life) and of pace (15-day half-life, since pace changes faster than quality), each pulled toward 60% of last season's rating | `ratings.py` |
 | Points map | Points per 100 possessions for each offense from both teams' lineup strength and efficiency ratings, home court, back-to-backs and playoffs, on top of the league's current level; possessions from both teams' pace ratings. Expected points are pace times efficiency. Refitted on the last four seasons every run. | `model.py` |
-| Market blend | `final = w × model + (1 − w) × line`, separately for the margin and the total, with `w` fitted on past closing lines | `model.py` |
+| Market blend | `final = w × model + (1 − w) × line`, separately for the margin and the total, with `w` fitted on past closing lines out of sample (each season's points map refitted without it) | `model.py` |
 | Simulator | 10,000 games per matchup. Each team's regulation points come from a bivariate normal around its expected points, with the spread and correlation fitted so simulated margins and totals scatter like real ones (about 11 points per team, correlation about 0.23 in recent seasons) and growing with the expected total. Real games are tied after 48 minutes twice as often as a smooth distribution says (the trailing team plays for the tie) and end 1-4 points apart less often, so each simulated game is weighted by its regulation margin to match; tied games play five-minute overtimes at each team's regulation scoring rate until one leads. | `simulate.py` |
 | Elo | FiveThirtyEight-style margin-of-victory Elo, the baseline | `elo.py` |
 | Backtest | Walk-forward by day over 2015-16 to 2025-26, scored next to the closing line, team ratings alone and Elo | `backtest.py` |
@@ -125,6 +125,16 @@ box score. All 13,332 games have an archived closing line; a coin flip scores
   around every injury-report deadline.
 - Things that did not earn a place, tested on the same games: travel distance
   and time zones crossed, and rest beyond the back-to-back flag.
+- A box-score prior for player ratings (an SPM, the way EPM and DARKO seed
+  theirs: a ridge map from each player's per-36 box score to his offensive
+  and defensive rating, fitted on earlier seasons, toward which his prior
+  moves as he logs minutes; `box_prior_minutes_new` and `box_prior_minutes`
+  in `config.py`). On the tuning seasons it did not help: the best setting,
+  newcomers only, moved the margin error from 9.303 to 9.302 and the total
+  error the other way, and using it for returning players made the margin
+  worse (up to 9.348). Newcomers already start from a low prior and play few
+  minutes, so better ratings for them barely move a team's strength. It is
+  built but switched off.
 
 Full tables, calibration buckets and bootstrap intervals are in
 [`predictions/backtest.md`](predictions/backtest.md). The archived lines for
@@ -142,60 +152,66 @@ bet at the posted price,
 
     EV = P(win) × (decimal odds − 1) − P(lose)
 
-where a push returns the stake. The chances come from the model alone,
-before it is blended with the line: the model-only simulation that gives
-its own win chance also gives its chance of covering, landing exactly on
-the spread, going over and landing on the total. The best side is an edge
-when its EV is 3% or more (`EDGE_MIN_EV` in `nbapredictor/edges.py`), and
-the page shows it as `NYK -4.5 (-110): EV +5.0%, model 55%`, or "no edge",
-or "no line yet".
+where a push returns the stake. The chances come from the final prediction,
+the one on the page: the model's margin and total blended with the line by
+weights fitted out of sample (each season's points map is refitted without
+it), simulated, and anchored to the market's own chances. Each side gets the
+market's de-vigged chance plus the difference between the simulator at the
+blend and at the line (same random draws), so only the blend's disagreement
+with the line can make an edge, not the simulator's shape. The best side is
+an edge when its EV is 3% or more (`EDGE_MIN_EV`), staked at a quarter of the
+Kelly stake with at most 3 units (1% of the bankroll each) on one game, using
+the shared [BettingCore](../BettingCore) package. The page shows it as
+`NYK -4.5 (-110): EV +5.0%, 55%, stake 1.2u`, or "no edge", or "no line yet".
 
 Prices come from ESPN's odds: both moneylines and the price of each side of
 the spread and the total. When a spread or total price is missing it is
 assumed to be −110 and marked `-110*`; a moneyline is never assumed. The
 edge of each market is logged with every prediction, so the one that counts
-is the last before tip-off, and it is graded once the game is final: 1 unit
-flat, at the logged price. The page keeps a season record per market
-(edges, W-L-P, units, ROI) and how often the spread moved toward the
-model's first spread edge before tip-off.
-
-The backtest (`python -m nbapredictor backtest`) computes the same edges
-walk-forward against the archived closing lines (closing moneylines;
-spreads and totals at an assumed −110, since the archives have no prices
-for them) and against opening spreads and totals, and writes the record of
-each market with a 95% bootstrap range on its ROI to
-[`predictions/backtest.md`](predictions/backtest.md).
+is the last before tip-off, and it is graded once the game is final at the
+logged price and stake. The page keeps a season record per market (edges,
+W-L-P, units staked and won, ROI and expected ROI) and how often the spread
+moved toward the model's first spread edge before tip-off. Edges logged
+before this rule (from the model alone, one unit each) are left out of the
+record.
 
 ## Can it beat the betting line?
 
-Before the edges were based on expected value, the predictor picked a side
-whenever the model's own spread (before blending) and the line differed by a
-point or more. The walk-forward test of those picks, against break-even of
-52.4% at standard −110 odds:
+The backtest (`python -m nbapredictor backtest`) prices the same edges
+walk-forward against the archived closing lines (closing moneylines;
+spreads and totals at an assumed −110, since the archives have no prices
+for them) and against opening spreads and totals:
 
-| Picks against | Record (W-L-P) | Cover rate | 95% range | Line then moved toward the pick |
-|---|---|---|---|---|
-| Opening line, 2015-16 to 2021-22, assuming each team's previous lineup | 2926-2743-94 | 51.6% | 50.3%–52.9% | 59.0% of 4,860 moves |
-| Opening line, same seasons, knowing who played | 2984-2774-97 | 51.8% | 50.5%–53.1% | 68.0% of 4,964 moves |
-| Closing line, same games | 2811-2862-97 | 49.6% | 48.2%–50.9% | – |
-| Closing line, 2015-16 to 2025-26 | 4447-4465-131 | 49.9% | 48.9%–50.9% | – |
+| Lines | Chances | Market | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+|---|---|---|---|---|---|---|---|
+| Closing | final (live rule) | Spread | 800 | 403-390-7 | −3.5% | −10.3% to +3.4% | +6.4% |
+| Closing | final (live rule) | Moneyline | 1973 | 627-1346-0 | +11.5% | +3.4% to +19.1% | +9.9% |
+| Closing | final (live rule) | Total | 526 | 267-253-6 | −1.7% | −10.4% to +6.7% | +6.9% |
+| Closing | model alone (old rule) | Spread | 7932 | 3947-3863-122 | −3.6% | −5.8% to −1.4% | +13.4% |
+| Closing | model alone (old rule) | Moneyline | 8838 | 3136-5702-0 | +2.9% | −0.5% to +6.2% | +24.5% |
+| Closing | model alone (old rule) | Total | 8134 | 4036-3996-102 | −4.6% | −6.9% to −2.3% | +14.6% |
+| Opening, previous lineups | final | Spread | 479 | 244-225-10 | +0.9% | −8.3% to +9.8% | +6.8% |
+| Opening, previous lineups | final | Total | 283 | 158-124-1 | +8.3% | −3.2% to +19.9% | +5.8% |
 
 What this means:
 
-- Against opening lines the model has a small, real edge: its picks beat
-  the opener more often than not even without any injury news (the first
-  row assumes each team's previous lineup, which is all a morning run
-  knows), and the line then moved toward the pick 59% of the time. It is
-  still below break-even, and the 95% range includes it, so it is not a
-  proven money-maker.
-- Against closing lines there is no edge at all: 49.9%. By tip-off the
-  market has priced in what the model knows, injuries included.
-
-So the honest answer is the same as the NFL predictor's: better than the
-line early, by a margin too thin to count on, and not better than the
-closing line. The predictions page now tracks the expected-value edges
-live, with how often the spread moves toward the model's first spread edge,
-so this keeps being tested on games the model has never seen.
+- The old rule, pricing bets with the model alone, found an edge in most
+  games, promised +13% to +25%, and lost on spreads and totals: the model's
+  own numbers disagree with the line far more often than they are right.
+- The final prediction bets about 300 times a season. Spreads and totals are
+  within noise of break-even after the margin, the honest answer for a
+  market that knows the injury report as well as the model does.
+- Its moneyline edges are the one record clear of zero: +11.5% on 1,973
+  bets, close to the +9.9% their EVs promised. Almost all of them (1,915) are
+  underdogs, and the result is positive in 9 of 11 seasons. The archived
+  moneylines look sound (de-vigged, they predict results slightly better
+  than the spreads do), but they are one source's numbers with no way to
+  check them against other books, so treat this as the market to watch in
+  the live record rather than a proven edge.
+- Against opening lines, assuming each team's previous lineup (what a morning
+  run knows), the edges came out ahead too, totals by +8.3%, but on few bets
+  and within noise; the predictions page bets the last line before tip-off,
+  not the opener.
 
 ## Running it yourself
 
@@ -225,7 +241,7 @@ Downloads are cached in `.cache/` (ignored by git).
 |---|---|
 | `predictions/README.md` | Upcoming games with missing players and betting edges, season grading, edge record, latest results, power ratings, top players |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before tip-off), with the line, prices, model-only chances against the line, betting edges and injury news it was made against, and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before tip-off), with the line, prices, the final (anchored) and model-only chances against the line, betting edges (pick, side, line, price, chance, EV and stake in units) and injury news it was made against, and the final score once known |
 | `predictions/ratings.csv` | Team power ratings in points per 100 possessions, with today's injury cost |
 | `predictions/players.csv` | The top-rated players and their expected minutes |
 | `predictions/model.json` | The fitted coefficients, blend weights and simulator settings |
@@ -235,10 +251,6 @@ Downloads are cached in `.cache/` (ignored by git).
 
 ## Not modeled yet
 
-- Box-score priors for player ratings. A rookie starts from a flat
-  below-average prior and earns his rating on the floor; a box-score prior
-  (the way EPM and DARKO seed theirs) would let young players' ratings settle
-  faster.
 - Shot quality. Hot and cold shooting is regressed only through the ridge
   priors, not through shot-quality or attempt-rate measures.
 - Season stage: tanking, locked seeds and resting stars reach the prediction
