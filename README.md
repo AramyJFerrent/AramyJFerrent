@@ -29,7 +29,7 @@ What the backtests found at the closing line, the price the pages bet:
 | College football | about 90 | Spreads −8%, totals +2%, moneylines +12% on long underdogs; no range clear of zero | Spreads −4.4% (clearly negative) |
 | NBA | about 300 | Moneylines +11.5% (+3.4% to +19.2%), almost all underdogs; spreads and totals slightly negative | Spreads and totals −4% (clearly negative) |
 | MLB | almost none | 16 edges in six seasons: the blend is 9% model | Run lines −2.9%, moneylines and totals about break-even |
-| NHL | about 1,000 | Every market slightly ahead (+0.7% to +2.4%); no range clear of zero | Puck lines −2.7%, totals +2.5% |
+| NHL | about 1,000 | About even (−2.2% to +1.5%); no range clear of zero | Puck lines −1.4%, moneylines and totals about +1% |
 | UFC | about 80 bouts | Moneylines +5.1% (−1.3% to +11.4%) | Moneylines −6.0% (clearly negative) |
 
 The old rule lost in almost every sport, because the model alone disagrees with the market on most games and most of that disagreement is noise; the new rule bets far less often. Its results are mostly within noise of break-even, with the NBA's underdog moneylines the one market whose range clears zero, so treat the edges as an experiment, not betting advice. Several backtests also bet into the opening line, where the model alone did better (NHL and NBA moneylines, MLB and college football totals), but the pages bet the last price before the game, not the opener.
