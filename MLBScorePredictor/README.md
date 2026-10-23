@@ -37,7 +37,9 @@ Each run:
 
 1. Reads this season's schedule, line scores and probable pitchers from the
    MLB Stats API in one request, plus the box score of every game finished
-   since the last run, and updates this season's files in `data/games/`.
+   since the last run, and updates this season's files in `data/games/`; and
+   Statcast's batted balls since the last run from Baseball Savant, into
+   `data/statcast/`.
 2. Refits the run model and the simulator on the last three seasons plus
    every game played so far this season.
 3. Reads the next two game days: probable pitchers, posted lineups and
@@ -75,7 +77,8 @@ scores, which takes a few minutes; later runs read only new games.
 |---|---|---|
 | Data | Retrosheet play-by-play for 2012-2025, parsed play by play into one row per game, per batter and per pitcher, with base-out transitions and platoon counts (every parsed final score, out and team batting total matches Retrosheet's game logs). The season in progress comes from MLB Stats API box scores in the same format. Player ids are linked across the two through the Chadwick register. | `retro.py`, `statsapi.py`, `data.py` |
 | Park factors | Poisson regressions of runs and of each plate-appearance outcome on batting team, fielding team, park and home field over the three seasons before, with parks pulled toward neutral; new parks and one-off neutral sites stay near 1 | `parks.py` |
-| Player ratings | Every batter and pitcher rated on strikeouts, walks, hit by pitch, singles, doubles, triples and home runs per plate appearance: park-adjusted, recency-weighted results (time counts only during seasons) shrunk toward the league average for his role by each outcome's stabilization point, measured from history by empirical Bayes (strikeouts settle in about 50 plate appearances; doubles allowed by pitchers take well over a thousand) | `players.py` |
+| Player ratings | Every batter and pitcher rated on strikeouts, walks, hit by pitch, singles, doubles, triples and home runs per plate appearance: park-adjusted, recency-weighted results (time counts only during seasons) shrunk toward the league average for his role by each outcome's stabilization point, measured from history by empirical Bayes (strikeouts settle in about 50 plate appearances; doubles allowed by pitchers take well over a thousand). Since 2015, 60% of each single, double, triple and home run count comes from Statcast's expected hits instead (below), with 0.65 times the shrinkage. | `players.py` |
+| Statcast | Every ball in play since 2015 gets its chance of being a single, double, triple or home run from a table of outcomes by exit velocity, launch angle and spray direction, fitted once on 2015 and frozen. Each day's expected hits are scaled to the league's actual hits over the previous 30 game days, so a livelier or deader ball does not shift every player. Summed by batter and pitcher and day. | `statcast.py` |
 | Matchups | Each of the nine batters meets the probable starter in a log5 plate appearance with the platoon factor for his side and the pitcher's hand, and the same against the bullpen; the outcome probabilities are weighted by each lineup slot's share of plate appearances and valued with linear weights from the base-out chain. Posted lineups are used when available, otherwise the lineup the team last used against a starter of the same hand. | `features.py` |
 | Bullpen and workload | The bullpen is every reliever from the team's last 15 games, weighted by recent use and marked down after pitching the day before (more after 25+ pitches), on back-to-back days or three times in four days. The starter's expected outs come from his recent starts, and set his expected share of each inning. | `features.py` |
 | Team ratings and Elo | Ridge ratings of each team's runs scored and allowed against a preseason prior catch what the player ratings miss (fielding, baserunning, how a staff is used), and a FiveThirtyEight-style Elo with a starting-pitcher adjustment is both a baseline and an input | `ratings.py`, `elo.py` |
@@ -126,6 +129,19 @@ scores 0.693 log loss and 0.250 Brier.
 - 80% ranges contain each team's runs 85.7% of the time (runs are whole
   numbers, so a range covers a bit more than 80%). The headline score is
   exactly right in 2.5% of games, so read the win chance first.
+
+Statcast expected hits, tested on the same 2016-2025 walk-forward:
+
+- With 60% of each hit count from expected hits, log loss went from 0.6746
+  to 0.6743 (paired bootstrap −0.00027, 95% interval −0.00053 to −0.00002)
+  and total-runs error from 3.5345 to 3.5334. That is small, but the
+  model's whole edge over Elo is 0.0009. Every mix from 40% to 100% helped
+  by a similar amount, and 60% matches what predicting the next season
+  says: on hitters with 250+ balls in play in back-to-back seasons, the best
+  weight on expected hits next to actual ones is 0.45 to 0.6, and with that
+  mix hit rates settle in about 280 balls in play instead of 410.
+- Expected hits matter more for pitchers' home runs and extra-base hits
+  than for their singles, which are mostly noise either way.
 
 What mattered, from development runs on 2017-2025 (a faster approximation
 of the same model, without the simulator):
@@ -253,8 +269,9 @@ Downloads are cached in `.cache/` (ignored by git), the line archive for a month
   window. A player back from the injured list rejoins the projected lineup
   only once he has played, and before lineups post a missing star is only
   in the betting line.
-- Statcast pitch and batted-ball quality. Ratings use outcomes only; pitch
-  tracking would make young players' ratings settle faster.
+- Statcast pitch quality (velocity, movement, whiff and chase rates).
+  Batted-ball quality is in (expected hits); strikeouts and walks still come
+  from outcomes, which settle within a couple of hundred plate appearances.
 - First-five-innings edges. The page shows fair first-five odds from the
   simulator (the moneyline with ties refunded, and expected runs), but no
   free source has first-five prices to bet or backtest them against.
@@ -285,3 +302,5 @@ scoreboard; temperature forecasts by [Open-Meteo.com](https://open-meteo.com/)
 [pinnacle.data](https://github.com/marcoblume/pinnacle.data) R package;
 2011-2021 lines from sportsbookreview.com's archive, as collected by
 [sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper).
+Batted-ball data from MLB's Statcast, via
+[Baseball Savant](https://baseballsavant.mlb.com).
