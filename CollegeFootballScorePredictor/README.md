@@ -80,7 +80,7 @@ Actions tab with **Run workflow** so the upcoming games pick up their lines.
 | Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons | `model.py` |
 | Score simulator | 10,000 simulated games per matchup. Each team's scoring chances end in a touchdown (then a kick or two-point try), a field goal or nothing; tied games go to overtime, which always produces a winner, with margins drawn from real overtime games. Dispersion is calibrated to real prediction errors and key margins to real frequencies. | `simulate.py` |
 | Lines | History: the median across books of closing and opening lines (2013–2025), else the line in the play-by-play. Live: CFBD or ESPN. Prices: each side's price is the median of the books quoting the consensus line (medians of prices taken on break-even probability); moneylines are the median across books. | `lines.py`, `odds.py` |
-| Betting edges | The model's own expected points (before the market blend) run through the same simulator give its chance of winning, covering and going over, pushes included. Each side of the spread, moneyline and total is valued at its price: EV = p × (decimal odds − 1) − (1 − p − push) per unit. The best side is an edge when EV ≥ 3%. Unposted spread and total prices are assumed to be −110 (marked −110\*); moneylines never are. | `edges.py`, `model.py` |
+| Betting edges | The final prediction's chance of winning, covering and going over, pushes included, anchored to the market: the market's de-vigged chance plus the difference between the simulator run at the blend and at the line (same random draws), so only the blend's disagreement with the line counts. Each side of the spread, moneyline and total is valued at its price: EV = p × (decimal odds − 1) − (1 − p − push) per unit. The best side is an edge when EV ≥ 3%, staked at a quarter of the Kelly stake with at most 3 units a game (shared [BettingCore](../BettingCore) package). Unposted spread and total prices are assumed to be −110 (marked −110\*); moneylines never are. | `edges.py`, `model.py` |
 | Backtest | Walk-forward by week, scored next to the closing line, broken out by kind of game | `backtest.py` |
 
 Ratings knobs were tuned on 2016–2020 (`python -m cfbpredictor tune`), and
@@ -150,27 +150,43 @@ total error over 2016–2025:
 
 ## Can it beat the betting line?
 
-The betting edges come from the model's own numbers before the market blend,
-run through the same score simulator, and count a side when its expected value
-at the price is at least +3% (the **Betting edges** row above). Walk-forward against
-the consensus closing line on every game with one, one unit per edge. The odds
-file has spread and total prices only through 2019, so later seasons are
-scored at an assumed −110 and shown separately.
+The betting edges are priced with the final prediction, the one on the page:
+the model blended with the line by weights fitted out of sample (each season
+on earlier seasons only), run through the score simulator and anchored to the
+market's own chances (the **Betting edges** row above). A side is an edge when
+its expected value at the price is at least +3%, staked at a quarter of the
+Kelly stake. Bowl games outside the playoff get no edges: players sitting out
+for the draft or the transfer portal move those lines, and no free source
+lists them. Walk-forward against the consensus closing line on every game
+with one, and against the median opener. The odds file has spread and total
+prices only through 2019, so later seasons are scored at an assumed −110.
 
-| Market | Prices | Seasons | Edges | Record (W-L-P) | ROI | 95% range |
-|---|---|---|---|---|---|---|
-| Spread | Posted | 2016–2019 | 2089 | 1008-1037-44 | −5.6% | −9.5% to −1.5% |
-| Spread | −110 assumed | 2016–2025 | 4069 | 2005-1993-71 | −4.2% | −6.9% to −1.2% |
-| Moneyline | Posted | 2016–2025 | 4463 | 1659-2804-0 | +7.5% | −9.4% to +35.4% |
-| Total | Posted | 2016–2019 | 2367 | 1204-1137-26 | −1.7% | −5.2% to +2.0% |
-| Total | −110 assumed | 2016–2025 | 3693 | 1928-1722-43 | +0.8% | −2.2% to +3.8% |
+| Market | Chances | Lines | Prices | Seasons | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+|---|---|---|---|---|---|---|---|---|---|
+| Spread | final (live rule) | closing | −110 assumed | 2016–2025 | 149 | 70-75-4 | −8.4% | −24.0% to +7.7% | +7.4% |
+| Moneyline | final (live rule) | closing | posted | 2016–2025 | 561 | 73-488-0 | +12.0% | −28.9% to +76.7% | +18.2% |
+| Total | final (live rule) | closing | −110 assumed | 2016–2025 | 178 | 98-78-2 | +1.6% | −13.7% to +16.1% | +6.0% |
+| Spread | model alone (old rule) | closing | −110 assumed | 2016–2025 | 4081 | 2003-2006-72 | −4.4% | −7.5% to −1.2% | +23.7% |
+| Moneyline | model alone (old rule) | closing | posted | 2016–2025 | 4429 | 1652-2777-0 | +0.1% | −5.1% to +5.9% | +30.3% |
+| Total | model alone (old rule) | closing | −110 assumed | 2016–2025 | 3691 | 1926-1722-43 | +1.7% | −1.8% to +5.1% | +20.4% |
+| Total | model alone | opening | −110 assumed | 2016–2025 | 5393 | 2871-2462-60 | +3.3% | +0.5% to +6.0% | +20.1% |
 
-No, not reliably. Spread edges lose clearly more than the bookmaker's margin,
-and total edges are within noise of break-even. Moneyline edges are mostly
-long underdogs (they won 37% of the time), so a handful of big upsets carry the
-positive ROI and the range runs from a loss to a large win. The predictions
-page grades every logged edge live, with units won and ROI per market, so this
-keeps being tested on games the model has never seen.
+No, not reliably. The old rule's edges disagreed with the line on most games
+and promised +20% or more, but spreads lost more than the bookmaker's margin
+and the rest broke even. The final prediction leans mostly on the line, so it
+finds an edge in only a few percent of games, and none of its records is
+clearly different from zero: moneyline edges are long underdogs (they won 13%
+of the time), so a few upsets carry the ROI. The one result that clears zero
+is the model alone on opening totals, which the predictions page does not
+bet (it bets the last line before kickoff). The backtest's
+[segment table](predictions/backtest.md) splits the edges by kind of game
+(FBS against FCS, early weeks, bowls, Group of 5 and so on). Of its 26 rows,
+one has a range that clears zero, totals in FBS-vs-FCS games at the opener
+(51 edges), which is about what chance alone gives across that many tries. The predictions page
+grades every logged edge live, with units staked and won, ROI and expected
+ROI per market, so this keeps being tested on games the model has never seen.
+Edges logged before this rule (from the model alone, one unit each) are left
+out of that record.
 
 ## Running it yourself
 
@@ -199,7 +215,7 @@ committed `data/` files plus the schedules, which it downloads.
 |---|---|
 | `predictions/README.md` | Upcoming games, season grading, last week's results, FBS power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before kickoff) with the final score once known, plus the prices, the model-only win/cover/over chances and the betting edge in each market (`spread_edge_*`, `moneyline_edge_*`, `total_edge_*`: pick, side, line, price, model chance, EV) |
+| `predictions/log.csv` | Every prediction (last one before kickoff) with the final score once known, plus the prices, the model-only win/cover/over chances and the betting edge in each market (`spread_edge_*`, `moneyline_edge_*`, `total_edge_*`: pick, side, line, price, chance, EV and stake in units) |
 | `predictions/ratings.csv` | FBS ratings in points per game |
 | `predictions/model.json` | The fitted coefficients, prior regression, blend weights and simulator settings |
 | `predictions/backtest.md`, `backtest_summary.json` | The latest backtest |

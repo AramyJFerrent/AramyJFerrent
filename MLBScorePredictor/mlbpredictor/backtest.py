@@ -7,11 +7,17 @@ pitchers are the actual ones, which a game-day run knows once lineups post;
 a second pass projects the lineups instead, as a morning run would. Weather
 is the recorded game-time weather, a little better than a forecast.
 
-Pinnacle's complete 2016 line history is the market benchmark: its closing
-moneyline is scored on the same games, the model is blended with it, and the
-blend weight found there seeds the live predictor's. The same lines grade the
-model's betting edges on the moneyline (opening and closing) and the total;
-Pinnacle's file has no run lines.
+Two market benchmarks. Pinnacle's complete 2016 line history, the sharpest
+book's, is scored on the same games and blended with the model. And
+sportsbookreview's archive (2011 to 2021: opening and closing moneylines,
+closing run lines with their prices, opening and closing totals), matched to
+the games by date, teams and final score, gives six seasons of the model next
+to the market: the blend weight is fitted, for each season, on the archive's
+earlier seasons only (fitted on all of it, it seeds the live predictor's), and
+the betting edges are priced as on the live page, from the final prediction
+anchored to the market, Kelly-staked, at the archive's prices (totals, whose
+price it does not record usably, at -110). The model alone is priced the same
+way for comparison.
 """
 
 from __future__ import annotations
@@ -23,16 +29,27 @@ import pandas as pd
 from scipy.optimize import minimize
 from scipy.stats import nbinom, poisson
 
-from .config import PINNACLE_PATH
-from .edges import add_edges, edge_record
+from bettingcore import paired_bootstrap, sbr
+
+from .config import CACHE_DIR, PINNACLE_PATH
+from .edges import DEFAULT_RUN_LINE, add_edges, edge_record
 from .features import FeatureBuilder
-from .market import MarketInverter, blend, devig, fit_blend
+from .market import EDGE_PROBS, MarketInverter, blend, devig, edge_chances, fit_blend
 from .model import RunModel
 from .simulate import line_probs
 
 log = logging.getLogger(__name__)
 
 MAX_RUNS = 30
+# sportsbookreview's team names, mapped to this predictor's codes.
+SBR_NAMES = {
+    "Diamondbacks": "ARI", "Athletics": "ATH", "Braves": "ATL", "Orioles": "BAL", "Red Sox": "BOS",
+    "Cubs": "CHC", "CUB": "CHC", "Reds": "CIN", "Indians": "CLE", "Rockies": "COL", "White Sox": "CWS",
+    "Tigers": "DET", "Astros": "HOU", "KAN": "KC", "Angels": "LAA", "Dodgers": "LAD", "LOS": "LAD",
+    "Marlins": "MIA", "Brewers": "MIL", "Twins": "MIN", "Mets": "NYM", "Yankees": "NYY", "Phillies": "PHI",
+    "Pirates": "PIT", "SDG": "SD", "Mariners": "SEA", "SFO": "SF", "Cardinals": "STL", "TAM": "TB",
+    "Rangers": "TEX", "Blue Jays": "TOR", "Nationals": "WSH",
+}
 
 
 def outcome(f: pd.DataFrame) -> np.ndarray:
@@ -163,45 +180,6 @@ def distribution_checks(bt: pd.DataFrame) -> dict:
     }
 
 
-def paired_bootstrap(loss_a, loss_b, n: int = 5000, seed: int = 0) -> tuple:
-    """Mean of (a - b) and its 95% interval over resampled games."""
-    rng = np.random.default_rng(seed)
-    diff = np.asarray(loss_a) - np.asarray(loss_b)
-    means = np.array([diff[rng.integers(0, len(diff), len(diff))].mean() for _ in range(n)])
-    return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
-
-
-def roi_interval(units, n: int = 5000, seed: int = 0) -> tuple[float, float]:
-    """95% bootstrap interval on the return per bet."""
-    units = np.asarray(units, dtype=float)
-    if not len(units):
-        return float("nan"), float("nan")
-    rng = np.random.default_rng(seed)
-    means = np.array([units[rng.integers(0, len(units), len(units))].mean() for _ in range(n)])
-    return float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
-
-
-def edge_backtest(test: pd.DataFrame, own: pd.DataFrame) -> dict:
-    """Edge records on Pinnacle's lines from the model's own chances (``own``: ``home_win_prob``
-    and ``line_probs`` at each game's total), by market; None where there are no prices."""
-    lines = test[["game_id", "home_team", "away_team", "home_score", "away_score", "total_line", "over_price",
-                  "under_price"]].copy()
-    lines["model_home_prob"] = own["home_win_prob"].to_numpy()
-    for col in ("model_over_prob", "model_under_prob", "model_total_push_prob"):
-        lines[col] = own[col].to_numpy()
-    out = {}
-    for label, prefix in (("Moneyline, closing line", ""), ("Moneyline, opening line", "open_")):
-        frame = lines.assign(home_moneyline=test[f"{prefix}home_moneyline"].to_numpy(),
-                             away_moneyline=test[f"{prefix}away_moneyline"].to_numpy())
-        out[label] = edge_record(add_edges(frame), "moneyline")
-    out["Total, closing line"] = edge_record(add_edges(lines.assign(home_moneyline=np.nan, away_moneyline=np.nan)),
-                                             "total")
-    for r in out.values():
-        r["roi_low"], r["roi_high"] = roi_interval(r["per_bet"])
-    out["Run line"] = None
-    return out
-
-
 def load_pinnacle() -> pd.DataFrame:
     if not PINNACLE_PATH.exists():
         return pd.DataFrame()
@@ -223,11 +201,6 @@ def market_comparison(bt: pd.DataFrame, feats: pd.DataFrame, fb: FeatureBuilder,
     train = feats[feats["season"].between(2016 - window, 2015) & feats["completed"]]
     model = RunModel.fit(train, fb.chain(2016))
     test = test.reset_index(drop=True)
-    # The model's own chances for the edges, from its unblended simulation at Pinnacle's totals.
-    own_pred, own_sim = model.predict(test, n_sims=n_sims, seed=11)
-    own_pred = pd.concat([own_pred, line_probs(own_sim, np.full(len(test), np.nan), test["total_line"])], axis=1)
-    del own_sim
-    edges = edge_backtest(test, own_pred)
     own = model.expected_runs(test)
     inv = MarketInverter(model.sim, np.exp(np.asarray(model.inning)), ghost=False)
     market = inv.rates(test)
@@ -247,7 +220,7 @@ def market_comparison(bt: pd.DataFrame, feats: pd.DataFrame, fb: FeatureBuilder,
     total = test["home_score"] + test["away_score"]
     has_total = test["total_line"].notna()
     return {
-        "games": len(test), "weight": raw, "losses": losses, "edges": edges,
+        "games": len(test), "weight": raw, "losses": losses,
         "brier": {"model": float(np.mean((test["home_win_prob"] - y) ** 2)),
                   "close": float(np.mean((p_close - y) ** 2)),
                   "blend": float(np.mean((blended["home_win_prob"] - y) ** 2))},
@@ -277,3 +250,149 @@ def lineup_comparison(fb: FeatureBuilder, feats: pd.DataFrame, seasons, window: 
     lk, lb = _log_loss(k["p"], k["y"]), _log_loss(b["p"], k["y"])
     return {"games": len(k), "known": float(lk.mean()), "projected": float(lb.mean()),
             "bootstrap": paired_bootstrap(lb, lk)}
+
+
+# ---- sportsbookreview's archive ---------------------------------------------
+
+def archive_lines(games: pd.DataFrame, max_age_hours: float = 24.0 * 30) -> pd.DataFrame:
+    """Archived lines for ``games``, indexed by ``game_id``, in the live log's column names."""
+    try:
+        archive = sbr.load_archive("mlb", CACHE_DIR, max_age_hours)
+    except Exception as exc:                       # the backtest still runs without this section
+        log.warning("Line archive unavailable: %s", exc)
+        return pd.DataFrame()
+    m = sbr.match(archive, games, SBR_NAMES, date="date")
+    priced = m["home_close_spread_odds"].notna() & m["away_close_spread_odds"].notna() \
+        & m["home_close_spread"].abs().eq(1.5)
+    return pd.DataFrame({
+        "home_moneyline": m["home_close_ml"], "away_moneyline": m["away_close_ml"],
+        "open_home_moneyline": m["home_open_ml"], "open_away_moneyline": m["away_open_ml"],
+        "home_run_line": m["home_close_spread"].where(priced),
+        "home_run_line_price": m["home_close_spread_odds"].where(priced),
+        "away_run_line_price": m["away_close_spread_odds"].where(priced),
+        "total_line": m["close_total"], "open_total_line": m["open_total"],
+    }, index=m.index)
+
+
+def _market_runs(model: RunModel, *frames: pd.DataFrame) -> list[pd.DataFrame]:
+    """Each game's run levels backed out of its moneyline and total (NaN without both), for
+    each of ``frames``: the same games under different lines."""
+    profile = np.exp(np.asarray(model.inning))
+    outs = [pd.DataFrame(np.nan, index=f.index, columns=["market_home_runs", "market_away_runs"]) for f in frames]
+    ghost_games = (frames[0]["tiebreaker"].fillna(0).astype(int) == 1).to_numpy()
+    for ghost in (True, False):
+        rows = ghost_games == ghost
+        if not rows.any():
+            continue
+        inv = MarketInverter(model.sim, profile, ghost=ghost)
+        for f, out in zip(frames, outs):
+            out.loc[rows] = inv.rates(f[rows])[["market_home_runs", "market_away_runs"]].to_numpy()
+    return outs
+
+
+def _season_games(feats: pd.DataFrame, lines: pd.DataFrame, season: int, window: int):
+    """Training games for ``season`` and its nine-inning games with an archived line."""
+    train = feats[feats["season"].between(season - window, season - 1) & feats["completed"]]
+    test = feats[(feats["season"] == season) & feats["completed"] & feats["game_id"].isin(lines.index)
+                 & feats["sched_innings"].fillna(9).eq(9)].reset_index(drop=True)
+    return train, test
+
+
+def _blend_fit(rates: pd.DataFrame) -> tuple[float, int]:
+    """Blend weight (no prior) on ``rates`` and the games behind it."""
+    raw, _, n = fit_blend(rates["model_home_runs"], rates["model_away_runs"], rates["market_home_runs"],
+                          rates["market_away_runs"], rates["home_r8"], rates["away_r8"], prior_games=0.0)
+    return raw, n
+
+
+def market_backtest(feats: pd.DataFrame, fb: FeatureBuilder, lines: pd.DataFrame, seasons, window: int,
+                    start: int, n_sims: int = 2000) -> dict:
+    """The model next to the archived market.
+
+    For every season in ``seasons``, each game's run levels (the model's,
+    out of sample, and the closing and opening lines', backed out through the
+    simulator) are kept for fitting the blend weight. From ``start`` on, each
+    season is also blended with the weight fitted on the earlier seasons only
+    and scored: log loss of the model, the lines and the blend, and the
+    betting edges of the final prediction and of the model alone at the
+    closing and the opening lines. The weight fitted on every season is
+    returned too; it seeds the live predictor's.
+    """
+    rates, rows, weights = [], [], {}
+    for season in seasons:
+        train, test = _season_games(feats, lines, season, window)
+        if test.empty or train.empty:
+            continue
+        model = RunModel.fit(train, fb.chain(season))
+        own = model.expected_runs(test)
+        lt = lines.reindex(test["game_id"]).reset_index(drop=True)
+        base = test.drop(columns=[c for c in lt.columns if c in test]).join(lt).assign(
+            over_price=np.nan, under_price=np.nan)
+        opening = base.assign(home_moneyline=lt["open_home_moneyline"], away_moneyline=lt["open_away_moneyline"],
+                              total_line=lt["open_total_line"], home_run_line=np.nan, home_run_line_price=np.nan,
+                              away_run_line_price=np.nan)
+        markets = dict(zip(("closing", "opening"), _market_runs(model, base, opening)))
+        past = pd.concat(rates) if rates else pd.DataFrame()
+        rates.append(pd.DataFrame({
+            "season": season, "model_home_runs": own["home"], "model_away_runs": own["away"],
+            "market_home_runs": markets["closing"]["market_home_runs"].to_numpy(),
+            "market_away_runs": markets["closing"]["market_away_runs"].to_numpy(),
+            "home_r8": test["home_r8"].to_numpy(float), "away_r8": test["away_r8"].to_numpy(float)}))
+        if season < start or past.empty:
+            log.info("Market runs for %s: %d games", season, len(test))
+            continue
+        w, _ = _blend_fit(past)
+        weights[season] = w
+        own_pred, own_sim = model.predict(base, n_sims=n_sims, seed=season)
+        for kind, frame in (("closing", base), ("opening", opening)):
+            mh = markets[kind]["market_home_runs"].to_numpy()
+            ma = markets[kind]["market_away_runs"].to_numpy()
+            has = ~np.isnan(mh)
+            home, away = blend(own["home"], mh, w), blend(own["away"], ma, w)
+            pred, sim = model.predict(frame, home / own["home"], away / own["away"], n_sims=n_sims, seed=season)
+            # The same simulation at the market's own run levels anchors the edges' chances.
+            ref, ref_sim = model.predict(frame, np.where(has, mh, home) / own["home"],
+                                         np.where(has, ma, away) / own["away"], n_sims=n_sims, seed=season)
+            chances = edge_chances(frame, pred, sim, ref, ref_sim, frame["home_run_line"])
+            del ref_sim, sim
+            run_line = frame["home_run_line"].to_numpy(float)
+            run_line = np.where(np.isnan(run_line), np.where(own_pred["home_win_prob"] >= 0.5, -DEFAULT_RUN_LINE,
+                                                             DEFAULT_RUN_LINE), run_line)
+            own_lines = line_probs(own_sim, run_line, frame["total_line"])
+            rows.append(frame[["game_id", "season", "home_team", "away_team", "home_score", "away_score",
+                               "home_moneyline", "away_moneyline", "home_run_line", "home_run_line_price",
+                               "away_run_line_price", "total_line", "over_price", "under_price"]].assign(
+                kind=kind, blend_home_prob=pred["home_win_prob"].to_numpy(),
+                model_home_prob=own_pred["home_win_prob"].to_numpy(),
+                **{c: chances[c].to_numpy() for c in EDGE_PROBS},
+                **{c: own_lines[c].to_numpy() for c in own_lines}))
+        del own_sim
+        log.info("Market backtest %s: %d games, weight %.2f", season, len(test), w)
+    if not rates:
+        return {}
+    all_weight, all_games = _blend_fit(pd.concat(rates))
+    out = {"all_weight": all_weight, "all_games": all_games, "rate_seasons": (rates[0]["season"].iloc[0],
+                                                                             rates[-1]["season"].iloc[0])}
+    if not rows:
+        return out
+    d = pd.concat(rows, ignore_index=True)
+    close, opened = d[d["kind"] == "closing"], d[d["kind"] == "opening"]
+    y = outcome(close)
+    p_close = devig(close["home_moneyline"], close["away_moneyline"])
+    p_open = devig(opened["home_moneyline"], opened["away_moneyline"])
+    ok = ~(np.isnan(p_close) | np.isnan(p_open))
+    losses = {"model": _log_loss(close["model_home_prob"], y)[ok], "close": _log_loss(p_close, y)[ok],
+              "open": _log_loss(p_open, y)[ok], "blend": _log_loss(close["blend_home_prob"], y)[ok]}
+    edges = {}
+    for kind, frame in (("closing", close), ("opening", opened)):
+        for rule in ("final", "model"):
+            priced = add_edges(frame, chances=rule)
+            for market in ("spread", "moneyline", "total"):
+                if not (kind == "opening" and market == "spread"):
+                    edges[(kind, rule, market)] = edge_record(priced, market)
+    used = sorted(int(x) for x in close["season"].unique())
+    return {**out, "games": int(ok.sum()), "seasons": (used[0], used[-1]), "losses": losses, "weights": weights,
+            "edges": edges,
+            "bootstrap": {"Model vs closing line": paired_bootstrap(losses["model"], losses["close"]),
+                          "Blend vs closing line": paired_bootstrap(losses["blend"], losses["close"]),
+                          "Model vs opening line": paired_bootstrap(losses["model"], losses["open"])}}

@@ -27,10 +27,10 @@ import logging
 
 import numpy as np
 import pandas as pd
+from bettingcore import median_price
 
 from .config import CACHE_DIR, LINES_PATH, LINES_URL
 from .data import fetch, summary_paths
-from .edges import median_price
 
 log = logging.getLogger(__name__)
 

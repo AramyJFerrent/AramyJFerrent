@@ -16,6 +16,7 @@ on:
   push:
     paths:
       - "CollegeFootballScorePredictor/**"
+      - "BettingCore/**"
       - ".github/workflows/cfb-score-predictor.yml"
 
 permissions:
@@ -43,7 +44,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: CollegeFootballScorePredictor/requirements.txt
+          cache-dependency-path: |
+            CollegeFootballScorePredictor/requirements.txt
+            BettingCore/pyproject.toml
 
       - name: Install dependencies
         run: pip install -r requirements.txt

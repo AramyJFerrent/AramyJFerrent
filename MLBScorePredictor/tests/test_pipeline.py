@@ -85,13 +85,20 @@ def test_fair_moneyline():
     assert fair_moneyline(0.6, "NYY", "BOS") == "BOS +150 / NYY -150"
 
 
+# The edges' chances, by the model-only column whose value each test fixture also gives them.
+SAME_CHANCES = {"edge_home_ml_prob": "model_home_prob", "edge_home_cover_prob": "model_home_cover_prob",
+                "edge_away_cover_prob": "model_away_cover_prob", "edge_over_prob": "model_over_prob",
+                "edge_under_prob": "model_under_prob", "edge_total_push_prob": "model_total_push_prob"}
+
+
 def priced(game_id, start, **kw):
-    """A log row with every line posted and the model's own chances, edges filled in."""
+    """A log row with every line posted and the same final and model-only chances, edges filled in."""
     base = dict(home_moneyline=-120, away_moneyline=110, market_home_prob=0.53, model_home_prob=0.6,
                 home_run_line=-1.5, home_run_line_price=150, away_run_line_price=-170, model_home_cover_prob=0.36,
                 model_away_cover_prob=0.64, total_line=8.0, over_price=np.nan, under_price=np.nan,
                 model_over_prob=0.52, model_under_prob=0.41, model_total_push_prob=0.07)
     base.update(kw)
+    base.update({edge: base[model] for edge, model in SAME_CHANCES.items()})
     return add_edges(pd.DataFrame([entry(game_id, start, **base)]))[LOG_COLUMNS].iloc[0].to_dict()
 
 
@@ -103,10 +110,11 @@ def test_edge_cells():
                          entry("d", g.start[3], model_home_cover_prob=0.38, model_away_cover_prob=0.62)])
     r = list(rows.itertuples(index=False))
     # Moneyline: 60% at -120 is EV +10%; run line: 36% at +150 is -10%, 64% at -170 is +1.6%: no edge.
-    assert edge_cell(r[0], "moneyline") == "NYY (-120): EV +10.0%, model 60%"
+    assert edge_cell(r[0], "moneyline").startswith("NYY (-120): EV +10.0%, 60%, stake ")
     assert edge_cell(r[0], "spread") == "no edge"
-    # The total had no posted price: -110 assumed and marked.
-    assert edge_cell(r[0], "total") == "Over 8 (-110*): EV +6.3%, model 52%"
+    # The total had no posted price: -110 assumed and marked. Both edges share the game's 3-unit cap.
+    assert edge_cell(r[0], "total").startswith("Over 8 (-110*): EV +6.3%, 52%, stake ")
+    assert np.isclose(r[0].moneyline_edge_stake + r[0].total_edge_stake, 3.0, atol=1e-3)
     assert edge_cell(r[1], "total") == "no edge" and edge_cell(r[1], "moneyline").startswith("BOS (+110): EV +5.0%")
     assert edge_cell(r[2], "moneyline") == "no line yet" and edge_cell(r[2], "total") == "no line yet"
     # No run line posted: the model's fair odds with its favorite at -1.5.
@@ -115,7 +123,7 @@ def test_edge_cells():
     assert edge_cell(next(no_price.itertuples(index=False)), "spread").startswith("no price yet; fair NYY -1.5 +180")
     table = upcoming_table(rows)
     assert "| Run line edge | Moneyline edge | Total edge |" in table
-    assert "| BOS +110 / NYY -120 |" in table and "| no edge | NYY (-120): EV +10.0%, model 60% |" in table
+    assert "| BOS +110 / NYY -120 |" in table and "| no edge | NYY (-120): EV +10.0%, 60%, stake" in table
     model = SimpleNamespace(coef={}, fit_seasons=[2023, 2026], fit_games=100,
                             sim=SimpleNamespace(frailty=30.0, walkoff_hr=0.3))
     page = render(pd.DataFrame(columns=LOG_COLUMNS), rows, pd.DataFrame(), model, 0.2, 0,
@@ -130,8 +138,10 @@ def test_edge_record_table_grades_live_edges():
                  first_market_home_prob=0.5, first_home_moneyline=-105, first_away_moneyline=-105)
     log = update_log(pd.DataFrame([row]), pd.DataFrame(columns=LOG_COLUMNS), g)
     text = edge_table(log)
-    assert "| Moneyline | 1 | 1-0-0 | +0.83 | +83.3% |" in text
-    assert "| Total | 1 | 1-0-0 | +0.91 | +90.9% |" in text and "| Run line | 0 | 0-0-0 | +0.00 | – |" in text
+    ml, tot = row["moneyline_edge_stake"], row["total_edge_stake"]
+    assert f"| Moneyline | 1 | 1-0-0 | {ml:.1f} | {ml / 1.2:+.2f} | +83.3% |" in text
+    assert f"| Total | 1 | 1-0-0 | {tot:.1f} | {tot / 1.1:+.2f} | +90.9% |" in text
+    assert "| Run line | 0 | 0-0-0 | 0.0 | +0.00 | – | – |" in text
     assert "1 of 1 games" in text
     assert "| Moneyline | 0 |" in edge_table(log.assign(source="backfill"))
 

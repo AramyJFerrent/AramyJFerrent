@@ -18,6 +18,8 @@ def cmd_update(args) -> None:
 
 
 def cmd_backtest(args) -> None:
+    from bettingcore import paired_bootstrap
+
     from . import backtest, report
     from .data import load_summaries
     from .features import FeatureBuilder
@@ -26,7 +28,9 @@ def cmd_backtest(args) -> None:
     summaries = load_summaries(FIRST_SEASON, args.end)
     fb = FeatureBuilder(summaries, hp)
     games = fb.games
-    first = args.start - hp.fit_window_seasons
+    # The archived lines start in 2011; the first season the model can predict needs fit_window earlier ones.
+    archive_first = max(2011, FIRST_SEASON + hp.fit_window_seasons)
+    first = min(args.start, archive_first) - hp.fit_window_seasons
     feats = fb.build(games[games["season"].between(first, args.end) & games["completed"]])
     seasons = range(args.start, args.end + 1)
     bt = backtest.predict_seasons(feats, fb, seasons, hp.fit_window_seasons, n_sims=args.sims)
@@ -36,24 +40,39 @@ def cmd_backtest(args) -> None:
     y = backtest.outcome(bt)
     losses = {k: backtest._log_loss(bt[c], y) for k, c in
               (("model", "home_win_prob"), ("elo", "elo_home_prob"), ("team", "team_only_prob"))}
-    boot = {"Model vs Elo with starting pitchers": backtest.paired_bootstrap(losses["model"], losses["elo"]),
-            "Model vs team runs ratings only": backtest.paired_bootstrap(losses["model"], losses["team"])}
+    boot = {"Model vs Elo with starting pitchers": paired_bootstrap(losses["model"], losses["elo"]),
+            "Model vs team runs ratings only": paired_bootstrap(losses["model"], losses["team"])}
     checks = backtest.distribution_checks(bt)
     market = backtest.market_comparison(bt, feats, fb, hp.fit_window_seasons, n_sims=max(args.sims, 8000))
+    archive = None
+    if not args.skip_archive:
+        lines = backtest.archive_lines(feats)
+        if len(lines):
+            archive = backtest.market_backtest(feats, fb, lines, range(archive_first, args.end + 1),
+                                               hp.fit_window_seasons, args.start, n_sims=args.sims)
     lineup_seasons = [s for s in range(max(args.start, args.end - 2), args.end + 1)]
     lineups = backtest.lineup_comparison(fb, feats, lineup_seasons, hp.fit_window_seasons, args.sims) \
         if not args.skip_lineups else None
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), market, lineups))
+    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), market, lineups, archive))
     for label, df in scores.items():
         print(label)
         print(df.round(4).to_string(index=False))
     if market:
-        print("2016 market:", {k: round(float(v.mean()), 4) for k, v in market["losses"].items()},
+        print("Pinnacle 2016:", {k: round(float(v.mean()), 4) for k, v in market["losses"].items()},
               "blend weight", round(market["weight"], 2))
+    if archive:
+        if archive.get("losses"):
+            print("Archived market:", {k: round(float(v.mean()), 4) for k, v in archive["losses"].items()},
+                  "walk-forward weights", {s: round(w, 2) for s, w in archive["weights"].items()})
+            for key, r in archive["edges"].items():
+                print(report.archive_edge_label(*key) + ":", r["bets"], "edges, ROI",
+                      f"{r['roi']:+.1%} ({r['roi_low']:+.1%} to {r['roi_high']:+.1%}), expected",
+                      f"{r['expected_roi']:+.1%}" if r["bets"] else "")
+        print("Blend weight on all archived seasons:", round(archive["all_weight"], 2), f"({archive['all_games']} games)")
         if args.save_weight:
-            hp.market_weight = round(float(market["weight"]), 2)
+            hp.market_weight = round(float(archive["all_weight"]), 2)
             hp.save()
             print("Saved the blend weight to params.json")
     if lineups:
@@ -220,13 +239,15 @@ def main(argv=None) -> None:
                    help="use only committed data: no downloads, lines, lineups or forecasts")
     p.set_defaults(func=cmd_update)
 
-    p = sub.add_parser("backtest", help="walk-forward backtest against the baselines and 2016 lines")
+    p = sub.add_parser("backtest", help="walk-forward backtest against the baselines and archived lines")
     p.add_argument("--start", type=int, default=2016)
     p.add_argument("--end", type=int, default=2025)
     p.add_argument("--holdout", type=int, default=2021, help="also report seasons from this one on")
     p.add_argument("--sims", type=int, default=2000, help="simulations per game (default 2000)")
     p.add_argument("--skip-lineups", action="store_true", help="skip the projected-lineup comparison")
-    p.add_argument("--save-weight", action="store_true", help="save the 2016 blend weight to params.json")
+    p.add_argument("--skip-archive", action="store_true", help="skip the archived-lines market backtest")
+    p.add_argument("--save-weight", action="store_true",
+                   help="save the blend weight fitted on the archived lines to params.json")
     p.set_defaults(func=cmd_backtest)
 
     p = sub.add_parser("summarize", help="rebuild season summaries from Retrosheet play-by-play")

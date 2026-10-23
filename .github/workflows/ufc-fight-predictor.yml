@@ -15,6 +15,7 @@ on:
   push:
     paths:
       - "UFCFightPredictor/**"
+      - "BettingCore/**"
       - ".github/workflows/ufc-fight-predictor.yml"
 
 permissions:
@@ -38,7 +39,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: UFCFightPredictor/requirements.txt
+          cache-dependency-path: |
+            UFCFightPredictor/requirements.txt
+            BettingCore/pyproject.toml
 
       - name: Install dependencies
         run: pip install -r requirements.txt

@@ -1,0 +1,36 @@
+name: Betting core
+
+on:
+  push:
+    paths:
+      - "BettingCore/**"
+      - ".github/workflows/betting-core.yml"
+  pull_request:
+    paths:
+      - "BettingCore/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: BettingCore
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: BettingCore/pyproject.toml
+
+      - name: Install
+        run: pip install -e . pytest
+
+      - name: Run tests
+        run: python -m pytest -q tests

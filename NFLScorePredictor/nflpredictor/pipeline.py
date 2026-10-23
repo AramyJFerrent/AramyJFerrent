@@ -22,12 +22,15 @@ import logging
 import numpy as np
 import pandas as pd
 
+from bettingcore import write_if_changed
+
 from . import report
 from .config import FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_games, load_summaries, update_summaries
 from .edges import EDGE_COLUMNS, edge_frame
 from .features import FeatureBuilder
-from .model import ScoreModel
+from .injuries import FIRST_INJURY_SEASON, load_losses, update_losses
+from .model import FINAL_LINE_PROBS, ScoreModel
 from .weather import forecast_wind
 
 log = logging.getLogger(__name__)
@@ -42,7 +45,7 @@ README_PATH = OUTPUT_DIR / "README.md"
 # prices can be missing, and edges then assume -110.
 PRICE_COLUMNS = ["home_spread_price", "away_spread_price", "over_price", "under_price",
                  "home_moneyline", "away_moneyline"]
-# Model-only chances (simulated from the model before the market blend) behind the edges.
+# Model-only chances (simulated from the model before the market blend), shown for comparison.
 MODEL_PROB_COLUMNS = ["model_home_win_prob", "model_away_win_prob", "model_tie_prob", "model_home_cover_prob",
                       "model_spread_push_prob", "model_over_prob", "model_total_push_prob"]
 LOG_COLUMNS = [
@@ -50,7 +53,7 @@ LOG_COLUMNS = [
     "pred_away", "pred_home", "pred_margin", "pred_total", "model_margin", "model_total",
     "headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
     "one_score_prob", "away_low", "away_high", "home_low", "home_high",
-    "spread_line", "total_line", *PRICE_COLUMNS, *MODEL_PROB_COLUMNS, *EDGE_COLUMNS,
+    "spread_line", "total_line", *PRICE_COLUMNS, *FINAL_LINE_PROBS, *MODEL_PROB_COLUMNS, *EDGE_COLUMNS,
     "wind_forecast", "elo_spread", "predicted_at", "source",
     "first_predicted_at", "first_spread_line", "first_model_margin", "first_spread_edge_side",
     "away_score", "home_score",
@@ -84,7 +87,8 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, wind: pd.Series | 
         "elo_spread": feats["elo_spread"], "predicted_at": now, "source": "live",
     })
     for col in ("headline_away", "headline_home", "home_win_prob", "away_win_prob", "tie_prob",
-                "one_score_prob", "away_low", "away_high", "home_low", "home_high", *MODEL_PROB_COLUMNS):
+                "one_score_prob", "away_low", "away_high", "home_low", "home_high", *FINAL_LINE_PROBS,
+                *MODEL_PROB_COLUMNS):
         rows[col] = preds[col].to_numpy()
     for col, source in zip(PRICE_COLUMNS, ("home_spread_odds", "away_spread_odds", "over_odds", "under_odds",
                                            "home_moneyline", "away_moneyline")):
@@ -144,14 +148,16 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) ->
         new = new.astype({c: object for c in TEXT_COLUMNS})
         prev = entries.drop_duplicates("game_id", keep="last").set_index("game_id")
         seen = new["game_id"].map(prev["first_spread_line"]).notna()
-        for col in FIRST_COLUMNS:
-            new.loc[seen, col] = new.loc[seen, "game_id"].map(prev[col])
+        if seen.any():
+            for col in FIRST_COLUMNS:
+                new.loc[seen, col] = new.loc[seen, "game_id"].map(prev[col])
     kept = entries[~entries["game_id"].isin(new["game_id"])]
     merged = pd.concat([kept, new], ignore_index=True) if len(kept) else new.copy()
     final = games[games["completed"]].set_index("game_id")
     done = merged["game_id"].isin(final.index)
-    merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
-    merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
+    if done.any():
+        merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
+        merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
     return merged.sort_values(["kickoff", "game_id"], ignore_index=True)[LOG_COLUMNS]
 
 
@@ -169,16 +175,6 @@ def power_ratings(ratings: dict, model: ScoreModel, fb: FeatureBuilder) -> pd.Da
         ["team", "net_pts", "off_pts", "def_pts", "st_pts", "elo"]]
 
 
-def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
-    """Write ``text`` unless it matches the file apart from lines starting with ``volatile``."""
-    def stable(t: str) -> list[str]:
-        return [line for line in t.splitlines() if not line.lstrip().startswith(volatile)]
-    if path.exists() and stable(path.read_text()) == stable(text):
-        return False
-    path.write_text(text)
-    return True
-
-
 def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 10000,
                use_weather: bool = True, max_age_hours: float = 1.0) -> pd.DataFrame:
     now = pd.Timestamp(now or dt.datetime.now(dt.timezone.utc))
@@ -187,8 +183,9 @@ def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 100
     games = load_games(max_age_hours)
     update_summaries(list(range(FIRST_SEASON, season + 1)), refresh={season}, max_age_hours=max_age_hours)
     team_games, qbs = load_summaries(FIRST_SEASON, season)
+    update_losses(range(FIRST_INJURY_SEASON, season + 1), refresh={season}, max_age_hours=max_age_hours)
 
-    fb = FeatureBuilder(games, team_games, qbs, hp)
+    fb = FeatureBuilder(games, team_games, qbs, hp, load_losses(FIRST_INJURY_SEASON, season))
     history = fb.walk_forward(range(max(season - hp.fit_window_seasons, FIRST_SEASON + 1), season + 1))
     model = ScoreModel.fit(history)
     log.info("Fitted on %d games; market weight margin %.2f total %.2f",

@@ -32,6 +32,8 @@ def _inputs(args, last: int):
 
 
 def cmd_backtest(args) -> None:
+    from bettingcore import paired_bootstrap
+
     from . import backtest, report
     from .features import FeatureBuilder
     from .pipeline import FIRST_FIT_SEASON
@@ -53,23 +55,26 @@ def cmd_backtest(args) -> None:
     err = {k: np.abs(margin - fbs[c].to_numpy()) for k, c in
            [("final", "pred_margin"), ("model", "pred_model_margin"), ("elo", "elo_spread"), ("line", "spread_line")]}
     boot = {
-        "Final vs closing line": backtest.paired_bootstrap(err["final"], err["line"]),
-        "Model only vs Elo": backtest.paired_bootstrap(err["model"], err["elo"]),
-        "Model only vs closing line": backtest.paired_bootstrap(err["model"], err["line"]),
+        "Final vs closing line": paired_bootstrap(err["final"], err["line"]),
+        "Model only vs Elo": paired_bootstrap(err["model"], err["elo"]),
+        "Model only vs closing line": paired_bootstrap(err["model"], err["line"]),
     }
     checks = backtest.distribution_checks(bt)
 
     edges = backtest.edge_record(bt)
+    by_segment = backtest.segment_edges(bt)
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(report.render_backtest(scores, backtest.segment_table(bt), checks, boot,
-                                           (args.start, args.end), edges))
+                                           (args.start, args.end), edges, by_segment))
     summary = {"seasons": [args.start, args.end], "edges": edges,
                "fbs": backtest.score(fbs).set_index("predictor")[["margin_mae", "total_mae"]].round(3).to_dict("index")}
     report.BACKTEST_SUMMARY_PATH.write_text(json.dumps(summary, indent=2, default=float) + "\n")
     for r in edges:
-        print(f"{r['market']} ({r['prices']}, {r['span']}): {r['edges']} edges of {r['games']} games, "
-              f"{r['wins']}-{r['losses']}-{r['pushes']}, ROI {r['roi']:+.1%}")
+        print(f"{r['market']} ({r['chances']}, {r['lines']}, {r['prices']}, {r['span']}): {r['bets']} edges of "
+              f"{r['games']} games, {r['wins']}-{r['losses']}-{r['pushes']}, {r['units']:+.1f} of "
+              f"{r['staked']:.1f} units, ROI {r['roi']:+.1%} ({r['roi_low']:+.1%} to {r['roi_high']:+.1%}), "
+              f"expected {r['expected_roi']:+.1%}")
     for label, df in scores.items():
         print(label)
         print(df.round(3).to_string(index=False))

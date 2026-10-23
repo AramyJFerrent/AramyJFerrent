@@ -26,15 +26,15 @@ import logging
 
 import numpy as np
 import pandas as pd
+from bettingcore import devig, write_if_changed
 
 from . import availability as avail
 from . import edges, espn, report
-from .backtest import devig
 from .config import DISPLAY_TZ, ESPN_TEAM_IDS, FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_raw, load_summaries, team_code, update_summaries
 from .features import FeatureBuilder
 from .lines import load_lines
-from .model import ScoreModel
+from .model import EDGE_PROBS, ScoreModel
 from .simulate import cover_prob, line_probs, over_prob
 
 log = logging.getLogger(__name__)
@@ -56,8 +56,9 @@ LOG_COLUMNS = [
     "elo_spread", "elo_home_prob", "predicted_at", "source",
     "first_predicted_at", "first_spread", "first_total", "first_model_margin", "first_model_total",
     "away_score", "home_score", "periods",
-    # Prices of each side, and the model's own chances against the line (before blending).
-    "home_spread_price", "away_spread_price", "over_price", "under_price",
+    # Prices of each side, the final prediction's chances against the line, anchored to the
+    # market (what the edges use), and the model's own before blending.
+    "home_spread_price", "away_spread_price", "over_price", "under_price", *EDGE_PROBS,
     "model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob",
     *edges.EDGE_COLUMNS, "first_spread_edge_side",
 ]
@@ -118,7 +119,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, own: pd.DataFrame,
         rows[col] = preds[col].to_numpy()
     for col in ("spread", "total", "home_moneyline", "away_moneyline", "line_source", "market_home_prob",
                 "home_cover_prob", "over_prob", "away_missing", "home_missing", "away_injury_cost",
-                "home_injury_cost", *PRICE_COLUMNS, *MODEL_LINE_COLUMNS):
+                "home_injury_cost", *PRICE_COLUMNS, *EDGE_PROBS, *MODEL_LINE_COLUMNS):
         rows[col] = feats[col].to_numpy() if col in feats else np.nan
     rows = pd.concat([rows, edges.edge_columns(rows)], axis=1)
     rows["predicted_at"] = pd.to_datetime(rows["predicted_at"], utc=True)
@@ -164,9 +165,11 @@ def backfill(entries: pd.DataFrame, history: pd.DataFrame, season: int, n_sims: 
     if done.empty or past.empty:
         return pd.DataFrame(columns=LOG_COLUMNS)
     model = ScoreModel.fit(past)
-    preds, _ = model.predict(done, n_sims=n_sims, seed=season)
+    preds, sim = model.predict(done, n_sims=n_sims, seed=season)
     own, own_sim = model.predict(done, n_sims=n_sims, seed=season, market=False)
     done = done.copy()
+    for col, v in model.edge_chances(done, sim, n_sims=n_sims, seed=season).items():
+        done[col] = v
     done["market_home_prob"] = devig(done["home_moneyline"], done["away_moneyline"]) if "home_moneyline" in done \
         else np.nan
     for col, v in line_probs(own_sim, done["spread"], done["total"]).items():
@@ -195,8 +198,9 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) ->
     merged = pd.concat([kept, new], ignore_index=True) if len(kept) else new.copy()
     final = games[games["completed"]].set_index("game_id")
     done = merged["game_id"].isin(final.index)
-    for col in ("home_score", "away_score", "periods"):
-        merged.loc[done, col] = merged.loc[done, "game_id"].map(final[col])
+    if done.any():
+        for col in ("home_score", "away_score", "periods"):
+            merged.loc[done, col] = merged.loc[done, "game_id"].map(final[col])
     return merged.sort_values(["start", "game_id"], ignore_index=True)[LOG_COLUMNS]
 
 
@@ -245,16 +249,6 @@ def player_table(fb: FeatureBuilder, season: int, today, rosters: pd.DataFrame |
     t = t[(t["minutes"] >= 20) & t["name"].notna()]
     return t.sort_values("net", ascending=False).head(top).reset_index(names="player_id")[
         ["player_id", "name", "team", "net", "offense", "defense", "minutes"]]
-
-
-def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
-    """Write ``text`` unless it matches the file apart from lines starting with ``volatile``."""
-    def stable(t: str) -> list[str]:
-        return [line for line in t.splitlines() if not line.lstrip().startswith(volatile)]
-    if path.exists() and stable(path.read_text()) == stable(text):
-        return False
-    path.write_text(text)
-    return True
 
 
 def season_roster(season: int, max_age_hours: float) -> pd.DataFrame | None:
@@ -320,8 +314,10 @@ def run_update(now: dt.datetime | None = None, days: int = 2, n_sims: int = 1000
             feats[f"{side}_injury_cost"] = cost
             feats[f"{side}_missing"] = [missing.get((g, t)) for g, t in zip(feats["game_id"], feats[f"{side}_team"])]
         preds, sim = model.predict(feats, n_sims=n_sims)
-        # The model's own simulation, before blending with the line: its win
-        # chance and its chances against the line are what the edges use.
+        # The final prediction's chances against the line, anchored to the market, price the edges.
+        for col, v in model.edge_chances(feats, sim, n_sims=n_sims).items():
+            feats[col] = v
+        # The model's own simulation, before blending with the line, for comparison.
         own, own_sim = model.predict(feats, n_sims=n_sims, market=False)
         spread = feats["spread"].to_numpy(float)
         total = feats["total"].to_numpy(float)

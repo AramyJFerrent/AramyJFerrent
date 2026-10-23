@@ -1,14 +1,12 @@
 import numpy as np
 import pandas as pd
 import pytest
+from bettingcore import EDGE_MIN_EV, expected_value, kelly_stake
 
 from nflpredictor import pipeline
-from nflpredictor.backtest import closing_edges, edge_summary, midweek_edges
+from nflpredictor.backtest import closing_edges, early_edges, edge_summary
 from nflpredictor.data import prepare_games
-from nflpredictor.edges import (
-    EDGE_MIN_EV, best_side, decimal_odds, edge_record, expected_value, fair_american, game_edges, grade_edge,
-    implied_prob,
-)
+from nflpredictor.edges import edge_record, game_edges, grade_edge
 from nflpredictor.model import ScoreModel
 from nflpredictor.pipeline import LOG_COLUMNS, update_log
 from nflpredictor.report import edge_cell, edge_table, line_moves, upcoming_table
@@ -19,110 +17,94 @@ from test_pipeline import entry, schedule
 
 
 def game(**kw):
-    """One logged game, KC (home) -3 vs LV, with model-only chances and posted prices."""
+    """One logged game, KC (home) -3 vs LV, with the final prediction's chances and posted prices."""
     r = {
         "home_team": "KC", "away_team": "LV", "spread_line": 3.0, "total_line": 44.5,
         "home_spread_price": -110.0, "away_spread_price": -110.0, "over_price": -110.0, "under_price": -110.0,
         "home_moneyline": -160.0, "away_moneyline": 140.0,
-        "model_home_win_prob": 0.60, "model_away_win_prob": 0.39, "model_tie_prob": 0.01,
-        "model_home_cover_prob": 0.46, "model_spread_push_prob": 0.08,
-        "model_over_prob": 0.50, "model_total_push_prob": 0.0,
+        "home_win_prob": 0.60, "away_win_prob": 0.39, "tie_prob": 0.01,
+        "home_ml_prob": 0.60, "away_ml_prob": 0.39,
+        "home_cover_prob": 0.46, "spread_push_prob": 0.08, "over_prob": 0.50, "total_push_prob": 0.0,
     }
     r.update(kw)
     return r
 
 
-def test_odds_conversions():
-    assert decimal_odds(-110) == pytest.approx(1 + 100 / 110)
-    assert decimal_odds(150) == 2.5
-    assert decimal_odds(100) == 2.0
-    assert implied_prob(-110) == pytest.approx(110 / 210)
-    assert implied_prob(300) == 0.25
-    assert fair_american(0.6) == -150 and fair_american(0.4) == 150
-
-
-def test_expected_value_counts_pushes_as_stake_returned():
-    assert expected_value(0.5, 0.0, 100) == 0.0
-    assert expected_value(110 / 210, 0.0, -110) == pytest.approx(0.0)
-    # 48% win, 8% push, 44% loss at -110: 0.48 * 100/110 - 0.44
-    assert expected_value(0.48, 0.08, -110) == pytest.approx(0.48 / 1.1 - 0.44)
-    assert expected_value(0.40, 0.0, 200) == pytest.approx(0.2)
-
-
-def test_best_side_needs_three_percent():
-    # 54% at -110 is EV +3.1%; 53.9% at -110 is just under the bar.
+def test_edges_need_three_percent():
+    # 54% at -110 is EV +3.1%; 53.9% is just under the bar.
     assert expected_value(0.54, 0, -110) > EDGE_MIN_EV > expected_value(0.539, 0, -110)
-    pick = best_side([("A", "home", -3.0, -110, False, 0.54, 0.0), ("B", "away", 3.0, -110, False, 0.46, 0.0)])
-    assert pick.label == "A" and pick.side == "home" and pick.ev == pytest.approx(0.54 / 1.1 - 0.46)
-    assert best_side([("A", "home", -3.0, -110, False, 0.539, 0.0),
-                      ("B", "away", 3.0, -110, False, 0.461, 0.0)]) is None
-    # The higher EV wins, not the higher probability.
-    pick = best_side([("fav", "home", np.nan, -300, False, 0.74, 0.0), ("dog", "away", np.nan, 300, False, 0.26, 0.0)])
-    assert pick.label == "dog" and pick.ev == pytest.approx(0.04)
-    # Sides without a price are skipped.
-    assert best_side([("A", "home", np.nan, np.nan, False, 0.9, 0.0)]) is None
+    assert game_edges(game(home_cover_prob=0.54, spread_push_prob=0.0))["spread_edge_pick"] == "KC -3.0"
+    assert game_edges(game(home_cover_prob=0.539, spread_push_prob=0.0))["spread_edge_pick"] == ""
 
 
-def test_game_edges_pick_sides_and_lines():
-    e = game_edges(game(model_home_cover_prob=0.30, model_spread_push_prob=0.08,     # LV +3 wins 62%
-                        model_over_prob=0.60, model_home_win_prob=0.5, model_away_win_prob=0.49))
+def test_game_edges_pick_sides_lines_and_stakes():
+    e = game_edges(game(home_cover_prob=0.30, spread_push_prob=0.08,                # LV +3 wins 62%
+                        over_prob=0.60, home_ml_prob=0.5, away_ml_prob=0.49))
     assert e["spread_edge_pick"] == "LV +3.0" and e["spread_edge_side"] == "away" and e["spread_edge_line"] == 3.0
     assert e["spread_edge_prob"] == pytest.approx(0.62)
     assert e["total_edge_pick"] == "Over 44.5" and e["total_edge_line"] == 44.5
     assert e["moneyline_edge_pick"] == "LV" and e["moneyline_edge_price"] == 140
     assert e["moneyline_edge_ev"] == pytest.approx(0.49 * 1.4 - 0.5)              # the 1% tie is refunded
+    # Three big edges on one game share the 3-unit cap.
+    assert e["spread_edge_stake"] + e["moneyline_edge_stake"] + e["total_edge_stake"] == pytest.approx(3.0, abs=1e-3)
+    one = game_edges(game(home_cover_prob=0.56, spread_push_prob=0.0))
+    assert one["spread_edge_stake"] == pytest.approx(kelly_stake(0.56, 0.0, -110), abs=1e-4)
     none = game_edges(game())
-    assert none["spread_edge_pick"] == "" and np.isnan(none["spread_edge_ev"])
-    home = game_edges(game(spread_line=-2.5, model_home_cover_prob=0.60, model_spread_push_prob=0.0))
+    assert none["spread_edge_pick"] == "" and np.isnan(none["spread_edge_ev"]) and np.isnan(none["spread_edge_stake"])
+    home = game_edges(game(spread_line=-2.5, home_cover_prob=0.60, spread_push_prob=0.0))
     assert home["spread_edge_pick"] == "KC +2.5" and home["spread_edge_line"] == 2.5
 
 
 def test_assumed_price_only_for_spread_and_total():
     r = game(home_spread_price=np.nan, away_spread_price=np.nan, over_price=np.nan, under_price=np.nan,
-             home_moneyline=np.nan, away_moneyline=np.nan, model_home_cover_prob=0.60, model_spread_push_prob=0.0,
-             model_over_prob=0.40, model_home_win_prob=0.9, model_away_win_prob=0.09)
+             home_moneyline=np.nan, away_moneyline=np.nan, home_cover_prob=0.60, spread_push_prob=0.0,
+             over_prob=0.40, home_ml_prob=0.9, away_ml_prob=0.09)
     e = game_edges(r)
     assert e["spread_edge_pick"] == "KC -3.0" and e["spread_edge_price"] == -110
     assert e["total_edge_pick"] == "Under 44.5" and e["total_edge_price"] == -110
     assert e["moneyline_edge_pick"] == ""                                        # never assumed
     row = pd.Series({**r, **e, "kickoff": pd.NaT})
-    assert edge_cell(row, "spread") == "KC -3.0 (-110*): EV +14.5%, model 60%"
+    assert edge_cell(row, "spread") == "KC -3.0 (-110*): EV +14.5%, 60%, stake 1.5u"
     assert edge_cell(row, "moneyline") == "no line yet"
-    posted = pd.Series({**game(model_home_cover_prob=0.6, model_spread_push_prob=0.0),
-                        **game_edges(game(model_home_cover_prob=0.6, model_spread_push_prob=0.0))})
-    assert edge_cell(posted, "spread") == "KC -3.0 (-110): EV +14.5%, model 60%"
+    posted = pd.Series({**game(home_cover_prob=0.6, spread_push_prob=0.0),
+                        **game_edges(game(home_cover_prob=0.6, spread_push_prob=0.0))})
+    assert edge_cell(posted, "spread") == "KC -3.0 (-110): EV +14.5%, 60%, stake 3.0u"
     assert edge_cell(posted, "total") == "no edge"
     no_line = pd.Series({**game(spread_line=np.nan, total_line=np.nan), **game_edges(game(spread_line=np.nan))})
     assert edge_cell(no_line, "spread") == "no line yet"
 
 
-def test_grading():
-    assert grade_edge("spread", "home", -3.0, -110, 24, 20) == ("win", pytest.approx(100 / 110))
-    assert grade_edge("spread", "home", -3.0, -110, 23, 20) == ("push", 0.0)
-    assert grade_edge("spread", "away", 3.0, -110, 23, 21) == ("win", pytest.approx(100 / 110))
-    assert grade_edge("spread", "away", 2.5, 120, 24, 21) == ("loss", -1.0)
-    assert grade_edge("moneyline", "away", np.nan, 140, 17, 20) == ("win", pytest.approx(1.4))
-    assert grade_edge("moneyline", "home", np.nan, -160, 20, 20) == ("push", 0.0)
-    assert grade_edge("total", "over", 44.5, -105, 24, 21) == ("win", pytest.approx(100 / 105))
-    assert grade_edge("total", "under", 44.0, -110, 24, 20) == ("push", 0.0)
+def test_grading_and_record():
+    assert grade_edge("spread", "home", -3.0, -110, 24, 20) == ("W", pytest.approx(100 / 110))
+    assert grade_edge("spread", "home", -3.0, -110, 23, 20) == ("P", 0.0)
+    assert grade_edge("spread", "away", 3.0, -110, 23, 21) == ("W", pytest.approx(100 / 110))
+    assert grade_edge("spread", "away", 2.5, 120, 24, 21) == ("L", -1.0)
+    assert grade_edge("moneyline", "away", np.nan, 140, 17, 20) == ("W", pytest.approx(1.4))
+    assert grade_edge("moneyline", "home", np.nan, -160, 20, 20) == ("P", 0.0)
+    assert grade_edge("total", "over", 44.5, -105, 24, 21) == ("W", pytest.approx(100 / 105))
+    assert grade_edge("total", "under", 44.0, -110, 24, 20) == ("P", 0.0)
+
+    def bet(gid, side, line, price, stake, home, away, ev=0.05):
+        return {"game_id": gid, "spread_edge_pick": f"{side} {line}", "spread_edge_side": side,
+                "spread_edge_line": line, "spread_edge_price": price, "spread_edge_ev": ev,
+                "spread_edge_stake": stake, "home_score": home, "away_score": away}
     df = pd.DataFrame([
-        {"spread_edge_pick": "KC -3.0", "spread_edge_side": "home", "spread_edge_line": -3.0,
-         "spread_edge_price": -110, "home_score": 24, "away_score": 20},
-        {"spread_edge_pick": "LV +3.0", "spread_edge_side": "away", "spread_edge_line": 3.0,
-         "spread_edge_price": 100, "home_score": 27, "away_score": 20},
-        {"spread_edge_pick": "KC -3.0", "spread_edge_side": "home", "spread_edge_line": -3.0,
-         "spread_edge_price": -110, "home_score": 23, "away_score": 20},
-        {"spread_edge_pick": np.nan, "spread_edge_side": np.nan, "spread_edge_line": np.nan,
-         "spread_edge_price": np.nan, "home_score": 30, "away_score": 0},
-        {"spread_edge_pick": "KC -3.0", "spread_edge_side": "home", "spread_edge_line": -3.0,
-         "spread_edge_price": -110, "home_score": np.nan, "away_score": np.nan},           # not played yet
+        bet("a", "home", -3.0, -110, 2.0, 24, 20),                  # win 2 x 0.909
+        bet("b", "away", 3.0, 100, 1.0, 27, 20),                    # loss
+        bet("c", "home", -3.0, -110, 1.0, 23, 20),                  # push
+        {**bet("d", "home", -3.0, -110, np.nan, 30, 0)},            # logged before stakes: left out
+        bet("e", "home", -3.0, -110, 1.0, np.nan, np.nan),          # not played yet
+        {"game_id": "f", "spread_edge_pick": np.nan, "spread_edge_side": np.nan, "spread_edge_line": np.nan,
+         "spread_edge_price": np.nan, "spread_edge_ev": np.nan, "spread_edge_stake": np.nan,
+         "home_score": 30, "away_score": 0},
     ])
     rec = edge_record(df, "spread")
     assert (rec["bets"], rec["wins"], rec["losses"], rec["pushes"]) == (3, 1, 1, 1)
-    assert rec["units"] == pytest.approx(100 / 110 - 1) and rec["roi"] == pytest.approx((100 / 110 - 1) / 3)
+    assert rec["staked"] == 4.0 and rec["units"] == pytest.approx(2 * 100 / 110 - 1)
+    assert rec["roi"] == pytest.approx((2 * 100 / 110 - 1) / 4) and rec["expected_roi"] == pytest.approx(0.05)
     table = edge_table(df.assign(moneyline_edge_pick=np.nan, total_edge_pick=np.nan))
-    assert "| Spread | 3 | 1-1-1 | -0.09 | -3.0% |" in table
-    assert "| Moneyline | 0 | 0-0-0 | +0.00 | – |" in table
+    assert "| Spread | 3 | 1-1-1 | 4.0 | +0.82 | +20.5% | +5.0% |" in table
+    assert "| Moneyline | 0 | 0-0-0 | 0.0 | +0.00 | – | – |" in table
 
 
 def test_line_probs_count_wins_covers_and_pushes():
@@ -136,7 +118,7 @@ def test_line_probs_count_wins_covers_and_pushes():
     assert np.isnan(missing.home_cover_prob) and np.isnan(missing.over_prob) and missing.home_win_prob == 0.5
 
 
-def test_model_only_chances_ignore_the_market():
+def test_final_chances_follow_the_blend_and_model_chances_ignore_it():
     f = synthetic_features(n=600)
     m = ScoreModel.fit(f)
     m.margin_weight = m.total_weight = 0.0           # final prediction = the line
@@ -147,12 +129,28 @@ def test_model_only_chances_ignore_the_market():
     assert pred["pred_margin"].tolist() == [-10.0, 10.0]
     own = m.model_only_means(g)
     assert np.allclose(pred["pred_model_margin"], own["margin"]) and abs(own["margin"][0]) < 3
-    # The model sees a near-even game, so the home side is likely to beat -10 / +10 lines one way or the other.
+    # On the lines with no prices, the anchored chances are an even -110 market's: no edge.
+    assert np.allclose(pred["home_cover_prob"], 0.5 * (1 - pred["spread_push_prob"]))
+    assert np.allclose(pred["over_prob"], 0.5 * (1 - pred["total_push_prob"]))
+    assert pred[["home_ml_prob", "away_ml_prob"]].isna().all().all()          # no moneylines posted
+    # The model alone sees a near-even game, far from -10 / +10 and 30 / 60.
     assert pred.loc[0, "model_home_cover_prob"] > 0.7 > 0.3 > pred.loc[1, "model_home_cover_prob"]
     assert pred.loc[0, "model_over_prob"] > 0.8 and pred.loc[1, "model_over_prob"] < 0.2
     assert 0.3 < pred.loc[0, "model_home_win_prob"] < 0.7 and pred.loc[0, "home_win_prob"] < 0.3
     for _, r in pred.iterrows():
         assert r.model_home_win_prob + r.model_away_win_prob + r.model_tie_prob == pytest.approx(1)
+
+
+def test_blend_uses_whichever_line_is_posted():
+    f = synthetic_features(n=600)
+    m = ScoreModel.fit(f)
+    m.margin_weight, m.total_weight = 0.2, 0.0
+    g = f.head(1).copy()
+    g["spread_line"], g["total_line"] = 7.0, np.nan
+    own = m.model_means(g)
+    means = m.means(g)
+    assert means["margin"][0] == pytest.approx(0.2 * own["margin"][0] + 0.8 * 7.0)
+    assert means["total"][0] == pytest.approx(own["total"][0])
 
 
 def test_prepare_games_keeps_posted_prices():
@@ -172,20 +170,22 @@ def test_prepare_games_keeps_posted_prices():
 def test_log_round_trip_keeps_edges_and_reads_old_logs(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "LOG_PATH", tmp_path / "log.csv")
     g = schedule()
-    e = game_edges(game(model_home_cover_prob=0.30))
+    e = game_edges(game(home_cover_prob=0.30))
     row = entry("b", g.kickoff[1], **game(), **e, first_spread_edge_side="away")
     pd.DataFrame([row])[LOG_COLUMNS].to_csv(pipeline.LOG_PATH, index=False)
     back = pipeline.load_log().iloc[0]
     assert back.spread_edge_pick == "LV +3.0" and back.spread_edge_side == "away"
     assert back.spread_edge_ev == pytest.approx(e["spread_edge_ev"]) and back.first_spread_edge_side == "away"
+    assert back.spread_edge_stake == pytest.approx(e["spread_edge_stake"])
     assert pd.isna(back.total_edge_pick) and back.home_moneyline == -160
     # A log written before edges existed loads with the new columns empty.
     old_cols = [c for c in LOG_COLUMNS if "edge" not in c and not c.startswith("model_") and "price" not in c
-                and c not in ("home_moneyline", "away_moneyline")] + ["model_margin", "model_total"]
+                and not c.endswith("_prob") and c not in ("home_moneyline", "away_moneyline")] \
+        + ["model_margin", "model_total", "home_win_prob", "away_win_prob", "tie_prob", "one_score_prob"]
     pd.DataFrame([entry("a", g.kickoff[0])])[list(dict.fromkeys(old_cols))].to_csv(pipeline.LOG_PATH, index=False)
     old = pipeline.load_log()
     assert list(old.columns) == LOG_COLUMNS
-    assert old[["spread_edge_pick", "model_home_cover_prob", "first_spread_edge_side"]].isna().all().all()
+    assert old[["spread_edge_pick", "home_cover_prob", "spread_edge_stake", "first_spread_edge_side"]].isna().all().all()
     # Old rows grade as no edges; a new prediction with text edges merges into the old log.
     later = pd.DataFrame([entry("b", g.kickoff[1], **game(), **e, first_spread_edge_side="away",
                                 first_spread_line=3.0, first_predicted_at=pd.Timestamp("2026-10-15", tz="UTC"))])
@@ -211,27 +211,66 @@ def test_first_spread_edge_is_frozen_and_line_moves_measured():
 
 def test_upcoming_table_shows_edge_columns():
     g = schedule()
-    r = entry("b", g.kickoff[1], **game(model_home_cover_prob=0.30), headline_away=20, headline_home=23,
+    r = entry("b", g.kickoff[1], **game(home_cover_prob=0.30), headline_away=20, headline_home=23,
               one_score_prob=0.5, away_qb="A", home_qb="B", wind_forecast=np.nan)
     r.update(game_edges(r))
     text = upcoming_table(pd.DataFrame([r]))
     assert "| Spread edge | Moneyline edge | Total edge |" in text
-    assert "| LV +3.0 (-110): EV +26.4%, model 62% | no edge | no edge |" in text
-    assert "Model pick" not in text
+    assert "| LV +3.0 (-110): EV +26.4%, 62%, stake 3.0u | no edge | no edge |" in text
 
 
-def test_backtest_edges_at_closing_and_midweek_lines():
-    df = pd.DataFrame([{**game(model_home_cover_prob=0.62, model_spread_push_prob=0.0, model_over_prob=0.62),
+def test_backtest_edges_at_closing_and_early_lines():
+    df = pd.DataFrame([{**game(home_cover_prob=0.62, spread_push_prob=0.0, over_prob=0.62),
+                        "model_home_cover_prob": 0.40, "model_spread_push_prob": 0.0, "model_over_prob": 0.5,
+                        "model_total_push_prob": 0.0, "model_home_win_prob": 0.6, "model_away_win_prob": 0.39,
+                        "model_tie_prob": 0.01,
                         "home_spread_odds": -110.0, "away_spread_odds": -110.0, "over_odds": -110.0,
                         "under_odds": -110.0, "home_score": 27.0, "away_score": 20.0, "game_id": "g",
-                        "midweek_line": 2.5, "midweek_home_cover_prob": 0.65, "midweek_spread_push_prob": 0.0}])
+                        "midweek_line": 2.5, "midweek_home_cover_prob": 0.65, "midweek_spread_push_prob": 0.0,
+                        "midweek_model_home_cover_prob": 0.30, "midweek_model_spread_push_prob": 0.0,
+                        "open_line": 2.0, "open_total": 46.0, "open_home_cover_prob": 0.5, "open_spread_push_prob": 0.0,
+                        "open_over_prob": 0.40, "open_total_push_prob": 0.0, "open_model_home_cover_prob": 0.5,
+                        "open_model_spread_push_prob": 0.0, "open_model_over_prob": 0.6,
+                        "open_model_total_push_prob": 0.0}])
     df = df.drop(columns=["home_spread_price", "away_spread_price", "over_price", "under_price"])
     closing = closing_edges(df)
     assert closing.loc[0, "spread_edge_pick"] == "KC -3.0" and closing.loc[0, "total_edge_pick"] == "Over 44.5"
     rec = edge_summary(closing, "spread")
-    assert (rec["wins"], rec["roi"]) == (1, pytest.approx(100 / 110)) and rec["roi_low"] == rec["roi_high"]
-    mid = midweek_edges(df)
+    assert (rec["wins"], rec["roi"]) == (1, pytest.approx(100 / 110)) and np.isnan(rec["roi_low"])
+    # The model-only rule reads the model's own chances: it takes the other side.
+    assert closing_edges(df, "model").loc[0, "spread_edge_pick"] == "LV +3.0"
+    mid = early_edges(df)
     assert mid.loc[0, "spread_edge_pick"] == "KC -2.5" and mid.loc[0, "closing_line"] == 3.0
     assert "total_edge_pick" not in mid
     rec = edge_summary(mid, "spread", closing_col="closing_line")
     assert rec["moved_toward"] == 1.0 and rec["moved_games"] == 1     # 2.5 -> 3.0 toward KC
+    assert early_edges(df, "midweek", "model").loc[0, "spread_edge_pick"] == "LV +2.5"
+    # The opening line has a total too: Under 46 at 60% (assumed -110), and the total then fell to 44.5.
+    opening = early_edges(df, "open")
+    assert opening.loc[0, "spread_edge_pick"] == "" and opening.loc[0, "total_edge_pick"] == "Under 46"
+    assert opening.loc[0, "closing_total"] == 44.5 and opening.loc[0, "over_price"] != opening.loc[0, "over_price"]
+    rec = edge_summary(opening, "total", closing_col="closing_total")
+    assert (rec["bets"], rec["losses"], rec["moved_toward"]) == (1, 1, 1.0)          # 47 points: the under lost
+    assert early_edges(df, "open", "model").loc[0, "total_edge_pick"] == "Over 46"
+
+
+def test_opening_lines_drop_archive_sign_errors(monkeypatch):
+    from bettingcore import sbr
+
+    from nflpredictor import backtest
+
+    def row(day, home, away, hs, as_, spread, total):
+        return {"season": 2021, "date": day, "home_team": home, "away_team": away, "home_final": hs,
+                "away_final": as_, "home_open_spread": spread, "home_close_spread": spread, "open_over_under": total,
+                "close_over_under": total, "home_close_ml": -150, "away_close_ml": 130}
+    rows = [row(20211114, "Jets", "Bills", 17, 45, -13.5, 48.5),       # Jets -13.5, but Bills -13 at the close
+            row(20211114, "Packers", "Seahawks", 17, 0, -2.5, 49.5),    # Packers -3 at the close
+            row(20211114, "Colts", "Jaguars", 23, 17, 1.5, 8.0)]        # Colts -1 at the close, total 8
+    monkeypatch.setattr(sbr, "load_archive", lambda sport, cache_dir, max_age_hours: sbr.parse(rows))
+    games = pd.DataFrame({"game_id": ["a", "b", "c"], "gameday": "2021-11-14", "home_team": ["NYJ", "GB", "IND"],
+                          "away_team": ["BUF", "SEA", "JAX"], "home_score": [17, 17, 23], "away_score": [45, 0, 17],
+                          "spread_line": [-13.0, 3.0, 1.0], "total_line": [47.0, 49.5, 47.5]})
+    out = backtest.load_opening_lines(games)
+    assert np.isnan(out.loc["a", "open_line"]) and out.loc["a", "open_total"] == 48.5
+    assert (out.loc["b", "open_line"], out.loc["b", "open_total"]) == (2.5, 49.5)
+    assert out.loc["c", "open_line"] == -1.5 and np.isnan(out.loc["c", "open_total"])   # a small move across zero stays

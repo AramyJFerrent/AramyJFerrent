@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from cfbpredictor.backtest import is_power
-from cfbpredictor.edges import fair_american
+from bettingcore import fair_american
 from cfbpredictor.pipeline import LOG_COLUMNS, select_upcoming, update_log, with_live_lines
 from cfbpredictor.report import fair_moneyline, grade, render
 

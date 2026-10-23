@@ -68,10 +68,10 @@ Actions tab with **Run workflow**.
 | Goalies | Goals saved above expected per 100 unblocked shots, relative to the league that season and shrunk hard toward a slightly below-average prior. Starters come from ESPN's probable goalies when listed. Otherwise each goalie's chance of starting comes from his recent share of starts, marked down on the second night of a back-to-back by the factor seen historically. | `goalies.py` |
 | Elo | Goal-margin Elo, the win-probability baseline. Its result-based edge is also one input to the goal-rate model, because it held up out of sample. | `elo.py` |
 | Goal rates | Poisson regression of each team's regulation goals (both goalies in) on the ratings, the opposing starter, Elo, home ice, back-to-backs and playoffs, on top of the current league scoring level | `model.py` |
-| Market | Backs each team's goal rate out of the de-vigged moneyline and total, through the same simulator, and blends `w × model + (1 − w) × market`. `w` is fitted on logged games with lines (an even split until a few hundred exist). | `market.py` |
+| Market | Backs each team's goal rate out of the de-vigged moneyline and total, through the same simulator, and blends `w × model + (1 − w) × market`. `w` starts from the value fitted on sportsbookreview's archived 2012-13 to 2021-22 closing lines (57% model) and is refitted on logged games with lines as they accumulate. | `market.py` |
 | Simulator | 10,000 games per matchup, minute by minute. Score effects (tied teams play for overtime late; trailing teams press), goalie pulls at the rate teams really pull at each deficit and minute, empty-net and six-on-five goals, three-on-three overtime and shootouts, or sudden-death playoff overtime. Fitted on recent seasons' game states and tuned so the overtime rate matches history. | `simulate.py` |
-| Edges | Expected value of each side of the puck line, moneyline and total at the posted price, from the model's own numbers before the blend (see below) | `edges.py` |
-| Backtest | Walk-forward by day, scored against Elo and a goals-only Poisson model | `backtest.py` |
+| Edges | Expected value of each side of the puck line, moneyline and total at the posted price, from the final prediction anchored to the market, once both starting goalies are confirmed; Kelly-staked (see below) | `edges.py` |
+| Backtest | Walk-forward by day, scored against Elo and a goals-only Poisson model, and against sportsbookreview's archived lines for 2016-17 to 2021-22, with the edges graded at their prices | `backtest.py` |
 
 Ratings knobs were tuned on 2013-14 to 2016-17 (`python -m nhlpredictor tune`).
 Everything else is refitted on every run.
@@ -128,30 +128,76 @@ Full tables and calibration buckets are in
 
 ## Can it beat the betting line?
 
-Not known yet. No free source has a long history of NHL lines, so the model
-could not be backtested against the market. Instead every live prediction
-logs the lines and prices it was made against, and the predictions page
-grades the model, the market and the blend on the same games.
+Closer than any other sport here, but not clearly. Sportsbookreview's archive
+(via the [sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper)
+project) has opening and closing moneylines, closing puck lines with prices
+and opening and closing totals through 2021-22. On the 6,903 games of 2016-17
+to 2021-22 it covers, matched by date, teams and final score, de-vigged:
 
-It also shows and tracks betting edges on three markets: the puck line
-(±1.5), the moneyline and the total, all including overtime and the shootout
-(the shootout winner is credited with one goal, as in the official score).
-Each side is priced with the model's own numbers, before blending with the
-market: the win chance from the model's goal rates, and the puck-line cover
-and over/under chances from a separate simulation of those same rates, at the
-posted line and with pushes on whole-number totals. A side is an edge when
-its expected value per unit staked at the posted price is at least 3%:
+| Predictor | Log loss |
+|---|---|
+| Model + simulator | 0.6677 |
+| Opening line | 0.6685 |
+| Closing line | 0.6660 |
+| Model blended with the closing line | 0.6665 |
+
+- The model is 0.0017 behind the closing line (95% interval −0.0003 to
+  +0.0037) and level with the opening line. Blended with the closing line it
+  is within noise of the line alone (+0.0005). The weight on the model,
+  fitted each season on the archive's earlier seasons only, stayed between
+  63% and 67%; fitted on every archived season it is 57%, which is where the
+  live blend starts. In the other sports the market gets most of the weight.
+
+The predictions page shows and tracks betting edges on three markets: the
+puck line (±1.5), the moneyline and the total, all including overtime and the
+shootout (the shootout winner is credited with one goal, as in the official
+score). Each side is priced with the final prediction: the blended goal
+rates simulated against the posted lines, anchored to the market's own
+chances (the market's de-vigged chance plus the difference between the
+simulation at the blend and at the market's goal rates, same random draws),
+so only the blend's disagreement with the market can make an edge. A side is
+an edge when its expected value per unit staked at the posted price is at
+least 3%:
 
     EV = p_win × (decimal odds − 1) − p_loss      (a push returns the stake)
 
-and the side with the highest EV is shown. A total whose prices are missing
-is assumed to be -110 (marked `-110*`); the puck line and moneyline are never
-assumed, so without a price the page shows the model's fair odds instead.
+and the side with the highest EV is shown, staked at a quarter of the Kelly
+stake with at most 3 units (1% of the bankroll each) on one game (shared
+[BettingCore](../BettingCore) package). Edges wait until both starting
+goalies are confirmed, since a surprise starter moves the line; until then
+the page says so. A total whose prices are missing is assumed to be -110
+(marked `-110*`); the puck line and moneyline are never assumed, so without a
+price the page shows fair odds instead.
+
+The same edges in the backtest, walk-forward, at the archive's prices (totals
+at an assumed −110, since the archive does not say which side a total's
+price belongs to), with the actual starting goalies:
+
+| Lines | Chances | Market | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+|---|---|---|---|---|---|---|---|
+| closing | final (live rule) | Puck line | 1602 | 791-811-0 | +0.7% | −4.4% to +5.9% | +6.8% |
+| closing | final (live rule) | Moneyline | 2557 | 1082-1475-0 | +1.0% | −3.9% to +5.8% | +8.6% |
+| closing | final (live rule) | Total | 1715 | 844-753-118 | +2.4% | −2.2% to +7.1% | +6.8% |
+| closing | model alone (old rule) | Puck line | 2570 | 1330-1240-0 | −2.7% | −6.5% to +1.0% | +8.6% |
+| closing | model alone (old rule) | Moneyline | 3421 | 1414-2007-0 | −0.6% | −4.7% to +3.4% | +10.9% |
+| closing | model alone (old rule) | Total | 2764 | 1361-1216-187 | +2.5% | −1.2% to +6.3% | +8.6% |
+| opening | final | Moneyline | 1921 | 843-1078-0 | +8.2% | +1.5% to +15.1% | +10.5% |
+| opening | final | Total | 1843 | 915-788-140 | +3.1% | −1.5% to +7.6% | +7.0% |
+
+- At the closing line every market's edges came out slightly ahead, after
+  the bookmaker's margin, but each range includes zero, and realized ROI ran
+  well below the +7% to +9% the EVs promised: the chances behind the edges
+  are still too confident.
+- Against the opening moneyline the edges made +8.2%, with a range clear of
+  zero. The predictions page bets the last line before puck drop, not the
+  opener, so this is not what the live record measures.
+
 Edges are refreshed with every run until puck drop, frozen there, graded on
-the final score, and summed per market (W-L-P, units, return per bet) at the
-logged price; the page also counts how often the moneyline moves toward the
-edge the model saw on the first line. The blend weight starts at an even
-split and is refitted from these games as they accumulate.
+the final score, and summed per market (W-L-P, units staked and won, ROI and
+expected ROI) at the logged price; the page also counts how often the
+moneyline moves toward the edge the model saw on the first line. Edges
+logged before this rule (from the model alone, one unit each) are left out
+of that record.
 
 ## Running it yourself
 
@@ -181,7 +227,7 @@ Downloads are cached in `.cache/` (ignored by git).
 |---|---|
 | `predictions/README.md` | Upcoming games with puck-line, moneyline and total edges, season grading, edge record, latest results, power ratings, goalies |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before puck drop), with the lines and prices it was made against, the model-only cover and over/under chances, each market's edge (`{spread,moneyline,total}_edge_{pick,side,line,price,prob,ev}`) and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before puck drop), with the lines and prices it was made against, the model-only and final (anchored) win, cover and over/under chances, the goalies' confirmation status, each market's edge (`{spread,moneyline,total}_edge_{pick,side,line,price,prob,ev,stake}`) and the final score once known |
 | `predictions/ratings.csv` | Team ratings in goals per game |
 | `predictions/model.json` | The fitted coefficients, blend weight and simulator settings |
 | `data/games/` | Per-season schedules, team-game, goalie-game and game-state summaries |
@@ -193,9 +239,8 @@ Downloads are cached in `.cache/` (ignored by git).
   the betting line and, after a few games, the ratings.
 - Travel and time zones. Rest is modeled through back-to-backs, which carried
   the signal in testing; a time-zone feature is the next candidate.
-- A history of betting lines. No free source has one for the NHL, so the blend
-  weight starts at an even split and is fitted as the live log fills, and the
-  model's edges against the line are tested live, not in the backtest.
+- Betting lines after 2021-22. The free archive stops there, so later seasons
+  are tested against the market only in the live log.
 - Goalie news before ESPN lists it. Until a starter is named, the prediction
   uses the probability-weighted value of the likely starters.
 
@@ -205,4 +250,5 @@ Schedules, play-by-play and box scores from the NHL's own API, compiled daily
 by [sportsdataverse](https://github.com/sportsdataverse/fastRhockey-nhl-data)
 (fastRhockey). Expected goals come from this project's own shot model, not
 the source's. Betting lines and probable goalies from ESPN's public
-scoreboard.
+scoreboard; 2011-12 to 2021-22 lines from sportsbookreview.com's archive, as
+collected by [sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper).

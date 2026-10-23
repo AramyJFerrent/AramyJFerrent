@@ -10,6 +10,6 @@
   "team_prior_games": 40.0,
   "team_carryover": 0.6,
   "team_half_life": 60.0,
-  "market_weight": 0.19,
+  "market_weight": 0.09,
   "fit_window_seasons": 3
 }

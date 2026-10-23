@@ -30,11 +30,11 @@ import re
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import implied_prob
 
 from .config import (DATA_DIR, DISPLAY_TZ, DIVISIONS, ESPN_ODDS_URL, ESPN_SCOREBOARD_URL,
                      UFCSTATS_UPCOMING_URL)
 from .data import parse_weightclass
-from .edges import implied_prob
 from .names import match_name, normalize_name, pair_key
 from .odds import METHOD_ODDS, ROUND_ODDS
 

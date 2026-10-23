@@ -26,8 +26,9 @@ betting market, and turns expected points into a full score distribution.
 Each run:
 
 1. Downloads the nflverse schedule (scores, current lines, projected starting
-   QBs) and this season's play-by-play, and rebuilds this season's efficiency
-   summary in `data/epa/`.
+   QBs), this season's play-by-play, injury reports and snap counts, and
+   rebuilds this season's efficiency summary in `data/epa/` and injury losses
+   in `data/injuries/`.
 2. Refits the ratings-to-points map, home field, rest and QB effects, the
    market blend weight, the wind adjustment and the score simulator on the last
    six seasons plus every game played so far this season.
@@ -59,12 +60,13 @@ Actions tab with **Run workflow**.
 | Ratings engine | Ridge regression of each offense's EPA per play on offense, opposing defense and home edge. Lopsided-score plays are down-weighted and lost fumbles count half. Each team is pulled toward a preseason prior (60% of last year's offense, 45% of its defense) with the strength of 600 offensive and 1,200 defensive plays, so the prior carries the early weeks and fades by midseason. | `ratings.py` |
 | Special teams | Net EPA per game on kickoffs, punts, field goals and extra points, rated the same way but pulled much harder toward the prior because it is noisy week to week. It is the one extra rating that held up out of sample: the market underweights it. | `ratings.py` |
 | Quarterbacks | Each QB's EPA per dropback above league average, shrunk toward a replacement-level prior. When the projected starter differs from the QBs behind the team's rating, the offense is adjusted. | `qb.py` |
+| Other injuries | Every non-QB player on the week's injury report counts by his recent snap share (last three games with the team) times the chance his status means he sits (Out 99.9%, Doubtful 99.2%, Questionable 33%, Probable 4%, measured on 2013-2025), summed for the offensive line, skill players, defensive front and defensive backs. Players on injured reserve are already out of the recent snaps and the ratings, so only fresh absences count. | `injuries.py` |
 | Elo | Margin-of-victory Elo, kept as the sanity-check baseline | `elo.py` |
-| Points map | Linear map from ratings to each team's points on top of the current league scoring level, with special teams, home field (smaller in division games), rest and QB terms | `model.py` |
-| Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons | `model.py` |
+| Points map | Linear map from ratings to each team's points on top of the current league scoring level, with special teams, home field (smaller in division games), rest, QB and injury terms (its own offense's losses, the opponent's defense's) | `model.py` |
+| Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons out of sample: each season's points map is refitted without it, so the weight reflects how the model does on games it has not seen | `model.py` |
 | Weather | Kickoff wind forecast (Open-Meteo) for open-air games lowers the total by the amount the market has historically missed | `weather.py`, `model.py` |
 | Score simulator | 10,000 simulated games per matchup. Each team's scoring chances end in a touchdown (then a kick or two-point try), a field goal or nothing, with overtime and ties. Dispersion is calibrated to real prediction errors and key margins (3, 7, 10, 14) to real frequencies. | `simulate.py` |
-| Betting edges | Expected value of each side of the spread, moneyline and total at the posted price, from a second simulation of the model's own expected points (before the market blend). An edge needs EV of at least +3%. | `edges.py`, `model.py` |
+| Betting edges | Expected value of each side of the spread, moneyline and total at the posted price, from the final prediction anchored to the market: the market's de-vigged chance plus the difference between the simulator at the blend and at the line (same random draws). An edge needs EV of at least +3% and is staked at a quarter of the Kelly stake, at most 3 units a game (shared [BettingCore](../BettingCore) package). | `edges.py`, `model.py` |
 | Backtest | Walk-forward by week, scored next to the closing line | `backtest.py` |
 
 Ratings knobs were tuned on 2013–2018 (`python -m nflpredictor tune`).
@@ -93,55 +95,67 @@ prior, with the points map, blend and simulator fitted on earlier seasons only.
 ## Can it beat the betting line?
 
 The predictions page shows a betting edge for the spread, moneyline and total
-of every game. Each side is priced with the model alone, before it is blended
-with the line: the model's own expected points are run through the same score
-simulator, giving its chance to win, cover, go over and push. The expected
-value of a side is `p × (decimal odds − 1) − (1 − p − push)` per unit staked
-at the posted price, and a side is an edge when that is at least +3%. Prices
-are the ones in the nflverse schedule (`home_spread_odds`, `away_spread_odds`,
-`over_odds`, `under_odds`, `home_moneyline`, `away_moneyline`); when a spread or
-total has no price it is assumed to be −110 (shown as `-110*`), and a missing
-moneyline means no edge. Ties refund moneyline bets and whole-number lines can
-push. Each game's edges are logged with its prediction, frozen at kickoff and
-graded once it is final.
+of every game. Each side is priced with the final prediction, the one on the
+page: the model blended with the line, simulated, and anchored to the
+market's own chances, so only the blend's disagreement with the line can make
+an edge. The expected value of a side is `p × (decimal odds − 1) − (1 − p −
+push)` per unit staked at the posted price, and a side is an edge when that
+is at least +3%, staked at a quarter of the Kelly stake. Prices are the ones
+in the nflverse schedule (`home_spread_odds`, `away_spread_odds`,
+`over_odds`, `under_odds`, `home_moneyline`, `away_moneyline`); when a spread
+or total has no price it is assumed to be −110 (shown as `-110*`), and a
+missing moneyline means no edge. Ties refund moneyline bets and whole-number
+lines can push. Each game's edges are logged with its prediction, frozen at
+kickoff and graded once it is final; edges logged before this rule (from the
+model alone, one unit each) are left out of the record.
 
-Walk-forward backtest, betting one unit on every edge. Starting QBs here are
-each team's previous starter, so nothing is used that a Wednesday line could
-not know.
+Walk-forward backtest, Kelly stakes. Starting QBs here are each team's
+previous starter and the injury report is left out, so nothing is used that
+a Wednesday line could not know; early lines are also priced without the
+game's measured wind. Opening spreads and totals come from sportsbookreview's
+archive, matched by date, teams and final score (openers more than 7 points
+from the close, or across zero by 4 or more, are archive sign errors and are
+dropped).
 
-| Market | Lines | Edges | Record (W-L-P) | ROI | 95% range |
-|---|---|---|---|---|---|
-| Spread | Wednesday, 2015–2020 (Westgate SuperContest, −110 assumed) | 1032 | 537-466-29 | +2.1% | −3.7% to +7.8% |
-| Spread | Closing, same 2015–2020 games | 1195 | 622-543-30 | +4.2% | −1.2% to +9.6% |
-| Spread | Closing, 2015–2025 | 2288 | 1156-1075-57 | +0.7% | −3.2% to +4.5% |
-| Moneyline | Closing, 2015–2025 | 2320 | 822-1492-6 | −4.4% | −10.3% to +1.6% |
-| Total | Closing, 2015–2025 | 2197 | 1081-1096-20 | −3.3% | −7.5% to +0.7% |
+| Market | Lines | Chances | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+|---|---|---|---|---|---|---|---|
+| Spread | Closing, 2015–2025 | final (live rule) | 141 | 67-70-4 | −9.5% | −25.6% to +7.7% | +5.6% |
+| Moneyline | Closing, 2015–2025 | final (live rule) | 325 | 79-245-1 | −8.4% | −26.3% to +9.9% | +7.3% |
+| Total | Closing, 2015–2025 | final (live rule) | 299 | 165-131-3 | +7.9% | −3.9% to +19.6% | +8.2% |
+| Spread | Opening, 2015–2021 (−110 assumed) | final | 31 | 17-14-0 | +5.6% | −29.8% to +39.8% | +5.9% |
+| Total | Opening, 2015–2021 (−110 assumed) | final | 39 | 19-20-0 | −2.8% | −33.5% to +27.5% | +4.8% |
+| Spread | Closing, 2015–2025 | model alone (old rule) | 2279 | 1153-1071-55 | +0.1% | −4.0% to +4.2% | +18.1% |
+| Moneyline | Closing, 2015–2025 | model alone (old rule) | 2329 | 820-1500-9 | −4.2% | −9.8% to +1.6% | +28.2% |
+| Total | Closing, 2015–2025 | model alone (old rule) | 2206 | 1087-1099-20 | −2.4% | −7.1% to +2.2% | +17.3% |
+| Spread | Wednesday, 2015–2020 (−110 assumed) | model alone | 1017 | 523-467-27 | +0.6% | −5.6% to +6.6% | +16.6% |
 
 What this means:
 
 - The model's own spread and total often sit several points from the line,
-  which is why the final prediction puts over 90% of its weight on the line.
-  So the +3% bar is cleared in about three games of four; most of those edges
-  are noise.
-- Spread edges came out slightly ahead, mostly in 2015–2020, but every 95%
-  range includes zero. Lines did not move
-  toward the Wednesday edges before kickoff (48.7% of the games where they
-  moved), so this is not the market catching up.
-- Moneyline and total edges lost money. Moneyline edges were mostly
-  underdogs (they won 36% of the time), where the model's disagreements with
-  the market are biggest.
+  so the old rule found an edge in most games and promised +17% or more; it
+  broke even at best. The blend weight on the model, fitted out of sample,
+  has been close to zero since 2019, so the final prediction rarely
+  disagrees with the line by enough to bet: about 70 edges a season.
+- None of the final prediction's records is clearly different from zero.
+  Totals came out ahead, but the backtest knows each game's measured wind,
+  which the live page only has as a forecast, so that is optimistic: priced
+  without wind against the opener, the totals edges disappeared (they had
+  been almost all windy-game unders at +28%).
+- Non-QB injuries make the model's own forecast better (margin error 10.075
+  to 10.052, log loss 0.631 to 0.629), but the closing line already prices
+  them: regressed on the line, the injury losses explain nothing more, so
+  they do not change the final prediction or the edges.
 - In earlier tests of the model's spread against the line, the special-teams
   rating was where the signal came from: the market underweights it. Things
   tried that did not hold up out of sample: separate passing and rushing
-  ratings, success rate, pace, and adjustments for home underdogs, big favorites, divisional games, rest, primetime, temperature and
-  the level of the total. Wind trims totals error slightly but only with
-  measured game-day wind.
+  ratings, success rate, pace, and adjustments for home underdogs, big
+  favorites, divisional games, rest, primetime, temperature and the level of
+  the total.
 
-So the honest answer is: maybe a thin spread edge, not one to count on, and no
-edge on moneylines or totals. The predictions page tracks every logged edge
-live, with units won and ROI per market, and how often the spread line moves
-toward the model's early spread edge, so this keeps being tested on games the
-model has never seen.
+So the honest answer is no edge to count on. The predictions page tracks
+every logged edge live, with units staked and won, ROI and expected ROI per
+market, and how often the spread line moves toward the model's early spread
+edge, so this keeps being tested on games the model has never seen.
 
 Full tables, calibration buckets and bootstrap intervals are in
 [`predictions/backtest.md`](predictions/backtest.md). The backtest's remaining
@@ -172,16 +186,16 @@ Downloads are cached in `.cache/` (ignored by git).
 |---|---|
 | `predictions/README.md` | Upcoming games with spread, moneyline and total edges, season grading and edge record, last week's results, power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before kickoff) with the posted prices, model-only win/cover/over chances and the edge in each market, and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before kickoff) with the posted prices, the final (anchored) and model-only win/cover/over chances and the edge in each market (pick, side, line, price, chance, EV and stake in units), and the final score once known |
 | `predictions/ratings.csv` | Team ratings in points per game |
 | `predictions/model.json` | The fitted coefficients, blend weights and simulator settings |
 | `data/epa/` | Per-season team-game and QB-game efficiency summaries |
+| `data/injuries/` | Per-season non-QB injury losses by team and week (snap shares, by position group) |
 
 ## Not modeled yet
 
-- Non-QB injuries. QB changes are covered through the projected starters in
-  the nflverse schedule, but other injuries reach the prediction only through
-  the betting line.
+- Injuries before the game's report. Statuses come out late in the week, so
+  a run earlier in the week has no injury terms for the coming game yet.
 - A live odds feed. Lines come from the nflverse schedule, which is updated
   several times a week; a commercial odds API would make them fresher.
 - The report's gradient-boosting residual layer. With about 285 games a
@@ -189,5 +203,8 @@ Downloads are cached in `.cache/` (ignored by git).
 
 ## Data
 
-Schedules, lines and play-by-play from [nflverse](https://github.com/nflverse).
+Schedules, lines, play-by-play, injury reports and snap counts (from Pro
+Football Reference) from [nflverse](https://github.com/nflverse); 2011-2021
+opening lines from sportsbookreview.com's archive, as collected by
+[sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper).
 Weather data by [Open-Meteo.com](https://open-meteo.com/) (CC BY 4.0).

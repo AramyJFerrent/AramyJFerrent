@@ -1,4 +1,4 @@
-"""Betting edges: the model's own chances against the posted prices.
+"""Betting edges: the final prediction's chances against the posted prices.
 
 Each game has three markets: the spread, the moneyline and the total. For
 every side of each market the expected value of a 1-unit bet at the posted
@@ -7,9 +7,13 @@ American price is
     EV = p_win * (decimal odds - 1) - p_loss
 
 with ``p_win``, ``p_push`` and ``p_loss = 1 - p_win - p_push`` taken from the
-model's own score distribution, before blending with the line (a push returns
-the stake). The side with the highest EV is the market's edge when its EV is
-at least ``EDGE_MIN_EV``.
+final prediction (the model blended with the line, simulated against the
+posted lines and anchored to the market's own chances, see
+``ScoreModel.edge_chances``); a push returns the stake. The side with the
+highest EV is the market's edge when its EV is at least ``EDGE_MIN_EV``, and
+it is staked at a fraction of the Kelly stake, one game's edges sharing a cap
+(``bettingcore.edges``). The model's own chances before the blend (the
+``model_*`` columns) can be priced the same way for comparison.
 
 Spreads and totals are standard -110 markets, so a side whose price was not
 posted is assumed to be -110 (and marked as assumed); a moneyline without a
@@ -22,13 +26,12 @@ import math
 
 import numpy as np
 import pandas as pd
+from bettingcore import EDGE_FIELDS, best_side, empty_pick_fields, settle, stake_picks, summarize
 
-EDGE_MIN_EV = 0.03
 ASSUMED_PRICE = -110.0
 # Markets priced near -110 on both sides, where a missing price may be assumed.
 ASSUMABLE = ("spread", "total")
 MARKETS = ("spread", "moneyline", "total")
-EDGE_FIELDS = ("pick", "side", "line", "price", "prob", "ev")
 EDGE_COLUMNS = [f"{m}_edge_{f}" for m in MARKETS for f in EDGE_FIELDS]
 # The price each side of each market is posted at, by log column.
 PRICE_COLUMNS = {
@@ -36,57 +39,18 @@ PRICE_COLUMNS = {
     ("moneyline", "home"): "home_moneyline", ("moneyline", "away"): "away_moneyline",
     ("total", "over"): "over_price", ("total", "under"): "under_price",
 }
-
-
-def decimal_odds(american):
-    """Decimal odds (stake included) for an American price: -110 -> 1.909, +150 -> 2.5."""
-    a = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        out = np.where(a > 0, 1.0 + a / 100.0, 1.0 + 100.0 / np.abs(a))
-    return float(out) if out.ndim == 0 else out
-
-
-def implied_prob(american):
-    """Break-even win probability of an American price, margin included."""
-    ml = np.asarray(american, dtype=float)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        out = np.where(ml < 0, -ml / (-ml + 100.0), 100.0 / (ml + 100.0))
-    return float(out) if out.ndim == 0 else out
-
-
-def fair_american(p: float) -> int:
-    """Fair (no-vig) American moneyline for win probability ``p``, rounded to 5."""
-    p = min(max(p, 0.01), 0.99)
-    raw = -100.0 * p / (1.0 - p) if p > 0.5 else 100.0 * (1.0 - p) / p
-    return int(5 * math.floor(raw / 5 + 0.5))
-
-
-def expected_value(p_win, p_push, american):
-    """Expected profit per unit staked; a push returns the stake."""
-    p_win, p_push = np.asarray(p_win, dtype=float), np.asarray(p_push, dtype=float)
-    out = p_win * (decimal_odds(american) - 1.0) - (1.0 - p_win - p_push)
-    return float(out) if np.ndim(out) == 0 else out
+# The columns each rule reads its chances from: the final prediction's anchored
+# chances, or the model's own before the blend.
+CHANCES = {
+    "final": {"cover": "edge_home_cover_prob", "spread_push": "edge_spread_push_prob", "over": "edge_over_prob",
+              "total_push": "edge_total_push_prob", "win": "edge_home_ml_prob"},
+    "model": {"cover": "model_home_cover_prob", "spread_push": "model_spread_push_prob", "over": "model_over_prob",
+              "total_push": "model_total_push_prob", "win": "model_home_prob"},
+}
 
 
 def _missing(x) -> bool:
     return x is None or (isinstance(x, float) and math.isnan(x)) or pd.isna(x)
-
-
-def best_side(options: list[dict], min_ev: float = EDGE_MIN_EV) -> dict | None:
-    """The option with the highest EV if it reaches ``min_ev``, else None.
-
-    Each option has ``label``, ``side``, ``line``, ``price``, ``assumed``,
-    ``p_win`` and ``p_push``; options without a price or probability are skipped.
-    """
-    best = None
-    for o in options:
-        if _missing(o["price"]) or _missing(o["p_win"]):
-            continue
-        ev = expected_value(o["p_win"], 0.0 if _missing(o["p_push"]) else o["p_push"], o["price"])
-        if best is None or ev > best["ev"]:
-            best = {"pick": o["label"], "side": o["side"], "line": o["line"], "price": float(o["price"]),
-                    "assumed": bool(o["assumed"]), "prob": float(o["p_win"]), "ev": float(ev)}
-    return best if best is not None and best["ev"] >= min_ev else None
 
 
 def line_text(line: float) -> str:
@@ -113,39 +77,39 @@ def _price(row, market: str, side: str) -> tuple[float, bool]:
     return (np.nan, False) if _missing(price) else (float(price), False)
 
 
-def market_options(row, market: str) -> list[dict]:
-    """Both sides of ``market`` for one game, with the model's chances. ``row``
+def market_options(row, market: str, chances: str = "final") -> list[dict]:
+    """Both sides of ``market`` for one game, with the chosen rule's chances. ``row``
     carries the line columns (``spread`` is the home team's expected margin),
-    the prices and the model-only probabilities."""
+    the prices and the chances (``CHANCES``)."""
+    c = CHANCES[chances]
     home, away = _get(row, "home_team"), _get(row, "away_team")
     out = []
     if market == "spread":
-        spread, cover = _get(row, "spread"), _get(row, "model_home_cover_prob")
-        push = _get(row, "model_spread_push_prob")
+        spread, cover, push = _get(row, "spread"), _get(row, c["cover"]), _get(row, c["spread_push"])
         if _missing(spread) or _missing(cover):
             return []
         push = 0.0 if _missing(push) else push
         for side, team, line, p in (("home", home, -spread, cover), ("away", away, spread, 1.0 - cover - push)):
             price, assumed = _price(row, market, side)
             out.append({"label": f"{team} {line_text(line)}", "side": side, "line": float(line), "price": price,
-                        "assumed": assumed, "p_win": p, "p_push": push})
+                        "assumed": assumed, "prob": p, "push": push})
     elif market == "moneyline":
-        p_home = _get(row, "model_home_prob")
+        p_home = _get(row, c["win"])
         if _missing(p_home):
             return []
         for side, team, p in (("home", home, p_home), ("away", away, 1.0 - p_home)):
             price, assumed = _price(row, market, side)
-            out.append({"label": f"{team} ML", "side": side, "line": np.nan, "price": price, "assumed": assumed,
-                        "p_win": p, "p_push": 0.0})
+            out.append({"label": f"{team} ML", "side": side, "price": price, "assumed": assumed, "prob": p,
+                        "push": 0.0})
     elif market == "total":
-        total, over, push = _get(row, "total"), _get(row, "model_over_prob"), _get(row, "model_total_push_prob")
+        total, over, push = _get(row, "total"), _get(row, c["over"]), _get(row, c["total_push"])
         if _missing(total) or _missing(over):
             return []
         push = 0.0 if _missing(push) else push
         for side, p in (("over", over), ("under", 1.0 - over - push)):
             price, assumed = _price(row, market, side)
             out.append({"label": f"{side.title()} {total:g}", "side": side, "line": float(total), "price": price,
-                        "assumed": assumed, "p_win": p, "p_push": push})
+                        "assumed": assumed, "prob": p, "push": push})
     return out
 
 
@@ -156,20 +120,19 @@ def has_market(row, market: str) -> bool:
     return not _missing(_get(row, market))
 
 
-def edge_columns(df: pd.DataFrame, min_ev: float = EDGE_MIN_EV) -> pd.DataFrame:
+def edge_columns(df: pd.DataFrame, chances: str = "final") -> pd.DataFrame:
     """The ``{market}_edge_*`` columns for every row of ``df`` (empty pick when there is no edge)."""
     out = {c: [] for c in EDGE_COLUMNS}
     for row in df.to_dict("records"):
-        for m in MARKETS:
-            e = best_side(market_options(row, m), min_ev)
+        picks = stake_picks({m: best_side(market_options(row, m, chances)) for m in MARKETS})
+        for m, pick in picks.items():
+            fields = empty_pick_fields() if pick is None else pick
             for f in EDGE_FIELDS:
-                out[f"{m}_edge_{f}"].append(("" if f in ("pick", "side") else np.nan) if e is None else e[f])
+                out[f"{m}_edge_{f}"].append(fields[f])
     res = pd.DataFrame(out, index=df.index)
     for m in MARKETS:
-        for f in ("line", "price", "prob", "ev"):
-            res[f"{m}_edge_{f}"] = res[f"{m}_edge_{f}"].astype(float)
-        for f in ("pick", "side"):
-            res[f"{m}_edge_{f}"] = res[f"{m}_edge_{f}"].astype(object)
+        for f in EDGE_FIELDS:
+            res[f"{m}_edge_{f}"] = res[f"{m}_edge_{f}"].astype(object if f in ("pick", "side") else float)
     return res
 
 
@@ -182,7 +145,7 @@ def price_assumed(row, market: str) -> bool:
 
 
 def grade_edge(market: str, side: str, line: float, price: float, home_score: float, away_score: float):
-    """Result (``W``, ``L`` or ``P``) and units won of a 1-unit bet, or (None, nan) before the result."""
+    """Result (``W``, ``L`` or ``P``) and profit per unit staked, or (None, nan) before the result."""
     if _missing(home_score) or _missing(away_score) or not isinstance(side, str) or not side:
         return None, np.nan
     if market == "total":
@@ -191,30 +154,31 @@ def grade_edge(market: str, side: str, line: float, price: float, home_score: fl
         res = (home_score - away_score) * (1 if side == "home" else -1)
         if market == "spread":
             res += line
-    if res > 0:
-        return "W", float(decimal_odds(price)) - 1.0
-    if res < 0:
-        return "L", -1.0
-    return "P", 0.0
+    return settle(res, price)
 
 
 def graded(df: pd.DataFrame, market: str) -> pd.DataFrame:
-    """Every finished game with an edge in ``market``: result and units."""
+    """Every finished game with a staked edge in ``market``: result, stake, profit, game and EV.
+
+    Edges logged without a stake (before edges were priced from the final
+    prediction and Kelly-sized) are left out.
+    """
     pick = df[f"{market}_edge_pick"]
-    d = df[pick.notna() & (pick.astype(str) != "") & df["home_score"].notna() & df["away_score"].notna()]
+    stake = df[f"{market}_edge_stake"] if f"{market}_edge_stake" in df else pd.Series(np.nan, index=df.index)
+    d = df[pick.notna() & (pick.astype(str) != "") & df["home_score"].notna() & df["away_score"].notna()
+           & stake.notna()]
     res = [grade_edge(market, r[f"{market}_edge_side"], r[f"{market}_edge_line"], r[f"{market}_edge_price"],
                       r["home_score"], r["away_score"]) for r in d.to_dict("records")]
-    return pd.DataFrame({"result": [r[0] for r in res], "units": [r[1] for r in res]}, index=d.index)
+    stakes = d[f"{market}_edge_stake"].to_numpy(float) if len(d) else np.array([])
+    return pd.DataFrame({"result": [r[0] for r in res], "stake": stakes,
+                         "profit": stakes * np.array([r[1] for r in res], dtype=float),
+                         "game": d["game_id"].to_numpy() if "game_id" in d else None,
+                         "ev": d[f"{market}_edge_ev"].to_numpy(float)}, index=d.index)
 
 
-def record(df: pd.DataFrame, market: str) -> dict:
-    """Edges, W-L-P, units and ROI (units per unit staked) in ``market``."""
-    g = graded(df, market)
-    n = len(g)
-    units = float(g["units"].sum()) if n else 0.0
-    return {"edges": n, "wins": int((g["result"] == "W").sum()), "losses": int((g["result"] == "L").sum()),
-            "pushes": int((g["result"] == "P").sum()), "units": units, "roi": units / n if n else np.nan,
-            "per_bet": g["units"].to_numpy(float)}
+def record(df: pd.DataFrame, market: str, n_boot: int = 5000, seed: int = 0) -> dict:
+    """Bets, W-L-P, units staked and won, ROI with its 95% range over games, and expected ROI in ``market``."""
+    return summarize(graded(df, market), n_boot=n_boot, seed=seed)
 
 
 def moved_toward(side: pd.Series, first_spread: pd.Series, last_spread: pd.Series) -> tuple[int, int]:
@@ -225,13 +189,3 @@ def moved_toward(side: pd.Series, first_spread: pd.Series, last_spread: pd.Serie
     moved = side.isin(["home", "away"]) & move.notna() & (move != 0)
     toward = np.where(side[moved] == "home", move[moved] > 0, move[moved] < 0)
     return int(toward.sum()), int(moved.sum())
-
-
-def roi_interval(per_bet: np.ndarray, n: int = 2000, seed: int = 0) -> tuple[float, float]:
-    """95% bootstrap range of the ROI over resampled bets."""
-    per_bet = np.asarray(per_bet, dtype=float)
-    if len(per_bet) < 2:
-        return np.nan, np.nan
-    rng = np.random.default_rng(seed)
-    means = np.array([per_bet[rng.integers(0, len(per_bet), len(per_bet))].mean() for _ in range(n)])
-    return float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))

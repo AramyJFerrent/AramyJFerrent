@@ -19,6 +19,8 @@ def cmd_update(args) -> None:
 
 
 def cmd_backtest(args) -> None:
+    from bettingcore import paired_bootstrap
+
     from . import backtest, report
     from .data import load_summaries
     from .features import FeatureBuilder
@@ -38,34 +40,38 @@ def cmd_backtest(args) -> None:
             scores[f"{season_label(start)} on ({note})"] = backtest.score(bt[bt["season"] >= start])
     err = backtest.errors(bt)
     boot = {
-        "Model only vs closing line": backtest.paired_bootstrap(err["model"], err["line"]),
-        "Model only vs team ratings only": backtest.paired_bootstrap(err["model"], err["team"]),
-        "Final vs closing line": backtest.paired_bootstrap(err["final"], err["line"]),
+        "Model only vs closing line": paired_bootstrap(err["model"], err["line"]),
+        "Model only vs team ratings only": paired_bootstrap(err["model"], err["team"]),
+        "Final vs closing line": paired_bootstrap(err["final"], err["line"]),
     }
     checks = backtest.distribution_checks(bt)
-    edge_records = {"Closing line": backtest.edge_records(bt)}
+    edge_records = {}
     has_open = bt["open_spread"].notna()
     open_seasons = sorted(bt.loc[has_open, "season"].unique())
     open_label = f"{season_label(open_seasons[0])} to {season_label(open_seasons[-1])}" if open_seasons else ""
-    if has_open.any():
-        edge_records[f"Opening line, {open_label}, knowing who played"] = backtest.edge_records(bt[has_open], "open")
-        edge_records["Closing line, same games"] = backtest.edge_records(bt[has_open])
+    blind = None
     extra = {}
     if not args.skip_blind:
         # The same seasons with availability projected from each team's previous game.
         blind_feats = fb.walk_forward(range(first, args.end + 1), availability="previous")
         blind = backtest.predict_seasons(blind_feats, seasons, hp.fit_window_seasons, n_sims=args.sims)
         b = backtest.errors(blind)
-        if has_open.any():
-            # The fair test against openers: the line did not know tonight's lineups either.
-            edge_records[f"Opening line, {open_label}, assuming each team's previous lineup"] = \
-                backtest.edge_records(blind[blind["open_spread"].notna()], "open")
-        mean, lo, hi = backtest.paired_bootstrap(b["model"], err["model"])
+        mean, lo, hi = paired_bootstrap(b["model"], err["model"])
         extra["Knowing who plays"] = [
             f"Model-only margin MAE {err['model'].mean():.3f} knowing who played, {b['model'].mean():.3f} "
             f"assuming each team's previous lineup (difference {mean:+.3f}, 95% interval {lo:+.3f} to {hi:+.3f}).",
             f"Final prediction {err['final'].mean():.3f} against {b['final'].mean():.3f} with the same closing lines.",
         ]
+    for chances, rule in (("final", "final prediction"), ("model", "model only")):
+        edge_records[("Closing line", rule)] = backtest.edge_records(bt, chances=chances)
+        if has_open.any():
+            edge_records[(f"Opening line, {open_label}, knowing who played", rule)] = \
+                backtest.edge_records(bt[has_open], "open", chances)
+            edge_records[("Closing line, same games", rule)] = backtest.edge_records(bt[has_open], chances=chances)
+            if blind is not None:
+                # The fair test against openers: the line did not know tonight's lineups either.
+                edge_records[(f"Opening line, {open_label}, assuming each team's previous lineup", rule)] = \
+                    backtest.edge_records(blind[blind["open_spread"].notna()], "open", chances)
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), edge_records, extra))
@@ -75,10 +81,11 @@ def cmd_backtest(args) -> None:
             print(df.round(4).to_string(index=False))
     for name, v in boot.items():
         print(name, [round(x, 4) for x in v])
-    for label, markets in edge_records.items():
+    for (label, rule), markets in edge_records.items():
         for m, r in markets.items():
-            print(f"{label}, {m}: {r['edges']} edges, {r['wins']}-{r['losses']}-{r['pushes']}, "
-                  f"ROI {r['roi']:+.4f} ({r['roi_low']:+.4f} to {r['roi_high']:+.4f})")
+            print(f"{label}, {rule}, {m}: {r['bets']} edges, {r['wins']}-{r['losses']}-{r['pushes']}, "
+                  f"{r['units']:+.1f} of {r['staked']:.1f} units, ROI {r['roi']:+.4f} "
+                  f"({r['roi_low']:+.4f} to {r['roi_high']:+.4f}), expected {r['expected_roi']:+.4f}")
     for lines in extra.values():
         print("\n".join(lines))
     print(f"Wrote {path}")

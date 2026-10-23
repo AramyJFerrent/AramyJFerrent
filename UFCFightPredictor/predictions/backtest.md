@@ -60,14 +60,20 @@ Chance given to the predicted favorite against how often favorites won.
 
 ## Betting edges
 
-The live page's edges, valued the same way: every side of each market at the dataset's price (approximate closing lines, bookmaker margin left in), with the model alone, before the market blend. A side is bet, one unit, when its expected value is at least 3%; only the best side of each market per fight. The 95% range resamples the bets.
+The live page's edges, valued the same way: every side of each market at the dataset's price (approximate closing lines, bookmaker margin left in), betting the best side of each market per fight when its expected value is at least 3%, at 25% of the Kelly stake with at most 3 units (1% of the bankroll each) on one bout. Three sets of chances: the final prediction the live page uses (the blended win chance, and method chances anchored to the method props), the blended forecast's own method split (blended win chance run through the method model, not anchored to the props), and the model alone before the blend (the rule the predictor used before). ROI is units won per unit staked, with a 95% range that resamples bouts; expected ROI is what the edges' EVs promised.
 
-| Market | Fights with prices | Edges | Record (W-L-P) | Units | ROI | 95% range | Model's average EV | On underdogs |
-|---|---|---|---|---|---|---|---|---|
-| Moneyline | 4986 | 3972 | 1476-2480-16 | -293.2 | -7.4% | -11.7% to -3.3% | +37.8% | 78% |
-| Round total | no historical prices | – | – | – | – | – | – | – |
-| Method of victory | 4488 | 4244 | 554-3681-9 | -665.4 | -15.7% | -23.3% to -7.9% | +61.6% | 100% |
+| Market | Chances | Fights with prices | Edges | Record (W-L-P) | Staked | Units won | ROI | 95% range | Expected ROI | On underdogs |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Moneyline | final (live) | 4986 | 886 | 494-388-4 | 1577.0 | +80.2 | +5.1% | -1.3% to +11.4% | +7.8% | 39% |
+| Round total | final (live) | no historical prices | – | – | – | – | – | – | – | – |
+| Method of victory | final (live) | 4488 | 100 | 13-87-0 | 21.1 | +10.5 | +49.9% | -32.5% to +147.9% | +11.5% | 100% |
+| Moneyline | blended split | 4986 | 886 | 494-388-4 | 1265.8 | +63.1 | +5.0% | -1.5% to +11.5% | +7.8% | 39% |
+| Round total | blended split | no historical prices | – | – | – | – | – | – | – | – |
+| Method of victory | blended split | 4488 | 3952 | 627-3317-8 | 6180.6 | -280.6 | -4.5% | -13.0% to +4.1% | +61.0% | 100% |
+| Moneyline | model only | 4986 | 3972 | 1476-2480-16 | 7831.4 | -470.6 | -6.0% | -10.5% to -1.7% | +41.0% | 78% |
+| Round total | model only | no historical prices | – | – | – | – | – | – | – | – |
+| Method of victory | model only | 4488 | 4244 | 554-3681-9 | 4614.6 | -526.9 | -11.4% | -19.4% to -3.1% | +68.7% | 100% |
 
-- "Model's average EV" is what the model expected to make per unit on the bets it took; the ROI is what they made. The gap is how much the model overrates its own edges: what it knows that the market does not is outweighed by what the market knows that it does not (debutants' regional records, injuries, camp news).
+- Expected ROI is what the bets were expected to make per unit staked; ROI is what they made. The gap is how much the chances behind them overrate their own edges.
 - Method props whose six prices add up to less than 100% implied (no bookmaker margin, so not prices anyone could bet; about a third of the dataset's 2025–26 props) are left out.
-- Caveats: the dataset does not say when its prices were captured or whether they are one book's or the best available, and real stakes would move real prices. The live page tracks these edges on the prices it logged before each fight, which is the test that counts.
+- Caveats: the dataset does not say when its prices were captured or whether they are one book's or the best available, and real stakes would move real prices. The blend that the final chances use was designed on these same years, so its edges here are somewhat optimistic. The live page tracks these edges on the prices it logged before each fight, which is the test that counts.

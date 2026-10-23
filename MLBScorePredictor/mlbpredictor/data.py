@@ -28,14 +28,13 @@ from __future__ import annotations
 import concurrent.futures as cf
 import datetime as dt
 import logging
-import os
-import time
 from collections import Counter
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import fetch as _fetch
 
 from . import retro
 from .config import (
@@ -69,35 +68,9 @@ DTYPES = {"game_id": str, "player_id": str, "home_starter": str, "away_starter":
 FINAL = "final"
 
 
-def fetch(url: str, path: Path, max_age_hours: float = 24.0, retries: int = 4,
-          session: requests.Session | None = None) -> Path:
-    """Download ``url`` to ``path`` unless a fresh enough copy exists."""
-    if path.exists() and (time.time() - path.stat().st_mtime) < max_age_hours * 3600:
-        return path
-    path.parent.mkdir(parents=True, exist_ok=True)
-    getter = session or requests
-    delay = 2.0
-    for attempt in range(retries):
-        try:
-            resp = getter.get(url, timeout=120)
-            resp.raise_for_status()
-            tmp = path.with_suffix(path.suffix + ".part")
-            tmp.write_bytes(resp.content)
-            os.replace(tmp, path)
-            return path
-        except requests.RequestException as exc:
-            if isinstance(exc, requests.HTTPError) and exc.response is not None \
-                    and exc.response.status_code == 404:
-                raise
-            if attempt == retries - 1:
-                if path.exists():
-                    log.warning("Using stale %s after download failed: %s", path.name, exc)
-                    return path
-                raise
-            log.warning("Download of %s failed (%s); retrying in %.0fs", url, exc, delay)
-            time.sleep(delay)
-            delay *= 2
-    return path
+def fetch(url: str, path: Path, max_age_hours: float = 24.0, retries: int = 4) -> Path:
+    """Download ``url`` to ``path`` unless a fresh enough copy exists (``bettingcore.fetch``)."""
+    return _fetch(url, path, max_age_hours, retries)
 
 
 # ---- Retrosheet -----------------------------------------------------------
@@ -307,7 +280,8 @@ def update_statsapi_season(season: int, session: requests.Session | None = None)
     if len(old):
         for col in ("temp", "dome", "wind", "wind_speed"):
             keep = final & games[col].isna()
-            games.loc[keep, col] = games.loc[keep, "game_id"].map(old[col])
+            if keep.any():
+                games.loc[keep, col] = games.loc[keep, "game_id"].map(old[col])
     history = pd.concat([read_summary(summary_paths(s)["games"], GAME_COLUMNS) for s in range(FIRST_SEASON, season)],
                         ignore_index=True)
     games["park_id"] = statsapi.assign_parks(games, history)

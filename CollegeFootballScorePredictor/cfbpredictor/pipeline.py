@@ -26,15 +26,16 @@ import logging
 
 import numpy as np
 import pandas as pd
+from bettingcore import TEXT_FIELDS, write_if_changed
 
 from . import report
 from .config import ELO_FIRST_SEASON, FIRST_SEASON, OUTPUT_DIR, Hyperparams
 from .data import current_season, load_games, load_summaries, update_summaries
-from .edges import TEXT_FIELDS, edge_columns, edge_frame
+from .edges import edge_columns, edge_frame
 from .elo import EloParams
 from .features import FeatureBuilder
 from .lines import load_lines
-from .model import ScoreModel
+from .model import EDGE_PROBS, ScoreModel
 from .odds import live_lines
 from .returning import update_returning
 from .travel import load_venues
@@ -49,8 +50,9 @@ README_PATH = OUTPUT_DIR / "README.md"
 # The first season with a preseason prior behind it; earlier ones only seed ratings.
 FIRST_FIT_SEASON = FIRST_SEASON + 1
 
-# Posted prices (NaN when not posted) and the model-only chances against the
-# logged lines, behind each game's betting edges (see edges.py).
+# Posted prices (NaN when not posted), and the final prediction's chances against
+# the logged lines (behind each game's betting edges, see edges.py) next to the
+# model's own before the blend.
 PRICE_COLUMNS = ["home_moneyline", "away_moneyline", "home_spread_price", "away_spread_price", "over_price",
                  "under_price"]
 MODEL_PROB_COLUMNS = ["model_home_win_prob", "model_home_cover_prob", "model_spread_push_prob", "model_over_prob",
@@ -58,13 +60,13 @@ MODEL_PROB_COLUMNS = ["model_home_win_prob", "model_home_cover_prob", "model_spr
 LOG_COLUMNS = [
     "game_id", "season", "week", "kickoff", "start_time_tbd", "away_team", "home_team",
     "away_division", "home_division",
-    "neutral", "pred_away", "pred_home", "pred_margin", "pred_total", "model_margin", "model_total",
+    "neutral", "bowl", "pred_away", "pred_home", "pred_margin", "pred_total", "model_margin", "model_total",
     "headline_away", "headline_home", "home_win_prob", "away_win_prob", "one_score_prob",
     "away_low", "away_high", "home_low", "home_high",
     "spread_line", "total_line", "line_source", "elo_spread", "predicted_at", "source",
     "first_predicted_at", "first_spread_line", "first_model_margin",
     "away_score", "home_score",
-    *PRICE_COLUMNS, *MODEL_PROB_COLUMNS, *edge_columns(),
+    *PRICE_COLUMNS, *EDGE_PROBS, *MODEL_PROB_COLUMNS, *edge_columns(),
 ]
 # The first prediction made once a line exists, kept so line movement up to
 # kickoff can be measured against the early-week line.
@@ -83,8 +85,8 @@ def _utc(df: pd.DataFrame) -> pd.DataFrame:
         df[col] = pd.to_datetime(df[col], utc=True).astype("datetime64[ns, UTC]")
     for col in edge_columns(TEXT_FIELDS):
         if col in df:
-            df[col] = df[col].fillna("").astype(str)
-    for col in df.columns.difference(TIME_COLUMNS + TEXT_COLUMNS + ["start_time_tbd", "neutral"]):
+            df[col] = df[col].astype(object).fillna("").astype(str)
+    for col in df.columns.difference(TIME_COLUMNS + TEXT_COLUMNS + ["start_time_tbd", "neutral", "bowl"]):
         df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
 
@@ -104,6 +106,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, now: pd.Timestamp)
         "away_team": feats["away_team"].to_numpy(), "home_team": feats["home_team"].to_numpy(),
         "away_division": feats["away_division"].to_numpy(), "home_division": feats["home_division"].to_numpy(),
         "neutral": feats["neutral"].to_numpy(),
+        "bowl": feats["bowl"].astype(bool).to_numpy() if "bowl" in feats else False,
         "pred_away": preds["pred_away"].to_numpy(), "pred_home": preds["pred_home"].to_numpy(),
         "pred_margin": preds["pred_margin"].to_numpy(), "pred_total": preds["pred_total"].to_numpy(),
         "model_margin": preds["pred_model_margin"].to_numpy(), "model_total": preds["pred_model_total"].to_numpy(),
@@ -122,7 +125,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, now: pd.Timestamp)
     rows["home_score"] = np.nan
     for col in PRICE_COLUMNS:
         rows[col] = feats[col].to_numpy(float) if col in feats else np.nan
-    for col in MODEL_PROB_COLUMNS:
+    for col in EDGE_PROBS + MODEL_PROB_COLUMNS:
         rows[col] = preds[col].to_numpy()
     if len(rows):
         rows[edge_columns()] = edge_frame(rows)
@@ -178,8 +181,9 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame) ->
     merged = pd.concat([kept, new], ignore_index=True) if len(kept) else new.copy()
     final = games[games["completed"]].set_index("game_id")
     done = merged["game_id"].isin(final.index)
-    merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
-    merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
+    if done.any():
+        merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
+        merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
     return merged.sort_values(["kickoff", "game_id"], ignore_index=True)[LOG_COLUMNS]
 
 
@@ -204,16 +208,6 @@ def power_ratings(ratings: dict, model: ScoreModel, fb: FeatureBuilder, season: 
     table["net_pts"] = table[["off_pts", "def_pts", "st_pts", "elo_pts"]].sum(axis=1)
     return table.sort_values("net_pts", ascending=False, ignore_index=True)[
         ["team", "conference", "net_pts", "off_pts", "def_pts", "st_pts", "elo_pts", "elo"]]
-
-
-def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
-    """Write ``text`` unless it matches the file apart from lines starting with ``volatile``."""
-    def stable(t: str) -> list[str]:
-        return [line for line in t.splitlines() if not line.lstrip().startswith(volatile)]
-    if path.exists() and stable(path.read_text()) == stable(text):
-        return False
-    path.write_text(text)
-    return True
 
 
 def with_live_lines(lines: pd.DataFrame, live: pd.DataFrame, upcoming: pd.DataFrame) -> pd.DataFrame:

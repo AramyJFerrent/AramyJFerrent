@@ -15,13 +15,12 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
-import os
-import time
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import fetch
 
 from .config import (
     CACHE_DIR,
@@ -58,37 +57,6 @@ def current_season(today: dt.date | None = None) -> int:
     """The NFL season in progress, or the next one during the offseason."""
     today = today or dt.date.today()
     return today.year if today.month >= 3 else today.year - 1
-
-
-def fetch(url: str, path: Path, max_age_hours: float = 6.0, retries: int = 4) -> Path:
-    """Download ``url`` to ``path`` unless a fresh enough copy exists."""
-    if path.exists() and (time.time() - path.stat().st_mtime) < max_age_hours * 3600:
-        return path
-    path.parent.mkdir(parents=True, exist_ok=True)
-    delay = 2.0
-    for attempt in range(retries):
-        try:
-            with requests.get(url, timeout=120, stream=True) as resp:
-                resp.raise_for_status()
-                tmp = path.with_suffix(path.suffix + ".part")
-                with open(tmp, "wb") as fh:
-                    for chunk in resp.iter_content(chunk_size=1 << 20):
-                        fh.write(chunk)
-                os.replace(tmp, path)
-            return path
-        except requests.RequestException as exc:
-            if isinstance(exc, requests.HTTPError) and exc.response is not None \
-                    and exc.response.status_code == 404:
-                raise
-            if attempt == retries - 1:
-                if path.exists():
-                    log.warning("Using stale %s after download failed: %s", path.name, exc)
-                    return path
-                raise
-            log.warning("Download of %s failed (%s); retrying in %.0fs", url, exc, delay)
-            time.sleep(delay)
-            delay *= 2
-    return path
 
 
 def _alias(series: pd.Series) -> pd.Series:

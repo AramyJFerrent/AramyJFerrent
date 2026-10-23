@@ -7,7 +7,7 @@ import pandas as pd
 
 from . import edges
 from .config import DISPLAY_TZ, season_label
-from .edges import EDGE_MIN_EV, fair_american
+from bettingcore import EDGE_MIN_EV, GAME_CAP_UNITS, KELLY_FRACTION, fair_american
 
 MARKET_NAMES = {"spread": "Spread", "moneyline": "Moneyline", "total": "Total"}
 ASSUMED_NOTE = "\\* price not posted; assumed -110."
@@ -54,14 +54,16 @@ def spread_text(margin: float, home: str, away: str) -> str:
 
 
 def edge_cell(r, market: str) -> str:
-    """A logged edge as the predictions page shows it: 'NYK -4.5 (-110): EV +5.0%, model 55%'."""
+    """A logged edge as the predictions page shows it: 'NYK -4.5 (-110): EV +5.0%, 55%, stake 1.2u'."""
     if not edges.has_market(r, market):
         return "no line yet"
     pick = getattr(r, f"{market}_edge_pick")
     if not isinstance(pick, str) or not pick:
         return "no edge"
     price = edges.price_text(getattr(r, f"{market}_edge_price"), edges.price_assumed(r, market))
-    return f"{pick} ({price}): EV {getattr(r, f'{market}_edge_ev'):+.1%}, model {getattr(r, f'{market}_edge_prob'):.0%}"
+    stake = getattr(r, f"{market}_edge_stake", np.nan)
+    return (f"{pick} ({price}): EV {getattr(r, f'{market}_edge_ev'):+.1%}, {getattr(r, f'{market}_edge_prob'):.0%}"
+            + ("" if pd.isna(stake) else f", stake {stake:.1f}u"))
 
 
 def upcoming_table(rows: pd.DataFrame) -> str:
@@ -155,12 +157,13 @@ def grade(entries: pd.DataFrame) -> pd.DataFrame:
 def edge_record_table(entries: pd.DataFrame) -> str:
     """Record of the live edges in each market, at the price logged with the last prediction before tip-off."""
     g = entries[entries["source"] == "live"]
-    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    lines = ["| Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |",
+             "|---|---|---|---|---|---|---|"]
     for m in edges.MARKETS:
         r = edges.record(g, m)
-        roi = f"{r['roi']:+.1%}" if r["edges"] else "–"
-        lines.append(f"| {MARKET_NAMES[m]} | {r['edges']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                     f"| {r['units']:+.2f} | {roi} |")
+        roi = f"{r['roi']:+.1%} | {r['expected_roi']:+.1%}" if r["bets"] else "– | –"
+        lines.append(f"| {MARKET_NAMES[m]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                     f"| {r['staked']:.1f} | {r['units']:+.2f} | {roi} |")
     toward, moved = edges.moved_toward(g["first_spread_edge_side"], g["first_spread"], g["spread"])
     lines += ["", f"Spread moved toward the model's first spread edge before tip-off: {toward} of {moved} games"
               + (f" ({toward / moved:.0%})." if moved else ".")]
@@ -252,13 +255,17 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "margin: -150 means risk $150 to win $100, +150 means risk $100 to win $150.",
         "",
         "The edge columns check every side of the spread, the moneyline and the total for expected value: "
-        "the profit per $1 bet at the posted price, using the model's own chances before any blending with "
-        "the line (its own simulated scores, pushes returning the stake). A side is an edge when its EV is "
-        f"{EDGE_MIN_EV:.0%} or more; the best such side is shown with its price, its EV and the model's chance "
-        "of winning the bet. Where a spread or total price is not posted it is assumed to be -110 (marked "
-        "\\*); a moneyline is never assumed. Edges are logged with each prediction, locked at tip-off and graded "
-        "below. Treat them as an experiment: the model alone is less accurate than the closing line, and "
-        "its backtest found no edge against closing lines.",
+        "the profit per $1 bet at the posted price, using the final prediction's chances (the model blended "
+        "with the line, simulated against the posted lines, pushes returning the stake, and anchored to the "
+        "market's own chances so only what the blend moves off the line counts). The model's own spread and "
+        "total are shown alongside, but the blend keeps only the share of that disagreement the model has "
+        "earned in past seasons, so edges are rare. A side is an edge when its EV is "
+        f"{EDGE_MIN_EV:.0%} or more; the best such side is shown with its price, its EV, its chance of winning "
+        f"the bet and its stake, a {KELLY_FRACTION:.0%} share of the Kelly stake in units of 1% of the bankroll, "
+        f"with at most {GAME_CAP_UNITS:g} units on one game. Where a spread or total price is not posted it is "
+        "assumed to be -110 (marked \\*); a moneyline is never assumed. Edges are logged with each prediction, "
+        "locked at tip-off and graded below. Treat them as an experiment, not betting advice; see the "
+        "backtest for how they have done on past seasons.",
         "",
     ]
     if len(upcoming):
@@ -287,10 +294,12 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
                       "before tip-off.", ""]
         if (graded["source"] == "live").any() and graded["spread"].notna().any():
             parts += ["### Betting edges", "", edge_record_table(season_log), "",
-                      "Live predictions only, 1 unit on each edge at the price logged with the last prediction "
-                      "before tip-off; a push returns the stake. ROI is units won per unit bet. The line moving "
-                      "toward the model's edge before tip-off is the quickest sign that it knows something the "
-                      "market doesn't yet.", ""]
+                      "Live predictions only, each edge at the stake and price logged with the last prediction "
+                      "before tip-off (edges logged before edges were priced from the final prediction are left "
+                      "out); a push returns the stake. Units are 1% of the bankroll; ROI is units won per unit "
+                      "staked, and expected ROI is what the edges' EVs promised. The line moving toward the "
+                      "model's edge before tip-off is the quickest sign that it knows something the market "
+                      "doesn't yet.", ""]
         last_day = graded["date"].max()
         parts += [f"### Results, {_day(last_day)}", "", results_table(graded[graded["date"] == last_day]), ""]
     else:
@@ -330,20 +339,22 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
 
 
 def backtest_edge_table(records: dict) -> list[str]:
-    """Rows of the backtest's edge section: one per set of lines and market."""
-    out = ["| Lines | Market | Edges | Record (W-L-P) | Units | ROI | 95% range | Line moved toward the edge |",
-           "|---|---|---|---|---|---|---|---|"]
-    for label, markets in records.items():
+    """Rows of the backtest's edge section: one per set of lines, rule and market."""
+    out = ["| Lines | Chances | Market | Edges | Record (W-L-P) | Staked | Units won | ROI | 95% range "
+           "| Expected ROI | Line moved toward the edge |",
+           "|---|---|---|---|---|---|---|---|---|---|---|"]
+    for (label, rule), markets in records.items():
         for m in edges.MARKETS:
             r = markets.get(m)
             if r is None:
-                out.append(f"| {label} | {MARKET_NAMES[m]} | no historical prices | | | | | |")
+                out.append(f"| {label} | {rule} | {MARKET_NAMES[m]} | no historical prices | | | | | | | |")
                 continue
-            roi = f"{r['roi']:+.1%}" if r["edges"] else "–"
+            roi = f"{r['roi']:+.1%}" if r["bets"] else "–"
             span = f"{r['roi_low']:+.1%} to {r['roi_high']:+.1%}" if not pd.isna(r.get("roi_low")) else "–"
+            expected = f"{r['expected_roi']:+.1%}" if r["bets"] else "–"
             moved = f"{r['moved_toward']:.1%} of {r['moved_games']}" if r.get("moved_games") else "–"
-            out.append(f"| {label} | {MARKET_NAMES[m]} | {r['edges']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                       f"| {r['units']:+.1f} | {roi} | {span} | {moved} |")
+            out.append(f"| {label} | {rule} | {MARKET_NAMES[m]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                       f"| {r['staked']:.1f} | {r['units']:+.1f} | {roi} | {span} | {expected} | {moved} |")
     return out
 
 
@@ -385,11 +396,16 @@ def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple,
               ""]
     if edge_records:
         parts += ["## Betting edges", "",
-                  "Every side of each market is checked for expected value with the model's own chances (its "
-                  "simulated scores before blending with the line), and the best side is bet, 1 unit flat, "
-                  f"whenever its EV is {EDGE_MIN_EV:.0%} or more. The archives carry moneylines but no spread or "
-                  "total prices, so those are assumed to be -110 on both sides. ROI is units won per unit bet, "
-                  "with a 95% bootstrap range over the bets.", ""] + backtest_edge_table(edge_records) + [""]
+                  "Every side of each market is checked for expected value with the final prediction's chances "
+                  "(the model blended with the line being bet, by the weights fitted on earlier seasons, "
+                  "simulated and anchored to the market's own chances), and the best side is bet whenever its "
+                  f"EV is {EDGE_MIN_EV:.0%} or more, at {KELLY_FRACTION:.0%} of the Kelly stake with at most "
+                  f"{GAME_CAP_UNITS:g} units (1% of the bankroll each) on one game. The model-only rows price the "
+                  "same bets with the model's own simulated scores before the blend, the rule the predictor used "
+                  "before, for comparison. The archives carry moneylines but no spread or total prices, so those "
+                  "are assumed to be -110 on both sides. ROI is units won per unit staked, with a 95% bootstrap "
+                  "range over games; expected ROI is what the edges' EVs promised.", ""]
+        parts += backtest_edge_table(edge_records) + [""]
     for title, lines in extra.items():
         parts += [f"## {title}", ""] + [f"- {line}" for line in lines] + [""]
     return "\n".join(parts)

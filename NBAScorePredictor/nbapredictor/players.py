@@ -14,6 +14,17 @@ or a below-average newcomer value for players with no rating yet. Recent
 stints count more. Offense is positive when good; defense is positive when it
 allows more, so a player's net impact is offense minus defense.
 
+The prior also learns from the box score (a statistical plus-minus, SPM).
+Each season, a ridge regression on earlier seasons maps a player's box-score
+rates per 36 minutes (points, shots, free throws, threes, assists,
+rebounds, steals, blocks, turnovers, fouls) to his final offensive and
+defensive ratings. As a player logs minutes, his prior moves from its anchor
+(last season's rating, or the newcomer value) toward what his box score this
+season says, by ``m / (m + M)`` after ``m`` minutes, with ``M`` set
+separately for newcomers and returning players. Box-score rates settle much
+faster than plus-minus, so this mostly helps rookies and players with few
+minutes, whose plus-minus alone says little.
+
 A team's strength for a game is the minutes-weighted sum of its available
 players' ratings, with each player's minutes projected from his recent games
 and rescaled so the team plays 240 minutes. Comparing that with the players
@@ -31,6 +42,14 @@ import scipy.sparse as sp
 from .config import REG_MINUTES, Hyperparams
 from .ratings import season_day
 
+# Box-score rates the SPM reads, per 36 minutes.
+BOX_STATS = ["pts", "fga", "fta", "fg3m", "ast", "oreb", "dreb", "stl", "blk", "tov", "pf"]
+# Player-seasons the SPM is fitted on: enough minutes for the rating to mean something, the
+# minutes weight capped so stars do not dominate, and a light ridge on the standardized rates.
+SPM_MIN_MINUTES = 250.0
+SPM_MIN_PLAYERS = 50
+SPM_WEIGHT_CAP = 2000.0
+SPM_RIDGE = 1.0
 LEAGUE_PRIOR_POSS = 200.0
 HOME_PRIOR_POSS = 50000.0
 TEAM_MINUTES = 5 * REG_MINUTES
@@ -64,6 +83,71 @@ def stint_rows(stints: pd.DataFrame, games: pd.DataFrame) -> pd.DataFrame:
         }))
     rows = pd.concat(out, ignore_index=True)
     return rows[rows["w"] > 0.2].reset_index(drop=True)
+
+
+class BoxScores:
+    """Each player's running box-score totals through a season, by day."""
+
+    def __init__(self, players: pd.DataFrame, games: pd.DataFrame):
+        g = games.set_index("game_id")
+        b = players[players["minutes"].fillna(0) > 0]
+        b = b[b["game_id"].isin(g.index)]
+        b = b.assign(season=b["game_id"].map(g["season"]).astype(int), date=b["game_id"].map(g["date"]))
+        self.seasons: dict[int, dict] = {}
+        for season, d in b.groupby("season"):
+            d = d.assign(day=season_day(d["date"], int(season))).sort_values("day", kind="stable")
+            cols = ["minutes"] + BOX_STATS
+            totals = d.groupby(["player_id", "day"])[cols].sum().groupby(level=0).cumsum()
+            self.seasons[int(season)] = {
+                pid: (grp.index.get_level_values(1).to_numpy(float), grp.to_numpy(float))
+                for pid, grp in totals.groupby(level=0)}
+
+    def before(self, season: int, day: float, ids) -> np.ndarray:
+        """Minutes and stat totals (columns as ``["minutes"] + BOX_STATS``) of each of ``ids``
+        in ``season`` from games before ``day``; zeros for a player with none."""
+        by_player = self.seasons.get(season, {})
+        out = np.zeros((len(ids), 1 + len(BOX_STATS)))
+        for i, pid in enumerate(ids):
+            hit = by_player.get(pid)
+            if hit is None:
+                continue
+            k = int(np.searchsorted(hit[0], day, side="left"))
+            if k:
+                out[i] = hit[1][k - 1]
+        return out
+
+
+def box_rates(totals: np.ndarray) -> np.ndarray:
+    """Per-36-minute rates from ``BoxScores`` totals (zeros without minutes)."""
+    minutes = totals[:, :1]
+    return np.where(minutes > 0, 36.0 * totals[:, 1:] / np.where(minutes > 0, minutes, 1.0), 0.0)
+
+
+class SPM:
+    """Linear map from box-score rates to offensive and defensive ratings."""
+
+    def __init__(self, center: np.ndarray, scale: np.ndarray, coef: np.ndarray):
+        self.center, self.scale, self.coef = center, scale, coef   # coef: (1 + stats) x 2 (offense, defense)
+
+    @classmethod
+    def fit(cls, rates: np.ndarray, minutes: np.ndarray, off: np.ndarray, de: np.ndarray) -> "SPM | None":
+        keep = minutes >= SPM_MIN_MINUTES
+        if keep.sum() < SPM_MIN_PLAYERS:
+            return None
+        X, w = rates[keep], np.minimum(minutes[keep], SPM_WEIGHT_CAP)
+        center = np.average(X, axis=0, weights=w)
+        scale = np.sqrt(np.average((X - center) ** 2, axis=0, weights=w)) + 1e-9
+        Z = np.column_stack([np.ones(len(X)), (X - center) / scale])
+        pen = np.full(Z.shape[1], SPM_RIDGE * w.sum() / len(w))
+        pen[0] = 0.0
+        A = Z.T @ (Z * w[:, None]) + np.diag(pen)
+        Y = np.column_stack([off[keep], de[keep]])
+        return cls(center, scale, np.linalg.solve(A, Z.T @ (Y * w[:, None])))
+
+    def predict(self, rates: np.ndarray) -> np.ndarray:
+        """Offense and defense (columns) for each row of rates."""
+        Z = np.column_stack([np.ones(len(rates)), (rates - self.center) / self.scale])
+        return Z @ self.coef
 
 
 class SeasonRAPM:
@@ -116,20 +200,26 @@ class SeasonRAPM:
         self.b += Xw.T @ self.rows["y"].to_numpy()[self._pos:end]
         self._pos = end
 
-    def solve_days(self, days, lam: np.ndarray, beta0: np.ndarray) -> None:
+    def solve_days(self, days, lam: np.ndarray, beta0) -> None:
+        """Solve each of ``days``; ``beta0`` is the prior, or a function of the day giving it."""
         for day in sorted(set(float(d) for d in days) - set(self.solved)):
             self._advance(day)
             c = 2.0 ** (-day / self.half_life)
             M = c * self.A
             M[np.diag_indices_from(M)] += lam
-            self.solved[day] = scipy.linalg.solve(M, lam * beta0 + c * self.b, assume_a="pos")
+            b0 = beta0(day) if callable(beta0) else beta0
+            self.solved[day] = scipy.linalg.solve(M, lam * b0 + c * self.b, assume_a="pos")
 
 
 class PlayerRatings:
     """Offensive and defensive RAPM for any day of any season, chaining priors."""
 
-    def __init__(self, stints: pd.DataFrame, games: pd.DataFrame, hp: Hyperparams):
+    def __init__(self, stints: pd.DataFrame, games: pd.DataFrame, hp: Hyperparams,
+                 box: pd.DataFrame | None = None):
         self.hp = hp
+        use_box = box is not None and (hp.box_prior_minutes_new > 0 or hp.box_prior_minutes > 0)
+        self.box = BoxScores(box, games) if use_box else None
+        self._spm: dict[int, SPM | None] = {}
         rows = stint_rows(stints, games)
         self.by_season = {int(s): r.reset_index(drop=True) for s, r in rows.groupby("season")}
         self.first_season = min(self.by_season) if self.by_season else None
@@ -162,15 +252,48 @@ class PlayerRatings:
             self._seasons[season] = SeasonRAPM(rows, self.hp.player_half_life_days)
         return self._seasons[season]
 
-    def _penalty(self, season: int, sr: SeasonRAPM) -> tuple[np.ndarray, np.ndarray]:
+    def spm(self, season: int) -> SPM | None:
+        """The box-score model for ``season``, fitted on every earlier season's final ratings."""
+        if season not in self._spm:
+            rates, minutes, off, de = [], [], [], []
+            for past in sorted(s for s in (self.box.seasons if self.box else {}) if s < season):
+                if past not in self.by_season:
+                    continue
+                o, d, _ = self.final(past)
+                ids = [p for p in self.box.seasons[past] if p in o]
+                totals = self.box.before(past, np.inf, ids)
+                rates.append(box_rates(totals))
+                minutes.append(totals[:, 0])
+                off.append([o[p] for p in ids])
+                de.append([d[p] for p in ids])
+            self._spm[season] = SPM.fit(np.concatenate(rates), np.concatenate(minutes), np.concatenate(off),
+                                        np.concatenate(de)) if rates else None
+        return self._spm[season]
+
+    def _penalty(self, season: int, sr: SeasonRAPM) -> tuple[np.ndarray, object]:
         off0, def0, mu0 = self.prior(season)
         o_new, d_new = self.newcomer
         lam = np.concatenate([[LEAGUE_PRIOR_POSS, HOME_PRIOR_POSS],
                               np.full(sr.n, self.hp.player_off_prior_poss),
                               np.full(sr.n, self.hp.player_def_prior_poss)])
-        beta0 = np.concatenate([[mu0, 1.5], [off0.get(p, o_new) for p in sr.players],
-                                [def0.get(p, d_new) for p in sr.players]])
-        return lam, beta0
+        anchor_o = np.array([off0.get(p, o_new) for p in sr.players])
+        anchor_d = np.array([def0.get(p, d_new) for p in sr.players])
+        beta0 = np.concatenate([[mu0, 1.5], anchor_o, anchor_d])
+        spm = self.spm(season) if self.box is not None else None
+        if spm is None or sr.n == 0:
+            return lam, beta0
+        # Each player's prior moves toward his box-score ratings as his minutes this season build.
+        half = np.array([self.hp.box_prior_minutes if p in off0 else self.hp.box_prior_minutes_new
+                         for p in sr.players])
+
+        def at(day: float) -> np.ndarray:
+            totals = self.box.before(season, day, sr.players)
+            m = totals[:, 0]
+            k = np.where(half > 0, m / (m + np.where(half > 0, half, 1.0)), 0.0)
+            box = spm.predict(box_rates(totals))
+            return np.concatenate([[mu0, 1.5], anchor_o + k * (box[:, 0] - anchor_o),
+                                   anchor_d + k * (box[:, 1] - anchor_d)])
+        return lam, at
 
     def prepare(self, season: int, days=None, all_game_days: bool = True) -> None:
         """Solve every game day of ``season`` (and any extra ``days``) in one pass."""

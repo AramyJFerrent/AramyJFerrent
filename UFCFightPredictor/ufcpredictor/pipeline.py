@@ -29,6 +29,7 @@ import logging
 
 import numpy as np
 import pandas as pd
+from bettingcore import write_if_changed
 
 from . import report
 from .cards import fetch_card
@@ -36,7 +37,7 @@ from .config import DIVISIONS, OUTPUT_DIR, Hyperparams
 from .data import current_year, load_data, refresh_data
 from .edges import EDGE_COLUMNS, attach_edges
 from .features import FeatureBuilder
-from .model import METHODS, MODEL_ONLY, FightModel
+from .model import EDGE_CHANCES, METHODS, MODEL_ONLY, FightModel
 from .names import match_name, normalize_name, pair_key
 from .odds import METHOD_ODDS, ROUND_ODDS, append_odds_log, market_odds
 
@@ -50,7 +51,7 @@ README_PATH = OUTPUT_DIR / "README.md"
 
 PRED_COLUMNS = (["p_a", "p_model", "p_market", "p_glicko"] + [f"{s}_{m}" for s in "ab" for m in METHODS]
                 + ["p_distance"] + [f"r{r}" for r in range(1, 6)] + ["best_side", "best_method", "best_prob"]
-                + MODEL_ONLY)
+                + MODEL_ONLY + EDGE_CHANCES)
 # Prices of the props (method of victory, round total) and the model-alone
 # over chance at the posted round line; then each market's frozen edge.
 PROP_PRICES = [*METHOD_ODDS, *ROUND_ODDS]
@@ -135,8 +136,9 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, card: pd.DataFrame, now
         # Same orientation as before so the first price stays attached to the right fighter.
         flipped = new["_id"].map(prev["fighter_a"]).notna() & (new["_id"].map(prev["fighter_a"]) != new["fighter_a"])
         seen = new["_id"].map(prev["first_odds_a"]).notna()
-        for col in FIRST_COLUMNS:
-            new.loc[seen, col] = new.loc[seen, "_id"].map(prev[col])
+        if seen.any():
+            for col in FIRST_COLUMNS:
+                new.loc[seen, col] = new.loc[seen, "_id"].map(prev[col])
         swap = seen & flipped
         first_a, first_b = new.loc[swap, "first_odds_a"].copy(), new.loc[swap, "first_odds_b"].copy()
         new.loc[swap, "first_odds_a"], new.loc[swap, "first_odds_b"] = first_b, first_a
@@ -275,16 +277,6 @@ def ratings_table(fb: FeatureBuilder, bouts: pd.DataFrame, now: pd.Timestamp, ac
     return table.reset_index(drop=True)
 
 
-def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
-    """Write ``text`` unless it matches the file apart from lines containing ``volatile``."""
-    def stable(t: str) -> list[str]:
-        return [line for line in t.splitlines() if not any(v in line for v in volatile)]
-    if path.exists() and stable(path.read_text()) == stable(text):
-        return False
-    path.write_text(text)
-    return True
-
-
 def run_update(now: dt.datetime | None = None, days: int = DEFAULT_DAYS, max_age_hours: float = 1.0,
                use_ufcstats: bool = True, use_espn: bool = True) -> pd.DataFrame:
     now = pd.Timestamp(now or dt.datetime.now(dt.timezone.utc))
@@ -349,6 +341,7 @@ def run_update(now: dt.datetime | None = None, days: int = DEFAULT_DAYS, max_age
     latest = json.dumps({"generated_at": now.isoformat(),
                          "bouts": json.loads(payload.to_json(orient="records"))}, indent=2) + "\n"
     # Timestamps alone are not news: skip rewrites (and commits) when nothing else changed.
-    write_if_changed(LATEST_PATH, latest, volatile=('"generated_at"', '"predicted_at"'))
-    write_if_changed(README_PATH, report.render(entries, shown, table, model, now, year), volatile=("Updated ",))
+    write_if_changed(LATEST_PATH, latest, volatile=('"generated_at"', '"predicted_at"'), contains=True)
+    write_if_changed(README_PATH, report.render(entries, shown, table, model, now, year), volatile=("Updated ",),
+                     contains=True)
     return new

@@ -15,10 +15,10 @@ import logging
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import implied_prob
 
 from .config import CACHE_DIR, DATA_DIR, ODDS_URL
 from .data import fetch
-from .edges import implied_prob
 from .names import normalize_name, pair_key
 
 log = logging.getLogger(__name__)

@@ -16,14 +16,29 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
+from bettingcore import fetch, sbr
+
 from .config import CACHE_DIR, TEAM_ALIASES, Hyperparams
-from .data import fetch
 from .edges import edge_frame, edge_record, has_edge
 from .features import FeatureBuilder
-from .model import ScoreModel
+from .model import FINAL_LINE_PROBS, ScoreModel
 
 # Westgate SuperContest lines: posted on Wednesday and never moved, 2013-2020.
 MIDWEEK_LINES_URL = "https://raw.githubusercontent.com/nflverse/nfldata/master/data/sc_lines.csv"
+# sportsbookreview's archive names (nicknames, and city names in some seasons), mapped to nflverse codes.
+# "LosAngeles" and "NewYork" could be either of two teams, so their few games go unmatched.
+SBR_NAMES = {
+    "Bears": "CHI", "Bengals": "CIN", "Bills": "BUF", "BuffaloBills": "BUF", "Broncos": "DEN", "Browns": "CLE",
+    "Buccaneers": "TB", "Tampa": "TB", "Cardinals": "ARI", "Chargers": "LAC", "SanDiego": "LAC", "Chiefs": "KC",
+    "KCChiefs": "KC", "Kansas": "KC", "Colts": "IND", "Commanders": "WAS", "Washingtom": "WAS", "Cowboys": "DAL",
+    "Dolphins": "MIA", "Eagles": "PHI", "Falcons": "ATL", "Fortyniners": "SF", "Giants": "NYG", "Jaguars": "JAX",
+    "Jets": "NYJ", "Lions": "DET", "Oakland": "LV", "Raiders": "LV", "LVRaiders": "LV", "Packers": "GB",
+    "Panthers": "CAR", "Patriots": "NE", "Rams": "LA", "St.Louis": "LA", "Ravens": "BAL", "Saints": "NO",
+    "Seahawks": "SEA", "Steelers": "PIT", "Texans": "HOU", "Titans": "TEN", "Vikings": "MIN",
+}
+# Lines posted before the closing line that the backtest also bets into: each one's spread column (an
+# expected home margin, like ``spread_line``) and total column, if it has totals. None carries prices.
+EARLY_LINES = {"midweek": ("midweek_line", None), "open": ("open_line", "open_total")}
 
 log = logging.getLogger(__name__)
 
@@ -124,15 +139,6 @@ def distribution_checks(bt: pd.DataFrame) -> dict:
     }
 
 
-def paired_bootstrap(errors_a: np.ndarray, errors_b: np.ndarray, n: int = 5000, seed: int = 0) -> tuple:
-    """Mean of (a - b) and its 95% interval over resampled games."""
-    rng = np.random.default_rng(seed)
-    diff = np.asarray(errors_a) - np.asarray(errors_b)
-    idx = rng.integers(0, len(diff), size=(n, len(diff)))
-    means = diff[idx].mean(axis=1)
-    return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
-
-
 def load_midweek_lines(games: pd.DataFrame, max_age_hours: float = 24.0) -> pd.Series:
     """Wednesday lines as expected home margins, indexed by game_id."""
     path = fetch(MIDWEEK_LINES_URL, CACHE_DIR / "sc_lines.csv", max_age_hours)
@@ -144,6 +150,30 @@ def load_midweek_lines(games: pd.DataFrame, max_age_hours: float = 24.0) -> pd.S
     return pd.Series(-matched["line"].to_numpy(), index=matched["gid"].to_numpy(), name="midweek_line")
 
 
+def load_opening_lines(games: pd.DataFrame, max_age_hours: float = 24.0 * 30) -> pd.DataFrame:
+    """Opening spreads (as expected home margins) and totals from sportsbookreview's archive
+    (2011-2021), indexed by game_id.
+
+    Some archived openers have the wrong sign (most of 2021's week 10, for one),
+    so an opening spread more than 7 points from the closing one, or on the other
+    side of zero by 4 or more, is dropped (under 1% of games, a few of them real
+    moves on quarterback news); so is an opening total outside 25-70 points or
+    more than 10 from the closing one.
+    """
+    try:
+        archive = sbr.load_archive("nfl", CACHE_DIR, max_age_hours)
+    except Exception as exc:                        # the backtest still runs without these rows
+        log.warning("Line archive unavailable: %s", exc)
+        return pd.DataFrame(columns=["open_line", "open_total"])
+    m = sbr.match(archive, games, SBR_NAMES, date="gameday")
+    close = games.set_index("game_id").reindex(m.index)
+    line, total = -m["home_open_spread"], m["open_total"]
+    gap = (line - close["spread_line"]).abs()
+    bad_line = (gap > 7) | ((np.sign(line) * np.sign(close["spread_line"]) < 0) & (gap >= 4))
+    bad_total = ~total.between(25, 70) | ((total - close["total_line"]).abs() > 10)
+    return pd.DataFrame({"open_line": line.mask(bad_line), "open_total": total.mask(bad_total)})
+
+
 def without_starters(games: pd.DataFrame) -> pd.DataFrame:
     """Schedule with the recorded starting QBs removed, so each team is assumed to
     start whoever started its previous game: what is known by Wednesday."""
@@ -153,13 +183,21 @@ def without_starters(games: pd.DataFrame) -> pd.DataFrame:
     return games
 
 
-def model_only_probs(features: pd.DataFrame, seasons, window: int, n_sims: int = 4000) -> pd.DataFrame:
-    """Out-of-sample model-only win, cover and over chances for finished games.
+# Chances each edge rule prices bets with: the final prediction's, or the model's own before the blend.
+CHANCES = {"final": "", "model": "model_"}
+
+
+def edge_probs(features: pd.DataFrame, seasons, window: int, n_sims: int = 4000) -> pd.DataFrame:
+    """Out-of-sample win, cover and over chances for finished games, final and model-only.
 
     Each season's model (points map, blend and simulator) is fitted on earlier
-    seasons; the chances come from simulating its own expected points, before
-    the market blend, against the closing lines and, where ``features`` has a
-    ``midweek_line``, against the Wednesday line too.
+    seasons. Against the closing lines the final prediction is the live one.
+    For each early line (``EARLY_LINES``) in ``features``, the same game is
+    predicted again with that line in place of the closing spread and total
+    (no total where the source has none) and without the game's measured wind,
+    which a line posted days ahead could not know, giving ``midweek_*`` and
+    ``open_*`` chances; those lines carry no prices, so they count as even
+    -110 markets.
     """
     out = []
     for season in seasons:
@@ -168,51 +206,70 @@ def model_only_probs(features: pd.DataFrame, seasons, window: int, n_sims: int =
         if test.empty or train.empty:
             continue
         model = ScoreModel.fit(train)
-        own = model.model_only_means(test)
-        probs = model.model_only(test, n_sims=n_sims, seed=season)
-        test = test.assign(model_margin=own["margin"], model_total=own["total"],
-                           **{f"model_{c}": probs[c].to_numpy() for c in probs})
-        if "midweek_line" in test:
-            mid = model.model_only(test, n_sims=n_sims, seed=season, spread_line=test["midweek_line"])
-            test["midweek_home_cover_prob"] = mid["home_cover_prob"].to_numpy()
-            test["midweek_spread_push_prob"] = mid["spread_push_prob"].to_numpy()
+        pred = model.predict(test, n_sims=n_sims, seed=season)
+        keep = FINAL_LINE_PROBS + ["home_win_prob", "away_win_prob", "tie_prob"]
+        test = test.assign(model_margin=pred["pred_model_margin"], model_total=pred["pred_model_total"],
+                           **{c: pred[c].to_numpy() for c in keep},
+                           **{c: pred[c].to_numpy() for c in pred if c.startswith("model_")})
+        for early, (line_col, total_col) in EARLY_LINES.items():
+            if line_col not in test:
+                continue
+            # An early line comes days before kickoff, before the game's wind is known.
+            pred = model.predict(test.assign(spread_line=test[line_col],
+                                             total_line=test[total_col] if total_col else np.nan,
+                                             home_spread_odds=np.nan, away_spread_odds=np.nan, over_odds=np.nan,
+                                             under_odds=np.nan, wind=np.nan), n_sims=n_sims, seed=season)
+            for prefix in CHANCES.values():
+                for c in ("home_cover_prob", "spread_push_prob", "over_prob", "total_push_prob"):
+                    test[f"{early}_{prefix}{c}"] = pred[f"{prefix}{c}"].to_numpy()
         out.append(test)
-        log.info("Model-only chances for %s: %d games", season, len(test))
+        log.info("Edge chances for %s: %d games", season, len(test))
     return pd.concat(out, ignore_index=True)
 
 
-def closing_edges(df: pd.DataFrame) -> pd.DataFrame:
+def _with_chances(df: pd.DataFrame, chances: str) -> pd.DataFrame:
+    """``df`` with the chosen rule's chances in the columns the edges read."""
+    if chances == "final":
+        return df
+    cols = ["home_cover_prob", "spread_push_prob", "over_prob", "total_push_prob", "tie_prob"]
+    return df.assign(**{c: df[f"model_{c}"] for c in cols}, home_ml_prob=df["model_home_win_prob"],
+                     away_ml_prob=df["model_away_win_prob"])
+
+
+def closing_edges(df: pd.DataFrame, chances: str = "final") -> pd.DataFrame:
     """Edges in every market at the closing lines and the prices posted with them."""
-    rows = df.rename(columns={"home_spread_odds": "home_spread_price", "away_spread_odds": "away_spread_price",
-                              "over_odds": "over_price", "under_odds": "under_price"})
+    rows = _with_chances(df, chances).rename(columns={
+        "home_spread_odds": "home_spread_price", "away_spread_odds": "away_spread_price",
+        "over_odds": "over_price", "under_odds": "under_price"})
     return pd.concat([rows, edge_frame(rows)], axis=1)
 
 
-def midweek_edges(df: pd.DataFrame) -> pd.DataFrame:
-    """Spread edges at the Wednesday line. Those lines carry no prices, so -110 is assumed."""
-    rows = df[df["midweek_line"].notna()].assign(
-        closing_line=lambda d: d["spread_line"], spread_line=lambda d: d["midweek_line"],
-        home_spread_price=np.nan, away_spread_price=np.nan,
-        model_home_cover_prob=lambda d: d["midweek_home_cover_prob"],
-        model_spread_push_prob=lambda d: d["midweek_spread_push_prob"])
-    return pd.concat([rows, edge_frame(rows, markets=("spread",))], axis=1)
+def early_edges(df: pd.DataFrame, early: str = "midweek", chances: str = "final") -> pd.DataFrame:
+    """Edges at an early line (``EARLY_LINES``): the spread, and the total where the source has
+    one. Those lines carry no prices, so -110 is assumed; the closing lines are kept as
+    ``closing_line`` and ``closing_total``."""
+    line_col, total_col = EARLY_LINES[early]
+    p = f"{early}_{CHANCES[chances]}"
+    markets = ("spread", "total") if total_col else ("spread",)
+    chance_cols = ["home_cover_prob", "spread_push_prob"] + (["over_prob", "total_push_prob"] if total_col else [])
+    rows = df[df[line_col].notna()].assign(
+        closing_line=lambda d: d["spread_line"], closing_total=lambda d: d["total_line"],
+        spread_line=lambda d: d[line_col], total_line=lambda d: d[total_col] if total_col else np.nan,
+        home_spread_price=np.nan, away_spread_price=np.nan, over_price=np.nan, under_price=np.nan,
+        **{c: (lambda d, c=c: d[p + c]) for c in chance_cols})
+    return pd.concat([rows, edge_frame(rows, markets=markets)], axis=1)
 
 
 def edge_summary(df: pd.DataFrame, market: str, closing_col: str | None = None, n_boot: int = 5000,
                  seed: int = 0) -> dict:
-    """Edge record in ``market`` with a 95% bootstrap range on ROI and, for spreads graded at an
-    early line, how often the line then moved toward the edge by ``closing_col``."""
-    rec = edge_record(df, market)
-    units = rec.pop("unit_results")
-    rec["roi_low"] = rec["roi_high"] = float("nan")
-    if len(units):
-        idx = np.random.default_rng(seed).integers(0, len(units), size=(n_boot, len(units)))
-        rois = units[idx].mean(axis=1)
-        rec["roi_low"], rec["roi_high"] = float(np.percentile(rois, 2.5)), float(np.percentile(rois, 97.5))
+    """Edge record in ``market`` (Kelly stakes, ROI with a 95% bootstrap range over games) and,
+    for edges graded at an early line, how often the line then moved toward the edge by
+    ``closing_col`` (a spread toward the side picked, a total toward over or under)."""
+    rec = edge_record(df, market, n_boot=n_boot, seed=seed)
     if closing_col:
         picked = df[df[f"{market}_edge_pick"].map(has_edge)]
-        move = picked[closing_col] - picked["spread_line"]
-        sign = np.where(picked[f"{market}_edge_side"] == "home", 1.0, -1.0)
+        move = picked[closing_col] - picked["total_line" if market == "total" else "spread_line"]
+        sign = np.where(picked[f"{market}_edge_side"].isin(["home", "over"]), 1.0, -1.0)
         moved = (move != 0).to_numpy()
         rec["moved_toward"] = float((np.sign(move.to_numpy()[moved]) == sign[moved]).mean()) \
             if moved.any() else float("nan")
