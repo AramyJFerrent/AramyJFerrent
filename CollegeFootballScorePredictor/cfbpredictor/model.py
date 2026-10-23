@@ -32,8 +32,9 @@ MARGIN_FEATURES = ["off", "def_opp", "st", "home", "home_conf", "fcs", "elo"]
 # (see ``ScoreModel.edge_chances``), which the betting edges use.
 EDGE_PROBS = ["home_cover_prob", "spread_push_prob", "over_prob", "total_push_prob", "home_ml_prob"]
 TOTAL_FEATURES = ["off", "def_opp", "pace"]
-# Candidates evaluated in the backtest (see README); they did not earn a place.
-OPTIONAL_FEATURES = ["travel", "tz_west", "tz_east", "rest"]
+# Candidates evaluated in the backtest (see README); they did not earn a place. ``qb`` needs the
+# quarterback-game summaries passed to the FeatureBuilder (``data.load_qbs``).
+OPTIONAL_FEATURES = ["travel", "tz_west", "tz_east", "rest", "qb"]
 
 
 def team_view(f: pd.DataFrame) -> pd.DataFrame:

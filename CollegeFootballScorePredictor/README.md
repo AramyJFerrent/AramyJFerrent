@@ -147,6 +147,14 @@ total error over 2016–2025:
   rating teams one at a time, so that pull is set high), travel distance,
   time zones crossed, rest days, partial weight on garbage-time plays and
   faster recency weighting. Each was within noise.
+- A quarterback adjustment (`qb.py`, from per-game passer summaries in
+  `data/qbs/`): each quarterback's EPA per dropback, shrunk and following him
+  across transfers, with the starter taken as the top passer in the team's
+  last game, since no free source names college starters ahead of time. It
+  made the model slightly worse, 2016-2025 (margin error 12.853 to 12.856,
+  and 13.09 to 13.12 on the 338 games just after a quarterback change):
+  last week's passer is the wrong guess whenever an injured starter returns.
+  It stays out until announced starters are available.
 
 ## Can it beat the betting line?
 
