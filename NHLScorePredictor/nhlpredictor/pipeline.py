@@ -27,6 +27,7 @@ import logging
 
 import numpy as np
 import pandas as pd
+from bettingcore import write_if_changed
 
 from . import espn, report
 from .config import DISPLAY_TZ, FIRST_SEASON, OUTPUT_DIR, Hyperparams
@@ -34,7 +35,7 @@ from .data import current_season, load_summaries, update_summaries
 from .edges import EDGE_COLUMNS, add_edges, puck_line
 from .features import FeatureBuilder
 from .goalies import SHOTS_PER_GAME, day_index
-from .market import MarketInverter, devig, fit_blend
+from .market import EDGE_PROBS, MarketInverter, devig, edge_chances, fit_blend
 from .model import GoalModel
 from .simulate import line_probs, over_prob
 
@@ -57,7 +58,7 @@ LOG_COLUMNS = [
     "away_low", "away_high", "home_low", "home_high",
     "model_away_rate", "model_home_rate", "market_away_rate", "market_home_rate", "away_rate", "home_rate",
     "home_moneyline", "away_moneyline", "total_line", "over_price", "under_price", "market_home_prob",
-    "home_spread_line", "home_spread_price", "away_spread_price",
+    "home_spread_line", "home_spread_price", "away_spread_price", *EDGE_PROBS,
     "line_source", "elo_home_prob", *EDGE_COLUMNS, "predicted_at", "source",
     "first_predicted_at", "first_home_moneyline", "first_away_moneyline", "first_market_home_prob",
     "first_model_home_prob",
@@ -68,7 +69,8 @@ LOG_COLUMNS = [
 FIRST_COLUMNS = ["first_predicted_at", "first_home_moneyline", "first_away_moneyline",
                  "first_market_home_prob", "first_model_home_prob"]
 TIME_COLUMNS = ["start", "predicted_at", "first_predicted_at"]
-# Model-only (before blending) chances at the posted puck line and total, behind the edges.
+# Model-only (before blending) chances at the posted puck line and total, for comparison; the
+# edges use the final prediction's anchored chances (``EDGE_PROBS``).
 LINE_PROB_COLUMNS = ["model_home_cover_prob", "model_away_cover_prob", "model_spread_push_prob",
                      "model_over_prob", "model_under_prob", "model_total_push_prob"]
 
@@ -91,7 +93,8 @@ def result_label(periods, shootout) -> str | None:
 def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, model_only: pd.DataFrame,
                     now: pd.Timestamp, line_chances: pd.DataFrame | None = None) -> pd.DataFrame:
     """Log rows for predicted games. ``model_only`` and ``line_chances`` are the
-    model's own numbers before blending, which the betting edges are priced from."""
+    model's own numbers before blending, shown for comparison; the betting edges
+    are priced from the anchored chances in ``feats`` (``EDGE_PROBS``)."""
     rows = pd.DataFrame({
         "game_id": feats["game_id"], "season": feats["season"], "game_type": feats["game_type"],
         "date": feats["date"].astype(str), "start": feats["start"],
@@ -109,7 +112,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, model_only: pd.Dat
         rows[col] = preds[col].to_numpy()
     for col in ("market_away_rate", "market_home_rate", "home_moneyline", "away_moneyline", "total_line",
                 "over_price", "under_price", "market_home_prob", "line_source", "over_prob",
-                "home_spread_line", "home_spread_price", "away_spread_price"):
+                "home_spread_line", "home_spread_price", "away_spread_price", *EDGE_PROBS):
         rows[col] = feats[col].to_numpy() if col in feats else np.nan
     for col in LINE_PROB_COLUMNS:
         rows[col] = line_chances[col].to_numpy() if line_chances is not None else np.nan
@@ -179,8 +182,9 @@ def update_log(entries: pd.DataFrame, new: pd.DataFrame, games: pd.DataFrame,
     merged = pd.concat([kept, new], ignore_index=True) if len(kept) else new.copy()
     final = games[games["completed"]].set_index("game_id")
     done = merged["game_id"].isin(final.index)
-    merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
-    merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
+    if done.any():
+        merged.loc[done, "home_score"] = merged.loc[done, "game_id"].map(final["home_score"])
+        merged.loc[done, "away_score"] = merged.loc[done, "game_id"].map(final["away_score"])
     if outcomes is not None and len(outcomes):
         labels = pd.Series([result_label(p, s) for p, s in zip(outcomes["periods"], outcomes["shootout"])],
                            index=outcomes.index)
@@ -241,16 +245,6 @@ def recent_goalies(fb: FeatureBuilder, today, days: int = 120) -> dict[str, pd.S
     g = fb.goalies.g[fb.goalies.g["dix"] >= dix - days]
     return {team: grp.drop_duplicates("goalie_id", keep="last").set_index("goalie_id")["goalie_name"]
             for team, grp in g.groupby("team")}
-
-
-def write_if_changed(path, text: str, volatile: tuple[str, ...] = ()) -> bool:
-    """Write ``text`` unless it matches the file apart from lines starting with ``volatile``."""
-    def stable(t: str) -> list[str]:
-        return [line for line in t.splitlines() if not line.lstrip().startswith(volatile)]
-    if path.exists() and stable(path.read_text()) == stable(text):
-        return False
-    path.write_text(text)
-    return True
 
 
 def blend_weight(entries: pd.DataFrame, outcomes: pd.DataFrame) -> tuple[float, int]:
@@ -317,11 +311,17 @@ def run_update(now: dt.datetime | None = None, days: int = 3, n_sims: int = 1000
             model_only, model_sim = model.predict(feats, n_sims=n_sims)
             # Games without a line were never blended: keep one set of numbers for them.
             model_only.loc[~has, "home_win_prob"] = preds.loc[~has, "home_win_prob"]
-        # Edges are priced from the model alone, at the posted puck line (or -1.5 on
-        # the model's favorite, for fair odds, until one is posted) and total.
+        # The model's own chances at the posted puck line (or -1.5 on its favorite, for
+        # fair odds, until one is posted) and total, for comparison.
         home_lines = [puck_line(hl, p) for hl, p in zip(feats["home_spread_line"], model_only["home_win_prob"])]
         chances = line_probs(model_sim, home_lines, lines)
         chances.loc[~has] = line_probs(sim, home_lines, lines).loc[~has]
+        # The edges' chances: the final prediction anchored to the same simulation at the market's rates.
+        ref_home = np.where(has, feats["market_home_rate"], home_rate)
+        ref_away = np.where(has, feats["market_away_rate"], away_rate)
+        ref, ref_sim = model.predict(feats, ref_home, ref_away, n_sims=n_sims)
+        feats[EDGE_PROBS] = edge_chances(feats, preds, sim, ref, ref_sim, feats["home_spread_line"]).to_numpy()
+        del ref_sim
         new = prediction_rows(feats, preds, model_only, now, chances)
     else:
         feats, ratings = fb.current(upcoming, season, today)

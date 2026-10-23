@@ -62,7 +62,7 @@ def test_grade_compares_model_and_line():
 
 
 def test_fair_moneyline_matches_win_chance():
-    from nflpredictor.edges import fair_american
+    from bettingcore import fair_american
     from nflpredictor.report import fair_moneyline
 
     assert fair_american(0.75) == -300

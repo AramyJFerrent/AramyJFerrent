@@ -27,12 +27,15 @@ from .simulate import SimParams, calibrate, fit_from_states, margin_shares, simu
 # shown, but in walk-forward tests they added nothing once the goals rating,
 # which already carries power-play scoring, was in. Elo's result-based edge did.
 RATE_FEATURES = ["ev_off", "ev_def", "goals_off", "goals_def", "goalie", "goalie_adj", "elo",
-                 "home", "b2b", "b2b_opp", "playoff"]
+                 "home", "b2b", "b2b_opp", "playoff", "lost_f", "lost_d", "lost_pts", "lost_opp"]
 RIDGE = 5.0
 
 
 def team_view(f: pd.DataFrame) -> pd.DataFrame:
     """Two rows per game, one from each team's attacking side, with the rate features."""
+    def col(name):
+        return f[name].fillna(0.0).to_numpy(float) if name in f else np.zeros(len(f))
+
     sides = []
     for side, other, sign in (("home", "away", 1.0), ("away", "home", -1.0)):
         sides.append(pd.DataFrame({
@@ -53,6 +56,9 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             "b2b": (f[f"{side}_rest"] <= 1).astype(float).to_numpy(),
             "b2b_opp": (f[f"{other}_rest"] <= 1).astype(float).to_numpy(),
             "playoff": f["playoff"].astype(float).to_numpy(),
+            # Regulars out of the lineup (skaters.py): the attacking team's, and the defending team's ice time.
+            "lost_f": col(f"{side}_lost_f"), "lost_d": col(f"{side}_lost_d"), "lost_pts": col(f"{side}_lost_pts"),
+            "lost_opp": col(f"{other}_lost_f") + col(f"{other}_lost_d"),
             "env": f["env_goals"].to_numpy(),
             "goals": f[f"{side}_reg"].to_numpy() if f"{side}_reg" in f else np.nan,
         }))

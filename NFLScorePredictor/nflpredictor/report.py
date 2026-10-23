@@ -6,7 +6,9 @@ import numpy as np
 import pandas as pd
 
 from .config import KICKOFF_TZ
-from .edges import EDGE_MIN_EV, MARKETS, edge_record, fair_american, format_american, has_edge
+from bettingcore import EDGE_MIN_EV, GAME_CAP_UNITS, KELLY_FRACTION, fair_american, format_american
+
+from .edges import MARKETS, edge_record, has_edge
 
 
 def _kickoff(ts) -> str:
@@ -57,15 +59,16 @@ def _has_line(r, market: str) -> bool:
 
 
 def edge_cell(r, market: str) -> str:
-    """``KC -3.5 (-110): EV +5.0%, model 55%``, ``no edge`` or ``no line yet``."""
+    """``KC -3.5 (-110): EV +5.0%, 55%, stake 1.2u``, ``no edge`` or ``no line yet``."""
     pick = getattr(r, f"{market}_edge_pick")
     if not has_edge(pick):
         return "no edge" if _has_line(r, market) else "no line yet"
     side = getattr(r, f"{market}_edge_side")
     assumed = pd.isna(getattr(r, SIDE_PRICES[(market, side)]))
-    price = format_american(getattr(r, f"{market}_edge_price")) + ("*" if assumed else "")
+    price = format_american(getattr(r, f"{market}_edge_price"), assumed)
+    stake = getattr(r, f"{market}_edge_stake", np.nan)
     return (f"{pick} ({price}): EV {getattr(r, f'{market}_edge_ev'):+.1%}, "
-            f"model {getattr(r, f'{market}_edge_prob'):.0%}")
+            f"{getattr(r, f'{market}_edge_prob'):.0%}" + ("" if pd.isna(stake) else f", stake {stake:.1f}u"))
 
 
 def upcoming_table(rows: pd.DataFrame) -> str:
@@ -152,13 +155,14 @@ def grade(entries: pd.DataFrame) -> pd.DataFrame:
 
 
 def edge_table(entries: pd.DataFrame) -> str:
-    """Record of the logged edges in each market, at the price logged with the last prediction."""
-    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    """Record of the logged edges in each market, at the price and stake logged with the last prediction."""
+    lines = ["| Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |",
+             "|---|---|---|---|---|---|---|"]
     for market in MARKETS:
         rec = edge_record(entries, market)
-        roi = f"{rec['roi']:+.1%}" if rec["bets"] else "–"
+        roi = f"{rec['roi']:+.1%} | {rec['expected_roi']:+.1%}" if rec["bets"] else "– | –"
         lines.append(f"| {MARKET_NAMES[market]} | {rec['bets']} | {rec['wins']}-{rec['losses']}-{rec['pushes']} "
-                     f"| {rec['units']:+.2f} | {roi} |")
+                     f"| {rec['staked']:.1f} | {rec['units']:+.2f} | {roi} |")
     return "\n".join(lines)
 
 
@@ -241,20 +245,19 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "only offers value on a team when its price beats the fair line. Ties refund moneyline "
         "bets, so they are left out of these odds.",
         "",
-        "The edge columns price every side of the spread, moneyline and total with the model alone, "
-        "before it is blended with the line: the model's own expected points are run through the same "
-        "score simulator, and each side's expected value (EV) is what $1 staked returns on average at "
-        "the posted price (pushes on whole-number lines and moneyline ties refund the stake). A side "
-        f"is an edge when its EV is at least {EDGE_MIN_EV:+.0%}; the cell shows the best side, its price, "
-        "its EV and the model's chance it wins. Prices come from the nflverse schedule; a spread or "
+        "The edge columns price every side of the spread, moneyline and total with the final "
+        "prediction, the model blended with the line: its expected points are run through the score "
+        "simulator against the posted lines, and each side's expected value (EV) is what $1 staked "
+        "returns on average at the posted price (pushes on whole-number lines and moneyline ties "
+        f"refund the stake). A side is an edge when its EV is at least {EDGE_MIN_EV:+.0%}; the cell "
+        "shows the best side, its price, its EV, its chance of winning and its stake. Stakes are a "
+        f"{KELLY_FRACTION:.0%} share of the Kelly stake, in units of 1% of the bankroll, with at most "
+        f"{GAME_CAP_UNITS:g} units on one game. Prices come from the nflverse schedule; a spread or "
         "total price marked * was not posted and is assumed to be -110. Moneylines are never assumed. "
-        "Treat the edges as an experiment, not betting advice. The model's own numbers often sit "
-        "several points from the line (the final prediction gives the line over 90% of the weight for "
-        "that reason), so an edge shows up in about three games of four. In walk-forward backtests "
-        "against closing lines and prices (2015–2025), betting every edge returned +0.7% on spreads, "
-        "-4.4% on moneylines and -3.3% on totals, and every 95% range includes zero; against "
-        "Wednesday lines at an assumed -110 (2015–2020), spread edges returned +2.1%. "
-        "The live record is tracked below.",
+        "Treat the edges as an experiment, not betting advice. The model's own numbers (the spread "
+        "and total columns) often sit several points from the line, but the blend keeps only the share "
+        "of that disagreement the model has earned in past seasons, so edges are rare. See the "
+        "backtest for how they have done on past seasons; the live record is tracked below.",
         "",
     ]
     if len(upcoming):
@@ -280,9 +283,11 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         live = season_log[season_log["source"] == "live"]
         toward, moved = line_moves(live)
         parts += ["### Betting edges", "",
-                  "Every edge logged with the last prediction before kickoff, graded at the price "
-                  "logged with it, one unit per bet (live predictions only; backfilled games are "
-                  "left out). ROI is units won per unit staked.", "",
+                  "Every edge logged with the last prediction before kickoff, graded at the price and "
+                  "stake logged with it (live predictions only; backfilled games, and edges logged "
+                  "before edges were priced from the final prediction, are left out). Units are 1% of "
+                  "the bankroll; ROI is units won per unit staked, and expected ROI is what the edges' "
+                  "EVs promised.", "",
                   edge_table(live), "",
                   f"Spread line moved toward the model's early spread edge before kickoff: {toward} of "
                   f"{moved} games" + (f" ({toward / moved:.0%})." if moved else ".")
@@ -339,25 +344,32 @@ def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple,
         parts.append(f"| {name} | {mean:+.3f} | {lo:+.3f} to {hi:+.3f} |")
     if edges:
         parts += ["", "## Betting edges", "",
-                  "Each side of each market priced with the model alone (its own expected points run "
-                  "through the score simulator, before any blend with the line), betting one unit on the "
-                  f"best side whenever its expected value is at least {EDGE_MIN_EV:+.0%} at the price. "
-                  "Pushes return the stake. Starting QBs here are each team's previous starter, so nothing "
-                  "is used that a Wednesday line could not know. Closing lines and prices come from the "
-                  "nflverse schedule; the Wednesday lines (Westgate SuperContest) carry no prices, so "
-                  "-110 is assumed for them. The ROI range is a 95% bootstrap over bets.", "",
-                  "| Market | Lines | Edges | Record (W-L-P) | Units | ROI | 95% range | "
-                  "Line moved toward edge by kickoff |",
-                  "|---|---|---|---|---|---|---|---|"]
-        for market, label, r in edges:
+                  "Each side of each market priced with the final prediction (the model blended with the "
+                  "line being bet, by the weight fitted on earlier seasons, run through the score "
+                  f"simulator), betting the best side whenever its expected value is at least {EDGE_MIN_EV:+.0%} "
+                  f"at the price, at {KELLY_FRACTION:.0%} of the Kelly stake with at most {GAME_CAP_UNITS:g} "
+                  "units (1% of the bankroll each) on one game. Pushes return the stake. Starting QBs here "
+                  "are each team's previous starter, so nothing is used that a Wednesday line could not know. "
+                  "Closing lines and prices come from the nflverse schedule. The Wednesday lines (Westgate "
+                  "SuperContest spreads) and the opening spreads and totals (sportsbookreview's archive, "
+                  "matched by date, teams and final score) carry no prices, so -110 is assumed for them; the "
+                  "opening moneyline is not archived. ROI is units won per unit "
+                  "staked, with a 95% bootstrap range over games; expected ROI is what the edges' EVs "
+                  "promised, so a gap between the two shows how far the chances behind the edges are off. "
+                  "The model-only rows price the same bets with the model before the blend, the rule the "
+                  "predictor used before, for comparison.", "",
+                  "| Market | Lines | Chances | Edges | Record (W-L-P) | Staked | Units won | ROI | 95% range "
+                  "| Expected ROI | Line moved toward edge by kickoff |",
+                  "|---|---|---|---|---|---|---|---|---|---|---|"]
+        for market, label, chances, r in edges:
             if r is None:
-                parts.append(f"| {market} | {label} | no historical prices | | | | | |")
+                parts.append(f"| {market} | {label} | {chances} | no historical prices | | | | | | | |")
                 continue
             moved = f"{r['moved_toward']:.1%} of {r['moved_games']}" if r.get("moved_games") else "–"
-            roi = (f"{r['roi']:+.1%} | {r['roi_low']:+.1%} to {r['roi_high']:+.1%}" if r["bets"]
-                   else "– | –")
-            parts.append(f"| {market} | {label} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                         f"| {r['units']:+.1f} | {roi} | {moved} |")
+            roi = (f"{r['roi']:+.1%} | {r['roi_low']:+.1%} to {r['roi_high']:+.1%} | {r['expected_roi']:+.1%}"
+                   if r["bets"] else "– | – | –")
+            parts.append(f"| {market} | {label} | {chances} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                         f"| {r['staked']:.1f} | {r['units']:+.1f} | {roi} | {moved} |")
     calib = checks["calibration"]
     parts += ["", "## Win-probability calibration", "",
               "| Predicted | Games | Mean predicted | Actual |", "|---|---|---|---|"]

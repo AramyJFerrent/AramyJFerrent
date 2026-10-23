@@ -65,7 +65,9 @@ def test_blend_leans_on_a_sharp_line_and_simulator_matches_the_scatter():
     sd, rho = m.sim.sd, m.sim.rho
     assert 10.0 < sd < 12.0 and 0.2 < rho < 0.4
     pred, sim = m.predict(f.head(50), n_sims=4000)
-    assert ((pred["home_win_prob"] > 0.5) == (pred["pred_margin"] > 0)).mean() > 0.95
+    decided = pred["pred_margin"] != 0                   # pick'em lines leave nothing to agree with
+    agree = (pred["home_win_prob"] > 0.5) == (pred["pred_margin"] > 0)
+    assert agree[decided].mean() > 0.95
     assert (pred["home_low"] < pred["sim_home"]).all() and (pred["sim_home"] < pred["home_high"]).all()
     restored = ScoreModel.from_dict(m.to_dict())
     assert restored.sim.sd == m.sim.sd and restored.eff_coef == m.eff_coef

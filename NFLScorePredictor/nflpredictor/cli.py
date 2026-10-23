@@ -20,14 +20,18 @@ def cmd_update(args) -> None:
 
 
 def cmd_backtest(args) -> None:
+    from bettingcore import paired_bootstrap
+
     from . import backtest, report
     from .data import load_games, load_summaries
     from .features import FeatureBuilder
+    from .injuries import FIRST_INJURY_SEASON, load_losses, update_losses
 
     hp = Hyperparams.load()
     games = load_games(args.max_age_hours)
     team_games, qbs = load_summaries(FIRST_SEASON, args.end)
-    fb = FeatureBuilder(games, team_games, qbs, hp)
+    update_losses(range(FIRST_INJURY_SEASON, args.end + 1))
+    fb = FeatureBuilder(games, team_games, qbs, hp, load_losses(FIRST_INJURY_SEASON, args.end))
     feats = fb.walk_forward(range(max(args.start - hp.fit_window_seasons, FIRST_SEASON + 1), args.end + 1))
     bt = backtest.predict_seasons(feats, range(args.start, args.end + 1), hp.fit_window_seasons)
     bt = bt[bt["spread_line"].notna() & bt["total_line"].notna()]
@@ -39,39 +43,53 @@ def cmd_backtest(args) -> None:
     err = {k: np.abs(margin - bt[c].to_numpy()) for k, c in
            [("final", "pred_margin"), ("model", "pred_model_margin"), ("elo", "elo_spread"), ("line", "spread_line")]}
     boot = {
-        "Final vs closing line": backtest.paired_bootstrap(err["final"], err["line"]),
-        "Model only vs Elo": backtest.paired_bootstrap(err["model"], err["elo"]),
-        "Model only vs closing line": backtest.paired_bootstrap(err["model"], err["line"]),
+        "Final vs closing line": paired_bootstrap(err["final"], err["line"]),
+        "Model only vs Elo": paired_bootstrap(err["model"], err["elo"]),
+        "Model only vs closing line": paired_bootstrap(err["model"], err["line"]),
     }
     checks = backtest.distribution_checks(bt)
 
-    # Betting edges from the model alone. Starting QBs are taken from each team's previous
-    # game so the comparison with Wednesday lines uses nothing they could not know.
+    # Betting edges. Starting QBs are taken from each team's previous game, and the injury report
+    # (its statuses come out on Friday) is left out, so the comparison with Wednesday lines uses
+    # nothing they could not know.
     blind = FeatureBuilder(backtest.without_starters(games), team_games, qbs, hp)
     blind_feats = blind.walk_forward(range(max(args.start - hp.fit_window_seasons, FIRST_SEASON + 1), args.end + 1))
     blind_feats = blind_feats.join(backtest.load_midweek_lines(games, args.max_age_hours), on="game_id")
-    probs = backtest.model_only_probs(blind_feats, range(args.start, args.end + 1), hp.fit_window_seasons)
+    blind_feats = blind_feats.join(backtest.load_opening_lines(games), on="game_id")
+    probs = backtest.edge_probs(blind_feats, range(args.start, args.end + 1), hp.fit_window_seasons)
     probs = probs[probs["spread_line"].notna() & probs["total_line"].notna()]
-    closing = backtest.closing_edges(probs)
-    midweek = backtest.midweek_edges(probs)
-    span = f"{int(midweek['season'].min())}–{int(midweek['season'].max())}" if len(midweek) else ""
-    same = closing[closing["game_id"].isin(midweek["game_id"])]
-    full = f"closing, {args.start}–{args.end}"
-    edges = [
-        ("Spread", f"Wednesday, {span} (-110 assumed)", backtest.edge_summary(midweek, "spread", "closing_line")),
-        ("Spread", f"closing, same {span} games", backtest.edge_summary(same, "spread")),
-        ("Spread", full, backtest.edge_summary(closing, "spread")),
-        ("Moneyline", full, backtest.edge_summary(closing, "moneyline")),
-        ("Total", full, backtest.edge_summary(closing, "total")),
-        ("Moneyline", f"Wednesday, {span}", None),
-        ("Total", f"Wednesday, {span}", None),
-    ]
+
+    def span(df):
+        return f"{int(df['season'].min())}–{int(df['season'].max())}" if len(df) else ""
+
+    edges = []
+    for chances, label in (("final", "final"), ("model", "model only")):
+        closing = backtest.closing_edges(probs, chances)
+        midweek = backtest.early_edges(probs, "midweek", chances)
+        opening = backtest.early_edges(probs, "open", chances)
+        same = closing[closing["game_id"].isin(midweek["game_id"])]
+        same_open = closing[closing["game_id"].isin(opening["game_id"])]
+        full = f"closing, {args.start}–{args.end}"
+        edges += [
+            ("Spread", f"Wednesday, {span(midweek)} (-110 assumed)", label,
+             backtest.edge_summary(midweek, "spread", "closing_line")),
+            ("Spread", f"closing, same {span(midweek)} games", label, backtest.edge_summary(same, "spread")),
+            ("Spread", f"opening, {span(opening)} (-110 assumed)", label,
+             backtest.edge_summary(opening, "spread", "closing_line")),
+            ("Total", f"opening, {span(opening)} (-110 assumed)", label,
+             backtest.edge_summary(opening, "total", "closing_total")),
+            ("Total", f"closing, same {span(opening)} games", label, backtest.edge_summary(same_open, "total")),
+            ("Spread", full, label, backtest.edge_summary(closing, "spread")),
+            ("Moneyline", full, label, backtest.edge_summary(closing, "moneyline")),
+            ("Total", full, label, backtest.edge_summary(closing, "total")),
+        ]
     path = OUTPUT_DIR / "backtest.md"
     path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), edges))
-    for market, label, rec in edges:
+    for market, label, chances, rec in edges:
         if rec is not None:
-            print(f"{market}, {label}: {rec['bets']} edges, {rec['wins']}-{rec['losses']}-{rec['pushes']}, "
-                  f"{rec['units']:+.1f} units, ROI {rec['roi']:+.1%} ({rec['roi_low']:+.1%} to {rec['roi_high']:+.1%})"
+            print(f"{market}, {label}, {chances}: {rec['bets']} edges, {rec['wins']}-{rec['losses']}-{rec['pushes']}, "
+                  f"{rec['units']:+.1f} of {rec['staked']:.1f} units, ROI {rec['roi']:+.1%} "
+                  f"({rec['roi_low']:+.1%} to {rec['roi_high']:+.1%}), expected {rec['expected_roi']:+.1%}"
                   + (f", line moved toward edge {rec['moved_toward']:.1%}" if rec.get("moved_games") else ""))
     for label, df in scores.items():
         print(label)

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from nbapredictor.pipeline import LOG_COLUMNS, select_upcoming, update_log
-from nbapredictor.edges import fair_american
+from bettingcore import fair_american
 from nbapredictor.report import fair_moneyline, grade, spread_text
 
 

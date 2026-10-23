@@ -8,7 +8,10 @@ Fitted on recent seasons each time it runs:
    court, rest and travel, on top of the league's current level.
 2. Possessions per 48 minutes for the game, from both teams' pace ratings.
    Expected points are pace times efficiency.
-3. Market blend weights for margin and total against the betting line.
+3. Market blend weights for margin and total against the betting line, fitted
+   on out-of-fold predictions (each training season predicted by maps fitted
+   on the others), so the model is not trusted for its fit to games it was
+   fitted on.
 4. The score simulator's spread, correlation and regulation-margin weights,
    so ranges and win probabilities match how far real results land from the
    prediction.
@@ -20,14 +23,19 @@ from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
+from bettingcore import anchored, market_chance, no_push, with_push
 
 from .config import OT_MINUTES, REG_MINUTES
-from .simulate import SimParams, fit_margin_weights, simulate, spread_params, summarize
+from .simulate import SimParams, fit_margin_weights, line_probs, simulate, spread_params, summarize
 
 EFF_FEATURES = ["eff_off", "eff_def", "p_off", "p_def", "home", "b2b", "b2b_opp", "playoff"]
 PACE_FEATURES = ["pace", "playoff"]
 RIDGE = 1.0
 MIN_LINED_GAMES = 200
+# Each side's chance against the posted lines, anchored to the market's (see
+# ``ScoreModel.edge_chances``), which the betting edges use.
+EDGE_PROBS = ["edge_home_cover_prob", "edge_spread_push_prob", "edge_over_prob", "edge_total_push_prob",
+              "edge_home_ml_prob"]
 
 
 def team_view(f: pd.DataFrame) -> pd.DataFrame:
@@ -103,28 +111,16 @@ class ScoreModel:
     def fit(cls, f: pd.DataFrame, eff_features=EFF_FEATURES, pace_features=PACE_FEATURES,
             calibrate_sim: bool = True, use_market: bool = True) -> "ScoreModel":
         f = f[f["completed"] & f["poss"].notna()].reset_index(drop=True)
-        tv = team_view(f)
-        ppp = 100.0 * tv["points"] / tv["poss"]
-        X = np.column_stack([np.ones(len(tv)), tv[list(eff_features)].to_numpy(float)])
-        beta = _wls(X, (ppp - tv["env"]).to_numpy(float), tv["poss"].to_numpy(float))
-        gv = game_view(f)
-        Xp = np.column_stack([np.ones(len(gv)), gv[list(pace_features)].to_numpy(float)])
-        bp = _wls(Xp, (gv["y"] - gv["env"]).to_numpy(float), np.ones(len(gv)))
-        regular = f[f["game_type"] != "P"]
-        m = cls(eff_coef=dict(zip(eff_features, map(float, beta[1:]))), eff_intercept=float(beta[0]),
-                pace_coef=dict(zip(pace_features, map(float, bp[1:]))), pace_intercept=float(bp[0]),
-                ot_rate=float((regular["periods"] > 4).mean()) if len(regular) else 0.055,
-                fit_games=len(f), fit_seasons=tuple(sorted(f["season"].unique().tolist())))
-
-        pred = m.model_means(f)
+        m = cls._maps(f, eff_features, pace_features)
         actual_margin = (f["home_score"] - f["away_score"]).to_numpy(float)
         actual_total = (f["home_score"] + f["away_score"]).to_numpy(float)
         lines = f["spread"].notna() & f["total"].notna() if "spread" in f else pd.Series(False, index=f.index)
         if use_market and lines.sum() >= MIN_LINED_GAMES:
+            oof = cls._out_of_fold_means(f, m, eff_features, pace_features)
             lf = lines.to_numpy()
-            m.margin_weight = _convex_weight(pred["margin"][lf], f.loc[lines, "spread"].to_numpy(float),
+            m.margin_weight = _convex_weight(oof["margin"][lf], f.loc[lines, "spread"].to_numpy(float),
                                              actual_margin[lf])
-            m.total_weight = _convex_weight(pred["final_total"][lf], f.loc[lines, "total"].to_numpy(float),
+            m.total_weight = _convex_weight(oof["final_total"][lf], f.loc[lines, "total"].to_numpy(float),
                                             actual_total[lf])
         if calibrate_sim:
             final = m.means(f)
@@ -138,6 +134,41 @@ class ScoreModel:
             params = SimParams(sd=sd, rho=rho, ref_total=ref)
             m.sim = fit_margin_weights(params, final["home"][r], final["away"][r], rh - ra)
         return m
+
+    @classmethod
+    def _maps(cls, f: pd.DataFrame, eff_features, pace_features) -> "ScoreModel":
+        """The efficiency and pace maps and the overtime rate, fitted on ``f`` (completed games)."""
+        tv = team_view(f)
+        ppp = 100.0 * tv["points"] / tv["poss"]
+        X = np.column_stack([np.ones(len(tv)), tv[list(eff_features)].to_numpy(float)])
+        beta = _wls(X, (ppp - tv["env"]).to_numpy(float), tv["poss"].to_numpy(float))
+        gv = game_view(f)
+        Xp = np.column_stack([np.ones(len(gv)), gv[list(pace_features)].to_numpy(float)])
+        bp = _wls(Xp, (gv["y"] - gv["env"]).to_numpy(float), np.ones(len(gv)))
+        regular = f[f["game_type"] != "P"]
+        return cls(eff_coef=dict(zip(eff_features, map(float, beta[1:]))), eff_intercept=float(beta[0]),
+                   pace_coef=dict(zip(pace_features, map(float, bp[1:]))), pace_intercept=float(bp[0]),
+                   ot_rate=float((regular["periods"] > 4).mean()) if len(regular) else 0.055,
+                   fit_games=len(f), fit_seasons=tuple(sorted(f["season"].unique().tolist())))
+
+    @classmethod
+    def _out_of_fold_means(cls, f: pd.DataFrame, full: "ScoreModel", eff_features, pace_features) -> dict:
+        """The model's margin and total for each game from maps fitted on the other seasons.
+
+        With fewer than three seasons there is nothing to hold out, and the
+        in-sample means (from ``full``) are returned.
+        """
+        seasons = f["season"].to_numpy()
+        pred = full.model_means(f)
+        if len(np.unique(seasons)) < 3:
+            return pred
+        out = {k: np.array(v, dtype=float, copy=True) for k, v in pred.items()}
+        for season in np.unique(seasons):
+            held = seasons == season
+            fold = cls._maps(f[~held], eff_features, pace_features).model_means(f[held])
+            for k in out:
+                out[k][held] = fold[k]
+        return out
 
     # ---- prediction ----------------------------------------------------
     def model_means(self, f: pd.DataFrame) -> dict:
@@ -193,6 +224,44 @@ class ScoreModel:
             out[f"pred_{key}"] = means[key]
         out["pred_total"] = means["total"] * self.ot_factor
         return out, sim
+
+    def edge_chances(self, f: pd.DataFrame, sim, n_sims: int = 10000, seed: int = 0) -> dict:
+        """Each side's chance against the posted lines, anchored to the market (``bettingcore.anchor``).
+
+        ``sim`` is the final prediction's simulation. It is set against a
+        second one, with the same seed, centered on the lines themselves (the
+        spread as the regulation margin, the total less its expected overtime
+        points); each side gets the market's de-vigged chance plus the
+        difference, so only what the blend moved off the line can make an edge.
+        Unpriced spreads and totals count as an even -110 market; moneylines
+        need prices. Pushes come from the final prediction.
+        """
+        means = self.means(f)
+        spread = f["spread"].to_numpy(float) if "spread" in f else np.full(len(f), np.nan)
+        total = f["total"].to_numpy(float) if "total" in f else np.full(len(f), np.nan)
+        ref_margin = np.where(np.isnan(spread), means["margin"], spread)
+        ref_total = np.where(np.isnan(total), means["total"], total / self.ot_factor)
+        ref = simulate((ref_total + ref_margin) / 2, (ref_total - ref_margin) / 2, self.sim, n_sims=n_sims,
+                       seed=seed)
+        pred_l, ref_l = line_probs(sim, spread, total), line_probs(ref, spread, total)
+
+        def win(s) -> np.ndarray:
+            return (s.weights * ((s.home - s.away) > 0)).sum(axis=1)
+
+        def col(name):
+            return f[name].to_numpy(float) if name in f else np.full(len(f), np.nan)
+
+        cover = anchored(market_chance(col("home_spread_price"), col("away_spread_price")),
+                         no_push(pred_l["model_home_cover_prob"], pred_l["model_spread_push_prob"]),
+                         no_push(ref_l["model_home_cover_prob"], ref_l["model_spread_push_prob"]))
+        over = anchored(market_chance(col("over_price"), col("under_price")),
+                        no_push(pred_l["model_over_prob"], pred_l["model_total_push_prob"]),
+                        no_push(ref_l["model_over_prob"], ref_l["model_total_push_prob"]))
+        ml = anchored(market_chance(col("home_moneyline"), col("away_moneyline"), default=np.nan), win(sim), win(ref))
+        return {"edge_home_cover_prob": with_push(cover, pred_l["model_spread_push_prob"]),
+                "edge_spread_push_prob": pred_l["model_spread_push_prob"],
+                "edge_over_prob": with_push(over, pred_l["model_total_push_prob"]),
+                "edge_total_push_prob": pred_l["model_total_push_prob"], "edge_home_ml_prob": ml}
 
     # ---- persistence ---------------------------------------------------
     def to_dict(self) -> dict:

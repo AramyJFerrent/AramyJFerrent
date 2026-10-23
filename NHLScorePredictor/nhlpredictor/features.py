@@ -15,6 +15,7 @@ from .config import Hyperparams
 from .elo import run_elo
 from .goalies import GoalieModel, day_index, starter_columns
 from .ratings import Ratings, RatingsEngine, prepare_rows, season_day, targets
+from .skaters import LOSS_COLUMNS
 
 # League scoring drifts, so the baseline is a recency-weighted average of
 # recent games rather than a fixed number (regulation goals per team with
@@ -73,6 +74,9 @@ class FeatureBuilder:
         self.rest = rest_days(games)
         self.outcomes = outcomes(team_games)
         self.starters = actual_starters(summaries["goalies"], games)
+        sk = summaries.get("skaters")
+        self.skaters = (sk.drop_duplicates(["game_id", "team"]).set_index(["game_id", "team"])
+                        if sk is not None and len(sk) else None)
         self._env_dix = day_index(team_games["date"])
         self._env_goals = team_games["reg_gf"].to_numpy(float)
 
@@ -95,6 +99,11 @@ class FeatureBuilder:
                 cols[f"def_{name}_{side}"] = [r.deff.get(t, 0.0) for t in teams]
         for name, r in ratings.items():
             cols[f"league_{name}"] = r.mu
+        for side in ("home", "away"):
+            keys = pd.MultiIndex.from_arrays([games["game_id"], games[f"{side}_team"]])
+            lost = self.skaters.reindex(keys) if self.skaters is not None else None
+            for col in LOSS_COLUMNS:
+                cols[f"{side}_{col}"] = lost[col].fillna(0.0).to_numpy() if lost is not None else 0.0
         starters_in = games[["game_id", "date", "home_team", "away_team"]].copy()
         if known_starters:
             given = self.starters.reindex(games["game_id"])

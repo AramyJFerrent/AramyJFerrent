@@ -98,6 +98,11 @@ class Hyperparams:
     # league), in net points per 100 possessions, split between offense and
     # defense.
     newcomer_net: float = -2.0
+    # Box-score prior: the minutes this season after which a player's prior is
+    # halfway from its anchor to his box-score (SPM) ratings, for newcomers and
+    # for players rated last season; 0 leaves the prior at its anchor.
+    box_prior_minutes_new: float = 0.0
+    box_prior_minutes: float = 0.0
     # Minutes projection: half-life, in games, of a player's recent minutes.
     minutes_half_life_games: float = 6.0
     # Seasons of history used to fit the points map, blend and simulator.

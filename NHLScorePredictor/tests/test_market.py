@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from nhlpredictor.market import MarketInverter, devig, fit_blend
+from nhlpredictor.market import PRIOR_WEIGHT, MarketInverter, devig, fit_blend
 from nhlpredictor.simulate import SimParams, over_prob, simulate
 
 
@@ -27,7 +27,7 @@ def test_inverter_recovers_the_rates_behind_a_line():
     assert rates.loc[1].isna().all()
 
 
-def test_blend_weight_trusts_the_better_source_and_starts_even():
+def test_blend_weight_trusts_the_better_source_and_starts_at_the_prior():
     rng = np.random.default_rng(0)
     n = 3000
     true_h, true_a = rng.normal(3.0, 0.4, n), rng.normal(2.8, 0.4, n)
@@ -37,4 +37,4 @@ def test_blend_weight_trusts_the_better_source_and_starts_even():
     w, games = fit_blend(noisy_h.clip(0.5), noisy_a.clip(0.5), sharp_h, sharp_a, gh, ga)
     assert games == n and w < 0.35                     # mostly the sharp market
     w0, games0 = fit_blend([], [], [], [], [], [])
-    assert games0 == 0 and w0 == 0.5
+    assert games0 == 0 and w0 == PRIOR_WEIGHT

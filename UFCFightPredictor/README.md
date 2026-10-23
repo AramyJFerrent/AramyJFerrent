@@ -74,7 +74,7 @@ Actions tab with **Run workflow**.
 | Method | For each fighter as the winner, a multinomial model over KO/TKO, submission and decision. It starts from the division's base rates (heavyweights get knocked out, strawweights go the distance) and adjusts for the winner's finishing record, the loser's durability, how big a favorite the winner is, and five-round and title fights. | `model.py` |
 | Round | Per-round finish hazards for three- and five-round fights, shifted so the chance of a finish matches the method model. Big finishers finish earlier as well as more often. | `model.py` |
 | Cards | ESPN's scoreboard (bouts, start times, divisions, scheduled rounds, belts) and odds API (moneylines tied to each fighter by id, round totals, and method props from its `propBets` link), names matched to the history; UFCStats upcoming pages when reachable; a hand-edited card for anything the sites miss | `cards.py`, `names.py` |
-| Edges | Expected value of every side of the moneyline, round total and method markets at the posted price, from the model alone; an edge needs EV of at least 3% | `edges.py` |
+| Edges | Expected value of every side of the moneyline, round total and method markets at the posted price, from the final prediction anchored to the market's own prices; an edge needs EV of at least 3% and is staked at a quarter of the Kelly stake (shared [BettingCore](../BettingCore) package) | `edges.py` |
 | Backtest | Walk-forward by year, scored next to the market on the same fights | `backtest.py` |
 
 The win probability is settled first, and each fighter's three method
@@ -117,10 +117,20 @@ The predictions page has three edge columns per bout: moneyline, round total
 submission or decision). Each side of each market is valued at its posted
 price by expected value, the average profit per $1 staked:
 `EV = p × (decimal odds − 1) − (1 − p − push)`. The probabilities come from
-the model alone, before the blend with the betting market: the "model alone"
-win chance, with the method and round models rerun on it (the method model
-takes the win chance as an input, so this is not a rescaling of the blended
-split). The best side is an edge when its EV is at least 3%.
+the final prediction on the page, not the model alone:
+
+- Moneyline: the blended win chance (about 80% market, see above).
+- Method and round total: the blended win chance run through the method and
+  round models, then anchored to the market. Each side gets the market's own
+  de-vigged chance (from the method props, or the round-total price) plus
+  how far the blend moves it from what the same models give at the market's
+  win chance. So only the blend's disagreement with the market can make an
+  edge, not the method model's own split (which trails the props).
+
+The best side is an edge when its EV is at least 3%. It is staked at a
+quarter of the Kelly stake, in units of 1% of the bankroll, with at most 3
+units on one bout across its markets (they win and lose together), using the
+shared [BettingCore](../BettingCore) package.
 
 - Round totals: over 1.5 rounds means the fight passes 2:30 of round 2, and a
   decision is always over. The model gives the chance of a finish in each
@@ -128,27 +138,40 @@ split). The best side is an edge when its EV is at least 3%.
   the five minutes (since 2015 about 45% came in the first half of their
   round, so this slightly understates overs).
 - Prices are never assumed: without one, the moneyline cell says "no line
-  yet", the round-total cell gives the model's fair odds at the x.5 line
-  closest to even, and the method cell each fighter's fair KO/TKO,
-  submission and decision odds.
+  yet", the round-total cell gives the fair odds at the x.5 line closest to
+  even, and the method cell each fighter's fair KO/TKO, submission and
+  decision odds.
 - Edges are logged with the prediction, frozen when the bout starts, graded
   after the result (a no contest voids every bet; a draw refunds the
-  moneyline and loses method bets) and tracked per market on the page.
+  moneyline and loses method bets) and tracked per market on the page, in
+  units staked and won, ROI and expected ROI. Edges logged before this rule
+  (from the model alone, one unit each) are left out of that record.
 
 In the walk-forward backtest, at the dataset's moneylines and method props
-(round totals have no historical prices):
+(round totals have no historical prices), with Kelly stakes:
 
-| Market | Edges | ROI | 95% range | Model's average EV |
-|---|---|---|---|---|
-| Moneyline | 3,972 of 4,986 fights | −7.4% | −11.7% to −3.3% | +37.8% |
-| Method of victory | 4,244 of 4,488 fights | −15.7% | −23.3% to −7.9% | +61.6% |
+| Market | Chances | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+|---|---|---|---|---|---|---|
+| Moneyline | final (live rule) | 886 of 4,986 fights | 494-388-4 | +5.1% | −1.3% to +11.4% | +7.8% |
+| Method of victory | final (live rule) | 100 of 4,488 fights | 13-87-0 | +49.9% | −32.5% to +147.9% | +11.5% |
+| Moneyline | model alone (old rule) | 3,972 | 1476-2480-16 | −6.0% | −10.5% to −1.7% | +41.0% |
+| Method of victory | model alone (old rule) | 4,244 | 554-3681-9 | −11.4% | −19.4% to −3.1% | +68.7% |
+| Method of victory | blended split, not anchored | 3,952 | 627-3317-8 | −4.5% | −13.0% to +4.1% | +61.0% |
 
-The model alone is well behind the market (log loss 0.643 against 0.609), so
-it disagrees with the price on nearly every fight and those disagreements
-lose: what it knows that the market does not is outweighed by what the market
-knows that it does not. The edges are tracked live as a test of the model,
-not as betting advice. (The blended final prediction, about 80% market, does
-beat the closing price slightly on log loss, but it is not what the edges use.)
+- The old rule priced bets with the model alone, which is well behind the
+  market (log loss 0.643 against 0.609), so it disagreed with nearly every
+  price and lost. The final prediction disagrees with the market on about
+  one fight in six, and those bets came out ahead, close to what their EVs
+  promised. The range still includes zero, and the blend was designed on
+  these same years, so the result is somewhat optimistic.
+- Anchoring matters for method props: the blended split without it expected
+  +61% and lost 4.5%, because the method model's own split, not new
+  information, drove those bets. Anchored, method edges are rare (100
+  bouts), all on underdog finishes, and too few to judge.
+- The dataset does not say when its prices were captured or whether they
+  are one book's or the best available. The live page tracks the same edges
+  on the prices it logged before each fight, which is the test that counts.
+  Treat the edges as an experiment, not betting advice.
 
 ## Running it yourself
 
@@ -184,7 +207,7 @@ Manual rows replace the same bout from the other sources. Only `event`,
 |---|---|
 | `predictions/README.md` | Upcoming cards, the year's grading, latest results, top fighters by division |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (the last one before the fight): the blended and model-alone probabilities, the prices, each market's edge (`moneyline_edge_*`, `rounds_edge_*`, `method_edge_*`), and the result once known |
+| `predictions/log.csv` | Every prediction (the last one before the fight): the blended and model-alone probabilities, the prices, each market's edge (`moneyline_edge_*`, `rounds_edge_*`, `method_edge_*`: pick, price, chance, EV and stake in units), and the result once known |
 | `predictions/ratings.csv` | Glicko-2 ratings of every active fighter |
 | `predictions/model.json` | Fitted coefficients, blend weights, method base rates and round hazards |
 | `data/bouts.csv`, `data/fight_stats.csv`, `data/fighters.csv` | The reduced UFCStats history |

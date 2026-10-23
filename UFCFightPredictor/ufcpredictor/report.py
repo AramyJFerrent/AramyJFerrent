@@ -7,8 +7,10 @@ import math
 import numpy as np
 import pandas as pd
 
+from bettingcore import GAME_CAP_UNITS, KELLY_FRACTION, fair_american
+
 from .config import DISPLAY_TZ, DIVISION_ABBR, DIVISIONS
-from .edges import EDGE_MIN_EV, MARKET_NAMES, MARKETS, METHOD_NAMES, edge_cell, fair_american, record
+from .edges import EDGE_MIN_EV, MARKET_NAMES, MARKETS, METHOD_NAMES, edge_cell, record
 from .edges import fmt_american as _ml
 from .model import METHODS
 
@@ -117,13 +119,14 @@ def method_grade(entries: pd.DataFrame) -> dict:
 
 
 def edge_records(entries: pd.DataFrame) -> str:
-    """Per-market record of the logged edges, one unit a bet at the logged price."""
-    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    """Per-market record of the logged edges, at the logged stake and price."""
+    lines = ["| Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |",
+             "|---|---|---|---|---|---|---|"]
     for m in MARKETS:
         r = record(entries, m)
-        roi = "–" if pd.isna(r["roi"]) else f"{r['roi']:+.1%}"
-        lines.append(f"| {MARKET_NAMES[m]} | {r['edges']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                     f"| {r['units']:+.2f} | {roi} |")
+        roi = "– | –" if not r["bets"] else f"{r['roi']:+.1%} | {r['expected_roi']:+.1%}"
+        lines.append(f"| {MARKET_NAMES[m]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                     f"| {r['staked']:.1f} | {r['units']:+.2f} | {roi} |")
     return "\n".join(lines)
 
 
@@ -199,19 +202,21 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "value on a fighter when its price beats the fair line.",
         "",
         "The three edge columns value every side of each market at its posted price: expected value "
-        "(EV) is the average profit per $1 staked, from the model alone, before it is blended with the "
-        "betting line (the \"Model alone\" win chance, with the same method and round models applied to "
-        f"it). A side is an edge when its EV is at least {100 * EDGE_MIN_EV:.0f}%; each cell names the best "
-        "side if one clears that bar, else \"no edge\". Moneylines and props are never priced near -110, "
+        "(EV) is the average profit per $1 staked, from the final prediction: the win chance blended with "
+        "the moneyline (which corrects the market's habit of underrating heavy favorites), and method and "
+        "round chances anchored to their own props, moved only by what the blend changes. A side is an "
+        f"edge when its EV is at least {100 * EDGE_MIN_EV:.0f}%; each cell names the best side if one clears "
+        f"that bar, with its stake, a {KELLY_FRACTION:.0%} share of the Kelly stake in units of 1% of the "
+        f"bankroll, at most {GAME_CAP_UNITS:g} units on one bout; else \"no edge\". Moneylines and props are "
+        "never priced near -110, "
         "so a missing price is never assumed: without one, the round-total cell shows the model's fair "
         "odds at the line closest to even and the method cell each fighter's fair KO/TKO, submission and "
         "decision odds. Over 1.5 rounds means the fight passes 2:30 of round 2 (a decision is always "
         "over); finishes are assumed spread evenly within a round.",
         "",
-        "A caution from the backtest (backtest.md): the model alone is well behind the market, so it finds "
-        "a 3% edge in most fights, and those edges lost money against the dataset's closing prices, about "
-        "7% a bet on moneylines and 16% on method props, 2015–2026. Treat these columns as a live test of "
-        "the model, tracked below, not as betting advice.",
+        "See the backtest (backtest.md) for how these edges did against the dataset's closing prices, "
+        "next to the model alone, which finds a 3% edge in most fights and lost money on them. Treat these "
+        "columns as a live test, tracked below, not as betting advice.",
         "",
     ]
     if len(upcoming):
@@ -249,9 +254,11 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         parts.append("")
         live = year_log[year_log["source"].eq("live")]
         parts += ["### Edge record", "",
-                  "Every edge logged with a live prediction (the last one before the fight), one unit a bet "
-                  "at the price logged with it. Pushes return the stake (a no contest voids every bet; a draw "
-                  "refunds the moneyline).", "", edge_records(live), ""]
+                  "Every edge logged with a live prediction (the last one before the fight), at the stake "
+                  "and price logged with it; edges logged before edges were priced from the final prediction "
+                  "are left out. Pushes return the stake (a no contest voids every bet; a draw refunds the "
+                  "moneyline). Units are 1% of the bankroll; ROI is units won per unit staked, and expected "
+                  "ROI is what the edges' EVs promised.", "", edge_records(live), ""]
         last_date = graded["date"].max()
         last = year_log[year_log["date"] == last_date].sort_values("order")
         parts += [f"### Latest results: {last['event'].iloc[0]}", "", results_table(last), ""]
@@ -324,33 +331,38 @@ def render_backtest(win: pd.DataFrame, method: pd.DataFrame, rounds: pd.DataFram
     for idx, r in calib.iterrows():
         parts.append(f"| {idx} | {int(r.fights)} | {r.predicted:.1%} | {r.actual:.1%} |")
     if len(bets):
+        rules = {"final": "final (live)", "blend": "blended split", "model": "model only"}
         parts += ["", "## Betting edges", "",
-                  "The live page's edges, valued the same way: every side of each market at the dataset's "
-                  "price (approximate closing lines, bookmaker margin left in), with the model alone, before "
-                  f"the market blend. A side is bet, one unit, when its expected value is at least "
-                  f"{100 * EDGE_MIN_EV:.0f}%; only the best side of each market per fight. The 95% range "
-                  "resamples the bets.", "",
-                  "| Market | Fights with prices | Edges | Record (W-L-P) | Units | ROI | 95% range "
-                  "| Model's average EV | On underdogs |",
-                  "|---|---|---|---|---|---|---|---|---|"]
+                  "The live page's edges, valued the same way: every side of each market at the dataset's price "
+                  "(approximate closing lines, bookmaker margin left in), betting the best side of each market "
+                  f"per fight when its expected value is at least {100 * EDGE_MIN_EV:.0f}%, at {KELLY_FRACTION:.0%} "
+                  f"of the Kelly stake with at most {GAME_CAP_UNITS:g} units (1% of the bankroll each) on one bout. "
+                  "Three sets of chances: the final prediction the live page uses (the blended win chance, and "
+                  "method chances anchored to the method props), the blended forecast's own method split "
+                  "(blended win chance run through the method model, not anchored to the props), and the model "
+                  "alone before the blend (the rule the predictor used before). ROI is units won per unit staked, "
+                  "with a 95% range that resamples bouts; expected ROI is what the edges' EVs promised.", "",
+                  "| Market | Chances | Fights with prices | Edges | Record (W-L-P) | Staked | Units won | ROI "
+                  "| 95% range | Expected ROI | On underdogs |",
+                  "|---|---|---|---|---|---|---|---|---|---|---|"]
         for r in bets.itertuples(index=False):
-            name = MARKET_NAMES[r.market]
+            name, rule = MARKET_NAMES[r.market], rules.get(r.chances, r.chances)
             if not r.fights:
-                parts.append(f"| {name} | no historical prices | – | – | – | – | – | – | – |")
-            elif not r.edges:
-                parts.append(f"| {name} | {r.fights} | 0 | – | – | – | – | – | – |")
+                parts.append(f"| {name} | {rule} | no historical prices | – | – | – | – | – | – | – | – |")
+            elif not r.bets:
+                parts.append(f"| {name} | {rule} | {r.fights} | 0 | – | – | – | – | – | – | – |")
             else:
-                parts.append(f"| {name} | {r.fights} | {r.edges} | {r.wins:.0f}-{r.losses:.0f}-{r.pushes:.0f} "
-                             f"| {r.units:+.1f} | {r.roi:+.1%} | {r.roi_low:+.1%} to {r.roi_high:+.1%} | {r.mean_ev:+.1%} "
-                             f"| {r.underdogs:.0%} |")
+                parts.append(f"| {name} | {rule} | {r.fights} | {r.bets} | {r.wins:.0f}-{r.losses:.0f}-{r.pushes:.0f} "
+                             f"| {r.staked:.1f} | {r.units:+.1f} | {r.roi:+.1%} | {r.roi_low:+.1%} to {r.roi_high:+.1%} "
+                             f"| {r.expected_roi:+.1%} | {r.underdogs:.0%} |")
         parts += ["",
-                  "- \"Model's average EV\" is what the model expected to make per unit on the bets it took; "
-                  "the ROI is what they made. The gap is how much the model overrates its own edges: what it "
-                  "knows that the market does not is outweighed by what the market knows that it does not "
-                  "(debutants' regional records, injuries, camp news).",
+                  "- Expected ROI is what the bets were expected to make per unit staked; ROI is what they made. "
+                  "The gap is how much the chances behind them overrate their own edges.",
                   "- Method props whose six prices add up to less than 100% implied (no bookmaker margin, so not "
                   "prices anyone could bet; about a third of the dataset's 2025–26 props) are left out.",
                   "- Caveats: the dataset does not say when its prices were captured or whether they are one "
-                  "book's or the best available, and real stakes would move real prices. The live page tracks "
-                  "these edges on the prices it logged before each fight, which is the test that counts."]
+                  "book's or the best available, and real stakes would move real prices. The blend that the "
+                  "final chances use was designed on these same years, so its edges here are somewhat "
+                  "optimistic. The live page tracks these edges on the prices it logged before each fight, "
+                  "which is the test that counts."]
     return "\n".join(parts) + "\n"

@@ -19,13 +19,12 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
-import os
-import time
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import fetch as _fetch
 
 from .config import (
     CACHE_DIR,
@@ -33,6 +32,7 @@ from .config import (
     PBP_URL,
     POSTSEASON_FIRST_WEEK,
     PRODUCTION_DIR,
+    QB_DIR,
     ROSTER_URL,
     SCHEDULE_URL,
     TEAM_GAMES_DIR,
@@ -65,12 +65,21 @@ TEAM_COLUMNS = [
     "st_epa", "drives", "fgs", "g_plays", "g_epa",
 ]
 PRODUCTION_COLUMNS = ["athlete_id", "team", "pass_yds", "rec_yds", "rush_yds", "def_plays"]
+QB_COLUMNS = ["game_id", "season", "week", "team", "qb_id", "qb_name", "dropbacks", "w", "epa"]
+# Columns naming the passer on a dropback, by how it ended.
+PASSER_ID_COLUMNS = ["completion_player_id", "incompletion_player_id", "interception_thrown_player_id",
+                     "sack_taken_player_id"]
 GAME_COLUMNS = [
     "game_id", "season", "week", "season_type", "kickoff", "start_time_tbd", "completed",
     "neutral", "conference_game", "venue_id", "venue", "home_team", "away_team",
     "home_division", "away_division", "home_conference", "away_conference",
     "home_score", "away_score", "notes", "bowl", "playoff",
 ]
+
+
+def fetch(url: str, path: Path, max_age_hours: float = 6.0, retries: int = 4) -> Path:
+    """Download ``url`` to ``path`` unless a fresh enough copy exists (``bettingcore.fetch``)."""
+    return _fetch(url, path, max_age_hours, retries, timeout=180)
 
 
 def current_season(today: dt.date | None = None) -> int:
@@ -80,37 +89,6 @@ def current_season(today: dt.date | None = None) -> int:
     """
     today = today or dt.date.today()
     return today.year if today.month >= 3 else today.year - 1
-
-
-def fetch(url: str, path: Path, max_age_hours: float = 6.0, retries: int = 4) -> Path:
-    """Download ``url`` to ``path`` unless a fresh enough copy exists."""
-    if path.exists() and (time.time() - path.stat().st_mtime) < max_age_hours * 3600:
-        return path
-    path.parent.mkdir(parents=True, exist_ok=True)
-    delay = 2.0
-    for attempt in range(retries):
-        try:
-            with requests.get(url, timeout=180, stream=True) as resp:
-                resp.raise_for_status()
-                tmp = path.with_suffix(path.suffix + ".part")
-                with open(tmp, "wb") as fh:
-                    for chunk in resp.iter_content(chunk_size=1 << 20):
-                        fh.write(chunk)
-                os.replace(tmp, path)
-            return path
-        except requests.RequestException as exc:
-            if isinstance(exc, requests.HTTPError) and exc.response is not None \
-                    and exc.response.status_code == 404:
-                raise
-            if attempt == retries - 1:
-                if path.exists():
-                    log.warning("Using stale %s after download failed: %s", path.name, exc)
-                    return path
-                raise
-            log.warning("Download of %s failed (%s); retrying in %.0fs", url, exc, delay)
-            time.sleep(delay)
-            delay *= 2
-    return path
 
 
 def _age(season: int, current: int, max_age_hours: float) -> float:
@@ -198,6 +176,36 @@ def _ids(series: pd.Series) -> pd.Series:
     return pd.to_numeric(series, errors="coerce").astype("Int64")
 
 
+def play_weight(p: pd.DataFrame) -> np.ndarray:
+    """1 for a play, 0 in garbage time (``GARBAGE_MARGINS``)."""
+    limit = p["period"].map(GARBAGE_MARGINS)
+    return np.where(limit.notna() & (p["pos_score_diff_start"].abs() > limit), 0.0, 1.0)
+
+
+def summarize_qbs(pbp: pd.DataFrame) -> pd.DataFrame:
+    """Each passer's dropbacks (passes and sacks) and EPA in each game, as ``QB_COLUMNS``.
+
+    ``w`` and ``epa`` leave garbage time out, as the team efficiency does;
+    ``dropbacks`` counts every dropback, for who started.
+    """
+    p = pbp[pbp["pos_team"].notna() & pbp["pass"].eq(1) & pbp["EPA"].notna()].copy()
+    qb = pd.Series(pd.NA, index=p.index, dtype="Int64")
+    for col in PASSER_ID_COLUMNS:
+        if col in p:
+            qb = qb.fillna(_ids(p[col]))
+    p = p.assign(qb_id=qb, w=play_weight(p),
+                 week=season_weeks(p["season_type"].fillna("regular"), p["week"],
+                                   pd.to_datetime(p["start_date"], utc=True, errors="coerce"), p["season"]))
+    p = p[p["qb_id"].notna()]
+    p["epa_w"] = p["EPA"] * p["w"]
+    out = p.groupby(["game_id", "pos_team", "qb_id"]).agg(
+        season=("season", "first"), week=("week", "first"), qb_name=("passer_player_name", "first"),
+        dropbacks=("EPA", "size"), w=("w", "sum"), epa=("epa_w", "sum")).reset_index()
+    out = out.rename(columns={"pos_team": "team"})
+    out["epa"] = out["epa"].round(3)
+    return out[QB_COLUMNS].sort_values(["week", "game_id", "team", "dropbacks"]).reset_index(drop=True)
+
+
 def summarize_pbp(pbp: pd.DataFrame, teams: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Collapse one season of play-by-play into team-game and player rows.
 
@@ -235,10 +243,7 @@ def summarize_pbp(pbp: pd.DataFrame, teams: pd.DataFrame) -> tuple[pd.DataFrame,
     ])[TEAM_COLUMNS[:12]]
 
     p = p[p["game_id"].isin(games["game_id"]) & p["pos_team"].notna()].copy()
-    margin = p["pos_score_diff_start"].abs()
-    limit = p["period"].map(GARBAGE_MARGINS)
-    garbage = limit.notna() & (margin > limit)
-    p["w"] = np.where(garbage, 0.0, 1.0)
+    p["w"] = play_weight(p)
     text = p["play_text"].fillna("")
     kneel = text.str.contains("kneel", case=False)
     is_fumble = p["play_type"].isin(FUMBLE_TYPES) & text.str.contains(r" rush | pass |sacked", regex=True)
@@ -339,26 +344,35 @@ def summary_paths(season: int) -> tuple[Path, Path, Path]:
             TEAM_GAMES_DIR / f"{season}_lines.csv")
 
 
+def qb_path(season: int) -> Path:
+    return QB_DIR / f"{season}.csv"
+
+
 def update_summaries(seasons: list[int], refresh: set[int] = frozenset(),
                      max_age_hours: float = 6.0, keep_raw: bool = True) -> None:
-    """Build missing season summaries and rebuild the ones in ``refresh``."""
+    """Build missing season summaries and rebuild the ones in ``refresh``. A season that only
+    lacks its quarterback file gets just that, so the others stay as they are."""
     TEAM_GAMES_DIR.mkdir(parents=True, exist_ok=True)
     PRODUCTION_DIR.mkdir(parents=True, exist_ok=True)
+    QB_DIR.mkdir(parents=True, exist_ok=True)
     for season in seasons:
         paths = summary_paths(season)
-        if all(p.exists() for p in paths) and season not in refresh:
+        complete = all(p.exists() for p in paths) and season not in refresh
+        if complete and qb_path(season).exists():
             continue
         try:
             pbp = load_pbp(season, max_age_hours)
         except requests.HTTPError as exc:
             log.info("No play-by-play for %s yet (%s)", season, exc)
             continue
-        teams = team_divisions(load_team_info(season, max_age_hours))
-        team_games, prod = summarize_pbp(pbp, teams)
-        team_games.to_csv(paths[0], index=False, float_format="%.4f")
-        prod.to_csv(paths[1], index=False)
-        pbp_lines(pbp).to_csv(paths[2], index=False, float_format="%.1f")
-        log.info("Summarized %s: %d team-games, %d players", season, len(team_games), len(prod))
+        summarize_qbs(pbp).to_csv(qb_path(season), index=False)
+        if not complete:
+            teams = team_divisions(load_team_info(season, max_age_hours))
+            team_games, prod = summarize_pbp(pbp, teams)
+            team_games.to_csv(paths[0], index=False, float_format="%.4f")
+            prod.to_csv(paths[1], index=False)
+            pbp_lines(pbp).to_csv(paths[2], index=False, float_format="%.1f")
+            log.info("Summarized %s: %d team-games, %d players", season, len(team_games), len(prod))
         if not keep_raw:
             (CACHE_DIR / f"pbp_{season}.parquet").unlink(missing_ok=True)
 
@@ -370,6 +384,12 @@ def load_summaries(first: int = FIRST_SEASON, last: int | None = None) -> pd.Dat
     if not teams:
         return pd.DataFrame(columns=TEAM_COLUMNS)
     return pd.concat(teams, ignore_index=True).reindex(columns=TEAM_COLUMNS)
+
+
+def load_qbs(first: int = FIRST_SEASON, last: int | None = None) -> pd.DataFrame:
+    """All committed quarterback-game summaries, oldest first."""
+    parts = [pd.read_csv(qb_path(s)) for s in range(first, (last or current_season()) + 1) if qb_path(s).exists()]
+    return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(columns=QB_COLUMNS)
 
 
 def load_production(season: int) -> pd.DataFrame:

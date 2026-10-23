@@ -5,10 +5,12 @@ import pytest
 from ufcpredictor import pipeline
 from ufcpredictor.backtest import edge_bets, edge_summary
 from ufcpredictor.cards import attach_core_odds, parse_core_props, parse_espn, parse_props, round_total
-from ufcpredictor.edges import (EDGE_COLUMNS, EDGE_MIN_EV, attach_edges, best_side, decimal_odds, edge_cell,
-                                expected_value, fair_american, fair_round_line, implied_prob, outcome, over_prob,
-                                record, settle)
-from ufcpredictor.model import MODEL_ONLY, FightModel
+from bettingcore import market_chance
+
+from ufcpredictor.edges import (EDGE_COLUMNS, EDGE_MIN_EV, attach_edges, best_side, edge_cell, fair_round_line,
+                                outcome, over_prob, record, settle)
+from ufcpredictor.model import EDGE_CHANCES, MODEL_ONLY, FightModel
+from ufcpredictor.odds import devig_methods
 from ufcpredictor.pipeline import LOG_COLUMNS, prediction_rows
 from ufcpredictor.report import edge_records, upcoming_tables
 
@@ -20,19 +22,7 @@ NOW = pd.Timestamp("2026-10-22 12:00", tz="UTC")
 
 # ---- price math ---------------------------------------------------------------
 
-def test_decimal_implied_and_fair_odds():
-    assert decimal_odds(150) == 2.5 and decimal_odds(-200) == 1.5 and decimal_odds(100) == 2.0
-    assert np.allclose(decimal_odds([150, -200]), [2.5, 1.5])
-    assert abs(implied_prob(-200) - 2 / 3) < 1e-12 and implied_prob(300) == 0.25
-    assert fair_american(0.75) == -300 and fair_american(0.25) == 300 and fair_american(0.5) == 100
-    assert fair_american(0.6) == -150 and fair_american(0.4) == 150
-
-
-def test_expected_value_with_and_without_pushes():
-    assert abs(expected_value(0.5, 0.0, 100)) < 1e-12                     # fair coin at even money
-    assert abs(expected_value(0.55, 0.0, -110) - (0.55 * 100 / 110 - 0.45)) < 1e-12
-    # A push returns the stake: only the losing share costs.
-    assert abs(expected_value(0.5, 0.1, 100) - (0.5 - 0.4)) < 1e-12
+def test_settle():
     assert settle("win", 150) == 1.5 and settle("win", -200) == 0.5
     assert settle("loss", 150) == -1.0 and settle("push", 150) == 0.0
 
@@ -42,7 +32,7 @@ def test_best_side_needs_three_percent():
             {"label": "Cruz", "side": "b", "prob": 0.58, "price": -180}]        # EV -9.8%
     pick = best_side(opts)
     assert pick.side == "a" and abs(pick.ev - 0.05) < 1e-12 and not pick.assumed
-    assert pick.cell() == "Lee (+150): EV +5.0%, model 42%"
+    assert pick.cell() == "Lee (+150): EV +5.0%, 42%"
     opts[0]["prob"] = 0.41                                                      # EV +2.5%: below the bar
     assert best_side(opts) is None
     assert best_side(opts, min_ev=0.02).side == "a"
@@ -87,6 +77,27 @@ def test_model_only_outcomes_rerun_the_method_and_round_models():
     assert np.allclose(out["model_a_ko"], out["p_model"] * split[:, 0])
     # The blended outputs are unchanged.
     assert np.allclose(out[["a_ko", "a_sub", "a_dec"]].sum(axis=1), out["p_a"])
+
+
+def test_edge_chances_are_the_props_moved_by_the_blend():
+    f = synthetic()
+    model = FightModel.fit(f, ridge=10.0)
+    head = f.head(50).reset_index(drop=True).assign(
+        odds_a=150.0, odds_b=-170.0, odds_a_ko=400.0, odds_a_sub=900.0, odds_a_dec=300.0, odds_b_ko=250.0,
+        odds_b_sub=700.0, odds_b_dec=150.0, rounds_line=2.5, over_price=-130.0, under_price=110.0)
+    out = model.predict(head)
+    assert set(EDGE_CHANCES) <= set(out.columns)
+    props = devig_methods(head)
+    # With the blend's win chance at the market's, the anchored chances are the props' own.
+    model.calibration.blend_model, model.calibration.blend_market = 0.0, 1.0
+    at_market = model.predict(head)
+    for c in ("a_ko", "b_dec"):
+        assert np.allclose(at_market[f"edge_{c}"], props[c])
+    assert np.allclose(at_market["edge_over_prob"], market_chance(-130.0, 110.0))
+    assert out["edge_over_prob"].between(0, 1).all()
+    # Without prices there is nothing to anchor to.
+    bare = model.predict(f.head(5).reset_index(drop=True))
+    assert bare[EDGE_CHANCES].isna().all().all()
 
 
 # ---- ESPN prices ------------------------------------------------------------------
@@ -204,7 +215,7 @@ def log_row(**kw):
 
 def test_edges_are_attached_to_rows_and_rendered():
     rows = attach_edges(pd.DataFrame([log_row(odds_a_ko=500.0, odds_b_ko=400.0, rounds_line=1.5,
-                                              over_price=-300.0, under_price=230.0)]))
+                                              over_price=-300.0, under_price=230.0)]), chances="model")
     r = rows.iloc[0]
     assert r.moneyline_edge_side == "a" and abs(r.moneyline_edge_ev - (0.45 * 1.5 - 0.55)) < 1e-12
     assert r.moneyline_edge_pick == "Lee"
@@ -212,15 +223,16 @@ def test_edges_are_attached_to_rows_and_rendered():
     # Over 1.5 = 0.54 + 0.1 + 0.08 = 72% at -300 (75%): no edge; under 28% at +230: EV -7.6%.
     assert abs(r.model_over_prob - 0.72) < 1e-12 and pd.isna(r.rounds_edge_pick)
     tup = next(rows.itertuples(index=False))
-    assert edge_cell(tup, "moneyline") == "Lee (+150): EV +12.5%, model 45%"
+    assert edge_cell(tup, "moneyline").startswith("Lee (+150): EV +12.5%, 45%, stake ")
     assert edge_cell(tup, "rounds") == "no edge"
     assert edge_cell(tup, "method").startswith("Lee by KO/TKO (+500): EV +8.0%")
 
     # No prices at all: no line for the moneyline, the model's fair odds for the props, never -110.
     bare = next(attach_edges(pd.DataFrame([log_row(odds_a=np.nan, odds_b=np.nan)])).itertuples(index=False))
     assert edge_cell(bare, "moneyline") == "no line yet"
-    assert edge_cell(bare, "rounds") == "no price yet; fair Over 2.5 -145, Under +145"
-    assert edge_cell(bare, "method").startswith("no prices yet; fair KO / Sub / Dec<br>Lee +455 / +1900 / +355")
+    # Fair odds come from the final prediction: distance 55%, finishes 20/15/10%.
+    assert edge_cell(bare, "rounds") == "no price yet; fair Over 2.5 -150, Under +150"
+    assert edge_cell(bare, "method").startswith("no prices yet; fair KO / Sub / Dec<br>Lee +400 / +1900 / +300")
     page = upcoming_tables(attach_edges(pd.DataFrame([log_row(a_fights=3, b_fights=4)])))
     assert "| Moneyline edge | Round total edge | Method edge |" in page and "-110" not in page
     assert "Lee 45% (+120)" in page                                         # model alone with its fair odds
@@ -228,10 +240,11 @@ def test_edges_are_attached_to_rows_and_rendered():
 
 def test_log_round_trip_and_old_logs(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "LOG_PATH", tmp_path / "log.csv")
-    feats = pd.DataFrame([log_row(odds_a_ko=500.0)])
+    feats = pd.DataFrame([log_row(odds_a_ko=500.0, edge_a_ko=0.18)])        # anchored 18% at +500: EV +8%
     preds = feats[pipeline.PRED_COLUMNS]
     rows = prediction_rows(feats, preds, NOW, "live")
     assert list(rows.columns) == LOG_COLUMNS and set(EDGE_COLUMNS) <= set(rows.columns)
+    assert rows.loc[0, "moneyline_edge_stake"] > 0
     saved = rows.copy()
     for col in pipeline.TIME_COLUMNS:
         saved[col] = saved[col].map(lambda t: t.isoformat() if not pd.isna(t) else "")
@@ -275,27 +288,37 @@ def test_edge_record_counts_settled_picks():
         log_row(bout_key="k3", status="no contest", winner="nc", method="Other", end_round=1, end_seconds=20.0),
         log_row(bout_key="k4"),                                                 # not fought yet
     ]))
+    # The final rule: the blended 50% at +150 is EV +25%, a full 3-unit stake on each bout.
     r = record(rows, "moneyline")
-    assert (r["edges"], r["wins"], r["losses"], r["pushes"]) == (3, 1, 1, 1)
-    assert abs(r["units"] - 0.5) < 1e-12 and abs(r["roi"] - 0.5 / 3) < 1e-12
+    assert (r["bets"], r["wins"], r["losses"], r["pushes"]) == (3, 1, 1, 1)
+    assert r["staked"] == pytest.approx(9.0) and r["units"] == pytest.approx(3 * 1.5 - 3)
+    assert r["roi"] == pytest.approx(1.5 / 9) and r["expected_roi"] == pytest.approx(0.25)
     table = edge_records(rows)
-    assert "| Moneyline | 3 | 1-1-1 | +0.50 | +16.7% |" in table
-    assert "| Round total | 0 | 0-0-0 | +0.00 | – |" in table
+    assert "| Moneyline | 3 | 1-1-1 | 9.0 | +1.50 | +16.7% | +25.0% |" in table
+    assert "| Round total | 0 | 0-0-0 | 0.0 | +0.00 | – | – |" in table
+    # Picks logged before stakes existed are left out.
+    assert record(rows.assign(moneyline_edge_stake=np.nan), "moneyline")["bets"] == 0
 
 
-def test_backtest_edges_use_model_alone_and_dataset_prices():
+def test_backtest_edges_for_each_rule_at_dataset_prices():
     book = dict(odds_a_ko=500.0, odds_a_sub=1200.0, odds_a_dec=250.0, odds_b_ko=450.0, odds_b_sub=1000.0,
                 odds_b_dec=200.0)                                            # 113.5% implied: a real book
     bt = pd.DataFrame([log_row(winner="a", method="KO", end_round=1, **book),
                        log_row(winner="b", method="DEC", end_round=3, odds_a_ko=500.0),   # 17% implied: dropped
                        log_row(winner="a", method="DEC", end_round=3, odds_a=np.nan, odds_b=np.nan)])
-    bets = edge_bets(bt)
+    bets = edge_bets(bt, "model")
     ml = bets[bets["market"] == "moneyline"]
-    assert len(ml) == 2 and list(ml["result"]) == ["win", "loss"]
+    assert len(ml) == 2 and list(ml["result"]) == ["W", "L"]
     method = bets[bets["market"] == "method"]
-    assert list(method["side"]) == ["a_ko"] and list(method["result"]) == ["win"]
-    summary = edge_summary(bt, bets, n=200).set_index("market")
-    assert summary.loc["moneyline", "fights"] == 2 and summary.loc["moneyline", "edges"] == 2
-    assert summary.loc["moneyline", "units"] == pytest.approx(0.5)
-    assert summary.loc["method", "fights"] == 1
-    assert summary.loc["rounds", "fights"] == 0                              # no historical round prices
+    assert list(method["side"]) == ["a_ko"] and list(method["result"]) == ["W"]
+    # The blended split prices the method props with the final six-way chances (a_ko 20% at +500: EV +20%).
+    blend = edge_bets(bt, "blend")
+    assert list(blend.loc[blend["market"] == "method", "side"]) == ["a_ko"]
+    # The final rule's method chances need the anchored columns, which these rows lack.
+    assert edge_bets(bt, "final").query("market == 'method'").empty
+    summary = edge_summary(bt, n=200).set_index(["chances", "market"])
+    model_ml = summary.loc[("model", "moneyline")]
+    assert model_ml["fights"] == 2 and model_ml["bets"] == 2
+    assert model_ml["roi"] == pytest.approx((1.5 - 1) / 2)                   # equal stakes: one +150 win, one loss
+    assert summary.loc[("model", "method"), "fights"] == 1
+    assert summary.loc[("final", "rounds"), "fights"] == 0                   # no historical round prices

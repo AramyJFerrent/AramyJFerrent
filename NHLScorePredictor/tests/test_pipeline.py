@@ -83,10 +83,12 @@ def test_edge_table_records_each_market_and_moneyline_moves():
                                          first_home_moneyline=-120, first_away_moneyline=100,
                                          spread_edge_side="home", spread_edge_line=-1.5, spread_edge_price=150,
                                          moneyline_edge_side="away", moneyline_edge_price=130,
-                                         total_edge_side="under", total_edge_line=6.0, total_edge_price=-110)]),
+                                         total_edge_side="under", total_edge_line=6.0, total_edge_price=-110,
+                                         spread_edge_stake=1.0, moneyline_edge_stake=0.5, total_edge_stake=1.5,
+                                         spread_edge_ev=0.1, moneyline_edge_ev=0.05, total_edge_ev=0.04)]),
                      pd.DataFrame(columns=LOG_COLUMNS), g)
     text = edge_table(log)
-    assert "| Puck line | 1 | 1-0-0 | +1.50 | +150.0% |" in text
-    assert "| Moneyline | 1 | 0-1-0 | -1.00 | -100.0% |" in text
-    assert "| Total | 1 | 0-0-1 | +0.00 | +0.0% |" in text
+    assert "| Puck line | 1 | 1-0-0 | 1.0 | +1.50 | +150.0% | +10.0% |" in text
+    assert "| Moneyline | 1 | 0-1-0 | 0.5 | -0.50 | -100.0% | +5.0% |" in text
+    assert "| Total | 1 | 0-0-1 | 1.5 | +0.00 | +0.0% | +4.0% |" in text
     assert "1 of 1 games" in text                        # first-line edge on the home side, line moved toward it

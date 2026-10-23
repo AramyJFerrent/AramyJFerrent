@@ -7,9 +7,10 @@ import math
 import numpy as np
 import pandas as pd
 
+from bettingcore import EDGE_MIN_EV, GAME_CAP_UNITS, KELLY_FRACTION, expected_value, fair_american
+
 from .config import DISPLAY_TZ, season_label
-from .edges import (EDGE_MIN_EV, MARKETS, edge_record, expected_value, fair_american, format_line, format_price,
-                    price_assumed, puck_line, roi_interval)
+from .edges import MARKETS, edge_record, format_line, format_price, goalies_settled, price_assumed, puck_line
 
 MARKET_NAMES = {"spread": "Puck line", "moneyline": "Moneyline", "total": "Total"}
 ASSUMED_NOTE = "\\* price not posted; assumed -110."
@@ -63,14 +64,16 @@ def _fair(r, market: str) -> str:
 
 
 def edge_cell(r, market: str) -> str:
-    """``MTL -1.5 (+150): EV +5.0%, model 42%``, ``no edge`` or ``no line yet``."""
+    """``MTL -1.5 (+150): EV +5.0%, 42%, stake 1.2u``, ``no edge``, ``no line yet`` or
+    ``waiting for confirmed goalies``."""
     pick = getattr(r, f"{market}_edge_pick")
     if isinstance(pick, str) and pick:
         price = format_price(getattr(r, f"{market}_edge_price")) + ("*" if price_assumed(r, market) else "")
+        stake = getattr(r, f"{market}_edge_stake", np.nan)
         return (f"{pick} ({price}): EV {getattr(r, f'{market}_edge_ev'):+.1%}, "
-                f"model {getattr(r, f'{market}_edge_prob'):.0%}")
+                f"{getattr(r, f'{market}_edge_prob'):.0%}" + ("" if pd.isna(stake) else f", stake {stake:.1f}u"))
     if _priced(r, market):
-        return "no edge"
+        return "no edge" if goalies_settled(r) else "waiting for confirmed goalies"
     fair = _fair(r, market)
     if market == "spread" and not pd.isna(r.home_spread_line):
         return "no price" + (f" ({fair})" if fair else "")
@@ -167,12 +170,13 @@ def _first_moneyline_edge(r) -> str | None:
 def edge_table(entries: pd.DataFrame) -> str:
     """Record of each market's edges at the price logged with the last prediction before puck drop."""
     g = entries.dropna(subset=["home_score", "away_score"])
-    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI |", "|---|---|---|---|---|"]
+    lines = ["| Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |",
+             "|---|---|---|---|---|---|---|"]
     for market in MARKETS:
         r = edge_record(g, market)
-        roi = f"{r['roi']:+.1%}" if r["bets"] else "–"
+        roi = f"{r['roi']:+.1%} | {r['expected_roi']:+.1%}" if r["bets"] else "– | –"
         lines.append(f"| {MARKET_NAMES[market]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                     f"| {r['units']:+.2f} | {roi} |")
+                     f"| {r['staked']:.1f} | {r['units']:+.2f} | {roi} |")
     # Closing line value: did the moneyline move toward the edge the model saw on the first line?
     e = entries.dropna(subset=["first_market_home_prob", "market_home_prob", "first_model_home_prob"])
     sides = pd.Series([_first_moneyline_edge(r) for _, r in e.iterrows()], index=e.index, dtype=object)
@@ -181,22 +185,6 @@ def edge_table(entries: pd.DataFrame) -> str:
     toward = int((np.sign(move[moved]) == np.where(sides[moved] == "home", 1, -1)).sum())
     lines += ["", f"Moneyline moved toward the model's edge on the first line seen before puck drop: {toward} of "
               f"{int(moved.sum())} games" + (f" ({toward / moved.sum():.0%})." if moved.sum() else ".")]
-    return "\n".join(lines)
-
-
-def backtest_edge_table(records: dict) -> str:
-    """Per-market edge record over the backtest; ``None`` marks a market with no historical prices."""
-    lines = ["| Market | Edges | Record (W-L-P) | Units | ROI | 95% range of ROI |", "|---|---|---|---|---|---|"]
-    for market in MARKETS:
-        r = records.get(market)
-        if r is None:
-            lines.append(f"| {MARKET_NAMES[market]} | no historical prices | – | – | – | – |")
-            continue
-        lo, hi = roi_interval(r["per_bet"])
-        roi = f"{r['roi']:+.1%}" if r["bets"] else "–"
-        span = f"{lo:+.1%} to {hi:+.1%}" if r["bets"] else "–"
-        lines.append(f"| {MARKET_NAMES[market]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
-                     f"| {r['units']:+.2f} | {roi} | {span} |")
     return "\n".join(lines)
 
 
@@ -277,16 +265,19 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         "is a little worse on both sides because of its cut, so a book only offers value on a team when its "
         "price beats the fair line. The puck line is the favorite's chance to win by two or more.",
         "",
-        "The edge columns price each side of the puck line, moneyline and total with the model's own "
-        "numbers, before they are blended with the betting line, and show the side with the best expected value "
-        "(EV) per $1 bet at the posted price, overtime and shootout included (the shootout winner gets one "
-        f"goal). A side is an edge only if its EV is at least {EDGE_MIN_EV:.0%}: a pick shows its price, EV and "
-        "the model's chance of winning the bet; \"no edge\" means neither side clears the bar. A total with no "
-        "posted price is assumed to be -110 (marked \\*); the puck line and moneyline are never assumed, so "
-        "without a price the cell shows the model's fair odds instead. Treat the edges as an experiment: no free "
-        "source has a history of NHL lines, so they could not be backtested against the market, and the "
-        "backtest's margins are thin (the model beats Elo by 0.0035 log loss per game, small next to a "
-        "sportsbook's cut). Their record is tracked live below.",
+        "The edge columns price each side of the puck line, moneyline and total with the final prediction: "
+        "the model's goal rates blended with the market's, simulated against the posted lines, overtime and "
+        "shootout included (the shootout winner gets one goal), and anchored to the market's own chances so "
+        "only what the blend moves off the market counts. Each cell shows the side with the best expected "
+        f"value (EV) per $1 bet at the posted price. A side is an edge only if its EV is at least {EDGE_MIN_EV:.0%}: "
+        "a pick shows its price, EV, its chance of winning the bet and its stake, a "
+        f"{KELLY_FRACTION:.0%} share of the Kelly stake in units of 1% of the bankroll, with at most "
+        f"{GAME_CAP_UNITS:g} units on one game; \"no edge\" means neither side clears the bar. A projected "
+        "starting goalie is wrong about a third of the time and the market prices the real one, so edges wait "
+        "until both starters are confirmed. A total with no posted price is assumed to be -110 (marked \\*); "
+        "the puck line and moneyline are never assumed, so without a price the cell shows the model's fair odds "
+        "instead. Treat the edges as an experiment, not betting advice; see the backtest for how they have done "
+        "on past seasons. Their record is tracked live below.",
         "",
     ]
     if len(upcoming):
@@ -316,8 +307,10 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
         live = graded[graded["source"] == "live"]
         if live["market_home_prob"].notna().any() or live["total_line"].notna().any():
             parts += ["### Betting edges", "", edge_table(season_log[season_log["source"] == "live"]), "",
-                      "One unit on each edge at the price logged with the last prediction before puck drop; "
-                      "pushes return the stake. The moneyline moving toward the model's edge (closing line "
+                      "Each edge at the stake and price logged with the last prediction before puck drop (edges "
+                      "logged before edges were priced from the final prediction are left out); pushes return "
+                      "the stake. Units are 1% of the bankroll; ROI is units won per unit staked, and expected ROI "
+                      "is what the edges' EVs promised. The moneyline moving toward the model's edge (closing line "
                       "value) is the quickest sign that it knows something the market doesn't yet.", ""]
         last_day = graded["date"].max()
         parts += [f"### Results, {_day(last_day)}", "", results_table(graded[graded["date"] == last_day]), ""]
@@ -343,9 +336,9 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
     pull1 = next((60 - m for m, p in zip(range(54, 60), sim.pull[1]) if p >= 0.5), 1)
     pull2 = next((60 - m for m, p in zip(range(54, 60), sim.pull[2]) if p >= 0.5), 1)
     blend = (f"{1 - weight:.0%} on the betting line wherever there is one (fitted on {lined_games} logged "
-             "games, shrunk toward an even split)" if lined_games else
-             f"{1 - weight:.0%} on the betting line wherever there is one (an even split until enough logged "
-             "games with lines exist to fit it)")
+             "games, shrunk toward the backtest value)" if lined_games else
+             f"{1 - weight:.0%} on the betting line wherever there is one (the value fitted on the archived "
+             "2012-13 to 2021-22 closing lines, until enough logged games with lines exist to refit it)")
     parts += [
         "## Current model fit", "",
         f"- Fitted on {model.fit_games} games from {season_label(model.fit_seasons[0])} to "
@@ -365,15 +358,63 @@ def render(entries: pd.DataFrame, upcoming: pd.DataFrame, ratings: pd.DataFrame,
     return "\n".join(parts)
 
 
+def market_section(market: dict | None) -> list[str]:
+    """The backtest page's betting-market section: the model and the walk-forward blend next to
+    the archived lines, and the betting edges of each rule at the closing and opening lines."""
+    if not market:
+        return ["## Against the betting market", "",
+                "The line archive could not be read on this run, so there is no market comparison.", ""]
+    first, last = market["seasons"]
+    losses = market["losses"]
+    weights = ", ".join(f"{season_label(s)} {w:.0%}" for s, w in market["weights"].items())
+    w_all, n_all = market["all_weight"]
+    a, b = market["all_seasons"]
+    parts = ["## Against the betting market", "",
+             f"Sportsbookreview's archived lines on the {market['games']} games of {season_label(first)} to "
+             f"{season_label(last)} that it covers, matched by date, teams and final score. The blend backs each "
+             "team's goal rate out of the closing moneyline and total through the simulator and mixes it with "
+             "the model's, with the weight on the model fitted on the archive's earlier seasons only "
+             f"({weights}). Fitted on all {n_all} archived games ({season_label(a)} to {season_label(b)}), the "
+             f"weight is {w_all:.0%}, which is where the live predictor's blend now starts.", "",
+             "| Predictor | Log loss |", "|---|---|",
+             f"| Model + simulator | {losses['model'].mean():.4f} |",
+             f"| Opening line (de-vigged) | {losses['open'].mean():.4f} |",
+             f"| Closing line (de-vigged) | {losses['close'].mean():.4f} |",
+             f"| Model blended with the closing line | {losses['blend'].mean():.4f} |", "",
+             "| Comparison | Mean difference | 95% interval |", "|---|---|---|"]
+    for name, (mean, lo, hi) in market["bootstrap"].items():
+        parts.append(f"| {name} | {mean:+.4f} | {lo:+.4f} to {hi:+.4f} |")
+    parts += ["", "## Betting edges", "",
+              "Edges on the same games, priced as on the live page: the final prediction (the walk-forward blend, "
+              "simulated against the line and anchored to the market's own chances) and, for comparison, the model "
+              f"alone (the rule used before). A side is bet when its EV is at least {EDGE_MIN_EV:.0%}, at "
+              f"{KELLY_FRACTION:.0%} of the Kelly stake with at most {GAME_CAP_UNITS:g} units (1% of the bankroll "
+              "each) on one game. The starting goalies are the actual ones. The archive's moneyline and puck-line "
+              "prices are used as posted; its totals carry one price whose side is not recorded, so totals are "
+              "graded at an assumed -110, and it has no opening puck lines. ROI is units won per unit staked, with "
+              "a 95% bootstrap range over games; expected ROI is what the edges' EVs promised.", "",
+              "| Lines | Chances | Market | Edges | Record (W-L-P) | Staked | Units won | ROI | 95% range "
+              "| Expected ROI |", "|---|---|---|---|---|---|---|---|---|---|"]
+    for (kind, rule, m), r in market["edges"].items():
+        rule_name = "final" if rule == "final" else "model only"
+        if not r["bets"]:
+            parts.append(f"| {kind} | {rule_name} | {MARKET_NAMES[m]} | 0 | – | – | – | – | – | – |")
+            continue
+        span = "–" if pd.isna(r["roi_low"]) else f"{r['roi_low']:+.1%} to {r['roi_high']:+.1%}"
+        parts.append(f"| {kind} | {rule_name} | {MARKET_NAMES[m]} | {r['bets']} | {r['wins']}-{r['losses']}-{r['pushes']} "
+                     f"| {r['staked']:.1f} | {r['units']:+.1f} | {r['roi']:+.1%} | {span} | {r['expected_roi']:+.1%} |")
+    return parts + [""]
+
+
 def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple, extra: dict,
-                    edges: dict | None = None) -> str:
+                    market: dict | None = None) -> str:
     parts = [
         "# Walk-forward backtest",
         "",
         f"Seasons {season_label(seasons[0])} to {season_label(seasons[-1])}. Every game is predicted using only "
         "earlier days of its season plus the preseason prior, with the goal-rate model and simulator fitted on "
-        "earlier seasons only. Baselines are scored on the same games. No free source has a long history of "
-        "NHL betting lines, so the market comparison lives on the predictions page, graded live.",
+        "earlier seasons only. Baselines are scored on the same games. The betting market (sportsbookreview's "
+        "archive of opening and closing lines, 2011-12 to 2021-22) is compared on the seasons it covers.",
         "",
     ]
     for label, df in scores.items():
@@ -412,9 +453,5 @@ def render_backtest(scores: dict, checks: dict, bootstrap: dict, seasons: tuple,
         parts += ["## Starting goalies", ""]
         parts += [f"- {line}" for line in extra.get("goalie_lines", [])]
         parts.append("")
-    parts += ["## Betting edges", "",
-              f"Edges are sides whose expected value at the posted price is at least {EDGE_MIN_EV:.0%}, priced "
-              "from the model alone. No free source has a history of NHL puck-line, moneyline or total prices, so "
-              "none can be backtested here; the predictions page grades them live.", "",
-              backtest_edge_table(edges or {}), ""]
+    parts += market_section(market)
     return "\n".join(parts)

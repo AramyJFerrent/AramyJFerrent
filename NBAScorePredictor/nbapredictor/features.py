@@ -114,7 +114,7 @@ class FeatureBuilder:
                                 hp.pace_half_life_days if name == "pace" else hp.half_life_days)
             for name, target in targets(hp).items()
         }
-        self.players = PlayerRatings(summaries["stints"], games, hp)
+        self.players = PlayerRatings(summaries["stints"], games, hp, summaries["players"])
         self.names = summaries["names"].drop_duplicates("player_id").set_index("player_id")["name"]
         self.minutes = minutes_history(summaries["players"], games, hp.minutes_half_life_games)
         elo, self.elo_ratings = run_elo(games)

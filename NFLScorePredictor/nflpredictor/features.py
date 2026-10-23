@@ -12,6 +12,7 @@ import pandas as pd
 
 from .config import Hyperparams
 from .elo import run_elo
+from .injuries import LOSS_COLUMNS
 from .qb import WEEKS_PER_SEASON, QBModel, adjustments
 from .ratings import RatingsEngine, Ratings, prepare_rows, targets
 
@@ -32,9 +33,13 @@ GAME_COLUMNS = [
 
 class FeatureBuilder:
     def __init__(self, games: pd.DataFrame, team_games: pd.DataFrame, qbs: pd.DataFrame,
-                 hp: Hyperparams):
+                 hp: Hyperparams, injuries: pd.DataFrame | None = None):
+        """``injuries``: non-QB injury losses by season, week and team (``injuries.losses``);
+        without them every loss is zero."""
         self.games = games
         self.hp = hp
+        self.injuries = (injuries.drop_duplicates(["season", "week", "team"]).set_index(["season", "week", "team"])
+                         if injuries is not None and len(injuries) else None)
         self.engines = {
             name: RatingsEngine(prepare_rows(team_games, games, target), target, hp.half_life_weeks)
             for name, target in targets(hp).items()
@@ -71,6 +76,15 @@ class FeatureBuilder:
                     out[f"off_{name}_{side}"] = team.map(r.off).fillna(0.0)
                     out[f"def_{name}_{side}"] = team.map(r.deff).fillna(0.0)
         out["league_epa"] = main.mu
+        for side in ("home", "away"):
+            if self.injuries is None:
+                for col in LOSS_COLUMNS:
+                    out[f"{side}_{col}"] = 0.0
+                continue
+            keys = pd.MultiIndex.from_arrays([games["season"], games["week"], games[f"{side}_team"]])
+            lost = self.injuries.reindex(keys)
+            for col in LOSS_COLUMNS:
+                out[f"{side}_{col}"] = lost[col].fillna(0.0).to_numpy()
         out = out.join(adjustments(self.qb, games, season, week, ref_week))
         out["env_points"] = self.scoring_environment(season, week)
         out = out.join(self.elo, on="game_id")

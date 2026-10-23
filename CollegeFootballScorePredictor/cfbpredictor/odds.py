@@ -30,8 +30,7 @@ import re
 import numpy as np
 import pandas as pd
 import requests
-
-from .edges import median_price, valid_price
+from bettingcore import median_price, valid_price
 
 log = logging.getLogger(__name__)
 

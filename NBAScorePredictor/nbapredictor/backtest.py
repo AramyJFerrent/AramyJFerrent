@@ -19,25 +19,21 @@ from dataclasses import replace
 
 import numpy as np
 import pandas as pd
+from bettingcore import devig
 from scipy.stats import norm
 
 from . import edges
 from .config import Hyperparams
-from .edges import implied_prob
 from .features import FeatureBuilder
-from .model import ScoreModel
+from .model import EDGE_PROBS, ScoreModel
 from .simulate import line_probs
 
 log = logging.getLogger(__name__)
 
 TEAM_ONLY_FEATURES = ["eff_off", "eff_def", "home", "b2b", "b2b_opp", "playoff"]
-
-
-def devig(price_a, price_b) -> np.ndarray:
-    """Probability of side A from two American prices, with the margin removed."""
-    a, b = implied_prob(price_a), implied_prob(price_b)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return a / (a + b)
+OPEN_PRICES = ["home_moneyline", "away_moneyline", "home_spread_price", "away_spread_price", "over_price",
+               "under_price"]
+MODEL_LINE_COLUMNS = ["model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob"]
 
 
 def predict_seasons(features: pd.DataFrame, seasons, window: int, n_sims: int = 2000) -> pd.DataFrame:
@@ -49,10 +45,19 @@ def predict_seasons(features: pd.DataFrame, seasons, window: int, n_sims: int = 
         if test.empty or train.empty:
             continue
         model = ScoreModel.fit(train)
-        pred, _ = model.predict(test, n_sims=n_sims, seed=season)
+        pred, sim = model.predict(test, n_sims=n_sims, seed=season)
         own, own_sim = model.predict(test, n_sims=n_sims, seed=season, market=False)
         pred["model_home_prob"] = own["home_win_prob"]
-        # The model's own chances against the closing and the opening lines, for the betting edges.
+        # The final prediction's anchored chances against the closing line, and against the
+        # opening one (predicted again with the opener in place of the close, unpriced).
+        for col, v in model.edge_chances(test, sim, n_sims=n_sims, seed=season).items():
+            pred[col] = v
+        opened = test.assign(spread=test["open_spread"], total=test["open_total"],
+                             **{c: np.nan for c in OPEN_PRICES})
+        _, open_sim = model.predict(opened, n_sims=n_sims, seed=season)
+        for col, v in model.edge_chances(opened, open_sim, n_sims=n_sims, seed=season).items():
+            pred[f"open_{col}"] = v
+        # The model's own chances against the same lines, for the old rule.
         for col, v in line_probs(own_sim, test["spread"], test["total"]).items():
             pred[col] = v
         for col, v in line_probs(own_sim, test["open_spread"], test["open_total"]).items():
@@ -129,14 +134,6 @@ def errors(bt: pd.DataFrame) -> dict[str, np.ndarray]:
             "line": np.abs(margin - bt["spread"].to_numpy(float))}
 
 
-def paired_bootstrap(errors_a: np.ndarray, errors_b: np.ndarray, n: int = 5000, seed: int = 0) -> tuple:
-    """Mean of (a - b) and its 95% interval over resampled games."""
-    rng = np.random.default_rng(seed)
-    diff = np.asarray(errors_a) - np.asarray(errors_b)
-    means = np.array([diff[rng.integers(0, len(diff), len(diff))].mean() for _ in range(n)])
-    return float(diff.mean()), float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
-
-
 def distribution_checks(bt: pd.DataFrame) -> dict:
     """Calibration of win probabilities and ranges, and the shape of scores."""
     y = outcome(bt)
@@ -165,32 +162,32 @@ def distribution_checks(bt: pd.DataFrame) -> dict:
     }
 
 
-def edge_records(bt: pd.DataFrame, lines: str = "close") -> dict:
+def edge_records(bt: pd.DataFrame, lines: str = "close", chances: str = "final") -> dict:
     """Walk-forward record of the betting edges in each market, against the
-    closing lines or the opening ones (``lines="open"``).
+    closing lines or the opening ones (``lines="open"``), priced with the
+    final prediction's anchored chances or the model's own (``chances="model"``).
 
     The archives have closing moneylines but no spread or total prices, so
     those are assumed to be -110; opening lines have no moneyline, so that
     market is left out there. Opening-line spread edges also report how often
     the line then moved toward the edge's side by the close.
     """
-    d = bt[["home_team", "away_team", "home_score", "away_score", "model_home_prob"]].copy()
+    cols = EDGE_PROBS + MODEL_LINE_COLUMNS
+    d = bt[["game_id", "home_team", "away_team", "home_score", "away_score", "model_home_prob"]].copy()
     if lines == "open":
         d["spread"], d["total"] = bt["open_spread"], bt["open_total"]
-        for col in ("model_home_cover_prob", "model_spread_push_prob", "model_over_prob", "model_total_push_prob"):
+        for col in cols:
             d[col] = bt[f"open_{col}"]
         d["home_moneyline"] = d["away_moneyline"] = np.nan
     else:
-        for col in ("spread", "total", "home_moneyline", "away_moneyline", "model_home_cover_prob",
-                    "model_spread_push_prob", "model_over_prob", "model_total_push_prob"):
+        for col in ["spread", "total", "home_moneyline", "away_moneyline", *cols]:
             d[col] = bt[col]
-    d = pd.concat([d, edges.edge_columns(d)], axis=1)
+    d = pd.concat([d, edges.edge_columns(d, chances)], axis=1)
     out = {}
     for m in edges.MARKETS:
         if m == "moneyline" and lines == "open":
             continue
         r = edges.record(d, m)
-        r["roi_low"], r["roi_high"] = edges.roi_interval(r.pop("per_bet"))
         if m == "spread" and lines == "open":
             toward, moved = edges.moved_toward(d["spread_edge_side"], bt["open_spread"], bt["spread"])
             r["moved_toward"] = toward / moved if moved else np.nan

@@ -34,10 +34,12 @@ from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
+from bettingcore import anchored, market_chance
 from scipy.optimize import minimize
 
+from .edges import over_prob
 from .features import WIN_FEATURES
-from .odds import devig
+from .odds import devig, devig_methods
 from .ratings import logit, sigmoid
 
 METHODS = ["ko", "sub", "dec"]
@@ -49,6 +51,9 @@ MAX_ROUNDS = 5
 # Model-alone outcome columns (method and round machinery run on ``p_model``).
 MODEL_ONLY = ([f"model_{s}_{m}" for s in "ab" for m in METHODS] + ["model_distance"]
               + [f"model_r{r}" for r in range(1, MAX_ROUNDS + 1)])
+SIX_SIDES = [f"{s}_{m}" for s in "ab" for m in METHODS]
+# The method and round-total chances the edges are priced with, anchored to the props.
+EDGE_CHANCES = [f"edge_{c}" for c in SIX_SIDES] + ["edge_over_prob"]
 
 
 # ---- fitting helpers ------------------------------------------------------
@@ -329,11 +334,39 @@ class FightModel:
         # log-odds as an input, so it is rerun rather than rescaled.
         own = self.outcomes(f, z_own)
         out = out.join(own.rename(columns=lambda c: "model_distance" if c == "p_distance" else f"model_{c}"))
+        out = out.join(self.edge_chances(f, out, np.where(np.isnan(z_mkt), z, z_mkt)))
         six = out[[f"{s}_{m}" for s in "ab" for m in METHODS]].to_numpy()
         best = six.argmax(axis=1)
         out["best_side"] = np.where(best < 3, "a", "b")
         out["best_method"] = [METHODS[i % 3] for i in best]
         out["best_prob"] = six.max(axis=1)
+        return out
+
+    def edge_chances(self, f: pd.DataFrame, final: pd.DataFrame, z_ref: np.ndarray) -> pd.DataFrame:
+        """Method and round-total chances for the edges, anchored to their props (``bettingcore.anchor``).
+
+        The method and round models are run again on the market's own win
+        log-odds (``z_ref``); each prop side gets its de-vigged chance plus what
+        the blend's win chance changes in those models, so the method model's
+        own disagreement with the props (which know more about how fights end)
+        is left out. Without a full set of prices there is nothing to anchor to.
+        """
+        ref = self.outcomes(f, z_ref)
+        props = devig_methods(f)
+        out = pd.DataFrame(index=f.index)
+        for c in SIX_SIDES:
+            market = props[c].to_numpy(float) if props is not None and c in props else np.full(len(f), np.nan)
+            out[f"edge_{c}"] = anchored(market, final[c].to_numpy(float), ref[c].to_numpy(float))
+        line = f["rounds_line"].to_numpy(float) if "rounds_line" in f else np.full(len(f), np.nan)
+
+        def overs(o: pd.DataFrame) -> np.ndarray:
+            by_round = o[[f"r{r}" for r in range(1, MAX_ROUNDS + 1)]].to_numpy(float)
+            return np.array([over_prob(by_round[i], o["p_distance"].iloc[i], f["rounds"].iloc[i], line[i])
+                             for i in range(len(f))], dtype=float)
+
+        price = {c: f[c].to_numpy(float) if c in f else np.full(len(f), np.nan) for c in ("over_price", "under_price")}
+        out["edge_over_prob"] = anchored(market_chance(price["over_price"], price["under_price"], default=np.nan),
+                                         overs(final), overs(ref))
         return out
 
     def outcomes(self, f: pd.DataFrame, z: np.ndarray) -> pd.DataFrame:

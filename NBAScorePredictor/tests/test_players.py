@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 
 from nbapredictor.config import Hyperparams
-from nbapredictor.players import PlayerRatings, lineup_strength, minutes_history, rescale_minutes
+from nbapredictor.players import (BOX_STATS, SPM, BoxScores, PlayerRatings, box_rates, lineup_strength,
+                                  minutes_history, rescale_minutes)
 
 
 def synthetic_stints(n_games=300, seed=0):
@@ -66,3 +67,62 @@ def test_rescaled_minutes_fill_240_without_overloading_anyone():
     de = {1: -1.0, 2: 0.5}
     o, d = lineup_strength([1, 2, 3], [48, 48, 0], off, de, newcomer=(-1.0, 1.0))
     assert o == 2.0 and d == -0.5
+
+
+def test_box_scores_total_each_players_games_before_a_day():
+    games = pd.DataFrame({"game_id": [1, 2, 3], "season": 2016, "date": ["2015-10-28", "2015-10-30", "2015-11-02"]})
+    box = pd.DataFrame({"game_id": [1, 2, 3, 2], "player_id": [7, 7, 7, 9], "minutes": [20, 30, 0, 10],
+                        **{c: [2.0, 4.0, 9.0, 1.0] for c in BOX_STATS}})
+    b = BoxScores(box, games)
+    day_oct30 = (pd.Timestamp("2015-10-30") - pd.Timestamp("2015-08-01")).days
+    totals = b.before(2016, day_oct30, [7, 9, 5])            # only game 1 is before the 30th
+    assert list(totals[:, 0]) == [20.0, 0.0, 0.0] and totals[0, 1] == 2.0
+    late = b.before(2016, np.inf, [7, 9])                   # game 3 (no minutes) is left out
+    assert list(late[:, 0]) == [50.0, 10.0] and late[0, 1] == 6.0
+    assert np.allclose(box_rates(late)[0], 36 * 6 / 50) and not box_rates(b.before(2016, 0, [7])).any()
+
+
+def test_spm_recovers_a_linear_box_score_relation():
+    rng = np.random.default_rng(1)
+    rates = rng.normal(10, 3, size=(400, len(BOX_STATS)))
+    minutes = rng.uniform(300, 3000, 400)
+    off = 0.5 * (rates[:, 0] - 10) - 0.3 * (rates[:, 9] - 10) + rng.normal(0, 0.1, 400)
+    de = -0.2 * (rates[:, 7] - 10) + rng.normal(0, 0.1, 400)
+    spm = SPM.fit(rates, minutes, off, de)
+    pred = spm.predict(np.array([[12.0] + [10.0] * (len(BOX_STATS) - 1)]))
+    assert abs(pred[0, 0] - 1.0) < 0.1 and abs(pred[0, 1]) < 0.1
+    assert SPM.fit(rates[:10], minutes[:10], off[:10], de[:10]) is None   # too few player-seasons
+
+
+def test_box_prior_moves_a_newcomer_toward_his_box_score_ratings(monkeypatch):
+    monkeypatch.setattr("nbapredictor.players.SPM_MIN_PLAYERS", 10)
+    stints, games = synthetic_stints(n_games=40)
+    games = pd.concat([games.assign(season=2015, game_id=games["game_id"] + 1000,
+                                    date=pd.to_datetime(games["date"]) - pd.DateOffset(years=1)),
+                       games], ignore_index=True)
+    stints = pd.concat([stints.assign(game_id=stints["game_id"] + 1000), stints], ignore_index=True)
+    rng = np.random.default_rng(2)
+    rows = []
+    for gid in games["game_id"]:
+        for pid in list(range(1, 9)) + list(range(11, 19)):
+            # Player 1 (the good scorer in the stints) scores far more than anyone.
+            rows.append({"game_id": gid, "player_id": pid, "minutes": 30.0,
+                         **{c: float(rng.poisson(30 if (c == "pts" and pid == 1) else 5)) for c in BOX_STATS}})
+    box = pd.DataFrame(rows)
+    hp = Hyperparams(box_prior_minutes_new=300.0, box_prior_minutes=300.0)
+    pr = PlayerRatings(stints, games, hp, box)
+    plain = PlayerRatings(stints, games, Hyperparams(), box)
+    assert plain.box is None                                 # no box prior unless it is switched on
+    pr._spm[2015] = None                                     # the first season has nothing to fit on
+    spm = pr.spm(2016)
+    assert spm is not None
+    sr = pr._season(2016)
+    _, at = pr._penalty(2016, sr)
+    i = sr.players.index(1)
+    first, later = at(float(pr.game_days[2016][0])), at(float(pr.game_days[2016][-1]))
+    o0 = pr.prior(2016)[0].get(1, pr.newcomer[0])
+    totals = pr.box.before(2016, float(pr.game_days[2016][-1]), [1])
+    target, m = spm.predict(box_rates(totals))[0, 0], totals[0, 0]
+    assert first[2 + i] == o0                                # no minutes yet: the anchor
+    assert m == 30.0 * 38                                    # two games a day, all but the last day's
+    assert np.isclose(later[2 + i], o0 + m / (m + 300.0) * (target - o0)) and target > o0

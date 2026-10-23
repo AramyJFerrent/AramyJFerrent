@@ -8,7 +8,10 @@ Fitted on recent seasons each time it runs:
    defense and pace, on top of the current scoring level).
    Fitting them separately lets the total lean on ratings less than the
    margin does, which is what out-of-sample results ask for.
-2. Market blend weights for margin and total against the betting line.
+2. Market blend weights for margin and total against the betting line, fitted
+   on out-of-fold predictions (each training season predicted by maps fitted
+   on the others), so the model is not trusted for its fit to games it was
+   fitted on.
 3. The score simulator's dispersion and key-number weights, so ranges and win
    probabilities match how far real results land from the prediction.
 """
@@ -19,13 +22,21 @@ from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
+from bettingcore import anchored, market_chance, no_push, with_push
 
+from .qb import DROPBACKS_PER_GAME
 from .simulate import ScoringModel, calibrate, fit_margin_weights, simulate, summarize
 
 MARGIN_FEATURES = ["off", "def_opp", "st", "home", "home_conf", "fcs", "elo"]
+# The final prediction's chances against the posted lines, anchored to the market's
+# (see ``ScoreModel.edge_chances``), which the betting edges use.
+EDGE_PROBS = ["home_cover_prob", "spread_push_prob", "over_prob", "total_push_prob", "home_ml_prob"]
 TOTAL_FEATURES = ["off", "def_opp", "pace"]
-# Candidates evaluated in the backtest (see README); they did not earn a place.
-OPTIONAL_FEATURES = ["travel", "tz_west", "tz_east", "rest"]
+# Wind above this speed (mph) at an outdoor kickoff lowers the total (``weather.py``).
+WIND_THRESHOLD_MPH = 10.0
+# Candidates evaluated in the backtest (see README); they did not earn a place. ``qb`` needs the
+# quarterback-game summaries passed to the FeatureBuilder (``data.load_qbs``).
+OPTIONAL_FEATURES = ["travel", "tz_west", "tz_east", "rest", "qb"]
 
 
 def team_view(f: pd.DataFrame) -> pd.DataFrame:
@@ -44,6 +55,7 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             if "home_rest" in f else np.zeros(n)
         shift = f[f"{side}_tz_shift"].fillna(0.0).to_numpy() if f"{side}_tz_shift" in f else np.zeros(n)
         miles = f[f"{side}_miles"].fillna(0.0).to_numpy() if f"{side}_miles" in f else np.zeros(n)
+        qb = f[f"{side}_qb_adj"].fillna(0.0).to_numpy() * DROPBACKS_PER_GAME if f"{side}_qb_adj" in f else np.zeros(n)
         sides.append(pd.DataFrame({
             "game_id": f["game_id"].to_numpy(),
             "side": side,
@@ -61,6 +73,7 @@ def team_view(f: pd.DataFrame) -> pd.DataFrame:
             "tz_west": np.clip(-shift, 0, None),
             "tz_east": np.clip(shift, 0, None),
             "rest": rest,
+            "qb": qb,
             "env": f["env_points"].to_numpy(),
             "points": f[f"{side}_score"].to_numpy(),
         }))
@@ -77,12 +90,12 @@ def game_view(f: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, np.ndarray]:
 
 
 def market_probs(home: np.ndarray, away: np.ndarray, spread_line: np.ndarray, total_line: np.ndarray,
-                 scoring: ScoringModel) -> dict:
+                 scoring: ScoringModel, prefix: str = "model_") -> dict:
     """Win, cover and over chances (with pushes) from simulated scores, against each game's lines.
 
     ``spread_line`` is the expected home margin; the home team covers when it
     wins by more. Simulations carry the key-number weights, as in ``summarize``.
-    Games without a line get NaN for that market.
+    Games without a line get NaN for that market. Keys start with ``prefix``.
     """
     w = scoring.weights(home, away)
     w = w / w.sum(axis=1, keepdims=True)
@@ -93,12 +106,25 @@ def market_probs(home: np.ndarray, away: np.ndarray, spread_line: np.ndarray, to
         p = (w * mask).sum(axis=1)
         return p if line is None else np.where(np.isnan(line), np.nan, p)
     return {
-        "model_home_win_prob": share(margin > 0),
-        "model_home_cover_prob": share(margin > spread, spread_line),
-        "model_spread_push_prob": share(margin == spread, spread_line),
-        "model_over_prob": share(total > tot, total_line),
-        "model_total_push_prob": share(total == tot, total_line),
+        f"{prefix}home_win_prob": share(margin > 0),
+        f"{prefix}home_cover_prob": share(margin > spread, spread_line),
+        f"{prefix}spread_push_prob": share(margin == spread, spread_line),
+        f"{prefix}over_prob": share(total > tot, total_line),
+        f"{prefix}total_push_prob": share(total == tot, total_line),
     }
+
+
+def wind_excess(f: pd.DataFrame, wind=None) -> np.ndarray:
+    """Kickoff wind above ``WIND_THRESHOLD_MPH`` (0 indoors or unknown), from ``wind`` or ``f["wind"]``."""
+    if wind is None:
+        wind = f["wind"] if "wind" in f else np.full(len(f), np.nan)
+    return np.clip(np.nan_to_num(np.asarray(wind, dtype=float), nan=0.0) - WIND_THRESHOLD_MPH, 0, None)
+
+
+def _through_origin(x: np.ndarray, y: np.ndarray) -> float:
+    """Slope of ``y`` on ``x`` through the origin, never above zero (wind only lowers scoring)."""
+    denom = float(x @ x)
+    return float(min(x @ y / denom, 0.0)) if denom > 0 else 0.0
 
 
 def _convex_weight(model: np.ndarray, market: np.ndarray, actual: np.ndarray) -> float:
@@ -114,6 +140,10 @@ class ScoreModel:
     total_intercept: float = 0.0
     margin_weight: float = 1.0
     total_weight: float = 1.0
+    # Points per mph of wind above the threshold: on the blended total where a line is posted,
+    # on the model's own total where not.
+    wind_blend: float = 0.0
+    wind_model: float = 0.0
     scoring: ScoringModel = field(default_factory=ScoringModel)
     fit_games: int = 0
     fit_seasons: tuple = ()
@@ -126,23 +156,22 @@ class ScoreModel:
         margin_features = margin_features or MARGIN_FEATURES
         total_features = total_features or TOTAL_FEATURES
         f = f[f["completed"]].reset_index(drop=True)
-        diff, both, env2 = game_view(f)
         actual_margin = (f["home_score"] - f["away_score"]).to_numpy()
         actual_total = (f["home_score"] + f["away_score"]).to_numpy()
-        a, *_ = np.linalg.lstsq(diff[margin_features].to_numpy(float), actual_margin, rcond=None)
-        X = np.column_stack([np.ones(len(f)), both[total_features].to_numpy(float)])
-        b, *_ = np.linalg.lstsq(X, actual_total - env2, rcond=None)
-        m = cls(coef=dict(zip(margin_features, map(float, a))),
-                total_coef=dict(zip(total_features, map(float, b[1:]))), total_intercept=float(b[0]),
-                fit_games=len(f), fit_seasons=tuple(sorted(f["season"].unique().tolist())))
+        m = cls._points_maps(f, margin_features, total_features)
 
-        pred = m.model_means(f)
+        oof = cls._out_of_fold_means(f, margin_features, total_features)
         lines = (f["spread_line"].notna() & f["total_line"].notna()).to_numpy()
         if lines.sum() > 100:
-            m.margin_weight = _convex_weight(pred["margin"][lines], f.loc[lines, "spread_line"].to_numpy(),
+            m.margin_weight = _convex_weight(oof["margin"][lines], f.loc[lines, "spread_line"].to_numpy(),
                                              actual_margin[lines])
-            m.total_weight = _convex_weight(pred["total"][lines], f.loc[lines, "total_line"].to_numpy(),
+            m.total_weight = _convex_weight(oof["total"][lines], f.loc[lines, "total_line"].to_numpy(),
                                             actual_total[lines])
+        # Wind: what the blend (out of fold) and the model alone missed, per mph above the threshold.
+        wind = wind_excess(f)
+        blended = m.blend(f, oof)
+        m.wind_blend = _through_origin(wind[lines], (actual_total - blended["total"])[lines])
+        m.wind_model = _through_origin(wind, actual_total - m.model_means(f)["total"])
         if calibrate_scores:
             final = m.means(f)
             scoring = calibrate(ScoringModel(), float(np.std(actual_margin - final["margin"])),
@@ -150,6 +179,38 @@ class ScoreModel:
                                 mean_points=float(np.mean(final["total"]) / 2))
             m.scoring = fit_margin_weights(scoring, final["home"], final["away"], actual_margin)
         return m
+
+    @classmethod
+    def _points_maps(cls, f: pd.DataFrame, margin_features: list[str], total_features: list[str]) -> "ScoreModel":
+        """The margin and total maps from ratings to points, fitted on ``f`` (completed games)."""
+        diff, both, env2 = game_view(f)
+        actual_margin = (f["home_score"] - f["away_score"]).to_numpy()
+        actual_total = (f["home_score"] + f["away_score"]).to_numpy()
+        a, *_ = np.linalg.lstsq(diff[margin_features].to_numpy(float), actual_margin, rcond=None)
+        X = np.column_stack([np.ones(len(f)), both[total_features].to_numpy(float)])
+        b, *_ = np.linalg.lstsq(X, actual_total - env2, rcond=None)
+        return cls(coef=dict(zip(margin_features, map(float, a))),
+                   total_coef=dict(zip(total_features, map(float, b[1:]))), total_intercept=float(b[0]),
+                   fit_games=len(f), fit_seasons=tuple(sorted(f["season"].unique().tolist())))
+
+    @classmethod
+    def _out_of_fold_means(cls, f: pd.DataFrame, margin_features: list[str], total_features: list[str]) -> dict:
+        """The model's margin and total for each game from maps fitted on the other seasons.
+
+        With fewer than three seasons there is nothing to hold out, and the
+        in-sample means are returned.
+        """
+        seasons = f["season"].to_numpy()
+        pred = cls._points_maps(f, margin_features, total_features).model_means(f)
+        if len(np.unique(seasons)) < 3:
+            return pred
+        out = {k: np.array(v, dtype=float, copy=True) for k, v in pred.items()}
+        for season in np.unique(seasons):
+            held = seasons == season
+            fold = cls._points_maps(f[~held], margin_features, total_features).model_means(f[held])
+            for k in out:
+                out[k][held] = fold[k]
+        return out
 
     # ---- prediction ----------------------------------------------------
     def model_means(self, f: pd.DataFrame) -> dict:
@@ -163,20 +224,30 @@ class ScoreModel:
         return {"home": home, "away": away, "margin": margin, "total": total}
 
     def blend(self, f: pd.DataFrame, pred: dict) -> dict:
+        """The margin blended with the spread and the total with the total line, each where posted."""
         spread, total = f["spread_line"].to_numpy(float), f["total_line"].to_numpy(float)
-        has = ~np.isnan(spread) & ~np.isnan(total)
-        margin = np.where(has, self.margin_weight * pred["margin"] + (1 - self.margin_weight) * spread,
+        has_spread, has_total = ~np.isnan(spread), ~np.isnan(total)
+        margin = np.where(has_spread, self.margin_weight * pred["margin"] + (1 - self.margin_weight) * spread,
                           pred["margin"])
-        tot = np.where(has, self.total_weight * pred["total"] + (1 - self.total_weight) * total,
+        tot = np.where(has_total, self.total_weight * pred["total"] + (1 - self.total_weight) * total,
                        pred["total"])
-        return {"margin": margin, "total": tot, "has_market": has}
+        return {"margin": margin, "total": tot, "has_market": has_spread & has_total}
 
-    def means(self, f: pd.DataFrame) -> dict:
-        """Final expected points: the model blended with the market."""
+    def model_only_means(self, f: pd.DataFrame, wind=None) -> dict:
+        """The model's own expected points, wind-adjusted, before any blending with the line."""
+        pred = self.model_means(f)
+        total = np.maximum(pred["total"] + wind_excess(f, wind) * self.wind_model, np.abs(pred["margin"]) + 6.0)
+        return {"home": (total + pred["margin"]) / 2, "away": (total - pred["margin"]) / 2,
+                "margin": pred["margin"], "total": total}
+
+    def means(self, f: pd.DataFrame, wind=None) -> dict:
+        """Final expected points: the model blended with the market, wind-adjusted."""
         pred = self.model_means(f)
         b = self.blend(f, pred)
         margin = b["margin"]
-        total = np.maximum(b["total"], np.abs(margin) + 6.0)
+        has_total = ~np.isnan(f["total_line"].to_numpy(float))
+        windy = wind_excess(f, wind) * np.where(has_total, self.wind_blend, self.wind_model)
+        total = np.maximum(b["total"] + windy, np.abs(margin) + 6.0)
         return {
             "home": (total + margin) / 2, "away": (total - margin) / 2,
             "margin": margin, "total": total,
@@ -184,16 +255,21 @@ class ScoreModel:
             "has_market": b["has_market"],
         }
 
-    def predict(self, f: pd.DataFrame, n_sims: int = 10000, seed: int = 0) -> pd.DataFrame:
-        means = self.means(f)
+    def predict(self, f: pd.DataFrame, n_sims: int = 10000, seed: int = 0, wind=None) -> pd.DataFrame:
+        """Final prediction per game. Its win, cover and over chances against the posted
+        lines (``home_cover_prob`` ...) price the betting edges; the ``model_*`` chances
+        are the model's own, before the blend, for comparison."""
+        means = self.means(f, wind)
         home, away = simulate(means["home"], means["away"], self.scoring, n_sims=n_sims, seed=seed)
         out = summarize(home, away, means["home"], means["away"], self.scoring)
         out.insert(0, "game_id", f["game_id"].to_numpy())
         for key in ("home", "away", "margin", "total", "model_margin", "model_total"):
             out[f"pred_{key}"] = means[key]
-        # Betting edges are judged on the model alone: the same simulator run on
-        # the model's own expected points, before any blending with the line.
-        own = self.model_means(f)
+        edges = self.edge_chances(f, means, home, away, n_sims=n_sims, seed=seed)
+        for key in EDGE_PROBS:
+            out[key] = edges[key]
+        # The same simulator run on the model's own expected points, before any blending with the line.
+        own = self.model_only_means(f, wind)
         home, away = simulate(own["home"], own["away"], self.scoring, n_sims=n_sims, seed=seed)
         probs = market_probs(home, away, f["spread_line"].to_numpy(float), f["total_line"].to_numpy(float),
                              self.scoring)
@@ -201,11 +277,47 @@ class ScoreModel:
             out[key] = values
         return out
 
+    def edge_chances(self, f: pd.DataFrame, means: dict, home: np.ndarray, away: np.ndarray,
+                     n_sims: int = 10000, seed: int = 0) -> dict:
+        """Each side's chance against the posted lines, anchored to the market (``bettingcore.anchor``).
+
+        The final prediction's simulated chances (``home``, ``away``) are set
+        against a second simulation, with the same seed, centered on the lines
+        themselves; each side gets the market's de-vigged chance plus the
+        difference, so only what the blend moved off the line can make an edge.
+        Unpriced spreads and totals count as an even -110 market; moneylines
+        need prices. Pushes come from the final prediction.
+        """
+        spread, total = f["spread_line"].to_numpy(float), f["total_line"].to_numpy(float)
+        ref_margin = np.where(np.isnan(spread), means["margin"], spread)
+        ref_total = np.maximum(np.where(np.isnan(total), means["total"], total), np.abs(ref_margin) + 6.0)
+        rh, ra = simulate((ref_total + ref_margin) / 2, (ref_total - ref_margin) / 2, self.scoring,
+                          n_sims=n_sims, seed=seed)
+        pred = market_probs(home, away, spread, total, self.scoring, prefix="")
+        ref = market_probs(rh, ra, spread, total, self.scoring, prefix="")
+
+        def col(name):
+            return f[name].to_numpy(float) if name in f else np.full(len(f), np.nan)
+
+        cover = anchored(market_chance(col("home_spread_price"), col("away_spread_price")),
+                         no_push(pred["home_cover_prob"], pred["spread_push_prob"]),
+                         no_push(ref["home_cover_prob"], ref["spread_push_prob"]))
+        over = anchored(market_chance(col("over_price"), col("under_price")),
+                        no_push(pred["over_prob"], pred["total_push_prob"]),
+                        no_push(ref["over_prob"], ref["total_push_prob"]))
+        win = anchored(market_chance(col("home_moneyline"), col("away_moneyline"), default=np.nan),
+                       pred["home_win_prob"], ref["home_win_prob"])
+        return {"home_cover_prob": with_push(cover, pred["spread_push_prob"]),
+                "spread_push_prob": pred["spread_push_prob"],
+                "over_prob": with_push(over, pred["total_push_prob"]),
+                "total_push_prob": pred["total_push_prob"], "home_ml_prob": win}
+
     # ---- persistence ---------------------------------------------------
     def to_dict(self) -> dict:
         return {
             "coef": self.coef, "total_coef": self.total_coef, "total_intercept": self.total_intercept,
             "margin_weight": self.margin_weight, "total_weight": self.total_weight,
+            "wind_blend": self.wind_blend, "wind_model": self.wind_model,
             "scoring": self.scoring.to_dict(),
             "fit_games": self.fit_games, "fit_seasons": list(self.fit_seasons),
         }

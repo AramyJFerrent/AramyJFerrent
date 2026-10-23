@@ -20,13 +20,12 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
-import os
-import time
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import requests
+from bettingcore import fetch
 
 from .config import (
     CACHE_DIR,
@@ -36,9 +35,11 @@ from .config import (
     GOALIE_BOX_URL,
     PBP_URL,
     SCHEDULE_URL,
+    SKATER_BOX_URL,
     TEAM_ALIASES,
 )
 from .shots import ShotModel, shot_events
+from .skaters import SKATER_COLUMNS, losses
 
 log = logging.getLogger(__name__)
 
@@ -65,37 +66,6 @@ def current_season(today: dt.date | None = None) -> int:
     return today.year + 1 if today.month >= 8 else today.year
 
 
-def fetch(url: str, path: Path, max_age_hours: float = 6.0, retries: int = 4) -> Path:
-    """Download ``url`` to ``path`` unless a fresh enough copy exists."""
-    if path.exists() and (time.time() - path.stat().st_mtime) < max_age_hours * 3600:
-        return path
-    path.parent.mkdir(parents=True, exist_ok=True)
-    delay = 2.0
-    for attempt in range(retries):
-        try:
-            with requests.get(url, timeout=120, stream=True) as resp:
-                resp.raise_for_status()
-                tmp = path.with_suffix(path.suffix + ".part")
-                with open(tmp, "wb") as fh:
-                    for chunk in resp.iter_content(chunk_size=1 << 20):
-                        fh.write(chunk)
-                os.replace(tmp, path)
-            return path
-        except requests.RequestException as exc:
-            if isinstance(exc, requests.HTTPError) and exc.response is not None \
-                    and exc.response.status_code == 404:
-                raise
-            if attempt == retries - 1:
-                if path.exists():
-                    log.warning("Using stale %s after download failed: %s", path.name, exc)
-                    return path
-                raise
-            log.warning("Download of %s failed (%s); retrying in %.0fs", url, exc, delay)
-            time.sleep(delay)
-            delay *= 2
-    return path
-
-
 def _alias(series: pd.Series) -> pd.Series:
     return series.replace(TEAM_ALIASES)
 
@@ -105,6 +75,7 @@ def load_raw(kind: str, season: int, max_age_hours: float = 6.0) -> pd.DataFrame
         "schedule": (SCHEDULE_URL, "nhl_schedule_{season}.parquet"),
         "pbp": (PBP_URL, "play_by_play_lite_{season}.parquet"),
         "goalies": (GOALIE_BOX_URL, "goalie_box_{season}.parquet"),
+        "skaters": (SKATER_BOX_URL, "skater_box_{season}.parquet"),
     }[kind]
     path = fetch(url.format(season=season), CACHE_DIR / name.format(season=season), max_age_hours)
     return pd.read_parquet(path)
@@ -306,12 +277,31 @@ def summary_paths(season: int) -> dict[str, Path]:
     return {kind: GAMES_DIR / f"{season}_{kind}.csv" for kind in ("games", "teams", "goalies", "states")}
 
 
+def skaters_path(season: int) -> Path:
+    return GAMES_DIR / f"{season}_skaters.csv"
+
+
+def update_skaters(season: int, sched: pd.DataFrame, max_age_hours: float = 6.0) -> None:
+    """Write the season's skater availability (``skaters.losses``) for every scheduled game."""
+    try:
+        box = load_raw("skaters", season, max_age_hours)
+    except requests.HTTPError as exc:
+        log.info("No skater box scores for %s yet (%s)", season, exc)
+        box = pd.DataFrame(columns=["game_id", "home_away", "player_id", "position", "toi", "points"])
+    losses(box, sched).to_csv(skaters_path(season), index=False)
+
+
 def update_summaries(seasons: list[int], refresh: set[int] = frozenset(),
                      max_age_hours: float = 6.0, model: ShotModel | None = None) -> None:
     """Build missing season summaries and rebuild the ones in ``refresh``."""
     GAMES_DIR.mkdir(parents=True, exist_ok=True)
     for season in seasons:
         paths = summary_paths(season)
+        if not skaters_path(season).exists() or season in refresh:
+            try:
+                update_skaters(season, reduce_schedule(load_raw("schedule", season, max_age_hours)), max_age_hours)
+            except requests.HTTPError as exc:
+                log.info("No schedule for %s yet (%s)", season, exc)
         if all(p.exists() for p in paths.values()) and season not in refresh:
             continue
         try:
@@ -343,10 +333,10 @@ def update_summaries(seasons: list[int], refresh: set[int] = frozenset(),
 def load_summaries(first: int = FIRST_SEASON, last: int | None = None) -> dict[str, pd.DataFrame]:
     """All committed summaries, oldest first, keyed by kind."""
     columns = {"games": GAME_COLUMNS, "teams": TEAM_COLUMNS, "goalies": GOALIE_COLUMNS,
-               "states": STATE_COLUMNS}
+               "states": STATE_COLUMNS, "skaters": SKATER_COLUMNS}
     frames: dict[str, list] = {k: [] for k in columns}
     for season in range(first, (last or current_season()) + 1):
-        for kind, path in summary_paths(season).items():
+        for kind, path in {**summary_paths(season), "skaters": skaters_path(season)}.items():
             if path.exists():
                 frames[kind].append(pd.read_csv(path))
     out = {}

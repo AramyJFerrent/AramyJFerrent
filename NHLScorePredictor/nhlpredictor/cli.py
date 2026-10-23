@@ -56,16 +56,35 @@ def cmd_backtest(args) -> None:
         f"Log loss with projected starters: {blind_loss.mean():.4f}, against {losses['model'].mean():.4f} with "
         f"the confirmed starter (difference {mean:+.4f}, 95% interval {lo:+.4f} to {hi:+.4f}).",
     ]}
+    # The betting market: sportsbookreview's archive, 2011-12 to 2021-22.
+    market = {}
+    lines = backtest.archive_lines(games)
+    if len(lines):
+        history = fb.walk_forward(range(FIRST_SEASON + 1, args.end + 1))
+        rates = backtest.market_rates(history, summaries["states"], lines, range(FIRST_SEASON + 3, args.end + 1),
+                                      hp.fit_window_seasons)
+        market = backtest.market_backtest(history, summaries["states"], lines, rates, seasons,
+                                          hp.fit_window_seasons, n_sims=args.sims)
+        if market:
+            from .market import fit_blend
+            market["all_weight"] = fit_blend(rates["model_home_rate"], rates["model_away_rate"],
+                                             rates["market_home_rate"], rates["market_away_rate"],
+                                             rates["home_reg"], rates["away_reg"], prior_games=0.0)
+            market["all_seasons"] = (int(rates["season"].min()), int(rates["season"].max()))
     path = OUTPUT_DIR / "backtest.md"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    # No free history of NHL prices exists, so every market's edges are graded live only.
-    edges = {market: None for market in ("spread", "moneyline", "total")}
-    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), extra, edges))
+    path.write_text(report.render_backtest(scores, checks, boot, (args.start, args.end), extra, market))
     for label, df in scores.items():
         print(label)
         print(df.round(4).to_string(index=False))
     for line in extra["goalie_lines"]:
         print(line)
+    if market:
+        print({k: round(float(v.mean()), 4) for k, v in market["losses"].items()}, market["weights"],
+              "all seasons:", market["all_weight"])
+        for (kind, rule, m), r in market["edges"].items():
+            print(f"{kind} {rule} {m}: {r['bets']} bets, ROI {r['roi']:+.3f} ({r['roi_low']:+.3f} to "
+                  f"{r['roi_high']:+.3f}), expected {r['expected_roi']:+.3f}")
     print(f"Wrote {path}")
 
 

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from ufcpredictor.edges import fair_american
+from bettingcore import fair_american
 from ufcpredictor.pipeline import LOG_COLUMNS, grade, update_log
 from ufcpredictor.report import grade as grade_table
 

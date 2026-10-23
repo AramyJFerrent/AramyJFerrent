@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bettingcore"
+version = "1.0.0"
+description = "Betting math shared by the sports predictors: prices, edges, Kelly stakes, records and downloads"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "pandas>=2.1,<3.1", "requests>=2.31"]
+
+[tool.setuptools]
+packages = ["bettingcore"]

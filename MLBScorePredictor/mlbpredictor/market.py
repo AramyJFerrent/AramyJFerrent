@@ -22,24 +22,21 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+from bettingcore import anchored, devig, market_chance, no_push, with_push
 from scipy.interpolate import RectBivariateSpline
 from scipy.stats import poisson
 
-from .edges import implied_prob
-from .simulate import TOTAL_LINES, SimParams, simulate
+from .simulate import TOTAL_LINES, SimParams, line_probs, simulate
 
 GRID = np.round(np.arange(2.0, 8.01, 0.25), 2)
 FINE = np.round(np.arange(2.0, 8.0001, 0.02), 3)
 # Weight on the model when no fitted value exists, worth this many games.
 PRIOR_WEIGHT = 0.3
 PRIOR_GAMES = 400.0
-
-
-def devig(price_a, price_b) -> np.ndarray:
-    """Probability of side A from two American prices, with the margin removed."""
-    a, b = implied_prob(price_a), implied_prob(price_b)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return a / (a + b)
+# Each side's chance against the posted lines, anchored to the market's (see
+# ``edge_chances``), which the betting edges use.
+EDGE_PROBS = ["edge_home_ml_prob", "edge_home_cover_prob", "edge_away_cover_prob", "edge_over_prob",
+              "edge_under_prob", "edge_total_push_prob"]
 
 
 class MarketInverter:
@@ -106,3 +103,37 @@ def fit_blend(model_home, model_away, market_home, market_away, runs_home, runs_
         nll.append(-(poisson.logpmf(rh, lh * scale) + poisson.logpmf(ra, la * scale)).sum())
     best = float(weights[int(np.argmin(nll))])
     return best, (n * best + prior_games * prior) / (n + prior_games), n
+
+
+def edge_chances(f: pd.DataFrame, pred: pd.DataFrame, sim: dict, ref: pd.DataFrame, ref_sim: dict,
+                 run_line) -> pd.DataFrame:
+    """Each side's chance against the posted lines, anchored to the market (``bettingcore.anchor``).
+
+    ``pred``/``sim`` are the final (blended) prediction, ``ref``/``ref_sim``
+    the same simulation (same seed) at the market's own run levels. Each side
+    gets the market's de-vigged chance plus the difference between the two, so
+    only what the blend moved off the market can make an edge, whatever the
+    simulator's shape. A total without prices counts as an even -110 market;
+    run lines and moneylines need prices.
+    """
+    def col(name):
+        return f[name].to_numpy(float) if name in f else np.full(len(f), np.nan)
+
+    total = col("total_line")
+    p, r = line_probs(sim, run_line, total), line_probs(ref_sim, run_line, total)
+    win = anchored(market_chance(col("home_moneyline"), col("away_moneyline"), default=np.nan),
+                   pred["home_win_prob"].to_numpy(float), ref["home_win_prob"].to_numpy(float))
+    cover = anchored(market_chance(col("home_run_line_price"), col("away_run_line_price"), default=np.nan),
+                     no_push(p["model_home_cover_prob"], 1 - p["model_home_cover_prob"] - p["model_away_cover_prob"]),
+                     no_push(r["model_home_cover_prob"], 1 - r["model_home_cover_prob"] - r["model_away_cover_prob"]))
+    over = anchored(market_chance(col("over_price"), col("under_price")),
+                    no_push(p["model_over_prob"], p["model_total_push_prob"]),
+                    no_push(r["model_over_prob"], r["model_total_push_prob"]))
+    push = p["model_total_push_prob"].to_numpy(float)
+    rl_push = (1 - p["model_home_cover_prob"] - p["model_away_cover_prob"]).to_numpy(float)
+    return pd.DataFrame({
+        "edge_home_ml_prob": win,
+        "edge_home_cover_prob": with_push(cover, rl_push), "edge_away_cover_prob": with_push(1 - cover, rl_push),
+        "edge_over_prob": with_push(over, push), "edge_under_prob": with_push(1 - over, push),
+        "edge_total_push_prob": push,
+    }, index=f.index)

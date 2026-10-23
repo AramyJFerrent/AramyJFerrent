@@ -4,17 +4,24 @@ import numpy as np
 import pandas as pd
 import pytest
 
+from bettingcore import EDGE_MIN_EV, best_side, expected_value
+
 from nhlpredictor import pipeline
-from nhlpredictor.edges import (ASSUMED_PRICE, EDGE_COLUMNS, EDGE_MIN_EV, add_edges, best_side, decimal_odds,
-                                edge_record, expected_value, fair_american, game_edges, grade_edge, implied_prob,
-                                puck_line, roi_interval)
+from nhlpredictor.edges import (ASSUMED_PRICE, EDGE_COLUMNS, add_edges, edge_record, game_edges, goalies_settled,
+                                grade_edge, puck_line)
 from nhlpredictor.pipeline import LOG_COLUMNS, load_log, prediction_rows
-from nhlpredictor.report import backtest_edge_table, edge_cell, upcoming_table
+from nhlpredictor.report import edge_cell, market_section, upcoming_table
 from nhlpredictor.simulate import SimParams, line_probs, simulate
+
+# The final rule's chances, each set to its model-only counterpart unless a test sets it.
+SAME = {"edge_home_ml_prob": "model_home_prob", "edge_home_cover_prob": "model_home_cover_prob",
+        "edge_away_cover_prob": "model_away_cover_prob", "edge_spread_push_prob": "model_spread_push_prob",
+        "edge_over_prob": "model_over_prob", "edge_under_prob": "model_under_prob",
+        "edge_total_push_prob": "model_total_push_prob"}
 
 
 def game(**kw):
-    """A logged game with prices and model-only chances; override any field."""
+    """A logged game with prices, confirmed goalies and chances; override any field."""
     row = {c: np.nan for c in LOG_COLUMNS}
     row.update(game_id=1, season=2027, game_type="R", date="2026-10-20",
                start=pd.Timestamp("2026-10-20 23:00", tz="UTC"), away_team="SJS", home_team="MTL",
@@ -25,8 +32,12 @@ def game(**kw):
                home_moneyline=-205, away_moneyline=170, total_line=6.5, over_price=-110, under_price=-110,
                home_spread_line=-1.5, home_spread_price=150, away_spread_price=-180,
                model_home_cover_prob=0.45, model_away_cover_prob=0.55, model_spread_push_prob=0.0,
-               model_over_prob=0.49, model_under_prob=0.51, model_total_push_prob=0.0)
+               model_over_prob=0.49, model_under_prob=0.51, model_total_push_prob=0.0,
+               home_goalie_status="ESPN confirmed", away_goalie_status="ESPN confirmed")
     row.update(kw)
+    for edge, model in SAME.items():
+        if edge not in kw:
+            row[edge] = row[model]
     return row
 
 
@@ -34,21 +45,7 @@ def ns(**kw):
     return SimpleNamespace(**game(**kw))
 
 
-# ---- odds math ---------------------------------------------------------
-
-def test_decimal_implied_and_fair_odds():
-    assert decimal_odds(150) == 2.5 and np.isclose(decimal_odds(-200), 1.5)
-    assert np.isclose(implied_prob(-110), 110 / 210) and np.isclose(implied_prob(100), 0.5)
-    assert fair_american(0.6) == -150 and fair_american(0.4) == 150 and fair_american(0.5) == 100
-
-
-def test_expected_value_counts_pushes_as_stake_returned():
-    assert np.isclose(expected_value(0.5, 0.0, 100), 0.0)
-    assert np.isclose(expected_value(0.45, 0.0, 150), 0.45 * 1.5 - 0.55)
-    # Same win chance, but a push instead of a loss on 10% of outcomes.
-    assert np.isclose(expected_value(0.5, 0.1, -110), 0.5 * 100 / 110 - 0.4)
-    assert expected_value(0.5, 0.1, -110) > expected_value(0.5, 0.0, -110)
-
+# ---- picking a side ------------------------------------------------------
 
 def test_best_side_picks_the_highest_ev_above_the_bar():
     sides = [{"side": "home", "label": "MTL -1.5", "line": -1.5, "price": 150, "prob": 0.45, "push": 0.0},
@@ -60,7 +57,20 @@ def test_best_side_picks_the_highest_ev_above_the_bar():
     assert best_side(sides, min_ev=0.02)["side"] == "home"
     sides[0]["price"] = np.nan                               # unpriced sides are skipped
     assert best_side(sides, min_ev=-1)["side"] == "away"
-    assert EDGE_MIN_EV == 0.03
+    assert EDGE_MIN_EV == 0.03 and np.isclose(expected_value(0.5, 0.1, -110), 0.5 * 100 / 110 - 0.4)
+
+
+def test_edges_wait_for_confirmed_goalies():
+    assert goalies_settled(ns()) and goalies_settled(ns(home_goalie_status="known", away_goalie_status="known"))
+    expected = ns(home_goalie_status="ESPN expected")
+    projected = ns(away_goalie_status="projected 65%")
+    for r in (expected, projected, ns(home_goalie_status=np.nan)):
+        assert not goalies_settled(r)
+        e = game_edges(r)
+        assert all(e[f"{m}_edge_pick"] is None for m in ("spread", "moneyline", "total"))
+    r = SimpleNamespace(**{**vars(expected), **game_edges(expected)})
+    assert edge_cell(r, "spread") == "waiting for confirmed goalies"
+    assert edge_cell(r, "moneyline") == "waiting for confirmed goalies"
 
 
 def test_puck_line_defaults_to_the_models_favorite():
@@ -74,6 +84,11 @@ def test_game_edges_for_each_market():
     e = game_edges(ns())
     assert e["spread_edge_pick"] == "MTL -1.5" and e["spread_edge_price"] == 150
     assert e["spread_edge_line"] == -1.5 and np.isclose(e["spread_edge_ev"], 0.45 * 1.5 - 0.55)
+    assert e["spread_edge_stake"] > 0
+    # The model-only rule reads the model's chances, the final rule its anchored ones.
+    split = ns(edge_home_cover_prob=0.40, edge_away_cover_prob=0.60)
+    assert game_edges(split)["spread_edge_pick"] is None
+    assert game_edges(split, chances="model")["spread_edge_pick"] == "MTL -1.5"
     # Model 66% at -205: EV = 0.66 * 100/205 - 0.34 < 0; SJS +170: 0.34 * 1.7 - 0.66 < 0.
     assert e["moneyline_edge_pick"] is None and np.isnan(e["moneyline_edge_ev"])
     assert e["total_edge_pick"] is None
@@ -97,7 +112,7 @@ def test_minus_110_is_assumed_only_for_the_total():
     assert e["total_edge_pick"] == "Over 6.5" and e["total_edge_price"] == ASSUMED_PRICE
     assert e["spread_edge_pick"] is None and e["moneyline_edge_pick"] is None
     r = SimpleNamespace(**{**vars(r), **e})
-    assert edge_cell(r, "total").startswith("Over 6.5 (-110*): EV +10.7%, model 58%")
+    assert edge_cell(r, "total").startswith("Over 6.5 (-110*): EV +10.7%, 58%, stake ")
     assert edge_cell(r, "spread").startswith("no price (model fair MTL -1.5 -900 / SJS +1.5 +900")
     assert edge_cell(r, "moneyline") == "no line yet"
 
@@ -126,7 +141,7 @@ def test_line_probs_follow_the_line_and_count_pushes():
     assert not (margin[0][so] >= 2).any()
 
 
-def test_prediction_rows_price_edges_from_the_model_only_chances():
+def test_prediction_rows_price_edges_from_the_final_chances():
     feats = pd.DataFrame([{k: v for k, v in game().items()}])
     feats["home_goalie_name"], feats["away_goalie_name"] = "B", "A"
     feats["home_goalie_status"], feats["away_goalie_status"] = "known", "known"
@@ -162,20 +177,30 @@ def test_grade_edge(market, side, line, price, score, expected):
 def test_ungraded_and_record():
     assert grade_edge("total", np.nan, 6.5, -110, 3, 2)[0] is None
     assert grade_edge("total", "over", 6.5, -110, np.nan, np.nan)[0] is None
-    d = pd.DataFrame({"home_score": [4, 1, 3, np.nan], "away_score": [2, 3, 3, np.nan],
-                      "total_edge_side": ["over", "over", "under", "over"], "total_edge_line": [5.5, 5.5, 6.0, 5.5],
-                      "total_edge_price": [-110, 100, -110, -110]})
-    rec = edge_record(d, "total")
+    d = pd.DataFrame({"game_id": [1, 2, 3, 4, 5], "home_score": [4, 1, 3, np.nan, 5],
+                      "away_score": [2, 3, 3, np.nan, 0], "total_edge_side": ["over", "over", "under", "over", "over"],
+                      "total_edge_line": [5.5, 5.5, 6.0, 5.5, 5.5], "total_edge_price": [-110, 100, -110, -110, -110],
+                      "total_edge_ev": [0.05] * 5, "total_edge_stake": [2.0, 1.0, 1.0, 1.0, np.nan]})
+    rec = edge_record(d, "total")                          # the last edge has no stake: logged before Kelly sizing
     assert (rec["bets"], rec["wins"], rec["losses"], rec["pushes"]) == (3, 1, 1, 1)
-    assert np.isclose(rec["units"], 100 / 110 - 1.0)
-    lo, hi = roi_interval(rec["per_bet"])
-    assert lo <= rec["roi"] <= hi
-    assert all(np.isnan(roi_interval(np.array([]))))
+    assert np.isclose(rec["staked"], 4.0) and np.isclose(rec["units"], 2 * 100 / 110 - 1.0)
+    assert rec["roi_low"] <= rec["roi"] <= rec["roi_high"] and np.isclose(rec["expected_roi"], 0.05)
 
 
-def test_backtest_edge_table_lists_markets_without_prices():
-    text = backtest_edge_table({"spread": None, "moneyline": None, "total": None})
-    assert "| Puck line | no historical prices |" in text and "| Total | no historical prices |" in text
+def test_backtest_market_section():
+    rec = {"bets": 2, "wins": 1, "losses": 1, "pushes": 0, "staked": 2.0, "units": 0.5, "roi": 0.25,
+           "roi_low": -0.5, "roi_high": 1.0, "expected_roi": 0.04}
+    none = dict(rec, bets=0)
+    market = {"games": 100, "seasons": (2017, 2018), "weights": {2017: 0.31, 2018: 0.28},
+              "all_weight": (0.27, 400), "all_seasons": (2013, 2022),
+              "losses": {k: np.array([0.69, 0.67]) for k in ("model", "open", "close", "blend")},
+              "bootstrap": {"Model vs closing line": (0.002, -0.001, 0.005)},
+              "edges": {("closing", "final", "moneyline"): rec, ("closing", "model", "total"): none}}
+    text = "\n".join(market_section(market))
+    assert "2016-17 31%, 2017-18 28%" in text and "the weight is 27%" in text
+    assert "| closing | final | Moneyline | 2 | 1-1-0 | 2.0 | +0.5 | +25.0% | -50.0% to +100.0% | +4.0% |" in text
+    assert "| closing | model only | Total | 0 |" in text
+    assert "could not be read" in "\n".join(market_section({}))
 
 
 # ---- log and page --------------------------------------------------------
@@ -206,6 +231,6 @@ def test_upcoming_table_shows_edge_columns():
     text = upcoming_table(rows)
     header = text.splitlines()[0]
     assert "| Puck line edge | Moneyline edge | Total edge |" in header and "model pick" not in header
-    assert "| SJS +170 / MTL -205 | MTL -1.5 (+150): EV +12.5%, model 45% | no edge | no edge |" in text
+    assert "| SJS +170 / MTL -205 | MTL -1.5 (+150): EV +12.5%, 45%, stake" in text
     assert "| – | no line yet (model fair MTL -1.5 +120 / SJS +1.5 -120) | no line yet | no line yet |" in text
     assert "assumed -110" not in text

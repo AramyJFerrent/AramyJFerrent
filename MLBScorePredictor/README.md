@@ -37,7 +37,9 @@ Each run:
 
 1. Reads this season's schedule, line scores and probable pitchers from the
    MLB Stats API in one request, plus the box score of every game finished
-   since the last run, and updates this season's files in `data/games/`.
+   since the last run, and updates this season's files in `data/games/`; and
+   Statcast's batted balls since the last run from Baseball Savant, into
+   `data/statcast/`.
 2. Refits the run model and the simulator on the last three seasons plus
    every game played so far this season.
 3. Reads the next two game days: probable pitchers, posted lineups and
@@ -75,15 +77,16 @@ scores, which takes a few minutes; later runs read only new games.
 |---|---|---|
 | Data | Retrosheet play-by-play for 2012-2025, parsed play by play into one row per game, per batter and per pitcher, with base-out transitions and platoon counts (every parsed final score, out and team batting total matches Retrosheet's game logs). The season in progress comes from MLB Stats API box scores in the same format. Player ids are linked across the two through the Chadwick register. | `retro.py`, `statsapi.py`, `data.py` |
 | Park factors | Poisson regressions of runs and of each plate-appearance outcome on batting team, fielding team, park and home field over the three seasons before, with parks pulled toward neutral; new parks and one-off neutral sites stay near 1 | `parks.py` |
-| Player ratings | Every batter and pitcher rated on strikeouts, walks, hit by pitch, singles, doubles, triples and home runs per plate appearance: park-adjusted, recency-weighted results (time counts only during seasons) shrunk toward the league average for his role by each outcome's stabilization point, measured from history by empirical Bayes (strikeouts settle in about 50 plate appearances; doubles allowed by pitchers take well over a thousand) | `players.py` |
+| Player ratings | Every batter and pitcher rated on strikeouts, walks, hit by pitch, singles, doubles, triples and home runs per plate appearance: park-adjusted, recency-weighted results (time counts only during seasons) shrunk toward the league average for his role by each outcome's stabilization point, measured from history by empirical Bayes (strikeouts settle in about 50 plate appearances; doubles allowed by pitchers take well over a thousand). Since 2015, 60% of each single, double, triple and home run count comes from Statcast's expected hits instead (below), with 0.65 times the shrinkage. | `players.py` |
+| Statcast | Every ball in play since 2015 gets its chance of being a single, double, triple or home run from a table of outcomes by exit velocity, launch angle and spray direction, fitted once on 2015 and frozen. Each day's expected hits are scaled to the league's actual hits over the previous 30 game days, so a livelier or deader ball does not shift every player. Summed by batter and pitcher and day. | `statcast.py` |
 | Matchups | Each of the nine batters meets the probable starter in a log5 plate appearance with the platoon factor for his side and the pitcher's hand, and the same against the bullpen; the outcome probabilities are weighted by each lineup slot's share of plate appearances and valued with linear weights from the base-out chain. Posted lineups are used when available, otherwise the lineup the team last used against a starter of the same hand. | `features.py` |
 | Bullpen and workload | The bullpen is every reliever from the team's last 15 games, weighted by recent use and marked down after pitching the day before (more after 25+ pitches), on back-to-back days or three times in four days. The starter's expected outs come from his recent starts, and set his expected share of each inning. | `features.py` |
 | Team ratings and Elo | Ridge ratings of each team's runs scored and allowed against a preseason prior catch what the player ratings miss (fielding, baserunning, how a staff is used), and a FiveThirtyEight-style Elo with a starting-pitcher adjustment is both a baseline and an input | `ratings.py`, `elo.py` |
 | Run model | Each team's expected runs in each inning: the league's current scoring level times the inning's own level, times the starter's and the bullpen's matchups mixed by the starter's expected share of that inning, times park, home field, temperature, wind, team ratings and Elo. Fitted by Poisson likelihood on the runs of every inning 1-8 in the last three seasons. | `model.py` |
-| Market | De-vigs ESPN's moneyline and total, backs each team's expected runs out of them through the same simulator, and blends `log runs = w × model + (1 − w) × market`. `w` starts from the value fitted on Pinnacle's 2016 closing lines and is refitted on logged games as they accumulate. | `market.py` |
+| Market | De-vigs ESPN's moneyline and total, backs each team's expected runs out of them through the same simulator, and blends `log runs = w × model + (1 − w) × market`. `w` starts from the value fitted on sportsbookreview's archived 2015-2021 closing lines (10%) and is refitted on logged games as they accumulate. | `market.py` |
 | Simulator | 10,000 games per matchup, inning by inning. Innings come from a base-out Markov chain built from Retrosheet's transitions (runner advances, double plays, steals and pickoffs included), scaled to each inning's expected runs, so an inning's run distribution is exact rather than assumed; extra innings start from a runner on second in the regular season. A shared game factor lets whole games run hot or cold, a team trailing by one to three from the ninth on faces the other side's closer, the home team skips the bottom of the ninth when ahead and walk-offs stop at the winning run unless they are home runs. Each setting is tuned so simulated scores match history. | `simulate.py` |
-| Edges | Expected value per $1 of each side of the run line, moneyline and total at the posted price, `EV = p × (decimal price − 1) − (1 − p − push)`, from the model's own numbers before blending: its win chance, and a simulation of its own expected runs for the chance of covering the posted run line (whichever side gives the 1.5 runs) and of going over or under the total, pushes on whole-number totals included. A side is an edge at EV ≥ 3%; each market shows its best side. Totals without a posted price are assumed -110 (marked `-110*`); run-line and moneyline prices are never assumed, so without one there is no edge and the run line shows the model's fair odds. | `edges.py` |
-| Backtest | Walk-forward by day over 2016-2025, scored against Elo, team ratings alone and Pinnacle's 2016 lines, with the edges graded on Pinnacle's moneylines and totals | `backtest.py` |
+| Edges | Expected value per $1 of each side of the run line, moneyline and total at the posted price, `EV = p × (decimal price − 1) − (1 − p − push)`, from the final prediction: the blended runs simulated against the posted run line and total, anchored to the market's own chances (the market's de-vigged chance plus the difference between the simulation at the blend and at the market's runs, same random draws), so only the blend's disagreement with the market can make an edge. A side is an edge at EV ≥ 3%, staked at a quarter of the Kelly stake with at most 3 units a game (shared [BettingCore](../BettingCore) package); each market shows its best side. Totals without a posted price are assumed -110 (marked `-110*`); run-line and moneyline prices are never assumed, so without one there is no edge and the run line shows the model's fair odds. | `edges.py`, `market.py` |
+| Backtest | Walk-forward by day over 2016-2025, scored against Elo and team ratings alone; against the market on Pinnacle's 2016 lines and sportsbookreview's 2016-2021 archive, with the edges graded at the archive's prices | `backtest.py` |
 
 ## Backtest, 2016 to 2025
 
@@ -96,20 +99,20 @@ scores 0.693 log loss and 0.250 Brier.
 
 | Predictor | Log loss | Brier | Winners |
 |---|---|---|---|
-| Model + simulator | 0.6746 | 0.2409 | 57.6% |
+| Model + simulator | 0.6743 | 0.2407 | 57.7% |
 | Elo with starting pitchers | 0.6754 | 0.2413 | 57.6% |
 | Team runs ratings only | 0.6785 | 0.2428 | 56.8% |
 | Home team every time | 0.6910 | 0.2489 | 53.3% |
 
 - The model beats FiveThirtyEight-style Elo with its starting-pitcher
-  adjustment by 0.0009 log loss per game (95% interval 0.0001 to 0.0017) and
-  team ratings alone by 0.0040, and holds up on the seasons since 2021
-  (0.6759 against Elo's 0.6765). Elo is also one of the model's inputs; the
+  adjustment by 0.0012 log loss per game (95% interval 0.0003 to 0.0020) and
+  team ratings alone by 0.0042, and holds up on the seasons since 2021
+  (0.6756 against Elo's 0.6765). Elo is also one of the model's inputs; the
   Elo row is Elo on its own.
 - Baseball edges are as thin as the report warns: everything the model knows
   moves log loss 0.016 from always picking the home team, and its edge over
   Elo is a tenth of a percent.
-- Win probabilities are well calibrated: games given 60–70% were won 63.9%
+- Win probabilities are well calibrated: games given 60–70% were won 64.2%
   of the time (predicted 63.9%), and 40–50% games 45.3% (predicted 45.8%).
 - The simulator gets the shape of baseball scores right:
 
@@ -126,6 +129,19 @@ scores 0.693 log loss and 0.250 Brier.
 - 80% ranges contain each team's runs 85.7% of the time (runs are whole
   numbers, so a range covers a bit more than 80%). The headline score is
   exactly right in 2.5% of games, so read the win chance first.
+
+Statcast expected hits, tested on the same 2016-2025 walk-forward:
+
+- With 60% of each hit count from expected hits, log loss went from 0.6746
+  to 0.6743 (paired bootstrap −0.00027, 95% interval −0.00053 to −0.00002)
+  and total-runs error from 3.5345 to 3.5334. That is small, but the
+  model's whole edge over Elo was 0.0009 before it (0.0012 with it). Every mix from 40% to 100% helped
+  by a similar amount, and 60% matches what predicting the next season
+  says: on hitters with 250+ balls in play in back-to-back seasons, the best
+  weight on expected hits next to actual ones is 0.45 to 0.6, and with that
+  mix hit rates settle in about 280 balls in play instead of 410.
+- Expected hits matter more for pitchers' home runs and extra-base hits
+  than for their singles, which are mostly noise either way.
 
 What mattered, from development runs on 2017-2025 (a faster approximation
 of the same model, without the simulator):
@@ -154,50 +170,64 @@ Full tables and calibration buckets are in
 
 ## Against the betting market
 
-On Pinnacle's complete 2016 line history (2,461 games, de-vigged):
+Two sources of historical lines. Sportsbookreview's archive (via the
+[sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper)
+project) has opening and closing moneylines, closing run lines with their
+prices, and opening and closing totals for 2011-2021; its baseball rows pair
+each game's visitors with the previous game's home team, which the shared
+loader puts back together, after which 99% of games match Retrosheet by date,
+teams and final score. Pinnacle's complete 2016 line history is the sharpest
+single book.
 
-| Predictor | Log loss | Brier |
-|---|---|---|
-| Model + simulator | 0.6764 | 0.2417 |
-| Elo with starting pitchers | 0.6787 | – |
-| Opening line | 0.6770 | – |
-| Closing line | 0.6735 | 0.2403 |
-| Model blended with the closing line | 0.6740 | 0.2406 |
+On the archive's 12,935 nine-inning games from 2016 to 2021 with both lines,
+de-vigged, the blend weight walk-forward (each season's fitted on earlier
+seasons only):
 
-- The model on its own is as good as the opening line (0.0006 better,
-  within noise) and 0.0029 behind the closing line (95% interval 0.0000 to
-  +0.0059), as the report expects: the market sharpens as starters and
-  lineups are confirmed, and the close already knows what the model knows.
-- Blended with the closing line it adds nothing measurable (0.6740 against
-  0.6735, a difference within noise): a sharp closing line already holds
-  what the model knows. The best weight on the model was 19%, which is
-  where the live blend starts; the opening lines and softer books it will
-  mostly see live are where a model has more room to help.
-- Betting edges on the same games, walk-forward, from the model alone
-  (before blending) against Pinnacle's prices: one unit on each market's
-  best side whenever its expected value is 3% or more.
+| Predictor | Log loss |
+|---|---|
+| Model + simulator | 0.6728 |
+| Opening line | 0.6721 |
+| Closing line | 0.6702 |
+| Model blended with the closing line | 0.6709 |
 
-  | Market | Edges | Record (W-L-P) | Units | ROI | 95% range on ROI |
-  |---|---|---|---|---|---|
-  | Moneyline, closing line | 1306 | 544-761-1 | -59.13 | -4.5% | -10.8% to +1.7% |
-  | Moneyline, opening line | 1083 | 504-578-1 | +49.31 | +4.6% | -2.1% to +11.5% |
-  | Total, closing line | 1628 | 785-769-74 | +2.29 | +0.1% | -4.6% to +5.0% |
-  | Run line | no historical prices | | | | |
+- The model is 0.0026 behind the closing line (95% interval 0.0012 to
+  0.0039) and level with the opening line (0.0008 behind, within noise), as
+  the report expects: the market sharpens as starters and lineups are
+  confirmed, and the close already knows what the model knows.
+- Blending the model in makes the closing line slightly worse (0.0007, 95%
+  interval 0.0002 to 0.0011). The weight fitted on earlier seasons ran 4% to
+  13% on the model; fitted on all of 2015-2021 it is 10%, which is where the
+  live blend starts. Pinnacle 2016 tells the same story (model 0.6764,
+  closing line 0.6735, blend 0.6740).
+- Betting edges at the archive's prices, walk-forward, Kelly-staked
+  (totals at an assumed -110, since the archive does not say which side a
+  total's price belongs to):
 
-  Against the close the moneyline edges lose about the margin, and against
-  the opening line they win; neither is clear of noise in one season. The
-  live log grades the same edges against ESPN's lines.
-- No free source has betting lines for the other seasons, so the live log
-  keeps testing it: every prediction records the line it was made against,
-  and the predictions page grades the model, the market and the blend on the
-  same games, and tracks the model's betting edges on the run line,
-  moneyline and total (sides whose expected value at the posted price is 3%
-  or more, from the model alone) with their record and units won at the
-  price logged before first pitch, and how often the moneyline then moves
-  toward the model's side. The blend weight is refitted from those games as
-  they accumulate. Live lines
-  come from ESPN's provider rather than Pinnacle, so the weight may settle
-  somewhere else.
+  | Market | Chances | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
+  |---|---|---|---|---|---|---|
+  | Run line, closing | final (live rule) | 5 | 5-0-0 | +122.4% | – | +16.9% |
+  | Moneyline, closing | final (live rule) | 16 | 8-8-0 | +58.0% | −38.4% to +147.0% | +14.6% |
+  | Total, closing | final (live rule) | 2 | 1-1-0 | +8.8% | – | +3.7% |
+  | Run line, closing | model alone (old rule) | 5063 | 2463-2600-0 | −4.5% | −7.4% to −1.6% | +8.4% |
+  | Moneyline, closing | model alone (old rule) | 6684 | 2809-3874-1 | −2.0% | −5.1% to +1.1% | +10.0% |
+  | Total, closing | model alone (old rule) | 6549 | 3255-2968-326 | −0.2% | −2.7% to +2.3% | +11.7% |
+  | Moneyline, opening | model alone | 4591 | 2020-2570-1 | +1.1% | −2.6% to +4.9% | +10.1% |
+  | Total, opening | model alone | 6605 | 3390-2906-309 | +3.4% | +1.0% to +5.8% | +11.7% |
+
+  With the model at a few percent of the blend, the final prediction almost
+  never disagrees with the closing price by 3% of EV: 23 edges in six
+  seasons, too few to judge. The model alone, the old rule, finds an edge in
+  most games at the close and loses about the margin. Against the opening
+  line the model alone came out ahead, on totals clearly (with -110
+  assumed, which the real prices could move either way), but the
+  predictions page bets the last line before first pitch, not the opener.
+- The live log keeps testing it: every prediction records the line it was
+  made against, the predictions page grades the model, the market and the
+  blend on the same games, and tracks the betting edges with their stakes,
+  record, units and ROI at the price logged before first pitch, and how
+  often the moneyline then moves toward the model's side. The blend weight
+  is refitted from those games as they accumulate; live lines come from
+  ESPN's provider, so the weight may settle somewhere else.
 
 ## Running it yourself
 
@@ -212,20 +242,21 @@ python -m mlbpredictor update --days 1 --offline
 python -m mlbpredictor ratings             # power ratings by lineup, rotation, bullpen and the rest
 python -m mlbpredictor check --raw         # read the live sources once and print what was parsed (and ESPN's raw odds)
 python -m mlbpredictor audit               # consistency checks on this season's data, next to last season's
-python -m mlbpredictor backtest            # walk-forward 2016-2025, writes predictions/backtest.md
+python -m mlbpredictor backtest            # walk-forward 2016-2025 and the archived lines, writes predictions/backtest.md
+python -m mlbpredictor backtest --save-weight   # also save the archive's blend weight to params.json
 python -m mlbpredictor summarize           # rebuild the Retrosheet seasons from play-by-play
 python -m pytest -q tests
 ```
 
-Downloads are cached in `.cache/` (ignored by git).
+Downloads are cached in `.cache/` (ignored by git), the line archive for a month.
 
 ## Outputs
 
 | File | Contents |
 |---|---|
-| `predictions/README.md` | Upcoming games with run-line, moneyline and total edges, season grading, edge record, latest results, power ratings |
+| `predictions/README.md` | Upcoming games with run-line, moneyline and total edges, fair first-five-innings odds, season grading, edge record, latest results, power ratings |
 | `predictions/latest.json` | The same upcoming predictions as JSON |
-| `predictions/log.csv` | Every prediction (last one before first pitch), with the lineups, lines and prices it was made against, the model's own cover and over chances, each market's edge (`spread_edge_*` for the run line, `moneyline_edge_*`, `total_edge_*`) and the final score once known |
+| `predictions/log.csv` | Every prediction (last one before first pitch), with the lineups, lines and prices it was made against, the model's own and the final (anchored) cover and over chances, each market's edge (`spread_edge_*` for the run line, `moneyline_edge_*`, `total_edge_*`: pick, side, line, price, chance, EV and stake in units) and the final score once known |
 | `predictions/ratings.csv` | Power ratings in runs per game, by unit |
 | `predictions/model.json` | The fitted coefficients, blend weight and simulator settings |
 | `data/games/` | Per-season games, batting, pitching, transition and platoon summaries (finished seasons gzipped) |
@@ -238,8 +269,12 @@ Downloads are cached in `.cache/` (ignored by git).
   window. A player back from the injured list rejoins the projected lineup
   only once he has played, and before lineups post a missing star is only
   in the betting line.
-- Statcast pitch and batted-ball quality. Ratings use outcomes only; pitch
-  tracking would make young players' ratings settle faster.
+- Statcast pitch quality (velocity, movement, whiff and chase rates).
+  Batted-ball quality is in (expected hits); strikeouts and walks still come
+  from outcomes, which settle within a couple of hundred plate appearances.
+- First-five-innings edges. The page shows fair first-five odds from the
+  simulator (the moneyline with ties refunded, and expected runs), but no
+  free source has first-five prices to bet or backtest them against.
 - Wind direction for upcoming games. The wind term is fitted on
   Retrosheet's recorded wind, but forecasts do not say whether it blows in
   or out at each park, so wind only counts once MLB posts game-time
@@ -264,4 +299,8 @@ Schedules, box scores, probable pitchers, lineups and game-time weather from
 the MLB Stats API (statsapi.mlb.com); betting lines from ESPN's public
 scoreboard; temperature forecasts by [Open-Meteo.com](https://open-meteo.com/)
 (CC BY 4.0). Pinnacle's 2016 lines from the
-[pinnacle.data](https://github.com/marcoblume/pinnacle.data) R package.
+[pinnacle.data](https://github.com/marcoblume/pinnacle.data) R package;
+2011-2021 lines from sportsbookreview.com's archive, as collected by
+[sportsbookreview-scraper](https://github.com/flancast90/sportsbookreview-scraper).
+Batted-ball data from MLB's Statcast, via
+[Baseball Savant](https://baseballsavant.mlb.com).

@@ -4,8 +4,10 @@ Every bout in year Y is predicted from features built on earlier fights only,
 with the win model, calibration, market blend, method and round models fitted
 on the ``fit_window_years`` before Y. Benchmarks are scored on the same fights:
 the de-vigged moneyline, Glicko-2 alone and a UFC-only Elo. Betting edges are
-valued as on the live page (edges.py): from the model alone, at the dataset's
-moneylines and method props; round totals have no historical prices.
+valued as on the live page (edges.py), with the final prediction's chances, at
+the dataset's moneylines and method props, Kelly-staked; round totals have no
+historical prices. The blended forecast's own method split and the model
+alone (the rule used before) are priced the same way for comparison.
 """
 
 from __future__ import annotations
@@ -18,7 +20,9 @@ import numpy as np
 import pandas as pd
 
 from .config import FIRST_TRAIN_YEAR, Hyperparams
-from .edges import MARKETS, PICKERS, implied_prob, outcome, priced, settle
+from bettingcore import implied_prob, summarize
+
+from .edges import CHANCES, MARKETS, bout_picks, outcome, priced, settle
 from .features import FeatureBuilder
 from .model import METHODS, FightModel, RoundModel, WinModel, decided, division_method_rates
 from .odds import METHOD_ODDS, devig, devig_methods
@@ -203,45 +207,41 @@ def usable_method_prices(bt: pd.DataFrame) -> pd.DataFrame:
     return bt
 
 
-def edge_bets(bt: pd.DataFrame) -> pd.DataFrame:
-    """Every model-alone edge on the dataset's prices, graded: one row per one-unit bet."""
+def edge_bets(bt: pd.DataFrame, chances: str = "final") -> pd.DataFrame:
+    """Every edge of one rule (``edges.CHANCES``) on the dataset's prices, graded, at its Kelly stake."""
     d = usable_method_prices(bt[bt["winner"].isin(list(STATUS))])
     rows = []
-    for r in d.itertuples(index=False):
-        for market in PRICED_MARKETS:
-            pick = PICKERS[market](r)
-            if pick is None:
+    for i, r in enumerate(d.itertuples(index=False)):
+        for market, pick in bout_picks(r, chances).items():
+            if market not in PRICED_MARKETS or pick is None:
                 continue
             res = outcome(market, pick.side, pick.line, STATUS[r.winner], r.winner, r.method, r.end_round, np.nan)
             if res is None:
                 continue
-            rows.append({"market": market, "year": r.date.year, "side": pick.side, "price": pick.price,
-                         "prob": pick.prob, "ev": pick.ev, "result": res, "profit": settle(res, pick.price)})
-    return pd.DataFrame(rows, columns=["market", "year", "side", "price", "prob", "ev", "result", "profit"])
+            rows.append({"market": market, "year": r.date.year, "game": i, "side": pick.side, "price": pick.price,
+                         "prob": pick.prob, "ev": pick.ev, "stake": pick.stake,
+                         "result": {"win": "W", "loss": "L", "push": "P"}[res],
+                         "profit": pick.stake * settle(res, pick.price)})
+    return pd.DataFrame(rows, columns=["market", "year", "game", "side", "price", "prob", "ev", "stake", "result",
+                                       "profit"])
 
 
-def edge_summary(bt: pd.DataFrame, bets: pd.DataFrame | None = None, n: int = 5000, seed: int = 1) -> pd.DataFrame:
-    """Per-market edges, W-L-P, units and ROI with a 95% bootstrap range over bets."""
-    bets = edge_bets(bt) if bets is None else bets
+def edge_summary(bt: pd.DataFrame, n: int = 5000, seed: int = 1) -> pd.DataFrame:
+    """Per rule and market: fights priced, edges, W-L-P, units staked and won, ROI with a
+    95% bootstrap range over bouts, expected ROI and the share of bets on underdogs."""
     d = usable_method_prices(bt[bt["winner"].isin(list(STATUS))])
-    rng = np.random.default_rng(seed)
+    fights = {m: int(sum(priced(r, m) for r in d.itertuples(index=False))) for m in PRICED_MARKETS}
     rows = []
-    for market in MARKETS:
-        if market not in PRICED_MARKETS:
-            rows.append({"market": market, "fights": 0, "edges": 0})
-            continue
-        fights = int(sum(priced(r, market) for r in d.itertuples(index=False)))
-        b = bets[bets["market"] == market]
-        row = {"market": market, "fights": fights, "edges": len(b)}
-        if len(b):
-            profit = b["profit"].to_numpy(float)
-            roi = profit[rng.integers(0, len(b), size=(n, len(b)))].mean(axis=1)
-            row.update(wins=int((b["result"] == "win").sum()), losses=int((b["result"] == "loss").sum()),
-                       pushes=int((b["result"] == "push").sum()), units=float(profit.sum()),
-                       roi=float(profit.mean()), roi_low=float(np.percentile(roi, 2.5)),
-                       roi_high=float(np.percentile(roi, 97.5)), mean_ev=float(b["ev"].mean()),
-                       underdogs=float((b["price"] > 0).mean()))
-        rows.append(row)
+    for rule in CHANCES:
+        bets = edge_bets(bt, rule)
+        for market in MARKETS:
+            if market not in PRICED_MARKETS:
+                rows.append({"chances": rule, "market": market, "fights": 0, "bets": 0})
+                continue
+            b = bets[bets["market"] == market]
+            rec = summarize(b, n_boot=n, seed=seed)
+            rows.append({"chances": rule, "market": market, "fights": fights[market], **rec,
+                         "underdogs": float((b["price"] > 0).mean()) if len(b) else float("nan")})
     return pd.DataFrame(rows)
 
 

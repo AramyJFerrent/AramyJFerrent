@@ -11,6 +11,11 @@ appearances, while hits on balls in play, especially for pitchers, take
 thousands. This is the in-season version of a Marcel-style projection: last
 season's record is the prior, and each game moves it a little.
 
+Since 2015 a share of each hit count can come from Statcast's expected hits
+on the player's balls in play instead (``statcast.py``): how hard and at what
+angle he hit them, or allowed them, rather than where they happened to land.
+Those settle faster, so their shrinkage is smaller.
+
 Time is measured in days of the season, with each off-season counting as
 about two months, so last September weighs a little less than this April.
 
@@ -27,6 +32,7 @@ import pandas as pd
 
 from .config import FIRST_SEASON, Hyperparams
 from .parks import COMPONENTS, ParkFactors
+from .statcast import HITS, X_COLUMNS
 
 OUTCOMES = COMPONENTS + ["out"]
 # Days from March 1 that one season occupies; the gap between seasons is
@@ -102,6 +108,23 @@ def stabilization(rows: pd.DataFrame, exposure: str, min_pa: int = MIN_SEASON_PA
     return np.array(out)
 
 
+def blend_expected(rows: pd.DataFrame, expected: pd.DataFrame, weight: float) -> np.ndarray:
+    """Mix Statcast's expected hits into ``rows``' park-adjusted hit columns (``s_adj`` ...) in place,
+    ``weight`` expected to ``1 - weight`` actual, on player-days Statcast covers. Each row's share of
+    a day's expected hits follows its balls in play. Returns which rows were covered."""
+    bip = rows[["s", "d", "t", "hr", "out"]].sum(axis=1).to_numpy(float)
+    day = pd.to_datetime(rows["date"]).dt.strftime("%Y-%m-%d")
+    sc = expected.groupby(["player_id", "date"])[["bip", *X_COLUMNS]].sum()
+    hit = sc.reindex(pd.MultiIndex.from_arrays([rows["player_id"].astype(str), day]))
+    n = hit["bip"].to_numpy(float)
+    covered = np.nan_to_num(n) > 0
+    rate = hit[X_COLUMNS].to_numpy(float) / np.where(covered, n, 1.0)[:, None]
+    for i, h in enumerate(HITS):
+        col = rows[h + "_adj"].to_numpy(float)
+        rows[h + "_adj"] = np.where(covered, (1 - weight) * col + weight * rate[:, i] * bip, col)
+    return covered
+
+
 def platoon_factors(platoon: pd.DataFrame) -> dict[tuple[str, str], np.ndarray]:
     """Outcome multipliers for each batter side and pitcher hand, relative to
     what the batter's and the pitcher's own averages already carry (the
@@ -146,6 +169,10 @@ class PlayerRatings:
             for e in COMPONENTS:
                 rows[e + "_adj"] = rows[e] / parks.lookup(rows["season"], rows["park_id"], e)
         adj = [e + "_adj" for e in COMPONENTS]
+        self.statcast = hp.statcast_weight > 0 and len(summaries.get("statcast_batting", ())) > 0
+        if self.statcast:
+            blend_expected(bat, summaries["statcast_batting"], hp.statcast_weight)
+            blend_expected(pit, summaries["statcast_pitching"], hp.statcast_weight)
         self.batting = RateEngine(bat["player_id"], bat["tau"], bat["pa"], bat[adj].to_numpy(),
                                   hp.batter_half_life)
         self.pitching = RateEngine(pit["player_id"], pit["tau"], pit["bf"], pit[adj].to_numpy(),
@@ -166,6 +193,10 @@ class PlayerRatings:
             early, early_p = early[early["season"].between(lo, hi)], early_p[early_p["season"].between(lo, hi)]
         self.k_batter = stabilization(early, "pa") * hp.batter_shrink
         self.k_pitcher = stabilization(early_p.rename(columns={"bf": "pa"}), "pa") * hp.pitcher_shrink
+        if self.statcast:
+            hits = [COMPONENTS.index(h) for h in HITS]
+            self.k_batter[hits] *= hp.statcast_shrink
+            self.k_pitcher[hits] *= hp.statcast_shrink
 
     def league(self, tau, pool: str = ALL_POOL) -> np.ndarray:
         s = self.pools.sums(np.full(len(np.atleast_1d(tau)), pool), np.atleast_1d(tau))
