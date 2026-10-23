@@ -80,7 +80,8 @@ def predict_seasons(features: pd.DataFrame, seasons, window: int, n_sims: int = 
         model = ScoreModel.fit(train)
         pred = model.predict(test, n_sims=n_sims, seed=season)
         if "spread_open" in test:
-            opened = test.assign(spread_line=test["spread_open"], total_line=test["total_open"],
+            # An opening line is posted days ahead, before the game's wind is known.
+            opened = test.assign(spread_line=test["spread_open"], total_line=test["total_open"], wind=np.nan,
                                  **{c: np.nan for c in OPEN_PRICES})
             at_open = model.predict(opened, n_sims=n_sims, seed=season)
             for col in EDGE_PROBS + [c for c in at_open if c.startswith("model_")]:

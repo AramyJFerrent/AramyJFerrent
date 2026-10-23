@@ -8,6 +8,7 @@ played so far.
 
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 from .config import Hyperparams
@@ -46,9 +47,11 @@ def rest_days(games: pd.DataFrame) -> pd.DataFrame:
 
 class FeatureBuilder:
     def __init__(self, games: pd.DataFrame, team_games: pd.DataFrame, returning: pd.DataFrame,
-                 lines: pd.DataFrame, venues: pd.DataFrame, hp: Hyperparams, qbs: pd.DataFrame | None = None):
+                 lines: pd.DataFrame, venues: pd.DataFrame, hp: Hyperparams, qbs: pd.DataFrame | None = None,
+                 weather: pd.DataFrame | None = None):
         """``qbs``: quarterback-game summaries (``data.summarize_qbs``); without them the
-        quarterback adjustment is zero."""
+        quarterback adjustment is zero. ``weather``: measured kickoff wind by game
+        (``weather.load_weather``); without it no game has wind."""
         self.hp = hp
         self.qb = QBModel(qbs, hp) if qbs is not None and len(qbs) else None
         self.members = members_from(team_games, games)
@@ -62,6 +65,8 @@ class FeatureBuilder:
         lines = lines.drop_duplicates("game_id").set_index("game_id")[LINE_FIELDS]
         g = games.join(lines, on="game_id")
         g = g.join(rest_days(games), on="game_id")
+        g["wind"] = (g["game_id"].map(weather.drop_duplicates("game_id").set_index("game_id")["wind"])
+                     if weather is not None and len(weather) else np.nan)
         self.games = pd.concat([g, travel_features(g, venues)], axis=1)
         done = games[games["completed"] & games["home_division"].eq("fbs") & games["away_division"].eq("fbs")]
         self._env_widx = (done["season"] * WEEKS_PER_SEASON + done["week"]).to_numpy()

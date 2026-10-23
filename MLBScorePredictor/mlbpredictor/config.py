@@ -99,6 +99,12 @@ class Hyperparams:
     # player's own record less.
     batter_shrink: float = 1.0
     pitcher_shrink: float = 1.0
+    # Statcast (``statcast.py``): the share of each single, double, triple and
+    # home run count taken from expected hits on the balls in play (0 uses
+    # actual hits only), and the multiplier on those outcomes' shrinkage when
+    # it is used, since expected hits carry less noise than actual ones.
+    statcast_weight: float = 0.0
+    statcast_shrink: float = 1.0
     # Starts of evidence before a pitcher's own innings per start outweighs
     # the league average, and the half-life (days) of old starts.
     starter_outs_prior: float = 4.0

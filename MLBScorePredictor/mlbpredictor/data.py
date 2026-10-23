@@ -36,7 +36,7 @@ import pandas as pd
 import requests
 from bettingcore import fetch as _fetch
 
-from . import retro
+from . import retro, statcast
 from .config import (
     CACHE_DIR,
     DISPLAY_TZ,
@@ -320,6 +320,10 @@ def update_summaries(season: int, max_age_hours: float = 1.0, retro_first: int =
     if pending_retro:
         build_retro_seasons(pending_retro)
     update_statsapi_season(season)
+    try:
+        statcast.update_season(season)
+    except Exception as exc:                       # predictions go on with what is already stored
+        log.warning("Statcast not updated: %s", exc)
 
 
 # ---- loading --------------------------------------------------------------
@@ -364,6 +368,7 @@ def load_summaries(first: int = FIRST_SEASON, last: int | None = None) -> dict[s
         out[kind] = pd.concat(parts, ignore_index=True)[cols] if parts else pd.DataFrame(columns=cols)
     out["games"] = prepare_games(out["games"])
     out["players"] = load_players()
+    out.update(statcast.load(first, last or current_season()))
     return out
 
 

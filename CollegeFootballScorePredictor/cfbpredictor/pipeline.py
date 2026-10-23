@@ -39,6 +39,7 @@ from .model import EDGE_PROBS, ScoreModel
 from .odds import live_lines
 from .returning import update_returning
 from .travel import load_venues
+from .weather import forecast_wind, load_weather, update_weather
 
 log = logging.getLogger(__name__)
 
@@ -63,7 +64,7 @@ LOG_COLUMNS = [
     "neutral", "bowl", "pred_away", "pred_home", "pred_margin", "pred_total", "model_margin", "model_total",
     "headline_away", "headline_home", "home_win_prob", "away_win_prob", "one_score_prob",
     "away_low", "away_high", "home_low", "home_high",
-    "spread_line", "total_line", "line_source", "elo_spread", "predicted_at", "source",
+    "spread_line", "total_line", "line_source", "wind_forecast", "elo_spread", "predicted_at", "source",
     "first_predicted_at", "first_spread_line", "first_model_margin",
     "away_score", "home_score",
     *PRICE_COLUMNS, *EDGE_PROBS, *MODEL_PROB_COLUMNS, *edge_columns(),
@@ -112,6 +113,7 @@ def prediction_rows(feats: pd.DataFrame, preds: pd.DataFrame, now: pd.Timestamp)
         "model_margin": preds["pred_model_margin"].to_numpy(), "model_total": preds["pred_model_total"].to_numpy(),
         "spread_line": feats["spread_line"].to_numpy(), "total_line": feats["total_line"].to_numpy(),
         "line_source": feats["line_source"].to_numpy() if "line_source" in feats else np.nan,
+        "wind_forecast": feats["wind_forecast"].to_numpy(float) if "wind_forecast" in feats else np.nan,
         "elo_spread": feats["elo_spread"].to_numpy(), "predicted_at": now, "source": "live",
     })
     for col in ("headline_away", "headline_home", "home_win_prob", "away_win_prob", "one_score_prob",
@@ -220,7 +222,7 @@ def with_live_lines(lines: pd.DataFrame, live: pd.DataFrame, upcoming: pd.DataFr
 
 
 def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 10000,
-               use_live_lines: bool = True, max_age_hours: float = 1.0) -> pd.DataFrame:
+               use_live_lines: bool = True, use_weather: bool = True, max_age_hours: float = 1.0) -> pd.DataFrame:
     now = pd.Timestamp(now or dt.datetime.now(dt.timezone.utc))
     hp = Hyperparams.load()
     season = current_season(now.date())
@@ -235,7 +237,9 @@ def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 100
     live = live_lines(upcoming) if use_live_lines and len(upcoming) else pd.DataFrame()
     lines = with_live_lines(lines, live, upcoming)
 
-    fb = FeatureBuilder(games, team_games, returning, lines, load_venues(), hp)
+    venues = load_venues()
+    weather = update_weather(games, venues, now.to_pydatetime()) if use_weather else load_weather()
+    fb = FeatureBuilder(games, team_games, returning, lines, venues, hp, weather=weather)
     if len(live):
         source = live.set_index("game_id")["line_source"]
         fb.games["line_source"] = fb.games["game_id"].map(source)
@@ -256,8 +260,9 @@ def run_update(now: dt.datetime | None = None, weeks: int = 2, n_sims: int = 100
     feats, ratings = fb.current(upcoming["game_id"], season)
     feats = feats.sort_values(["kickoff", "game_id"]).reset_index(drop=True)
     if len(feats):
-        preds = model.predict(feats, n_sims=n_sims)
-        new = prediction_rows(feats, preds, now)
+        wind = forecast_wind(feats, venues, now.to_pydatetime()) if use_weather else None
+        preds = model.predict(feats, n_sims=n_sims, wind=wind)
+        new = prediction_rows(feats.assign(wind_forecast=wind if wind is not None else np.nan), preds, now)
     else:
         new = pd.DataFrame(columns=LOG_COLUMNS)
     entries = update_log(entries, new, games)

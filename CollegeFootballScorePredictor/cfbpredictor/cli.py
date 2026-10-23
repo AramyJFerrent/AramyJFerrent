@@ -16,7 +16,7 @@ def cmd_update(args) -> None:
     from .pipeline import README_PATH, run_update
 
     new = run_update(weeks=args.weeks, n_sims=args.sims, use_live_lines=not args.no_lines,
-                     max_age_hours=args.max_age_hours)
+                     use_weather=not args.no_weather, max_age_hours=args.max_age_hours)
     print(f"Predicted {len(new)} upcoming games. See {README_PATH}")
 
 
@@ -38,9 +38,11 @@ def cmd_backtest(args) -> None:
     from .features import FeatureBuilder
     from .pipeline import FIRST_FIT_SEASON
 
+    from .weather import load_weather
+
     hp = Hyperparams.load()
     games, team_games, returning, lines, venues = _inputs(args, args.end)
-    fb = FeatureBuilder(games, team_games, returning, lines, venues, hp)
+    fb = FeatureBuilder(games, team_games, returning, lines, venues, hp, weather=load_weather())
     feats = fb.walk_forward(range(FIRST_FIT_SEASON, args.end + 1))
     seasons = range(args.start, args.end + 1)
     bt = backtest.predict_seasons(feats, seasons, hp.fit_window_seasons, first_fit_season=FIRST_FIT_SEASON)
@@ -195,6 +197,7 @@ def main(argv=None) -> None:
     p.add_argument("--weeks", type=int, default=2, help="upcoming weeks to predict (default 2)")
     p.add_argument("--sims", type=int, default=10000, help="simulations per game (default 10000)")
     p.add_argument("--no-lines", action="store_true", help="skip fetching live betting lines")
+    p.add_argument("--no-weather", action="store_true", help="skip wind forecasts and measured wind")
     p.set_defaults(func=cmd_update)
 
     p = sub.add_parser("backtest", help="walk-forward backtest against the closing line")
