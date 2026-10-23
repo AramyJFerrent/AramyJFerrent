@@ -83,7 +83,7 @@ scores, which takes a few minutes; later runs read only new games.
 | Bullpen and workload | The bullpen is every reliever from the team's last 15 games, weighted by recent use and marked down after pitching the day before (more after 25+ pitches), on back-to-back days or three times in four days. The starter's expected outs come from his recent starts, and set his expected share of each inning. | `features.py` |
 | Team ratings and Elo | Ridge ratings of each team's runs scored and allowed against a preseason prior catch what the player ratings miss (fielding, baserunning, how a staff is used), and a FiveThirtyEight-style Elo with a starting-pitcher adjustment is both a baseline and an input | `ratings.py`, `elo.py` |
 | Run model | Each team's expected runs in each inning: the league's current scoring level times the inning's own level, times the starter's and the bullpen's matchups mixed by the starter's expected share of that inning, times park, home field, temperature, wind, team ratings and Elo. Fitted by Poisson likelihood on the runs of every inning 1-8 in the last three seasons. | `model.py` |
-| Market | De-vigs ESPN's moneyline and total, backs each team's expected runs out of them through the same simulator, and blends `log runs = w × model + (1 − w) × market`. `w` starts from the value fitted on sportsbookreview's archived 2015-2021 closing lines (9%) and is refitted on logged games as they accumulate. | `market.py` |
+| Market | De-vigs ESPN's moneyline and total, backs each team's expected runs out of them through the same simulator, and blends `log runs = w × model + (1 − w) × market`. `w` starts from the value fitted on sportsbookreview's archived 2015-2021 closing lines (10%) and is refitted on logged games as they accumulate. | `market.py` |
 | Simulator | 10,000 games per matchup, inning by inning. Innings come from a base-out Markov chain built from Retrosheet's transitions (runner advances, double plays, steals and pickoffs included), scaled to each inning's expected runs, so an inning's run distribution is exact rather than assumed; extra innings start from a runner on second in the regular season. A shared game factor lets whole games run hot or cold, a team trailing by one to three from the ninth on faces the other side's closer, the home team skips the bottom of the ninth when ahead and walk-offs stop at the winning run unless they are home runs. Each setting is tuned so simulated scores match history. | `simulate.py` |
 | Edges | Expected value per $1 of each side of the run line, moneyline and total at the posted price, `EV = p × (decimal price − 1) − (1 − p − push)`, from the final prediction: the blended runs simulated against the posted run line and total, anchored to the market's own chances (the market's de-vigged chance plus the difference between the simulation at the blend and at the market's runs, same random draws), so only the blend's disagreement with the market can make an edge. A side is an edge at EV ≥ 3%, staked at a quarter of the Kelly stake with at most 3 units a game (shared [BettingCore](../BettingCore) package); each market shows its best side. Totals without a posted price are assumed -110 (marked `-110*`); run-line and moneyline prices are never assumed, so without one there is no edge and the run line shows the model's fair odds. | `edges.py`, `market.py` |
 | Backtest | Walk-forward by day over 2016-2025, scored against Elo and team ratings alone; against the market on Pinnacle's 2016 lines and sportsbookreview's 2016-2021 archive, with the edges graded at the archive's prices | `backtest.py` |
@@ -99,20 +99,20 @@ scores 0.693 log loss and 0.250 Brier.
 
 | Predictor | Log loss | Brier | Winners |
 |---|---|---|---|
-| Model + simulator | 0.6746 | 0.2409 | 57.6% |
+| Model + simulator | 0.6743 | 0.2407 | 57.7% |
 | Elo with starting pitchers | 0.6754 | 0.2413 | 57.6% |
 | Team runs ratings only | 0.6785 | 0.2428 | 56.8% |
 | Home team every time | 0.6910 | 0.2489 | 53.3% |
 
 - The model beats FiveThirtyEight-style Elo with its starting-pitcher
-  adjustment by 0.0009 log loss per game (95% interval 0.0001 to 0.0017) and
-  team ratings alone by 0.0040, and holds up on the seasons since 2021
-  (0.6759 against Elo's 0.6765). Elo is also one of the model's inputs; the
+  adjustment by 0.0012 log loss per game (95% interval 0.0003 to 0.0020) and
+  team ratings alone by 0.0042, and holds up on the seasons since 2021
+  (0.6756 against Elo's 0.6765). Elo is also one of the model's inputs; the
   Elo row is Elo on its own.
 - Baseball edges are as thin as the report warns: everything the model knows
   moves log loss 0.016 from always picking the home team, and its edge over
   Elo is a tenth of a percent.
-- Win probabilities are well calibrated: games given 60–70% were won 63.9%
+- Win probabilities are well calibrated: games given 60–70% were won 64.2%
   of the time (predicted 63.9%), and 40–50% games 45.3% (predicted 45.8%).
 - The simulator gets the shape of baseball scores right:
 
@@ -135,7 +135,7 @@ Statcast expected hits, tested on the same 2016-2025 walk-forward:
 - With 60% of each hit count from expected hits, log loss went from 0.6746
   to 0.6743 (paired bootstrap −0.00027, 95% interval −0.00053 to −0.00002)
   and total-runs error from 3.5345 to 3.5334. That is small, but the
-  model's whole edge over Elo is 0.0009. Every mix from 40% to 100% helped
+  model's whole edge over Elo was 0.0009 before it (0.0012 with it). Every mix from 40% to 100% helped
   by a similar amount, and 60% matches what predicting the next season
   says: on hitters with 250+ balls in play in back-to-back seasons, the best
   weight on expected hits next to actual ones is 0.45 to 0.6, and with that
@@ -185,18 +185,18 @@ seasons only):
 
 | Predictor | Log loss |
 |---|---|
-| Model + simulator | 0.6729 |
+| Model + simulator | 0.6728 |
 | Opening line | 0.6721 |
 | Closing line | 0.6702 |
-| Model blended with the closing line | 0.6708 |
+| Model blended with the closing line | 0.6709 |
 
-- The model is 0.0027 behind the closing line (95% interval 0.0013 to
-  0.0041) and level with the opening line (0.0008 behind, within noise), as
+- The model is 0.0026 behind the closing line (95% interval 0.0012 to
+  0.0039) and level with the opening line (0.0008 behind, within noise), as
   the report expects: the market sharpens as starters and lineups are
   confirmed, and the close already knows what the model knows.
-- Blending the model in makes the closing line slightly worse (0.0006, 95%
-  interval 0.0002 to 0.0011). The weight fitted on earlier seasons ran 3% to
-  12% on the model; fitted on all of 2015-2021 it is 9%, which is where the
+- Blending the model in makes the closing line slightly worse (0.0007, 95%
+  interval 0.0002 to 0.0011). The weight fitted on earlier seasons ran 4% to
+  13% on the model; fitted on all of 2015-2021 it is 10%, which is where the
   live blend starts. Pinnacle 2016 tells the same story (model 0.6764,
   closing line 0.6735, blend 0.6740).
 - Betting edges at the archive's prices, walk-forward, Kelly-staked
@@ -205,17 +205,17 @@ seasons only):
 
   | Market | Chances | Edges | Record (W-L-P) | ROI | 95% range | Expected ROI |
   |---|---|---|---|---|---|---|
-  | Run line, closing | final (live rule) | 5 | 4-1-0 | +66.8% | −29.4% to +136.4% | +17.2% |
-  | Moneyline, closing | final (live rule) | 10 | 3-7-0 | +38.9% | −80.1% to +137.2% | +17.2% |
-  | Total, closing | final (live rule) | 1 | 1-0-0 | +90.9% | – | +3.9% |
-  | Run line, closing | model alone (old rule) | 5247 | 2602-2645-0 | −2.9% | −5.7% to −0.1% | +8.4% |
-  | Moneyline, closing | model alone (old rule) | 6824 | 2926-3898-0 | −1.3% | −4.3% to +1.6% | +10.2% |
-  | Total, closing | model alone (old rule) | 6593 | 3265-3002-326 | −0.3% | −2.8% to +2.2% | +11.7% |
-  | Moneyline, opening | model alone | 4721 | 2122-2598-1 | +2.1% | −1.5% to +5.8% | +10.1% |
-  | Total, opening | model alone | 6567 | 3387-2870-310 | +3.4% | +1.0% to +5.8% | +11.7% |
+  | Run line, closing | final (live rule) | 5 | 5-0-0 | +122.4% | – | +16.9% |
+  | Moneyline, closing | final (live rule) | 16 | 8-8-0 | +58.0% | −38.4% to +147.0% | +14.6% |
+  | Total, closing | final (live rule) | 2 | 1-1-0 | +8.8% | – | +3.7% |
+  | Run line, closing | model alone (old rule) | 5063 | 2463-2600-0 | −4.5% | −7.4% to −1.6% | +8.4% |
+  | Moneyline, closing | model alone (old rule) | 6684 | 2809-3874-1 | −2.0% | −5.1% to +1.1% | +10.0% |
+  | Total, closing | model alone (old rule) | 6549 | 3255-2968-326 | −0.2% | −2.7% to +2.3% | +11.7% |
+  | Moneyline, opening | model alone | 4591 | 2020-2570-1 | +1.1% | −2.6% to +4.9% | +10.1% |
+  | Total, opening | model alone | 6605 | 3390-2906-309 | +3.4% | +1.0% to +5.8% | +11.7% |
 
   With the model at a few percent of the blend, the final prediction almost
-  never disagrees with the closing price by 3% of EV: 16 edges in six
+  never disagrees with the closing price by 3% of EV: 23 edges in six
   seasons, too few to judge. The model alone, the old rule, finds an edge in
   most games at the close and loses about the margin. Against the opening
   line the model alone came out ahead, on totals clearly (with -110
