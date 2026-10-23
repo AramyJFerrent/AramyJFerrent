@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Fri Oct 23, 2026 03:02 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Fri Oct 23, 2026 06:38 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -18,18 +18,18 @@ Saturday, October 24, 2026 · first bout locks Sat Oct 24, 10:00 AM ET
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 49% – 51% Evloev | +105 / -105 | Volkanovski 50% (-110 / -110) | Volkanovski 44% (+130) | Volkanovski 16% / 5% / 28%<br>Evloev 13% / 6% / 33% | 60% | Evloev by decision (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Volkanovski +515 / +2055 / +265<br>Evloev +645 / +1715 / +205 |
 | **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 56% – 44% Dvalishvili | -125 / +125 | Yan 55% (-135 / +114) | Yan 51% (-105) | Yan 15% / 5% / 36%<br>Dvalishvili 6% / 7% / 32% | 67% | Yan by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Yan +575 / +1890 / +180<br>Dvalishvili +1520 / +1430 / +215 |
-| **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 50% – 50% Temirov | -100 / +100 | Kavanagh 52% (-118 / -102) | Kavanagh 43% (+130) | Kavanagh 11% / 6% / 33%<br>Temirov 24% / 4% / 22% | 55% | Kavanagh by decision (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Kavanagh +845 / +1475 / +200<br>Temirov +320 / +2290 / +355 |
-| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 52% – 48% Kuniev | -110 / +110 | Volkov 53% (-125 / +105) | Volkov 45% (+125) | Volkov 23% / 3% / 26%<br>Kuniev 24% / 3% / 21% | 47% | Volkov by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Volkov +335 / +3010 / +290<br>Kuniev +320 / +3045 / +375 |
-| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 55% – 45% Keita | -125 / +125 | Pico 58% (-155 / +130) | Pico 37% (+170) | Pico 11% / 6% / 38%<br>Keita 22% / 4% / 19% | 57% | Pico by decision (38%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Pico +805 / +1555 / +160<br>Keita +350 / +2725 / +430 |
-| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 63% – 37% Reyes | -170 / +170 | Murzakanov 64% (-205 / +170) | Murzakanov 40% (+150) | Murzakanov 42% / 5% / 16%<br>Reyes 22% / 3% / 12% | 28% | Murzakanov by KO/TKO (42%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Murzakanov +140 / +1965 / +515<br>Reyes +345 / +3850 / +715 |
-| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 16% – 84% Yakhyaev | +525 / -525 | Krylov 19% (+410 / -550) | Krylov 35% (+185) | Krylov 7% / 3% / 7%<br>Yakhyaev 47% / 26% / 10% | 17% | Yakhyaev by KO/TKO (47%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Krylov +1395 / +3560 / +1415<br>Yakhyaev +110 / +285 / +855 |
-| **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 49% – 51% Rowston | +105 / -105 | Magomedov 53% (-125 / +105) | Magomedov 32% (+210) | Magomedov 13% / 12% / 24%<br>Rowston 23% / 6% / 22% | 46% | Magomedov by decision (24%) | Rowston (+105): EV +4.8%, 51%, stake 1.1u | no edge | no prices yet; fair KO / Sub / Dec<br>Magomedov +680 / +715 / +320<br>Rowston +335 / +1620 / +345 |
-| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 50% – 50% Aliev | -100 / +100 | Dawson 52% (-118 / -102) | Dawson 44% (+130) | Dawson 8% / 17% / 25%<br>Aliev 11% / 8% / 31% | 56% | Aliev by decision (31%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Dawson +1085 / +505 / +295<br>Aliev +840 / +1160 / +220 |
-| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 19% – 81% Chopurov | +425 / -425 | Thicknesse 18% (+440 / -575) | Thicknesse 63% (-170) | Thicknesse 5% / 4% / 10%<br>Chopurov 19% / 15% / 47% | 57% | Chopurov by decision (47%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Thicknesse +1850 / +2465 / +900<br>Chopurov +415 / +580 / +115 |
+| **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 49% – 51% Temirov | +100 / -100 | Kavanagh 51% (-115 / -105) | Kavanagh 43% (+130) | Kavanagh 10% / 6% / 33%<br>Temirov 24% / 4% / 22% | 55% | Kavanagh by decision (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Kavanagh +860 / +1500 / +205<br>Temirov +315 / +2250 / +350 |
+| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 51% – 49% Kuniev | -105 / +105 | Volkov 53% (-122 / +102) | Volkov 45% (+125) | Volkov 23% / 3% / 25%<br>Kuniev 24% / 3% / 21% | 47% | Volkov by decision (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Volkov +340 / +3055 / +290<br>Kuniev +315 / +2995 / +370 |
+| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 54% – 46% Keita | -120 / +120 | Pico 57% (-148 / +124) | Pico 37% (+170) | Pico 11% / 6% / 38%<br>Keita 23% / 4% / 19% | 57% | Pico by decision (38%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Pico +825 / +1595 / +165<br>Keita +340 / +2645 / +420 |
+| **Azamat Murzakanov** vs. **Dominick Reyes**<br>LHW, 3 rds | Murzakanov 62% – 38% Reyes | -160 / +160 | Murzakanov 64% (-198 / +164) | Murzakanov 40% (+150) | Murzakanov 41% / 5% / 16%<br>Reyes 23% / 3% / 13% | 29% | Murzakanov by KO/TKO (41%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Murzakanov +145 / +2000 / +525<br>Reyes +335 / +3755 / +700 |
+| **Nikita Krylov** vs. **Abdul-Rakhman Yakhyaev**<br>LHW, 3 rds | Krylov 16% – 84% Yakhyaev | +545 / -545 | Krylov 18% (+425 / -575) | Krylov 35% (+185) | Krylov 6% / 3% / 6%<br>Yakhyaev 48% / 26% / 11% | 17% | Yakhyaev by KO/TKO (48%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Krylov +1440 / +3685 / +1460<br>Yakhyaev +110 / +280 / +850 |
+| **Abus Magomedov** vs. **Cam Rowston**<br>MW, 3 rds | Magomedov 48% – 52% Rowston | +105 / -105 | Magomedov 53% (-122 / +102) | Magomedov 32% (+210) | Magomedov 13% / 12% / 23%<br>Rowston 23% / 6% / 23% | 46% | Magomedov by decision (23%) | Rowston (+102): EV +4.6%, 52%, stake 1.1u | no edge | no prices yet; fair KO / Sub / Dec<br>Magomedov +690 / +730 / +325<br>Rowston +330 / +1595 / +340 |
+| **Grant Dawson** vs. **Nurullo Aliev**<br>LW, 3 rds | Dawson 50% – 50% Aliev | +100 / -100 | Dawson 51% (-115 / -105) | Dawson 44% (+130) | Dawson 8% / 16% / 25%<br>Aliev 11% / 8% / 32% | 57% | Aliev by decision (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Dawson +1100 / +515 / +300<br>Aliev +830 / +1140 / +215 |
+| **Colby Thicknesse** vs. **Asaf Chopurov**<br>BW, 3 rds, UFC debut: Chopurov | Thicknesse 18% – 82% Chopurov | +460 / -460 | Thicknesse 17% (+470 / -650) | Thicknesse 63% (-170) | Thicknesse 5% / 4% / 9%<br>Chopurov 20% / 15% / 47% | 57% | Chopurov by decision (47%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Thicknesse +1970 / +2640 / +960<br>Chopurov +405 / +570 / +110 |
 | **Abubakar Vagaev** vs. **Jacob Malkoun**<br>MW, 3 rds | Vagaev 57% – 43% Malkoun | -130 / +130 | Vagaev 59% (-162 / +136) | Vagaev 38% (+165) | Vagaev 14% / 9% / 34%<br>Malkoun 13% / 8% / 23% | 57% | Vagaev by decision (34%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Vagaev +625 / +980 / +195<br>Malkoun +685 / +1215 / +335 |
-| **Bolaji Oki** vs. **Daniel Santos**<br>FW, 3 rds | Oki 45% – 55% Santos | +120 / -120 | Oki 48% (+100 / -120) | Oki 40% (+150) | Oki 17% / 3% / 25%<br>Santos 25% / 6% / 24% | 49% | Santos by KO/TKO (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Oki +480 / +3130 / +300<br>Santos +300 / +1700 / +320 |
+| **Bolaji Oki** vs. **Daniel Santos**<br>FW, 3 rds | Oki 46% – 54% Santos | +120 / -120 | Oki 48% (-102 / -118) | Oki 40% (+150) | Oki 17% / 3% / 25%<br>Santos 25% / 6% / 24% | 49% | Oki by decision (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Oki +475 / +3090 / +295<br>Santos +300 / +1720 / +320 |
 | **Kody Steele** vs. **Noah Gugnon**<br>LW, 3 rds | Steele 53% – 47% Gugnon | -110 / +110 | Steele 58% (-155 / +130) | Steele 27% (+275) | Steele 12% / 18% / 22%<br>Gugnon 14% / 18% / 15% | 37% | Steele by decision (22%) | Gugnon (+130): EV +9.1%, 47%, stake 1.7u | no edge | no prices yet; fair KO / Sub / Dec<br>Steele +745 / +445 / +350<br>Gugnon +610 / +445 / +570 |
-| **Iasmin Lucindo** vs. **Nicolle Caliari**<br>W-SW, 3 rds | Lucindo 82% – 18% Caliari | -470 / +470 | Lucindo 78% (-425 / +330) | Lucindo 75% (-300) | Lucindo 10% / 12% / 61%<br>Caliari 1% / 3% / 13% | 74% | Lucindo by decision (61%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Lucindo +945 / +755 / -160<br>Caliari +6905 / +2995 / +680 |
+| **Iasmin Lucindo** vs. **Nicolle Caliari**<br>W-SW, 3 rds | Lucindo 82% – 18% Caliari | -455 / +455 | Lucindo 77% (-410 / +320) | Lucindo 75% (-300) | Lucindo 10% / 12% / 61%<br>Caliari 1% / 3% / 13% | 74% | Lucindo by decision (61%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Lucindo +950 / +760 / -155<br>Caliari +6725 / +2910 / +660 |
 
 When it ends (either fighter):
 
@@ -37,13 +37,13 @@ When it ends (either fighter):
 |---|---|---|---|---|---|---|
 | Volkanovski vs. Evloev | 13% | 11% | 8% | 4% | 4% | 60% |
 | Yan vs. Dvalishvili | 10% | 9% | 6% | 4% | 3% | 67% |
-| Kavanagh vs. Temirov | 22% | 15% | 8% |  |  | 55% |
+| Kavanagh vs. Temirov | 23% | 15% | 8% |  |  | 55% |
 | Volkov vs. Kuniev | 28% | 17% | 8% |  |  | 47% |
 | Pico vs. Keita | 21% | 14% | 7% |  |  | 57% |
-| Murzakanov vs. Reyes | 41% | 21% | 9% |  |  | 28% |
+| Murzakanov vs. Reyes | 41% | 21% | 9% |  |  | 29% |
 | Krylov vs. Yakhyaev | 52% | 23% | 9% |  |  | 17% |
 | Magomedov vs. Rowston | 28% | 17% | 9% |  |  | 46% |
-| Dawson vs. Aliev | 22% | 14% | 7% |  |  | 56% |
+| Dawson vs. Aliev | 22% | 14% | 7% |  |  | 57% |
 | Thicknesse vs. Chopurov | 21% | 14% | 7% |  |  | 57% |
 | Vagaev vs. Malkoun | 22% | 14% | 7% |  |  | 57% |
 | Oki vs. Santos | 26% | 17% | 8% |  |  | 49% |
@@ -145,7 +145,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 2 | Petr Yan | 2123 | 239 | 12-4 | 2025-12-06 |
 |  | 3 | Song Yadong | 2064 | 224 | 13-4-1 | 2026-08-29 |
 |  | 4 | Cory Sandhagen | 2059 | 231 | 11-6 | 2026-07-11 |
-|  | 5 | Sean O'Malley | 2059 | 243 | 12-3 | 2026-06-14 |
+|  | 5 | Sean O'Malley | 2059 | 244 | 12-3 | 2026-06-14 |
 | Featherweight | 1 | Alexander Volkanovski | 2192 | 234 | 15-3 | 2026-01-31 |
 |  | 2 | Diego Lopes | 2145 | 267 | 7-3 | 2026-06-14 |
 |  | 3 | Aljamain Sterling | 2097 | 228 | 18-5 | 2026-04-25 |
