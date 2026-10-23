@@ -78,6 +78,7 @@ Actions tab with **Run workflow** so the upcoming games pick up their lines.
 | Elo | Margin-of-victory Elo from 2005, kept as the baseline and also used as an input | `elo.py` |
 | Margin and total models | Two linear maps fitted separately: the margin from offense, defense, net special teams, home field (smaller in conference games), the FBS-vs-FCS gap and Elo; the total from offense, defense and pace on top of the current scoring level | `model.py` |
 | Market blend | `final = w × model + (1 − w) × line` for margin and total, with `w` fitted on recent seasons | `model.py` |
+| Wind | Kickoff wind at outdoor venues lowers the total: each mph above 10 takes off what the blend (and, without a line, the model) missed in recent seasons, about 0.06 to 0.14 points on top of the blended total. Fitted on measured wind (the nearest weather station's, from Meteostat, through 2025; Open-Meteo's archive since), applied to Open-Meteo's kickoff forecast. | `weather.py`, `model.py` |
 | Score simulator | 10,000 simulated games per matchup. Each team's scoring chances end in a touchdown (then a kick or two-point try), a field goal or nothing; tied games go to overtime, which always produces a winner, with margins drawn from real overtime games. Dispersion is calibrated to real prediction errors and key margins to real frequencies. | `simulate.py` |
 | Lines | History: the median across books of closing and opening lines (2013–2025), else the line in the play-by-play. Live: CFBD or ESPN. Prices: each side's price is the median of the books quoting the consensus line (medians of prices taken on break-even probability); moneylines are the median across books. | `lines.py`, `odds.py` |
 | Betting edges | The final prediction's chance of winning, covering and going over, pushes included, anchored to the market: the market's de-vigged chance plus the difference between the simulator run at the blend and at the line (same random draws), so only the blend's disagreement with the line counts. Each side of the spread, moneyline and total is valued at its price: EV = p × (decimal odds − 1) − (1 − p − push) per unit. The best side is an edge when EV ≥ 3%, staked at a quarter of the Kelly stake with at most 3 units a game (shared [BettingCore](../BettingCore) package). Unposted spread and total prices are assumed to be −110 (marked −110\*); moneylines never are. | `edges.py`, `model.py` |
@@ -95,7 +96,7 @@ earlier seasons only. FBS-vs-FBS games with a closing line:
 
 | Predictor | Margin MAE | Total MAE | Team-score MAE | Brier | Winners |
 |---|---|---|---|---|---|
-| Final (model + market + simulator) | 12.29 | 12.85 | 8.98 | 0.173 | 73.5% |
+| Final (model + market + simulator) | 12.29 | 12.84 | 8.97 | 0.173 | 73.5% |
 | Model only | 12.85 | 13.31 | 9.35 | 0.180 | 72.3% |
 | Elo baseline | 13.42 | 14.04 | 9.85 | 0.188 | 70.6% |
 | Closing line | 12.28 | 12.85 | 8.97 | 0.174 | 73.3% |
@@ -109,6 +110,12 @@ earlier seasons only. FBS-vs-FBS games with a closing line:
   market's own). For games with a line the fitted blend puts about 90% of the
   margin weight and 80–90% of the total weight on the line, so the final
   number tracks it; games without a line yet use the model alone.
+- Kickoff wind trims the final total's error (12.82 to 12.80 on every game
+  with a line, now a hair under the closing line's 12.82): the closing total
+  under-prices wind. Before the wind term, each mph above 10 meant about 0.2
+  points fewer than the line expected (2.6 standard errors). The backtest
+  uses measured wind and the live page a forecast, so live it helps a
+  little less; opening-line rows get no wind, since it is not known then.
 - Win probabilities are well calibrated, the 80% ranges contain the actual
   score 82% of the time, and one-score games are predicted at 33.7% against
   34.3% actual.
@@ -230,6 +237,8 @@ committed `data/` files plus the schedules, which it downloads.
 | `data/team_games/` | Per-season team-game efficiency summaries and play-by-play lines |
 | `data/production/`, `data/returning.csv` | Player production and returning production by team |
 | `data/lines.csv`, `data/venues.csv` | Consensus historical lines and prices; home stadiums |
+| `data/weather.csv` | Measured kickoff wind for finished outdoor games |
+| `data/qbs/` | Per-game quarterback dropbacks and EPA (for the quarterback test) |
 
 ## Not modeled yet
 
@@ -239,15 +248,14 @@ committed `data/` files plus the schedules, which it downloads.
 - **Talent and recruiting rankings, and coaching changes**, two of the
   report's prior ingredients, are not in the free cfbfastR data. Returning
   production also lacks offensive line snaps.
-- **Weather.** There was no historical wind data reachable to fit a college
-  wind effect, and the NFL predictor found it small, so totals are not
-  adjusted for forecasts.
+- **Weather beyond wind.** Rain, snow and cold are not used; wind carried
+  the signal in the NFL, and in college games too.
 - **Bowl opt-outs.** The schedule files have no postseason games before 2023,
   so bowls are backtested on 2023–2025 only (134 games). With a line, bowl
   predictions lean on it as usual.
 - The report's gradient-boosting residual layer. The inputs it would use are
-  either not in the data (weather, availability) or did not help as linear
-  terms (travel, rest).
+  either not in the data (availability) or did not help as linear terms
+  (travel, rest).
 
 ## Data
 
@@ -255,4 +263,7 @@ Schedules, play-by-play, rosters, team information and historical lines from
 [cfbfastR](https://github.com/sportsdataverse/cfbfastR-data)
 (sportsdataverse), which builds on
 [CollegeFootballData](https://collegefootballdata.com/). Live lines from
-CollegeFootballData (with a key) or ESPN's public scoreboard.
+CollegeFootballData (with a key) or ESPN's public scoreboard. Measured wind
+through 2025 from [Meteostat](https://meteostat.net) (CC BY-NC 4.0); later
+measured wind and forecasts by [Open-Meteo.com](https://open-meteo.com/)
+(CC BY 4.0).
