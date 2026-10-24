@@ -1794,7 +1794,7 @@ player_id,name,position
 4432737,Jaden Bradley,G
 4432808,James Wiseman,C
 4432809,Cole Anthony,G
-4432810,Isaiah Stewart,F
+4432810,Isaiah Stewart,C
 4432811,Josh Green,G
 4432812,Scottie Lewis,SG
 4432813,Jeremiah Robinson-Earl,F
@@ -1841,6 +1841,7 @@ player_id,name,position
 4433287,Brandon Miller,F
 4433378,Colby Jones,G
 4433569,Johni Broome,F
+4433599,Arthur Kaluma,F
 4433607,DaRon Holmes II,F
 4433618,Harrison Ingram,F
 4433620,Emoni Bates,F
@@ -1889,7 +1890,7 @@ player_id,name,position
 4593016,Quinten Post,C
 4593034,Alex Morales,G
 4593041,David Roddy,F
-4593043,John Tonje,G
+4593043,John Tonje,F
 4593049,Orlando Robinson,C
 4593125,Santi Aldama,F
 4593803,Jalen Williams,G
@@ -2001,6 +2002,7 @@ player_id,name,position
 4845363,Cam Christie,G
 4845367,Stephon Castle,G
 4845374,Bub Carrington,G
+4848625,Dailyn Swain,G
 4868423,Jaden Hardy,G
 4869342,Dyson Daniels,G
 4869780,Derik Queen,C
@@ -2099,6 +2101,7 @@ player_id,name,position
 5107968,Ja'Kobi Gillespie,G
 5108024,Yanic Konan Niederhauser,C
 5112087,Jaylen Wells,F
+5114350,AK Okereke,F
 5124612,VJ Edgecombe,G
 5142620,Darius Acuff Jr.,G
 5142621,Chris Cenac Jr.,F
@@ -2123,6 +2126,7 @@ player_id,name,position
 5175647,Hugo Gonzalez,G
 5175737,Yaxel Lendeborg,F
 5176420,Hayden Gray,G
+5176517,Michael Ajayi,NA
 5177362,Riley Minix,F
 5184018,Maozinha Pereira,F
 5203685,Khaman Maluach,C

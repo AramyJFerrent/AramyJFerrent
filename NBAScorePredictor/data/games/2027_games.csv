@@ -15,18 +15,18 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909842,2027,R,2026-10-22 02:30:00+00:00,LAC,SAC,121.0,96.0,4.0,False,Intuit Dome,Inglewood,CA
 401909093,2027,R,2026-10-22 23:00:00+00:00,PHI,CLE,114.0,106.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
 401909094,2027,R,2026-10-23 01:30:00+00:00,OKC,DEN,96.0,84.0,4.0,False,Paycom Center,Oklahoma City,OK
-401909848,2027,R,2026-10-23 20:00:00+00:00,MIL,CHI,,,,False,Fiserv Forum,Milwaukee,WI
-401909095,2027,R,2026-10-23 23:00:00+00:00,BOS,NYK,,,,False,TD Garden,Boston,MA
-401909843,2027,R,2026-10-23 23:00:00+00:00,CHA,ATL,,,,False,Spectrum Center,Charlotte,NC
-401909844,2027,R,2026-10-23 23:00:00+00:00,IND,DAL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
-401909845,2027,R,2026-10-23 23:00:00+00:00,ORL,MIN,,,,False,Kia Center,Orlando,FL
-401909846,2027,R,2026-10-23 23:00:00+00:00,WAS,TOR,,,,False,Capital One Arena,Washington,DC
-401909847,2027,R,2026-10-24 00:00:00+00:00,MIA,DET,,,,False,Kaseya Center,Miami,FL
-401909096,2027,R,2026-10-24 01:30:00+00:00,SAS,HOU,,,,False,Moody Center,Austin,TX
-401909849,2027,R,2026-10-24 01:30:00+00:00,UTA,NOP,,,,False,Delta Center,Salt Lake City,UT
-401909850,2027,R,2026-10-24 02:00:00+00:00,GSW,MEM,,,,False,Chase Center,San Francisco,CA
-401909851,2027,R,2026-10-24 02:00:00+00:00,LAL,LAC,,,,False,crypto.com Arena,Los Angeles,CA
-401909852,2027,R,2026-10-24 02:00:00+00:00,SAC,POR,,,,False,Golden 1 Center,Sacramento,CA
+401909848,2027,R,2026-10-23 20:00:00+00:00,MIL,CHI,125.0,132.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909095,2027,R,2026-10-23 23:00:00+00:00,BOS,NYK,107.0,103.0,4.0,False,TD Garden,Boston,MA
+401909843,2027,R,2026-10-23 23:00:00+00:00,CHA,ATL,81.0,128.0,4.0,False,Spectrum Center,Charlotte,NC
+401909844,2027,R,2026-10-23 23:00:00+00:00,IND,DAL,105.0,121.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909845,2027,R,2026-10-23 23:00:00+00:00,ORL,MIN,93.0,115.0,4.0,False,Kia Center,Orlando,FL
+401909846,2027,R,2026-10-23 23:00:00+00:00,WAS,TOR,102.0,112.0,4.0,False,Capital One Arena,Washington,DC
+401909847,2027,R,2026-10-24 00:00:00+00:00,MIA,DET,111.0,128.0,4.0,False,Kaseya Center,Miami,FL
+401909096,2027,R,2026-10-24 01:30:00+00:00,SAS,HOU,110.0,114.0,4.0,False,Moody Center,Austin,TX
+401909849,2027,R,2026-10-24 01:30:00+00:00,UTA,NOP,120.0,119.0,4.0,False,Delta Center,Salt Lake City,UT
+401909850,2027,R,2026-10-24 02:00:00+00:00,GSW,MEM,108.0,111.0,4.0,False,Chase Center,San Francisco,CA
+401909851,2027,R,2026-10-24 02:00:00+00:00,LAL,LAC,125.0,117.0,4.0,False,crypto.com Arena,Los Angeles,CA
+401909852,2027,R,2026-10-24 02:00:00+00:00,SAC,POR,120.0,128.0,4.0,False,Golden 1 Center,Sacramento,CA
 401909853,2027,R,2026-10-24 22:00:00+00:00,CHA,MIA,,,,False,Spectrum Center,Charlotte,NC
 401909854,2027,R,2026-10-24 23:30:00+00:00,CLE,BKN,,,,False,Rocket Arena,Cleveland,OH
 401909855,2027,R,2026-10-24 23:30:00+00:00,PHI,MIL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
