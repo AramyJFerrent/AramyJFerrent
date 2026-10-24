@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Sat Oct 24, 2026 12:56 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Sat Oct 24, 2026 02:46 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -9,28 +9,6 @@ The fair odds are the American odds that match the win chance with no bookmaker 
 The three edge columns value every side of each market at its posted price: expected value (EV) is the average profit per $1 staked, from the final prediction: the win chance blended with the moneyline (which corrects the market's habit of underrating heavy favorites), and method and round chances anchored to their own props, moved only by what the blend changes. A side is an edge when its EV is at least 3%; each cell names the best side if one clears that bar, with its stake, a 25% share of the Kelly stake in units of 1% of the bankroll, at most 3 units on one bout; else "no edge". Moneylines and props are never priced near -110, so a missing price is never assumed: without one, the round-total cell shows the model's fair odds at the line closest to even and the method cell each fighter's fair KO/TKO, submission and decision odds. Over 1.5 rounds means the fight passes 2:30 of round 2 (a decision is always over); finishes are assumed spread evenly within a round.
 
 See the backtest (backtest.md) for how these edges did against the dataset's closing prices, next to the model alone, which finds a 3% edge in most fights and lost money on them. Treat these columns as a live test, tracked below, not as betting advice.
-
-## UFC 333: Volkanovski vs. Evloev
-
-Saturday, October 24, 2026 · first bout locks Sat Oct 24, 2:00 PM ET
-
-| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Alexander Volkanovski** vs. **Movsar Evloev**<br>FW, title, 5 rds | Volkanovski 48% – 52% Evloev | +110 / -110 | Volkanovski 50% (-108 / -112) | Volkanovski 44% (+130) | Volkanovski 16% / 5% / 27%<br>Evloev 14% / 6% / 33% | 60% | Evloev by decision (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Volkanovski +520 / +2080 / +265<br>Evloev +640 / +1695 / +205 |
-| **Petr Yan** vs. **Merab Dvalishvili**<br>BW, title, 5 rds | Yan 57% – 43% Dvalishvili | -130 / +130 | Yan 56% (-142 / +120) | Yan 51% (-105) | Yan 15% / 5% / 36%<br>Dvalishvili 6% / 6% / 31% | 67% | Yan by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Yan +560 / +1835 / +175<br>Dvalishvili +1570 / +1485 / +225 |
-| **Lone'er Kavanagh** vs. **Ramazan Temirov**<br>FLW, 3 rds | Kavanagh 49% – 51% Temirov | +105 / -105 | Kavanagh 50% (-112 / -108) | Kavanagh 43% (+130) | Kavanagh 10% / 6% / 32%<br>Temirov 24% / 4% / 22% | 55% | Kavanagh by decision (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Kavanagh +870 / +1525 / +210<br>Temirov +310 / +2215 / +345 |
-| **Alexander Volkov** vs. **Rizvan Kuniev**<br>HW, 3 rds | Volkov 52% – 48% Kuniev | -110 / +110 | Volkov 53% (-125 / +105) | Volkov 45% (+125) | Volkov 23% / 3% / 26%<br>Kuniev 24% / 3% / 21% | 47% | Volkov by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Volkov +335 / +3010 / +290<br>Kuniev +320 / +3045 / +375 |
-| **Aaron Pico** vs. **Losene Keita**<br>FW, 3 rds | Pico 52% – 48% Keita | -110 / +110 | Pico 55% (-135 / +114) | Pico 37% (+170) | Pico 10% / 6% / 36%<br>Keita 24% / 4% / 20% | 56% | Pico by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Pico +865 / +1680 / +175<br>Keita +320 / +2505 / +395 |
-
-When it ends (either fighter):
-
-| Bout | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 | Decision |
-|---|---|---|---|---|---|---|
-| Volkanovski vs. Evloev | 13% | 11% | 8% | 4% | 4% | 60% |
-| Yan vs. Dvalishvili | 10% | 9% | 6% | 4% | 3% | 67% |
-| Kavanagh vs. Temirov | 23% | 15% | 8% |  |  | 55% |
-| Volkov vs. Kuniev | 28% | 17% | 8% |  |  | 47% |
-| Pico vs. Keita | 22% | 14% | 7% |  |  | 56% |
 
 ## UFC Fight Night: Moicano vs. Nolan
 
@@ -154,7 +132,7 @@ Every edge logged with a live prediction (the last one before the fight), at the
 | Melissa Croden vs. Chelsea Chandler | Croden 73% | Chelsea Chandler by submission, R1 | 27% | 3% |
 | Cody Chovancek vs. SuYoung You | You 64% | SuYoung You by submission, R3 | 64% | 10% |
 
-9 locked predictions are waiting for official results.
+14 locked predictions are waiting for official results.
 
 ## Top fighters by division
 
@@ -208,7 +186,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 4 | Gillian Robertson | 1785 | 231 | 14-7 | 2026-08-15 |
 |  | 5 | Jessica Andrade | 1753 | 220 | 17-13 | 2025-08-16 |
 | Women's Flyweight | 1 | Valentina Shevchenko | 1998 | 255 | 15-3-1 | 2025-11-15 |
-|  | 2 | Zhang Weili | 1981 | 257 | 10-3 | 2025-11-15 |
+|  | 2 | Zhang Weili | 1981 | 258 | 10-3 | 2025-11-15 |
 |  | 3 | Erin Blanchfield | 1984 | 285 | 8-2 | 2026-10-17 |
 |  | 4 | Natalia Silva | 2007 | 311 | 9-0 | 2026-10-03 |
 |  | 5 | Manon Fiorot | 1961 | 288 | 8-2 | 2026-09-12 |
