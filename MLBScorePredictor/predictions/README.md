@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sat Oct 24, 2026 12:51 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Sat Oct 24, 2026 06:39 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,7 +14,7 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | Drew Rasmussen / Logan Henderson | TB 3, MIL 4 | MIL 54% | TB +115 / MIL -115 | TB +100 / MIL -120 | 3.4 – 3.5 | 0–7 / 1–7 | MIL -1.5 33% | 6.9 / 6.5 (over 50%) | MIL -110, 3.7 runs | 11% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | TB @ MIL | Drew Rasmussen / Logan Henderson | TB 3, MIL 4 | MIL 54% | TB +115 / MIL -115 | TB +100 / MIL -120 | 3.4 – 3.5 | 0–7 / 1–7 | MIL -1.5 33% | 6.9 / 6.5 (over 50%) | MIL -110, 3.7 runs | 11% | ✓ / ✓ | no edge | no edge | no edge |
 
 ## Monday, October 26 — World Series
 
