@@ -136,6 +136,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858206,2026,1,Stanford,4878681,Shotgun #8 D.Warren,42,26.0,-2.686
 401858207,2026,1,Miami (OH),5388435,No Huddle-Shotgun #6 C.Heavner,4,0.0,0.0
 401858207,2026,1,Miami (OH),5141549,No Huddle-Shotgun #16 D.McComb,35,28.0,9.251
+401858207,2026,1,Pittsburgh,4714300,Shotgun #15 H.Geriner,3,0.0,0.0
 401858207,2026,1,Pittsburgh,5208095,13:30) Shotgun #6 M.Heintschel,43,34.0,25.368
 401858208,2026,1,New Hampshire,5226704,No Huddle-Shotgun #4 T.McLeish,10,0.0,0.0
 401858208,2026,1,New Hampshire,5298487,No Huddle-Shotgun #7 B.Bentley,21,14.0,-8.46
@@ -214,6 +215,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401860878,2026,1,Colorado State,5079443,) No Huddle-Shotgun #8 H.Hejny,33,33.0,12.825
 401860878,2026,1,Wyoming,4838536,#6 T.Hughes,21,21.0,-9.406
 401860879,2026,1,Portland State,5152778,Shotgun #5 G.Downing,52,34.0,1.734
+401860879,2026,1,San Diego State,5141664,Huddle-Shotgun #11 S.Saunders,5,0.0,0.0
 401860879,2026,1,San Diego State,4685311,No Huddle-Shotgun #4 J.Denegal,17,15.0,5.977
 401860880,2026,1,Idaho State,5158746,) No Huddle-Shotgun #1 J.Cooke,35,35.0,-2.916
 401860880,2026,1,Utah State,5081197,uddle-Shotgun #9 G.Brosterhous,14,14.0,-4.44
@@ -346,6 +348,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866627,2026,1,App State,5082965,07:55) Shotgun #17 T.Ulatowski,5,0.0,0.0
 401866627,2026,1,App State,4870999,Huddle-Shotgun #3 M.Singleton,25,21.0,11.784
 401866627,2026,1,Maine,5226632,No Huddle-Shotgun #2 E.Buehler,33,14.0,-11.755
+401867684,2026,1,Chicago State,5159024,No Huddle-Shotgun #9 A.Pannell,35,34.0,-0.056
 401867684,2026,1,UT Martin,4801302,No Huddle-Shotgun #4 J.Calvez,3,3.0,3.872
 401867684,2026,1,UT Martin,5299226,No Huddle-Shotgun #8 T.Surber,23,20.0,2.029
 401867692,2026,1,Delaware State,5154019,Huddle-Shotgun #19 N.Brannock,12,12.0,-5.938
@@ -444,8 +447,8 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868070,2026,1,Central Arkansas,5416075,) No Huddle-Shotgun #3 D.Omolo,25,25.0,22.278
 401868070,2026,1,UT Martin,4801302,No Huddle-Shotgun #4 J.Calvez,24,24.0,-5.311
 401868071,2026,1,Central Arkansas,5416075,No Huddle-Shotgun #3 D.Omolo,33,18.0,-9.526
-401868071,2026,1,West Florida,5436233,Ty'ray Davis,3,3.0,9.339
 401868071,2026,1,West Florida,4790965,Shotgun #10 D.Leary,6,2.0,-1.892
+401868071,2026,1,West Florida,5436233,No Huddle-Shotgun #1 T.Davis,17,17.0,12.448
 401868073,2026,1,Cal Poly,5219586,#7 A.Grigsby Jr.,37,37.0,15.172
 401868073,2026,1,Idaho,4832830,Shotgun #3 J.Wood,26,26.0,22.75
 401868074,2026,1,Cal Poly,5219586,4:59) Shotgun #7 A.Grigsby Jr.,27,27.0,7.347
@@ -475,6 +478,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868119,2026,1,Montana State,5172597,o Huddle-Shotgun #15 P.Duchien,7,7.0,-0.405
 401868119,2026,1,Montana State,4684502,No Huddle-Shotgun #8 J.Lamson,20,20.0,11.273
 401868129,2026,1,Northern Colorado,5219929,No Huddle #12 K.Lueth,36,36.0,7.261
+401868129,2026,1,Weber State,5439505,No Huddle-Shotgun #12 N.Dahle,8,8.0,0.938
 401868129,2026,1,Weber State,4695709,Shotgun #33 D.Brown,21,21.0,-3.268
 401868139,2026,1,Eastern Kentucky,5301731,Shotgun #17 T.Travers,36,36.0,9.69
 401868139,2026,1,Western Carolina,4875128,No Huddle-Shotgun #2 L.Thomas,37,37.0,17.927
@@ -484,11 +488,12 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868149,2026,1,North Alabama,4685698,No Huddle-Shotgun #5 D.Wade,21,21.0,9.646
 401868149,2026,1,Samford,4870864,Shotgun #8 G.Johnson,38,38.0,-1.903
 401868154,2026,1,Portland State,5225576,Shotgun #14 T.Smith,38,38.0,1.545
-401868154,2026,1,UC Davis,5298853,o Huddle-Shotgun #5 T.Cleeland,40,40.0,9.647
+401868154,2026,1,UC Davis,5298853,o Huddle-Shotgun #5 T.Cleeland,41,41.0,8.371
 401868158,2026,1,Southern Utah,5151171,Shotgun #7 W.Burns,18,18.0,0.448
 401868158,2026,1,Weber State,5439505,No Huddle-Shotgun #13 N.Dahle,45,45.0,1.135
 401868163,2026,1,San Diego,5232445,No Huddle-Shotgun #5 C.Ceron,1,0.0,0.0
 401868163,2026,1,San Diego,5165884,Shotgun #9 D.Nankil,32,29.0,-6.082
+401868163,2026,1,UC Davis,5164325,Shotgun #12 J.Kollock,2,0.0,0.0
 401868163,2026,1,UC Davis,5298853,Shotgun #5 T.Cleeland,31,24.0,4.578
 401868169,2026,1,Charleston Southern,5298248,No Huddle-Shotgun #6 L.Powell,35,35.0,0.68
 401868169,2026,1,Lindenwood,5225648,No Huddle-Shotgun #9 P.Battle,23,23.0,1.519
@@ -521,7 +526,10 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868261,2026,1,New Haven,4685334,Shotgun #10 A.Duffy,38,38.0,11.918
 401868262,2026,1,Franklin Pierce,5234395,No Huddle-Shotgun #7 K.Leal,2,2.0,-3.248
 401868262,2026,1,Marist,5088964,Shotgun #12 S.Mannino,25,25.0,3.222
+401868269,2026,1,Morehead State,4921315,Huddle-Shotgun #27 W.Prichard,1,0.0,0.0
+401868269,2026,1,Morehead State,5300055,Shotgun #36 J.Reilly,1,0.0,0.0
 401868269,2026,1,Morehead State,5159385,Shotgun #6 A.Fernett,2,0.0,0.0
+401868269,2026,1,Morehead State,5300056,Shotgun #20 J.Barket,3,0.0,0.0
 401868269,2026,1,Morehead State,5084352,Huddle-Shotgun #17 B.Patterson,4,0.0,0.0
 401868269,2026,1,Morehead State,5229448,Shotgun #5 D.Parsons,14,14.0,27.335
 401868273,2026,1,Presbyterian,5231053,No Huddle #3 M.Holtzclaw,5,5.0,2.294
@@ -552,7 +560,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868316,2026,1,SE Louisiana,4685440,No Huddle-Shotgun #6 K.Lowe,21,20.0,3.865
 401868316,2026,1,South Alabama,4869553,Huddle-Shotgun #4 B.Davenport,28,28.0,3.275
 401868324,2026,1,Alabama State,4887151,No Huddle-Shotgun #1 A.Body,23,23.0,-1.06
-401868324,2026,1,Southern,5442202,No Huddle #10 C.Johnson,26,26.0,-1.045
+401868324,2026,1,Southern,5442202,No Huddle #10 C.Johnson,27,27.0,-2.311
 401868325,2026,1,Alabama State,5441398,Huddle-Shotgun #15 K.Anderson,1,0.0,0.0
 401868325,2026,1,Alabama State,5441396,No Huddle-Shotgun #9 A.Frye,2,0.0,0.0
 401868325,2026,1,Alabama State,4887151,No Huddle-Shotgun #1 A.Body,14,14.0,-2.198
@@ -623,7 +631,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401869142,2026,1,Lamar,5154911,No Huddle-Shotgun #2 A.McCown,27,23.0,3.361
 401869142,2026,1,Louisiana,5146661,No Huddle-Shotgun #11 D.Beale,7,0.0,0.0
 401869142,2026,1,Louisiana,4871091,o Huddle-Shotgun #7 L.Winfield,22,21.0,-1.453
-401869156,2026,1,Chicago State,5159024,Ashton Pannell,1,1.0,3.477
+401869156,2026,1,Chicago State,5159024,No Huddle-Shotgun #9 A.Pannell,40,27.0,-8.154
 401869156,2026,1,Roosevelt,5435479,No Huddle-Shotgun #12 T.Chahino,1,1.0,-0.963
 401869960,2026,1,James Madison,5153978,No Huddle-Shotgun #7 C.Coleman,9,9.0,0.608
 401869960,2026,1,James Madison,5172036,No Huddle-Shotgun #1 J.Evans,9,9.0,3.58
@@ -640,9 +648,13 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401872615,2026,1,Stetson,5161159,Shotgun #16 C.Stephenson,7,0.0,0.0
 401874035,2026,1,Southern Illinois,4697094,o Huddle-Shotgun #1 D.Williams,8,8.0,-4.22
 401874035,2026,1,Southern Illinois,5227786,No Huddle-Shotgun #7 J.Curry,32,32.0,3.027
-401874035,2026,1,West Florida,5436233,Ty'ray Davis,1,1.0,4.037
+401874035,2026,1,West Florida,5436233,Shotgun #1 T.Davis,18,18.0,1.522
 401874042,2026,1,East Texas A&M,5093929,14:02) Shotgun #11 E.Rodriguez,32,29.0,-10.091
 401874042,2026,1,Mercer,5152839,7) No Huddle-Shotgun #2 J.King,29,29.0,-3.438
+401891332,2026,1,Illinois State,5298096,No Huddle-Shotgun #17 C.Kmet,1,0.0,0.0
+401891332,2026,1,Illinois State,5227699,No Huddle-Shotgun #8 B.Pellant,6,3.0,3.161
+401891332,2026,1,Illinois State,5298094,ddle-Shotgun #15 C.Kwiatkowski,7,0.0,0.0
+401891332,2026,1,Illinois State,4833241,No Huddle-Shotgun #12 G.Roy,10,6.0,2.936
 401896383,2026,1,Morehead State,5229448,No Huddle-Shotgun #5 D.Parsons,55,55.0,2.727
 401896383,2026,1,Ohio Dominican,5308774,No Huddle-Shotgun #1 C.Parker,2,2.0,-2.493
 401896384,2026,1,Davidson,5152328,Shotgun #8 A.Frazier,1,1.0,-0.393
@@ -793,6 +805,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858223,2026,2,SMU,5141487,No Huddle-Shotgun #1 T.Hawkins,13,0.0,0.0
 401858223,2026,2,SMU,5084084,Shotgun #7 K.Jennings,17,17.0,26.403
 401858223,2026,2,UC Davis,5298855,Shotgun #11 D.Cofield,1,0.0,0.0
+401858223,2026,2,UC Davis,5164325,Shotgun #12 J.Kollock,10,0.0,0.0
 401858223,2026,2,UC Davis,5298853,Shotgun #5 T.Cleeland,28,22.0,-3.956
 401858224,2026,2,Purdue,5104738,Shotgun #15 R.Browne,38,38.0,11.621
 401858224,2026,2,Wake Forest,4920227,) No Huddle-Shotgun #3 G.Lopez,23,23.0,7.161
@@ -811,6 +824,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858442,2026,2,Penn State,4801299,) No Huddle-Shotgun #3 R.Becht,27,27.0,14.102
 401858442,2026,2,Temple,5078166,Shotgun #13 A.Sheppard,6,1.0,-1.259
 401858442,2026,2,Temple,5077787,Shotgun #14 J.Smolik,17,17.0,-9.128
+401858443,2026,2,San Diego State,5302259,o Huddle-Shotgun #13 D.Trudeau,1,1.0,-0.795
 401858443,2026,2,San Diego State,4685311,No Huddle-Shotgun #4 J.Denegal,19,19.0,-12.867
 401858443,2026,2,UCLA,4870799,Shotgun #9 N.Iamaleava,25,25.0,-4.667
 401858444,2026,2,Maryland,4872721,Shotgun #6 C.Williams,1,0.0,0.0
@@ -951,6 +965,8 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866632,2026,2,UAlbany,5082909,No Huddle-Shotgun #9 A.Semo,7,7.0,-0.075
 401866633,2026,2,North Carolina A&T,5164567,No Huddle-Shotgun #0 K.White,46,46.0,8.721
 401866633,2026,2,North Carolina Central,5301057,No Huddle-Shotgun #15 N.Layne,22,22.0,3.136
+401867685,2026,2,Chicago State,5440776,No Huddle-Shotgun #10 J.Tiberi,12,0.0,0.0
+401867685,2026,2,Chicago State,5159024,No Huddle-Shotgun #9 A.Pannell,25,19.0,20.454
 401867796,2026,2,LSU,5224789,No Huddle-Shotgun #11 L.Clark,3,0.0,0.0
 401867796,2026,2,LSU,5078810,o Huddle-Shotgun #10 S.Leavitt,43,39.0,-15.726
 401867796,2026,2,Louisiana Tech,5296376,) No Huddle-Shotgun #2 T.Kukuk,3,2.0,-2.14
@@ -962,7 +978,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401867867,2026,2,Valparaiso,5089335,#2 R.Keefe,35,35.0,-4.713
 401867876,2026,2,North Dakota,5155528,o Huddle-Shotgun #1 J.Kaminski,30,30.0,12.228
 401867876,2026,2,Portland State,5152778,No Huddle-Shotgun #5 G.Downing,40,33.0,6.045
-401867884,2026,2,Eastern Washington,5152110,9) No Huddle-Shotgun #2 N.Bell,41,29.0,-10.068
+401867884,2026,2,Eastern Washington,5152110,9) No Huddle-Shotgun #2 N.Bell,42,30.0,-11.129
 401867884,2026,2,South Dakota,4878223,Shotgun #12 J.Proctor,1,1.0,-0.463
 401867884,2026,2,South Dakota,5302115,11:06) Shotgun #1 A.Modrzewski,24,24.0,8.32
 401867890,2026,2,Southeast Missouri State,4920145,No Huddle-Shotgun #7 B.Ragland,46,46.0,-5.102
@@ -1059,6 +1075,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868255,2026,2,Drake,5404620,Huddle-Shotgun #1 R.Warzynski,51,39.0,-8.134
 401868255,2026,2,Northern Iowa,4826635,Shotgun #15 J.Dailey,26,24.0,11.773
 401868280,2026,2,Northern Michigan,5445626,No Huddle-Shotgun #12 L.Oczkowski,2,2.0,-4.41
+401868280,2026,2,St. Thomas (MN),5300209,o Huddle-Shotgun #14 J.Wallace,3,0.0,0.0
 401868280,2026,2,St. Thomas (MN),5300206,o Huddle-Shotgun #10 N.Peipert,28,27.0,2.368
 401868285,2026,2,Bethune-Cookman,5159018,No Huddle-Shotgun #2 J.Morris,1,1.0,-1.178
 401868285,2026,2,Bethune-Cookman,4837469,No Huddle-Shotgun #3 A.Jones,10,10.0,0.741
@@ -1194,6 +1211,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858232,2026,3,Virginia Tech,5144078,ddle-Shotgun #17 E.Grunkemeyer,40,40.0,14.128
 401858233,2026,3,California,5054036,05:45) Shotgun #11 J.Brousseau,10,0.0,0.0
 401858233,2026,3,California,5164313,ddle-Shotgun #3 J.Sagapolutele,33,29.0,18.428
+401858233,2026,3,Wagner,5440760,o Huddle-Shotgun #6 J.Wiley Jr,1,0.0,0.0
 401858233,2026,3,Wagner,5302638,Shotgun #10 B.Newman,31,27.0,-3.444
 401858448,2026,3,Illinois,4795295,Shotgun #4 K.Houser,31,29.0,0.057
 401858448,2026,3,Southern Illinois,5151518,No Huddle-Shotgun #6 K.Thomas,1,1.0,2.785
@@ -1343,6 +1361,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866641,2026,3,Hampton,5088851,No Huddle-Shotgun #3 T.Taylor,30,28.0,-12.141
 401866641,2026,3,Norfolk State,5150426,No Huddle-Shotgun #2 D.Bailey,27,27.0,5.106
 401867686,2026,3,Butler,5224468,No Huddle-Shotgun #7 G.Passini,25,25.0,-4.662
+401867686,2026,3,Chicago State,5159024,Shotgun #9 A.Pannell,28,26.0,3.052
 401867804,2026,3,Baylor,5145459,o Huddle-Shotgun #12 N.Bennett,26,26.0,-1.066
 401867804,2026,3,Louisiana Tech,5296376,) No Huddle-Shotgun #2 T.Kukuk,45,45.0,-7.513
 401867805,2026,3,Brown,5155943,No Huddle-Shotgun #15 J.Murphy,43,43.0,-7.094
@@ -1396,6 +1415,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868051,2026,3,Idaho,4832830,Shotgun #3 J.Wood,35,35.0,12.456
 401868062,2026,3,Austin Peay,4870889,No Huddle-Shotgun #3 C.Parson,18,18.0,-0.897
 401868062,2026,3,West Florida,4790965,No Huddle-Shotgun #10 D.Leary,12,12.0,-10.981
+401868062,2026,3,West Florida,5436233,No Huddle-Shotgun #1 T.Davis,17,17.0,-0.808
 401868075,2026,3,Cal Poly,5219586,uddle-Shotgun #7 A.Grigsby Jr.,25,25.0,21.339
 401868075,2026,3,San Diego,5165884,No Huddle #9 D.Nankil,31,31.0,13.535
 401868124,2026,3,Northern Arizona,5225414,11:46) Shotgun #6 T.Pennington,27,27.0,4.988
@@ -1415,6 +1435,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868159,2026,3,Southern Utah,5151171,No Huddle-Shotgun #7 W.Burns,29,29.0,5.972
 401868159,2026,3,St. Thomas (MN),5226234,Shotgun #3 Q.Cobb-Butler,1,1.0,-0.619
 401868159,2026,3,St. Thomas (MN),5300206,o Huddle-Shotgun #10 N.Peipert,29,29.0,4.889
+401868164,2026,3,UC Davis,5164325,Shotgun #12 J.Kollock,5,0.0,0.0
 401868164,2026,3,UC Davis,5298853,Shotgun #5 T.Cleeland,39,36.0,9.009
 401868168,2026,3,Northwestern State,4808719,No Huddle-Shotgun #2 Z.Wilcke,54,38.0,5.97
 401868168,2026,3,Weber State,5151291,o Huddle-Shotgun #6 C.McCollum,4,0.0,0.0
@@ -1539,8 +1560,8 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858234,2026,4,Clemson,5159078,o Huddle-Shotgun #2 T.Reynolds,22,22.0,0.774
 401858236,2026,4,Bucknell,5147067,o Huddle-Shotgun #4 C.Dietrich,8,4.0,0.718
 401858236,2026,4,Bucknell,5402059,No Huddle-Shotgun #7 E.Dowling,21,12.0,-7.544
-401858236,2026,4,Pittsburgh,4714300,Holden Geriner,1,0.0,0.0
 401858236,2026,4,Pittsburgh,5207640,No Huddle-Shotgun #16 C.Dailey,5,0.0,0.0
+401858236,2026,4,Pittsburgh,4714300,Shotgun #15 H.Geriner,11,0.0,0.0
 401858236,2026,4,Pittsburgh,5208095,13:05) Shotgun #6 M.Heintschel,36,29.0,25.891
 401858237,2026,4,Central Arkansas,5416075,) No Huddle-Shotgun #3 D.Omolo,33,20.0,2.932
 401858237,2026,4,Florida State,5141661,No Huddle-Shotgun #9 K.Sperry,3,0.0,0.0
@@ -1607,6 +1628,8 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401860892,2026,4,Incarnate Word,5085112,) No Huddle-Shotgun #9 E.Brown,47,41.0,9.847
 401860892,2026,4,Texas State,5202460,Huddle-Shotgun #17 G.Parkhurst,4,0.0,0.0
 401860892,2026,4,Texas State,5148803,No Huddle-Shotgun #8 B.Jackson,20,19.0,22.707
+401860893,2026,4,San Diego State,4918108,No Huddle-Shotgun #24 J.Napier,1,1.0,-1.761
+401860893,2026,4,San Diego State,5302259,o Huddle-Shotgun #13 D.Trudeau,5,0.0,0.0
 401860893,2026,4,San Diego State,4685311,No Huddle-Shotgun #4 J.Denegal,34,23.0,-5.652
 401860893,2026,4,Toledo,5082330,No Huddle-Shotgun #6 J.Richter,22,21.0,12.816
 401860894,2026,4,Troy,4431633,No Huddle-Shotgun #9 G.Crowder,50,50.0,-12.878
@@ -1706,6 +1729,8 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866649,2026,4,Delaware State,5150645,No Huddle-Shotgun #15 U.Ale,32,32.0,-4.913
 401866649,2026,4,Towson,5405931,Shotgun #8 J.Davis,1,1.0,-2.812
 401866649,2026,4,Towson,5301657,No Huddle-Shotgun #13 A.Indorf,33,33.0,-0.886
+401867687,2026,4,Chicago State,5440776,No Huddle-Shotgun #10 J.Tiberi,3,0.0,0.0
+401867687,2026,4,Chicago State,5159024,Shotgun #9 A.Pannell,40,35.0,-5.974
 401867687,2026,4,Norfolk State,5301378,No Huddle #37 E.Helfrich,1,1.0,-2.331
 401867687,2026,4,Norfolk State,5439443,No Huddle #10 T.Jackson,1,0.0,0.0
 401867687,2026,4,Norfolk State,5439441,No Huddle-Shotgun #6 D.Golmond,32,31.0,10.313
@@ -1752,6 +1777,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868103,2026,4,Idaho State,5158746,No Huddle-Shotgun #1 J.Cooke,26,26.0,-5.712
 401868103,2026,4,Southern Utah,5151171,No Huddle-Shotgun #7 W.Burns,35,35.0,-12.862
 401868113,2026,4,Montana,5153708,Keali'i Ah Yat,2,1.0,1.022
+401868113,2026,4,UC Davis,5164325,o Huddle-Shotgun #12 J.Kollock,5,0.0,0.0
 401868113,2026,4,UC Davis,5298853,o Huddle-Shotgun #5 T.Cleeland,37,23.0,-7.634
 401868120,2026,4,Montana State,5172597,o Huddle-Shotgun #15 P.Duchien,21,21.0,3.485
 401868120,2026,4,Northern Arizona,5225414,Huddle-Shotgun #6 T.Pennington,39,39.0,-14.786
@@ -1785,6 +1811,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868263,2026,4,Marist,5226677,No Huddle-Shotgun #5 Z.Garmont,1,1.0,-0.517
 401868263,2026,4,Marist,5298896,Shotgun #18 W.O'Dell,3,0.0,0.0
 401868263,2026,4,Marist,5088964,o Huddle-Shotgun #12 S.Mannino,26,26.0,6.021
+401868263,2026,4,Presbyterian,5300119,No Huddle-Shotgun #22 L.Sharpe,32,23.0,0.181
 401868281,2026,4,San Diego,5165884,No Huddle-Shotgun #9 D.Nankil,52,26.0,5.358
 401868281,2026,4,St. Thomas (MN),5151370,Huddle-Shotgun #11 A.Policare,1,0.0,0.0
 401868281,2026,4,St. Thomas (MN),5226234,uddle-Shotgun #3 Q.Cobb-Butler,1,1.0,0.628
@@ -1901,6 +1928,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401856822,2026,5,Iowa State,5219258,,2,2.0,7.919
 401856822,2026,5,Iowa State,5080403,Shotgun #1 J.Raynor,29,29.0,8.675
 401856822,2026,5,West Virginia,5079465,uddle-Shotgun #3 M.Hawkins Jr.,25,25.0,2.589
+401858245,2026,5,Pittsburgh,4714300,Shotgun #15 H.Geriner,12,12.0,-0.705
 401858245,2026,5,Pittsburgh,5208095,13:41) Shotgun #6 M.Heintschel,19,19.0,2.177
 401858245,2026,5,Virginia Tech,5144078,:59) Shotgun #17 E.Grunkemeyer,43,43.0,7.685
 401858246,2026,5,Boston College,5144853,Shotgun #9 L.Wright,1,1.0,-0.589
@@ -2027,7 +2055,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866657,2026,5,Campbell,5154962,Huddle-Shotgun #6 K.Sixkiller,36,36.0,-1.917
 401866657,2026,5,North Carolina Central,5230073,Huddle-Shotgun #3 C.Thompkins,4,4.0,7.91
 401866657,2026,5,North Carolina Central,5301057,No Huddle-Shotgun #15 N.Layne,31,31.0,-5.769
-401867688,2026,5,Chicago State,5159024,Ashton Pannell,1,0.0,0.0
+401867688,2026,5,Chicago State,5159024,No Huddle-Shotgun #9 A.Pannell,44,35.0,4.978
 401867688,2026,5,Tarleton State,5163588,Shotgun #14 J.Paige,1,1.0,-3.62
 401867688,2026,5,Tarleton State,4702829,No Huddle-Shotgun #8 B.Locke,7,0.0,0.0
 401867688,2026,5,Tarleton State,4899468,Huddle-Shotgun #12 K.Anderson,22,22.0,5.404
@@ -2059,7 +2087,9 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401867891,2026,5,Youngstown State,5109518,Huddle-Shotgun #12 B.Brungard,30,30.0,-1.043
 401867899,2026,5,Central Connecticut,5105336,No Huddle-Shotgun #16 C.Kenyon,5,0.0,0.0
 401867899,2026,5,Central Connecticut,4711410,o Huddle-Shotgun #10 B.Griffis,17,15.0,2.013
+401867899,2026,5,Wagner,5440760,o Huddle-Shotgun #6 J.Wiley Jr,10,0.0,0.0
 401867899,2026,5,Wagner,5302638,No Huddle-Shotgun #10 B.Newman,17,17.0,-4.853
+401867899,2026,5,Wagner,5160224,o Huddle-Shotgun #17 T.Maxwell,20,5.0,0.467
 401867910,2026,5,Long Island University,4837195,Huddle-Shotgun #11 L.Stanzani,17,17.0,-10.447
 401867910,2026,5,Mercyhurst,5227557,Shotgun #12 A.Gevaudan,38,38.0,5.565
 401867918,2026,5,Norfolk State,5410232,Brevin Caldwell,1,1.0,2.284
@@ -2084,6 +2114,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868029,2026,5,Lafayette,5153849,o Huddle-Shotgun #2 D.Lipovski,18,18.0,-6.923
 401868029,2026,5,Richmond,5083373,Huddle-Shotgun #18 A.Snelsire,38,38.0,1.433
 401868053,2026,5,Abilene Christian,5147465,No Huddle-Shotgun #12 T.Parks,19,17.0,9.935
+401868053,2026,5,West Florida,5436233,) No Huddle-Shotgun #1 T.Davis,32,19.0,1.047
 401868064,2026,5,Austin Peay,5147872,No Huddle-Shotgun #9 M.Wilson,4,0.0,0.0
 401868064,2026,5,Austin Peay,4870889,No Huddle-Shotgun #3 C.Parson,25,20.0,18.26
 401868064,2026,5,New Haven,5430949,Shotgun #14 N.Boyce,41,32.0,1.273
@@ -2238,6 +2269,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401858255,2026,6,Duke,4694149,Shotgun #2 W.Eget,42,42.0,10.886
 401858255,2026,6,Georgia Tech,5191162,Shotgun #15 A.Mendoza,30,30.0,6.126
 401858256,2026,6,North Carolina,4592532,9:47) Shotgun #9 B.Edwards Jr.,29,29.0,4.823
+401858256,2026,6,Pittsburgh,4714300,o Huddle-Shotgun #15 H.Geriner,46,46.0,-9.594
 401858257,2026,6,Notre Dame,5159115,No Huddle-Shotgun #10 N.Grubbs,7,0.0,0.0
 401858257,2026,6,Notre Dame,5079369,) No Huddle-Shotgun #13 C.Carr,20,15.0,4.766
 401858257,2026,6,Stanford,4914482,No Huddle-Shotgun #17 C.Mirer,1,0.0,0.0
@@ -2281,6 +2313,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401860902,2026,6,Oregon State,5296163,Shotgun #10 B.Jones,1,0.0,0.0
 401860902,2026,6,Oregon State,4685497,Shotgun #6 M.Murphy,8,0.0,0.0
 401860902,2026,6,Oregon State,5212654,o Huddle-Shotgun #2 B.Atkinson,39,31.0,16.83
+401860902,2026,6,San Diego State,5302259,Shotgun #13 D.Trudeau,8,0.0,0.0
 401860902,2026,6,San Diego State,4685311,Shotgun #4 J.Denegal,18,14.0,-1.632
 401860922,2026,6,Utah State,5081197,uddle-Shotgun #9 G.Brosterhous,29,29.0,-7.314
 401860922,2026,6,Washington State,5226019,o Huddle-Shotgun #12 C.Pinnick,39,39.0,-12.928
@@ -2363,7 +2396,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401867886,2026,6,South Dakota,4878223,Shotgun #12 J.Proctor,1,1.0,-0.575
 401867886,2026,6,South Dakota,5302115,07:15) Shotgun #1 A.Modrzewski,22,22.0,10.606
 401867886,2026,6,Southern Illinois,5301130,Shotgun #8 C.Chapman,1,1.0,-1.394
-401867886,2026,6,Southern Illinois,4697094,o Huddle-Shotgun #1 D.Williams,30,30.0,0.871
+401867886,2026,6,Southern Illinois,4697094,o Huddle-Shotgun #1 D.Williams,31,31.0,0.273
 401867907,2026,6,Central Connecticut,5105336,No Huddle-Shotgun #16 C.Kenyon,6,0.0,0.0
 401867907,2026,6,Central Connecticut,4711410,o Huddle-Shotgun #10 B.Griffis,22,21.0,4.766
 401867911,2026,6,Duquesne,4695784,Shotgun #18 C.Camp,25,25.0,-7.1
@@ -2373,7 +2406,10 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401867919,2026,6,Robert Morris,4832789,Shotgun #3 C.Haggard,32,32.0,25.707
 401867930,2026,6,Princeton,5302683,Huddle-Shotgun #18 T.Ciongoli,15,15.0,-0.562
 401867930,2026,6,Princeton,5442807,No Huddle-Shotgun #17 W.Becker,15,15.0,3.945
+401867930,2026,6,Wagner,5440760,o Huddle-Shotgun #6 J.Wiley Jr,6,6.0,-2.332
 401867930,2026,6,Wagner,5302638,No Huddle-Shotgun #10 B.Newman,25,25.0,9.14
+401867954,2026,6,Delaware State,5085808,No Huddle-Shotgun #5 M.Adams,2,0.0,0.0
+401867954,2026,6,Delaware State,4685542,No Huddle-Shotgun #13 J.Sauray,34,34.0,-22.615
 401867960,2026,6,Howard,5087297,Huddle-Shotgun #6 J.Scroggins,38,38.0,-8.119
 401867960,2026,6,Pennsylvania,5301019,,1,1.0,3.103
 401867960,2026,6,Pennsylvania,5442857,Shotgun #82 S.Cofrancesco,1,1.0,-0.707
@@ -2403,6 +2439,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868078,2026,6,Cal Poly,5219586,No Huddle-Shotgun #7 A.Grigsby Jr.,34,34.0,2.503
 401868078,2026,6,Idaho State,5158746,No Huddle-Shotgun #1 J.Cooke,38,38.0,-0.619
 401868087,2026,6,Eastern Washington,5152110,No Huddle-Shotgun #2 N.Bell,39,39.0,17.302
+401868087,2026,6,Northern Colorado,5225594,,1,1.0,4.927
 401868087,2026,6,Northern Colorado,5219929,Shotgun #12 K.Lueth,2,2.0,1.867
 401868087,2026,6,Northern Colorado,4873077,Shotgun #18 B.Silbor,9,9.0,-5.438
 401868087,2026,6,Northern Colorado,5085026,Shotgun #3 K.Patterson,22,22.0,-3.325
@@ -2418,7 +2455,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868144,2026,6,West Georgia,4880196,uddle-Shotgun #11 C.FitzGerald,34,34.0,6.815
 401868156,2026,6,Portland State,5225576,Shotgun #14 T.Smith,21,18.0,11.367
 401868156,2026,6,Utah Tech,5441693,,1,1.0,2.67
-401868156,2026,6,Utah Tech,5224562,No Huddle-Shotgun #13 B.Barben,44,27.0,7.135
+401868156,2026,6,Utah Tech,5224562,No Huddle-Shotgun #13 B.Barben,46,29.0,5.534
 401868180,2026,6,Eastern Illinois,5113896,Shotgun #7 C.LaCrue,4,4.0,-2.393
 401868180,2026,6,Gardner-Webb,5439733,Huddle-Shotgun #3 J.Doolittle,3,3.0,0.087
 401868180,2026,6,Gardner-Webb,5439737,No Huddle-Shotgun #18 L.Farmer,22,22.0,-9.979
@@ -2435,6 +2472,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868249,2026,6,SE Louisiana,4685440,Shotgun #6 K.Lowe,37,37.0,-15.164
 401868249,2026,6,UT Rio Grande Valley,5300880,Shotgun #3 A.Jakobsohn,37,37.0,8.994
 401868256,2026,6,Drake,5404620,Huddle-Shotgun #1 R.Warzynski,42,42.0,-18.231
+401868256,2026,6,Valparaiso,5226479,Shotgun #4 M.Brown,1,1.0,-2.518
 401868256,2026,6,Valparaiso,5300250,Shotgun #15 N.Downey,1,1.0,-1.403
 401868256,2026,6,Valparaiso,5089335,#2 R.Keefe,28,28.0,4.168
 401868265,2026,6,Columbia,5154125,o Huddle-Shotgun #15 C.Goodwin,34,34.0,17.767
@@ -2603,6 +2641,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401860903,2026,7,Washington State,5263246,Shotgun #17 O.Eshelman,52,47.0,10.103
 401860904,2026,7,Fresno State,5010409,Shotgun #7 J.Mandal,31,31.0,-12.197
 401860904,2026,7,San Diego State,4685311,No Huddle-Shotgun #4 J.Denegal,11,11.0,4.811
+401860904,2026,7,San Diego State,5141664,Huddle-Shotgun #11 S.Saunders,11,11.0,-0.164
 401860923,2026,7,Colorado State,5212610,No Huddle-Shotgun #2 K.Farrar,40,25.0,15.803
 401860923,2026,7,Texas State,5148803,No Huddle-Shotgun #8 B.Jackson,19,17.0,13.438
 401862800,2026,7,East Carolina,5075800,o Huddle-Shotgun #9 E.Williams,26,26.0,3.085
@@ -2671,7 +2710,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401866667,2026,7,Campbell,5154962,Huddle-Shotgun #6 K.Sixkiller,29,29.0,8.293
 401866667,2026,7,Towson,5230376,Huddle-Shotgun #0 A.Enterline,1,1.0,-0.566
 401866667,2026,7,Towson,5405931,Shotgun #8 J.Davis,39,39.0,-6.441
-401866668,2026,7,Chicago State,5159024,Ashton Pannell,1,1.0,3.617
+401866668,2026,7,Chicago State,5159024,No Huddle-Shotgun #9 A.Pannell,36,30.0,-17.394
 401866668,2026,7,North Carolina A&T,5164567,No Huddle #0 K.White,30,30.0,3.151
 401866669,2026,7,Rhode Island,5226812,uddle-Shotgun #15 A.McClelland,17,17.0,14.195
 401866669,2026,7,Yale,5300438,No Huddle-Shotgun #7 C.Hewitt,1,1.0,-0.603
@@ -2693,7 +2732,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401867849,2026,7,Illinois State,5298094,ddle-Shotgun #15 C.Kwiatkowski,1,1.0,-0.862
 401867849,2026,7,Illinois State,5227699,Shotgun #8 B.Pellant,25,22.0,5.279
 401867849,2026,7,Southern Illinois,4697094,o Huddle-Shotgun #1 D.Williams,36,28.0,-18.407
-401867870,2026,7,Murray State,5227854,Baxter Wright,17,17.0,-6.266
+401867870,2026,7,Murray State,5227854,Baxter Wright,18,18.0,-7.534
 401867870,2026,7,Murray State,5083941,Shotgun #2 C.Shannon,19,4.0,0.478
 401867870,2026,7,South Dakota,5302115,#1 A.Modrzewski,27,27.0,10.739
 401867878,2026,7,North Dakota,5155528,No Huddle-Shotgun #1 J.Kaminski,18,18.0,3.325
@@ -2741,7 +2780,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868105,2026,7,Idaho State,5224050,No Huddle-Shotgun #16 D.Harsin,28,28.0,-0.063
 401868105,2026,7,Weber State,5439505,No Huddle-Shotgun #13 N.Dahle,35,35.0,-5.719
 401868125,2026,7,Northern Arizona,5219591,#37 T.Manship,1,1.0,3.827
-401868125,2026,7,Northern Arizona,5225414,Shotgun #6 T.Pennington,34,34.0,13.28
+401868125,2026,7,Northern Arizona,5225414,Shotgun #6 T.Pennington,35,35.0,12.178
 401868125,2026,7,Portland State,5225576,No Huddle-Shotgun #14 T.Smith,32,32.0,0.109
 401868134,2026,7,Central Arkansas,5162617,Huddle-Shotgun #85 S.Driggers,1,1.0,0.798
 401868134,2026,7,Central Arkansas,5416075,Shotgun #3 D.Omolo,37,37.0,17.163
@@ -2791,7 +2830,7 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401868330,2026,7,Alabama State,4819240,Shotgun #8 T.Smoot,1,1.0,-0.363
 401868330,2026,7,Alabama State,5441396,Shotgun #9 A.Frye,16,16.0,1.286
 401868330,2026,7,Arkansas-Pine Bluff,5303364,No Huddle-Shotgun #15 G.Davis,7,7.0,-1.159
-401868330,2026,7,Arkansas-Pine Bluff,5163068,uddle-Shotgun #12 J.Schierholz,39,39.0,0.52
+401868330,2026,7,Arkansas-Pine Bluff,5163068,uddle-Shotgun #12 J.Schierholz,42,42.0,-1.748
 401868361,2026,7,Alcorn State,4878822,o Huddle-Shotgun #11 J.Tolbert,42,42.0,6.318
 401868361,2026,7,Prairie View A&M,5425111,No Huddle-Shotgun #16 K.Smith,1,1.0,0.616
 401868361,2026,7,Prairie View A&M,4801301,No Huddle-Shotgun #21 T.Carter,18,18.0,7.667
@@ -2857,4 +2896,61 @@ game_id,season,week,team,qb_id,qb_name,dropbacks,w,epa
 401871091,2026,7,UL Monroe,5207934,Huddle-Shotgun #12 A.Carlisle,5,0.0,0.0
 401871091,2026,7,UL Monroe,5122054,o Huddle-Shotgun #10 A.Armenta,24,24.0,-14.046
 401874037,2026,7,West Alabama,4902963,No Huddle-Shotgun #5 L.Richesson,3,3.0,-4.908
+401874037,2026,7,West Florida,5439698,No Huddle-Shotgun #14 C.Cowhey,1,0.0,0.0
 401874037,2026,7,West Florida,4790965,Shotgun #10 D.Leary,11,5.0,-4.415
+401874037,2026,7,West Florida,5436233,No Huddle-Shotgun #1 T.Davis,16,11.0,6.92
+401858271,2026,8,Duke,5164332,,1,1.0,3.981
+401858271,2026,8,Duke,5185699,No Huddle-Shotgun #10 D.Mahan,6,6.0,-4.226
+401858271,2026,8,Duke,4694149,5) No Huddle-Shotgun #2 W.Eget,25,25.0,1.083
+401858271,2026,8,Virginia,4685696,No Huddle-Shotgun #7 B.Pribula,28,28.0,0.107
+401858272,2026,8,NC State,5079301,No Huddle-Shotgun #11 C.Bailey,33,33.0,18.467
+401858272,2026,8,Stanford,4878681,Shotgun #8 D.Warren,38,38.0,9.996
+401861965,2026,8,Massachusetts,5298739,o Huddle-Shotgun #16 L.Inagawa,6,0.0,0.0
+401861965,2026,8,Massachusetts,4920153,Shotgun #5 W.Watson III,40,39.0,-5.731
+401861965,2026,8,UConn,5079619,Shotgun #7 K.Osborne,24,24.0,-2.287
+401862807,2026,8,East Carolina,5075800,o Huddle-Shotgun #9 E.Williams,14,14.0,-2.792
+401862807,2026,8,East Carolina,4433829,o Huddle-Shotgun #12 M.Griffis,25,25.0,4.182
+401862807,2026,8,Memphis,5220352,Shotgun #0 H.Tipton,1,1.0,-2.513
+401862807,2026,8,Memphis,5165807,No Huddle-Shotgun #2 M.Stokes,42,42.0,19.184
+401862808,2026,8,Army,5082118,Shotgun #1 Z.Mundell,1,1.0,3.177
+401862808,2026,8,Army,5150297,No Huddle-Shotgun #3 C.Hellums,13,13.0,0.001
+401862808,2026,8,Tulsa,5224011,No Huddle-Shotgun #10 B.Hayes,36,36.0,11.247
+401864525,2026,8,Air Force,5223108,Shotgun #11 J.Johnson,4,4.0,0.864
+401864525,2026,8,Air Force,5306440,Shotgun #5 E.Medders,4,4.0,2.542
+401864525,2026,8,Air Force,5449066,No Huddle-Shotgun #6 H.Fisher,9,9.0,-0.473
+401864525,2026,8,Wyoming,4838536,Shotgun #6 T.Hughes,18,18.0,5.006
+401866670,2026,8,Rhode Island,5226812,No Huddle-Shotgun #15 A.McClelland,30,30.0,0.463
+401866670,2026,8,UAlbany,5082909,No Huddle #9 A.Semo,2,2.0,-0.035
+401867902,2026,8,Central Connecticut,5298003,Huddle-Shotgun #25 D.Smith Jr,3,3.0,-1.749
+401867902,2026,8,Central Connecticut,4711410,Shotgun #10 B.Griffis,22,22.0,5.534
+401867902,2026,8,New Haven,5261653,Huddle-Shotgun #16 J.Tripptree,49,43.0,-2.262
+401867913,2026,8,Long Island University,4837195,No Huddle-Shotgun #11 L.Stanzani,20,20.0,-2.326
+401867913,2026,8,Stonehill,5106897,Shotgun #6 J.O'Connell,37,37.0,-11.972
+401867955,2026,8,Delaware State,5085808,No Huddle-Shotgun #5 M.Adams,4,3.0,-0.208
+401867955,2026,8,Delaware State,4685542,No Huddle-Shotgun #13 J.Sauray,8,8.0,-12.448
+401867955,2026,8,Delaware State,5150645,No Huddle-Shotgun #15 U.Ale,11,11.0,2.628
+401867955,2026,8,North Carolina Central,5159177,No Huddle-Shotgun #10 J.Jones,1,1.0,-0.949
+401867955,2026,8,North Carolina Central,5230073,Huddle-Shotgun #3 C.Thompkins,20,20.0,4.545
+401868230,2026,8,Dayton,5154881,ddle-Shotgun #7 B.Schondelmyer,39,39.0,3.699
+401868230,2026,8,San Diego,5165884,No Huddle-Shotgun #9 D.Nankil,57,57.0,24.35
+401869845,2026,8,App State,5146664,No Huddle-Shotgun #8 H.Hasselbeck,5,5.0,-0.615
+401869845,2026,8,App State,4870999,Shotgun #3 M.Singleton,42,42.0,6.804
+401869845,2026,8,James Madison,5172036,Shotgun #1 J.Evans,7,7.0,5.471
+401869845,2026,8,James Madison,5153978,Shotgun #7 C.Coleman,37,37.0,-4.014
+401870841,2026,8,Pennsylvania,5289943,Huddle-Shotgun #12 M.Teodecki,34,34.0,-5.232
+401870841,2026,8,Yale,5079683,No Huddle-Shotgun #2 D.Reno,35,35.0,-6.682
+401871055,2026,8,Florida International,4870883,) No Huddle-Shotgun #17 J.Kohl,28,28.0,-4.922
+401871055,2026,8,Middle Tennessee,5194626,Huddle-Shotgun #16 R.Gagliano,27,27.0,6.715
+401871056,2026,8,Kennesaw State,5382898,No Huddle-Shotgun #2 L.Varnes,16,3.0,1.908
+401871056,2026,8,Kennesaw State,4870645,No Huddle-Shotgun #1 R.Collins,27,27.0,-13.797
+401871056,2026,8,Liberty,4602923,Huddle-Shotgun #13 J.Henderson,2,0.0,0.0
+401871056,2026,8,Liberty,5138131,No Huddle-Shotgun #5 D.Purdie,19,19.0,2.725
+401871069,2026,8,Delaware,5289314,1) No Huddle-Shotgun #7 T.Bell,4,1.0,-0.191
+401871069,2026,8,Delaware,5153846,Huddle-Shotgun #4 N.Minicucci,31,31.0,19.616
+401871069,2026,8,Missouri State,5085729,) No Huddle-Shotgun #40 C.Lair,1,1.0,0.816
+401871069,2026,8,Missouri State,4685252,o Huddle-Shotgun #2 H.Belin IV,34,29.0,13.285
+401871070,2026,8,New Mexico State,5152503,o Huddle-Shotgun #14 A.Damante,29,29.0,-1.965
+401871070,2026,8,Sam Houston,5220425,Shotgun #15 D.Bailey,3,3.0,-1.576
+401871070,2026,8,Sam Houston,5148427,No Huddle-Shotgun #8 L.Locke,31,31.0,3.598
+401871092,2026,8,Marshall,4685697,No Huddle-Shotgun #1 Z.Turner,35,35.0,-4.49
+401871092,2026,8,South Alabama,5148858,No Huddle-Shotgun #7 J.Hollins,34,34.0,-8.114
