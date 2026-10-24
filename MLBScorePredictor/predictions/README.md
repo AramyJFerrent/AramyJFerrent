@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sat Oct 24, 2026 01:42 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Sat Oct 24, 2026 12:51 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,13 +14,13 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | TB @ MIL | Drew Rasmussen / Logan Henderson | TB 3, MIL 4 | MIL 55% | TB +120 / MIL -120 | TB +106 / MIL -127 | 3.4 – 3.6 | 0–7 / 1–7 | MIL -1.5 34% | 7.0 / 6.5 (over 50%) | MIL -115, 3.7 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | TB @ MIL | Drew Rasmussen / Logan Henderson | TB 3, MIL 4 | MIL 54% | TB +115 / MIL -115 | TB +100 / MIL -120 | 3.4 – 3.5 | 0–7 / 1–7 | MIL -1.5 33% | 6.9 / 6.5 (over 50%) | MIL -110, 3.7 runs | 11% | proj. / proj. | no edge | no edge | no edge |
 
 ## Monday, October 26 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / TBD | MIL 4, TB 3 | MIL 50% | MIL -100 / TB +100 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 38% | 8.5 | MIL -105, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -160, MIL -1.5 +160 | no line yet | no line yet |
+| 8:00 PM | MIL @ TB | Robert Gasser / Freddy Peralta | MIL 3, TB 4 | TB 51% | MIL +105 / TB -105 | – | 4.2 – 4.1 | 1–8 / 1–8 | TB -1.5 34% | 8.2 | TB -105, 4.7 runs | 9% | proj. / proj. | no line yet; fair TB -1.5 +200, MIL +1.5 -200 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -64,7 +64,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
 | 1 | LAD | +1.52 | +0.75 | +0.40 | +0.11 | +0.25 | 5.2 | 1576 |
-| 2 | MIL | +0.85 | +0.38 | +0.15 | +0.08 | +0.23 | 4.9 | 1607 |
+| 2 | MIL | +0.85 | +0.39 | +0.15 | +0.08 | +0.23 | 4.9 | 1607 |
 | 3 | ATL | +0.72 | +0.33 | +0.15 | +0.09 | +0.16 | 5.1 | 1529 |
 | 4 | CHC | +0.69 | +0.59 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
 | 5 | NYY | +0.67 | +0.19 | +0.20 | +0.07 | +0.22 | 5.2 | 1560 |
