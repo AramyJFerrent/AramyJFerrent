@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Sun Oct 25, 2026 01:10 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Sun Oct 25, 2026 03:58 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -14,12 +14,12 @@ The edge columns check every side of the spread, the moneyline and the total for
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 5:00 PM | LAL @ UTA | LAL 121, UTA 115 | LAL 67% | LAL -205 / UTA +205<br>posted LAL -258 / UTA +210 | LAL -6.2 / LAL -6.5 (fav covers 50%) | 236.6 / 236.5 (over 49%) | 107–136 / 101–130 | 5% | UTA: Trey Alexander (out); Jusuf Nurkic (out) (+0.1) | no edge | no edge | no edge |
-| 6:00 PM | IND @ BKN | IND 119, BKN 113 | IND 66% | IND -200 / BKN +200<br>posted IND -278 / BKN +225 | IND -5.9 / IND -6.5 (fav covers 49%) | 232.9 / 232.5 (over 49%) | 105–134 / 99–129 | 5% | IND: Aaron Nesmith (day-to-day); Johnny Furphy (out); Ben Sheppard (out); T.J. McConnell (out) (+0.6)<br>BKN: Mikel Brown Jr. (out) (+0.9) | no edge | no edge | no edge |
+| 5:00 PM | LAL @ UTA | LAL 122, UTA 116 | LAL 68% | LAL -210 / UTA +210<br>posted LAL -250 / UTA +205 | LAL -6.2 / LAL -6.5 (fav covers 50%) | 237.6 / 237.5 (over 49%) | 107–136 / 101–131 | 5% | UTA: Trey Alexander (out); Jusuf Nurkic (out) (+0.1) | no edge | no edge | no edge |
+| 6:00 PM | IND @ BKN | IND 119, BKN 113 | IND 66% | IND -195 / BKN +195<br>posted IND -245 / BKN +200 | IND -5.8 / IND -6.5 (fav covers 49%) | 231.8 / 231.5 (over 49%) | 104–133 / 98–128 | 5% | IND: Aaron Nesmith (day-to-day); Johnny Furphy (out); Ben Sheppard (out); T.J. McConnell (out) (+0.6)<br>BKN: Mikel Brown Jr. (out) (+1.2) | no edge | no edge | no edge |
 | 7:00 PM | ORL @ NYK | ORL 109, NYK 116 | NYK 70% | ORL +235 / NYK -235<br>posted ORL +230 / NYK -285 | NYK -7 / NYK -7.5 (fav covers 49%) | 224.7 / 224.5 (over 49%) | 94–123 / 102–130 | 5% | ORL: Paolo Banchero (out); Anthony Black (day-to-day) (+1.5)<br>NYK: Jose Alvarado (day-to-day) (-0.1) | no edge | no edge | no edge |
-| 7:00 PM | TOR @ MIN | TOR 114, MIN 115 | MIN 54% | TOR +120 / MIN -120<br>posted TOR -105 / MIN -115 | MIN -1.3 / MIN -1.5 (fav covers 52%) | 229.5 / 229.5 (over 50%) | 100–129 / 101–130 | 5% | MIN: Donte DiVincenzo (out) (-0.2) | no edge | no edge | no edge |
-| 7:00 PM | LAC @ OKC | LAC 105, OKC 119 | OKC 86% | LAC +615 / OKC -615<br>posted LAC +800 / OKC -1350 | OKC -14.4 / OKC -15.5 (fav covers 45%) | 223.9 / 224.5 (over 48%) | 90–119 / 105–133 | 3% | LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+1.2) | no edge | LAC ML (+800): EV +9.3%, 12%, stake 0.3u | no edge |
-| 7:30 PM | DET @ PHI | DET 115, PHI 113 | DET 54% | DET -120 / PHI +120<br>posted DET -112 / PHI -108 | DET -1.4 / DET -1.5 (fav covers 51%) | 227.7 / 227.5 (over 49%) | 100–129 / 99–128 | 6% | DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.8)<br>PHI: LeBron James (day-to-day); Joel Embiid (day-to-day); Dominick Barlow (out) (-0.5) | no edge | no edge | no edge |
+| 7:00 PM | TOR @ MIN | TOR 114, MIN 115 | MIN 54% | TOR +120 / MIN -120<br>posted TOR -105 / MIN -115 | MIN -1.3 / MIN -1.5 (fav covers 52%) | 228.6 / 228.5 (over 50%) | 99–128 / 100–130 | 5% | MIN: Donte DiVincenzo (out) (-0.2) | no edge | no edge | no edge |
+| 7:00 PM | LAC @ OKC | LAC 104, OKC 120 | OKC 87% | LAC +670 / OKC -670<br>posted LAC +850 / OKC -1450 | OKC -15.2 / OKC -16.5 (fav covers 44%) | 224.0 / 224.5 (over 48%) | 90–119 / 106–134 | 3% | LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+1.2) | LAC +16.5 (-112): EV +3.6%, 55%, stake 1.0u | LAC ML (+850): EV +17.2%, 12%, stake 0.5u | no edge |
+| 7:30 PM | DET @ PHI | DET 115, PHI 113 | DET 55% | DET -125 / PHI +125<br>posted DET -112 / PHI -108 | DET -1.8 / DET -1.5 (fav covers 53%) | 227.7 / 227.5 (over 50%) | 100–129 / 99–128 | 5% | DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.8)<br>PHI: Joel Embiid (out); Dominick Barlow (out) (-2.4) | no edge | no edge | no edge |
 | 9:00 PM | MEM @ SAC | MEM 119, SAC 116 | MEM 58% | MEM -140 / SAC +140<br>posted MEM -166 / SAC +140 | MEM -2.8 / MEM -3.5 (fav covers 50%) | 234.6 / 234.5 (over 50%) | 104–133 / 101–131 | 5% | MEM: Cedric Coward (day-to-day); Zach Edey (out) (-0.9)<br>SAC: Maxime Raynaud (out); Keegan Murray (day-to-day); Dylan Cardwell (out) (+0.9) | no edge | no edge | no edge |
 
 ## Monday, October 26
@@ -92,7 +92,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 8 | TOR | +2.9 | +3.2 | +0.2 | +2.7 | 108.1 | +0.8 | 1560 |
 | 9 | CLE | +2.7 | +2.9 | +1.9 | +0.8 | 107.7 | +0.0 | 1573 |
 | 10 | MIN | +2.6 | +2.7 | +1.0 | +1.6 | 104.3 | -0.2 | 1599 |
-| 11 | PHI | +2.5 | +2.7 | -0.1 | +2.6 | 108.7 | -0.5 | 1561 |
+| 11 | PHI | +2.5 | +2.7 | -0.1 | +2.6 | 108.7 | -2.5 | 1561 |
 | 12 | LAL | +2.4 | +2.4 | +1.8 | +0.5 | 103.5 | +1.1 | 1582 |
 | 13 | DEN | +1.7 | +1.7 | +2.9 | -1.2 | 101.2 | +0.6 | 1593 |
 | 14 | ATL | +1.2 | +1.3 | +0.9 | +0.3 | 107.6 | +0.8 | 1578 |
@@ -108,7 +108,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 24 | UTA | -3.8 | -4.0 | -2.3 | -1.5 | 105.1 | +0.1 | 1333 |
 | 25 | NOP | -5.0 | -5.3 | -1.4 | -3.6 | 105.9 | +0.3 | 1414 |
 | 26 | WAS | -5.4 | -5.7 | -2.5 | -2.8 | 106.5 | +1.0 | 1304 |
-| 27 | BKN | -5.6 | -5.9 | -3.0 | -2.6 | 105.8 | +0.9 | 1315 |
+| 27 | BKN | -5.6 | -5.9 | -3.0 | -2.6 | 105.8 | +1.2 | 1315 |
 | 28 | MIL | -5.7 | -6.0 | -1.4 | -4.2 | 106.5 | +0.0 | 1361 |
 | 29 | CHI | -6.0 | -6.7 | -3.4 | -2.6 | 110.8 | +0.3 | 1374 |
 | 30 | SAC | -6.6 | -6.9 | -3.0 | -3.6 | 104.8 | +0.9 | 1361 |
