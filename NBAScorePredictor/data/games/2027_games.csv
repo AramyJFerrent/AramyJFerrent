@@ -27,14 +27,14 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909850,2027,R,2026-10-24 02:00:00+00:00,GSW,MEM,108.0,111.0,4.0,False,Chase Center,San Francisco,CA
 401909851,2027,R,2026-10-24 02:00:00+00:00,LAL,LAC,125.0,117.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401909852,2027,R,2026-10-24 02:00:00+00:00,SAC,POR,120.0,128.0,4.0,False,Golden 1 Center,Sacramento,CA
-401909853,2027,R,2026-10-24 22:00:00+00:00,CHA,MIA,,,,False,Spectrum Center,Charlotte,NC
-401909854,2027,R,2026-10-24 23:30:00+00:00,CLE,BKN,,,,False,Rocket Arena,Cleveland,OH
-401909855,2027,R,2026-10-24 23:30:00+00:00,PHI,MIL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
-401909857,2027,R,2026-10-25 00:00:00+00:00,CHI,WAS,,,,False,United Center,Chicago,IL
-401909858,2027,R,2026-10-25 00:00:00+00:00,DAL,SAS,,,,False,American Airlines Center,Dallas,TX
-401909856,2027,R,2026-10-25 00:30:00+00:00,ATL,HOU,,,,False,State Farm Arena,Atlanta,GA
-401909859,2027,R,2026-10-25 01:00:00+00:00,DEN,NOP,,,,False,Ball Arena,Denver,CO
-401909860,2027,R,2026-10-25 02:00:00+00:00,PHX,GSW,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909853,2027,R,2026-10-24 22:00:00+00:00,CHA,MIA,115.0,110.0,4.0,False,Spectrum Center,Charlotte,NC
+401909854,2027,R,2026-10-24 23:30:00+00:00,CLE,BKN,125.0,121.0,4.0,False,Rocket Arena,Cleveland,OH
+401909855,2027,R,2026-10-24 23:30:00+00:00,PHI,MIL,127.0,116.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
+401909857,2027,R,2026-10-25 00:00:00+00:00,CHI,WAS,120.0,124.0,4.0,False,United Center,Chicago,IL
+401909858,2027,R,2026-10-25 00:00:00+00:00,DAL,SAS,106.0,122.0,4.0,False,American Airlines Center,Dallas,TX
+401909856,2027,R,2026-10-25 00:30:00+00:00,ATL,HOU,114.0,121.0,4.0,False,State Farm Arena,Atlanta,GA
+401909859,2027,R,2026-10-25 01:00:00+00:00,DEN,NOP,141.0,135.0,5.0,False,Ball Arena,Denver,CO
+401909860,2027,R,2026-10-25 02:00:00+00:00,PHX,GSW,131.0,122.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
 401909861,2027,R,2026-10-25 21:00:00+00:00,UTA,LAL,,,,False,Delta Center,Salt Lake City,UT
 401909862,2027,R,2026-10-25 22:00:00+00:00,BKN,IND,,,,False,Barclays Center,Brooklyn,NY
 401909863,2027,R,2026-10-25 23:00:00+00:00,NYK,ORL,,,,False,Madison Square Garden,New York,NY
