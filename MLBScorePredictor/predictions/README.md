@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sun Oct 25, 2026 08:36 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Mon Oct 26, 2026 02:01 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,13 +14,13 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | Robert Gasser / Freddy Peralta | MIL 3, TB 4 | TB 52% | MIL +110 / TB -110 | MIL -102 / TB -118 | 3.9 – 3.8 | 1–8 / 1–7 | TB -1.5 34% | 7.7 / 7 (over 52%) | TB -110, 4.3 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | Robert Gasser / Freddy Peralta | MIL 3, TB 4 | TB 52% | MIL +110 / TB -110 | MIL -101 / TB -120 | 3.9 – 3.9 | 1–8 / 1–7 | TB -1.5 34% | 7.7 / 7 (over 52%) | TB -110, 4.3 runs | 10% | proj. / proj. | no edge | no edge | no edge |
 
 ## Tuesday, October 27 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / TBD | MIL 4, TB 5 | TB 50% | MIL +100 / TB -100 | – | 4.4 – 4.2 | 1–9 / 1–8 | TB -1.5 33% | 8.5 | TB -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB -1.5 +200, MIL +1.5 -200 | no line yet | no line yet |
+| 8:00 PM | MIL @ TB | TBD / TBD | MIL 3, TB 4 | TB 50% | MIL +100 / TB -100 | – | 4.4 – 4.2 | 1–9 / 1–8 | TB -1.5 33% | 8.5 | TB -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB -1.5 +200, MIL +1.5 -200 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -63,16 +63,16 @@ Runs per game better than an average team against an average opponent at a neutr
 
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
-| 1 | LAD | +1.52 | +0.75 | +0.40 | +0.11 | +0.26 | 5.2 | 1576 |
-| 2 | MIL | +0.88 | +0.40 | +0.15 | +0.10 | +0.23 | 4.9 | 1608 |
-| 3 | TB | +0.74 | +0.22 | +0.23 | +0.09 | +0.20 | 5.2 | 1557 |
+| 1 | LAD | +1.52 | +0.75 | +0.40 | +0.11 | +0.25 | 5.2 | 1576 |
+| 2 | MIL | +0.91 | +0.40 | +0.15 | +0.13 | +0.23 | 4.9 | 1608 |
+| 3 | TB | +0.75 | +0.22 | +0.23 | +0.11 | +0.20 | 5.2 | 1557 |
 | 4 | ATL | +0.72 | +0.33 | +0.15 | +0.09 | +0.16 | 5.1 | 1529 |
 | 5 | CHC | +0.69 | +0.59 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
 | 6 | NYY | +0.67 | +0.19 | +0.20 | +0.07 | +0.22 | 5.2 | 1560 |
 | 7 | SD | +0.63 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
 | 8 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.6 | 1531 |
 | 9 | NYM | +0.49 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
-| 10 | ARI | +0.49 | +0.40 | +0.01 | +0.11 | -0.03 | 5.2 | 1512 |
+| 10 | ARI | +0.48 | +0.40 | +0.01 | +0.11 | -0.03 | 5.2 | 1512 |
 | 11 | HOU | +0.45 | +0.37 | +0.04 | +0.07 | -0.04 | 4.9 | 1489 |
 | 12 | CLE | +0.44 | +0.05 | +0.13 | +0.14 | +0.12 | 4.6 | 1514 |
 | 13 | SEA | +0.43 | +0.34 | +0.14 | +0.04 | -0.08 | 5.3 | 1475 |
@@ -89,10 +89,10 @@ Runs per game better than an average team against an average opponent at a neutr
 | 24 | MIA | -0.33 | -0.27 | -0.05 | +0.01 | -0.02 | 4.8 | 1502 |
 | 25 | STL | -0.36 | -0.22 | -0.10 | -0.01 | -0.03 | 5.1 | 1481 |
 | 26 | CIN | -0.62 | -0.19 | -0.21 | +0.00 | -0.22 | 5.0 | 1456 |
-| 27 | SF | -0.66 | -0.52 | -0.11 | -0.03 | -0.00 | 4.8 | 1461 |
-| 28 | LAA | -0.66 | -0.56 | -0.02 | -0.03 | -0.05 | 5.3 | 1434 |
+| 27 | SF | -0.65 | -0.52 | -0.11 | -0.03 | -0.00 | 4.8 | 1461 |
+| 28 | LAA | -0.66 | -0.55 | -0.02 | -0.03 | -0.05 | 5.3 | 1434 |
 | 29 | ATH | -0.73 | -0.02 | -0.18 | -0.07 | -0.47 | 4.8 | 1405 |
-| 30 | COL | -0.99 | -0.18 | -0.24 | -0.00 | -0.57 | 4.9 | 1379 |
+| 30 | COL | -0.99 | -0.18 | -0.24 | -0.00 | -0.56 | 4.9 | 1379 |
 
 ## Current model fit
 
