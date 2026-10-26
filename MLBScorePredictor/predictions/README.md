@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Mon Oct 26, 2026 03:30 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Mon Oct 26, 2026 05:10 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,7 +14,7 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | Robert Gasser / Freddy Peralta | MIL 3, TB 4 | TB 52% | MIL +110 / TB -110 | MIL -102 / TB -118 | 3.9 – 3.9 | 1–8 / 1–7 | TB -1.5 34% | 7.7 / 7 (over 52%) | TB -110, 4.3 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | Robert Gasser / Freddy Peralta | MIL 3, TB 4 | TB 52% | MIL +110 / TB -110 | MIL -101 / TB -119 | 3.9 – 3.9 | 1–8 / 1–8 | TB -1.5 34% | 7.8 / 7 (over 53%) | TB -110, 4.4 runs | 10% | ✓ / ✓ | no edge | no edge | no edge |
 
 ## Tuesday, October 27 — World Series
 
