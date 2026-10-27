@@ -42,15 +42,15 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909865,2027,R,2026-10-25 23:00:00+00:00,OKC,LAC,108.0,101.0,4.0,False,Paycom Center,Oklahoma City,OK
 401909866,2027,R,2026-10-25 23:30:00+00:00,PHI,DET,93.0,106.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
 401909867,2027,R,2026-10-26 01:00:00+00:00,SAC,MEM,112.0,123.0,4.0,False,Golden 1 Center,Sacramento,CA
-401909868,2027,R,2026-10-26 23:00:00+00:00,CHA,WAS,,,,False,Spectrum Center,Charlotte,NC
-401909869,2027,R,2026-10-26 23:00:00+00:00,CLE,MIN,,,,False,Rocket Arena,Cleveland,OH
-401909870,2027,R,2026-10-26 23:30:00+00:00,BOS,CHI,,,,False,TD Garden,Boston,MA
-401909871,2027,R,2026-10-26 23:30:00+00:00,MIA,DAL,,,,False,Kaseya Center,Miami,FL
-401909872,2027,R,2026-10-27 00:00:00+00:00,MIL,IND,,,,False,Fiserv Forum,Milwaukee,WI
-401909873,2027,R,2026-10-27 00:00:00+00:00,OKC,PHX,,,,False,Paycom Center,Oklahoma City,OK
-401909874,2027,R,2026-10-27 00:30:00+00:00,HOU,ATL,,,,False,Toyota Center (Houston),Houston,TX
-401909875,2027,R,2026-10-27 01:00:00+00:00,UTA,MEM,,,,False,Delta Center,Salt Lake City,UT
-401909876,2027,R,2026-10-27 02:00:00+00:00,DEN,GSW,,,,False,Ball Arena,Denver,CO
+401909868,2027,R,2026-10-26 23:00:00+00:00,CHA,WAS,110.0,103.0,4.0,False,Spectrum Center,Charlotte,NC
+401909869,2027,R,2026-10-26 23:00:00+00:00,CLE,MIN,127.0,125.0,5.0,False,Rocket Arena,Cleveland,OH
+401909870,2027,R,2026-10-26 23:30:00+00:00,BOS,CHI,134.0,99.0,4.0,False,TD Garden,Boston,MA
+401909871,2027,R,2026-10-26 23:30:00+00:00,MIA,DAL,109.0,113.0,4.0,False,Kaseya Center,Miami,FL
+401909872,2027,R,2026-10-27 00:00:00+00:00,MIL,IND,110.0,102.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909873,2027,R,2026-10-27 00:00:00+00:00,OKC,PHX,125.0,114.0,4.0,False,Paycom Center,Oklahoma City,OK
+401909874,2027,R,2026-10-27 00:30:00+00:00,HOU,ATL,120.0,110.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909875,2027,R,2026-10-27 01:00:00+00:00,UTA,MEM,105.0,110.0,4.0,False,Delta Center,Salt Lake City,UT
+401909876,2027,R,2026-10-27 02:00:00+00:00,DEN,GSW,114.0,134.0,4.0,False,Ball Arena,Denver,CO
 401909877,2027,R,2026-10-27 23:30:00+00:00,BOS,BKN,,,,False,TD Garden,Boston,MA
 401909878,2027,R,2026-10-28 00:00:00+00:00,NYK,DET,,,,False,Madison Square Garden,New York,NY
 401909879,2027,R,2026-10-28 00:00:00+00:00,SAS,SAC,,,,False,Frost Bank Center,San Antonio,TX
@@ -67,7 +67,7 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909890,2027,R,2026-10-29 01:00:00+00:00,UTA,SAS,,,,False,Delta Center,Salt Lake City,UT
 401909891,2027,R,2026-10-29 01:30:00+00:00,DAL,OKC,,,,False,American Airlines Center,Dallas,TX
 401909892,2027,R,2026-10-29 02:30:00+00:00,LAC,LAL,,,,False,Intuit Dome,Inglewood,CA
-401909893,2027,R,2026-10-29 23:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
+401909893,2027,R,2026-10-30 00:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
 401909894,2027,R,2026-10-30 00:00:00+00:00,NOP,SAC,,,,False,Smoothie King Center,New Orleans,LA
 401909895,2027,R,2026-10-30 02:00:00+00:00,POR,MEM,,,,False,Moda Center,Portland,OR
 401909277,2027,R,2026-10-30 23:00:00+00:00,WAS,CHA,,,,False,Capital One Arena,Washington,DC
