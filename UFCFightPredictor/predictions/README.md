@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Mon Oct 26, 2026 03:32 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Tue Oct 27, 2026 02:56 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -16,37 +16,37 @@ Saturday, October 31, 2026 · first bout locks Sat Oct 31, 5:00 PM ET
 
 | Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **Renato Moicano** vs. **Tom Nolan**<br>LW, 5 rds | Moicano 48% – 52% Nolan | +110 / -110 | Moicano 51% (-110 / -105) | Moicano 40% (+150) | Moicano 19% / 12% / 17%<br>Nolan 21% / 13% / 18% | 35% | Nolan by KO/TKO (21%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Moicano +430 / +705 / +490<br>Nolan +370 / +675 / +460 |
-| **Randy Brown** vs. **Jacobe Smith**<br>WW, 3 rds | Brown 28% – 72% Smith | +255 / -255 | no line yet | Brown 28% (+255) | Brown 9% / 3% / 16%<br>Smith 27% / 13% / 32% | 48% | Smith by decision (32%) | no line yet | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Brown +975 / +3745 / +515<br>Smith +275 / +650 / +215 |
-| **Ode' Osbourne** vs. **Cody Durden**<br>FLW, 3 rds | Osbourne 49% – 51% Durden | +105 / -105 | Osbourne 50% (-112 / -108) | Osbourne 45% (+120) | Osbourne 14% / 16% / 20%<br>Durden 8% / 17% / 26% | 45% | Durden by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Osbourne +615 / +540 / +410<br>Durden +1095 / +495 / +290 |
-| **Yana Santos** vs. **Luana Santos**<br>W-BW, 3 rds | Santos 23% – 77% Santos | +330 / -330 | Santos 30% (+215 / -265) | Santos 20% (+405) | Santos 3% / 1% / 19%<br>Santos 9% / 18% / 50% | 69% | Santos by decision (50%) | Santos (-265): EV +5.5%, 77%, stake 3.0u | no price yet; fair Over 2.5 -255, Under +255 | no prices yet; fair KO / Sub / Dec<br>Santos +3490 / +7460 / +420<br>Santos +1005 / +460 / +100 |
+| **Renato Moicano** vs. **Tom Nolan**<br>LW, 5 rds | Moicano 50% – 50% Nolan | -100 / +100 | Moicano 53% (-122 / +102) | Moicano 40% (+150) | Moicano 20% / 13% / 18%<br>Nolan 20% / 12% / 17% | 35% | Nolan by KO/TKO (20%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Moicano +410 / +670 / +470<br>Nolan +390 / +715 / +485 |
+| **Randy Brown** vs. **Jacobe Smith**<br>WW, 3 rds | Brown 25% – 75% Smith | +305 / -305 | Brown 29% (+225 / -278) | Brown 28% (+255) | Brown 8% / 2% / 14%<br>Smith 28% / 14% / 33% | 47% | Smith by decision (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Brown +1135 / +4375 / +605<br>Smith +255 / +605 / +200 |
+| **Ode' Osbourne** vs. **Cody Durden**<br>FLW, 3 rds | Osbourne 48% – 52% Durden | +105 / -105 | Osbourne 50% (-108 / -112) | Osbourne 45% (+120) | Osbourne 14% / 15% / 19%<br>Durden 9% / 17% / 26% | 45% | Durden by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Osbourne +625 / +555 / +415<br>Durden +1075 / +485 / +285 |
+| **Yana Santos** vs. **Luana Santos**<br>W-BW, 3 rds | Santos 24% – 76% Santos | +320 / -320 | Santos 31% (+210 / -258) | Santos 20% (+405) | Santos 3% / 1% / 20%<br>Santos 9% / 18% / 49% | 69% | Santos by decision (49%) | Santos (-258): EV +5.7%, 76%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Santos +3425 / +7310 / +410<br>Santos +1010 / +460 / +100 |
 | **Jean-Paul Lebosnoyani** vs. **Farman Hasanov**<br>WW, 3 rds | Lebosnoyani 75% – 25% Hasanov | -295 / +295 | Lebosnoyani 72% (-298 / +240) | Lebosnoyani 62% (-165) | Lebosnoyani 18% / 17% / 40%<br>Hasanov 4% / 4% / 17% | 58% | Lebosnoyani by decision (40%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Lebosnoyani +455 / +500 / +150<br>Hasanov +2695 / +2290 / +475 |
-| **Francis Marshall** vs. **Dakota Hope**<br>FW, 3 rds | Marshall 72% – 28% Hope | -255 / +255 | Marshall 68% (-245 / +200) | Marshall 66% (-190) | Marshall 21% / 12% / 39%<br>Hope 9% / 2% / 17% | 56% | Marshall by decision (39%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Marshall +380 / +760 / +155<br>Hope +965 / +5220 / +490 |
+| **Francis Marshall** vs. **Dakota Hope**<br>FW, 3 rds | Marshall 71% – 29% Hope | -240 / +240 | Marshall 67% (-230 / +190) | Marshall 66% (-190) | Marshall 20% / 11% / 39%<br>Hope 10% / 2% / 18% | 56% | Marshall by decision (39%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Marshall +390 / +780 / +155<br>Hope +920 / +4995 / +470 |
 | **Azamat Bekoev** vs. **Andre Petroski**<br>MW, 3 rds | Bekoev 41% – 59% Petroski | +145 / -145 | no line yet | Bekoev 41% (+145) | Bekoev 20% / 5% / 16%<br>Petroski 19% / 20% / 20% | 36% | Petroski by decision (20%) | no line yet | no price yet; fair Over 1.5 -125, Under +125 | no prices yet; fair KO / Sub / Dec<br>Bekoev +405 / +1865 / +530<br>Petroski +420 / +405 / +390 |
 | **Rodrigo Sezinando** vs. **Theodor Berggren**<br>WW, 3 rds | Sezinando 59% – 41% Berggren | -140 / +140 | Sezinando 60% (-170 / +142) | Sezinando 41% (+145) | Sezinando 31% / 9% / 19%<br>Berggren 21% / 6% / 15% | 33% | Sezinando by KO/TKO (31%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Sezinando +220 / +1005 / +440<br>Berggren +380 / +1665 / +570 |
-| **Julian Erosa** vs. **JeongYeong Lee**<br>FW, 3 rds | Erosa 38% – 62% Lee | +165 / -165 | Erosa 38% (+150 / -180) | Erosa 49% (+105) | Erosa 12% / 5% / 20%<br>Lee 25% / 7% / 30% | 50% | Lee by decision (30%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Erosa +730 / +1740 / +395<br>Lee +295 / +1410 / +230 |
-| **Nick Klein** vs. **Joe Kropschot**<br>MW, 3 rds, UFC debut: Kropschot | Klein 25% – 75% Kropschot | +295 / -295 | Klein 27% (+260 / -325) | Klein 47% (+115) | Klein 7% / 8% / 10%<br>Kropschot 36% / 17% / 21% | 31% | Kropschot by KO/TKO (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Klein +1260 / +1160 / +890<br>Kropschot +175 / +480 / +375 |
-| **Talita Alencar** vs. **Piera Rodriguez**<br>W-SW, 3 rds | Alencar 27% – 73% Rodriguez | +270 / -270 | Alencar 29% (+230 / -285) | Alencar 42% (+140) | Alencar 2% / 4% / 21%<br>Rodriguez 6% / 6% / 62% | 82% | Rodriguez by decision (62%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Alencar +5070 / +2320 / +380<br>Rodriguez +1620 / +1650 / -160 |
-| **Lucia Szabová** vs. **Tainara Lisboa**<br>W-FLW, 3 rds, UFC debut: Szabová | Szabová 86% – 14% Lisboa | -615 / +615 | Szabová 83% (-650 / +470) | Szabová 67% (-205) | Szabová 14% / 25% / 47%<br>Lisboa 2% / 3% / 10% | 57% | Szabová by decision (47%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Szabová +615 / +300 / +115<br>Lisboa +6165 / +3745 / +925 |
-| **Zach Reese** vs. **Mickey Gall**<br>MW, 3 rds | Reese 70% – 30% Gall | -230 / +230 | no line yet | Reese 70% (-230) | Reese 30% / 17% / 23%<br>Gall 13% / 7% / 11% | 34% | Reese by KO/TKO (30%) | no line yet | no price yet; fair Over 1.5 -115, Under +115 | no prices yet; fair KO / Sub / Dec<br>Reese +230 / +500 / +340<br>Gall +700 / +1390 / +820 |
+| **Julian Erosa** vs. **JeongYeong Lee**<br>FW, 3 rds | Erosa 39% – 61% Lee | +160 / -160 | Erosa 39% (+145 / -175) | Erosa 49% (+105) | Erosa 12% / 6% / 21%<br>Lee 25% / 7% / 30% | 51% | Lee by decision (30%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Erosa +710 / +1700 / +385<br>Lee +300 / +1430 / +235 |
+| **Nick Klein** vs. **Joe Kropschot**<br>MW, 3 rds, UFC debut: Kropschot | Klein 25% – 75% Kropschot | +305 / -305 | Klein 26% (+270 / -340) | Klein 47% (+115) | Klein 7% / 8% / 10%<br>Kropschot 37% / 17% / 21% | 31% | Kropschot by KO/TKO (37%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Klein +1300 / +1200 / +920<br>Kropschot +175 / +470 / +370 |
+| **Talita Alencar** vs. **Piera Rodriguez**<br>W-SW, 3 rds | Alencar 26% – 74% Rodriguez | +285 / -285 | Alencar 28% (+240 / -298) | Alencar 42% (+140) | Alencar 2% / 4% / 20%<br>Rodriguez 6% / 6% / 62% | 82% | Rodriguez by decision (62%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Alencar +5235 / +2405 / +395<br>Rodriguez +1600 / +1625 / -165 |
+| **Lucia Szabová** vs. **Tainara Lisboa**<br>W-FLW, 3 rds, UFC debut: Szabová | Szabová 87% – 13% Lisboa | -655 / +655 | Szabová 84% (-700 / +500) | Szabová 67% (-205) | Szabová 14% / 25% / 47%<br>Lisboa 2% / 2% / 9% | 56% | Szabová by decision (47%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Szabová +610 / +295 / +110<br>Lisboa +6520 / +3975 / +980 |
+| **Zach Reese** vs. **Mickey Gall**<br>MW, 3 rds | Reese 77% – 23% Gall | -345 / +345 | Reese 73% (-310 / +260) | Reese 70% (-230) | Reese 34% / 19% / 25%<br>Gall 9% / 5% / 8% | 33% | Reese by KO/TKO (34%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Reese +195 / +425 / +305<br>Gall +965 / +1940 / +1115 |
 
 When it ends (either fighter):
 
 | Bout | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 | Decision |
 |---|---|---|---|---|---|---|
 | Moicano vs. Nolan | 24% | 19% | 11% | 6% | 5% | 35% |
-| Brown vs. Smith | 27% | 17% | 8% |  |  | 48% |
+| Brown vs. Smith | 27% | 17% | 8% |  |  | 47% |
 | Osbourne vs. Durden | 29% | 18% | 9% |  |  | 45% |
 | Santos vs. Santos | 15% | 11% | 6% |  |  | 69% |
 | Lebosnoyani vs. Hasanov | 21% | 14% | 7% |  |  | 58% |
 | Marshall vs. Hope | 22% | 14% | 7% |  |  | 56% |
 | Bekoev vs. Petroski | 35% | 20% | 9% |  |  | 36% |
 | Sezinando vs. Berggren | 37% | 20% | 9% |  |  | 33% |
-| Erosa vs. Lee | 25% | 16% | 8% |  |  | 50% |
+| Erosa vs. Lee | 25% | 16% | 8% |  |  | 51% |
 | Klein vs. Kropschot | 39% | 21% | 9% |  |  | 31% |
 | Alencar vs. Rodriguez | 8% | 6% | 3% |  |  | 82% |
-| Szabová vs. Lisboa | 22% | 14% | 7% |  |  | 57% |
-| Reese vs. Gall | 37% | 20% | 9% |  |  | 34% |
+| Szabová vs. Lisboa | 22% | 14% | 7% |  |  | 56% |
+| Reese vs. Gall | 37% | 20% | 9% |  |  | 33% |
 
 ## UFC Fight Night: Bonfim vs. Brady
 
@@ -156,7 +156,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 5 | Jean Silva | 2075 | 301 | 7-1 | 2026-09-12 |
 | Lightweight | 1 | Ilia Topuria | 2274 | 296 | 9-1 | 2026-06-14 |
 |  | 2 | Justin Gaethje | 2193 | 240 | 11-5 | 2026-06-14 |
-|  | 3 | Charles Oliveira | 2146 | 211 | 25-11 | 2026-03-07 |
+|  | 3 | Charles Oliveira | 2146 | 212 | 25-11 | 2026-03-07 |
 |  | 4 | Arman Tsarukyan | 2148 | 267 | 11-2 | 2026-09-19 |
 |  | 5 | Dustin Poirier | 2096 | 230 | 22-9 | 2025-07-19 |
 | Welterweight | 1 | Islam Makhachev | 2278 | 233 | 18-1 | 2026-08-15 |
