@@ -1,6 +1,6 @@
 # NHL score predictions
 
-Updated Mon Oct 26, 2026 05:08 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
+Updated Mon Oct 26, 2026 09:29 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
 
 Each game is simulated 10,000 times minute by minute, with pulled goalies, empty-net goals, overtime and shootouts. The predicted score is the most common final score in which the likelier winner wins; as in the official result, a shootout winner gets one extra goal. Hockey is low-scoring and luck-heavy, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,34 +14,32 @@ The edge columns price each side of the puck line, moneyline and total with the 
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | LAK @ NYR | LAK 2, NYR 3 | NYR 54% | LAK +115 / NYR -115 | 2.9 – 3.1 | 1–5 / 1–6 | 23% | NYR -1.5 33% | 6.0 / 5.5 (over 53%) | Darcy Kuemper (expected) / James Reimer (confirmed) | LAK +114 / NYR -135 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:30 PM | TOR @ CGY | TOR 4, CGY 3 | TOR 51% | TOR -105 / CGY +105 | 3.3 – 3.2 | 1–6 / 1–6 | 22% | TOR -1.5 31% | 6.5 / 6.5 (over 50%) | Sergei Bobrovsky (expected) / Devin Cooley (confirmed) | TOR -135 / CGY +114 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 9:30 PM | DET @ EDM | DET 3, EDM 4 | EDM 57% | DET +135 / EDM -135 | 3.0 – 3.5 | 1–5 / 1–6 | 22% | EDM -1.5 36% | 6.6 / 6.5 (over 50%) | Michal Postava (confirmed) / Tristan Jarry (confirmed) | DET +150 / EDM -180 | DET +1.5 (-162): EV +3.5%, 64%, stake 1.4u | DET (+150): EV +6.1%, 42%, stake 1.0u | no edge |
+| 9:30 PM | DET @ EDM | DET 3, EDM 4 | EDM 58% | DET +140 / EDM -140 | 3.0 – 3.5 | 1–5 / 1–6 | 21% | EDM -1.5 37% | 6.6 / 6.5 (over 51%) | Michal Postava (confirmed) / Tristan Jarry (confirmed) | DET +150 / EDM -180 | no edge | DET (+150): EV +5.6%, 42%, stake 0.9u | no edge |
 
 ## Tuesday, October 27
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | CBJ @ PHI | CBJ 3, PHI 2 | CBJ 53% | CBJ -115 / PHI +115 | 3.1 – 2.9 | 1–5 / 1–5 | 23% | CBJ -1.5 31% | 5.9 / 5.5 (over 50%) | Jet Greaves (expected) / Dan Vladar (expected) | CBJ -120 / PHI +100 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | BOS @ CAR | BOS 3, CAR 4 | CAR 61% | BOS +155 / CAR -155 | 2.8 – 3.6 | 1–5 / 1–6 | 22% | CAR -1.5 40% | 6.4 / 6.5 (over 48%) | Jeremy Swayman (expected) / Pyotr Kochetkov (expected) | BOS +160 / CAR -192 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | LAK @ CHI | LAK 3, CHI 2 | LAK 54% | LAK -120 / CHI +120 | 3.1 – 2.8 | 1–5 / 1–5 | 23% | LAK -1.5 33% | 6.0 / 5.5 (over 52%) | Anton Forsberg (expected) / Spencer Knight (expected) | LAK -122 / CHI +102 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | MTL @ STL | MTL 2, STL 3 | STL 54% | MTL +115 / STL -115 | 2.9 – 3.2 | 1–5 / 1–6 | 23% | STL -1.5 32% | 6.1 / 6.5 (over 44%) | Jacob Fowler (expected) / Joel Hofer (expected) | MTL -102 / STL -118 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | NYI @ NSH | NYI 2, NSH 3 | NSH 50% | NYI +100 / NSH -100 | 3.1 – 3.1 | 1–5 / 1–5 | 22% | NSH -1.5 30% | 6.2 / 5.5 (over 55%) | Semyon Varlamov (expected) / Juuse Saros (expected) | NYI +102 / NSH -122 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 7:00 PM | CBJ @ PHI | CBJ 3, PHI 2 | CBJ 53% | CBJ -115 / PHI +115 | 3.1 – 2.8 | 1–5 / 1–5 | 22% | CBJ -1.5 32% | 5.9 / 5.5 (over 51%) | Jet Greaves (expected) / Dan Vladar (expected) | CBJ -120 / PHI +100 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | BOS @ CAR | BOS 3, CAR 4 | CAR 62% | BOS +160 / CAR -160 | 2.8 – 3.5 | 1–5 / 1–6 | 22% | CAR -1.5 40% | 6.3 / 6.5 (over 47%) | Jeremy Swayman (expected) / Pyotr Kochetkov (expected) | BOS +160 / CAR -192 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | LAK @ CHI | LAK 3, CHI 2 | LAK 55% | LAK -120 / CHI +120 | 3.1 – 2.8 | 1–5 / 1–5 | 23% | LAK -1.5 34% | 5.9 / 5.5 (over 51%) | Anton Forsberg (expected) / Spencer Knight (expected) | LAK -122 / CHI +102 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | MTL @ STL | MTL 2, STL 3 | STL 55% | MTL +120 / STL -120 | 2.9 – 3.2 | 1–5 / 1–6 | 22% | STL -1.5 33% | 6.2 / 6.5 (over 45%) | Jacob Fowler (expected) / Joel Hofer (expected) | MTL -102 / STL -118 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | NYI @ NSH | NYI 2, NSH 3 | NSH 51% | NYI +105 / NSH -105 | 3.1 – 3.1 | 1–5 / 1–5 | 22% | NSH -1.5 30% | 6.1 / 5.5 (over 55%) | Semyon Varlamov (expected) / Juuse Saros (expected) | NYI +102 / NSH -122 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
 | 8:00 PM | NJD @ DAL | NJD 2, DAL 3 | DAL 54% | NJD +120 / DAL -120 | 2.8 – 3.0 | 1–5 / 1–5 | 23% | DAL -1.5 32% | 5.8 / 5.5 (over 48%) | Jake Allen (expected) / Jake Oettinger (expected) | NJD +105 / DAL -125 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | FLA @ WPG | FLA 3, WPG 2 | FLA 53% | FLA -115 / WPG +115 | 3.1 – 2.9 | 1–5 / 1–5 | 23% | FLA -1.5 32% | 6.0 / 5.5 (over 52%) | Akira Schmid (expected) / Stuart Skinner (expected) | FLA -130 / WPG +110 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 9:00 PM | MIN @ UTA | MIN 3, UTA 4 | UTA 52% | MIN +110 / UTA -110 | 3.1 – 3.3 | 1–5 / 1–6 | 23% | UTA -1.5 31% | 6.4 / 6.5 (over 48%) | Jesper Wallstedt (expected) / Karel Vejmelka (expected) | MIN +105 / UTA -125 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 10:00 PM | OTT @ VGK | OTT 2, VGK 3 | VGK 58% | OTT +140 / VGK -140 | 2.9 – 3.4 | 1–5 / 1–6 | 22% | VGK -1.5 36% | 6.2 / 6.5 (over 45%) | Samuel Ersson (expected) / Carter Hart (expected) | OTT +130 / VGK -155 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 10:00 PM | VAN @ ANA | VAN 3, ANA 4 | ANA 64% | VAN +180 / ANA -180 | 3.0 – 4.0 | 1–5 / 2–7 | 20% | ANA -1.5 44% | 7.1 / 6.5 (over 59%) | Kevin Lankinen (expected) / Lukas Dostal (expected) | VAN +164 / ANA -198 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 10:30 PM | BUF @ SJS | BUF 4, SJS 3 | BUF 58% | BUF -140 / SJS +140 | 3.6 – 3.1 | 1–6 / 1–5 | 21% | BUF -1.5 37% | 6.7 / 6.5 (over 52%) | Colten Ellis (expected) / Yaroslav Askarov (expected) | BUF -135 / SJS +114 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | FLA @ WPG | FLA 3, WPG 2 | FLA 54% | FLA -115 / WPG +115 | 3.1 – 2.9 | 1–6 / 1–5 | 22% | FLA -1.5 32% | 6.0 / 5.5 (over 53%) | Akira Schmid (expected) / Stuart Skinner (expected) | FLA -130 / WPG +110 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 9:00 PM | MIN @ UTA | MIN 3, UTA 4 | UTA 51% | MIN +105 / UTA -105 | 3.1 – 3.2 | 1–6 / 1–6 | 22% | UTA -1.5 30% | 6.4 / 6.5 (over 48%) | Jesper Wallstedt (expected) / Karel Vejmelka (expected) | MIN +105 / UTA -125 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 10:00 PM | OTT @ VGK | OTT 2, VGK 3 | VGK 59% | OTT +140 / VGK -140 | 2.8 – 3.4 | 1–5 / 1–6 | 22% | VGK -1.5 37% | 6.2 / 6.5 (over 46%) | Samuel Ersson (expected) / Carter Hart (expected) | OTT +130 / VGK -155 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 10:00 PM | VAN @ ANA | VAN 3, ANA 4 | ANA 65% | VAN +190 / ANA -190 | 3.0 – 4.0 | 1–5 / 2–7 | 20% | ANA -1.5 45% | 7.0 / 6.5 (over 58%) | Kevin Lankinen (expected) / Lukas Dostal (expected) | VAN +164 / ANA -198 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 10:30 PM | BUF @ SJS | BUF 4, SJS 3 | BUF 60% | BUF -150 / SJS +150 | 3.7 – 3.0 | 1–6 / 1–5 | 21% | BUF -1.5 39% | 6.7 / 6.5 (over 53%) | Colten Ellis (expected) / Yaroslav Askarov (expected) | BUF -142 / SJS +120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
 
 ## Wednesday, October 28
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:30 PM | PHI @ WSH | PHI 3, WSH 4 | WSH 63% | PHI +170 / WSH -170 | 2.7 – 3.6 | 1–5 / 1–6 | 22% | WSH -1.5 41% | 6.3 | Joseph Woll (expected) / Charlie Lindgren (expected) | – | no line yet (model fair WSH -1.5 +145 / PHI +1.5 -145) | no line yet | no line yet |
-| 8:30 PM | CGY @ EDM | CGY 3, EDM 4 | EDM 60% | CGY +150 / EDM -150 | 3.1 – 3.7 | 1–5 / 1–6 | 21% | EDM -1.5 39% | 6.8 | Dustin Wolf (expected) / Tristan Jarry (expected) | – | no line yet (model fair EDM -1.5 +155 / CGY +1.5 -155) | no line yet | no line yet |
-| 9:00 PM | NJD @ COL | NJD 2, COL 3 | COL 60% | NJD +150 / COL -150 | 2.8 – 3.4 | 1–5 / 1–6 | 22% | COL -1.5 38% | 6.2 | Jake Allen (64%?) / Mackenzie Blackwood (expected) | – | no line yet (model fair COL -1.5 +160 / NJD +1.5 -160) | no line yet | no line yet |
-| 10:00 PM | TOR @ SEA | TOR 4, SEA 3 | TOR 53% | TOR -110 / SEA +110 | 3.4 – 3.2 | 1–6 / 1–6 | 22% | TOR -1.5 32% | 6.7 | Sergei Bobrovsky (expected) / Philipp Grubauer (expected) | – | no line yet (model fair SEA +1.5 -210 / TOR -1.5 +210) | no line yet | no line yet |
+| 7:30 PM | PHI @ WSH | PHI 3, WSH 4 | WSH 63% | PHI +165 / WSH -165 | 2.7 – 3.6 | 1–5 / 1–6 | 21% | WSH -1.5 41% | 6.3 | Joseph Woll (expected) / Charlie Lindgren (expected) | – | no line yet (model fair WSH -1.5 +145 / PHI +1.5 -145) | no line yet | no line yet |
+| 8:30 PM | CGY @ EDM | CGY 3, EDM 4 | EDM 61% | CGY +155 / EDM -155 | 3.0 – 3.7 | 1–5 / 1–6 | 21% | EDM -1.5 40% | 6.8 | Dustin Wolf (expected) / Tristan Jarry (expected) | – | no line yet (model fair EDM -1.5 +150 / CGY +1.5 -150) | no line yet | no line yet |
+| 9:00 PM | NJD @ COL | NJD 2, COL 3 | COL 59% | NJD +145 / COL -145 | 2.8 – 3.4 | 1–5 / 1–6 | 22% | COL -1.5 38% | 6.2 | Jake Allen (64%?) / Mackenzie Blackwood (expected) | – | no line yet (model fair COL -1.5 +165 / NJD +1.5 -165) | no line yet | no line yet |
+| 10:00 PM | TOR @ SEA | TOR 4, SEA 3 | TOR 53% | TOR -110 / SEA +110 | 3.4 – 3.2 | 1–6 / 1–6 | 22% | TOR -1.5 32% | 6.6 | Sergei Bobrovsky (expected) / Philipp Grubauer (expected) | – | no line yet (model fair SEA +1.5 -215 / TOR -1.5 +215) | no line yet | no line yet |
 
 \* price not posted; assumed -110.
 
@@ -70,7 +68,7 @@ Overtime: predicted in 21.6% of regular-season games, happened in 22.8%.
 | Moneyline | 1 | 1-0-0 | 1.7 | +1.36 | +80.0% | +6.6% |
 | Total | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
 
-Moneyline moved toward the model's edge on the first line seen before puck drop: 5 of 8 games (62%).
+Moneyline moved toward the model's edge on the first line seen before puck drop: 6 of 9 games (67%).
 
 Each edge at the stake and price logged with the last prediction before puck drop (edges logged before edges were priced from the final prediction are left out); pushes return the stake. Units are 1% of the bankroll; ROI is units won per unit staked, and expected ROI is what the edges' EVs promised. The moneyline moving toward the model's edge (closing line value) is the quickest sign that it knows something the market doesn't yet.
 
