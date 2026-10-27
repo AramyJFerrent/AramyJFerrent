@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Tue Oct 27, 2026 02:52 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Oct 27, 2026 04:54 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,13 +14,13 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / Griffin Jax | MIL 4, TB 3 | MIL 52% | MIL -110 / TB +110 | MIL -125 / TB +104 | 4.0 – 3.6 | 1–8 / 1–7 | MIL -1.5 38% | 7.7 / 7 (over 51%) | MIL -105, 4.3 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | Dustin May / Griffin Jax | MIL 4, TB 3 | MIL 52% | MIL -105 / TB +105 | MIL -123 / TB +102 | 4.1 – 3.7 | 1–8 / 1–7 | MIL -1.5 38% | 7.7 / 7 (over 52%) | MIL -100, 4.4 runs | 10% | ✓ / ✓ | no edge | no edge | no edge |
 
 ## Wednesday, October 28 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / TBD | MIL 5, TB 4 | MIL 51% | MIL -100 / TB +100 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 39% | 8.6 | MIL -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -160, MIL -1.5 +160 | no line yet | no line yet |
+| 8:00 PM | MIL @ TB | TBD / TBD | MIL 5, TB 4 | MIL 51% | MIL -105 / TB +105 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 39% | 8.6 | MIL -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -155, MIL -1.5 +155 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
