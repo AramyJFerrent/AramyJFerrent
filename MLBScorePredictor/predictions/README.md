@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Tue Oct 27, 2026 02:11 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Oct 27, 2026 02:52 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,13 +14,13 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / Griffin Jax | MIL 4, TB 3 | MIL 55% | MIL -120 / TB +120 | MIL -141 / TB +117 | 4.1 – 3.4 | 1–8 / 0–7 | MIL -1.5 41% | 7.5 / 7 (over 50%) | MIL -115, 4.2 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | TBD / Griffin Jax | MIL 4, TB 3 | MIL 52% | MIL -110 / TB +110 | MIL -125 / TB +104 | 4.0 – 3.6 | 1–8 / 1–7 | MIL -1.5 38% | 7.7 / 7 (over 51%) | MIL -105, 4.3 runs | 10% | proj. / proj. | no edge | no edge | no edge |
 
 ## Wednesday, October 28 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / TBD | MIL 4, TB 3 | MIL 51% | MIL -105 / TB +105 | – | 4.5 – 4.1 | 1–9 / 1–8 | MIL -1.5 39% | 8.6 | MIL -105, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -155, MIL -1.5 +155 | no line yet | no line yet |
+| 8:00 PM | MIL @ TB | TBD / TBD | MIL 5, TB 4 | MIL 51% | MIL -100 / TB +100 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 39% | 8.6 | MIL -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -160, MIL -1.5 +160 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
@@ -47,7 +47,7 @@ Extra innings: predicted in 8.6% of regular-season games, happened in 8.6%.
 | Moneyline | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
 | Total | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
 
-Moneyline moved toward the model's edge at the first line seen, before first pitch: 0 of 0 games.
+Moneyline moved toward the model's edge at the first line seen, before first pitch: 1 of 1 games (100%).
 
 Each edge at the stake and price logged with the last prediction before first pitch (live predictions only; edges logged before edges were priced from the final prediction are left out). Units are 1% of the bankroll; ROI is units won per unit staked, and expected ROI is what the edges' EVs promised. The market moving toward the model's side (closing line value) is the quickest sign that it knows something the market doesn't yet.
 
@@ -64,7 +64,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
 | 1 | LAD | +1.52 | +0.75 | +0.40 | +0.11 | +0.26 | 5.2 | 1576 |
-| 2 | MIL | +0.97 | +0.42 | +0.16 | +0.14 | +0.25 | 4.9 | 1612 |
+| 2 | MIL | +0.96 | +0.41 | +0.16 | +0.14 | +0.25 | 4.9 | 1612 |
 | 3 | ATL | +0.72 | +0.32 | +0.15 | +0.09 | +0.15 | 5.1 | 1529 |
 | 4 | CHC | +0.69 | +0.59 | +0.03 | +0.00 | +0.07 | 5.3 | 1539 |
 | 5 | NYY | +0.66 | +0.18 | +0.20 | +0.07 | +0.22 | 5.2 | 1560 |
@@ -75,7 +75,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 10 | HOU | +0.44 | +0.37 | +0.04 | +0.07 | -0.04 | 4.9 | 1489 |
 | 11 | CLE | +0.44 | +0.05 | +0.13 | +0.14 | +0.12 | 4.6 | 1514 |
 | 12 | SEA | +0.43 | +0.34 | +0.14 | +0.04 | -0.08 | 5.3 | 1475 |
-| 13 | TB | +0.37 | -0.13 | +0.22 | +0.11 | +0.17 | 5.2 | 1553 |
+| 13 | TB | +0.39 | -0.12 | +0.23 | +0.11 | +0.17 | 5.2 | 1553 |
 | 14 | BOS | +0.28 | -0.05 | +0.08 | +0.08 | +0.16 | 5.0 | 1531 |
 | 15 | DET | +0.27 | +0.12 | -0.00 | +0.08 | +0.07 | 5.0 | 1512 |
 | 16 | PIT | +0.25 | +0.01 | +0.14 | +0.05 | +0.04 | 4.6 | 1508 |
