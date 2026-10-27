@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Tue Oct 27, 2026 04:54 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Oct 27, 2026 07:56 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -10,17 +10,17 @@ The fair moneyline is the American odds that match the win chance exactly, with 
 
 The edge columns give the expected value of a bet per $1 staked at the posted price, from the final prediction: the model's runs blended with the market's, simulated against the posted run line and total (a push on a whole-number total returns the stake), and anchored to the market's own chances so only what the blend moves off the market counts. The model alone disagrees with the line in most games, but the blend keeps only the share of that disagreement the model has earned, so edges are rare. A side counts as an edge when its EV is 3% or more; each market shows its best side, as "pick (price): EV, its chance, its stake", the stake being a 25% share of the Kelly stake in units of 1% of the bankroll, with at most 3 units on one game. A total with no posted price is assumed to be -110 on both sides and marked -110*; run-line and moneyline prices are never assumed, so without one the run line shows the model's fair odds instead. Treat the edges as an experiment, not betting advice; see the backtest for how they have done on past seasons. Their record is tracked live below.
 
-## Tuesday, October 27 — World Series
-
-| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | Dustin May / Griffin Jax | MIL 4, TB 3 | MIL 52% | MIL -105 / TB +105 | MIL -123 / TB +102 | 4.1 – 3.7 | 1–8 / 1–7 | MIL -1.5 38% | 7.7 / 7 (over 52%) | MIL -100, 4.4 runs | 10% | ✓ / ✓ | no edge | no edge | no edge |
-
 ## Wednesday, October 28 — World Series
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | TBD / TBD | MIL 5, TB 4 | MIL 51% | MIL -105 / TB +105 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 39% | 8.6 | MIL -100, 4.9 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -155, MIL -1.5 +155 | no line yet | no line yet |
+| 8:00 PM | MIL @ TB | TBD / TBD | MIL 5, TB 4 | MIL 51% | MIL -105 / TB +105 | – | 4.4 – 4.1 | 1–9 / 1–8 | MIL -1.5 38% | 8.4 | MIL -105, 4.8 runs | 9% | proj. / proj. | no line yet; fair TB +1.5 -160, MIL -1.5 +160 | no line yet | no line yet |
+
+## Friday, October 30 — World Series
+
+| Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8:00 PM | TB @ MIL | TBD / TBD | TB 4, MIL 5 | MIL 57% | TB +135 / MIL -135 | – | 4.0 – 4.5 | 1–8 / 1–9 | MIL -1.5 39% | 8.5 | MIL -130, 5.0 runs | 9% | proj. / proj. | no line yet; fair MIL -1.5 +155, TB +1.5 -155 | no line yet | no line yet |
 
 ## How the 2026 predictions have done
 
