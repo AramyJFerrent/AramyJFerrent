@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Tue Oct 27, 2026 02:51 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Tue Oct 27, 2026 05:29 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -16,25 +16,25 @@ The edge columns check every side of the spread, the moneyline and the total for
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 7:30 PM | BKN @ BOS | BKN 105, BOS 118 | BOS 83% | BKN +500 / BOS -500<br>posted BKN +455 / BOS -625 | BOS -12.9 / BOS -12.5 (fav covers 49%) | 222.3 / 222.5 (over 49%) | 90–119 / 104–131 | 4% | BOS: Devin Carter (out); Derrick White (day-to-day) (+1.0) | no edge | no edge | no edge |
 | 8:00 PM | DET @ NYK | DET 108, NYK 112 | NYK 61% | DET +160 / NYK -160<br>posted DET +142 / NYK -170 | NYK -3.7 / NYK -4.5 (fav covers 49%) | 219.7 / 219.5 (over 49%) | 94–122 / 98–126 | 5% | DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.6)<br>NYK: Jose Alvarado (out) (-0.3) | no edge | no edge | no edge |
-| 8:00 PM | SAC @ SAS | SAC 107, SAS 125 | SAS 91% | SAC +995 / SAS -995<br>posted SAC +950 / SAS -1650 | SAS -18.5 / SAS -18.5 (fav covers 49%) | 231.9 / 232.5 (over 48%) | 92–121 / 111–139 | 2% | SAC: Maxime Raynaud (out); Keegan Murray (out); Dylan Cardwell (out) (+0.3)<br>SAS: Tobias Harris (out) (+0.7) | no edge | no edge | no edge |
-| 11:00 PM | POR @ LAL | POR 116, LAL 117 | LAL 55% | POR +120 / LAL -120<br>posted POR +105 / LAL -125 | LAL -1.5 / LAL -1.5 (fav covers 52%) | 233.5 / 233.5 (over 49%) | 102–131 / 103–132 | 5% | POR: Branden Carlson (day-to-day); Scoot Henderson (day-to-day) (+0.8) | no edge | no edge | no edge |
+| 8:00 PM | SAC @ SAS | SAC 107, SAS 125 | SAS 91% | SAC +995 / SAS -995<br>posted SAC +1000 / SAS -1800 | SAS -18.5 / SAS -18.5 (fav covers 49%) | 231.9 / 232.5 (over 48%) | 92–121 / 111–139 | 2% | SAC: Maxime Raynaud (out); Keegan Murray (out); Dylan Cardwell (out) (+0.3)<br>SAS: Tobias Harris (out) (+0.7) | no edge | no edge | no edge |
+| 11:00 PM | POR @ LAL | POR 116, LAL 118 | LAL 55% | POR +120 / LAL -120<br>posted POR +105 / LAL -125 | LAL -1.6 / LAL -1.5 (fav covers 52%) | 233.5 / 233.5 (over 49%) | 102–131 / 103–132 | 5% | POR: Scoot Henderson (day-to-day) (+0.5) | no edge | no edge | no edge |
 
 ## Wednesday, October 28
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | MIA @ ATL | MIA 117, ATL 121 | ATL 62% | MIA +160 / ATL -160 | ATL -4.1 | 238.4 | 102–132 / 107–136 | 5% | – | no line yet | no line yet | no line yet |
-| 7:00 PM | WAS @ CLE | WAS 112, CLE 122 | CLE 76% | WAS +315 / CLE -315 | CLE -9.5 | 233.8 | 97–127 / 107–136 | 4% | WAS: Jamir Watkins (out); Justin Champagnie (day-to-day); Tristan Vukcevic (out) (+0.8) | no line yet | no line yet | no line yet |
+| 7:00 PM | MIA @ ATL | MIA 117, ATL 121 | ATL 61% | MIA +160 / ATL -160 | ATL -4 | 238.4 | 102–132 / 107–136 | 5% | MIA: Pelle Larsson (day-to-day) (+0.1)<br>ATL: Aaron Wiggins (day-to-day) (+0.7) | no line yet | no line yet | no line yet |
+| 7:00 PM | WAS @ CLE | WAS 112, CLE 122 | CLE 77% | WAS +335 / CLE -335 | CLE -10 | 233.5 | 97–127 / 107–136 | 4% | WAS: Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (+0.3) | no line yet | no line yet | no line yet |
 | 7:00 PM | CHA @ DET | CHA 103, DET 110 | DET 71% | CHA +240 / DET -240 | DET -7.2 | 213.8 | 89–118 / 97–124 | 5% | CHA: Kon Knueppel (out); Coby White (out); Grant Williams (out) (-0.7)<br>DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.6) | no line yet | no line yet | no line yet |
-| 7:00 PM | PHI @ IND | PHI 121, IND 119 | PHI 57% | PHI -130 / IND +130<br>posted PHI -142 / IND +120 | PHI -2.2 / PHI -2.5 (fav covers 51%) | 239.8 / 239.5 (over 49%) | 106–136 / 104–134 | 5% | PHI: Joel Embiid (day-to-day); VJ Edgecombe (day-to-day); Dominick Barlow (out) (-0.4)<br>IND: Andrew Nembhard (day-to-day); Johnny Furphy (out); Ivica Zubac (day-to-day); Ben Sheppard (out); T.J. McConnell (out) (+0.9) | no edge | no edge | no edge |
+| 7:00 PM | PHI @ IND | PHI 121, IND 117 | PHI 62% | PHI -160 / IND +160<br>posted PHI -162 / IND +136 | PHI -4 / PHI -4.5 (fav covers 50%) | 237.6 / 237.5 (over 49%) | 106–136 / 102–132 | 5% | PHI: Dominick Barlow (out) (+0.3)<br>IND: Andrew Nembhard (day-to-day); Tyrese Haliburton (day-to-day); Aaron Nesmith (day-to-day); Obi Toppin (day-to-day); Johnny Furphy (out); Ivica Zubac (out); Ben Sheppard (out); T.J. McConnell (out) (+0.2) | no edge | no edge | no edge |
 | 7:30 PM | ORL @ TOR | ORL 113, TOR 114 | TOR 51% | ORL +105 / TOR -105 | pick'em | 226.6 | 99–128 / 99–128 | 6% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.2)<br>TOR: Kawhi Leonard (out) (-1.9) | no line yet | no line yet | no line yet |
-| 8:00 PM | NYK @ CHI | NYK 120, CHI 113 | NYK 69% | NYK -220 / CHI +220 | NYK -6.6 | 233.2 | 105–134 / 99–128 | 5% | NYK: Jose Alvarado (out) (-0.3)<br>CHI: Nic Claxton (out); Patrick Williams (day-to-day) (+0.1) | no line yet | no line yet | no line yet |
-| 8:00 PM | HOU @ MIL | HOU 120, MIL 110 | HOU 76% | HOU -320 / MIL +320 | HOU -9.6 | 229.9 | 105–134 / 96–125 | 5% | HOU: Marcus Smart (day-to-day); Steven Adams (out) (-0.7) | no line yet | no line yet | no line yet |
-| 8:00 PM | GSW @ MIN | GSW 108, MIN 115 | MIN 70% | GSW +235 / MIN -235 | MIN -7.1 | 223.4 | 94–123 / 101–129 | 4% | GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.4)<br>MIN: Donte DiVincenzo (out) (-0.1) | no line yet | no line yet | no line yet |
-| 8:00 PM | DEN @ NOP | DEN 119, NOP 115 | DEN 61% | DEN -155 / NOP +155 | DEN -3.9 | 234.3 | 104–134 / 100–130 | 5% | DEN: Spencer Jones (out); Cameron Johnson (day-to-day); Alpha Diallo (day-to-day) (+1.1)<br>NOP: Yves Missi (out) (+0.3) | no line yet | no line yet | no line yet |
-| 9:00 PM | SAS @ UTA | SAS 118, UTA 110 | SAS 74% | SAS -280 / UTA +280 | SAS -8.4 | 228.5 | 104–133 / 95–125 | 4% | SAS: Tobias Harris (out) (+0.7)<br>UTA: Lauri Markkanen (day-to-day); Jaren Jackson Jr. (day-to-day); Jaxson Hayes (day-to-day); Trey Alexander (out); Jusuf Nurkic (out) (-0.8) | no line yet | no line yet | no line yet |
+| 8:00 PM | NYK @ CHI | NYK 120, CHI 113 | NYK 69% | NYK -220 / CHI +220 | NYK -6.5 | 233.2 | 105–134 / 99–128 | 5% | NYK: Jose Alvarado (out) (-0.3)<br>CHI: Nic Claxton (out); Patrick Williams (day-to-day) (+0.2) | no line yet | no line yet | no line yet |
+| 8:00 PM | HOU @ MIL | HOU 120, MIL 110 | HOU 76% | HOU -320 / MIL +320 | HOU -9.6 | 229.7 | 105–134 / 95–125 | 5% | HOU: Alperen Sengun (out); Marcus Smart (day-to-day); Steven Adams (out) (-0.7) | no line yet | no line yet | no line yet |
+| 8:00 PM | GSW @ MIN | GSW 108, MIN 115 | MIN 69% | GSW +225 / MIN -225 | MIN -6.6 | 223.5 | 94–123 / 101–129 | 4% | GSW: Yaxel Lendeborg (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-0.9)<br>MIN: Donte DiVincenzo (out) (-0.1) | no line yet | no line yet | no line yet |
+| 8:00 PM | DEN @ NOP | DEN 119, NOP 115 | DEN 61% | DEN -155 / NOP +155 | DEN -3.9 | 234.4 | 104–134 / 100–130 | 5% | DEN: Spencer Jones (out); Cameron Johnson (day-to-day); Alpha Diallo (day-to-day) (+1.1)<br>NOP: Yves Missi (out); Jordan Poole (day-to-day) (+0.3) | no line yet | no line yet | no line yet |
+| 9:00 PM | SAS @ UTA | SAS 119, UTA 110 | SAS 75% | SAS -295 / UTA +295 | SAS -8.9 | 229.3 | 105–133 / 96–125 | 4% | SAS: Tobias Harris (out) (+0.7)<br>UTA: Lauri Markkanen (day-to-day); Jaren Jackson Jr. (out); Jaxson Hayes (day-to-day); Trey Alexander (out); Jusuf Nurkic (out) (-1.3) | no line yet | no line yet | no line yet |
 | 9:30 PM | OKC @ DAL | OKC 114, DAL 109 | OKC 65% | OKC -190 / DAL +190 | OKC -5.2 | 223.6 | 100–129 / 95–124 | 4% | OKC: Chet Holmgren (day-to-day); Jalen Williams (out); Alex Caruso (day-to-day); Cason Wallace (out) (+0.8)<br>DAL: Naji Marshall (day-to-day); Santi Aldama (out); Dereck Lively II (out); Sergio de Larrea (day-to-day) (+0.2) | no line yet | no line yet | no line yet |
-| 10:30 PM | LAL @ LAC | LAL 115, LAC 116 | LAC 52% | LAL +105 / LAC -105 | LAC -0.4 | 229.7 | 100–129 / 100–130 | 5% | LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+1.4) | no line yet | no line yet | no line yet |
+| 10:30 PM | LAL @ LAC | LAL 116, LAC 115 | LAC 50% | LAL +100 / LAC -100 | pick'em | 229.7 | 100–130 / 100–130 | 5% | LAC: Rui Hachimura (out); Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+0.8) | no line yet | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
 
@@ -91,28 +91,28 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 6 | MIN | +4.3 | +4.4 | +1.7 | +2.6 | 101.6 | -0.1 | 1606 |
 | 7 | NYK | +3.6 | +3.7 | +0.7 | +3.0 | 101.1 | -0.3 | 1684 |
 | 8 | LAL | +3.3 | +3.4 | +3.0 | +0.3 | 103.5 | +0.3 | 1587 |
-| 9 | POR | +3.1 | +3.2 | +2.0 | +1.1 | 103.1 | +0.8 | 1549 |
+| 9 | POR | +3.1 | +3.2 | +2.0 | +1.1 | 103.1 | +0.5 | 1549 |
 | 10 | CLE | +2.7 | +2.8 | +2.0 | +0.6 | 106.3 | +0.0 | 1577 |
-| 11 | PHI | +1.6 | +1.7 | -0.8 | +2.4 | 107.2 | -0.4 | 1549 |
+| 11 | PHI | +1.6 | +1.7 | -0.8 | +2.4 | 107.2 | +0.3 | 1549 |
 | 12 | TOR | +1.4 | +1.5 | -0.6 | +2.0 | 106.9 | -2.0 | 1549 |
 | 13 | ORL | +1.3 | +1.4 | -1.4 | +2.7 | 106.3 | +0.2 | 1540 |
-| 14 | ATL | +0.8 | +0.9 | +0.7 | +0.2 | 108.2 | +0.8 | 1571 |
-| 15 | GSW | +0.4 | +0.4 | +1.0 | -0.6 | 101.3 | -1.4 | 1461 |
+| 14 | ATL | +0.8 | +0.9 | +0.7 | +0.2 | 108.2 | +0.7 | 1571 |
+| 15 | GSW | +0.4 | +0.4 | +1.0 | -0.6 | 101.3 | -1.0 | 1461 |
 | 16 | DEN | +0.2 | +0.2 | +2.4 | -2.2 | 99.8 | +1.0 | 1561 |
-| 17 | MIA | -0.4 | -0.5 | +0.4 | -0.8 | 106.8 | +0.0 | 1474 |
+| 17 | MIA | -0.4 | -0.5 | +0.4 | -0.8 | 106.8 | +0.1 | 1474 |
 | 18 | PHX | -0.7 | -0.8 | +1.1 | -1.9 | 101.7 | +0.3 | 1507 |
-| 19 | LAC | -1.3 | -1.4 | -0.6 | -0.7 | 103.4 | +1.4 | 1524 |
-| 20 | IND | -1.8 | -1.9 | -0.1 | -1.7 | 104.2 | +0.9 | 1383 |
+| 19 | LAC | -1.3 | -1.4 | -0.6 | -0.7 | 103.4 | +0.8 | 1524 |
+| 20 | IND | -1.8 | -1.9 | -0.1 | -1.7 | 104.2 | +0.2 | 1383 |
 | 21 | DAL | -1.9 | -2.0 | -1.2 | -0.7 | 104.1 | +0.3 | 1410 |
 | 22 | MEM | -2.3 | -2.4 | -0.2 | -2.2 | 102.4 | +0.0 | 1380 |
 | 23 | CHA | -2.4 | -2.4 | -2.5 | +0.1 | 98.8 | -0.7 | 1561 |
-| 24 | UTA | -4.2 | -4.4 | -2.2 | -2.0 | 104.3 | -0.8 | 1321 |
+| 24 | UTA | -4.2 | -4.4 | -2.2 | -2.0 | 104.3 | -1.3 | 1321 |
 | 25 | NOP | -5.0 | -5.4 | -1.4 | -3.6 | 106.2 | +0.3 | 1414 |
-| 26 | WAS | -5.3 | -5.6 | -2.3 | -3.0 | 104.2 | +0.8 | 1302 |
+| 26 | WAS | -5.3 | -5.6 | -2.3 | -3.0 | 104.2 | +0.3 | 1302 |
 | 27 | MIL | -5.4 | -5.7 | -1.6 | -3.8 | 105.7 | +0.0 | 1368 |
 | 28 | BKN | -6.9 | -7.3 | -3.5 | -3.3 | 106.4 | +0.4 | 1294 |
 | 29 | SAC | -6.9 | -7.2 | -3.0 | -4.0 | 104.1 | +0.3 | 1347 |
-| 30 | CHI | -7.1 | -8.0 | -4.2 | -2.9 | 112.9 | +0.1 | 1368 |
+| 30 | CHI | -7.1 | -8.0 | -4.2 | -2.9 | 112.9 | +0.2 | 1368 |
 
 ## Top players
 
