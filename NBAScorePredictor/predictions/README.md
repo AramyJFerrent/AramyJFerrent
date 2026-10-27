@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Mon Oct 26, 2026 08:42 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Mon Oct 26, 2026 10:05 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -10,21 +10,31 @@ The fair moneyline is the American odds that match the win chance exactly, with 
 
 The edge columns check every side of the spread, the moneyline and the total for expected value: the profit per $1 bet at the posted price, using the final prediction's chances (the model blended with the line, simulated against the posted lines, pushes returning the stake, and anchored to the market's own chances so only what the blend moves off the line counts). The model's own spread and total are shown alongside, but the blend keeps only the share of that disagreement the model has earned in past seasons, so edges are rare. A side is an edge when its EV is 3% or more; the best such side is shown with its price, its EV, its chance of winning the bet and its stake, a 25% share of the Kelly stake in units of 1% of the bankroll, with at most 3 units on one game. Where a spread or total price is not posted it is assumed to be -110 (marked \*); a moneyline is never assumed. Edges are logged with each prediction, locked at tip-off and graded below. Treat them as an experiment, not betting advice; see the backtest for how they have done on past seasons.
 
-## Monday, October 26
-
-| Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 9:00 PM | MEM @ UTA | MEM 118, UTA 120 | UTA 55% | MEM +120 / UTA -120<br>posted MEM -110 / UTA -110 | UTA -1.4 / UTA -1.5 (fav covers 52%) | 237.8 / 237.5 (over 50%) | 103–133 / 105–134 | 5% | UTA: Jaxson Hayes (out); Trey Alexander (out); Jusuf Nurkic (out) (+0.2) | no edge | no edge | no edge |
-| 10:00 PM | GSW @ DEN | GSW 114, DEN 122 | DEN 71% | GSW +250 / DEN -250<br>posted GSW +220 / DEN -270 | DEN -7.8 / DEN -7.5 (fav covers 51%) | 236.4 / 236.5 (over 48%) | 100–129 / 108–136 | 4% | GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.6)<br>DEN: Spencer Jones (out); Cameron Johnson (day-to-day); Alpha Diallo (out) (+2.1) | no edge | no edge | no edge |
-
 ## Tuesday, October 27
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:30 PM | BKN @ BOS | BKN 105, BOS 119 | BOS 85% | BKN +575 / BOS -575 | BOS -14.1 | 223.1 | 90–119 / 105–133 | 3% | BKN: Mikel Brown Jr. (day-to-day) (+0.6)<br>BOS: Devin Carter (out) (+1.2) | no line yet | no line yet | no line yet |
-| 8:00 PM | DET @ NYK | DET 109, NYK 110 | NYK 53% | DET +110 / NYK -110 | NYK -0.9 | 218.6 | 95–123 / 95–124 | 6% | DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.6)<br>NYK: Jose Alvarado (out) (-0.3) | no line yet | no line yet | no line yet |
-| 8:00 PM | SAC @ SAS | SAC 106, SAS 122 | SAS 89% | SAC +820 / SAS -820 | SAS -16.5 | 228.3 | 91–121 / 108–136 | 3% | SAC: Maxime Raynaud (out); Keegan Murray (out); Dylan Cardwell (out) (+0.3)<br>SAS: Tobias Harris (out) (+0.7) | no line yet | no line yet | no line yet |
-| 11:00 PM | POR @ LAL | POR 113, LAL 116 | LAL 57% | POR +135 / LAL -135 | LAL -2.5 | 229.4 | 99–128 / 102–130 | 5% | POR: Branden Carlson (day-to-day); Scoot Henderson (day-to-day) (+0.8) | no line yet | no line yet | no line yet |
+| 7:30 PM | BKN @ BOS | BKN 105, BOS 117 | BOS 82% | BKN +450 / BOS -450<br>posted BKN +425 / BOS -575 | BOS -12 / BOS -11.5 (fav covers 50%) | 222.4 / 222.5 (over 49%) | 91–120 / 103–131 | 4% | BKN: Mikel Brown Jr. (day-to-day) (+0.6)<br>BOS: Devin Carter (out) (+1.2) | no edge | no edge | no edge |
+| 8:00 PM | DET @ NYK | DET 108, NYK 111 | NYK 59% | DET +145 / NYK -145<br>posted DET +136 / NYK -162 | NYK -2.9 / NYK -3.5 (fav covers 50%) | 218.7 / 218.5 (over 49%) | 94–122 / 97–125 | 5% | DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.6)<br>NYK: Jose Alvarado (out) (-0.3) | no edge | no edge | no edge |
+| 8:00 PM | SAC @ SAS | SAC 106, SAS 125 | SAS 91% | SAC +990 / SAS -990<br>posted SAC +1000 / SAS -1800 | SAS -18.5 / SAS -18.5 (fav covers 49%) | 230.9 / 231.5 (over 48%) | 92–121 / 111–139 | 2% | SAC: Maxime Raynaud (out); Keegan Murray (out); Dylan Cardwell (out) (+0.3)<br>SAS: Tobias Harris (out) (+0.7) | no edge | no edge | no edge |
+| 11:00 PM | POR @ LAL | POR 113, LAL 116 | LAL 57% | POR +135 / LAL -135 | LAL -2.5 | 229.4 | 99–128 / 101–131 | 5% | POR: Branden Carlson (day-to-day); Scoot Henderson (day-to-day) (+0.8) | no line yet | no line yet | no line yet |
+
+## Wednesday, October 28
+
+| Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 7:00 PM | MIA @ ATL | MIA 117, ATL 121 | ATL 62% | MIA +160 / ATL -160 | ATL -4.1 | 237.2 | 102–132 / 106–135 | 5% | – | no line yet | no line yet | no line yet |
+| 7:00 PM | WAS @ CLE | WAS 114, CLE 124 | CLE 77% | WAS +330 / CLE -330 | CLE -9.9 | 237.2 | 99–129 / 109–138 | 4% | WAS: Jamir Watkins (out); Justin Champagnie (day-to-day); Tristan Vukcevic (out) (+0.7) | no line yet | no line yet | no line yet |
+| 7:00 PM | CHA @ DET | CHA 104, DET 112 | DET 71% | CHA +245 / DET -245 | DET -7.4 | 216.2 | 90–119 / 98–126 | 4% | CHA: Kon Knueppel (out); Coby White (out); Grant Williams (out) (-0.7)<br>DET: Ausar Thompson (day-to-day); Jalen Duren (out) (-0.6) | no line yet | no line yet | no line yet |
+| 7:00 PM | PHI @ IND | PHI 120, IND 119 | PHI 54% | PHI -115 / IND +115<br>posted PHI -125 / IND +105 | PHI -1.3 / PHI -1.5 (fav covers 51%) | 238.7 / 238.5 (over 49%) | 105–135 / 104–134 | 5% | PHI: Joel Embiid (day-to-day); VJ Edgecombe (day-to-day); Dominick Barlow (out) (-0.4)<br>IND: Andrew Nembhard (out); Johnny Furphy (out); Ivica Zubac (out); Ben Sheppard (out); T.J. McConnell (out) (+1.1) | no edge | no edge | no edge |
+| 7:30 PM | ORL @ TOR | ORL 112, TOR 114 | TOR 57% | ORL +130 / TOR -130 | TOR -2 | 226.7 | 98–127 / 100–129 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.2)<br>TOR: Kawhi Leonard (day-to-day) (+0.0) | no line yet | no line yet | no line yet |
+| 8:00 PM | NYK @ CHI | NYK 119, CHI 114 | NYK 65% | NYK -180 / CHI +180 | NYK -5 | 232.0 | 104–133 / 99–128 | 5% | NYK: Jose Alvarado (out) (-0.3)<br>CHI: Nic Claxton (out); Patrick Williams (out) (+0.6) | no line yet | no line yet | no line yet |
+| 8:00 PM | HOU @ MIL | HOU 120, MIL 111 | HOU 74% | HOU -290 / MIL +290 | HOU -8.9 | 230.8 | 105–134 / 96–126 | 4% | HOU: Marcus Smart (out); Steven Adams (out) (-1.2) | no line yet | no line yet | no line yet |
+| 8:00 PM | GSW @ MIN | GSW 108, MIN 117 | MIN 74% | GSW +280 / MIN -280 | MIN -8.5 | 224.6 | 94–123 / 102–131 | 5% | GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-1.7)<br>MIN: Donte DiVincenzo (out) (-0.2) | no line yet | no line yet | no line yet |
+| 8:00 PM | DEN @ NOP | DEN 121, NOP 114 | DEN 67% | DEN -205 / NOP +205 | DEN -6.4 | 234.7 | 106–135 / 99–129 | 5% | DEN: Spencer Jones (out); Cameron Johnson (out); Alpha Diallo (out) (+2.1)<br>NOP: Yves Missi (out) (+0.3) | no line yet | no line yet | no line yet |
+| 9:00 PM | SAS @ UTA | SAS 119, UTA 111 | SAS 72% | SAS -255 / UTA +255 | SAS -7.7 | 230.6 | 105–134 / 97–126 | 5% | SAS: Tobias Harris (out) (+0.7)<br>UTA: Lauri Markkanen (day-to-day); Jaxson Hayes (out); Trey Alexander (out); Jusuf Nurkic (out) (-0.6) | no line yet | no line yet | no line yet |
+| 9:30 PM | OKC @ DAL | OKC 114, DAL 108 | OKC 67% | OKC -200 / DAL +200 | OKC -5.8 | 222.5 | 100–128 / 94–123 | 5% | OKC: Chet Holmgren (out); Jalen Williams (out); Alex Caruso (day-to-day); Cason Wallace (out) (-1.3)<br>DAL: Naji Marshall (out); Santi Aldama (out); Sergio de Larrea (day-to-day); Dereck Lively II (out) (-0.4) | no line yet | no line yet | no line yet |
+| 10:30 PM | LAL @ LAC | LAL 115, LAC 114 | LAL 51% | LAL -105 / LAC +105 | LAL -0.4 | 229.2 | 100–129 / 100–129 | 5% | LAC: Max Strus (out); Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+1.4) | no line yet | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
 
@@ -74,7 +84,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 1 | SAS | +6.4 | +6.8 | +1.6 | +4.8 | 105.9 | +0.8 | 1682 |
 | 2 | BOS | +6.4 | +6.3 | +3.6 | +2.8 | 98.2 | +1.2 | 1609 |
 | 3 | HOU | +5.9 | +6.0 | +3.4 | +2.5 | 100.5 | -1.2 | 1598 |
-| 4 | OKC | +5.9 | +6.0 | +0.2 | +5.6 | 102.5 | -0.6 | 1710 |
+| 4 | OKC | +5.9 | +6.0 | +0.2 | +5.6 | 102.5 | -1.4 | 1710 |
 | 5 | DET | +4.9 | +5.0 | +1.8 | +3.1 | 102.0 | -0.6 | 1647 |
 | 6 | MIN | +3.7 | +3.8 | +1.3 | +2.3 | 102.7 | -0.2 | 1611 |
 | 7 | NYK | +3.5 | +3.6 | +0.6 | +3.0 | 101.6 | -0.3 | 1684 |
@@ -94,7 +104,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 21 | CHA | -2.5 | -2.5 | -2.7 | +0.2 | 101.3 | -0.8 | 1559 |
 | 22 | MEM | -2.6 | -2.7 | -0.3 | -2.3 | 102.9 | +0.0 | 1372 |
 | 23 | DAL | -2.9 | -3.0 | -1.6 | -1.2 | 104.2 | -0.4 | 1400 |
-| 24 | UTA | -3.8 | -4.0 | -1.7 | -2.1 | 105.2 | +0.2 | 1329 |
+| 24 | UTA | -3.8 | -4.0 | -1.7 | -2.1 | 105.2 | -0.6 | 1329 |
 | 25 | NOP | -5.0 | -5.3 | -1.5 | -3.5 | 105.8 | +0.3 | 1414 |
 | 26 | WAS | -5.5 | -5.9 | -2.6 | -2.9 | 106.6 | +0.7 | 1304 |
 | 27 | MIL | -5.8 | -6.2 | -1.5 | -4.3 | 106.7 | +0.0 | 1361 |
