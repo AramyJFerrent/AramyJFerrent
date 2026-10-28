@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T23:56:01.498765+00:00",
+  "generated_at": "2026-10-28T01:34:48.826111+00:00",
   "season": 2026,
   "games": [
     {
@@ -34,11 +34,11 @@
       "home_low": 1,
       "home_high": 8,
       "model_away_runs": 4.2999448793,
-      "model_home_runs": 4.1971989478,
+      "model_home_runs": 4.1971989477,
       "market_away_runs": null,
       "market_home_runs": null,
       "away_runs9": 4.2999448793,
-      "home_runs9": 4.1971989478,
+      "home_runs9": 4.1971989477,
       "home_moneyline": null,
       "away_moneyline": null,
       "total_line": null,
@@ -48,7 +48,7 @@
       "line_source": null,
       "elo_home_prob": 0.4394767824,
       "temp": null,
-      "predicted_at": "2026-10-27 23:56:01.498765+00:00",
+      "predicted_at": "2026-10-28 01:34:48.826111+00:00",
       "source": "live",
       "first_predicted_at": null,
       "first_home_moneyline": null,
@@ -140,7 +140,7 @@
       "line_source": null,
       "elo_home_prob": 0.6270532898,
       "temp": null,
-      "predicted_at": "2026-10-27 23:56:01.498765+00:00",
+      "predicted_at": "2026-10-28 01:34:48.826111+00:00",
       "source": "live",
       "first_predicted_at": null,
       "first_home_moneyline": null,
