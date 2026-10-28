@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Tue Oct 27, 2026 08:41 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Tue Oct 27, 2026 10:15 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -24,7 +24,7 @@ The edge columns check every side of the spread, the moneyline and the total for
 | 7:00 PM | WAS @ CLE | WAS 115, CLE 125 | CLE 77% | WAS +340 / CLE -340<br>posted WAS +310 / CLE -395 | CLE -10.3 / CLE -10.5 (fav covers 49%) | 239.5 / 239.5 (over 49%) | 99–130 / 110–140 | 4% | WAS: Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (+0.3) | no edge | no edge | no edge |
 | 7:00 PM | CHA @ DET | CHA 104, DET 112 | DET 71% | CHA +245 / DET -245<br>posted CHA +235 / DET -290 | DET -7.4 / DET -7.5 (fav covers 50%) | 216.4 / 216.5 (over 49%) | 90–119 / 98–126 | 4% | CHA: Kon Knueppel (out); Coby White (out); Grant Williams (out) (-0.7)<br>DET: Jalen Duren (out) (-0.3) | no edge | no edge | no edge |
 | 7:00 PM | PHI @ IND | PHI 121, IND 117 | PHI 62% | PHI -160 / IND +160<br>posted PHI -166 / IND +140 | PHI -4.1 / PHI -4.5 (fav covers 51%) | 237.5 / 237.5 (over 49%) | 106–135 / 102–132 | 5% | PHI: Dominick Barlow (out) (+0.3)<br>IND: Andrew Nembhard (day-to-day); Tyrese Haliburton (day-to-day); Aaron Nesmith (day-to-day); Obi Toppin (day-to-day); Johnny Furphy (out); Ivica Zubac (out); Ben Sheppard (out); T.J. McConnell (out) (+0.2) | no edge | no edge | no edge |
-| 7:30 PM | ORL @ TOR | ORL 110, TOR 114 | TOR 61% | ORL +155 / TOR -155<br>posted ORL +145 / TOR -175 | TOR -3.7 / TOR -4.5 (fav covers 48%) | 223.8 / 223.5 (over 49%) | 96–125 / 99–128 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.2)<br>TOR: Kawhi Leonard (out) (-1.9) | no edge | no edge | no edge |
+| 7:30 PM | ORL @ TOR | ORL 110, TOR 114 | TOR 61% | ORL +155 / TOR -155<br>posted ORL +150 / TOR -180 | TOR -3.7 / TOR -4.5 (fav covers 48%) | 223.8 / 223.5 (over 49%) | 96–125 / 99–128 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.2)<br>TOR: Kawhi Leonard (out) (-1.9) | no edge | no edge | no edge |
 | 8:00 PM | NYK @ CHI | NYK 121, CHI 114 | NYK 70% | NYK -230 / CHI +230<br>posted NYK -270 / CHI +220 | NYK -7.3 / NYK -7.5 (fav covers 49%) | 234.6 / 234.5 (over 49%) | 107–135 / 99–129 | 5% | NYK: Jose Alvarado (out) (-0.3)<br>CHI: Nic Claxton (out); Patrick Williams (day-to-day) (+0.2) | no edge | no edge | no edge |
 | 8:00 PM | HOU @ MIL | HOU 118, MIL 109 | HOU 75% | HOU -295 / MIL +295<br>posted HOU -310 / MIL +250 | HOU -8.7 / HOU -8.5 (fav covers 50%) | 227.5 / 227.5 (over 49%) | 104–132 / 95–124 | 5% | HOU: Alperen Sengun (out); Marcus Smart (day-to-day); Steven Adams (out) (-0.7) | no edge | no edge | no edge |
 | 8:00 PM | GSW @ MIN | GSW 111, MIN 115 | MIN 61% | GSW +160 / MIN -160<br>posted GSW +130 / MIN -155 | MIN -3.8 / MIN -3.5 (fav covers 52%) | 225.6 / 225.5 (over 49%) | 96–125 / 100–129 | 5% | GSW: Yaxel Lendeborg (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out) (-0.9)<br>MIN: Anthony Edwards (out); Donte DiVincenzo (out) (-1.3) | no edge | no edge | no edge |
@@ -107,7 +107,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 25 | NOP | -5.0 | -5.4 | -1.4 | -3.6 | 106.2 | +0.3 | 1414 |
 | 26 | WAS | -5.3 | -5.6 | -2.3 | -3.0 | 104.2 | +0.3 | 1302 |
 | 27 | MIL | -5.4 | -5.7 | -1.6 | -3.8 | 105.7 | +0.0 | 1368 |
-| 28 | BKN | -6.9 | -7.3 | -3.5 | -3.3 | 106.4 | +0.4 | 1294 |
+| 28 | BKN | -6.9 | -7.3 | -3.5 | -3.3 | 106.4 | +0.6 | 1294 |
 | 29 | SAC | -6.9 | -7.2 | -3.0 | -4.0 | 104.1 | +0.3 | 1347 |
 | 30 | CHI | -7.1 | -8.0 | -4.2 | -2.9 | 112.9 | +0.2 | 1368 |
 
