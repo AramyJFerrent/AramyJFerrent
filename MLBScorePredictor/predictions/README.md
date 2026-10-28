@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Wed Oct 28, 2026 03:01 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Wed Oct 28, 2026 05:17 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,7 +14,7 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | Jacob Misiorowski / TBD | MIL 4, TB 3 | MIL 58% | MIL -135 / TB +135 | MIL -163 / TB +134 | 4.0 – 3.1 | 1–8 / 0–6 | MIL -1.5 43% | 7.1 / 6.5 (over 52%) | MIL -150, 3.9 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | Jacob Misiorowski / Drew Rasmussen | MIL 4, TB 3 | MIL 56% | MIL -130 / TB +130 | MIL -149 / TB +123 | 3.9 – 3.1 | 1–8 / 0–6 | MIL -1.5 42% | 6.9 / 6.5 (over 49%) | MIL -125, 3.6 runs | 10% | ✓ / ✓ | no edge | no edge | no edge |
 
 ## Friday, October 30 — World Series
 
