@@ -51,10 +51,10 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909874,2027,R,2026-10-27 00:30:00+00:00,HOU,ATL,120.0,110.0,4.0,False,Toyota Center (Houston),Houston,TX
 401909875,2027,R,2026-10-27 01:00:00+00:00,UTA,MEM,105.0,110.0,4.0,False,Delta Center,Salt Lake City,UT
 401909876,2027,R,2026-10-27 02:00:00+00:00,DEN,GSW,114.0,134.0,4.0,False,Ball Arena,Denver,CO
-401909877,2027,R,2026-10-27 23:30:00+00:00,BOS,BKN,,,,False,TD Garden,Boston,MA
-401909878,2027,R,2026-10-28 00:00:00+00:00,NYK,DET,,,,False,Madison Square Garden,New York,NY
-401909879,2027,R,2026-10-28 00:00:00+00:00,SAS,SAC,,,,False,Frost Bank Center,San Antonio,TX
-401909880,2027,R,2026-10-28 03:00:00+00:00,LAL,POR,,,,False,crypto.com Arena,Los Angeles,CA
+401909877,2027,R,2026-10-27 23:30:00+00:00,BOS,BKN,125.0,124.0,5.0,False,TD Garden,Boston,MA
+401909878,2027,R,2026-10-28 00:00:00+00:00,NYK,DET,111.0,97.0,4.0,False,Madison Square Garden,New York,NY
+401909879,2027,R,2026-10-28 00:00:00+00:00,SAS,SAC,130.0,103.0,4.0,False,Frost Bank Center,San Antonio,TX
+401909880,2027,R,2026-10-28 03:00:00+00:00,LAL,POR,129.0,136.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401909881,2027,R,2026-10-28 23:00:00+00:00,ATL,MIA,,,,False,State Farm Arena,Atlanta,GA
 401909882,2027,R,2026-10-28 23:00:00+00:00,CLE,WAS,,,,False,Rocket Arena,Cleveland,OH
 401909883,2027,R,2026-10-28 23:00:00+00:00,DET,CHA,,,,False,Little Caesars Arena,Detroit,MI
