@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Wed Oct 28, 2026 02:48 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Wed Oct 28, 2026 03:01 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,7 +14,7 @@ The edge columns give the expected value of a bet per $1 staked at the posted pr
 
 | Time (ET) | Game | Starting pitchers | Predicted score | Win chance | Fair moneyline | Moneyline | Expected runs | 80% range | Run line | Total: model / line | First 5 (fair) | Extra innings | Lineups | Run line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | MIL @ TB | Jacob Misiorowski / TBD | MIL 4, TB 3 | MIL 56% | MIL -125 / TB +125 | MIL -148 / TB +123 | 4.0 – 3.2 | 1–8 / 0–6 | MIL -1.5 41% | 7.2 / 6.5 (over 52%) | MIL -140, 3.9 runs | 10% | proj. / proj. | no edge | no edge | no edge |
+| 8:00 PM | MIL @ TB | Jacob Misiorowski / TBD | MIL 4, TB 3 | MIL 58% | MIL -135 / TB +135 | MIL -163 / TB +134 | 4.0 – 3.1 | 1–8 / 0–6 | MIL -1.5 43% | 7.1 / 6.5 (over 52%) | MIL -150, 3.9 runs | 10% | proj. / proj. | no edge | no edge | no edge |
 
 ## Friday, October 30 — World Series
 
@@ -68,7 +68,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 3 | ATL | +0.72 | +0.33 | +0.15 | +0.09 | +0.15 | 5.1 | 1529 |
 | 4 | CHC | +0.69 | +0.59 | +0.03 | +0.00 | +0.07 | 5.3 | 1539 |
 | 5 | NYY | +0.66 | +0.19 | +0.20 | +0.07 | +0.21 | 5.2 | 1560 |
-| 6 | TB | +0.66 | +0.18 | +0.22 | +0.08 | +0.18 | 5.2 | 1554 |
+| 6 | TB | +0.66 | +0.19 | +0.22 | +0.08 | +0.18 | 5.2 | 1554 |
 | 7 | SD | +0.63 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
 | 8 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.6 | 1531 |
 | 9 | NYM | +0.49 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
