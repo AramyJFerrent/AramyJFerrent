@@ -55,18 +55,18 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909878,2027,R,2026-10-28 00:00:00+00:00,NYK,DET,111.0,97.0,4.0,False,Madison Square Garden,New York,NY
 401909879,2027,R,2026-10-28 00:00:00+00:00,SAS,SAC,130.0,103.0,4.0,False,Frost Bank Center,San Antonio,TX
 401909880,2027,R,2026-10-28 03:00:00+00:00,LAL,POR,129.0,136.0,4.0,False,crypto.com Arena,Los Angeles,CA
-401909881,2027,R,2026-10-28 23:00:00+00:00,ATL,MIA,,,,False,State Farm Arena,Atlanta,GA
-401909882,2027,R,2026-10-28 23:00:00+00:00,CLE,WAS,,,,False,Rocket Arena,Cleveland,OH
-401909883,2027,R,2026-10-28 23:00:00+00:00,DET,CHA,,,,False,Little Caesars Arena,Detroit,MI
-401909884,2027,R,2026-10-28 23:00:00+00:00,IND,PHI,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
-401909885,2027,R,2026-10-28 23:30:00+00:00,TOR,ORL,,,,False,Scotiabank Arena,Toronto,ON
-401909886,2027,R,2026-10-29 00:00:00+00:00,CHI,NYK,,,,False,United Center,Chicago,IL
-401909887,2027,R,2026-10-29 00:00:00+00:00,MIL,HOU,,,,False,Fiserv Forum,Milwaukee,WI
-401909888,2027,R,2026-10-29 00:00:00+00:00,MIN,GSW,,,,False,Target Center,Minneapolis,MN
-401909889,2027,R,2026-10-29 00:00:00+00:00,NOP,DEN,,,,False,Smoothie King Center,New Orleans,LA
-401909890,2027,R,2026-10-29 01:00:00+00:00,UTA,SAS,,,,False,Delta Center,Salt Lake City,UT
-401909891,2027,R,2026-10-29 01:30:00+00:00,DAL,OKC,,,,False,American Airlines Center,Dallas,TX
-401909892,2027,R,2026-10-29 02:30:00+00:00,LAC,LAL,,,,False,Intuit Dome,Inglewood,CA
+401909881,2027,R,2026-10-28 23:00:00+00:00,ATL,MIA,117.0,129.0,4.0,False,State Farm Arena,Atlanta,GA
+401909882,2027,R,2026-10-28 23:00:00+00:00,CLE,WAS,121.0,111.0,4.0,False,Rocket Arena,Cleveland,OH
+401909883,2027,R,2026-10-28 23:00:00+00:00,DET,CHA,97.0,89.0,4.0,False,Little Caesars Arena,Detroit,MI
+401909884,2027,R,2026-10-28 23:00:00+00:00,IND,PHI,109.0,114.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909885,2027,R,2026-10-28 23:30:00+00:00,TOR,ORL,129.0,99.0,4.0,False,Scotiabank Arena,Toronto,ON
+401909886,2027,R,2026-10-29 00:00:00+00:00,CHI,NYK,127.0,133.0,4.0,False,United Center,Chicago,IL
+401909887,2027,R,2026-10-29 00:00:00+00:00,MIL,HOU,100.0,132.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909888,2027,R,2026-10-29 00:00:00+00:00,MIN,GSW,114.0,119.0,4.0,False,Target Center,Minneapolis,MN
+401909889,2027,R,2026-10-29 00:00:00+00:00,NOP,DEN,91.0,104.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909890,2027,R,2026-10-29 01:00:00+00:00,UTA,SAS,111.0,117.0,5.0,False,Delta Center,Salt Lake City,UT
+401909891,2027,R,2026-10-29 01:30:00+00:00,DAL,OKC,120.0,96.0,4.0,False,American Airlines Center,Dallas,TX
+401909892,2027,R,2026-10-29 02:30:00+00:00,LAC,LAL,87.0,103.0,4.0,False,Intuit Dome,Inglewood,CA
 401909893,2027,R,2026-10-30 00:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
 401909894,2027,R,2026-10-30 00:00:00+00:00,NOP,SAC,,,,False,Smoothie King Center,New Orleans,LA
 401909895,2027,R,2026-10-30 02:00:00+00:00,POR,MEM,,,,False,Moda Center,Portland,OR
