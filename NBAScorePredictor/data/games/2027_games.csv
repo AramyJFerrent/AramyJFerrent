@@ -67,9 +67,9 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909890,2027,R,2026-10-29 01:00:00+00:00,UTA,SAS,111.0,117.0,5.0,False,Delta Center,Salt Lake City,UT
 401909891,2027,R,2026-10-29 01:30:00+00:00,DAL,OKC,120.0,96.0,4.0,False,American Airlines Center,Dallas,TX
 401909892,2027,R,2026-10-29 02:30:00+00:00,LAC,LAL,87.0,103.0,4.0,False,Intuit Dome,Inglewood,CA
-401909893,2027,R,2026-10-30 00:00:00+00:00,ATL,CLE,,,,False,State Farm Arena,Atlanta,GA
-401909894,2027,R,2026-10-30 00:00:00+00:00,NOP,SAC,,,,False,Smoothie King Center,New Orleans,LA
-401909895,2027,R,2026-10-30 02:00:00+00:00,POR,MEM,,,,False,Moda Center,Portland,OR
+401909893,2027,R,2026-10-30 00:00:00+00:00,ATL,CLE,114.0,111.0,4.0,False,State Farm Arena,Atlanta,GA
+401909894,2027,R,2026-10-30 00:00:00+00:00,NOP,SAC,132.0,120.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909895,2027,R,2026-10-30 02:00:00+00:00,POR,MEM,103.0,124.0,4.0,False,Moda Center,Portland,OR
 401909277,2027,R,2026-10-30 23:00:00+00:00,WAS,CHA,,,,False,Capital One Arena,Washington,DC
 401909278,2027,R,2026-10-30 23:30:00+00:00,BOS,CHI,,,,False,TD Garden,Boston,MA
 401909279,2027,R,2026-10-30 23:30:00+00:00,BKN,DET,,,,False,Barclays Center,Brooklyn,NY
