@@ -80,13 +80,13 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909284,2027,R,2026-10-31 00:00:00+00:00,MIN,LAC,127.0,101.0,4.0,False,Target Center,Minneapolis,MN
 401909285,2027,R,2026-10-31 02:00:00+00:00,GSW,LAL,112.0,95.0,4.0,False,Chase Center,San Francisco,CA
 401909286,2027,R,2026-10-31 02:00:00+00:00,PHX,DEN,120.0,127.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
-401909896,2027,R,2026-10-31 19:00:00+00:00,UTA,POR,,,,False,Delta Center,Salt Lake City,UT
-401909897,2027,R,2026-10-31 22:00:00+00:00,CHA,PHI,,,,False,Spectrum Center,Charlotte,NC
-401909898,2027,R,2026-10-31 23:00:00+00:00,NOP,ATL,,,,False,Smoothie King Center,New Orleans,LA
-401909899,2027,R,2026-11-01 00:00:00+00:00,MEM,SAC,,,,False,FedExForum,Memphis,TN
-401909900,2027,R,2026-11-01 00:00:00+00:00,MIL,CLE,,,,False,Fiserv Forum,Milwaukee,WI
-401909901,2027,R,2026-11-01 00:00:00+00:00,SAS,MIN,,,,False,Frost Bank Center,San Antonio,TX
-401909902,2027,R,2026-11-01 00:30:00+00:00,HOU,OKC,,,,False,Toyota Center (Houston),Houston,TX
+401909896,2027,R,2026-10-31 19:00:00+00:00,UTA,POR,90.0,112.0,4.0,False,Delta Center,Salt Lake City,UT
+401909897,2027,R,2026-10-31 22:00:00+00:00,CHA,PHI,104.0,109.0,4.0,False,Spectrum Center,Charlotte,NC
+401909898,2027,R,2026-10-31 23:00:00+00:00,NOP,ATL,121.0,99.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909899,2027,R,2026-11-01 00:00:00+00:00,MEM,SAC,136.0,105.0,4.0,False,FedExForum,Memphis,TN
+401909900,2027,R,2026-11-01 00:00:00+00:00,MIL,CLE,111.0,136.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909901,2027,R,2026-11-01 00:00:00+00:00,SAS,MIN,121.0,111.0,4.0,False,Frost Bank Center,San Antonio,TX
+401909902,2027,R,2026-11-01 00:30:00+00:00,HOU,OKC,119.0,98.0,4.0,False,Toyota Center (Houston),Houston,TX
 401909903,2027,R,2026-11-01 20:30:00+00:00,ORL,BOS,,,,False,Kia Center,Orlando,FL
 401909904,2027,R,2026-11-01 22:00:00+00:00,IND,BKN,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
 401909905,2027,R,2026-11-02 01:30:00+00:00,GSW,LAC,,,,False,Chase Center,San Francisco,CA
