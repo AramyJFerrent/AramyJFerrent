@@ -1,6 +1,6 @@
 # College football score predictions
 
-Updated Sun Nov 01, 2026 03:10 AM ET. Refreshed automatically every day of the season and several times on Saturdays; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team. College scores scatter widely, so read the ranges, not just the headline score.
+Updated Sun Nov 01, 2026 01:30 PM ET. Refreshed automatically every day of the season and several times on Saturdays; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team. College scores scatter widely, so read the ranges, not just the headline score.
 
 Expected points blend the model with the betting line using the weight that has predicted best in recent seasons (see Current model fit). The spread and total columns show the model's own numbers next to the line, so you can see where it disagrees. Games without a line yet use the model alone.
 
@@ -12,149 +12,149 @@ The edge columns judge each bet by its expected value per $1 staked at the poste
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Tue 11/03 7:00 PM | Ohio @ Akron | Ohio 31, Akron 17 | Ohio 81% | Ohio -440 / Akron +440 | 31.3 – 18.3 | 17–46 / 7–31 | Ohio -18.3 / Ohio -12.5 | 50.0 / 49.5 | no edge | no edge | no edge |  |
-| Tue 11/03 8:00 PM | Buffalo @ Miami (OH) | Buffalo 20, Miami (OH) 27 | Miami (OH) 68% | Buffalo +215 / Miami (OH) -215 | 19.4 – 26.5 | 7–32 / 13–41 | Miami (OH) -12.7 / Miami (OH) -6.5 | 48.5 / 45.5 | no edge | no edge | no edge |  |
-| Wed 11/04 7:00 PM | Ball State @ Massachusetts | Ball State 21, Massachusetts 24 | Massachusetts 62% | Ball State +160 / Massachusetts -160 | 22.1 – 26.5 | 10–35 / 13–41 | Massachusetts -2.9 / Massachusetts -4.5 | 49.0 / 48.5 | no edge | no edge | no edge |  |
-| Wed 11/04 7:00 PM | Toledo @ Sacramento State | Toledo 38, Sacramento State 10 | Toledo 97% | Toledo -3700 / Sacramento State +3700 | 38.9 – 12.3 | 24–55 / 3–23 | Toledo -17.8 / Toledo -27.5 | 50.2 / 51.5 | no edge | Sacramento State (+1700): EV +3.1%, 6%, stake 0.0u | no edge |  |
-| Wed 11/04 7:30 PM | Central Michigan vs Eastern Michigan | Central Michigan 21, Eastern Michigan 24 | Eastern Michigan 52% | Central Michigan +110 / Eastern Michigan -110 | 23.1 – 24.1 | 10–37 / 10–38 | Central Michigan -3.6 / Eastern Michigan -1.5 | 49.9 / 46.5 | no edge | no edge | no edge | neutral site |
-| Thu 11/05 7:30 PM | UTSA @ Florida Atlantic | UTSA 38, Florida Atlantic 31 | UTSA 65% | UTSA -185 / Florida Atlantic +185 | 38.3 – 32.2 | 23–53 / 17–48 | UTSA -2.6 / UTSA -6.5 | 66.4 / 71.5 | no edge | no edge | no edge |  |
-| Thu 11/05 8:00 PM | James Madison @ Southern Miss | James Madison 34, Southern Miss 21 | James Madison 83% | James Madison -500 / Southern Miss +500 | 34.6 – 20.5 | 20–50 / 7–34 | James Madison -14.9 / James Madison -14.0 | 53.9 / 55.5 | no edge | no edge | no edge |  |
-| Fri 11/06 7:00 PM | Virginia Tech @ SMU | Virginia Tech 24, SMU 31 | SMU 68% | Virginia Tech +210 / SMU -210 | 24.6 – 31.6 | 12–38 / 17–47 | SMU -11.0 / SMU -6.5 | 55.0 / 56.5 | no edge | no edge | no edge |  |
-| Fri 11/06 7:30 PM | South Florida @ East Carolina | South Florida 24, East Carolina 21 | South Florida 54% | South Florida -120 / East Carolina +120 | 23.7 – 22.2 | 10–38 / 10–35 | South Florida -0.7 / South Florida -1.5 | 47.6 / 45.5 | no edge | no edge | no edge |  |
-| Fri 11/06 8:00 PM | Nebraska @ Illinois | Nebraska 28, Illinois 21 | Nebraska 66% | Nebraska -195 / Illinois +195 | 27.8 – 21.7 | 14–42 / 10–35 | Nebraska -7.5 / Nebraska -6.0 | 53.8 / 48.5 | no edge | no edge | no edge |  |
-| Fri 11/06 9:00 PM | New Mexico @ Nevada | New Mexico 27, Nevada 17 | New Mexico 82% | New Mexico -450 / Nevada +450 | 27.8 – 15.5 | 14–42 / 5–27 | New Mexico -10.1 / New Mexico -12.5 | 42.1 / 43.5 | no edge | no edge | no edge |  |
-| Fri 11/06 10:15 PM | TCU @ Arizona | TCU 17, Arizona 27 | Arizona 73% | TCU +270 / Arizona -270 | 18.4 – 26.9 | 7–31 / 14–42 | Arizona -8.5 / Arizona -8.5 | 49.1 / 44.5 | no edge | no edge | no edge |  |
-| Sat 11/07 TBA | UCF @ Kansas | UCF 24, Kansas 31 | Kansas 68% | UCF +215 / Kansas -215 | 22.6 – 29.4 | 10–36 / 16–45 | Kansas -6.8 / – | 52.0 / – | no line yet | no line yet (fair: Kansas -215) | no line yet |  |
-| Sat 11/07 TBA | Cincinnati @ Houston | Cincinnati 28, Houston 35 | Houston 66% | Cincinnati +195 / Houston -195 | 28.3 – 34.6 | 14–42 / 20–49 | Houston -6.2 / – | 62.9 / – | no line yet | no line yet (fair: Houston -195) | no line yet |  |
-| Sat 11/07 TBA | Iowa State @ Baylor | Iowa State 24, Baylor 27 | Baylor 64% | Iowa State +175 / Baylor -175 | 22.7 – 28.1 | 10–36 / 14–42 | Baylor -5.4 / – | 50.8 / – | no line yet | no line yet (fair: Baylor -175) | no line yet |  |
-| Sat 11/07 TBA | Oklahoma State @ Kansas State | Oklahoma State 24, Kansas State 31 | Kansas State 66% | Oklahoma State +190 / Kansas State -190 | 26.2 – 32.1 | 13–41 / 17–47 | Kansas State -5.8 / – | 58.3 / – | no line yet | no line yet (fair: Kansas State -190) | no line yet |  |
-| Sat 11/07 TBA | West Virginia @ Texas Tech | West Virginia 17, Texas Tech 38 | Texas Tech 93% | West Virginia +1305 / Texas Tech -1305 | 17.7 – 39.2 | 6–30 / 24–55 | Texas Tech -21.5 / – | 56.8 / – | no line yet | no line yet (fair: Texas Tech -1305) | no line yet |  |
-| Sat 11/07 TBA | Michigan State @ Michigan | Michigan State 14, Michigan 28 | Michigan 86% | Michigan State +615 / Michigan -615 | 12.7 – 27.3 | 3–24 / 14–42 | Michigan -21.0 / Michigan -14.0 | 42.3 / 39.5 | no edge | no edge | no edge |  |
-| Sat 11/07 TBA | UCLA @ Minnesota | UCLA 24, Minnesota 17 | UCLA 67% | UCLA -210 / Minnesota +210 | 24.2 – 17.9 | 10–38 / 7–30 | UCLA -9.8 / UCLA -6.0 | 40.2 / 42.5 | no edge | no edge | no edge |  |
-| Sat 11/07 TBA | Iowa @ Northwestern | Iowa 21, Northwestern 24 | Northwestern 54% | Iowa +115 / Northwestern -115 | 21.2 – 22.6 | 10–35 / 10–36 | Northwestern -0.6 / Northwestern -1.5 | 49.5 / 42.5 | no edge | no edge | Over 42.5 (-110*): EV +3.4%, 54%, stake 0.9u | * price not posted; assumed -110 |
-| Sat 11/07 TBA | Penn State @ Washington | Penn State 24, Washington 21 | Penn State 51% | Penn State -105 / Washington +105 | 23.4 – 22.8 | 10–37 / 10–35 | Penn State -0.6 / – | 46.6 / – | no line yet | no line yet (fair: Penn State -105) | no line yet |  |
-| Sat 11/07 12:00 PM | Texas @ Missouri | Texas 24, Missouri 21 | Texas 59% | Texas -140 / Missouri +140 | 25.5 – 22.3 | 13–39 / 10–35 | Texas -0.8 / Texas -3.5 | 45.0 / 48.5 | no edge | no edge | no edge |  |
-| Sat 11/07 12:00 PM | BYU @ Utah | BYU 24, Utah 27 | Utah 64% | BYU +175 / Utah -175 | 22.3 – 27.2 | 10–35 / 14–41 | Utah -9.0 / Utah -4.5 | 53.7 / 48.5 | no edge | no edge | no edge |  |
-| Sat 11/07 12:00 PM | Clemson @ Syracuse | Clemson 27, Syracuse 24 | Clemson 51% | Clemson -100 / Syracuse +100 | 24.4 – 24.0 | 10–38 / 10–37 | Clemson -0.4 / – | 48.4 / – | no line yet | no line yet (fair: Clemson -100) | no line yet |  |
-| Sat 11/07 12:00 PM | Florida State @ Boston College | Florida State 31, Boston College 24 | Florida State 74% | Florida State -290 / Boston College +290 | 32.0 – 22.1 | 17–47 / 10–35 | Florida State -9.9 / – | 54.2 / – | no line yet | no line yet (fair: Florida State -290) | no line yet |  |
-| Sat 11/07 12:00 PM | North Carolina @ UConn | North Carolina 28, UConn 31 | North Carolina 50% | North Carolina -100 / UConn +100 | 28.1 – 28.3 | 14–42 / 14–42 | UConn -0.1 / – | 56.4 / – | no line yet | no line yet (fair: North Carolina -100) | no line yet |  |
-| Sat 11/07 12:00 PM | Tulsa @ Tulane | Tulsa 24, Tulane 27 | Tulane 57% | Tulsa +130 / Tulane -130 | 25.1 – 27.5 | 13–38 / 14–42 | Tulane -2.4 / – | 52.6 / – | no line yet | no line yet (fair: Tulane -130) | no line yet |  |
-| Sat 11/07 12:30 PM | Duke @ NC State | Duke 31, NC State 28 | Duke 56% | Duke -130 / NC State +130 | 29.1 – 26.8 | 15–44 / 14–41 | Duke -2.3 / – | 56.0 / – | no line yet | no line yet (fair: Duke -130) | no line yet |  |
-| Sat 11/07 12:30 PM | Maryland @ Purdue | Maryland 24, Purdue 27 | Purdue 57% | Maryland +135 / Purdue -135 | 24.8 – 27.1 | 11–38 / 14–42 | Purdue -2.4 / – | 51.9 / – | no line yet | no line yet (fair: Purdue -135) | no line yet |  |
-| Sat 11/07 12:30 PM | Rutgers @ Wisconsin | Rutgers 17, Wisconsin 31 | Wisconsin 84% | Rutgers +515 / Wisconsin -515 | 17.9 – 32.1 | 7–31 / 17–47 | Wisconsin -14.2 / – | 50.1 / – | no line yet | no line yet (fair: Wisconsin -515) | no line yet |  |
-| Sat 11/07 12:45 PM | Arkansas @ Auburn | Arkansas 20, Auburn 34 | Auburn 84% | Arkansas +535 / Auburn -535 | 19.7 – 34.1 | 7–32 / 20–49 | Auburn -14.3 / – | 53.8 / – | no line yet | no line yet (fair: Auburn -535) | no line yet |  |
-| Sat 11/07 1:00 PM | Old Dominion @ Coastal Carolina | Old Dominion 17, Coastal Carolina 24 | Coastal Carolina 67% | Old Dominion +205 / Coastal Carolina -205 | 18.8 – 25.0 | 7–31 / 13–38 | Coastal Carolina -6.2 / – | 43.8 / – | no line yet | no line yet (fair: Coastal Carolina -205) | no line yet |  |
-| Sat 11/07 2:30 PM | Georgia State @ App State | Georgia State 24, App State 31 | App State 66% | Georgia State +195 / App State -195 | 26.3 – 32.5 | 13–41 / 18–48 | App State -6.2 / – | 58.8 / – | no line yet | no line yet (fair: App State -195) | no line yet |  |
-| Sat 11/07 3:00 PM | Texas A&M @ South Carolina | Texas A&M 27, South Carolina 24 | Texas A&M 52% | Texas A&M -110 / South Carolina +110 | 24.8 – 24.4 | 12–38 / 10–38 | Texas A&M -0.3 / – | 49.2 / – | no line yet | no line yet (fair: Texas A&M -110) | no line yet |  |
-| Sat 11/07 3:00 PM | UL Monroe @ Arkansas State | UL Monroe 21, Arkansas State 31 | Arkansas State 81% | UL Monroe +430 / Arkansas State -430 | 20.4 – 32.9 | 7–34 / 19–48 | Arkansas State -12.5 / – | 53.4 / – | no line yet | no line yet (fair: Arkansas State -430) | no line yet |  |
-| Sat 11/07 3:00 PM | Delaware @ Kennesaw State | Delaware 31, Kennesaw State 24 | Delaware 64% | Delaware -175 / Kennesaw State +175 | 30.2 – 25.1 | 16–45 / 13–38 | Delaware -5.1 / – | 55.3 / – | no line yet | no line yet (fair: Delaware -175) | no line yet |  |
-| Sat 11/07 3:30 PM | Alabama @ LSU | Alabama 24, LSU 27 | LSU 64% | Alabama +175 / LSU -175 | 23.6 – 28.5 | 10–37 / 14–42 | LSU -9.2 / LSU -4.5 | 50.3 / 52.5 | no edge | no edge | no edge |  |
-| Sat 11/07 3:30 PM | Merrimack @ Wake Forest | Merrimack 3, Wake Forest 62 | Wake Forest 100% | Merrimack +9900 / Wake Forest -9900 | 3.0 – 61.2 | 0–7 / 48–76 | Wake Forest -58.2 / – | 64.2 / – | no line yet | no line yet (fair: Wake Forest -9900) | no line yet | FCS opponent |
-| Sat 11/07 3:30 PM | Oregon @ Ohio State | Oregon 17, Ohio State 27 | Ohio State 77% | Oregon +335 / Ohio State -335 | 17.8 – 28.5 | 7–30 / 14–42 | Ohio State -12.7 / Ohio State -10.5 | 49.3 / 45.5 | no edge | no edge | no edge |  |
-| Sat 11/07 3:30 PM | Charlotte @ UAB | Charlotte 17, UAB 31 | UAB 82% | Charlotte +445 / UAB -445 | 18.5 – 31.4 | 7–31 / 17–47 | UAB -12.9 / – | 50.0 / – | no line yet | no line yet (fair: UAB -445) | no line yet |  |
-| Sat 11/07 3:30 PM | Temple @ Navy | Temple 24, Navy 31 | Navy 77% | Temple +330 / Navy -330 | 22.3 – 33.0 | 10–36 / 19–48 | Navy -10.7 / – | 55.4 / – | no line yet | no line yet (fair: Navy -330) | no line yet |  |
-| Sat 11/07 3:30 PM | Marshall @ Georgia Southern | Marshall 31, Georgia Southern 28 | Marshall 51% | Marshall -105 / Georgia Southern +105 | 28.9 – 28.5 | 14–44 / 14–43 | Marshall -0.5 / – | 57.9 / – | no line yet | no line yet (fair: Marshall -105) | no line yet |  |
-| Sat 11/07 3:30 PM | Western Kentucky @ Middle Tennessee | Western Kentucky 27, Middle Tennessee 24 | Western Kentucky 56% | Western Kentucky -130 / Middle Tennessee +130 | 26.5 – 24.3 | 13–41 / 10–38 | Western Kentucky -2.2 / – | 50.8 / – | no line yet | no line yet (fair: Western Kentucky -130) | no line yet |  |
-| Sat 11/07 4:00 PM | Rice @ North Texas | Rice 24, North Texas 41 | North Texas 89% | Rice +835 / North Texas -835 | 22.0 – 40.9 | 10–35 / 27–56 | North Texas -18.9 / – | 63.2 / – | no line yet | no line yet (fair: North Texas -835) | no line yet |  |
-| Sat 11/07 4:00 PM | Northern Illinois @ San José State | Northern Illinois 24, San José State 27 | San José State 66% | Northern Illinois +195 / San José State -195 | 22.9 – 28.8 | 10–37 / 14–44 | San José State -5.9 / – | 51.8 / – | no line yet | no line yet (fair: San José State -195) | no line yet |  |
-| Sat 11/07 4:00 PM | Missouri State @ Florida International | Missouri State 24, Florida International 27 | Florida International 52% | Missouri State +110 / Florida International -110 | 24.7 – 25.7 | 12–38 / 13–40 | Florida International -1.0 / – | 50.4 / – | no line yet | no line yet (fair: Florida International -110) | no line yet |  |
-| Sat 11/07 4:00 PM | Louisiana Tech @ Troy | Louisiana Tech 24, Troy 17 | Louisiana Tech 67% | Louisiana Tech -205 / Troy +205 | 26.3 – 20.0 | 13–41 / 7–34 | Louisiana Tech -6.3 / – | 46.3 / – | no line yet | no line yet (fair: Louisiana Tech -205) | no line yet |  |
-| Sat 11/07 4:15 PM | Vanderbilt @ Mississippi State | Vanderbilt 24, Mississippi State 31 | Mississippi State 70% | Vanderbilt +235 / Mississippi State -235 | 24.5 – 32.4 | 10–38 / 17–48 | Mississippi State -7.9 / – | 57.0 / – | no line yet | no line yet (fair: Mississippi State -235) | no line yet |  |
-| Sat 11/07 5:00 PM | South Alabama @ Louisiana | South Alabama 28, Louisiana 31 | Louisiana 62% | South Alabama +160 / Louisiana -160 | 26.8 – 31.3 | 13–41 / 17–46 | Louisiana -4.5 / – | 58.2 / – | no line yet | no line yet (fair: Louisiana -160) | no line yet |  |
-| Sat 11/07 6:00 PM | Boise State @ Colorado State | Boise State 41, Colorado State 24 | Boise State 87% | Boise State -645 / Colorado State +645 | 39.8 – 22.8 | 24–56 / 10–37 | Boise State -17.0 / – | 62.6 / – | no line yet | no line yet (fair: Boise State -645) | no line yet |  |
-| Sat 11/07 6:15 PM | Kentucky @ Tennessee | Kentucky 24, Tennessee 27 | Tennessee 65% | Kentucky +185 / Tennessee -185 | 22.1 – 27.9 | 10–35 / 14–42 | Tennessee -8.8 / Tennessee -5.5 | 48.3 / 50.5 | no edge | no edge | no edge |  |
-| Sat 11/07 7:00 PM | Sam Houston @ Jacksonville State | Sam Houston 14, Jacksonville State 31 | Jacksonville State 89% | Sam Houston +845 / Jacksonville State -845 | 14.0 – 31.6 | 3–25 / 17–47 | Jacksonville State -17.6 / – | 45.5 / – | no line yet | no line yet (fair: Jacksonville State -845) | no line yet |  |
-| Sat 11/07 7:30 PM | Georgia @ Ole Miss | Georgia 27, Ole Miss 24 | Georgia 58% | Georgia -135 / Ole Miss +135 | 29.5 – 26.5 | 16–44 / 13–41 | Georgia -3.1 / Georgia -3.0 | 54.0 / 56.5 | no edge | no edge | no edge |  |
-| Sat 11/07 7:30 PM | Colorado @ Arizona State | Colorado 24, Arizona State 27 | Arizona State 65% | Colorado +185 / Arizona State -185 | 22.1 – 27.8 | 10–35 / 14–42 | Arizona State -5.8 / – | 49.9 / – | no line yet | no line yet (fair: Arizona State -185) | no line yet |  |
-| Sat 11/07 7:30 PM | Louisville @ Georgia Tech | Louisville 38, Georgia Tech 21 | Louisville 88% | Louisville -700 / Georgia Tech +700 | 37.8 – 20.9 | 23–54 / 7–34 | Louisville -16.9 / – | 58.7 / – | no line yet | no line yet (fair: Louisville -700) | no line yet |  |
-| Sat 11/07 7:30 PM | Miami @ Notre Dame | Miami 24, Notre Dame 27 | Notre Dame 59% | Miami +140 / Notre Dame -140 | 25.7 – 29.2 | 13–39 / 14–44 | Notre Dame -3.8 / Notre Dame -3.5 | 52.3 / 55.5 | no edge | no edge | no edge |  |
-| Sat 11/07 7:30 PM | Air Force @ Army | Air Force 24, Army 27 | Army 65% | Air Force +185 / Army -185 | 23.4 – 29.0 | 10–37 / 14–44 | Army -6.8 / Army -5.5 | 60.1 / 50.5 | no edge | no edge | Over 50.5 (-110*): EV +5.1%, 55%, stake 1.4u | * price not posted; assumed -110 |
-| Sat 11/07 7:45 PM | Oklahoma @ Florida | Oklahoma 24, Florida 27 | Florida 64% | Oklahoma +175 / Florida -175 | 21.5 – 26.3 | 9–35 / 13–41 | Oklahoma -2.2 / Florida -5.5 | 44.6 / 48.5 | no edge | no edge | no edge |  |
-| Sat 11/07 8:00 PM | Liberty @ New Mexico State | Liberty 31, New Mexico State 14 | Liberty 88% | Liberty -700 / New Mexico State +700 | 31.8 – 15.4 | 17–48 / 3–28 | Liberty -16.3 / – | 47.2 / – | no line yet | no line yet (fair: Liberty -700) | no line yet |  |
-| Sat 11/07 9:30 PM | Fresno State @ Utah State | Fresno State 24, Utah State 21 | Fresno State 56% | Fresno State -130 / Utah State +130 | 24.4 – 22.2 | 11–38 / 10–35 | Fresno State -2.2 / – | 46.6 / – | no line yet | no line yet (fair: Fresno State -130) | no line yet |  |
-| Sat 11/07 9:30 PM | Hawai'i @ UTEP | Hawai'i 31, UTEP 17 | Hawai'i 81% | Hawai'i -415 / UTEP +415 | 31.2 – 18.5 | 17–46 / 7–31 | Hawai'i -12.7 / – | 49.7 / – | no line yet | no line yet (fair: Hawai'i -415) | no line yet |  |
-| Sat 11/07 10:30 PM | Texas State @ Oregon State | Texas State 31, Oregon State 38 | Oregon State 70% | Texas State +230 / Oregon State -230 | 29.7 – 37.5 | 16–44 / 23–52 | Oregon State -7.8 / – | 67.2 / – | no line yet | no line yet (fair: Oregon State -230) | no line yet |  |
-| Sat 11/07 10:30 PM | Wyoming @ UNLV | Wyoming 21, UNLV 28 | UNLV 73% | Wyoming +275 / UNLV -275 | 20.1 – 29.1 | 7–34 / 15–44 | UNLV -9.0 / – | 49.1 / – | no line yet | no line yet (fair: UNLV -275) | no line yet |  |
+| Tue 11/03 7:00 PM | Ohio @ Akron | Ohio 31, Akron 17 | Ohio 82% | Ohio -445 / Akron +445 | 30.9 – 17.9 | 17–45 / 7–31 | Ohio -18.3 / Ohio -12.5 | 50.0 / 48.5 | no edge | no edge | no edge |  |
+| Tue 11/03 8:00 PM | Buffalo @ Miami (OH) | Buffalo 17, Miami (OH) 24 | Miami (OH) 69% | Buffalo +220 / Miami (OH) -220 | 19.0 – 26.0 | 7–31 / 13–40 | Miami (OH) -12.7 / Miami (OH) -6.5 | 48.5 / 44.5 | no edge | no edge | no edge |  |
+| Wed 11/04 7:00 PM | Ball State @ Massachusetts | Ball State 24, Massachusetts 27 | Massachusetts 61% | Ball State +160 / Massachusetts -160 | 22.4 – 26.3 | 10–35 / 13–41 | Massachusetts -3.0 / Massachusetts -4.0 | 49.1 / 48.5 | no edge | no edge | no edge |  |
+| Wed 11/04 7:00 PM | Toledo @ Sacramento State | Toledo 38, Sacramento State 10 | Toledo 97% | Toledo -3460 / Sacramento State +3460 | 38.9 – 12.3 | 24–55 / 3–23 | Toledo -17.7 / Toledo -27.5 | 50.1 / 51.5 | no edge | Sacramento State (+1700): EV +4.5%, 6%, stake 0.1u | no edge |  |
+| Wed 11/04 7:30 PM | Central Michigan vs Eastern Michigan | Central Michigan 21, Eastern Michigan 24 | Eastern Michigan 52% | Central Michigan +110 / Eastern Michigan -110 | 22.2 – 23.3 | 10–35 / 10–37 | Central Michigan -3.6 / Eastern Michigan -1.5 | 49.9 / 44.5 | no edge | no edge | no edge | neutral site |
+| Thu 11/05 7:30 PM | UTSA @ Florida Atlantic | UTSA 38, Florida Atlantic 31 | UTSA 66% | UTSA -195 / Florida Atlantic +195 | 39.0 – 32.4 | 24–55 / 17–48 | UTSA -2.5 / UTSA -7.0 | 66.6 / 72.5 | no edge | no edge | no edge |  |
+| Thu 11/05 8:00 PM | James Madison @ Southern Miss | James Madison 34, Southern Miss 17 | James Madison 84% | James Madison -525 / Southern Miss +525 | 34.9 – 20.3 | 20–51 / 7–34 | James Madison -14.9 / James Madison -14.5 | 53.9 / 55.5 | no edge | no edge | no edge |  |
+| Fri 11/06 7:00 PM | Virginia Tech @ SMU | Virginia Tech 24, SMU 31 | SMU 67% | Virginia Tech +205 / SMU -205 | 24.7 – 31.6 | 12–38 / 17–47 | SMU -10.8 / SMU -6.5 | 55.2 / 56.5 | no edge | no edge | no edge |  |
+| Fri 11/06 7:30 PM | South Florida @ East Carolina | South Florida 24, East Carolina 21 | South Florida 54% | South Florida -120 / East Carolina +120 | 22.5 – 21.0 | 10–36 / 9–34 | South Florida -0.8 / South Florida -1.5 | 47.6 / 42.5 | no edge | no edge | no edge |  |
+| Fri 11/06 8:00 PM | Nebraska @ Illinois | Nebraska 28, Illinois 21 | Nebraska 65% | Nebraska -185 / Illinois +185 | 27.6 – 21.9 | 14–42 / 10–35 | Nebraska -7.1 / Nebraska -5.5 | 53.9 / 48.5 | no edge | no edge | no edge |  |
+| Fri 11/06 9:00 PM | New Mexico @ Nevada | New Mexico 28, Nevada 14 | New Mexico 82% | New Mexico -455 / Nevada +455 | 27.3 – 15.1 | 14–42 / 3–27 | New Mexico -9.9 / New Mexico -12.5 | 42.1 / 42.5 | no edge | no edge | no edge |  |
+| Fri 11/06 10:15 PM | TCU @ Arizona | TCU 20, Arizona 27 | Arizona 73% | TCU +270 / Arizona -270 | 18.4 – 26.9 | 7–31 / 14–41 | Arizona -8.4 / Arizona -8.5 | 49.0 / 44.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | Cincinnati @ Houston | Cincinnati 28, Houston 38 | Houston 76% | Cincinnati +310 / Houston -310 | 26.2 – 36.4 | 13–41 / 21–52 | Houston -6.3 / Houston -10.5 | 63.1 / 62.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | Iowa State @ Baylor | Iowa State 21, Baylor 31 | Baylor 73% | Iowa State +270 / Baylor -270 | 21.3 – 30.5 | 9–34 / 17–45 | Baylor -5.3 / Baylor -9.5 | 53.0 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | Michigan State @ Michigan | Michigan State 14, Michigan 28 | Michigan 84% | Michigan State +530 / Michigan -530 | 13.4 – 26.6 | 3–24 / 13–41 | Michigan -20.8 / Michigan -12.5 | 42.3 / 39.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | UCLA @ Minnesota | UCLA 24, Minnesota 17 | UCLA 69% | UCLA -220 / Minnesota +220 | 22.8 – 16.0 | 10–36 / 6–28 | UCLA -9.7 / UCLA -6.5 | 40.4 / 38.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | Iowa @ Northwestern | Iowa 21, Northwestern 24 | Northwestern 54% | Iowa +120 / Northwestern -120 | 21.2 – 22.6 | 9–34 / 10–36 | Northwestern -0.6 / Northwestern -1.5 | 49.4 / 42.5 | no edge | no edge | no edge |  |
+| Sat 11/07 TBA | Penn State @ Washington | Penn State 21, Washington 24 | Washington 55% | Penn State +125 / Washington -125 | 20.9 – 23.2 | 9–34 / 10–37 | Penn State -0.1 / Washington -2.5 | 46.6 / 43.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | Texas @ Missouri | Texas 24, Missouri 21 | Texas 58% | Texas -140 / Missouri +140 | 24.5 – 21.4 | 10–38 / 10–34 | Missouri -0.9 / Texas -3.5 | 43.3 / 46.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | BYU @ Utah | BYU 21, Utah 28 | Utah 66% | BYU +190 / Utah -190 | 20.6 – 26.4 | 9–34 / 13–41 | Utah -9.0 / Utah -5.5 | 53.6 / 45.5 | no edge | no edge | Over 45.5 (-110*): EV +4.2%, 55%, stake 1.2u | * price not posted; assumed -110 |
+| Sat 11/07 12:00 PM | Oklahoma State @ Kansas State | Oklahoma State 31, Kansas State 28 | Oklahoma State 63% | Oklahoma State -175 / Kansas State +175 | 32.5 – 27.5 | 17–48 / 14–42 | Kansas State -5.4 / Oklahoma State -6.0 | 60.5 / 60.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | Clemson @ Syracuse | Clemson 27, Syracuse 24 | Clemson 54% | Clemson -120 / Syracuse +120 | 25.4 – 23.8 | 13–38 / 10–38 | Clemson -2.2 / Clemson -1.5 | 47.9 / 49.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | Florida State @ Boston College | Florida State 31, Boston College 24 | Florida State 68% | Florida State -210 / Boston College +210 | 29.3 – 22.7 | 15–44 / 10–37 | Florida State -7.8 / Florida State -6.5 | 53.9 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | North Carolina @ UConn | North Carolina 31, UConn 24 | North Carolina 70% | North Carolina -235 / UConn +235 | 30.7 – 22.9 | 17–45 / 10–36 | North Carolina -1.4 / North Carolina -8.5 | 58.2 / 52.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:00 PM | Tulsa @ Tulane | Tulsa 24, Tulane 21 | Tulsa 57% | Tulsa -130 / Tulane +130 | 25.9 – 23.4 | 13–40 / 10–37 | Tulane -2.4 / Tulsa -3.0 | 52.4 / 48.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:30 PM | Duke @ NC State | Duke 27, NC State 24 | Duke 66% | Duke -190 / NC State +190 | 28.6 – 22.9 | 14–42 / 10–37 | Duke -2.4 / Duke -6.0 | 56.1 / 50.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:30 PM | Maryland @ Purdue | Maryland 24, Purdue 31 | Purdue 66% | Maryland +190 / Purdue -190 | 25.1 – 31.3 | 13–38 / 17–46 | Purdue -2.4 / Purdue -6.5 | 51.9 / 57.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:30 PM | Rutgers @ Wisconsin | Rutgers 14, Wisconsin 31 | Wisconsin 87% | Rutgers +700 / Wisconsin -700 | 15.5 – 31.8 | 6–27 / 17–47 | Wisconsin -14.2 / Wisconsin -16.5 | 50.2 / 46.5 | no edge | no edge | no edge |  |
+| Sat 11/07 12:45 PM | Arkansas @ Auburn | Arkansas 21, Auburn 31 | Auburn 78% | Arkansas +355 / Auburn -355 | 20.1 – 31.1 | 7–34 / 17–46 | Auburn -15.7 / Auburn -10.5 | 54.0 / 50.5 | no edge | no edge | no edge |  |
+| Sat 11/07 1:00 PM | Old Dominion @ Coastal Carolina | Old Dominion 17, Coastal Carolina 24 | Coastal Carolina 68% | Old Dominion +215 / Coastal Carolina -215 | 19.1 – 26.1 | 7–31 / 13–41 | Coastal Carolina -6.1 / Coastal Carolina -7.0 | 44.0 / 45.5 | no edge | no edge | no edge |  |
+| Sat 11/07 2:30 PM | Georgia State @ App State | Georgia State 28, App State 31 | App State 60% | Georgia State +150 / App State -150 | 26.9 – 30.5 | 14–41 / 17–45 | App State -4.6 / App State -3.5 | 57.4 / 57.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:00 PM | Texas A&M @ South Carolina | Texas A&M 24, South Carolina 27 | South Carolina 68% | Texas A&M +210 / South Carolina -210 | 22.2 – 28.9 | 10–35 / 14–44 | South Carolina -2.7 / South Carolina -7.0 | 49.5 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:00 PM | UL Monroe @ Arkansas State | UL Monroe 17, Arkansas State 31 | Arkansas State 84% | UL Monroe +520 / Arkansas State -520 | 18.8 – 33.1 | 7–31 / 18–48 | Arkansas State -12.5 / Arkansas State -14.5 | 53.4 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:00 PM | Delaware @ Kennesaw State | Delaware 27, Kennesaw State 24 | Delaware 58% | Delaware -140 / Kennesaw State +140 | 27.5 – 24.8 | 14–42 / 10–38 | Delaware -5.0 / Delaware -2.5 | 55.4 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:30 PM | Alabama @ LSU | Alabama 24, LSU 27 | LSU 64% | Alabama +180 / LSU -180 | 23.6 – 28.5 | 10–37 / 14–42 | LSU -9.3 / LSU -4.5 | 50.6 / 52.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:30 PM | Merrimack @ Wake Forest | Merrimack 3, Wake Forest 62 | Wake Forest 100% | Merrimack +9900 / Wake Forest -9900 | 3.0 – 61.0 | 0–7 / 48–75 | Wake Forest -58.0 / – | 64.0 / – | no line yet | no line yet (fair: Wake Forest -9900) | no line yet | FCS opponent |
+| Sat 11/07 3:30 PM | Oregon @ Ohio State | Oregon 17, Ohio State 27 | Ohio State 75% | Oregon +305 / Ohio State -305 | 19.1 – 28.7 | 7–31 / 14–44 | Ohio State -11.3 / Ohio State -9.5 | 49.2 / 47.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:30 PM | Charlotte @ UAB | Charlotte 21, UAB 31 | UAB 78% | Charlotte +355 / UAB -355 | 20.3 – 31.0 | 7–34 / 17–45 | UAB -12.9 / UAB -10.5 | 50.1 / 51.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:30 PM | Temple @ Navy | Temple 24, Navy 31 | Navy 69% | Temple +230 / Navy -230 | 22.6 – 30.4 | 10–36 / 16–45 | Navy -10.7 / Navy -7.5 | 55.5 / 52.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:30 PM | Marshall @ Georgia Southern | Marshall 24, Georgia Southern 31 | Georgia Southern 70% | Marshall +230 / Georgia Southern -230 | 23.1 – 31.0 | 10–37 / 17–45 | Georgia Southern -1.0 / Georgia Southern -8.5 | 56.7 / 53.5 | no edge | Marshall (+250): EV +3.9%, 30%, stake 0.4u | no edge |  |
+| Sat 11/07 3:30 PM | Western Kentucky @ Middle Tennessee | Western Kentucky 24, Middle Tennessee 27 | Middle Tennessee 53% | Western Kentucky +110 / Middle Tennessee -110 | 25.5 – 26.7 | 13–39 / 13–41 | Western Kentucky -2.2 / Middle Tennessee -1.5 | 50.8 / 52.5 | no edge | no edge | no edge |  |
+| Sat 11/07 3:45 PM | UCF @ Kansas | UCF 21, Kansas 24 | Kansas 59% | UCF +140 / Kansas -140 | 22.8 – 26.1 | 10–37 / 13–41 | Kansas -6.9 / Kansas -3.0 | 52.0 / 48.5 | no edge | no edge | no edge |  |
+| Sat 11/07 4:00 PM | Rice @ North Texas | Rice 24, North Texas 41 | North Texas 86% | Rice +635 / North Texas -635 | 23.8 – 40.5 | 10–38 / 25–56 | North Texas -19.0 / North Texas -16.5 | 63.3 / 64.5 | no edge | no edge | no edge |  |
+| Sat 11/07 4:00 PM | Northern Illinois @ San José State | Northern Illinois 24, San José State 31 | San José State 64% | Northern Illinois +175 / San José State -175 | 23.6 – 29.1 | 10–38 / 15–43 | San José State -5.5 / – | 52.6 / – | no line yet | no line yet (fair: San José State -175) | no line yet |  |
+| Sat 11/07 4:00 PM | Missouri State @ Florida International | Missouri State 24, Florida International 27 | Florida International 64% | Missouri State +175 / Florida International -175 | 22.3 – 27.4 | 10–35 / 14–42 | Florida International -1.0 / Florida International -5.5 | 50.5 / 49.5 | no edge | no edge | no edge |  |
+| Sat 11/07 4:00 PM | Louisiana Tech @ Troy | Louisiana Tech 24, Troy 17 | Louisiana Tech 67% | Louisiana Tech -205 / Troy +205 | 26.0 – 19.6 | 13–40 / 7–32 | Louisiana Tech -6.2 / Louisiana Tech -6.5 | 46.1 / 45.5 | no edge | no edge | no edge |  |
+| Sat 11/07 4:15 PM | Vanderbilt @ Mississippi State | Vanderbilt 24, Mississippi State 27 | Mississippi State 61% | Vanderbilt +155 / Mississippi State -155 | 22.9 – 26.8 | 10–36 / 14–41 | Mississippi State -7.8 / Mississippi State -3.5 | 55.1 / 48.5 | no edge | no edge | no edge |  |
+| Sat 11/07 5:00 PM | South Alabama @ Louisiana | South Alabama 24, Louisiana 31 | Louisiana 64% | South Alabama +175 / Louisiana -175 | 26.1 – 31.5 | 13–41 / 17–46 | Louisiana -4.6 / Louisiana -5.5 | 58.3 / 57.5 | no edge | no edge | no edge |  |
+| Sat 11/07 6:00 PM | Boise State @ Colorado State | Boise State 41, Colorado State 24 | Boise State 89% | Boise State -785 / Colorado State +785 | 42.9 – 24.6 | 28–59 / 10–38 | Boise State -15.7 / Boise State -18.5 | 63.2 / 68.5 | no edge | no edge | no edge |  |
+| Sat 11/07 6:15 PM | Kentucky @ Tennessee | Kentucky 24, Tennessee 27 | Tennessee 67% | Kentucky +205 / Tennessee -205 | 21.9 – 28.2 | 10–35 / 14–43 | Tennessee -8.8 / Tennessee -6.0 | 48.3 / 50.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:00 PM | Sam Houston @ Jacksonville State | Sam Houston 17, Jacksonville State 31 | Jacksonville State 85% | Sam Houston +580 / Jacksonville State -580 | 16.2 – 31.0 | 6–28 / 17–45 | Jacksonville State -17.7 / Jacksonville State -14.5 | 45.6 / 47.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:30 PM | Georgia @ Ole Miss | Georgia 31, Ole Miss 28 | Georgia 58% | Georgia -135 / Ole Miss +135 | 29.5 – 26.5 | 16–44 / 13–41 | Georgia -2.8 / Georgia -3.0 | 54.1 / 56.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:30 PM | Colorado @ Arizona State | Colorado 24, Arizona State 27 | Arizona State 60% | Colorado +150 / Arizona State -150 | 22.9 – 26.6 | 10–36 / 13–41 | Arizona State -5.8 / Arizona State -3.5 | 49.9 / 49.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:30 PM | Louisville @ Georgia Tech | Louisville 38, Georgia Tech 24 | Louisville 83% | Louisville -490 / Georgia Tech +490 | 36.6 – 22.7 | 21–52 / 10–37 | Louisville -18.1 / Louisville -13.5 | 58.6 / 59.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:30 PM | Miami @ Notre Dame | Miami 28, Notre Dame 31 | Notre Dame 61% | Miami +155 / Notre Dame -155 | 26.2 – 30.7 | 13–41 / 17–45 | Notre Dame -4.6 / Notre Dame -4.5 | 54.0 / 57.5 | no edge | no edge | no edge |  |
+| Sat 11/07 7:30 PM | Air Force @ Army | Air Force 24, Army 31 | Army 65% | Air Force +185 / Army -185 | 23.9 – 29.4 | 10–38 / 15–44 | Army -6.5 / Army -5.5 | 60.8 / 51.5 | no edge | no edge | Over 51.5 (-110*): EV +4.4%, 55%, stake 1.2u | * price not posted; assumed -110 |
+| Sat 11/07 7:45 PM | Oklahoma @ Florida | Oklahoma 21, Florida 24 | Florida 66% | Oklahoma +190 / Florida -190 | 20.7 – 26.3 | 7–34 / 13–41 | Florida -1.1 / Florida -6.0 | 45.2 / 47.5 | no edge | no edge | no edge |  |
+| Sat 11/07 8:00 PM | Liberty @ New Mexico State | Liberty 31, New Mexico State 17 | Liberty 84% | Liberty -525 / New Mexico State +525 | 30.6 – 16.9 | 17–45 / 6–28 | Liberty -16.4 / Liberty -13.5 | 47.3 / 47.5 | no edge | no edge | no edge |  |
+| Sat 11/07 9:30 PM | West Virginia @ Texas Tech | West Virginia 24, Texas Tech 41 | Texas Tech 87% | West Virginia +680 / Texas Tech -680 | 22.6 – 39.6 | 10–36 / 24–55 | Texas Tech -21.5 / Texas Tech -16.5 | 56.7 / 63.5 | no edge | no edge | no edge |  |
+| Sat 11/07 9:30 PM | Fresno State @ Utah State | Fresno State 20, Utah State 17 | Fresno State 57% | Fresno State -130 / Utah State +130 | 22.5 – 20.0 | 10–36 / 7–33 | Fresno State -2.9 / Fresno State -2.5 | 46.5 / 41.5 | no edge | no edge | no edge |  |
+| Sat 11/07 9:30 PM | Hawai'i @ UTEP | Hawai'i 31, UTEP 21 | Hawai'i 77% | Hawai'i -340 / UTEP +340 | 30.1 – 19.4 | 16–45 / 7–32 | Hawai'i -12.7 / Hawai'i -10.5 | 49.7 / 49.5 | no edge | no edge | no edge |  |
+| Sat 11/07 10:30 PM | Texas State @ Oregon State | Texas State 31, Oregon State 38 | Oregon State 71% | Texas State +240 / Oregon State -240 | 29.3 – 37.5 | 14–44 / 23–52 | Oregon State -5.8 / Oregon State -8.5 | 68.0 / 66.5 | no edge | no edge | no edge |  |
+| Sat 11/07 10:30 PM | Wyoming @ UNLV | Wyoming 20, UNLV 27 | UNLV 73% | Wyoming +265 / UNLV -265 | 18.9 – 27.4 | 7–31 / 14–42 | UNLV -8.7 / UNLV -8.5 | 49.7 / 45.5 | no edge | no edge | no edge |  |
 
 ## 2026 Week 11
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Tue 11/10 7:00 PM | Western Michigan @ Akron | Western Michigan 31, Akron 17 | Western Michigan 85% | Western Michigan -570 / Akron +570 | 31.9 – 16.8 | 17–47 / 6–29 | Western Michigan -15.2 / – | 49.8 / – | no line yet | no line yet (fair: Western Michigan -570) | no line yet |  |
-| Tue 11/10 7:00 PM | Kent State @ Bowling Green | Kent State 17, Bowling Green 24 | Bowling Green 65% | Kent State +185 / Bowling Green -185 | 17.5 – 22.8 | 7–30 / 10–37 | Bowling Green -5.4 / – | 41.5 / – | no line yet | no line yet (fair: Bowling Green -185) | no line yet |  |
-| Tue 11/10 7:00 PM | Ohio @ Miami (OH) | Ohio 24, Miami (OH) 21 | Ohio 55% | Ohio -125 / Miami (OH) +125 | 24.9 – 22.8 | 13–38 / 10–37 | Ohio -2.1 / – | 47.7 / – | no line yet | no line yet (fair: Ohio -125) | no line yet |  |
-| Wed 11/11 TBA | Buffalo @ Ball State | Buffalo 24, Ball State 27 | Ball State 57% | Buffalo +135 / Ball State -135 | 24.7 – 27.3 | 12–38 / 14–42 | Ball State -2.6 / – | 51.9 / – | no line yet | no line yet (fair: Ball State -135) | no line yet |  |
-| Wed 11/11 TBA | Sacramento State @ Central Michigan | Sacramento State 17, Central Michigan 24 | Central Michigan 72% | Sacramento State +260 / Central Michigan -260 | 19.0 – 27.7 | 7–31 / 14–42 | Central Michigan -8.7 / – | 46.6 / – | no line yet | no line yet (fair: Central Michigan -260) | no line yet |  |
-| Wed 11/11 TBA | Massachusetts @ Toledo | Massachusetts 14, Toledo 35 | Toledo 92% | Massachusetts +1140 / Toledo -1140 | 15.0 – 34.7 | 3–27 / 20–51 | Toledo -19.7 / – | 49.8 / – | no line yet | no line yet (fair: Toledo -1140) | no line yet |  |
-| Thu 11/12 8:00 PM | Memphis @ South Florida | Memphis 24, South Florida 27 | South Florida 52% | Memphis +110 / South Florida -110 | 26.6 – 27.5 | 14–41 / 14–42 | South Florida -0.9 / – | 54.1 / – | no line yet | no line yet (fair: South Florida -110) | no line yet |  |
-| Thu 11/12 9:00 PM | Louisiana @ UL Monroe | Louisiana 31, UL Monroe 24 | Louisiana 71% | Louisiana -240 / UL Monroe +240 | 30.1 – 22.3 | 17–45 / 10–35 | Louisiana -7.8 / – | 52.4 / – | no line yet | no line yet (fair: Louisiana -240) | no line yet |  |
-| Fri 11/13 7:00 PM | Florida State @ Pittsburgh | Florida State 31, Pittsburgh 28 | Pittsburgh 51% | Florida State +105 / Pittsburgh -105 | 27.9 – 28.1 | 14–42 / 14–42 | Pittsburgh -0.2 / – | 55.9 / – | no line yet | no line yet (fair: Pittsburgh -105) | no line yet |  |
-| Fri 11/13 9:00 PM | Illinois @ UCLA | Illinois 17, UCLA 34 | UCLA 86% | Illinois +610 / UCLA -610 | 18.0 – 33.4 | 7–31 / 20–49 | UCLA -15.3 / – | 51.4 / – | no line yet | no line yet (fair: UCLA -610) | no line yet |  |
-| Fri 11/13 10:15 PM | Houston @ Colorado | Houston 31, Colorado 24 | Houston 65% | Houston -185 / Colorado +185 | 29.8 – 24.2 | 16–44 / 10–38 | Houston -5.6 / – | 54.0 / – | no line yet | no line yet (fair: Houston -185) | no line yet |  |
-| Sat 11/14 TBA | Arizona State @ UCF | Arizona State 27, UCF 24 | Arizona State 51% | Arizona State -105 / UCF +105 | 25.1 – 24.9 | 13–39 / 13–38 | Arizona State -0.2 / – | 50.0 / – | no line yet | no line yet (fair: Arizona State -105) | no line yet |  |
-| Sat 11/14 TBA | Baylor @ BYU | Baylor 24, BYU 31 | BYU 67% | Baylor +200 / BYU -200 | 22.8 – 29.0 | 10–36 / 14–44 | BYU -6.2 / – | 51.8 / – | no line yet | no line yet (fair: BYU -200) | no line yet |  |
-| Sat 11/14 TBA | Cincinnati @ Iowa State | Cincinnati 28, Iowa State 31 | Iowa State 59% | Cincinnati +140 / Iowa State -140 | 27.1 – 30.3 | 14–41 / 16–45 | Iowa State -3.2 / – | 57.4 / – | no line yet | no line yet (fair: Iowa State -140) | no line yet |  |
-| Sat 11/14 TBA | Kansas @ West Virginia | Kansas 31, West Virginia 28 | Kansas 60% | Kansas -150 / West Virginia +150 | 32.9 – 28.6 | 17–48 / 14–42 | Kansas -4.2 / – | 61.5 / – | no line yet | no line yet (fair: Kansas -150) | no line yet |  |
-| Sat 11/14 TBA | Kansas State @ TCU | Kansas State 24, TCU 21 | Kansas State 55% | Kansas State -125 / TCU +125 | 25.0 – 23.3 | 13–38 / 10–37 | Kansas State -1.7 / – | 48.3 / – | no line yet | no line yet (fair: Kansas State -125) | no line yet |  |
-| Sat 11/14 TBA | Texas Tech @ Oklahoma State | Texas Tech 38, Oklahoma State 24 | Texas Tech 84% | Texas Tech -515 / Oklahoma State +515 | 37.5 – 22.5 | 23–52 / 10–36 | Texas Tech -10.2 / Texas Tech -15.5 | 53.8 / 61.5 | no edge | no edge | no edge |  |
-| Sat 11/14 TBA | Utah @ Arizona | Utah 31, Arizona 24 | Utah 66% | Utah -195 / Arizona +195 | 31.4 – 25.2 | 17–45 / 13–38 | Utah -6.2 / – | 56.6 / – | no line yet | no line yet (fair: Utah -195) | no line yet |  |
-| Sat 11/14 TBA | South Carolina @ Arkansas | South Carolina 31, Arkansas 24 | South Carolina 67% | South Carolina -200 / Arkansas +200 | 30.0 – 23.5 | 16–44 / 10–38 | South Carolina -6.5 / – | 53.4 / – | no line yet | no line yet (fair: South Carolina -200) | no line yet |  |
-| Sat 11/14 TBA | Missouri @ Georgia | Missouri 17, Georgia 27 | Georgia 80% | Missouri +390 / Georgia -390 | 17.0 – 28.6 | 6–30 / 14–44 | Georgia -11.6 / – | 45.7 / – | no line yet | no line yet (fair: Georgia -390) | no line yet |  |
-| Sat 11/14 TBA | Florida @ Kentucky | Florida 27, Kentucky 24 | Florida 53% | Florida -110 / Kentucky +110 | 26.4 – 25.4 | 13–41 / 13–39 | Florida -1.1 / – | 51.8 / – | no line yet | no line yet (fair: Florida -110) | no line yet |  |
-| Sat 11/14 TBA | Texas @ LSU | Texas 27, LSU 24 | Texas 53% | Texas -115 / LSU +115 | 27.2 – 25.8 | 14–41 / 13–40 | LSU -10.0 / Texas -2.5 | 47.1 / 54.5 | no edge | LSU (+120): EV +3.1%, 47%, stake 0.7u | no edge |  |
-| Sat 11/14 TBA | Auburn @ Mississippi State | Auburn 31, Mississippi State 28 | Auburn 50% | Auburn -100 / Mississippi State +100 | 29.0 – 29.1 | 16–44 / 14–44 | Mississippi State -0.1 / – | 58.1 / – | no line yet | no line yet (fair: Auburn -100) | no line yet |  |
-| Sat 11/14 TBA | Ole Miss @ Oklahoma | Ole Miss 24, Oklahoma 27 | Oklahoma 60% | Ole Miss +150 / Oklahoma -150 | 24.5 – 28.3 | 10–38 / 14–42 | Oklahoma -1.3 / Oklahoma -4.0 | 49.7 / 53.5 | no edge | no edge | no edge |  |
-| Sat 11/14 TBA | Tennessee @ Texas A&M | Tennessee 24, Texas A&M 31 | Texas A&M 69% | Tennessee +225 / Texas A&M -225 | 22.9 – 30.5 | 10–37 / 17–45 | Tennessee -1.0 / Texas A&M -8.5 | 45.1 / 55.5 | no edge | no edge | Under 55.5 (-110*): EV +5.4%, 55%, stake 1.5u | * price not posted; assumed -110 |
-| Sat 11/14 TBA | Alabama @ Vanderbilt | Alabama 31, Vanderbilt 17 | Alabama 80% | Alabama -405 / Vanderbilt +405 | 31.9 – 19.4 | 17–47 / 7–32 | Alabama -12.6 / – | 51.3 / – | no line yet | no line yet (fair: Alabama -405) | no line yet |  |
-| Sat 11/14 TBA | California @ Virginia | California 21, Virginia 31 | Virginia 75% | California +295 / Virginia -295 | 20.5 – 30.2 | 7–34 / 16–45 | Virginia -9.7 / – | 50.7 / – | no line yet | no line yet (fair: Virginia -295) | no line yet |  |
-| Sat 11/14 TBA | Duke @ Miami | Duke 17, Miami 38 | Miami 93% | Duke +1245 / Miami -1245 | 17.2 – 38.1 | 6–30 / 23–54 | Miami -19.1 / Miami -21.0 | 54.5 / 55.5 | no edge | no edge | no edge |  |
-| Sat 11/14 TBA | Georgia Tech @ Clemson | Georgia Tech 21, Clemson 31 | Clemson 75% | Georgia Tech +305 / Clemson -305 | 20.2 – 30.1 | 7–34 / 16–45 | Clemson -9.9 / – | 50.3 / – | no line yet | no line yet (fair: Clemson -305) | no line yet |  |
-| Sat 11/14 TBA | Louisville @ North Carolina | Louisville 34, North Carolina 20 | Louisville 79% | Louisville -375 / North Carolina +375 | 33.5 – 21.7 | 19–49 / 10–35 | Louisville -11.8 / – | 55.3 / – | no line yet | no line yet (fair: Louisville -375) | no line yet |  |
-| Sat 11/14 TBA | Stanford @ Virginia Tech | Stanford 20, Virginia Tech 37 | Virginia Tech 88% | Stanford +720 / Virginia Tech -720 | 19.3 – 36.1 | 7–31 / 21–52 | Virginia Tech -16.8 / – | 55.4 / – | no line yet | no line yet (fair: Virginia Tech -720) | no line yet |  |
-| Sat 11/14 TBA | Syracuse @ NC State | Syracuse 28, NC State 31 | NC State 62% | Syracuse +165 / NC State -165 | 26.6 – 31.0 | 13–41 / 17–45 | NC State -4.4 / – | 57.6 / – | no line yet | no line yet (fair: NC State -165) | no line yet |  |
-| Sat 11/14 TBA | Wake Forest @ SMU | Wake Forest 27, SMU 24 | Wake Forest 52% | Wake Forest -110 / SMU +110 | 27.1 – 26.3 | 14–41 / 13–41 | Wake Forest -0.8 / – | 53.4 / – | no line yet | no line yet (fair: Wake Forest -110) | no line yet |  |
-| Sat 11/14 TBA | USC @ Indiana | USC 24, Indiana 34 | Indiana 75% | USC +295 / Indiana -295 | 23.4 – 33.6 | 10–37 / 20–49 | Indiana -11.5 / Indiana -10.0 | 50.9 / 58.5 | no edge | no edge | no edge |  |
-| Sat 11/14 TBA | Purdue @ Iowa | Purdue 17, Iowa 31 | Iowa 85% | Purdue +570 / Iowa -570 | 16.8 – 31.9 | 6–28 / 17–47 | Iowa -15.1 / – | 48.7 / – | no line yet | no line yet (fair: Iowa -570) | no line yet |  |
-| Sat 11/14 TBA | Wisconsin @ Maryland | Wisconsin 24, Maryland 21 | Wisconsin 62% | Wisconsin -160 / Maryland +160 | 24.3 – 20.0 | 10–38 / 7–34 | Wisconsin -4.3 / – | 44.4 / – | no line yet | no line yet (fair: Wisconsin -160) | no line yet |  |
-| Sat 11/14 TBA | Washington @ Michigan State | Washington 27, Michigan State 17 | Washington 74% | Washington -285 / Michigan State +285 | 27.9 – 18.5 | 14–42 / 7–31 | Washington -9.4 / – | 46.4 / – | no line yet | no line yet (fair: Washington -285) | no line yet |  |
-| Sat 11/14 TBA | Northwestern @ Ohio State | Northwestern 17, Ohio State 34 | Ohio State 90% | Northwestern +885 / Ohio State -885 | 18.0 – 35.9 | 7–31 / 21–52 | Ohio State -17.9 / – | 53.8 / – | no line yet | no line yet (fair: Ohio State -885) | no line yet |  |
-| Sat 11/14 TBA | Michigan @ Oregon | Michigan 17, Oregon 31 | Oregon 81% | Michigan +415 / Oregon -415 | 19.5 – 32.2 | 7–33 / 17–48 | Oregon -4.8 / Oregon -13.5 | 44.1 / 53.5 | no edge | no edge | Under 53.5 (-110*): EV +3.8%, 54%, stake 1.0u | * price not posted; assumed -110 |
-| Sat 11/14 TBA | Minnesota @ Penn State | Minnesota 17, Penn State 24 | Penn State 75% | Minnesota +295 / Penn State -295 | 15.6 – 24.6 | 6–27 / 10–38 | Penn State -8.9 / – | 40.2 / – | no line yet | no line yet (fair: Penn State -295) | no line yet |  |
-| Sat 11/14 TBA | Nebraska @ Rutgers | Nebraska 34, Rutgers 17 | Nebraska 86% | Nebraska -600 / Rutgers +600 | 35.0 – 19.7 | 20–51 / 7–32 | Nebraska -15.4 / – | 54.7 / – | no line yet | no line yet (fair: Nebraska -600) | no line yet |  |
-| Sat 11/14 TBA | East Carolina @ Charlotte | East Carolina 31, Charlotte 17 | East Carolina 83% | East Carolina -505 / Charlotte +505 | 31.9 – 17.9 | 17–47 / 7–31 | East Carolina -13.9 / – | 49.8 / – | no line yet | no line yet (fair: East Carolina -505) | no line yet |  |
-| Sat 11/14 TBA | Florida Atlantic @ Tulsa | Florida Atlantic 31, Tulsa 34 | Tulsa 55% | Florida Atlantic +125 / Tulsa -125 | 31.4 – 33.0 | 17–45 / 19–48 | Tulsa -1.6 / – | 64.4 / – | no line yet | no line yet (fair: Tulsa -125) | no line yet |  |
-| Sat 11/14 TBA | North Texas @ UTSA | North Texas 31, UTSA 34 | UTSA 54% | North Texas +115 / UTSA -115 | 33.0 – 34.8 | 19–48 / 20–50 | UTSA -1.8 / – | 67.8 / – | no line yet | no line yet (fair: UTSA -115) | no line yet |  |
-| Sat 11/14 TBA | Tulane @ Rice | Tulane 28, Rice 21 | Tulane 69% | Tulane -220 / Rice +220 | 28.6 – 21.5 | 14–43 / 10–35 | Tulane -7.1 / – | 50.1 / – | no line yet | no line yet (fair: Tulane -220) | no line yet |  |
-| Sat 11/14 TBA | UAB @ Temple | UAB 24, Temple 27 | Temple 57% | UAB +135 / Temple -135 | 24.1 – 26.9 | 10–38 / 14–41 | Temple -2.8 / – | 51.0 / – | no line yet | no line yet (fair: Temple -135) | no line yet |  |
-| Sat 11/14 TBA | Nevada @ Northern Illinois | Nevada 27, Northern Illinois 24 | Nevada 62% | Nevada -160 / Northern Illinois +160 | 26.5 – 22.3 | 13–41 / 10–35 | Nevada -4.2 / – | 48.8 / – | no line yet | no line yet (fair: Nevada -160) | no line yet |  |
-| Sat 11/14 TBA | Wyoming @ UTEP | Wyoming 27, UTEP 17 | Wyoming 81% | Wyoming -420 / UTEP +420 | 28.6 – 16.5 | 14–44 / 6–28 | Wyoming -12.1 / – | 45.0 / – | no line yet | no line yet (fair: Wyoming -420) | no line yet |  |
-| Sat 11/14 TBA | App State @ Marshall | App State 28, Marshall 31 | Marshall 54% | App State +120 / Marshall -120 | 27.6 – 29.6 | 14–42 / 16–44 | Marshall -2.1 / – | 57.2 / – | no line yet | no line yet (fair: Marshall -120) | no line yet |  |
-| Sat 11/14 TBA | Arkansas State @ Coastal Carolina | Arkansas State 24, Coastal Carolina 27 | Coastal Carolina 54% | Arkansas State +115 / Coastal Carolina -115 | 25.5 – 27.0 | 13–39 / 14–41 | Coastal Carolina -1.5 / – | 52.5 / – | no line yet | no line yet (fair: Coastal Carolina -115) | no line yet |  |
-| Sat 11/14 TBA | Georgia Southern @ Georgia State | Georgia Southern 28, Georgia State 31 | Georgia State 55% | Georgia Southern +125 / Georgia State -125 | 28.7 – 30.8 | 14–44 / 17–45 | Georgia State -2.2 / – | 59.5 / – | no line yet | no line yet (fair: Georgia State -125) | no line yet |  |
-| Sat 11/14 TBA | Southern Miss @ Louisiana Tech | Southern Miss 17, Louisiana Tech 31 | Louisiana Tech 84% | Southern Miss +530 / Louisiana Tech -530 | 18.8 – 32.9 | 7–31 / 19–48 | Louisiana Tech -14.1 / – | 51.6 / – | no line yet | no line yet (fair: Louisiana Tech -530) | no line yet |  |
-| Sat 11/14 TBA | Troy @ South Alabama | Troy 24, South Alabama 27 | South Alabama 59% | Troy +140 / South Alabama -140 | 25.8 – 28.9 | 13–40 / 14–44 | South Alabama -3.1 / – | 54.7 / – | no line yet | no line yet (fair: South Alabama -140) | no line yet |  |
-| Sat 11/14 12:00 PM | James Madison @ UConn | James Madison 31, UConn 28 | James Madison 52% | James Madison -110 / UConn +110 | 28.4 – 27.7 | 14–42 / 14–42 | James Madison -0.7 / – | 56.1 / – | no line yet | no line yet (fair: James Madison -110) | no line yet |  |
-| Sat 11/14 2:00 PM | Kennesaw State @ Sam Houston | Kennesaw State 24, Sam Houston 21 | Kennesaw State 61% | Kennesaw State -155 / Sam Houston +155 | 23.9 – 19.9 | 10–38 / 7–33 | Kennesaw State -4.1 / – | 43.8 / – | no line yet | no line yet (fair: Kennesaw State -155) | no line yet |  |
-| Sat 11/14 3:00 PM | New Mexico State @ Missouri State | New Mexico State 24, Missouri State 27 | Missouri State 64% | New Mexico State +175 / Missouri State -175 | 23.3 – 28.4 | 10–37 / 14–42 | Missouri State -5.1 / – | 51.6 / – | no line yet | no line yet (fair: Missouri State -175) | no line yet |  |
-| Sat 11/14 3:00 PM | Florida International @ Delaware | Florida International 17, Delaware 31 | Delaware 81% | Florida International +425 / Delaware -425 | 19.5 – 32.2 | 7–32 / 17–48 | Delaware -12.7 / – | 51.7 / – | no line yet | no line yet (fair: Delaware -425) | no line yet |  |
-| Sat 11/14 3:30 PM | Boston College @ Notre Dame | Boston College 7, Notre Dame 41 | Notre Dame 100% | Boston College +9900 / Notre Dame -9900 | 6.5 – 40.9 | 0–14 / 27–58 | Notre Dame -34.4 / – | 47.4 / – | no line yet | no line yet (fair: Notre Dame -9900) | no line yet |  |
-| Sat 11/14 3:30 PM | Jacksonville State @ Western Kentucky | Jacksonville State 27, Western Kentucky 24 | Jacksonville State 63% | Jacksonville State -170 / Western Kentucky +170 | 29.1 – 24.2 | 15–44 / 10–38 | Jacksonville State -4.9 / – | 53.3 / – | no line yet | no line yet (fair: Jacksonville State -170) | no line yet |  |
-| Sat 11/14 3:30 PM | Middle Tennessee @ Liberty | Middle Tennessee 14, Liberty 35 | Liberty 94% | Middle Tennessee +1700 / Liberty -1700 | 13.8 – 35.0 | 3–24 / 20–51 | Liberty -21.3 / – | 48.8 / – | no line yet | no line yet (fair: Liberty -1700) | no line yet |  |
-| Sat 11/14 4:00 PM | Fresno State @ Texas State | Fresno State 28, Texas State 31 | Texas State 59% | Fresno State +145 / Texas State -145 | 28.5 – 31.7 | 14–42 / 17–46 | Texas State -3.2 / – | 60.1 / – | no line yet | no line yet (fair: Texas State -145) | no line yet |  |
-| Sat 11/14 6:00 PM | Oregon State @ Boise State | Oregon State 27, Boise State 34 | Boise State 68% | Oregon State +210 / Boise State -210 | 26.3 – 33.4 | 13–41 / 19–48 | Boise State -7.1 / – | 59.7 / – | no line yet | no line yet (fair: Boise State -210) | no line yet |  |
-| Sat 11/14 7:00 PM | San José State @ Air Force | San José State 21, Air Force 35 | Air Force 83% | San José State +480 / Air Force -480 | 20.1 – 33.8 | 7–34 / 20–49 | Air Force -13.7 / – | 53.9 / – | no line yet | no line yet (fair: Air Force -480) | no line yet |  |
-| Sat 11/14 7:30 PM | UNLV @ New Mexico | UNLV 17, New Mexico 24 | New Mexico 69% | UNLV +220 / New Mexico -220 | 19.9 – 26.8 | 7–33 / 13–41 | New Mexico -6.9 / – | 46.7 / – | no line yet | no line yet (fair: New Mexico -220) | no line yet |  |
-| Sat 11/14 9:30 PM | Utah State @ San Diego State | Utah State 21, San Diego State 24 | San Diego State 57% | Utah State +130 / San Diego State -130 | 22.7 – 25.0 | 10–36 / 13–38 | San Diego State -2.4 / – | 47.7 / – | no line yet | no line yet (fair: San Diego State -130) | no line yet |  |
-| Sat 11/14 10:30 PM | Colorado State @ Washington State | Colorado State 24, Washington State 31 | Washington State 66% | Colorado State +195 / Washington State -195 | 25.1 – 31.5 | 13–38 / 17–46 | Washington State -6.4 / – | 56.5 / – | no line yet | no line yet (fair: Washington State -195) | no line yet |  |
-| Sat 11/14 11:00 PM | North Dakota State @ Hawai'i | North Dakota State 27, Hawai'i 20 | North Dakota State 72% | North Dakota State -260 / Hawai'i +260 | 27.5 – 19.4 | 14–42 / 7–31 | North Dakota State -8.1 / – | 47.0 / – | no line yet | no line yet (fair: North Dakota State -260) | no line yet |  |
+| Tue 11/10 7:00 PM | Western Michigan @ Akron | Western Michigan 31, Akron 17 | Western Michigan 86% | Western Michigan -590 / Akron +590 | 32.5 – 17.4 | 17–48 / 6–30 | Western Michigan -15.1 / – | 49.8 / – | no line yet | no line yet (fair: Western Michigan -590) | no line yet |  |
+| Tue 11/10 7:00 PM | Kent State @ Bowling Green | Kent State 17, Bowling Green 24 | Bowling Green 65% | Kent State +185 / Bowling Green -185 | 18.0 – 23.3 | 7–31 / 10–37 | Bowling Green -5.3 / – | 41.4 / – | no line yet | no line yet (fair: Bowling Green -185) | no line yet |  |
+| Tue 11/10 8:00 PM | Ohio @ Miami (OH) | Ohio 27, Miami (OH) 24 | Ohio 54% | Ohio -120 / Miami (OH) +120 | 24.9 – 22.9 | 11–38 / 10–37 | Ohio -2.0 / – | 47.8 / – | no line yet | no line yet (fair: Ohio -120) | no line yet |  |
+| Wed 11/11 TBA | Buffalo @ Ball State | Buffalo 24, Ball State 27 | Ball State 57% | Buffalo +135 / Ball State -135 | 24.7 – 27.2 | 13–38 / 14–42 | Ball State -2.5 / – | 52.0 / – | no line yet | no line yet (fair: Ball State -135) | no line yet |  |
+| Wed 11/11 TBA | Massachusetts @ Toledo | Massachusetts 17, Toledo 34 | Toledo 92% | Massachusetts +1170 / Toledo -1170 | 15.0 – 34.7 | 3–27 / 20–51 | Toledo -19.7 / – | 49.8 / – | no line yet | no line yet (fair: Toledo -1170) | no line yet |  |
+| Wed 11/11 7:30 PM | Sacramento State @ Central Michigan | Sacramento State 20, Central Michigan 27 | Central Michigan 73% | Sacramento State +275 / Central Michigan -275 | 18.9 – 27.7 | 7–31 / 14–42 | Central Michigan -8.7 / – | 46.6 / – | no line yet | no line yet (fair: Central Michigan -275) | no line yet |  |
+| Thu 11/12 8:00 PM | Memphis @ South Florida | Memphis 24, South Florida 27 | South Florida 51% | Memphis +105 / South Florida -105 | 27.1 – 27.7 | 14–42 / 14–42 | South Florida -0.6 / – | 54.7 / – | no line yet | no line yet (fair: South Florida -105) | no line yet |  |
+| Thu 11/12 9:00 PM | Louisiana @ UL Monroe | Louisiana 31, UL Monroe 24 | Louisiana 71% | Louisiana -250 / UL Monroe +250 | 30.2 – 22.3 | 17–45 / 10–35 | Louisiana -7.9 / – | 52.6 / – | no line yet | no line yet (fair: Louisiana -250) | no line yet |  |
+| Fri 11/13 7:00 PM | Florida State @ Pittsburgh | Florida State 28, Pittsburgh 31 | Pittsburgh 59% | Florida State +140 / Pittsburgh -140 | 26.1 – 29.2 | 13–41 / 14–44 | Pittsburgh -3.1 / – | 55.2 / – | no line yet | no line yet (fair: Pittsburgh -140) | no line yet |  |
+| Fri 11/13 9:00 PM | Illinois @ UCLA | Illinois 17, UCLA 34 | UCLA 87% | Illinois +645 / UCLA -645 | 18.0 – 33.4 | 7–30 / 20–49 | UCLA -15.4 / – | 51.5 / – | no line yet | no line yet (fair: UCLA -645) | no line yet |  |
+| Fri 11/13 10:15 PM | Houston @ Colorado | Houston 31, Colorado 24 | Houston 64% | Houston -180 / Colorado +180 | 29.8 – 24.2 | 16–45 / 10–38 | Houston -5.6 / – | 54.0 / – | no line yet | no line yet (fair: Houston -180) | no line yet |  |
+| Sat 11/14 TBA | Arizona State @ UCF | Arizona State 24, UCF 27 | Arizona State 51% | Arizona State -105 / UCF +105 | 25.1 – 24.9 | 13–39 / 13–38 | Arizona State -0.2 / – | 50.0 / – | no line yet | no line yet (fair: Arizona State -105) | no line yet |  |
+| Sat 11/14 TBA | Baylor @ BYU | Baylor 24, BYU 27 | BYU 67% | Baylor +200 / BYU -200 | 22.8 – 29.0 | 10–36 / 14–43 | BYU -6.2 / – | 51.8 / – | no line yet | no line yet (fair: BYU -200) | no line yet |  |
+| Sat 11/14 TBA | Cincinnati @ Iowa State | Cincinnati 28, Iowa State 31 | Iowa State 59% | Cincinnati +145 / Iowa State -145 | 28.2 – 31.6 | 14–42 / 17–46 | Iowa State -3.4 / – | 59.7 / – | no line yet | no line yet (fair: Iowa State -145) | no line yet |  |
+| Sat 11/14 TBA | Kansas @ West Virginia | Kansas 34, West Virginia 31 | Kansas 60% | Kansas -155 / West Virginia +155 | 32.8 – 28.5 | 17–48 / 14–43 | Kansas -4.2 / – | 61.3 / – | no line yet | no line yet (fair: Kansas -155) | no line yet |  |
+| Sat 11/14 TBA | Kansas State @ TCU | Kansas State 27, TCU 24 | Kansas State 54% | Kansas State -115 / TCU +115 | 25.0 – 23.4 | 13–38 / 10–37 | Kansas State -1.6 / – | 48.4 / – | no line yet | no line yet (fair: Kansas State -115) | no line yet |  |
+| Sat 11/14 TBA | Texas Tech @ Oklahoma State | Texas Tech 38, Oklahoma State 24 | Texas Tech 83% | Texas Tech -500 / Oklahoma State +500 | 37.7 – 22.7 | 22–52 / 10–36 | Texas Tech -9.7 / Texas Tech -15.5 | 56.0 / 61.5 | no edge | Oklahoma State (+500): EV +3.5%, 17%, stake 0.2u | no edge |  |
+| Sat 11/14 TBA | Utah @ Arizona | Utah 31, Arizona 24 | Utah 67% | Utah -205 / Arizona +205 | 31.3 – 25.1 | 17–45 / 12–38 | Utah -6.2 / – | 56.4 / – | no line yet | no line yet (fair: Utah -205) | no line yet |  |
+| Sat 11/14 TBA | South Carolina @ Arkansas | South Carolina 31, Arkansas 21 | South Carolina 76% | South Carolina -320 / Arkansas +320 | 32.4 – 21.6 | 17–48 / 9–35 | South Carolina -10.8 / – | 54.1 / – | no line yet | no line yet (fair: South Carolina -320) | no line yet |  |
+| Sat 11/14 TBA | Missouri @ Georgia | Missouri 17, Georgia 27 | Georgia 76% | Missouri +320 / Georgia -320 | 17.9 – 28.0 | 7–31 / 14–43 | Georgia -10.1 / – | 45.9 / – | no line yet | no line yet (fair: Georgia -320) | no line yet |  |
+| Sat 11/14 TBA | Florida @ Kentucky | Florida 27, Kentucky 24 | Florida 53% | Florida -115 / Kentucky +115 | 26.5 – 25.3 | 13–41 / 13–39 | Florida -1.2 / – | 51.8 / – | no line yet | no line yet (fair: Florida -115) | no line yet |  |
+| Sat 11/14 TBA | Texas @ LSU | Texas 27, LSU 24 | Texas 53% | Texas -115 / LSU +115 | 27.0 – 25.7 | 14–42 / 13–40 | LSU -10.4 / Texas -2.5 | 45.4 / 54.5 | no edge | no edge | Under 54.5 (-110*): EV +4.5%, 55%, stake 1.2u | * price not posted; assumed -110 |
+| Sat 11/14 TBA | Auburn @ Mississippi State | Auburn 31, Mississippi State 28 | Auburn 51% | Auburn -105 / Mississippi State +105 | 28.2 – 28.0 | 14–42 / 14–42 | Auburn -0.1 / – | 56.2 / – | no line yet | no line yet (fair: Auburn -105) | no line yet |  |
+| Sat 11/14 TBA | Ole Miss @ Oklahoma | Ole Miss 24, Oklahoma 27 | Oklahoma 59% | Ole Miss +145 / Oklahoma -145 | 24.7 – 28.2 | 11–38 / 14–42 | Ole Miss -1.8 / Oklahoma -4.0 | 50.3 / 53.5 | no edge | no edge | no edge |  |
+| Sat 11/14 TBA | Tennessee @ Texas A&M | Tennessee 24, Texas A&M 31 | Texas A&M 70% | Tennessee +230 / Texas A&M -230 | 22.9 – 30.6 | 10–37 / 17–45 | Tennessee -1.1 / Texas A&M -8.5 | 45.1 / 55.5 | no edge | no edge | no edge |  |
+| Sat 11/14 TBA | Alabama @ Vanderbilt | Alabama 31, Vanderbilt 17 | Alabama 81% | Alabama -415 / Vanderbilt +415 | 32.0 – 19.4 | 17–48 / 7–32 | Alabama -12.7 / – | 51.4 / – | no line yet | no line yet (fair: Alabama -415) | no line yet |  |
+| Sat 11/14 TBA | California @ Virginia | California 21, Virginia 31 | Virginia 75% | California +295 / Virginia -295 | 20.6 – 30.2 | 7–34 / 16–45 | Virginia -9.6 / – | 50.8 / – | no line yet | no line yet (fair: Virginia -295) | no line yet |  |
+| Sat 11/14 TBA | Duke @ Miami | Duke 17, Miami 38 | Miami 92% | Duke +1170 / Miami -1170 | 17.4 – 38.2 | 6–30 / 23–54 | Miami -18.3 / Miami -21.0 | 56.2 / 55.5 | no edge | no edge | no edge |  |
+| Sat 11/14 TBA | Georgia Tech @ Clemson | Georgia Tech 17, Clemson 31 | Clemson 82% | Georgia Tech +455 / Clemson -455 | 18.3 – 31.4 | 7–31 / 17–46 | Clemson -13.1 / – | 49.7 / – | no line yet | no line yet (fair: Clemson -455) | no line yet |  |
+| Sat 11/14 TBA | Louisville @ North Carolina | Louisville 31, North Carolina 24 | Louisville 75% | Louisville -305 / North Carolina +305 | 33.6 – 23.5 | 20–49 / 10–37 | Louisville -10.1 / – | 57.1 / – | no line yet | no line yet (fair: Louisville -305) | no line yet |  |
+| Sat 11/14 TBA | Stanford @ Virginia Tech | Stanford 17, Virginia Tech 34 | Virginia Tech 88% | Stanford +760 / Virginia Tech -760 | 19.3 – 36.2 | 7–31 / 21–52 | Virginia Tech -17.0 / – | 55.5 / – | no line yet | no line yet (fair: Virginia Tech -760) | no line yet |  |
+| Sat 11/14 TBA | Syracuse @ NC State | Syracuse 28, NC State 31 | NC State 61% | Syracuse +155 / NC State -155 | 26.7 – 31.0 | 14–41 / 17–45 | NC State -4.3 / – | 57.7 / – | no line yet | no line yet (fair: NC State -155) | no line yet |  |
+| Sat 11/14 TBA | Wake Forest @ SMU | Wake Forest 27, SMU 24 | Wake Forest 52% | Wake Forest -110 / SMU +110 | 27.1 – 26.3 | 14–42 / 13–41 | Wake Forest -0.7 / – | 53.4 / – | no line yet | no line yet (fair: Wake Forest -110) | no line yet |  |
+| Sat 11/14 TBA | USC @ Indiana | USC 24, Indiana 34 | Indiana 75% | USC +300 / Indiana -300 | 23.5 – 33.5 | 10–37 / 20–49 | Indiana -10.3 / Indiana -10.0 | 50.6 / 58.5 | no edge | no edge | no edge |  |
+| Sat 11/14 TBA | Purdue @ Iowa | Purdue 17, Iowa 31 | Iowa 85% | Purdue +585 / Iowa -585 | 16.8 – 31.8 | 6–28 / 17–46 | Iowa -15.0 / – | 48.6 / – | no line yet | no line yet (fair: Iowa -585) | no line yet |  |
+| Sat 11/14 TBA | Wisconsin @ Maryland | Wisconsin 24, Maryland 21 | Wisconsin 62% | Wisconsin -165 / Maryland +165 | 24.4 – 20.0 | 10–38 / 7–33 | Wisconsin -4.4 / – | 44.4 / – | no line yet | no line yet (fair: Wisconsin -165) | no line yet |  |
+| Sat 11/14 TBA | Washington @ Michigan State | Washington 27, Michigan State 17 | Washington 74% | Washington -290 / Michigan State +290 | 28.1 – 18.3 | 14–42 / 7–31 | Washington -9.8 / – | 46.4 / – | no line yet | no line yet (fair: Washington -290) | no line yet |  |
+| Sat 11/14 TBA | Northwestern @ Ohio State | Northwestern 17, Ohio State 34 | Ohio State 87% | Northwestern +680 / Ohio State -680 | 18.7 – 35.2 | 7–31 / 20–51 | Ohio State -16.6 / – | 53.9 / – | no line yet | no line yet (fair: Ohio State -680) | no line yet |  |
+| Sat 11/14 TBA | Michigan @ Oregon | Michigan 17, Oregon 31 | Oregon 80% | Michigan +405 / Oregon -405 | 19.5 – 32.2 | 7–33 / 17–48 | Oregon -5.0 / Oregon -13.5 | 43.9 / 53.5 | no edge | Michigan (+440): EV +5.3%, 20%, stake 0.3u | Under 53.5 (-110*): EV +3.7%, 54%, stake 1.0u | * price not posted; assumed -110 |
+| Sat 11/14 TBA | Minnesota @ Penn State | Minnesota 17, Penn State 24 | Penn State 74% | Minnesota +290 / Penn State -290 | 15.7 – 24.7 | 6–27 / 10–38 | Penn State -8.9 / – | 40.4 / – | no line yet | no line yet (fair: Penn State -290) | no line yet |  |
+| Sat 11/14 TBA | Nebraska @ Rutgers | Nebraska 34, Rutgers 17 | Nebraska 85% | Nebraska -550 / Rutgers +550 | 34.8 – 19.9 | 20–50 / 7–33 | Nebraska -14.9 / – | 54.8 / – | no line yet | no line yet (fair: Nebraska -550) | no line yet |  |
+| Sat 11/14 TBA | East Carolina @ Charlotte | East Carolina 31, Charlotte 17 | East Carolina 84% | East Carolina -510 / Charlotte +510 | 31.9 – 18.0 | 17–48 / 7–31 | East Carolina -13.9 / – | 49.9 / – | no line yet | no line yet (fair: East Carolina -510) | no line yet |  |
+| Sat 11/14 TBA | Florida Atlantic @ Tulsa | Florida Atlantic 31, Tulsa 34 | Tulsa 54% | Florida Atlantic +120 / Tulsa -120 | 31.3 – 32.9 | 17–45 / 19–48 | Tulsa -1.6 / – | 64.2 / – | no line yet | no line yet (fair: Tulsa -120) | no line yet |  |
+| Sat 11/14 TBA | North Texas @ UTSA | North Texas 31, UTSA 34 | UTSA 54% | North Texas +120 / UTSA -120 | 33.1 – 34.8 | 19–48 / 20–50 | UTSA -1.7 / – | 68.0 / – | no line yet | no line yet (fair: UTSA -120) | no line yet |  |
+| Sat 11/14 TBA | Tulane @ Rice | Tulane 31, Rice 24 | Tulane 69% | Tulane -220 / Rice +220 | 28.6 – 21.5 | 14–43 / 10–35 | Tulane -7.1 / – | 50.1 / – | no line yet | no line yet (fair: Tulane -220) | no line yet |  |
+| Sat 11/14 TBA | UAB @ Temple | UAB 24, Temple 27 | Temple 57% | UAB +130 / Temple -130 | 24.1 – 27.0 | 10–38 / 13–41 | Temple -2.9 / – | 51.1 / – | no line yet | no line yet (fair: Temple -130) | no line yet |  |
+| Sat 11/14 TBA | Nevada @ Northern Illinois | Nevada 27, Northern Illinois 24 | Nevada 60% | Nevada -150 / Northern Illinois +150 | 26.7 – 23.0 | 13–41 / 10–37 | Nevada -3.7 / – | 49.7 / – | no line yet | no line yet (fair: Nevada -150) | no line yet |  |
+| Sat 11/14 TBA | Wyoming @ UTEP | Wyoming 31, UTEP 17 | Wyoming 82% | Wyoming -440 / UTEP +440 | 28.6 – 16.5 | 14–43 / 6–28 | Wyoming -12.1 / – | 45.1 / – | no line yet | no line yet (fair: Wyoming -440) | no line yet |  |
+| Sat 11/14 TBA | App State @ Marshall | App State 28, Marshall 31 | Marshall 59% | App State +145 / Marshall -145 | 26.0 – 29.8 | 13–41 / 16–45 | Marshall -3.7 / – | 55.8 / – | no line yet | no line yet (fair: Marshall -145) | no line yet |  |
+| Sat 11/14 TBA | Arkansas State @ Coastal Carolina | Arkansas State 24, Coastal Carolina 27 | Coastal Carolina 54% | Arkansas State +115 / Coastal Carolina -115 | 25.6 – 27.1 | 13–40 / 14–41 | Coastal Carolina -1.5 / – | 52.7 / – | no line yet | no line yet (fair: Coastal Carolina -115) | no line yet |  |
+| Sat 11/14 TBA | Georgia Southern @ Georgia State | Georgia Southern 28, Georgia State 31 | Georgia State 51% | Georgia Southern +105 / Georgia State -105 | 28.8 – 29.5 | 14–44 / 16–44 | Georgia State -0.7 / – | 58.3 / – | no line yet | no line yet (fair: Georgia State -105) | no line yet |  |
+| Sat 11/14 TBA | Southern Miss @ Louisiana Tech | Southern Miss 17, Louisiana Tech 31 | Louisiana Tech 85% | Southern Miss +555 / Louisiana Tech -555 | 18.7 – 32.8 | 7–31 / 19–48 | Louisiana Tech -14.1 / – | 51.5 / – | no line yet | no line yet (fair: Louisiana Tech -555) | no line yet |  |
+| Sat 11/14 TBA | Troy @ South Alabama | Troy 24, South Alabama 27 | South Alabama 59% | Troy +140 / South Alabama -140 | 25.9 – 28.8 | 13–39 / 14–43 | South Alabama -3.0 / – | 54.7 / – | no line yet | no line yet (fair: South Alabama -140) | no line yet |  |
+| Sat 11/14 12:00 PM | James Madison @ UConn | James Madison 27, UConn 24 | James Madison 52% | James Madison -110 / UConn +110 | 28.5 – 27.8 | 14–43 / 14–42 | James Madison -0.8 / – | 56.3 / – | no line yet | no line yet (fair: James Madison -110) | no line yet |  |
+| Sat 11/14 2:00 PM | Kennesaw State @ Sam Houston | Kennesaw State 24, Sam Houston 21 | Kennesaw State 62% | Kennesaw State -165 / Sam Houston +165 | 24.0 – 19.9 | 10–38 / 7–33 | Kennesaw State -4.1 / – | 43.8 / – | no line yet | no line yet (fair: Kennesaw State -165) | no line yet |  |
+| Sat 11/14 3:00 PM | New Mexico State @ Missouri State | New Mexico State 24, Missouri State 27 | Missouri State 64% | New Mexico State +180 / Missouri State -180 | 23.3 – 28.4 | 10–37 / 14–42 | Missouri State -5.2 / – | 51.7 / – | no line yet | no line yet (fair: Missouri State -180) | no line yet |  |
+| Sat 11/14 3:00 PM | Florida International @ Delaware | Florida International 17, Delaware 31 | Delaware 80% | Florida International +410 / Delaware -410 | 19.6 – 32.2 | 7–31 / 17–48 | Delaware -12.6 / – | 51.8 / – | no line yet | no line yet (fair: Delaware -410) | no line yet |  |
+| Sat 11/14 3:30 PM | Boston College @ Notre Dame | Boston College 6, Notre Dame 41 | Notre Dame 100% | Boston College +9900 / Notre Dame -9900 | 6.5 – 40.9 | 0–14 / 27–58 | Notre Dame -34.4 / – | 47.4 / – | no line yet | no line yet (fair: Notre Dame -9900) | no line yet |  |
+| Sat 11/14 3:30 PM | Jacksonville State @ Western Kentucky | Jacksonville State 31, Western Kentucky 24 | Jacksonville State 62% | Jacksonville State -165 / Western Kentucky +165 | 29.2 – 24.2 | 14–43 / 10–38 | Jacksonville State -5.0 / – | 53.4 / – | no line yet | no line yet (fair: Jacksonville State -165) | no line yet |  |
+| Sat 11/14 3:30 PM | Middle Tennessee @ Liberty | Middle Tennessee 13, Liberty 34 | Liberty 94% | Middle Tennessee +1540 / Liberty -1540 | 13.8 – 35.1 | 3–24 / 20–51 | Liberty -21.3 / – | 48.9 / – | no line yet | no line yet (fair: Liberty -1540) | no line yet |  |
+| Sat 11/14 4:00 PM | Fresno State @ Texas State | Fresno State 28, Texas State 31 | Texas State 60% | Fresno State +150 / Texas State -150 | 28.5 – 32.3 | 14–42 / 17–48 | Texas State -3.8 / – | 60.7 / – | no line yet | no line yet (fair: Texas State -150) | no line yet |  |
+| Sat 11/14 6:00 PM | Oregon State @ Boise State | Oregon State 27, Boise State 34 | Boise State 67% | Oregon State +200 / Boise State -200 | 26.9 – 33.6 | 14–41 / 20–49 | Boise State -6.7 / – | 60.5 / – | no line yet | no line yet (fair: Boise State -200) | no line yet |  |
+| Sat 11/14 7:00 PM | San José State @ Air Force | San José State 20, Air Force 34 | Air Force 82% | San José State +455 / Air Force -455 | 20.1 – 33.7 | 7–33 / 20–49 | Air Force -13.6 / – | 53.9 / – | no line yet | no line yet (fair: Air Force -455) | no line yet |  |
+| Sat 11/14 7:30 PM | UNLV @ New Mexico | UNLV 21, New Mexico 28 | New Mexico 69% | UNLV +220 / New Mexico -220 | 20.2 – 27.2 | 7–33 / 14–41 | New Mexico -7.0 / – | 47.3 / – | no line yet | no line yet (fair: New Mexico -220) | no line yet |  |
+| Sat 11/14 9:30 PM | Utah State @ San Diego State | Utah State 21, San Diego State 24 | San Diego State 58% | Utah State +140 / San Diego State -140 | 22.5 – 25.4 | 10–36 / 13–39 | San Diego State -2.9 / – | 48.0 / – | no line yet | no line yet (fair: San Diego State -140) | no line yet |  |
+| Sat 11/14 10:30 PM | Colorado State @ Washington State | Colorado State 24, Washington State 31 | Washington State 65% | Colorado State +190 / Washington State -190 | 25.4 – 31.5 | 13–39 / 17–45 | Washington State -6.1 / – | 57.0 / – | no line yet | no line yet (fair: Washington State -190) | no line yet |  |
+| Sat 11/14 11:00 PM | North Dakota State @ Hawai'i | North Dakota State 27, Hawai'i 20 | North Dakota State 72% | North Dakota State -260 / Hawai'i +260 | 27.5 – 19.4 | 14–42 / 7–31 | North Dakota State -8.1 / – | 46.9 / – | no line yet | no line yet (fair: North Dakota State -260) | no line yet |  |
 
 ## How the 2026 predictions have done
 
 | Predictor | Games | Margin MAE | Total MAE | Team-score MAE | Winners | Brier | 80% range hit |
 |---|---|---|---|---|---|---|---|
-| Final prediction | 607 | 11.59 | 12.09 | 8.37 | 80.7% | 0.137 | 82.5% |
-| Model only (before blending) | 607 | 12.32 | 12.39 | 8.64 | 77.9% | – | – |
-| Betting line when predicted | 605 | 11.58 | 12.05 | 8.36 | 80.7% | – | – |
+| Final prediction | 622 | 11.65 | 12.16 | 8.42 | 80.2% | 0.139 | 82.1% |
+| Model only (before blending) | 622 | 12.39 | 12.48 | 8.69 | 77.5% | – | – |
+| Betting line when predicted | 620 | 11.64 | 12.12 | 8.41 | 80.2% | – | – |
 
 MAE is mean absolute error in points (lower is better). Brier scores the win chances (lower is better, 0.25 is a coin flip). Even the closing betting line misses the final margin of an FBS game by about 12.5 points.
 
@@ -165,7 +165,7 @@ MAE is mean absolute error in points (lower is better). Brier scores the win cha
 | Market | Edges | Record (W-L-P) | Staked | Units won | ROI | Expected ROI |
 |---|---|---|---|---|---|---|
 | Spread | 0 | 0-0-0 | 0.0 | +0.00 | – | – |
-| Moneyline | 3 | 0-3-0 | 1.1 | -1.10 | -100.0% | +4.8% |
+| Moneyline | 5 | 1-4-0 | 1.7 | +0.25 | +14.1% | +5.1% |
 | Total | 2 | 1-1-0 | 2.4 | -0.63 | -26.6% | +4.5% |
 
 2 of these edges were priced at an assumed -110 (price not posted).
@@ -215,8 +215,23 @@ Every edge logged before kickoff at the stake and price logged with it (backfill
 | Utah @ Cincinnati | 31–24 | 49–25 | 69% | no |
 | Virginia @ Wake Forest | 17–31 | 7–51 | 83% | no |
 | New Mexico @ San José State | 31–14 | 21–16 | 86% | yes |
+| South Carolina @ Oklahoma | 21–24 | 42–25 | 40% | no |
 | Purdue @ Penn State | 21–31 | 17–31 | 75% | yes |
 | Nevada @ UCLA | 10–34 | 0–27 | 96% | yes |
+| App State @ Georgia Southern | 24–31 | 3–19 | 63% | no |
+| Oklahoma State @ Iowa State | 31–24 | 49–51 | 30% | no |
+| Clemson @ Florida State | 24–27 | 36–24 | 35% | no |
+| Washington State @ San Diego State | 21–24 | 20–26 | 56% | yes |
+| Mississippi State @ Texas | 14–35 | 3–31 | 91% | no |
+| Georgia Tech @ Pittsburgh | 24–31 | 11–34 | 69% | yes |
+| Miami @ North Carolina | 34–17 | 38–35 | 84% | no |
+| Ohio State @ USC | 31–24 | 18–30 | 33% | yes |
+| Missouri @ Arkansas | 27–20 | 34–10 | 76% | yes |
+| Washington @ Nebraska | 21–28 | 17–10 | 29% | no |
+| Army @ Memphis | 24–31 | 22–49 | 65% | no |
+| Texas State @ Boise State | 28–38 | 45–46 | 76% | no |
+| Northern Illinois @ UNLV | 17–38 | 24–31 | 93% | yes |
+| Oregon State @ Fresno State | 31–24 | 22–38 | 35% | yes |
 
 ## FBS power ratings
 
@@ -224,149 +239,149 @@ Points per game better than an average FBS team on a neutral field, from opponen
 
 | # | Team | Conference | Net | Offense | Defense | Special teams | Results (Elo) | Elo rating |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Ohio State | Big Ten | +27.0 | +11.3 | +10.2 | +0.4 | +5.1 | 1934 |
-| 2 | LSU | SEC | +26.4 | +10.7 | +12.5 | +0.2 | +2.9 | 1751 |
-| 3 | Miami | ACC | +24.0 | +13.1 | +6.1 | +0.2 | +4.6 | 1890 |
-| 4 | Georgia | SEC | +24.0 | +8.0 | +10.7 | +0.9 | +4.4 | 1880 |
-| 5 | Notre Dame | FBS Independents | +23.1 | +8.9 | +9.0 | +1.1 | +4.2 | 1858 |
+| 1 | LSU | SEC | +26.4 | +10.8 | +12.5 | +0.2 | +2.9 | 1751 |
+| 2 | Ohio State | Big Ten | +25.7 | +10.9 | +10.2 | +0.3 | +4.3 | 1868 |
+| 3 | Georgia | SEC | +23.9 | +7.9 | +10.6 | +0.9 | +4.5 | 1880 |
+| 4 | Notre Dame | FBS Independents | +23.1 | +8.8 | +9.1 | +1.1 | +4.2 | 1858 |
+| 5 | Miami | ACC | +23.1 | +14.3 | +3.7 | +0.4 | +4.7 | 1894 |
 | 6 | Indiana | Big Ten | +21.7 | +5.7 | +10.7 | +0.1 | +5.2 | 1939 |
-| 7 | Utah | Big 12 | +20.5 | +10.7 | +5.8 | +0.0 | +4.0 | 1842 |
+| 7 | Utah | Big 12 | +20.5 | +10.6 | +5.8 | +0.0 | +4.0 | 1842 |
 | 8 | Alabama | SEC | +19.6 | +9.0 | +7.1 | +0.2 | +3.2 | 1777 |
-| 9 | Ole Miss | SEC | +18.6 | +10.4 | +3.9 | +0.7 | +3.7 | 1815 |
-| 10 | Texas | SEC | +18.6 | +3.0 | +11.7 | +0.4 | +3.5 | 1803 |
-| 11 | Texas Tech | Big 12 | +18.3 | +2.1 | +11.9 | +1.2 | +3.0 | 1761 |
-| 12 | Oklahoma | SEC | +17.5 | +1.6 | +13.3 | +0.6 | +2.0 | 1677 |
-| 13 | Oregon | Big Ten | +16.8 | +4.5 | +8.9 | +0.5 | +2.8 | 1743 |
-| 14 | UCLA | Big Ten | +16.6 | +4.6 | +9.3 | +0.7 | +2.0 | 1676 |
-| 15 | Wake Forest | ACC | +16.4 | +6.2 | +7.2 | +0.5 | +2.4 | 1710 |
-| 16 | Louisville | ACC | +15.8 | +9.9 | +3.8 | +0.0 | +2.1 | 1681 |
-| 17 | Tennessee | SEC | +15.4 | +3.5 | +8.6 | +0.7 | +2.6 | 1723 |
-| 18 | Missouri | SEC | +15.3 | +4.4 | +8.3 | +0.5 | +2.1 | 1686 |
-| 19 | Michigan | Big Ten | +14.9 | +3.5 | +9.3 | +0.0 | +2.0 | 1674 |
-| 20 | Nebraska | Big Ten | +13.9 | +4.9 | +7.1 | +0.6 | +1.4 | 1622 |
-| 21 | SMU | ACC | +13.4 | +7.5 | +3.7 | +0.2 | +2.0 | 1675 |
-| 22 | BYU | Big 12 | +13.4 | +5.6 | +4.2 | +0.6 | +3.0 | 1759 |
-| 23 | Iowa | Big Ten | +13.1 | +1.7 | +7.7 | +0.8 | +2.9 | 1751 |
-| 24 | USC | Big Ten | +12.7 | +10.6 | -0.0 | +0.2 | +2.0 | 1672 |
-| 25 | Florida | SEC | +12.4 | +6.5 | +4.2 | +0.9 | +0.8 | 1579 |
-| 26 | Arizona | Big 12 | +12.0 | +6.4 | +3.5 | -0.2 | +2.4 | 1708 |
-| 27 | Texas A&M | SEC | +12.0 | +2.6 | +7.8 | +0.5 | +1.1 | 1601 |
-| 28 | Auburn | SEC | +12.0 | +5.5 | +5.5 | +0.6 | +0.3 | 1536 |
-| 29 | Penn State | Big Ten | +11.4 | +3.0 | +7.0 | +0.1 | +1.2 | 1611 |
-| 30 | Northwestern | Big Ten | +11.2 | +7.1 | +1.8 | +0.8 | +1.5 | 1634 |
-| 31 | Houston | Big 12 | +10.2 | +7.9 | +0.1 | +0.2 | +2.0 | 1673 |
-| 32 | Mississippi State | SEC | +9.8 | +6.9 | +2.3 | +0.4 | +0.2 | 1523 |
-| 33 | Kansas State | Big 12 | +9.8 | +6.2 | +3.0 | +0.4 | +0.2 | 1526 |
-| 34 | Kentucky | SEC | +9.5 | +2.8 | +4.4 | +0.3 | +2.0 | 1677 |
-| 35 | Baylor | Big 12 | +9.3 | +0.3 | +6.9 | +1.0 | +1.1 | 1601 |
-| 36 | South Carolina | SEC | +8.9 | +4.5 | +2.6 | +0.8 | +1.1 | 1599 |
-| 37 | Washington | Big Ten | +8.4 | +2.8 | +4.1 | -0.0 | +1.5 | 1635 |
-| 38 | Wisconsin | Big Ten | +8.1 | -0.2 | +7.0 | +0.2 | +1.0 | 1593 |
-| 39 | Kansas | Big 12 | +7.2 | +4.6 | +3.5 | -0.0 | -0.8 | 1439 |
-| 40 | Boise State | Pac-12 | +7.2 | +5.1 | -0.4 | +0.1 | +2.5 | 1717 |
-| 41 | Duke | ACC | +6.8 | +2.7 | +1.3 | +0.8 | +2.0 | 1677 |
-| 42 | Iowa State | Big 12 | +6.5 | +2.4 | +2.7 | +0.9 | +0.5 | 1552 |
-| 43 | Oklahoma State | Big 12 | +6.3 | +6.7 | -0.7 | +0.5 | -0.2 | 1495 |
-| 44 | Cincinnati | Big 12 | +6.3 | +8.9 | -3.8 | +0.4 | +0.7 | 1568 |
-| 45 | Florida State | ACC | +6.3 | +8.0 | -1.4 | -0.2 | -0.1 | 1497 |
-| 46 | Arizona State | Big 12 | +5.6 | +1.0 | +4.1 | +0.0 | +0.5 | 1550 |
-| 47 | TCU | Big 12 | +5.4 | -2.3 | +6.3 | +0.5 | +0.9 | 1587 |
-| 48 | Virginia Tech | ACC | +4.8 | +3.2 | +0.7 | +0.3 | +0.7 | 1566 |
-| 49 | Illinois | Big Ten | +4.6 | +6.0 | -2.5 | -0.1 | +1.2 | 1610 |
-| 50 | Vanderbilt | SEC | +4.5 | +4.6 | -0.6 | +0.3 | +0.2 | 1529 |
-| 51 | Minnesota | Big Ten | +4.0 | -4.1 | +6.5 | +1.0 | +0.6 | 1561 |
-| 52 | North Texas | American Athletic | +3.5 | +10.2 | -7.5 | -0.9 | +1.6 | 1645 |
-| 53 | NC State | ACC | +3.4 | +5.7 | -2.0 | -0.6 | +0.4 | 1538 |
-| 54 | Clemson | ACC | +3.4 | -4.8 | +6.9 | +0.4 | +0.8 | 1578 |
-| 55 | Pittsburgh | ACC | +3.2 | -0.1 | +2.4 | +0.5 | +0.4 | 1542 |
+| 9 | Ole Miss | SEC | +18.6 | +10.4 | +3.8 | +0.7 | +3.7 | 1815 |
+| 10 | Texas Tech | Big 12 | +18.2 | +2.1 | +11.9 | +1.2 | +3.0 | 1761 |
+| 11 | Texas | SEC | +18.1 | +1.3 | +12.4 | +0.6 | +3.7 | 1814 |
+| 12 | Oregon | Big Ten | +16.8 | +4.4 | +9.0 | +0.5 | +2.8 | 1743 |
+| 13 | UCLA | Big Ten | +16.6 | +4.6 | +9.3 | +0.7 | +2.0 | 1676 |
+| 14 | Missouri | SEC | +16.3 | +4.5 | +8.4 | +0.9 | +2.5 | 1714 |
+| 15 | Wake Forest | ACC | +16.3 | +6.0 | +7.3 | +0.5 | +2.4 | 1710 |
+| 16 | Louisville | ACC | +15.6 | +9.8 | +3.7 | +0.0 | +2.1 | 1681 |
+| 17 | Tennessee | SEC | +15.4 | +3.7 | +8.5 | +0.7 | +2.6 | 1723 |
+| 18 | Michigan | Big Ten | +14.7 | +3.5 | +9.3 | +0.0 | +2.0 | 1674 |
+| 19 | Oklahoma | SEC | +14.4 | +0.2 | +12.4 | +0.6 | +1.3 | 1615 |
+| 20 | USC | Big Ten | +13.8 | +10.5 | +0.3 | +0.3 | +2.8 | 1738 |
+| 21 | Nebraska | Big Ten | +13.5 | +4.9 | +7.1 | +0.5 | +0.9 | 1587 |
+| 22 | BYU | Big 12 | +13.4 | +5.5 | +4.2 | +0.6 | +3.0 | 1759 |
+| 23 | SMU | ACC | +13.3 | +7.5 | +3.7 | +0.2 | +2.0 | 1675 |
+| 24 | Iowa | Big Ten | +13.1 | +1.6 | +7.8 | +0.8 | +2.9 | 1751 |
+| 25 | Florida | SEC | +12.6 | +6.6 | +4.2 | +1.0 | +0.8 | 1579 |
+| 26 | Texas A&M | SEC | +12.0 | +2.5 | +7.8 | +0.5 | +1.1 | 1601 |
+| 27 | Auburn | SEC | +12.0 | +5.4 | +5.6 | +0.6 | +0.3 | 1536 |
+| 28 | Arizona | Big 12 | +12.0 | +6.2 | +3.5 | -0.2 | +2.4 | 1708 |
+| 29 | South Carolina | SEC | +11.9 | +5.4 | +3.8 | +0.8 | +1.8 | 1662 |
+| 30 | Penn State | Big Ten | +11.4 | +3.0 | +7.0 | +0.1 | +1.2 | 1611 |
+| 31 | Northwestern | Big Ten | +11.2 | +7.1 | +1.8 | +0.8 | +1.5 | 1634 |
+| 32 | Houston | Big 12 | +10.2 | +7.9 | +0.1 | +0.2 | +2.0 | 1673 |
+| 33 | Mississippi State | SEC | +9.7 | +5.8 | +3.6 | +0.2 | +0.0 | 1512 |
+| 34 | Kansas State | Big 12 | +9.7 | +6.2 | +3.0 | +0.3 | +0.2 | 1526 |
+| 35 | Kentucky | SEC | +9.6 | +2.8 | +4.5 | +0.3 | +2.0 | 1677 |
+| 36 | Baylor | Big 12 | +9.3 | +0.3 | +6.8 | +1.0 | +1.1 | 1601 |
+| 37 | Washington | Big Ten | +8.8 | +2.8 | +4.1 | -0.0 | +2.0 | 1670 |
+| 38 | Wisconsin | Big Ten | +8.1 | -0.1 | +7.0 | +0.2 | +1.0 | 1593 |
+| 39 | Kansas | Big 12 | +7.2 | +4.6 | +3.4 | -0.0 | -0.8 | 1439 |
+| 40 | Duke | ACC | +6.8 | +2.6 | +1.3 | +0.8 | +2.0 | 1677 |
+| 41 | Oklahoma State | Big 12 | +6.8 | +8.5 | -1.9 | +0.4 | -0.3 | 1484 |
+| 42 | Iowa State | Big 12 | +6.6 | +3.9 | +1.1 | +0.9 | +0.7 | 1563 |
+| 43 | Cincinnati | Big 12 | +6.3 | +8.9 | -3.8 | +0.4 | +0.7 | 1568 |
+| 44 | Boise State | Pac-12 | +6.2 | +4.8 | -1.0 | -0.2 | +2.6 | 1721 |
+| 45 | Arizona State | Big 12 | +5.6 | +1.0 | +4.0 | +0.0 | +0.5 | 1550 |
+| 46 | TCU | Big 12 | +5.4 | -2.3 | +6.4 | +0.5 | +0.9 | 1587 |
+| 47 | Clemson | ACC | +4.9 | -4.9 | +7.8 | +0.7 | +1.3 | 1613 |
+| 48 | Virginia Tech | ACC | +4.9 | +3.3 | +0.5 | +0.3 | +0.7 | 1566 |
+| 49 | Illinois | Big Ten | +4.5 | +5.9 | -2.5 | -0.1 | +1.2 | 1610 |
+| 50 | Florida State | ACC | +4.5 | +6.9 | -1.4 | -0.5 | -0.6 | 1462 |
+| 51 | Vanderbilt | SEC | +4.4 | +4.5 | -0.6 | +0.3 | +0.2 | 1529 |
+| 52 | Minnesota | Big Ten | +4.0 | -4.1 | +6.4 | +1.0 | +0.6 | 1561 |
+| 53 | Pittsburgh | ACC | +4.0 | -1.2 | +3.9 | +0.6 | +0.7 | 1566 |
+| 54 | North Texas | American Athletic | +3.5 | +10.2 | -7.4 | -0.8 | +1.6 | 1645 |
+| 55 | NC State | ACC | +3.3 | +5.7 | -2.1 | -0.6 | +0.4 | 1538 |
 | 56 | Colorado | Big 12 | +3.0 | +0.5 | +4.7 | -0.7 | -1.6 | 1378 |
 | 57 | UCF | Big 12 | +2.8 | +0.7 | +2.7 | +0.0 | -0.6 | 1459 |
-| 58 | Oregon State | Pac-12 | +2.6 | +5.0 | -2.4 | +0.1 | -0.1 | 1498 |
-| 59 | UTSA | American Athletic | +2.1 | +3.0 | -2.9 | -0.1 | +2.1 | 1686 |
-| 60 | James Madison | Sun Belt | +1.9 | -1.8 | +1.1 | +0.4 | +2.3 | 1698 |
-| 61 | Syracuse | ACC | +1.8 | +1.7 | +2.3 | -0.9 | -1.2 | 1407 |
-| 62 | Arkansas | SEC | +1.2 | +1.3 | +0.4 | -0.4 | -0.1 | 1496 |
-| 63 | Liberty | Conference USA | +1.1 | +0.7 | -0.5 | +0.4 | +0.5 | 1551 |
-| 64 | Memphis | American Athletic | +1.0 | +2.9 | -2.0 | -0.5 | +0.7 | 1566 |
-| 65 | Virginia | ACC | +1.0 | -1.3 | +3.0 | -0.5 | -0.2 | 1494 |
-| 66 | North Carolina | ACC | +0.6 | +0.6 | -1.0 | +0.9 | +0.1 | 1514 |
-| 67 | Purdue | Big Ten | +0.6 | +2.9 | -2.1 | +0.8 | -1.0 | 1426 |
-| 68 | Maryland | Big Ten | +0.5 | -1.5 | +3.1 | +1.0 | -2.1 | 1334 |
+| 58 | North Carolina | ACC | +2.3 | +3.3 | -1.8 | +0.8 | +0.0 | 1509 |
+| 59 | James Madison | Sun Belt | +2.0 | -1.7 | +1.0 | +0.4 | +2.3 | 1698 |
+| 60 | UTSA | American Athletic | +2.0 | +2.9 | -3.0 | -0.1 | +2.1 | 1686 |
+| 61 | Syracuse | ACC | +1.9 | +1.7 | +2.4 | -0.9 | -1.2 | 1407 |
+| 62 | Oregon State | Pac-12 | +1.7 | +4.6 | -2.5 | +0.1 | -0.5 | 1468 |
+| 63 | Memphis | American Athletic | +1.3 | +3.0 | -2.5 | -0.4 | +1.3 | 1614 |
+| 64 | Liberty | Conference USA | +1.1 | +0.7 | -0.5 | +0.4 | +0.5 | 1551 |
+| 65 | Virginia | ACC | +1.0 | -1.3 | +3.0 | -0.6 | -0.2 | 1494 |
+| 66 | Purdue | Big Ten | +0.6 | +2.9 | -2.1 | +0.8 | -1.0 | 1426 |
+| 67 | Maryland | Big Ten | +0.5 | -1.6 | +3.1 | +1.0 | -2.1 | 1334 |
+| 68 | Arkansas | SEC | +0.2 | +1.2 | +0.3 | -0.8 | -0.5 | 1468 |
 | 69 | Toledo | Mid-American | -0.0 | -1.2 | +0.6 | -0.0 | +0.6 | 1555 |
-| 70 | West Virginia | Big 12 | -0.1 | +4.1 | -4.7 | +0.6 | -0.1 | 1502 |
-| 71 | New Mexico | Mountain West | -0.2 | -3.3 | +2.1 | -0.3 | +1.3 | 1618 |
-| 72 | North Dakota State | Mountain West | -1.1 | -5.1 | +4.0 | +1.0 | -1.1 | 1419 |
-| 73 | Texas State | Pac-12 | -1.2 | +5.1 | -5.6 | -1.5 | +0.7 | 1567 |
-| 74 | Navy | American Athletic | -1.2 | +3.6 | -3.9 | -0.6 | -0.4 | 1473 |
+| 70 | West Virginia | Big 12 | -0.1 | +3.9 | -4.5 | +0.6 | -0.1 | 1502 |
+| 71 | Texas State | Pac-12 | -0.2 | +5.8 | -5.4 | -1.2 | +0.7 | 1563 |
+| 72 | New Mexico | Mountain West | -0.4 | -3.4 | +2.0 | -0.3 | +1.3 | 1618 |
+| 73 | North Dakota State | Mountain West | -1.2 | -5.1 | +3.9 | +1.1 | -1.1 | 1419 |
+| 74 | Navy | American Athletic | -1.3 | +3.6 | -3.9 | -0.6 | -0.4 | 1473 |
 | 75 | South Florida | American Athletic | -1.3 | -2.3 | -0.2 | +0.2 | +1.0 | 1593 |
 | 76 | UConn | FBS Independents | -2.0 | +2.2 | -3.5 | -0.3 | -0.4 | 1472 |
-| 77 | Army | American Athletic | -2.1 | +5.0 | -8.1 | -0.1 | +1.1 | 1602 |
-| 78 | Louisiana Tech | Sun Belt | -2.8 | -3.1 | +0.7 | -0.7 | +0.4 | 1540 |
-| 79 | Fresno State | Pac-12 | -3.4 | -2.4 | -1.4 | -0.0 | +0.4 | 1544 |
+| 77 | Army | American Athletic | -2.4 | +5.6 | -8.3 | -0.2 | +0.6 | 1554 |
+| 78 | Fresno State | Pac-12 | -2.6 | -2.2 | -1.0 | -0.1 | +0.8 | 1574 |
+| 79 | Louisiana Tech | Sun Belt | -2.7 | -3.2 | +0.8 | -0.7 | +0.4 | 1540 |
 | 80 | Ohio | Mid-American | -3.4 | -1.8 | -2.9 | +0.5 | +0.8 | 1578 |
-| 81 | Georgia Tech | ACC | -3.6 | +2.8 | -5.2 | +0.0 | -1.1 | 1416 |
-| 82 | East Carolina | American Athletic | -3.6 | -5.4 | +2.7 | -0.7 | -0.1 | 1496 |
-| 83 | Tulsa | American Athletic | -3.6 | -0.9 | -0.5 | -0.5 | -1.8 | 1358 |
-| 84 | Michigan State | Big Ten | -3.7 | -3.5 | +1.2 | +0.1 | -1.4 | 1388 |
-| 85 | Florida Atlantic | American Athletic | -3.9 | +4.0 | -7.5 | +0.7 | -1.1 | 1416 |
-| 86 | Rutgers | Big Ten | -4.2 | +2.8 | -6.4 | +0.8 | -1.4 | 1388 |
-| 87 | Tulane | American Athletic | -4.4 | -3.6 | -1.7 | +0.2 | +0.6 | 1562 |
-| 88 | Air Force | Mountain West | -4.9 | +2.5 | -6.8 | -0.3 | -0.2 | 1488 |
-| 89 | UNLV | Mountain West | -4.9 | -3.0 | -2.3 | -0.0 | +0.4 | 1540 |
-| 90 | Jacksonville State | Conference USA | -4.9 | -0.2 | -4.4 | -0.2 | -0.1 | 1497 |
-| 91 | Boston College | ACC | -5.4 | -3.8 | -0.3 | -0.9 | -0.5 | 1469 |
+| 81 | Tulsa | American Athletic | -3.6 | -1.0 | -0.3 | -0.5 | -1.8 | 1358 |
+| 82 | Michigan State | Big Ten | -3.6 | -3.5 | +1.2 | +0.1 | -1.5 | 1388 |
+| 83 | East Carolina | American Athletic | -3.7 | -5.4 | +2.6 | -0.7 | -0.1 | 1496 |
+| 84 | Florida Atlantic | American Athletic | -3.9 | +3.9 | -7.4 | +0.7 | -1.1 | 1416 |
+| 85 | Rutgers | Big Ten | -4.2 | +2.8 | -6.3 | +0.8 | -1.4 | 1388 |
+| 86 | Tulane | American Athletic | -4.4 | -3.7 | -1.7 | +0.2 | +0.6 | 1562 |
+| 87 | Georgia Tech | ACC | -4.8 | +1.1 | -4.4 | -0.1 | -1.4 | 1393 |
+| 88 | Jacksonville State | Conference USA | -4.9 | -0.1 | -4.4 | -0.2 | -0.1 | 1497 |
+| 89 | Air Force | Mountain West | -4.9 | +2.4 | -6.8 | -0.3 | -0.2 | 1488 |
+| 90 | UNLV | Mountain West | -5.3 | -2.8 | -3.0 | +0.1 | +0.4 | 1543 |
+| 91 | Boston College | ACC | -5.4 | -3.6 | -0.4 | -0.9 | -0.5 | 1469 |
 | 92 | California | ACC | -6.2 | -2.1 | -2.0 | -0.4 | -1.7 | 1369 |
 | 93 | Delaware | Conference USA | -6.3 | -0.2 | -5.2 | +0.3 | -1.2 | 1406 |
-| 94 | Western Michigan | Mid-American | -6.9 | -4.8 | -3.6 | +0.8 | +0.6 | 1561 |
-| 95 | Utah State | Pac-12 | -6.9 | -6.7 | +2.1 | -1.2 | -1.2 | 1412 |
-| 96 | App State | Sun Belt | -7.0 | -2.6 | -3.6 | -0.2 | -0.7 | 1454 |
-| 97 | Marshall | Sun Belt | -7.3 | -3.2 | -3.8 | -0.3 | -0.1 | 1500 |
-| 98 | Washington State | Pac-12 | -8.0 | -6.8 | +0.6 | -0.2 | -1.6 | 1373 |
-| 99 | Miami (OH) | Mid-American | -8.1 | -4.6 | -3.3 | +0.5 | -0.8 | 1446 |
-| 100 | San Diego State | Pac-12 | -8.5 | -5.1 | -2.1 | +0.2 | -1.5 | 1382 |
-| 101 | Stanford | ACC | -9.2 | -3.0 | -5.5 | +0.0 | -0.7 | 1448 |
-| 102 | Temple | American Athletic | -9.5 | +0.6 | -7.0 | -0.5 | -2.6 | 1291 |
-| 103 | Georgia Southern | Sun Belt | -9.5 | -1.9 | -6.3 | -1.0 | -0.3 | 1481 |
-| 104 | Louisiana | Sun Belt | -9.6 | -5.0 | -4.1 | -0.1 | -0.4 | 1478 |
+| 94 | Utah State | Pac-12 | -6.9 | -6.7 | +2.2 | -1.2 | -1.2 | 1412 |
+| 95 | Western Michigan | Mid-American | -7.0 | -4.8 | -3.6 | +0.8 | +0.6 | 1561 |
+| 96 | Marshall | Sun Belt | -7.3 | -3.2 | -3.7 | -0.3 | -0.1 | 1500 |
+| 97 | San Diego State | Pac-12 | -8.0 | -4.6 | -2.4 | +0.3 | -1.2 | 1406 |
+| 98 | Miami (OH) | Mid-American | -8.1 | -4.5 | -3.3 | +0.5 | -0.8 | 1446 |
+| 99 | Georgia Southern | Sun Belt | -8.2 | -2.2 | -5.2 | -0.9 | +0.1 | 1513 |
+| 100 | Washington State | Pac-12 | -8.3 | -6.3 | +0.2 | -0.3 | -1.9 | 1349 |
+| 101 | App State | Sun Belt | -8.5 | -3.9 | -3.3 | -0.3 | -1.0 | 1422 |
+| 102 | Stanford | ACC | -9.3 | -3.0 | -5.6 | +0.0 | -0.7 | 1448 |
+| 103 | Louisiana | Sun Belt | -9.4 | -4.9 | -4.0 | -0.1 | -0.4 | 1478 |
+| 104 | Temple | American Athletic | -9.5 | +0.6 | -6.9 | -0.5 | -2.6 | 1291 |
 | 105 | UAB | American Athletic | -9.9 | -5.8 | -2.5 | -0.4 | -1.2 | 1407 |
-| 106 | Arkansas State | Sun Belt | -10.3 | -2.7 | -7.0 | +0.2 | -0.8 | 1441 |
-| 107 | Georgia State | Sun Belt | -10.5 | -0.9 | -7.3 | -0.4 | -1.9 | 1347 |
-| 108 | Troy | Sun Belt | -11.0 | -7.9 | -0.6 | -1.2 | -1.3 | 1401 |
+| 106 | Arkansas State | Sun Belt | -10.2 | -2.7 | -6.9 | +0.2 | -0.8 | 1441 |
+| 107 | Georgia State | Sun Belt | -10.4 | -0.9 | -7.2 | -0.4 | -2.0 | 1347 |
+| 108 | Troy | Sun Belt | -10.9 | -7.9 | -0.5 | -1.2 | -1.3 | 1401 |
 | 109 | Wyoming | Mountain West | -11.2 | -6.5 | -3.4 | -0.2 | -1.1 | 1413 |
-| 110 | Hawai'i | Mountain West | -11.3 | -4.0 | -6.3 | +0.6 | -1.7 | 1365 |
-| 111 | Coastal Carolina | Sun Belt | -11.5 | -5.8 | -4.6 | +0.5 | -1.5 | 1384 |
+| 110 | Hawai'i | Mountain West | -11.4 | -4.0 | -6.2 | +0.6 | -1.7 | 1365 |
+| 111 | Coastal Carolina | Sun Belt | -11.4 | -5.7 | -4.7 | +0.5 | -1.5 | 1384 |
 | 112 | Colorado State | Pac-12 | -11.9 | +3.2 | -12.1 | -0.3 | -2.7 | 1286 |
-| 113 | South Alabama | Sun Belt | -12.0 | -0.3 | -10.6 | +0.3 | -1.3 | 1398 |
+| 113 | South Alabama | Sun Belt | -11.9 | -0.4 | -10.5 | +0.3 | -1.3 | 1398 |
 | 114 | Western Kentucky | Conference USA | -12.2 | -6.7 | -3.2 | -0.3 | -2.0 | 1345 |
-| 115 | Kennesaw State | Conference USA | -12.8 | -6.6 | -3.6 | -0.8 | -1.9 | 1346 |
-| 116 | Rice | American Athletic | -12.9 | -3.6 | -5.2 | -0.9 | -3.1 | 1246 |
-| 117 | Old Dominion | Sun Belt | -13.3 | -13.1 | +3.1 | -1.4 | -1.8 | 1357 |
+| 115 | Kennesaw State | Conference USA | -12.8 | -6.5 | -3.5 | -0.8 | -2.0 | 1346 |
+| 116 | Rice | American Athletic | -12.9 | -3.6 | -5.2 | -0.9 | -3.2 | 1246 |
+| 117 | Old Dominion | Sun Belt | -13.2 | -13.0 | +3.1 | -1.4 | -1.8 | 1357 |
 | 118 | Missouri State | Conference USA | -13.3 | -1.7 | -7.4 | -1.4 | -2.7 | 1281 |
 | 119 | Nevada | Mountain West | -13.4 | -9.7 | -1.8 | +0.3 | -2.2 | 1327 |
-| 120 | Central Michigan | Mid-American | -13.9 | -7.2 | -4.9 | -0.2 | -1.6 | 1375 |
-| 121 | Southern Miss | Sun Belt | -14.0 | -7.5 | -3.4 | -1.0 | -2.1 | 1331 |
+| 120 | Central Michigan | Mid-American | -13.9 | -7.2 | -4.8 | -0.2 | -1.6 | 1375 |
+| 121 | Southern Miss | Sun Belt | -14.0 | -7.5 | -3.3 | -1.0 | -2.1 | 1331 |
 | 122 | Florida International | Conference USA | -15.0 | -10.0 | -1.9 | -1.2 | -1.9 | 1353 |
-| 123 | New Mexico State | Conference USA | -15.5 | -8.5 | -2.6 | -1.7 | -2.8 | 1275 |
-| 124 | San José State | Mountain West | -16.3 | -9.9 | -3.9 | -0.1 | -2.5 | 1303 |
+| 123 | New Mexico State | Conference USA | -15.6 | -8.4 | -2.6 | -1.7 | -2.8 | 1275 |
+| 124 | San José State | Mountain West | -16.3 | -9.8 | -3.9 | -0.1 | -2.5 | 1303 |
 | 125 | Ball State | Mid-American | -16.7 | -5.5 | -7.2 | -1.0 | -3.1 | 1251 |
-| 126 | Eastern Michigan | Mid-American | -17.1 | -7.5 | -6.9 | -0.6 | -2.1 | 1330 |
+| 126 | Eastern Michigan | Mid-American | -17.1 | -7.5 | -6.9 | -0.6 | -2.2 | 1330 |
 | 127 | Massachusetts | Mid-American | -17.2 | -9.4 | -4.4 | -0.0 | -3.5 | 1219 |
 | 128 | Middle Tennessee | Conference USA | -17.3 | -7.1 | -7.3 | +0.1 | -3.0 | 1257 |
-| 129 | UL Monroe | Sun Belt | -18.3 | -6.4 | -6.1 | -1.7 | -4.1 | 1168 |
-| 130 | Buffalo | Mid-American | -18.3 | -12.6 | -5.5 | +0.6 | -0.8 | 1444 |
-| 131 | Bowling Green | Mid-American | -18.7 | -11.6 | -4.1 | -0.1 | -2.9 | 1270 |
-| 132 | Northern Illinois | Mountain West | -18.8 | -4.6 | -9.0 | -0.9 | -4.3 | 1149 |
-| 133 | Sam Houston | Conference USA | -18.9 | -12.6 | -0.7 | -1.3 | -4.4 | 1145 |
-| 134 | Charlotte | American Athletic | -20.2 | -6.9 | -9.1 | -0.5 | -3.7 | 1203 |
-| 135 | Sacramento State | Mid-American | -20.5 | -11.0 | -5.3 | +0.1 | -4.3 | 1151 |
-| 136 | Kent State | Mid-American | -20.8 | -10.9 | -5.9 | -0.8 | -3.2 | 1241 |
-| 137 | Akron | Mid-American | -22.6 | -9.9 | -8.0 | -1.1 | -3.6 | 1205 |
-| 138 | UTEP | Mountain West | -24.6 | -12.2 | -6.4 | -1.3 | -4.7 | 1112 |
+| 129 | Northern Illinois | Mountain West | -18.2 | -3.6 | -9.1 | -1.1 | -4.4 | 1145 |
+| 130 | UL Monroe | Sun Belt | -18.2 | -6.3 | -6.1 | -1.7 | -4.1 | 1168 |
+| 131 | Buffalo | Mid-American | -18.2 | -12.6 | -5.4 | +0.5 | -0.8 | 1444 |
+| 132 | Bowling Green | Mid-American | -18.7 | -11.7 | -4.0 | -0.1 | -2.9 | 1270 |
+| 133 | Sam Houston | Conference USA | -18.9 | -12.5 | -0.7 | -1.3 | -4.4 | 1145 |
+| 134 | Charlotte | American Athletic | -20.2 | -6.9 | -9.2 | -0.5 | -3.7 | 1203 |
+| 135 | Sacramento State | Mid-American | -20.4 | -11.0 | -5.3 | +0.1 | -4.3 | 1151 |
+| 136 | Kent State | Mid-American | -20.7 | -10.8 | -5.9 | -0.8 | -3.2 | 1241 |
+| 137 | Akron | Mid-American | -22.7 | -9.9 | -8.0 | -1.1 | -3.7 | 1205 |
+| 138 | UTEP | Mountain West | -24.7 | -12.2 | -6.4 | -1.3 | -4.8 | 1112 |
 
 ## Current model fit
 
-- Fitted on 4224 games from seasons 2022–2026.
-- Home field on top of the ratings: 3.2 points (1.9 in conference games).
+- Fitted on 4239 games from seasons 2022–2026.
+- Home field on top of the ratings: 3.3 points (1.9 in conference games).
 - Extra FBS edge over FCS opponents beyond their ratings: 14.1 points.
 - Elo weight: 0.19 points of margin per point of Elo spread.
-- Weight on the betting line: 91% for the margin, 80% for the total.
+- Weight on the betting line: 91% for the margin, 81% for the total.

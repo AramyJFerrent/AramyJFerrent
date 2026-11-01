@@ -1949,10 +1949,16 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401871093,2026,8,regular,Old Dominion,Louisiana Tech,0,False,fbs,fbs,Sun Belt,Sun Belt,55,32.0000,-9.0859,8.0000,23.0000,-2.6359,9.0000,-6.4500,-7.5241,11,0,23,-9.5539
 401871094,2026,8,regular,Troy,UL Monroe,1,False,fbs,fbs,Sun Belt,Sun Belt,64,64.0000,-16.9756,18.0000,21.0000,-18.2510,43.0000,1.2754,-2.1203,14,0,0,0.0000
 401871094,2026,8,regular,UL Monroe,Troy,0,False,fbs,fbs,Sun Belt,Sun Belt,61,61.0000,-4.8077,23.0000,33.0000,0.2044,28.0000,-5.0121,2.1203,12,1,0,0.0000
+401856733,2026,9,regular,Arkansas,Missouri,1,False,fbs,fbs,SEC,SEC,70,57.0000,-2.4137,23.0000,27.0000,-0.3769,30.0000,-2.0368,-15.1995,11,1,13,-1.8832
+401856733,2026,9,regular,Missouri,Arkansas,0,False,fbs,fbs,SEC,SEC,65,60.0000,7.7131,25.0000,31.0000,6.7033,29.0000,1.0098,15.1995,10,2,5,0.0200
 401856734,2026,9,regular,Florida,Georgia,0,True,fbs,fbs,SEC,SEC,59,50.0000,-26.1815,16.0000,28.0000,-17.1585,22.0000,-9.0230,-1.2424,12,0,9,0.9311
 401856734,2026,9,regular,Georgia,Florida,1,True,fbs,fbs,SEC,SEC,65,57.0000,-7.3246,26.0000,20.0000,-11.4558,37.0000,4.1311,1.2424,10,2,8,-0.7524
 401856735,2026,9,regular,Auburn,Ole Miss,0,False,fbs,fbs,SEC,SEC,69,55.0000,6.2386,19.0000,34.0000,6.5057,21.0000,-0.2672,-1.0050,11,1,14,-5.8129
 401856735,2026,9,regular,Ole Miss,Auburn,1,False,fbs,fbs,SEC,SEC,83,70.0000,19.1134,40.0000,31.0000,7.0206,39.0000,12.0928,1.0050,10,1,13,2.6540
+401856736,2026,9,regular,Oklahoma,South Carolina,1,False,fbs,fbs,SEC,SEC,74,52.0000,-15.0520,15.0000,30.0000,-7.3198,22.0000,-7.7321,-0.4363,12,2,22,12.6956
+401856736,2026,9,regular,South Carolina,Oklahoma,0,False,fbs,fbs,SEC,SEC,71,66.0000,7.1288,28.0000,25.0000,1.1698,41.0000,5.9590,0.4363,13,0,5,-1.7592
+401856737,2026,9,regular,Mississippi State,Texas,0,False,fbs,fbs,SEC,SEC,65,53.0000,-13.5725,14.0000,28.0000,-8.6236,25.0000,-4.9489,-6.4135,13,1,12,-1.5075
+401856737,2026,9,regular,Texas,Mississippi State,1,False,fbs,fbs,SEC,SEC,53,50.0000,-14.7950,19.0000,25.0000,-2.5842,25.0000,-12.2108,6.4135,11,1,3,-1.4345
 401856842,2026,9,regular,Arizona,Texas Tech,0,False,fbs,fbs,Big 12,Big 12,74,74.0000,2.3032,26.0000,50.0000,8.0680,24.0000,-5.7649,-7.6715,12,2,0,0.0000
 401856842,2026,9,regular,Texas Tech,Arizona,1,False,fbs,fbs,Big 12,Big 12,71,71.0000,12.7971,31.0000,26.0000,2.0155,45.0000,10.7816,7.6715,12,2,0,0.0000
 401856843,2026,9,regular,Arizona State,BYU,0,False,fbs,fbs,Big 12,Big 12,76,76.0000,0.4906,30.0000,48.0000,-8.9289,28.0000,9.4195,-4.5181,11,2,0,0.0000
@@ -1963,6 +1969,8 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401856845,2026,9,regular,TCU,Kansas,1,False,fbs,fbs,Big 12,Big 12,57,57.0000,-8.3542,20.0000,30.0000,-12.3939,27.0000,4.0397,1.8854,11,0,0,0.0000
 401856846,2026,9,regular,Colorado,Kansas State,1,False,fbs,fbs,Big 12,Big 12,57,57.0000,4.5702,22.0000,21.0000,5.7400,36.0000,-1.1698,0.2012,11,0,0,0.0000
 401856846,2026,9,regular,Kansas State,Colorado,0,False,fbs,fbs,Big 12,Big 12,63,63.0000,6.8982,29.0000,32.0000,8.5182,31.0000,-1.6200,-0.2012,13,1,0,0.0000
+401856847,2026,9,regular,Iowa State,Oklahoma State,1,False,fbs,fbs,Big 12,Big 12,72,72.0000,27.8046,32.0000,29.0000,18.9875,43.0000,8.8170,2.6475,14,3,0,0.0000
+401856847,2026,9,regular,Oklahoma State,Iowa State,0,False,fbs,fbs,Big 12,Big 12,73,73.0000,31.9745,41.0000,42.0000,15.8501,31.0000,16.1244,-2.6475,11,0,0,0.0000
 401856848,2026,9,regular,Cincinnati,Utah,1,False,fbs,fbs,Big 12,Big 12,62,34.0000,4.1979,14.0000,20.0000,5.3776,14.0000,-1.1797,0.1815,13,2,28,2.7717
 401856848,2026,9,regular,Utah,Cincinnati,0,False,fbs,fbs,Big 12,Big 12,73,39.0000,28.5458,27.0000,19.0000,18.4724,20.0000,10.0734,-0.1815,11,0,34,-30.9447
 401858277,2026,9,regular,California,NC State,0,False,fbs,fbs,ACC,ACC,72,72.0000,-20.0495,23.0000,48.0000,-14.5864,24.0000,-5.4630,0.6268,14,1,0,0.0000
@@ -1971,6 +1979,12 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401858278,2026,9,regular,Syracuse,SMU,1,False,fbs,fbs,ACC,ACC,71,71.0000,2.9258,30.0000,36.0000,2.0619,35.0000,0.8640,-9.6339,11,3,0,0.0000
 401858279,2026,9,regular,Boston College,Duke,0,False,fbs,fbs,ACC,ACC,59,33.0000,-11.3013,14.0000,17.0000,-6.7576,16.0000,-4.5437,-7.1699,12,0,26,-11.9727
 401858279,2026,9,regular,Duke,Boston College,1,False,fbs,fbs,ACC,ACC,62,40.0000,12.0224,19.0000,18.0000,9.4672,22.0000,2.5551,7.1699,12,2,22,-5.0393
+401858280,2026,9,regular,Clemson,Florida State,0,False,fbs,fbs,ACC,ACC,73,73.0000,-0.2064,26.0000,36.0000,-4.7775,37.0000,4.5711,10.6996,13,5,0,0.0000
+401858280,2026,9,regular,Florida State,Clemson,1,False,fbs,fbs,ACC,ACC,62,62.0000,-5.0779,26.0000,37.0000,-2.7738,25.0000,-2.3041,-10.6996,13,1,0,0.0000
+401858281,2026,9,regular,Georgia Tech,Pittsburgh,0,False,fbs,fbs,ACC,ACC,76,52.0000,-17.7188,12.0000,34.0000,-8.1760,18.0000,-9.5429,-4.6360,16,1,24,0.3651
+401858281,2026,9,regular,Pittsburgh,Georgia Tech,1,False,fbs,fbs,ACC,ACC,87,82.0000,-0.4858,35.0000,31.0000,-7.6601,51.0000,7.1743,4.6360,16,2,5,-5.7148
+401858282,2026,9,regular,Miami,North Carolina,0,False,fbs,fbs,ACC,ACC,61,61.0000,27.6198,36.0000,30.0000,15.4966,31.0000,12.1232,2.8605,8,1,0,0.0000
+401858282,2026,9,regular,North Carolina,Miami,1,False,fbs,fbs,ACC,ACC,63,63.0000,31.9413,39.0000,38.0000,28.9640,25.0000,2.9773,-2.8605,7,0,0,0.0000
 401858283,2026,9,regular,Louisville,Stanford,1,False,fbs,fbs,ACC,ACC,61,58.0000,27.6669,35.0000,28.0000,13.0174,30.0000,14.6495,-7.0027,12,1,3,-1.6566
 401858283,2026,9,regular,Stanford,Louisville,0,False,fbs,fbs,ACC,ACC,68,55.0000,0.1492,15.0000,35.0000,2.0999,20.0000,-1.9507,7.0027,13,1,13,-1.8615
 401858284,2026,9,regular,Virginia,Wake Forest,0,False,fbs,fbs,ACC,ACC,63,32.0000,-8.0657,7.0000,20.0000,0.0020,12.0000,-8.0677,-12.8536,10,0,31,3.8793
@@ -1989,22 +2003,34 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401858507,2026,9,regular,Rutgers,Michigan,1,False,fbs,fbs,Big Ten,Big Ten,40,40.0000,3.1182,9.0000,15.0000,3.3505,25.0000,-0.2323,6.1056,9,2,0,0.0000
 401858508,2026,9,regular,Nevada,UCLA,0,False,fbs,fbs,Mountain West,Big Ten,59,45.0000,-22.3421,9.0000,21.0000,-15.2980,24.0000,-7.0441,-3.4641,11,0,14,-3.2178
 401858508,2026,9,regular,UCLA,Nevada,1,False,fbs,fbs,Big Ten,Mountain West,58,48.0000,1.5956,21.0000,26.0000,1.1453,22.0000,0.4503,3.4641,10,2,10,-2.2568
+401858509,2026,9,regular,Ohio State,USC,0,False,fbs,fbs,Big Ten,Big Ten,81,81.0000,11.1598,35.0000,40.0000,3.8771,41.0000,7.2827,-3.2357,11,4,0,0.0000
+401858509,2026,9,regular,USC,Ohio State,1,False,fbs,fbs,Big Ten,Big Ten,48,48.0000,3.0251,19.0000,24.0000,4.7805,24.0000,-1.7554,3.2357,11,3,0,0.0000
 401859185,2026,9,regular,Navy,Notre Dame,1,True,fbs,fbs,American Athletic,FBS Independents,56,56.0000,10.0691,26.0000,9.0000,6.5850,47.0000,3.4841,2.5135,8,2,0,0.0000
 401859185,2026,9,regular,Notre Dame,Navy,0,True,fbs,fbs,FBS Independents,American Athletic,59,59.0000,18.0459,32.0000,30.0000,10.9944,29.0000,7.0516,-2.5135,8,0,0,0.0000
+401860908,2026,9,regular,Boise State,Texas State,1,False,fbs,fbs,Pac-12,Pac-12,84,84.0000,16.7953,40.0000,47.0000,19.9310,37.0000,-3.1358,-4.6810,14,0,0,0.0000
+401860908,2026,9,regular,Texas State,Boise State,0,False,fbs,fbs,Pac-12,Pac-12,63,63.0000,17.0017,24.0000,40.0000,16.3980,23.0000,0.6037,4.6810,13,1,0,0.0000
+401860909,2026,9,regular,San Diego State,Washington State,1,False,fbs,fbs,Pac-12,Pac-12,58,58.0000,6.2605,24.0000,22.0000,4.1305,36.0000,2.1300,1.9140,8,2,0,0.0000
+401860909,2026,9,regular,Washington State,San Diego State,0,False,fbs,fbs,Pac-12,Pac-12,72,72.0000,5.1256,37.0000,45.0000,1.9843,27.0000,3.1413,-1.9140,9,0,0,0.0000
 401860910,2026,9,regular,Colorado State,Utah State,0,False,fbs,fbs,Pac-12,Pac-12,55,48.0000,-0.3967,18.0000,28.0000,-1.5851,20.0000,1.1885,0.5443,8,0,7,6.5414
 401860910,2026,9,regular,Utah State,Colorado State,1,False,fbs,fbs,Pac-12,Pac-12,61,61.0000,20.9004,32.0000,24.0000,11.7357,37.0000,9.1647,-0.5443,9,1,0,0.0000
+401860924,2026,9,regular,Fresno State,Oregon State,1,False,fbs,fbs,Pac-12,Pac-12,51,51.0000,6.8993,21.0000,17.0000,7.2644,34.0000,-0.3650,-2.5560,12,1,0,0.0000
+401860924,2026,9,regular,Oregon State,Fresno State,0,False,fbs,fbs,Pac-12,Pac-12,87,87.0000,6.4644,38.0000,64.0000,7.6869,23.0000,-1.2224,2.5560,12,3,0,0.0000
 401861966,2026,9,regular,Air Force,UConn,1,False,fbs,fbs,Mountain West,FBS Independents,77,77.0000,11.3822,41.0000,4.0000,-3.5623,73.0000,14.9445,-1.0326,10,0,0,0.0000
 401861966,2026,9,regular,UConn,Air Force,0,False,fbs,fbs,FBS Independents,Mountain West,55,55.0000,15.8942,27.0000,37.0000,8.2460,18.0000,7.6482,1.0326,10,0,0,0.0000
 401862812,2026,9,regular,Florida Atlantic,North Texas,0,False,fbs,fbs,American Athletic,American Athletic,85,85.0000,21.4113,35.0000,59.0000,31.0307,26.0000,-9.6194,8.5915,13,2,0,0.0000
 401862812,2026,9,regular,North Texas,Florida Atlantic,1,False,fbs,fbs,American Athletic,American Athletic,83,83.0000,29.3447,41.0000,46.0000,22.9340,37.0000,6.4108,-8.5915,13,2,0,0.0000
 401862813,2026,9,regular,Charlotte,Tulane,1,False,fbs,fbs,American Athletic,American Athletic,72,72.0000,16.2720,31.0000,37.0000,9.6281,35.0000,6.6438,-3.6946,11,1,0,0.0000
 401862813,2026,9,regular,Tulane,Charlotte,0,False,fbs,fbs,American Athletic,American Athletic,64,64.0000,17.6324,35.0000,33.0000,10.6594,31.0000,6.9729,3.6946,9,1,0,0.0000
+401862814,2026,9,regular,Army,Memphis,0,False,fbs,fbs,American Athletic,American Athletic,60,53.0000,15.3609,24.0000,9.0000,-2.9354,44.0000,18.2963,-1.6117,12,0,7,-0.1873
+401862814,2026,9,regular,Memphis,Army,1,False,fbs,fbs,American Athletic,American Athletic,75,75.0000,20.9822,46.0000,36.0000,21.9180,39.0000,-0.9358,1.6117,11,0,0,0.0000
 401862815,2026,9,regular,East Carolina,Temple,1,False,fbs,fbs,American Athletic,American Athletic,73,73.0000,-1.1494,35.0000,29.0000,-7.1029,44.0000,5.9535,-0.9583,10,1,0,0.0000
 401862815,2026,9,regular,Temple,East Carolina,0,False,fbs,fbs,American Athletic,American Athletic,48,48.0000,-5.5185,19.0000,24.0000,-7.4085,24.0000,1.8900,0.9583,9,3,0,0.0000
 401862816,2026,9,regular,South Florida,UAB,1,False,fbs,fbs,American Athletic,American Athletic,55,55.0000,-9.3646,19.0000,15.0000,-11.5232,40.0000,2.1587,11.2900,10,3,0,0.0000
 401862816,2026,9,regular,UAB,South Florida,0,False,fbs,fbs,American Athletic,American Athletic,60,60.0000,-16.0388,14.0000,34.0000,-8.5339,26.0000,-7.5049,-11.2900,13,1,0,0.0000
 401864529,2026,9,regular,New Mexico,San José State,0,False,fbs,fbs,Mountain West,Mountain West,57,57.0000,-5.9189,28.0000,17.0000,-15.9750,40.0000,10.0561,-8.1988,11,0,0,0.0000
 401864529,2026,9,regular,San José State,New Mexico,1,False,fbs,fbs,Mountain West,Mountain West,57,57.0000,-16.9754,15.0000,26.0000,-4.1427,31.0000,-12.8327,8.1988,10,3,0,0.0000
+401864530,2026,9,regular,Northern Illinois,UNLV,0,False,fbs,fbs,Mountain West,Mountain West,73,73.0000,12.3098,32.0000,37.0000,-1.3605,36.0000,13.6703,-6.4827,11,1,0,0.0000
+401864530,2026,9,regular,UNLV,Northern Illinois,1,False,fbs,fbs,Mountain West,Mountain West,60,60.0000,11.8488,31.0000,31.0000,0.1199,29.0000,11.7289,6.4827,11,1,0,0.0000
 401864531,2026,9,regular,North Dakota State,UTEP,1,False,fbs,fbs,Mountain West,Mountain West,69,69.0000,6.6417,29.0000,32.0000,1.9610,37.0000,4.6807,0.8609,10,1,0,0.0000
 401864531,2026,9,regular,UTEP,North Dakota State,0,False,fbs,fbs,Mountain West,Mountain West,50,43.0000,-13.9079,12.0000,21.0000,-13.7213,22.0000,-0.1866,-0.8609,12,0,7,0.6440
 401866451,2026,9,regular,Kent State,Sacramento State,0,False,fbs,fbs,Mid-American,Mid-American,62,62.0000,-25.1333,14.0000,40.0000,-20.7266,22.0000,-4.4067,2.2357,14,1,0,0.0000
@@ -2037,6 +2063,8 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401867861,2026,9,regular,Northern Iowa,Indiana State,1,False,fcs,fcs,MVFC,MVFC,60,60.0000,18.4742,27.0000,23.0000,4.0882,37.0000,14.3860,2.1743,10,1,0,0.0000
 401867880,2026,9,regular,North Dakota,Youngstown State,0,False,fcs,fcs,MVFC,MVFC,69,69.0000,7.9963,33.0000,34.0000,0.6572,35.0000,7.3391,-2.2995,10,0,0,0.0000
 401867880,2026,9,regular,Youngstown State,North Dakota,1,False,fcs,fcs,MVFC,MVFC,65,65.0000,20.3433,30.0000,31.0000,14.2306,34.0000,6.1127,2.2995,10,1,0,0.0000
+401867887,2026,9,regular,South Dakota,South Dakota State,0,False,fcs,fcs,MVFC,MVFC,53,51.0000,4.1451,18.0000,30.0000,10.4059,21.0000,-6.2608,2.0077,12,0,2,1.1352
+401867887,2026,9,regular,South Dakota State,South Dakota,1,False,fcs,fcs,MVFC,MVFC,74,74.0000,10.2127,35.0000,27.0000,9.1884,47.0000,1.0242,-2.0077,11,1,0,0.0000
 401867903,2026,9,regular,Central Connecticut,Robert Morris,1,False,fcs,fcs,NEC,NEC,64,36.0000,26.5944,22.0000,12.0000,9.7252,24.0000,16.8692,4.4965,9,0,28,-3.2402
 401867903,2026,9,regular,Robert Morris,Central Connecticut,0,False,fcs,fcs,NEC,NEC,54,25.0000,-0.7052,8.0000,21.0000,3.2516,4.0000,-3.9568,-4.4965,10,0,29,-0.5930
 401867926,2026,9,regular,Mercyhurst,Stonehill,0,False,fcs,fcs,NEC,NEC,74,74.0000,-2.9774,32.0000,58.0000,-4.7625,16.0000,1.7851,-10.3721,13,0,0,0.0000
@@ -2069,6 +2097,10 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401868107,2026,9,regular,Utah Tech,Idaho State,1,False,fcs,fcs,Big Sky,Big Sky,78,78.0000,5.3711,32.0000,36.0000,2.9670,42.0000,2.4042,-1.9204,11,2,0,0.0000
 401868126,2026,9,regular,Northern Arizona,Southern Utah,0,False,fcs,fcs,Big Sky,Big Sky,58,58.0000,19.3185,29.0000,28.0000,14.5428,30.0000,4.7757,7.4709,11,2,0,0.0000
 401868126,2026,9,regular,Southern Utah,Northern Arizona,1,False,fcs,fcs,Big Sky,Big Sky,65,65.0000,-5.3122,28.0000,28.0000,-12.0350,37.0000,6.7228,-7.4709,11,2,0,0.0000
+401868136,2026,9,regular,Central Arkansas,North Alabama,1,False,fcs,fcs,UAC,UAC,57,57.0000,-9.6015,21.0000,31.0000,-13.4418,26.0000,3.8403,-4.7374,8,1,0,0.0000
+401868136,2026,9,regular,North Alabama,Central Arkansas,0,False,fcs,fcs,UAC,UAC,63,63.0000,-4.4268,24.0000,20.0000,3.7874,43.0000,-8.2142,4.7374,10,0,0,0.0000
+401868147,2026,9,regular,Eastern Kentucky,Tarleton State,0,False,fcs,fcs,UAC,UAC,73,73.0000,0.1109,25.0000,26.0000,9.6983,47.0000,-9.5873,-0.3601,12,1,0,0.0000
+401868147,2026,9,regular,Tarleton State,Eastern Kentucky,1,False,fcs,fcs,UAC,UAC,61,61.0000,12.1372,31.0000,34.0000,0.4179,27.0000,11.7193,0.3601,13,0,0,0.0000
 401868165,2026,9,regular,UC Davis,Weber State,0,False,fcs,fcs,Big Sky,Big Sky,77,67.0000,-5.1232,20.0000,31.0000,-4.8135,36.0000,-0.3098,-2.1811,11,0,10,-1.3877
 401868165,2026,9,regular,Weber State,UC Davis,1,False,fcs,fcs,Big Sky,Big Sky,66,65.0000,12.6975,31.0000,40.0000,3.6009,25.0000,9.0966,2.1811,11,3,1,1.1212
 401868175,2026,9,regular,Charleston Southern,Western Illinois,1,False,fcs,fcs,OVC,OVC,47,47.0000,-14.3272,13.0000,23.0000,-15.6790,24.0000,1.3518,1.2812,13,0,0,0.0000
@@ -2085,8 +2117,12 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401868223,2026,9,regular,St. Thomas (MN),Davidson,1,False,fcs,fcs,Pioneer,Pioneer,68,52.0000,9.5143,28.0000,29.0000,7.3336,23.0000,2.1807,-1.2645,11,2,16,-2.8254
 401868231,2026,9,regular,Dayton,Stetson,0,False,fcs,fcs,Pioneer,Pioneer,60,60.0000,24.4159,32.0000,27.0000,11.5223,33.0000,12.8936,9.4827,11,1,0,0.0000
 401868231,2026,9,regular,Stetson,Dayton,1,False,fcs,fcs,Pioneer,Pioneer,72,72.0000,22.2141,34.0000,48.0000,11.2864,24.0000,10.9277,-9.4827,11,2,0,0.0000
+401868251,2026,9,regular,Lamar,UT Rio Grande Valley,0,False,fcs,fcs,Southland,Southland,65,58.0000,18.1530,28.0000,24.0000,9.4411,34.0000,8.7119,-2.1284,9,1,7,-2.4221
+401868251,2026,9,regular,UT Rio Grande Valley,Lamar,1,False,fcs,fcs,Southland,Southland,50,35.0000,-21.0745,6.0000,23.0000,-17.1597,12.0000,-3.9148,2.1284,11,3,15,11.6816
 401868258,2026,9,regular,Drake,Morehead State,0,False,fcs,fcs,Pioneer,Pioneer,77,77.0000,13.6992,32.0000,36.0000,9.2958,41.0000,4.4034,6.9144,12,1,0,0.0000
 401868258,2026,9,regular,Morehead State,Drake,1,False,fcs,fcs,Pioneer,Pioneer,81,81.0000,22.1886,39.0000,45.0000,21.8856,36.0000,0.3030,-6.9144,13,0,0,0.0000
+401868267,2026,9,regular,Marist,San Diego,0,False,fcs,fcs,Pioneer,Pioneer,74,74.0000,21.8304,33.0000,39.0000,5.7448,35.0000,16.0856,-0.3983,12,0,0,0.0000
+401868267,2026,9,regular,San Diego,Marist,1,False,fcs,fcs,Pioneer,Pioneer,80,80.0000,20.3578,45.0000,42.0000,19.0218,38.0000,1.3360,0.3983,12,0,0,0.0000
 401868296,2026,9,regular,Alabama A&M,Alabama State,1,False,fcs,fcs,SWAC,SWAC,67,67.0000,4.9330,34.0000,37.0000,3.9261,30.0000,1.0070,-10.1279,9,1,0,0.0000
 401868296,2026,9,regular,Alabama State,Alabama A&M,0,False,fcs,fcs,SWAC,SWAC,64,64.0000,7.5269,31.0000,23.0000,1.3325,41.0000,6.1943,10.1279,11,0,0,0.0000
 401868312,2026,9,regular,Houston Christian,Stephen F. Austin,0,False,fcs,fcs,Southland,Southland,80,58.0000,-12.9331,18.0000,38.0000,-13.7649,20.0000,0.8318,-2.4439,13,2,22,-3.8793
@@ -2103,16 +2139,22 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401868378,2026,9,regular,Western Carolina,Furman,0,False,fcs,fcs,Southern,Southern,70,70.0000,-16.8373,25.0000,40.0000,-11.5162,30.0000,-5.3211,-15.3239,13,2,0,0.0000
 401868384,2026,9,regular,Mercer,The Citadel,1,False,fcs,fcs,Southern,Southern,48,48.0000,12.4846,20.0000,25.0000,10.6783,23.0000,1.8064,13.4898,11,0,0,0.0000
 401868384,2026,9,regular,The Citadel,Mercer,0,False,fcs,fcs,Southern,Southern,63,63.0000,-0.1818,21.0000,22.0000,1.3021,41.0000,-1.4840,-13.4898,10,2,0,0.0000
+401868388,2026,9,regular,Samford,Wofford,1,False,fcs,fcs,Southern,Southern,50,50.0000,-0.2594,14.0000,33.0000,0.0379,17.0000,-0.2974,-9.4240,11,1,0,0.0000
+401868388,2026,9,regular,Wofford,Samford,0,False,fcs,fcs,Southern,Southern,72,72.0000,-9.9189,32.0000,25.0000,-14.5735,47.0000,4.6546,9.4240,11,3,0,0.0000
 401868938,2026,9,regular,Arkansas-Pine Bluff,Bethune-Cookman,1,False,fcs,fcs,SWAC,SWAC,53,23.0000,10.2737,9.0000,10.0000,-2.0205,13.0000,12.2942,-1.8672,14,0,30,5.7233
 401868938,2026,9,regular,Bethune-Cookman,Arkansas-Pine Bluff,0,False,fcs,fcs,SWAC,SWAC,83,35.0000,-24.4609,11.0000,19.0000,-25.8906,16.0000,1.4297,1.8672,16,0,48,14.5854
 401868950,2026,9,regular,Florida A&M,Southern,1,False,fcs,fcs,SWAC,SWAC,62,53.0000,-9.4214,23.0000,34.0000,-5.1791,19.0000,-4.2423,6.2092,11,0,9,-2.0147
 401868950,2026,9,regular,Southern,Florida A&M,0,False,fcs,fcs,SWAC,SWAC,57,57.0000,16.8367,29.0000,10.0000,6.6755,47.0000,10.1612,-6.2092,10,0,0,0.0000
+401868956,2026,9,regular,Grambling,Texas Southern,0,False,fcs,fcs,SWAC,SWAC,63,63.0000,-2.9208,21.0000,22.0000,-2.5924,41.0000,-0.3284,-0.7595,10,2,0,0.0000
+401868956,2026,9,regular,Texas Southern,Grambling,1,False,fcs,fcs,SWAC,SWAC,52,52.0000,7.8728,19.0000,18.0000,-0.3905,34.0000,8.2634,0.7595,10,1,0,0.0000
 401869134,2026,9,regular,Incarnate Word,Northwestern State,1,False,fcs,fcs,Southland,Southland,79,44.0000,18.7417,24.0000,32.0000,7.1507,12.0000,11.5911,3.3583,14,1,35,0.0069
 401869134,2026,9,regular,Northwestern State,Incarnate Word,0,False,fcs,fcs,Southland,Southland,71,46.0000,-13.5607,9.0000,25.0000,-5.7466,21.0000,-7.8141,-3.3583,16,0,25,-1.1117
 401869139,2026,9,regular,McNeese,Nicholls,1,False,fcs,fcs,Southland,Southland,60,60.0000,-31.9241,14.0000,18.0000,-18.4055,42.0000,-13.5186,6.1889,14,1,0,0.0000
 401869139,2026,9,regular,Nicholls,McNeese,0,False,fcs,fcs,Southland,Southland,72,72.0000,-25.2492,18.0000,19.0000,-15.7041,53.0000,-9.5451,-6.1889,16,1,0,0.0000
 401869154,2026,9,regular,Duquesne,New Haven,0,False,fcs,fcs,NEC,NEC,68,59.0000,9.2925,26.0000,23.0000,3.9085,36.0000,5.3840,0.2889,12,0,9,-3.8832
 401869154,2026,9,regular,New Haven,Duquesne,1,False,fcs,fcs,NEC,NEC,58,50.0000,0.4002,19.0000,35.0000,5.4668,15.0000,-5.0667,-0.2889,12,0,8,-1.8108
+401869846,2026,9,regular,App State,Georgia Southern,0,False,fbs,fbs,Sun Belt,Sun Belt,45,45.0000,-11.5750,15.0000,32.0000,-4.9649,13.0000,-6.6100,-2.2520,9,1,0,0.0000
+401869846,2026,9,regular,Georgia Southern,App State,1,False,fbs,fbs,Sun Belt,Sun Belt,77,77.0000,4.5056,34.0000,47.0000,10.5542,30.0000,-6.0487,2.2520,9,4,0,0.0000
 401869944,2026,9,regular,Coastal Carolina,Georgia State,0,False,fbs,fbs,Sun Belt,Sun Belt,68,68.0000,3.2033,28.0000,35.0000,9.0885,33.0000,-5.8852,2.3179,12,1,0,0.0000
 401869944,2026,9,regular,Georgia State,Coastal Carolina,1,False,fbs,fbs,Sun Belt,Sun Belt,69,62.0000,-7.3969,18.0000,36.0000,-7.1319,26.0000,-0.2650,-2.3179,12,2,7,8.7725
 401869963,2026,9,regular,James Madison,Troy,1,False,fbs,fbs,Sun Belt,Sun Belt,71,71.0000,-14.7458,25.0000,36.0000,-12.9955,35.0000,-1.7503,3.0350,15,0,0,0.0000
