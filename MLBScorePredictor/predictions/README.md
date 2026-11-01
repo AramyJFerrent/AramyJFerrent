@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sat Oct 31, 2026 02:54 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Sun Nov 01, 2026 02:25 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -79,7 +79,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 24 | MIA | -0.33 | -0.26 | -0.05 | +0.01 | -0.03 | 4.8 | 1502 |
 | 25 | STL | -0.35 | -0.22 | -0.10 | -0.01 | -0.03 | 5.1 | 1481 |
 | 26 | CIN | -0.60 | -0.19 | -0.21 | +0.00 | -0.21 | 5.0 | 1456 |
-| 27 | SF | -0.65 | -0.52 | -0.11 | -0.03 | +0.00 | 4.8 | 1461 |
+| 27 | SF | -0.65 | -0.51 | -0.11 | -0.03 | +0.00 | 4.8 | 1461 |
 | 28 | LAA | -0.66 | -0.55 | -0.02 | -0.03 | -0.06 | 5.3 | 1434 |
 | 29 | ATH | -0.71 | -0.01 | -0.18 | -0.07 | -0.45 | 4.8 | 1405 |
 | 30 | COL | -0.98 | -0.18 | -0.24 | -0.00 | -0.56 | 4.9 | 1379 |
