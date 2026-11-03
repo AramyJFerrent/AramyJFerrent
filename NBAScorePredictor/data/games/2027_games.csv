@@ -91,21 +91,21 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909904,2027,R,2026-11-01 22:00:00+00:00,IND,BKN,90.0,98.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
 401909905,2027,R,2026-11-02 01:30:00+00:00,GSW,LAC,124.0,112.0,4.0,False,Chase Center,San Francisco,CA
 401909906,2027,R,2026-11-02 02:00:00+00:00,LAL,TOR,131.0,125.0,4.0,False,crypto.com Arena,Los Angeles,CA
-401909907,2027,R,2026-11-03 00:00:00+00:00,CLE,OKC,,,,False,Rocket Arena,Cleveland,OH
-401909908,2027,R,2026-11-03 00:30:00+00:00,CHA,DET,,,,False,Spectrum Center,Charlotte,NC
-401909909,2027,R,2026-11-03 00:30:00+00:00,IND,ATL,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
-401909910,2027,R,2026-11-03 00:30:00+00:00,NYK,BKN,,,,False,Madison Square Garden,New York,NY
-401909911,2027,R,2026-11-03 00:30:00+00:00,ORL,WAS,,,,False,Kia Center,Orlando,FL
-401909912,2027,R,2026-11-03 00:30:00+00:00,PHI,CHI,,,,False,Xfinity Mobile Arena,Philadelphia,PA
-401909913,2027,R,2026-11-03 01:00:00+00:00,DAL,SAC,,,,False,American Airlines Center,Dallas,TX
-401909914,2027,R,2026-11-03 01:00:00+00:00,MEM,NOP,,,,False,FedExForum,Memphis,TN
-401909915,2027,R,2026-11-03 01:00:00+00:00,MIN,MIL,,,,False,Target Center,Minneapolis,MN
-401909916,2027,R,2026-11-03 01:30:00+00:00,HOU,BOS,,,,False,Toyota Center (Houston),Houston,TX
-401909917,2027,R,2026-11-03 01:30:00+00:00,SAS,UTA,,,,False,Frost Bank Center,San Antonio,TX
-401909918,2027,R,2026-11-03 02:00:00+00:00,DEN,POR,,,,False,Ball Arena,Denver,CO
-401909919,2027,R,2026-11-03 03:00:00+00:00,GSW,PHX,,,,False,Chase Center,San Francisco,CA
-401909920,2027,R,2026-11-03 03:00:00+00:00,LAC,TOR,,,,False,Intuit Dome,Inglewood,CA
-401909921,2027,R,2026-11-03 03:00:00+00:00,LAL,MIA,,,,False,crypto.com Arena,Los Angeles,CA
+401909907,2027,R,2026-11-03 00:00:00+00:00,CLE,OKC,112.0,117.0,4.0,False,Rocket Arena,Cleveland,OH
+401909908,2027,R,2026-11-03 00:30:00+00:00,CHA,DET,91.0,124.0,4.0,False,Spectrum Center,Charlotte,NC
+401909909,2027,R,2026-11-03 00:30:00+00:00,IND,ATL,104.0,108.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909910,2027,R,2026-11-03 00:30:00+00:00,NYK,BKN,103.0,90.0,4.0,False,Madison Square Garden,New York,NY
+401909911,2027,R,2026-11-03 00:30:00+00:00,ORL,WAS,94.0,103.0,4.0,False,Kia Center,Orlando,FL
+401909912,2027,R,2026-11-03 00:30:00+00:00,PHI,CHI,126.0,107.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
+401909913,2027,R,2026-11-03 01:00:00+00:00,DAL,SAC,100.0,115.0,4.0,False,American Airlines Center,Dallas,TX
+401909914,2027,R,2026-11-03 01:00:00+00:00,MEM,NOP,134.0,135.0,5.0,False,FedExForum,Memphis,TN
+401909915,2027,R,2026-11-03 01:00:00+00:00,MIN,MIL,112.0,100.0,4.0,False,Target Center,Minneapolis,MN
+401909916,2027,R,2026-11-03 01:30:00+00:00,HOU,BOS,109.0,93.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909917,2027,R,2026-11-03 01:30:00+00:00,SAS,UTA,119.0,97.0,4.0,False,Frost Bank Center,San Antonio,TX
+401909918,2027,R,2026-11-03 02:00:00+00:00,DEN,POR,110.0,118.0,4.0,False,Ball Arena,Denver,CO
+401909919,2027,R,2026-11-03 03:00:00+00:00,GSW,PHX,116.0,113.0,4.0,False,Chase Center,San Francisco,CA
+401909920,2027,R,2026-11-03 03:00:00+00:00,LAC,TOR,118.0,125.0,4.0,False,Intuit Dome,Inglewood,CA
+401909921,2027,R,2026-11-03 03:00:00+00:00,LAL,MIA,138.0,117.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401909922,2027,R,2026-11-05 00:00:00+00:00,DET,PHI,,,,False,Little Caesars Arena,Detroit,MI
 401909923,2027,R,2026-11-05 00:00:00+00:00,WAS,ATL,,,,False,Capital One Arena,Washington,DC
 401909924,2027,R,2026-11-05 00:30:00+00:00,BOS,MIL,,,,False,TD Garden,Boston,MA
