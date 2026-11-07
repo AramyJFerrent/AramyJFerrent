@@ -122,15 +122,15 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909935,2027,R,2026-11-05 03:30:00+00:00,LAC,MIA,116.0,117.0,5.0,False,Intuit Dome,Inglewood,CA
 401909936,2027,R,2026-11-06 02:00:00+00:00,PHX,ORL,117.0,104.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
 401909937,2027,R,2026-11-06 03:00:00+00:00,GSW,MIA,120.0,100.0,4.0,False,Chase Center,San Francisco,CA
-401909287,2027,R,2026-11-07 00:00:00+00:00,ATL,WAS,,,,False,State Farm Arena,Atlanta,GA
-401909288,2027,R,2026-11-07 00:00:00+00:00,CHA,BOS,,,,False,Spectrum Center,Charlotte,NC
-401909289,2027,R,2026-11-07 00:30:00+00:00,CLE,PHI,,,,False,Rocket Arena,Cleveland,OH
-401909290,2027,R,2026-11-07 01:00:00+00:00,DAL,UTA,,,,False,American Airlines Center,Dallas,TX
-401909291,2027,R,2026-11-07 01:00:00+00:00,MEM,OKC,,,,False,FedExForum,Memphis,TN
-401909292,2027,R,2026-11-07 01:00:00+00:00,MIL,TOR,,,,False,Fiserv Forum,Milwaukee,WI
-401909293,2027,R,2026-11-07 01:00:00+00:00,NOP,MIN,,,,False,Smoothie King Center,New Orleans,LA
-401909294,2027,R,2026-11-07 03:00:00+00:00,LAL,POR,,,,False,crypto.com Arena,Los Angeles,CA
-401909295,2027,R,2026-11-07 03:00:00+00:00,SAC,SAS,,,,False,Golden 1 Center,Sacramento,CA
+401909287,2027,R,2026-11-07 00:00:00+00:00,ATL,WAS,139.0,132.0,4.0,False,State Farm Arena,Atlanta,GA
+401909288,2027,R,2026-11-07 00:00:00+00:00,CHA,BOS,80.0,119.0,4.0,False,Spectrum Center,Charlotte,NC
+401909289,2027,R,2026-11-07 00:30:00+00:00,CLE,PHI,119.0,95.0,4.0,False,Rocket Arena,Cleveland,OH
+401909290,2027,R,2026-11-07 01:00:00+00:00,DAL,UTA,112.0,100.0,4.0,False,American Airlines Center,Dallas,TX
+401909291,2027,R,2026-11-07 01:00:00+00:00,MEM,OKC,97.0,128.0,4.0,False,FedExForum,Memphis,TN
+401909292,2027,R,2026-11-07 01:00:00+00:00,MIL,TOR,107.0,121.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909293,2027,R,2026-11-07 01:00:00+00:00,NOP,MIN,109.0,115.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909294,2027,R,2026-11-07 03:00:00+00:00,LAL,POR,124.0,118.0,4.0,False,crypto.com Arena,Los Angeles,CA
+401909295,2027,R,2026-11-07 03:00:00+00:00,SAC,SAS,109.0,124.0,4.0,False,Golden 1 Center,Sacramento,CA
 401909938,2027,R,2026-11-07 22:00:00+00:00,IND,DEN,,,,True,Arena CDMX,Mexico City,
 401909939,2027,R,2026-11-08 00:30:00+00:00,ATL,BKN,,,,False,State Farm Arena,Atlanta,GA
 401909940,2027,R,2026-11-08 01:00:00+00:00,CLE,NYK,,,,False,Rocket Arena,Cleveland,OH
