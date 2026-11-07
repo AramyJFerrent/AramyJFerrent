@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Fri Nov 06, 2026 08:04 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Fri Nov 06, 2026 09:48 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -21,12 +21,12 @@ The edge columns check every side of the spread, the moneyline and the total for
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 5:00 PM | DEN @ IND | DEN 116, IND 110 | DEN 65% | DEN -190 / IND +190 | DEN -5.3 | 225.9 | 101–130 / 96–125 | 5% | DEN: DeMar DeRozan (day-to-day) (+0.3)<br>IND: Tyrese Haliburton (out); Johnny Furphy (out); Ben Sheppard (out); T.J. McConnell (out); Kelly Oubre Jr. (day-to-day) (-0.4) | no line yet | no line yet | no line yet |
+| 5:00 PM | DEN @ IND | DEN 118, IND 111 | DEN 70% | DEN -230 / IND +230<br>posted DEN -246 / IND +203 | DEN -7.1 / DEN -7.5 (fav covers 49%) | 228.6 / 228.5 (over 50%) | 103–132 / 96–126 | 5% | DEN: DeMar DeRozan (day-to-day) (+0.3)<br>IND: Tyrese Haliburton (out); Johnny Furphy (out); Ben Sheppard (out); T.J. McConnell (out); Kelly Oubre Jr. (day-to-day) (-0.4) | no edge | no edge | no edge |
 | 7:30 PM | BKN @ ATL | BKN 113, ATL 119 | ATL 67% | BKN +205 / ATL -205 | ATL -6.1 | 231.7 | 98–128 / 104–134 | 5% | BKN: Day'Ron Sharpe (day-to-day); Egor Demin (out) (+0.4)<br>ATL: Jalen Johnson (out); Keshon Gilbert (out) (+2.2) | no line yet | no line yet | no line yet |
-| 8:00 PM | NYK @ CLE | NYK 114, CLE 111 | NYK 59% | NYK -145 / CLE +145 | NYK -2.9 | 225.0 | 100–128 / 97–125 | 5% | NYK: Josh Hart (out) (-0.3)<br>CLE: Jarrett Allen (out); Jaylon Tyson (out) (-1.0) | no line yet | no line yet | no line yet |
+| 8:00 PM | NYK @ CLE | NYK 114, CLE 110 | NYK 62% | NYK -165 / CLE +165 | NYK -4.1 | 224.4 | 100–128 / 96–125 | 5% | NYK: Josh Hart (out) (-0.3)<br>CLE: Sam Merrill (out); Jarrett Allen (out); Jaylon Tyson (out) (-2.1) | no line yet | no line yet | no line yet |
 | 8:00 PM | WAS @ OKC | WAS 105, OKC 118 | OKC 82% | WAS +460 / OKC -460 | OKC -12.3 | 222.7 | 91–120 / 104–132 | 4% | WAS: Anthony Davis (out); Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (-2.3)<br>OKC: Chet Holmgren (out); Jalen Williams (out); Jaylin Williams (out); Cason Wallace (out) (-0.1) | no line yet | no line yet | no line yet |
-| 8:30 PM | ORL @ GSW | ORL 110, GSW 114 | GSW 64% | ORL +175 / GSW -175 | GSW -4.7 | 224.0 | 95–125 / 100–129 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.3)<br>GSW: Moses Moody (out); Jimmy Butler III (out); Draymond Green (day-to-day); Kristaps Porzingis (out); Gui Santos (day-to-day); Gary Payton II (day-to-day) (-1.1) | no line yet | no line yet | no line yet |
-| 9:00 PM | HOU @ PHX | HOU 117, PHX 112 | HOU 63% | HOU -170 / PHX +170 | HOU -4.4 | 229.1 | 102–131 / 98–127 | 5% | HOU: Steven Adams (out); Clint Capela (out) (-0.6)<br>PHX: Mark Williams (out); Jordan Goodwin (day-to-day) (+0.4) | no line yet | no line yet | no line yet |
+| 8:30 PM | ORL @ GSW | ORL 107, GSW 113 | GSW 68% | ORL +210 / GSW -210<br>posted ORL +199 / GSW -241 | GSW -6 / GSW -6.5 (fav covers 50%) | 220.6 / 220.5 (over 50%) | 93–122 / 99–127 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out) (+0.3)<br>GSW: Moses Moody (out); Jimmy Butler III (out); Draymond Green (day-to-day); Kristaps Porzingis (out); Gui Santos (day-to-day); Gary Payton II (day-to-day) (-1.1) | no edge | no edge | no edge |
+| 9:00 PM | HOU @ PHX | HOU 114, PHX 108 | HOU 68% | HOU -210 / PHX +210<br>posted HOU -241 / PHX +199 | HOU -6.1 / HOU -6.5 (fav covers 50%) | 222.4 / 222.5 (over 49%) | 100–128 / 94–123 | 5% | HOU: Steven Adams (out); Clint Capela (out) (-0.6)<br>PHX: Mark Williams (out); Jordan Goodwin (day-to-day) (+0.4) | no edge | no edge | no edge |
 | 10:00 PM | SAS @ POR | SAS 114, POR 113 | SAS 54% | SAS -115 / POR +115 | SAS -1.2 | 226.8 | 99–128 / 98–127 | 5% | SAS: Tobias Harris (out) (+0.7)<br>POR: Ja Morant (out) (+0.0) | no line yet | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
@@ -73,7 +73,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 2 | DET | +6.4 | +6.5 | +2.2 | +4.2 | 101.1 | -0.1 | 1653 |
 | 3 | SAS | +6.4 | +6.5 | +1.9 | +4.5 | 102.6 | +0.7 | 1695 |
 | 4 | BOS | +6.0 | +5.8 | +3.2 | +2.8 | 96.4 | +1.1 | 1619 |
-| 5 | MIN | +5.1 | +5.3 | +2.2 | +2.9 | 103.3 | +0.4 | 1615 |
+| 5 | MIN | +5.1 | +5.3 | +2.2 | +2.9 | 103.3 | +0.5 | 1615 |
 | 6 | LAL | +4.3 | +4.4 | +4.0 | +0.3 | 101.9 | +0.0 | 1593 |
 | 7 | POR | +4.0 | +4.1 | +2.8 | +1.3 | 101.4 | +0.0 | 1563 |
 | 8 | NYK | +3.6 | +3.5 | +1.3 | +2.4 | 96.6 | -0.3 | 1690 |
@@ -81,7 +81,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 10 | OKC | +3.2 | +3.2 | -0.2 | +3.4 | 100.8 | -0.1 | 1672 |
 | 11 | GSW | +2.7 | +2.7 | +1.8 | +0.9 | 101.7 | -1.1 | 1517 |
 | 12 | DEN | +2.1 | +2.1 | +3.5 | -1.4 | 97.5 | +0.3 | 1577 |
-| 13 | CLE | +1.2 | +1.2 | +2.1 | -0.9 | 103.0 | -1.0 | 1573 |
+| 13 | CLE | +1.2 | +1.2 | +2.1 | -0.9 | 103.0 | -2.2 | 1573 |
 | 14 | TOR | +0.7 | +0.7 | +0.3 | +0.4 | 105.5 | -4.5 | 1544 |
 | 15 | PHX | -0.4 | -0.4 | +1.4 | -1.8 | 102.1 | +0.4 | 1492 |
 | 16 | MIA | -0.6 | -0.6 | +0.8 | -1.4 | 106.2 | +0.0 | 1485 |
