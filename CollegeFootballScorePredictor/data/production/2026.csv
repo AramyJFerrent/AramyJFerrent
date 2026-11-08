@@ -121,32 +121,35 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5264688,Alabama,0,25,146,0
 5293575,Alabama,0,0,0,2
 5327659,Alabama,0,33,298,0
-4568411,Alabama A&M,1838,0,189,0
+4568411,Alabama A&M,1962,0,191,0
 4806381,Alabama A&M,0,564,-5,0
 4869592,Alabama A&M,0,40,157,0
 4875916,Alabama A&M,0,0,0,4
 5078242,Alabama A&M,0,169,32,0
 5121756,Alabama A&M,0,0,0,1
+5122200,Alabama A&M,0,0,0,1
 5132628,Alabama A&M,0,0,0,1
-5146811,Alabama A&M,0,0,0,6
-5152667,Alabama A&M,0,29,50,0
+5146811,Alabama A&M,0,0,2,8
+5152667,Alabama A&M,0,29,53,0
+5157317,Alabama A&M,0,23,0,0
 5160663,Alabama A&M,0,0,89,0
 5160687,Alabama A&M,0,42,0,0
-5162978,Alabama A&M,0,106,0,0
+5162978,Alabama A&M,0,129,0,0
 5162983,Alabama A&M,0,0,0,1
 5165923,Alabama A&M,0,0,0,1
-5167528,Alabama A&M,0,0,0,7
+5167528,Alabama A&M,0,0,0,8
 5220022,Alabama A&M,0,0,0,1
-5220552,Alabama A&M,0,566,0,0
+5220552,Alabama A&M,0,598,0,0
 5222942,Alabama A&M,0,0,0,3
 5222967,Alabama A&M,0,0,0,1
-5227917,Alabama A&M,0,27,207,0
+5225612,Alabama A&M,0,7,-14,0
+5227917,Alabama A&M,0,57,287,0
 5227933,Alabama A&M,0,45,0,0
-5230068,Alabama A&M,0,0,0,4
+5230068,Alabama A&M,0,0,0,6
 5235856,Alabama A&M,0,0,0,4
 5299986,Alabama A&M,0,169,0,0
 5299987,Alabama A&M,0,0,0,3
-5299988,Alabama A&M,0,64,0,0
+5299988,Alabama A&M,0,82,0,0
 5299996,Alabama A&M,0,0,0,3
 5300009,Alabama A&M,0,0,0,1
 5300012,Alabama A&M,0,0,0,1
@@ -155,7 +158,7 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5308092,Alabama A&M,0,4,31,0
 5441219,Alabama A&M,68,0,0,0
 5441220,Alabama A&M,0,0,0,2
-5441226,Alabama A&M,0,10,459,0
+5441226,Alabama A&M,0,24,483,0
 4887151,Alabama State,306,0,65,0
 4940233,Alabama State,0,0,0,1
 5079557,Alabama State,0,0,0,1
@@ -165,82 +168,87 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5154358,Alabama State,0,0,0,1
 5157057,Alabama State,0,0,0,1
 5222936,Alabama State,0,58,0,0
-5227061,Alabama State,0,78,372,0
+5227061,Alabama State,0,78,399,0
 5227088,Alabama State,0,0,0,1
 5227093,Alabama State,0,0,0,1
 5227241,Alabama State,0,0,0,1
-5229506,Alabama State,0,18,0,12
-5229557,Alabama State,0,274,0,0
+5229506,Alabama State,0,18,0,18
+5229557,Alabama State,0,350,0,0
 5238619,Alabama State,0,179,8,0
 5238621,Alabama State,0,0,0,3
 5271221,Alabama State,0,0,0,3
-5302416,Alabama State,0,55,-2,0
+5302416,Alabama State,0,57,-2,0
 5302439,Alabama State,0,0,0,1
-5419709,Alabama State,0,50,0,0
-5421924,Alabama State,0,37,256,0
-5434670,Alabama State,0,53,142,0
-5441396,Alabama State,631,3,279,0
-5441402,Alabama State,0,0,0,10
-5441413,Alabama State,0,29,0,0
-5441414,Alabama State,0,40,0,0
+5419709,Alabama State,0,70,0,0
+5421924,Alabama State,0,37,324,0
+5434670,Alabama State,0,53,167,0
+5441396,Alabama State,813,3,432,0
+5441402,Alabama State,0,0,0,12
+5441413,Alabama State,0,44,0,0
+5441414,Alabama State,0,64,0,0
 5441415,Alabama State,0,28,0,0
 5441416,Alabama State,0,0,0,1
-4878822,Alcorn State,2136,0,272,0
-5089300,Alcorn State,0,176,0,0
-5125850,Alcorn State,0,307,0,0
+4878822,Alcorn State,2464,0,344,0
+5089300,Alcorn State,0,266,0,0
+5125850,Alcorn State,0,311,0,0
 5154269,Alcorn State,0,270,0,0
 5159983,Alcorn State,0,61,0,0
 5159991,Alcorn State,0,0,0,3
-5159993,Alcorn State,0,0,0,3
+5159993,Alcorn State,0,0,0,4
 5159995,Alcorn State,0,0,0,3
-5164609,Alcorn State,0,274,0,0
-5193224,Alcorn State,0,314,486,0
-5207912,Alcorn State,0,110,0,0
-5227005,Alcorn State,0,332,17,0
+5164609,Alcorn State,0,305,0,0
+5193224,Alcorn State,0,314,585,0
+5207912,Alcorn State,0,281,0,0
+5227005,Alcorn State,0,362,40,0
 5229538,Alcorn State,100,0,0,0
 5231332,Alcorn State,0,48,0,0
-5299368,Alcorn State,0,77,192,0
-5300382,Alcorn State,0,0,0,2
+5299368,Alcorn State,0,79,248,0
+5300382,Alcorn State,0,0,0,3
 5300383,Alcorn State,0,0,0,1
 5300385,Alcorn State,0,0,0,1
 5300388,Alcorn State,0,0,0,1
 5300389,Alcorn State,0,67,8,0
-5300391,Alcorn State,0,0,0,5
+5300391,Alcorn State,0,0,0,6
 5300392,Alcorn State,0,0,0,3
-5300398,Alcorn State,0,0,0,2
+5300398,Alcorn State,0,0,0,4
+5300423,Alcorn State,0,0,0,1
 5300424,Alcorn State,0,0,0,2
+5441647,Alcorn State,0,0,0,1
 5441652,Alcorn State,0,177,0,0
 5441654,Alcorn State,0,0,37,0
+5441680,Alcorn State,0,0,0,1
 4683118,App State,0,0,0,3
-4700811,App State,0,13,152,0
+4700811,App State,0,16,156,0
 4826504,App State,0,0,0,1
 4870241,App State,0,0,0,1
-4870999,App State,1947,14,73,0
-4871065,App State,0,0,70,0
+4870999,App State,2198,14,91,0
+4871065,App State,0,0,87,0
 4885469,App State,0,261,0,0
 5077670,App State,0,36,0,0
 5078159,App State,0,0,0,5
 5079360,App State,0,0,21,0
 5083898,App State,0,0,0,1
-5092352,App State,0,310,0,0
-5122552,App State,0,0,0,3
-5146664,App State,154,0,196,0
+5092352,App State,56,427,4,0
+5122552,App State,0,0,0,4
+5146664,App State,154,0,224,0
 5147728,App State,0,0,0,4
-5155313,App State,0,0,0,5
-5156152,App State,0,64,403,0
+5155313,App State,0,0,0,6
+5156152,App State,0,76,434,0
 5159189,App State,0,0,0,2
 5161640,App State,0,0,0,3
-5198331,App State,0,0,0,5
+5198331,App State,0,0,0,6
 5199951,App State,0,146,0,0
-5209334,App State,0,176,0,0
+5209334,App State,0,241,0,0
 5216581,App State,0,0,0,1
-5218246,App State,0,34,0,0
-5224355,App State,0,421,2,0
+5218246,App State,0,65,0,0
+5224355,App State,0,469,2,0
 5224443,App State,0,0,0,4
 5226944,App State,0,0,0,2
-5228759,App State,0,51,0,0
+5228759,App State,0,54,0,0
 5276935,App State,0,0,0,1
-5300543,App State,0,542,23,0
+5277541,App State,0,0,0,1
+5291960,App State,0,0,0,2
+5300543,App State,0,572,23,0
 4612624,Arizona,0,6,178,0
 4613119,Arizona,0,0,0,1
 4709804,Arizona,0,86,0,0
@@ -311,61 +319,64 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5257046,Arizona State,0,54,20,0
 5264247,Arizona State,0,0,0,3
 5331412,Arizona State,0,0,0,1
-3116099,Arkansas,5,86,0,0
-4717430,Arkansas,0,546,0,0
-4805256,Arkansas,0,73,190,0
+3116099,Arkansas,5,100,0,0
+4717430,Arkansas,0,616,0,0
+4805256,Arkansas,0,73,252,0
 4833606,Arkansas,0,0,0,1
 4870071,Arkansas,0,0,0,4
-4870870,Arkansas,0,98,0,0
+4870870,Arkansas,0,141,0,0
 4870878,Arkansas,0,0,0,1
-4899360,Arkansas,0,64,0,0
+4899360,Arkansas,0,76,0,0
+4905593,Arkansas,0,0,0,1
 4917349,Arkansas,0,55,22,0
 4918136,Arkansas,0,0,0,2
 4921499,Arkansas,0,0,0,2
-5079516,Arkansas,1456,0,247,0
-5079589,Arkansas,0,46,191,0
+5079516,Arkansas,1644,0,262,0
+5079589,Arkansas,0,46,218,0
 5079701,Arkansas,0,0,0,1
 5079715,Arkansas,0,0,0,2
 5079759,Arkansas,0,20,11,0
 5081387,Arkansas,0,0,0,4
 5086143,Arkansas,0,0,0,3
-5120970,Arkansas,0,75,-2,0
-5121992,Arkansas,0,0,0,3
+5120970,Arkansas,0,80,-2,0
+5121992,Arkansas,0,0,0,5
 5141473,Arkansas,84,5,2,0
-5146719,Arkansas,0,96,0,0
+5146719,Arkansas,0,100,0,0
+5146899,Arkansas,0,0,0,1
 5147145,Arkansas,0,0,0,3
-5159139,Arkansas,0,98,0,0
+5159139,Arkansas,0,115,0,0
 5161904,Arkansas,0,0,0,1
-5201871,Arkansas,0,187,0,0
+5201871,Arkansas,0,210,0,0
 5214410,Arkansas,0,21,33,0
-5222564,Arkansas,0,64,189,0
+5222564,Arkansas,0,64,289,0
 5227212,Arkansas,0,0,0,1
 4432669,Arkansas State,0,50,0,0
 4869550,Arkansas State,0,0,0,3
-4870601,Arkansas State,0,452,1,0
+4870601,Arkansas State,0,518,1,0
 4871078,Arkansas State,0,0,0,1
-4877014,Arkansas State,0,164,8,0
-4888886,Arkansas State,0,126,205,0
+4877014,Arkansas State,0,198,8,0
+4888886,Arkansas State,0,127,216,0
 5083514,Arkansas State,0,0,0,1
-5085496,Arkansas State,0,408,60,0
+5085496,Arkansas State,0,469,60,0
 5099611,Arkansas State,0,0,0,2
 5121571,Arkansas State,0,24,66,0
-5121601,Arkansas State,0,422,0,0
+5121601,Arkansas State,0,448,0,0
 5122081,Arkansas State,0,77,0,0
-5123665,Arkansas State,1957,0,274,0
-5148417,Arkansas State,0,0,0,4
+5123665,Arkansas State,2150,0,364,0
+5148417,Arkansas State,0,0,0,5
 5152671,Arkansas State,0,0,0,4
-5154884,Arkansas State,0,0,0,1
-5156215,Arkansas State,0,7,49,0
+5154884,Arkansas State,0,0,0,2
+5156215,Arkansas State,0,7,53,0
 5156937,Arkansas State,0,0,0,3
+5209965,Arkansas State,0,0,0,1
 5217106,Arkansas State,0,0,0,1
-5221048,Arkansas State,0,105,0,0
+5221048,Arkansas State,0,110,0,0
 5221050,Arkansas State,0,0,0,1
 5221571,Arkansas State,0,0,0,2
 5258442,Arkansas State,0,0,0,1
 5291661,Arkansas State,0,22,0,0
-5294514,Arkansas State,0,0,0,3
-5327235,Arkansas State,0,58,271,0
+5294514,Arkansas State,0,0,0,4
+5327235,Arkansas State,0,58,309,0
 5446579,Arkansas State,0,36,73,0
 3149911,Arkansas-Pine Bluff,0,43,0,0
 5083604,Arkansas-Pine Bluff,0,0,0,2
@@ -412,35 +423,39 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5293689,Army,0,0,0,2
 5293691,Army,0,0,0,1
 5293700,Army,0,0,0,2
-4685414,Auburn,0,104,0,0
+4685414,Auburn,0,112,0,0
 4692683,Auburn,0,0,0,2
-4702556,Auburn,0,65,0,0
-4868900,Auburn,0,0,0,3
-4870642,Auburn,0,51,355,0
+4702556,Auburn,0,70,0,0
+4868900,Auburn,0,0,0,4
+4870642,Auburn,0,78,396,0
 4871006,Auburn,0,0,0,3
-4880272,Auburn,1542,5,628,0
-4880967,Auburn,0,0,0,3
+4880272,Auburn,1752,5,765,0
+4880967,Auburn,0,0,0,4
 4954455,Auburn,0,19,73,0
 5079309,Auburn,0,0,0,4
-5079382,Auburn,0,53,0,0
+5079382,Auburn,0,58,0,0
 5079688,Auburn,0,0,0,1
-5081367,Auburn,0,402,0,0
-5121879,Auburn,0,452,0,0
+5081367,Auburn,0,448,0,0
+5121879,Auburn,0,518,0,0
 5141363,Auburn,0,0,0,1
-5141433,Auburn,0,0,0,3
+5141433,Auburn,0,0,0,4
 5141696,Auburn,0,0,0,2
-5141769,Auburn,0,0,0,2
+5141764,Auburn,0,0,0,1
+5141769,Auburn,0,0,0,3
 5143922,Auburn,0,0,0,10
 5145207,Auburn,0,5,32,0
 5148663,Auburn,0,0,0,1
+5148883,Auburn,0,0,0,1
+5150284,Auburn,0,0,0,1
 5151209,Auburn,0,0,0,1
 5155759,Auburn,0,0,0,2
 5157291,Auburn,0,0,0,4
-5209337,Auburn,0,65,0,0
+5209319,Auburn,0,0,0,4
+5209337,Auburn,0,65,11,0
 5209679,Auburn,0,207,0,0
-5217041,Auburn,0,51,186,0
+5217041,Auburn,0,51,195,0
 5294521,Auburn,0,0,0,1
-5296027,Auburn,29,92,0,0
+5296027,Auburn,29,129,0,0
 4826528,Austin Peay,0,0,0,1
 4870406,Austin Peay,0,0,0,3
 4870889,Austin Peay,1966,0,547,0
@@ -472,32 +487,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5439836,Austin Peay,0,0,0,1
 4870235,BYU,0,0,0,3
 4870593,BYU,0,0,0,4
-4870876,BYU,15,430,0,0
+4870876,BYU,15,473,0,0
 4912270,BYU,0,0,0,5
 4917351,BYU,0,0,0,3
-4918126,BYU,0,41,344,0
-4954453,BYU,0,0,0,2
+4918126,BYU,0,46,363,0
+4954453,BYU,0,0,0,3
 5078822,BYU,0,0,0,2
-5080697,BYU,0,0,0,4
-5083105,BYU,0,0,0,7
+5080697,BYU,0,0,0,5
+5083105,BYU,0,0,0,9
 5088941,BYU,0,0,0,2
 5092200,BYU,0,47,211,0
-5092203,BYU,0,0,0,2
+5092203,BYU,0,0,0,3
 5130407,BYU,0,146,0,0
-5141367,BYU,1734,15,366,0
+5141367,BYU,2006,15,425,0
 5147161,BYU,0,0,0,3
-5147239,BYU,0,0,0,3
+5147239,BYU,0,0,0,4
 5147386,BYU,0,0,0,2
 5150613,BYU,0,0,0,2
 5150619,BYU,0,0,0,3
-5160955,BYU,0,124,6,0
+5160955,BYU,0,126,6,0
 5167712,BYU,0,0,0,1
 5186445,BYU,0,0,0,1
-5219689,BYU,0,8,77,0
-5221043,BYU,0,255,0,0
+5219689,BYU,0,15,114,0
+5221043,BYU,0,352,0,0
 5261392,BYU,0,0,0,2
 5271214,BYU,0,0,0,1
-5279329,BYU,0,575,109,0
+5279329,BYU,0,693,114,0
 5296269,BYU,0,72,0,0
 5296270,BYU,0,0,0,1
 5393157,BYU,0,25,58,0
@@ -538,68 +553,69 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4782658,Baylor,0,0,0,2
 4808747,Baylor,0,0,0,1
 4816073,Baylor,0,0,0,2
-4833373,Baylor,0,0,0,4
-4877626,Baylor,0,0,0,3
+4833373,Baylor,0,0,0,5
+4877626,Baylor,0,0,0,4
 4879531,Baylor,0,0,0,1
 4883774,Baylor,0,207,2,0
-4896289,Baylor,0,777,0,0
-4896389,Baylor,0,336,0,0
+4896289,Baylor,0,837,0,0
+4896389,Baylor,0,355,0,0
 4910222,Baylor,0,107,0,0
 4912039,Baylor,0,0,0,2
 4914227,Baylor,0,0,0,3
-4917621,Baylor,0,0,0,3
+4917621,Baylor,0,0,0,4
 4921305,Baylor,0,32,0,0
 4921517,Baylor,0,32,279,0
-5078158,Baylor,0,0,0,6
-5079555,Baylor,1660,0,108,0
-5079612,Baylor,0,97,0,0
+5078158,Baylor,0,0,0,7
+5079555,Baylor,1891,0,220,0
+5079612,Baylor,0,129,0,0
 5079627,Baylor,0,273,0,0
 5084043,Baylor,0,0,0,3
 5085436,Baylor,0,0,0,1
-5093198,Baylor,0,0,0,3
-5121893,Baylor,0,111,0,0
+5093198,Baylor,0,0,0,5
+5121893,Baylor,0,160,0,0
 5145459,Baylor,461,0,42,0
 5147178,Baylor,0,0,0,7
 5149009,Baylor,0,0,0,3
-5151076,Baylor,0,0,0,6
-5159106,Baylor,0,13,223,0
+5151076,Baylor,0,0,0,7
+5159106,Baylor,0,16,273,0
 5207658,Baylor,0,0,0,3
 5207942,Baylor,0,0,0,4
-5219851,Baylor,0,0,0,2
+5219851,Baylor,0,0,0,3
 5222227,Baylor,0,24,0,0
 5268983,Baylor,0,0,0,1
-5295723,Baylor,0,25,314,0
-5295724,Baylor,0,25,150,0
-5295733,Baylor,0,62,0,0
+5295463,Baylor,0,0,0,1
+5295723,Baylor,0,25,340,0
+5295724,Baylor,0,25,161,0
+5295733,Baylor,0,124,0,0
 5295766,Baylor,0,0,0,2
 5296021,Baylor,0,0,0,2
 4685471,Bethune-Cookman,0,0,0,3
-4694452,Bethune-Cookman,0,26,0,0
-4710861,Bethune-Cookman,0,57,0,0
+4694452,Bethune-Cookman,0,29,0,0
+4710861,Bethune-Cookman,0,63,0,0
 4837469,Bethune-Cookman,144,0,12,0
-4870848,Bethune-Cookman,533,0,349,0
+4870848,Bethune-Cookman,575,0,366,0
 4906922,Bethune-Cookman,0,0,0,1
 4918105,Bethune-Cookman,0,0,42,0
-5084519,Bethune-Cookman,0,203,-2,0
+5084519,Bethune-Cookman,0,210,-2,0
 5092813,Bethune-Cookman,0,0,0,1
 5093154,Bethune-Cookman,0,0,0,2
 5139853,Bethune-Cookman,0,0,0,2
 5159018,Bethune-Cookman,16,13,5,0
 5163564,Bethune-Cookman,0,0,0,7
 5166580,Bethune-Cookman,0,0,0,1
-5194620,Bethune-Cookman,0,210,0,0
+5194620,Bethune-Cookman,0,236,0,0
 5198311,Bethune-Cookman,0,0,0,1
 5229577,Bethune-Cookman,0,0,0,3
 5304323,Bethune-Cookman,0,117,0,0
 5304324,Bethune-Cookman,0,0,0,7
-5304325,Bethune-Cookman,0,57,613,0
+5304325,Bethune-Cookman,0,57,695,0
 5304326,Bethune-Cookman,0,0,0,1
-5304333,Bethune-Cookman,0,0,129,0
+5304333,Bethune-Cookman,0,0,126,0
 5304341,Bethune-Cookman,0,0,0,1
 5304344,Bethune-Cookman,0,0,0,2
 5443044,Bethune-Cookman,0,0,0,4
 5443046,Bethune-Cookman,68,0,40,0
-5443047,Bethune-Cookman,35,17,60,0
+5443047,Bethune-Cookman,35,17,68,0
 5443067,Bethune-Cookman,0,46,0,0
 4685474,Boise State,0,0,0,3
 4714341,Boise State,0,137,0,0
@@ -632,37 +648,38 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5382282,Boise State,0,0,0,1
 5382283,Boise State,0,0,0,1
 5382290,Boise State,0,62,0,0
-4871001,Boston College,0,96,5,0
+4871001,Boston College,0,107,5,0
 4921316,Boston College,0,4,42,0
 4921446,Boston College,0,0,0,4
 4923220,Boston College,0,0,0,2
 5076122,Boston College,0,124,276,0
-5077304,Boston College,0,63,0,0
+5077304,Boston College,0,66,0,0
 5079730,Boston College,0,0,0,1
 5085773,Boston College,0,0,0,1
-5144853,Boston College,0,218,6,0
-5146747,Boston College,0,318,8,0
+5144853,Boston College,0,219,6,0
+5146747,Boston College,10,340,8,0
 5146821,Boston College,0,0,0,1
 5147375,Boston College,0,0,0,6
 5148602,Boston College,0,0,0,1
 5157579,Boston College,0,0,0,1
 5194641,Boston College,0,0,0,4
-5203610,Boston College,0,53,0,0
-5208002,Boston College,0,0,0,5
-5208592,Boston College,0,36,251,0
+5203610,Boston College,0,102,0,0
+5208002,Boston College,0,0,0,6
+5208592,Boston College,0,60,356,0
 5209761,Boston College,0,0,0,1
-5211163,Boston College,0,2,80,0
+5211163,Boston College,0,2,85,0
 5214566,Boston College,0,184,0,0
 5215579,Boston College,0,0,0,1
 5216309,Boston College,0,0,0,1
 5222675,Boston College,0,44,0,0
 5222676,Boston College,0,63,0,0
-5222689,Boston College,0,158,0,0
+5222689,Boston College,0,180,0,0
 5222698,Boston College,0,0,0,1
 5225317,Boston College,0,0,0,1
 5227820,Boston College,0,0,0,4
+5250264,Boston College,0,54,0,0
 5280992,Boston College,0,0,0,5
-5307005,Boston College,1398,0,767,0
+5307005,Boston College,1564,10,814,0
 4594448,Bowling Green,0,0,0,1
 4832020,Bowling Green,0,0,0,1
 4879925,Bowling Green,0,24,0,0
@@ -721,54 +738,57 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5443182,Brown,0,208,-8,0
 4819225,Bryant,0,0,0,3
 4837282,Bryant,0,0,0,1
-4896391,Bryant,0,424,0,0
-5088856,Bryant,0,0,0,5
+4896391,Bryant,0,525,0,0
+5088856,Bryant,0,0,0,6
 5120942,Bryant,0,0,0,1
 5146751,Bryant,0,225,0,0
 5157425,Bryant,0,80,-2,0
 5157426,Bryant,17,0,20,0
 5157435,Bryant,0,0,0,1
-5157449,Bryant,0,0,0,3
-5157458,Bryant,0,82,0,0
+5157449,Bryant,0,0,0,6
+5157458,Bryant,0,96,0,0
 5157459,Bryant,0,21,0,0
 5219933,Bryant,0,0,0,1
-5226265,Bryant,1480,0,188,0
-5226276,Bryant,0,0,0,2
+5226265,Bryant,1734,0,197,0
+5226269,Bryant,0,0,0,2
+5226276,Bryant,0,0,0,3
 5226279,Bryant,0,0,0,1
-5226300,Bryant,0,88,0,0
-5298212,Bryant,0,44,433,0
-5299148,Bryant,0,419,-4,0
-5299151,Bryant,0,37,0,0
+5226300,Bryant,0,99,0,0
+5298212,Bryant,0,48,480,0
+5299148,Bryant,0,496,-4,0
+5299151,Bryant,0,84,0,0
 5299155,Bryant,0,0,0,1
-5299160,Bryant,0,0,0,3
+5299157,Bryant,0,0,0,1
+5299160,Bryant,0,0,0,4
 5299175,Bryant,0,0,0,2
-5302825,Bryant,0,0,39,0
+5302825,Bryant,0,0,54,0
 5405233,Bryant,0,0,0,1
-5405239,Bryant,0,51,215,0
-5405241,Bryant,0,0,329,0
+5405239,Bryant,0,51,249,0
+5405241,Bryant,0,0,347,0
 5405250,Bryant,0,0,0,1
 5147052,Bucknell,0,0,0,1
 5147067,Bucknell,856,0,44,0
 5152267,Bucknell,0,0,0,5
-5152273,Bucknell,0,0,0,3
+5152271,Bucknell,0,0,0,1
+5152273,Bucknell,0,0,0,4
 5152277,Bucknell,0,236,0,0
 5152279,Bucknell,0,0,0,2
 5152285,Bucknell,0,0,0,2
 5152289,Bucknell,0,155,8,0
-5152291,Bucknell,28,433,42,0
+5152291,Bucknell,28,521,51,0
 5219439,Bucknell,0,6,98,0
 5225384,Bucknell,0,0,0,2
-5225392,Bucknell,0,205,384,0
+5225392,Bucknell,0,205,430,0
 5225394,Bucknell,0,57,0,0
 5225395,Bucknell,0,51,0,0
-5298552,Bucknell,0,50,114,0
+5298552,Bucknell,0,67,135,0
 5298555,Bucknell,0,0,0,3
 5298556,Bucknell,0,64,0,0
-5298557,Bucknell,0,0,0,3
+5298557,Bucknell,0,0,0,5
 5298570,Bucknell,0,46,0,0
 5298573,Bucknell,0,0,0,1
 5402058,Bucknell,0,101,10,0
-5402059,Bucknell,644,30,17,0
+5402059,Bucknell,739,30,17,0
 5402062,Bucknell,0,0,0,3
 5402063,Bucknell,0,0,0,3
 5402069,Bucknell,0,0,0,1
@@ -805,30 +825,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5387613,Buffalo,0,0,0,4
 5387614,Buffalo,0,0,0,3
 5387620,Buffalo,0,0,0,5
-4906094,Butler,0,369,4,0
-5085508,Butler,0,15,457,0
+4906094,Butler,0,409,7,0
+5085508,Butler,0,33,500,0
 5087030,Butler,0,0,0,1
 5095226,Butler,0,0,0,1
 5147070,Butler,0,0,0,4
 5152294,Butler,0,20,0,0
-5152298,Butler,0,0,0,4
+5152298,Butler,0,0,0,5
 5152310,Butler,0,0,0,2
 5152315,Butler,0,0,0,4
-5152317,Butler,0,199,0,0
+5152316,Butler,0,27,0,0
+5152317,Butler,0,244,0,0
 5152319,Butler,0,0,0,1
-5224468,Butler,1029,0,457,0
+5224468,Butler,1168,0,508,0
+5224477,Butler,0,0,0,1
 5224479,Butler,0,0,0,1
-5224481,Butler,0,47,0,0
+5224481,Butler,0,66,0,0
 5224484,Butler,0,0,0,1
 5224485,Butler,0,0,0,2
 5224493,Butler,0,65,0,0
-5298464,Butler,0,148,0,0
+5298464,Butler,0,153,0,0
 5298466,Butler,0,60,0,0
 5298467,Butler,0,0,0,3
-5298468,Butler,31,36,169,0
+5298468,Butler,31,36,312,0
 5298471,Butler,0,24,0,0
 5298474,Butler,0,0,0,1
-5298483,Butler,0,0,0,2
+5298483,Butler,0,0,0,3
 5403604,Butler,0,0,0,2
 5403608,Butler,0,0,0,3
 5403613,Butler,0,10,114,0
@@ -900,36 +922,37 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5296106,California,0,6,35,0
 4684964,Campbell,0,0,0,3
 4923300,Campbell,0,189,0,0
-5084663,Campbell,0,261,0,0
-5086174,Campbell,0,56,0,0
-5089515,Campbell,0,0,0,2
+5084663,Campbell,0,272,0,0
+5086174,Campbell,0,63,0,0
+5089515,Campbell,0,0,0,3
 5148836,Campbell,0,0,0,8
-5148887,Campbell,0,528,4,0
+5148887,Campbell,0,626,4,0
 5153431,Campbell,0,0,0,3
-5154962,Campbell,2596,0,287,0
+5154962,Campbell,2992,0,287,0
 5156011,Campbell,0,16,0,2
 5160090,Campbell,0,0,0,1
 5163921,Campbell,0,0,0,2
-5219480,Campbell,0,40,0,0
+5219480,Campbell,0,62,0,0
 5222652,Campbell,0,0,0,2
-5229543,Campbell,0,187,575,0
+5229543,Campbell,0,204,642,0
 5236368,Campbell,0,0,0,2
-5279147,Campbell,0,0,0,3
+5279147,Campbell,0,0,0,4
 5299303,Campbell,0,0,0,5
-5299304,Campbell,53,0,2,0
-5299307,Campbell,0,391,0,0
+5299304,Campbell,53,0,0,0
+5299307,Campbell,0,473,0,0
 5299309,Campbell,0,0,0,6
 5299310,Campbell,0,37,184,0
-5299311,Campbell,0,0,0,3
-5299313,Campbell,0,5,114,0
+5299311,Campbell,0,0,0,4
+5299313,Campbell,0,5,182,0
 5299319,Campbell,0,0,0,3
-5299326,Campbell,0,150,0,0
+5299326,Campbell,0,182,0,0
 5299327,Campbell,0,136,0,0
+5299329,Campbell,0,0,0,1
 5299330,Campbell,0,0,0,1
-5405473,Campbell,0,197,235,0
+5405473,Campbell,0,207,239,0
 5405475,Campbell,0,0,0,3
 5405479,Campbell,0,0,0,1
-5405498,Campbell,0,225,0,0
+5405498,Campbell,0,342,0,0
 5405499,Campbell,0,216,4,0
 5084657,Central Arkansas,0,415,6,0
 5085364,Central Arkansas,0,0,0,1
@@ -958,32 +981,33 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5439146,Central Arkansas,0,0,0,1
 5439147,Central Arkansas,0,0,0,1
 5439155,Central Arkansas,0,10,152,0
-4711410,Central Connecticut,925,0,349,0
+4711410,Central Connecticut,1211,0,354,0
 5082400,Central Connecticut,0,0,0,1
-5083493,Central Connecticut,0,0,0,1
+5083493,Central Connecticut,0,0,0,2
 5085755,Central Connecticut,0,0,0,4
-5089441,Central Connecticut,0,0,0,5
+5088967,Central Connecticut,0,0,0,1
+5089441,Central Connecticut,0,0,0,6
 5094089,Central Connecticut,0,0,0,2
 5094104,Central Connecticut,0,0,0,1
-5094129,Central Connecticut,0,137,0,0
+5094129,Central Connecticut,0,163,0,0
 5152244,Central Connecticut,0,0,0,8
 5152246,Central Connecticut,0,0,0,1
-5152250,Central Connecticut,0,308,18,0
+5152250,Central Connecticut,0,381,18,0
 5152251,Central Connecticut,0,0,0,2
 5152252,Central Connecticut,0,0,0,2
-5152255,Central Connecticut,0,56,0,0
+5152255,Central Connecticut,0,74,0,0
 5152257,Central Connecticut,0,23,0,0
-5152263,Central Connecticut,0,93,0,0
-5159823,Central Connecticut,0,65,117,0
+5152263,Central Connecticut,0,138,0,0
+5159823,Central Connecticut,0,73,131,0
 5162073,Central Connecticut,0,0,0,1
 5227031,Central Connecticut,0,0,0,5
 5227048,Central Connecticut,0,0,0,1
 5227049,Central Connecticut,0,0,0,3
 5232067,Central Connecticut,0,0,0,1
-5298003,Central Connecticut,14,34,506,0
+5298003,Central Connecticut,14,53,601,0
 5298008,Central Connecticut,0,0,34,0
-5298018,Central Connecticut,0,78,0,0
-5442249,Central Connecticut,0,133,88,0
+5298018,Central Connecticut,0,83,0,0
+5442249,Central Connecticut,0,225,93,0
 4869694,Central Michigan,0,290,15,0
 4876695,Central Michigan,0,85,0,0
 4878196,Central Michigan,0,0,0,1
@@ -1018,34 +1042,35 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5088687,Charleston Southern,0,0,0,1
 5089109,Charleston Southern,0,0,0,2
 5095773,Charleston Southern,0,0,0,2
-5099704,Charleston Southern,0,119,0,0
-5157412,Charleston Southern,0,133,0,0
+5099704,Charleston Southern,0,137,0,0
+5157412,Charleston Southern,0,153,0,0
 5164726,Charleston Southern,0,0,0,2
 5164740,Charleston Southern,0,0,0,6
-5164751,Charleston Southern,0,203,0,0
+5164751,Charleston Southern,0,209,0,0
 5219461,Charleston Southern,0,0,0,3
-5224320,Charleston Southern,445,0,31,0
+5224320,Charleston Southern,545,0,37,0
 5224323,Charleston Southern,0,15,9,0
 5224327,Charleston Southern,0,0,0,3
 5224329,Charleston Southern,0,0,0,1
-5224334,Charleston Southern,0,0,0,4
+5224334,Charleston Southern,0,0,0,5
 5224339,Charleston Southern,0,0,-1,1
-5232063,Charleston Southern,14,149,0,0
+5232063,Charleston Southern,29,216,0,0
 5298248,Charleston Southern,342,0,95,0
 5298250,Charleston Southern,0,0,0,2
-5298251,Charleston Southern,91,0,38,0
-5298252,Charleston Southern,0,43,423,0
+5298251,Charleston Southern,167,0,49,0
+5298252,Charleston Southern,0,57,438,0
 5298255,Charleston Southern,0,0,0,10
 5298256,Charleston Southern,0,0,0,1
 5298258,Charleston Southern,0,0,0,1
-5298260,Charleston Southern,0,43,3,0
+5298260,Charleston Southern,0,58,22,0
 5298266,Charleston Southern,0,0,0,6
 5298288,Charleston Southern,0,0,0,1
-5402476,Charleston Southern,0,106,0,0
-5402477,Charleston Southern,0,57,0,0
-5402478,Charleston Southern,0,7,214,0
+5402476,Charleston Southern,0,114,0,0
+5402477,Charleston Southern,0,85,0,0
+5402478,Charleston Southern,0,7,224,0
 5402482,Charleston Southern,0,0,77,0
 5402489,Charleston Southern,0,0,0,1
+5402512,Charleston Southern,0,32,0,0
 4606685,Charlotte,0,52,0,0
 4784594,Charlotte,0,0,0,2
 4801306,Charlotte,764,0,70,0
@@ -1077,31 +1102,31 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5382267,Charlotte,0,0,0,1
 5446651,Charlotte,0,0,0,1
 4695121,Chattanooga,0,0,100,0
-4837382,Chattanooga,0,0,0,1
+4837382,Chattanooga,0,0,0,2
 4909264,Chattanooga,0,0,0,2
 5083897,Chattanooga,0,0,0,2
-5152326,Chattanooga,0,0,0,4
-5153309,Chattanooga,0,0,0,4
-5153310,Chattanooga,0,0,0,8
+5152326,Chattanooga,0,0,0,5
+5153309,Chattanooga,0,0,0,5
+5153310,Chattanooga,0,0,0,11
 5153311,Chattanooga,0,0,0,2
 5153313,Chattanooga,0,0,0,2
-5219556,Chattanooga,0,0,0,7
-5223980,Chattanooga,0,40,562,0
-5223983,Chattanooga,846,0,285,0
+5219556,Chattanooga,0,0,0,8
+5223980,Chattanooga,0,40,668,0
+5223983,Chattanooga,889,0,332,0
 5223985,Chattanooga,0,44,0,0
 5223992,Chattanooga,0,0,0,2
-5224004,Chattanooga,0,203,0,0
+5224004,Chattanooga,0,222,0,0
 5224008,Chattanooga,0,26,0,0
 5224009,Chattanooga,0,0,0,3
-5229591,Chattanooga,0,0,0,2
+5229591,Chattanooga,0,0,0,3
 5299808,Chattanooga,0,0,0,2
-5300321,Chattanooga,0,0,0,3
+5300321,Chattanooga,0,0,0,4
 5300323,Chattanooga,0,0,31,0
-5300325,Chattanooga,0,0,0,3
+5300325,Chattanooga,0,0,0,4
 5300341,Chattanooga,0,99,0,0
 5300344,Chattanooga,0,0,0,3
-5408456,Chattanooga,0,360,0,0
-5426001,Chattanooga,0,33,897,0
+5408456,Chattanooga,0,384,0,0
+5426001,Chattanooga,0,33,967,0
 5439022,Chattanooga,0,20,0,0
 5124516,Chicago State,0,1,67,0
 5159024,Chicago State,1054,0,68,0
@@ -1155,57 +1180,64 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4379471,Clemson,0,336,83,0
 4685243,Clemson,0,0,0,1
 4812339,Clemson,0,0,0,1
-4832060,Clemson,0,0,0,2
-4871026,Clemson,0,0,0,11
+4832060,Clemson,0,0,0,3
+4871026,Clemson,0,0,0,12
 4899369,Clemson,70,0,-3,0
 4917980,Clemson,0,0,0,1
-5077977,Clemson,0,0,0,7
+5077977,Clemson,0,0,0,8
 5079324,Clemson,0,131,0,0
 5079342,Clemson,0,0,0,2
 5079415,Clemson,0,0,0,1
 5079608,Clemson,0,0,0,2
 5081438,Clemson,0,0,0,1
-5093141,Clemson,0,0,104,0
-5112674,Clemson,0,427,0,0
-5127019,Clemson,0,0,0,4
-5127738,Clemson,0,0,0,10
-5141349,Clemson,0,0,0,1
+5093141,Clemson,0,6,188,0
+5112674,Clemson,36,527,4,0
+5127019,Clemson,0,0,0,5
+5127738,Clemson,0,0,0,13
+5141349,Clemson,0,0,0,2
 5141422,Clemson,0,8,489,0
 5141592,Clemson,0,0,0,6
-5150561,Clemson,0,115,0,0
-5156116,Clemson,0,21,11,0
-5159078,Clemson,1291,0,362,0
-5159948,Clemson,0,14,66,0
+5150561,Clemson,0,126,0,0
+5156116,Clemson,0,42,15,0
+5159078,Clemson,1458,0,440,0
+5159948,Clemson,0,14,74,0
 5193354,Clemson,0,0,0,2
-5194806,Clemson,0,0,0,4
-5214386,Clemson,0,0,0,2
-5218753,Clemson,0,304,0,0
+5193390,Clemson,0,0,0,1
+5194806,Clemson,0,0,0,5
+5214386,Clemson,0,0,0,3
+5218753,Clemson,0,367,0,0
+5224756,Clemson,0,0,0,1
 5371966,Clemson,0,0,0,2
-4685602,Coastal Carolina,0,0,0,8
-4833356,Coastal Carolina,0,125,0,0
+4685602,Coastal Carolina,0,0,0,11
+4833356,Coastal Carolina,0,160,0,0
 4836468,Coastal Carolina,0,0,0,2
-4870699,Coastal Carolina,0,238,10,0
+4870699,Coastal Carolina,0,295,10,0
 4871022,Coastal Carolina,0,308,24,0
+4918441,Coastal Carolina,0,0,0,1
 5085779,Coastal Carolina,0,0,0,1
 5086520,Coastal Carolina,0,0,0,1
 5095242,Coastal Carolina,0,48,0,0
 5146822,Coastal Carolina,0,0,0,3
 5150845,Coastal Carolina,0,111,0,0
-5153389,Coastal Carolina,0,323,0,0
+5153389,Coastal Carolina,0,371,0,0
 5154291,Coastal Carolina,0,0,0,3
 5161229,Coastal Carolina,0,0,0,6
+5161775,Coastal Carolina,0,0,0,1
 5193350,Coastal Carolina,0,0,0,1
-5193388,Coastal Carolina,0,33,97,0
-5203477,Coastal Carolina,0,69,483,0
+5193351,Coastal Carolina,0,37,1,0
+5193388,Coastal Carolina,0,33,121,0
+5203477,Coastal Carolina,0,77,497,0
 5212695,Coastal Carolina,0,0,0,3
 5221086,Coastal Carolina,0,0,0,4
 5222870,Coastal Carolina,0,0,0,1
 5226953,Coastal Carolina,0,0,0,2
-5265325,Coastal Carolina,0,35,141,0
-5265446,Coastal Carolina,0,351,0,0
+5265325,Coastal Carolina,0,35,144,0
+5265446,Coastal Carolina,0,399,0,0
 5295756,Coastal Carolina,0,0,39,0
-5296438,Coastal Carolina,0,268,0,0
-5296439,Coastal Carolina,1951,0,383,0
+5296436,Coastal Carolina,0,0,0,1
+5296438,Coastal Carolina,0,291,0,0
+5296439,Coastal Carolina,2197,0,383,0
+5300001,Coastal Carolina,0,0,0,1
 5379841,Coastal Carolina,0,37,0,0
 5089309,Colgate,1680,0,283,0
 5150457,Colgate,0,81,505,0
@@ -1296,36 +1328,37 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5295193,Colorado State,0,7,0,2
 5327239,Colorado State,0,0,0,1
 5446698,Colorado State,0,49,0,0
-5154125,Columbia,1844,0,84,0
+5154125,Columbia,1863,0,128,0
 5154127,Columbia,0,0,0,2
 5154132,Columbia,0,0,0,1
-5154133,Columbia,0,113,569,0
+5154133,Columbia,0,113,608,0
 5154135,Columbia,0,0,0,3
-5154151,Columbia,0,200,0,0
+5154151,Columbia,0,204,0,0
 5224819,Columbia,0,0,0,2
-5224820,Columbia,0,0,0,3
+5224820,Columbia,0,0,0,4
 5224821,Columbia,0,0,0,1
 5224824,Columbia,0,0,0,2
-5224834,Columbia,0,427,0,0
+5224834,Columbia,0,430,0,0
 5224838,Columbia,0,0,0,1
 5299116,Columbia,0,41,0,0
 5299117,Columbia,0,252,0,0
 5299120,Columbia,0,26,44,0
-5299121,Columbia,0,0,0,2
+5299121,Columbia,0,0,0,3
 5299122,Columbia,0,21,100,0
 5299124,Columbia,0,0,0,11
+5299137,Columbia,0,22,0,0
 5299141,Columbia,0,0,0,1
 5443129,Columbia,0,633,0,0
 5443132,Columbia,0,0,0,1
 5443133,Columbia,0,113,0,0
-5443136,Columbia,0,0,111,0
+5443136,Columbia,0,0,130,0
 5154159,Cornell,0,0,0,7
-5154161,Cornell,1626,0,300,0
+5154161,Cornell,1664,0,300,0
 5154163,Cornell,0,0,0,7
 5154167,Cornell,0,0,0,1
 5154169,Cornell,0,22,96,0
 5154170,Cornell,0,0,0,2
-5154182,Cornell,62,341,77,0
+5154182,Cornell,62,381,77,0
 5154183,Cornell,0,299,0,0
 5154184,Cornell,0,157,0,0
 5219009,Cornell,0,0,0,3
@@ -1337,17 +1370,21 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5225042,Cornell,0,0,0,3
 5225043,Cornell,0,0,0,1
 5299520,Cornell,0,43,0,0
-5299522,Cornell,0,0,0,1
-5299523,Cornell,0,202,0,0
-5299525,Cornell,0,0,0,2
-5299526,Cornell,0,120,0,0
-5299527,Cornell,0,36,90,0
-5299529,Cornell,0,67,65,0
-5299531,Cornell,0,53,376,0
+5299522,Cornell,0,0,0,2
+5299523,Cornell,0,222,0,0
+5299525,Cornell,0,0,0,3
+5299526,Cornell,0,134,0,0
+5299527,Cornell,0,36,88,0
+5299529,Cornell,0,67,86,0
+5299531,Cornell,0,53,425,0
 5299538,Cornell,0,0,0,1
 5299554,Cornell,0,0,0,1
-5300301,Cornell,0,58,86,0
+5300301,Cornell,0,58,95,0
 5443092,Cornell,0,111,0,0
+5443094,Cornell,0,0,0,1
+5443096,Cornell,47,0,101,0
+5443099,Cornell,0,0,0,1
+5443100,Cornell,0,0,0,1
 5443107,Cornell,0,0,0,1
 5155382,Dartmouth,0,0,0,2
 5155388,Dartmouth,0,0,0,8
@@ -1383,26 +1420,29 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5442886,Dartmouth,0,42,141,0
 5442905,Dartmouth,0,0,0,1
 5152328,Davidson,0,252,28,0
-5152333,Davidson,0,285,-7,0
+5152333,Davidson,0,392,-7,0
 5152341,Davidson,0,0,0,1
+5152342,Davidson,0,0,0,2
 5152344,Davidson,0,0,0,2
 5152346,Davidson,0,0,0,1
-5152356,Davidson,0,127,0,0
-5224535,Davidson,1173,0,444,0
-5224536,Davidson,0,303,42,0
-5224540,Davidson,0,71,150,0
+5152356,Davidson,0,196,0,0
+5224535,Davidson,1534,0,497,0
+5224536,Davidson,0,361,48,0
+5224540,Davidson,0,71,195,0
 5224541,Davidson,0,0,0,1
-5224545,Davidson,0,48,123,0
+5224545,Davidson,0,52,157,0
 5224550,Davidson,0,0,0,1
-5298580,Davidson,0,0,0,1
+5298580,Davidson,0,0,0,2
+5298586,Davidson,0,59,0,0
 5298588,Davidson,0,0,0,2
-5298589,Davidson,0,0,0,3
-5298591,Davidson,13,0,25,0
+5298589,Davidson,0,0,0,4
+5298591,Davidson,13,0,29,0
 5298592,Davidson,0,0,0,1
+5298601,Davidson,0,32,0,0
 5298602,Davidson,0,21,-1,0
 5298603,Davidson,0,0,0,1
 5298606,Davidson,0,0,0,4
-5438935,Davidson,0,59,0,0
+5438935,Davidson,0,75,0,0
 5438943,Davidson,0,0,0,3
 5438964,Davidson,0,0,0,2
 5154881,Dayton,1670,0,35,0
@@ -1466,120 +1506,124 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4429242,Delaware State,0,0,0,1
 4606658,Delaware State,0,0,70,0
 4685542,Delaware State,50,0,27,0
-4837279,Delaware State,0,429,0,0
+4837279,Delaware State,0,439,0,0
 4870748,Delaware State,0,0,0,1
-4873906,Delaware State,0,0,0,2
+4873906,Delaware State,0,0,0,3
 4878815,Delaware State,0,0,0,1
-4892986,Delaware State,0,0,0,1
-5079307,Delaware State,0,23,45,0
-5085808,Delaware State,259,0,98,0
+4892986,Delaware State,0,0,0,2
+4923034,Delaware State,0,0,0,1
+5079307,Delaware State,0,23,42,0
+5085808,Delaware State,428,0,125,0
 5085814,Delaware State,0,0,0,3
-5085816,Delaware State,0,0,0,5
+5085816,Delaware State,0,0,0,6
 5085821,Delaware State,0,0,0,1
-5098472,Delaware State,0,42,123,0
+5098472,Delaware State,0,45,131,0
 5100454,Delaware State,0,0,0,1
 5143595,Delaware State,0,15,13,0
 5147235,Delaware State,0,0,0,2
 5150645,Delaware State,1023,0,300,0
 5154019,Delaware State,54,0,47,0
-5154529,Delaware State,0,211,0,0
-5154530,Delaware State,0,139,35,0
-5220660,Delaware State,0,0,0,4
+5154529,Delaware State,0,239,0,0
+5154530,Delaware State,0,194,35,0
+5220660,Delaware State,0,0,0,6
 5221389,Delaware State,0,0,0,1
-5298213,Delaware State,0,77,0,0
-5303299,Delaware State,0,206,-9,0
+5298213,Delaware State,0,127,0,0
+5303299,Delaware State,0,225,-9,0
 5303302,Delaware State,0,25,159,0
 5303333,Delaware State,0,0,0,2
-5405301,Delaware State,0,27,7,0
+5405301,Delaware State,0,27,90,0
 5405302,Delaware State,0,0,0,1
 5405303,Delaware State,0,92,0,0
 5405328,Delaware State,0,58,0,0
-5085540,Drake,0,185,0,0
+5085540,Drake,0,191,0,0
 5085677,Drake,0,376,0,0
 5085689,Drake,0,0,0,1
 5150655,Drake,0,29,0,0
 5152373,Drake,0,0,0,1
 5152380,Drake,0,0,0,1
 5155160,Drake,0,0,0,1
-5224670,Drake,0,0,0,4
-5224673,Drake,0,89,0,0
+5224670,Drake,0,0,0,5
+5224673,Drake,0,106,0,0
 5224677,Drake,0,0,0,3
 5224682,Drake,0,0,0,1
 5224684,Drake,0,0,0,2
+5224699,Drake,0,22,0,0
 5225940,Drake,13,0,74,0
 5298738,Drake,0,101,0,0
-5298741,Drake,0,0,0,4
+5298741,Drake,0,0,0,5
 5298749,Drake,0,0,0,1
 5298750,Drake,0,0,0,4
 5298754,Drake,0,21,108,0
-5298755,Drake,0,146,130,0
+5298755,Drake,0,158,130,0
 5298764,Drake,0,21,0,0
 5298765,Drake,0,0,0,2
-5298777,Drake,0,276,0,0
-5298780,Drake,0,480,8,0
+5298777,Drake,0,296,0,0
+5298780,Drake,0,537,8,0
 5298781,Drake,0,37,0,0
-5298782,Drake,0,0,0,3
+5298782,Drake,0,0,0,4
 5298783,Drake,0,0,0,1
 5306183,Drake,0,0,0,1
-5404620,Drake,1850,0,174,0
-5404623,Drake,293,0,182,0
-5404625,Drake,0,0,0,4
-5404630,Drake,0,180,207,0
+5404620,Drake,1937,0,193,0
+5404623,Drake,351,0,194,0
+5404625,Drake,0,0,0,5
+5404630,Drake,0,209,225,0
 5404635,Drake,0,0,0,5
 5404656,Drake,0,114,0,0
-3949586,Duke,0,76,0,0
-4602921,Duke,0,0,0,3
-4694149,Duke,1653,0,14,0
+3949586,Duke,0,82,0,0
+4602921,Duke,0,0,0,4
+4694149,Duke,1861,0,14,0
 4816323,Duke,0,23,0,0
-4869728,Duke,0,305,0,0
+4869728,Duke,0,321,0,0
 4870242,Duke,0,0,0,2
-4873588,Duke,0,29,261,0
-4879192,Duke,0,295,0,0
+4873588,Duke,0,29,262,0
+4879192,Duke,0,347,0,0
 4923041,Duke,0,0,0,2
 4923294,Duke,0,0,0,1
 5077267,Duke,0,0,0,1
 5078552,Duke,0,0,0,3
-5079610,Duke,0,111,0,0
-5081131,Duke,0,59,0,0
+5079610,Duke,0,127,0,0
+5081131,Duke,0,88,0,0
 5082164,Duke,0,0,0,3
-5084409,Duke,0,228,0,0
+5084409,Duke,0,236,0,0
 5086842,Duke,0,0,0,1
 5125153,Duke,0,0,0,2
 5127043,Duke,0,0,0,1
 5141404,Duke,0,0,0,3
 5146896,Duke,0,0,0,2
 5146906,Duke,0,0,0,3
-5161004,Duke,0,55,0,0
-5164332,Duke,28,314,887,0
+5161004,Duke,0,66,0,0
+5164332,Duke,28,318,1104,0
 5185699,Duke,92,0,38,0
-5200108,Duke,0,181,0,0
+5200108,Duke,0,247,0,0
 5208949,Duke,0,0,0,1
 5215542,Duke,0,0,0,4
 5216844,Duke,0,97,16,0
-5225215,Duke,0,0,0,3
+5225215,Duke,0,0,0,4
 5257397,Duke,0,0,0,1
 4683363,Duquesne,0,0,0,3
-4695784,Duquesne,1104,7,111,0
-4709781,Duquesne,0,127,18,0
-4812340,Duquesne,0,0,0,5
+4695784,Duquesne,1218,7,127,0
+4709781,Duquesne,0,131,18,0
+4812340,Duquesne,0,0,0,7
 5082989,Duquesne,0,0,0,4
-5083378,Duquesne,0,0,0,2
-5084317,Duquesne,0,26,482,0
+5083378,Duquesne,0,0,0,3
+5084317,Duquesne,0,26,609,0
 5088196,Duquesne,0,112,0,0
-5154883,Duquesne,0,0,0,2
-5159251,Duquesne,0,0,0,4
+5154883,Duquesne,0,0,0,3
+5159251,Duquesne,0,0,0,5
 5159280,Duquesne,0,61,0,0
 5159282,Duquesne,0,22,0,0
 5211900,Duquesne,0,0,0,2
 5215266,Duquesne,0,107,0,0
-5227107,Duquesne,0,224,0,0
-5227111,Duquesne,0,1,136,0
+5227107,Duquesne,0,307,0,0
+5227111,Duquesne,0,1,138,0
 5227112,Duquesne,0,0,0,2
 5227122,Duquesne,0,0,0,2
+5227125,Duquesne,0,0,0,1
 5227439,Duquesne,0,0,0,3
-5298154,Duquesne,0,78,0,0
+5298154,Duquesne,0,105,0,0
 5298162,Duquesne,0,339,0,0
 5298166,Duquesne,0,0,0,1
+5442954,Duquesne,0,0,0,1
 4433829,East Carolina,827,0,155,0
 4611524,East Carolina,0,0,0,1
 4685237,East Carolina,0,41,117,0
@@ -1614,36 +1658,37 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5226083,East Carolina,25,177,5,0
 5226091,East Carolina,0,0,0,1
 5296201,East Carolina,0,0,0,1
-4684279,East Tennessee State,0,204,0,0
-4838532,East Tennessee State,0,213,0,0
+4684279,East Tennessee State,0,220,0,0
+4838532,East Tennessee State,0,225,0,0
 5079327,East Tennessee State,0,0,0,3
-5079660,East Tennessee State,0,265,0,0
-5081766,East Tennessee State,0,0,298,0
+5079660,East Tennessee State,0,323,0,0
+5081766,East Tennessee State,0,14,343,0
 5084552,East Tennessee State,0,25,0,0
 5084555,East Tennessee State,0,59,0,0
-5095102,East Tennessee State,0,0,0,4
-5114331,East Tennessee State,40,372,-9,0
-5119434,East Tennessee State,0,135,0,0
+5095102,East Tennessee State,0,0,0,6
+5114331,East Tennessee State,40,412,-9,0
+5119434,East Tennessee State,0,143,0,0
 5126512,East Tennessee State,0,44,102,0
 5146914,East Tennessee State,0,0,0,2
 5153354,East Tennessee State,0,0,0,1
 5153763,East Tennessee State,0,0,0,1
 5162728,East Tennessee State,0,0,0,1
-5164309,East Tennessee State,1553,20,48,0
-5216698,East Tennessee State,0,81,654,0
-5219670,East Tennessee State,0,0,0,2
+5164309,East Tennessee State,1732,20,48,0
+5216698,East Tennessee State,0,90,743,0
+5219670,East Tennessee State,0,0,0,3
 5224010,East Tennessee State,0,0,0,6
 5224023,East Tennessee State,0,32,0,0
+5224361,East Tennessee State,0,0,0,1
 5279204,East Tennessee State,0,0,0,3
 5301872,East Tennessee State,0,0,0,2
 5301878,East Tennessee State,0,0,0,3
 5301890,East Tennessee State,0,0,0,1
-5301892,East Tennessee State,0,93,282,0
+5301892,East Tennessee State,0,109,360,0
 5305620,East Tennessee State,0,0,0,1
 5426162,East Tennessee State,0,52,0,0
 5441503,East Tennessee State,0,0,0,2
 5441509,East Tennessee State,0,0,0,1
-5441513,East Tennessee State,0,0,0,1
+5441513,East Tennessee State,0,0,0,2
 4706856,East Texas A&M,0,0,0,3
 4833372,East Texas A&M,0,128,0,0
 5085372,East Texas A&M,0,0,0,2
@@ -1675,16 +1720,16 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5441958,East Texas A&M,0,0,0,2
 5441969,East Texas A&M,0,0,0,1
 4879471,Eastern Illinois,0,0,0,2
-4917288,Eastern Illinois,0,155,578,0
+4917288,Eastern Illinois,0,161,591,0
 5083750,Eastern Illinois,0,55,0,0
 5084354,Eastern Illinois,0,0,0,3
 5088972,Eastern Illinois,0,0,0,1
 5096895,Eastern Illinois,0,0,0,1
-5113896,Eastern Illinois,1323,0,395,0
+5113896,Eastern Illinois,1410,0,427,0
 5153469,Eastern Illinois,0,0,0,1
-5154306,Eastern Illinois,0,94,36,0
+5154306,Eastern Illinois,0,121,36,0
 5225275,Eastern Illinois,0,0,0,1
-5225276,Eastern Illinois,0,82,219,0
+5225276,Eastern Illinois,0,126,217,0
 5225280,Eastern Illinois,0,0,0,1
 5225290,Eastern Illinois,0,0,0,6
 5225299,Eastern Illinois,0,200,0,0
@@ -1700,7 +1745,7 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5299767,Eastern Illinois,0,0,0,3
 5302146,Eastern Illinois,0,0,0,1
 5402554,Eastern Illinois,0,273,0,0
-5402555,Eastern Illinois,0,152,2,0
+5402555,Eastern Illinois,0,162,2,0
 5402556,Eastern Illinois,0,0,0,1
 5402564,Eastern Illinois,0,50,17,0
 4461429,Eastern Kentucky,0,367,0,0
@@ -1796,36 +1841,37 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405271,Eastern Washington,0,123,201,0
 5405290,Eastern Washington,0,58,0,0
 5405293,Eastern Washington,0,78,0,0
-560158,Elon,0,0,5,7
+560158,Elon,0,0,5,8
 4872623,Elon,0,0,0,1
-4877774,Elon,0,119,0,0
-5086527,Elon,0,0,0,3
-5086540,Elon,0,85,-3,0
+4877774,Elon,0,163,0,0
+5086527,Elon,0,0,0,4
+5086540,Elon,0,110,-3,0
 5095125,Elon,0,0,0,2
 5151062,Elon,486,0,31,0
 5155783,Elon,0,18,62,0
-5155785,Elon,0,0,0,5
-5155786,Elon,0,154,0,0
-5155802,Elon,0,106,0,0
+5155785,Elon,0,0,0,7
+5155786,Elon,0,205,0,0
+5155802,Elon,0,146,0,0
 5155803,Elon,0,203,0,0
-5156101,Elon,0,0,0,2
+5156101,Elon,0,0,0,3
 5162540,Elon,0,34,71,0
-5212705,Elon,192,0,30,0
+5212705,Elon,358,0,59,0
 5224795,Elon,0,0,0,1
 5224815,Elon,0,0,0,3
-5279242,Elon,0,110,0,0
+5279242,Elon,0,126,0,0
 5299668,Elon,0,28,0,0
-5299669,Elon,523,0,17,0
-5299670,Elon,0,229,0,0
+5299669,Elon,548,0,20,0
+5299670,Elon,0,232,0,0
 5299673,Elon,0,33,0,0
 5299676,Elon,0,0,0,1
-5299678,Elon,0,0,0,9
+5299678,Elon,0,0,0,10
 5299682,Elon,0,0,0,2
-5299694,Elon,0,23,0,0
-5299696,Elon,0,0,0,1
+5299694,Elon,0,31,0,0
+5299696,Elon,0,0,0,2
+5302514,Elon,0,0,0,1
 5308425,Elon,0,0,0,2
 5405041,Elon,0,0,0,3
-5405043,Elon,0,77,949,0
+5405043,Elon,0,94,1094,0
 5405049,Elon,0,0,0,1
 5405058,Elon,33,0,0,0
 5405072,Elon,0,15,26,0
@@ -1865,29 +1911,29 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5295815,Florida,0,10,203,0
 4431976,Florida A&M,143,0,59,0
 4877395,Florida A&M,0,17,0,1
-4877627,Florida A&M,0,45,127,0
+4877627,Florida A&M,0,45,165,0
 4880668,Florida A&M,94,0,2,0
-4910682,Florida A&M,0,105,229,0
+4910682,Florida A&M,0,105,274,0
 5078161,Florida A&M,0,0,0,1
 5082004,Florida A&M,0,46,0,0
 5084576,Florida A&M,0,0,0,1
 5087949,Florida A&M,0,0,0,1
 5088416,Florida A&M,0,0,0,1
-5099307,Florida A&M,0,329,0,0
-5125791,Florida A&M,0,0,0,3
+5099307,Florida A&M,0,429,0,0
+5125791,Florida A&M,0,0,0,4
 5152055,Florida A&M,0,26,0,0
 5154383,Florida A&M,0,13,0,5
 5194698,Florida A&M,0,23,0,0
 5216405,Florida A&M,0,44,0,0
 5227059,Florida A&M,0,0,0,1
-5227299,Florida A&M,0,296,8,0
+5227299,Florida A&M,0,301,8,0
 5234074,Florida A&M,0,0,0,1
-5301823,Florida A&M,0,0,0,5
+5301823,Florida A&M,0,0,0,6
 5303466,Florida A&M,0,68,0,0
-5305431,Florida A&M,0,285,0,0
+5305431,Florida A&M,0,418,0,0
 5431351,Florida A&M,0,0,0,2
 5442039,Florida A&M,0,61,18,0
-5442040,Florida A&M,1479,0,220,0
+5442040,Florida A&M,1762,0,223,0
 5442043,Florida A&M,0,0,0,1
 5442045,Florida A&M,0,126,7,0
 5442050,Florida A&M,0,0,0,1
@@ -1953,54 +1999,55 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4685447,Florida State,0,0,0,1
 4694352,Florida State,0,0,0,2
 4837247,Florida State,0,0,0,2
-4838679,Florida State,1996,0,448,0
+4838679,Florida State,2174,0,486,0
 4870922,Florida State,0,419,0,0
 4870955,Florida State,0,162,73,0
-4871076,Florida State,0,223,228,0
+4871076,Florida State,0,223,286,0
 4899348,Florida State,0,0,0,1
 4921255,Florida State,0,0,0,1
 5075960,Florida State,0,0,0,2
 5079566,Florida State,0,0,0,1
 5079738,Florida State,0,41,0,0
-5085388,Florida State,0,0,0,4
-5088153,Florida State,0,383,28,0
-5116973,Florida State,0,0,0,7
+5085388,Florida State,0,0,0,6
+5088153,Florida State,0,469,39,0
+5116973,Florida State,0,0,0,8
 5141560,Florida State,0,88,533,0
 5144685,Florida State,0,0,0,2
-5147679,Florida State,0,0,0,4
+5147679,Florida State,0,0,0,7
 5150837,Florida State,0,0,0,6
 5155173,Florida State,0,0,0,1
-5160086,Florida State,0,54,0,0
+5160086,Florida State,0,65,0,0
 5164345,Florida State,0,24,0,0
-5164350,Florida State,0,386,0,0
-5167701,Florida State,0,0,0,2
+5164350,Florida State,0,404,0,0
+5167701,Florida State,0,0,0,3
 5167703,Florida State,0,0,0,1
-5222974,Florida State,0,101,0,0
-5372196,Florida State,0,39,1,0
+5222974,Florida State,0,155,0,0
+5227705,Florida State,0,0,0,1
+5372196,Florida State,0,48,84,0
 5372197,Florida State,0,0,0,1
-4812381,Fordham,1133,0,313,0
+4812381,Fordham,1214,0,411,0
 4921424,Fordham,0,0,0,1
-5086202,Fordham,0,36,0,0
+5086202,Fordham,0,39,0,0
 5086208,Fordham,0,0,0,1
-5152606,Fordham,0,368,0,0
+5152606,Fordham,0,406,0,0
 5152609,Fordham,0,0,0,5
-5152610,Fordham,0,241,0,0
+5152610,Fordham,0,244,0,0
 5152619,Fordham,0,0,0,1
-5153837,Fordham,0,24,0,0
-5162384,Fordham,0,195,0,0
-5165890,Fordham,0,0,0,4
-5165892,Fordham,0,12,485,0
-5211918,Fordham,0,0,0,1
+5153837,Fordham,0,30,0,0
+5162384,Fordham,0,219,0,0
+5165890,Fordham,0,0,0,5
+5165892,Fordham,0,12,623,0
+5211918,Fordham,0,0,0,2
 5214364,Fordham,0,28,0,0
 5225540,Fordham,0,0,0,2
 5225544,Fordham,0,0,0,4
 5225551,Fordham,0,0,0,1
 5225553,Fordham,0,0,0,1
 5296037,Fordham,0,0,0,1
-5296145,Fordham,0,78,0,0
-5299088,Fordham,0,0,0,1
+5296145,Fordham,0,85,0,0
+5299088,Fordham,0,0,0,2
 5299089,Fordham,0,0,0,1
-5299091,Fordham,0,62,498,0
+5299091,Fordham,0,62,533,0
 5299101,Fordham,0,0,0,5
 5299111,Fordham,0,85,0,0
 5402130,Fordham,0,0,0,4
@@ -2039,19 +2086,19 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5295211,Fresno State,0,41,16,0
 5295221,Fresno State,0,87,0,0
 5295222,Fresno State,0,0,0,1
-4432703,Furman,286,0,62,0
-4685535,Furman,0,5,83,0
-5085504,Furman,0,336,15,0
+4432703,Furman,412,0,82,0
+4685535,Furman,0,8,84,0
+5085504,Furman,0,375,15,0
 5085846,Furman,0,197,0,0
-5085852,Furman,0,125,361,0
-5092983,Furman,0,442,0,0
-5094047,Furman,0,0,0,4
+5085852,Furman,0,135,468,0
+5092983,Furman,0,453,0,0
+5094047,Furman,0,0,0,5
 5144747,Furman,0,0,0,1
-5148424,Furman,0,31,0,0
+5148424,Furman,0,46,0,0
 5153370,Furman,0,0,0,5
 5153375,Furman,0,0,0,3
 5153378,Furman,0,0,0,1
-5153391,Furman,0,21,0,0
+5153391,Furman,0,64,0,0
 5153393,Furman,0,0,0,1
 5153394,Furman,0,0,0,4
 5224083,Furman,0,0,0,3
@@ -2060,77 +2107,79 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5224098,Furman,0,0,0,3
 5224111,Furman,0,0,0,3
 5225385,Furman,0,0,0,3
-5300481,Furman,0,39,0,0
+5300481,Furman,0,44,0,0
 5300489,Furman,0,30,88,0
 5300495,Furman,0,0,0,7
 5413484,Furman,1013,0,143,0
 5439109,Furman,140,0,179,0
+5439110,Furman,0,0,0,2
 5439112,Furman,0,0,0,3
 5439113,Furman,0,0,0,2
 5439114,Furman,0,110,0,0
-1967653,Gardner-Webb,0,115,0,0
+1967653,Gardner-Webb,0,120,0,0
 4683136,Gardner-Webb,0,35,0,0
-4869817,Gardner-Webb,1684,0,33,0
+4869817,Gardner-Webb,1915,0,33,0
 4870624,Gardner-Webb,0,0,0,2
-4923032,Gardner-Webb,0,414,0,0
-4923292,Gardner-Webb,0,0,0,2
-4950399,Gardner-Webb,0,0,0,4
+4923032,Gardner-Webb,0,429,0,0
+4923292,Gardner-Webb,0,0,0,3
+4950399,Gardner-Webb,0,0,0,5
 5082551,Gardner-Webb,0,35,0,0
 5083855,Gardner-Webb,0,0,0,4
 5085652,Gardner-Webb,0,0,0,3
 5086446,Gardner-Webb,0,0,0,2
 5092212,Gardner-Webb,0,0,0,2
-5093118,Gardner-Webb,0,0,0,1
+5093118,Gardner-Webb,0,0,0,2
 5121744,Gardner-Webb,0,20,0,0
 5148903,Gardner-Webb,0,0,0,1
 5152845,Gardner-Webb,0,0,0,5
-5163071,Gardner-Webb,0,31,364,0
-5231119,Gardner-Webb,0,121,418,0
+5163071,Gardner-Webb,0,31,395,0
+5231119,Gardner-Webb,0,121,442,0
 5299466,Gardner-Webb,0,0,0,3
 5299467,Gardner-Webb,0,0,0,1
-5299473,Gardner-Webb,0,694,0,0
-5299474,Gardner-Webb,0,0,0,4
-5299493,Gardner-Webb,0,202,2,0
+5299473,Gardner-Webb,0,834,0,0
+5299474,Gardner-Webb,0,0,0,6
+5299493,Gardner-Webb,0,284,2,0
 5299497,Gardner-Webb,0,0,3,2
 5300046,Gardner-Webb,0,135,0,0
-5406698,Gardner-Webb,0,71,115,0
+5406698,Gardner-Webb,0,71,121,0
 5407681,Gardner-Webb,0,0,-23,0
 5415903,Gardner-Webb,0,35,-10,0
 5435093,Gardner-Webb,0,0,0,3
 5435653,Gardner-Webb,0,0,0,5
 5439733,Gardner-Webb,86,0,15,0
 5439734,Gardner-Webb,0,208,0,0
-5439737,Gardner-Webb,379,0,111,0
-5439738,Gardner-Webb,0,0,0,1
-4685450,Georgetown,0,345,2,0
-5086160,Georgetown,0,0,0,4
+5439737,Gardner-Webb,390,0,111,0
+5439738,Gardner-Webb,0,0,0,2
+4685450,Georgetown,0,393,2,0
+5086160,Georgetown,0,0,0,6
 5152626,Georgetown,73,0,0,0
-5152628,Georgetown,0,0,0,6
+5152628,Georgetown,0,0,0,7
 5152630,Georgetown,0,74,0,0
+5152635,Georgetown,0,0,0,1
 5152640,Georgetown,0,0,0,2
 5152649,Georgetown,0,22,0,0
-5152650,Georgetown,0,72,0,0
-5165468,Georgetown,0,126,0,0
-5172418,Georgetown,0,0,0,1
-5219637,Georgetown,0,64,479,0
+5152650,Georgetown,0,76,0,0
+5165468,Georgetown,0,130,0,0
+5172418,Georgetown,0,0,0,2
+5219637,Georgetown,0,80,557,0
 5225715,Georgetown,473,0,84,0
 5225716,Georgetown,0,0,0,2
 5225719,Georgetown,0,0,0,2
-5225721,Georgetown,0,0,342,0
+5225721,Georgetown,0,0,412,0
 5225724,Georgetown,0,0,0,2
-5225733,Georgetown,0,258,0,0
-5225735,Georgetown,0,138,0,0
-5230185,Georgetown,0,0,0,2
+5225733,Georgetown,0,334,0,0
+5225735,Georgetown,0,144,0,0
+5230185,Georgetown,0,0,0,3
 5299196,Georgetown,0,0,0,4
-5299199,Georgetown,0,2,75,0
-5299200,Georgetown,0,0,-2,3
+5299199,Georgetown,0,2,107,0
+5299200,Georgetown,0,0,-2,4
 5299202,Georgetown,0,0,0,3
 5299205,Georgetown,0,0,0,4
 5299211,Georgetown,0,0,0,3
 5299219,Georgetown,0,0,0,1
-5402159,Georgetown,660,0,59,0
+5402159,Georgetown,827,0,72,0
 5402162,Georgetown,0,0,0,1
-5402179,Georgetown,0,89,-5,0
+5402179,Georgetown,0,102,-5,0
 4685578,Georgia,1513,0,268,0
 4870716,Georgia,0,0,0,2
 4870822,Georgia,0,0,0,2
@@ -2198,37 +2247,39 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5390042,Georgia Southern,0,0,0,2
 5390044,Georgia Southern,0,36,172,0
 4611768,Georgia State,0,0,0,1
-4812474,Georgia State,50,232,0,0
+4812474,Georgia State,50,281,0,0
 4888163,Georgia State,0,47,0,0
-5083490,Georgia State,349,0,97,0
-5141396,Georgia State,0,0,0,2
-5146273,Georgia State,0,155,250,0
+5083490,Georgia State,464,0,105,0
+5095071,Georgia State,0,0,0,1
+5141396,Georgia State,0,0,0,3
+5146273,Georgia State,0,163,324,0
 5147202,Georgia State,0,0,0,2
-5149004,Georgia State,0,132,0,0
+5149004,Georgia State,0,147,0,0
 5153891,Georgia State,0,0,0,3
 5157272,Georgia State,0,0,0,2
-5166484,Georgia State,0,0,0,6
+5166484,Georgia State,0,0,0,9
 5175175,Georgia State,0,50,0,0
 5193926,Georgia State,1329,6,209,0
 5216495,Georgia State,0,192,0,0
 5216655,Georgia State,0,0,0,4
 5217752,Georgia State,0,12,20,0
-5218720,Georgia State,0,41,18,0
+5218720,Georgia State,0,42,36,0
 5220697,Georgia State,0,27,0,0
-5225013,Georgia State,0,445,0,0
+5225013,Georgia State,0,462,0,0
 5225717,Georgia State,0,41,3,0
-5229332,Georgia State,0,159,0,0
+5226466,Georgia State,0,0,0,1
+5229332,Georgia State,0,181,0,0
 5229486,Georgia State,0,0,0,1
-5233868,Georgia State,0,29,394,0
-5244023,Georgia State,0,116,418,0
+5233868,Georgia State,0,29,517,0
+5244023,Georgia State,0,119,468,0
 5255517,Georgia State,0,0,0,1
 5292031,Georgia State,0,20,4,0
 5295772,Georgia State,0,0,0,4
-5295773,Georgia State,0,0,0,2
-5295776,Georgia State,0,0,0,8
+5295773,Georgia State,0,0,0,4
+5295776,Georgia State,0,0,0,9
 5308878,Georgia State,0,22,0,0
 5327509,Georgia State,0,0,0,1
-5381373,Georgia State,0,0,0,1
+5381373,Georgia State,0,0,0,2
 5381392,Georgia State,0,0,0,1
 4703030,Georgia Tech,0,94,0,0
 4812383,Georgia Tech,0,0,0,3
@@ -2289,60 +2340,62 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5301629,Grambling,0,0,0,2
 5439957,Grambling,0,70,0,0
 5439958,Grambling,0,0,0,1
-2226690,Hampton,0,0,0,4
+2226690,Hampton,0,0,0,5
 4921439,Hampton,0,0,0,1
 5085787,Hampton,0,0,0,1
 5086893,Hampton,0,34,164,0
-5088851,Hampton,502,0,130,0
-5093819,Hampton,0,0,0,2
-5098135,Hampton,0,247,0,0
-5121745,Hampton,0,76,31,0
+5088851,Hampton,568,0,146,0
+5089342,Hampton,0,0,0,2
+5093819,Hampton,0,0,0,3
+5098135,Hampton,0,256,0,0
+5121745,Hampton,0,76,32,0
 5146885,Hampton,0,15,0,1
 5156293,Hampton,99,0,2,0
-5169311,Hampton,72,81,0,0
+5169311,Hampton,72,120,0,0
 5226455,Hampton,0,22,-1,0
-5299910,Hampton,0,0,0,2
-5299911,Hampton,0,76,154,0
+5299910,Hampton,0,0,0,3
+5299911,Hampton,0,87,201,0
 5299912,Hampton,0,134,16,0
 5299916,Hampton,0,67,0,0
 5299917,Hampton,0,0,0,1
 5299926,Hampton,0,0,0,1
-5299941,Hampton,0,93,0,0
-5300418,Hampton,0,39,0,0
-5405364,Hampton,0,30,3,0
-5405365,Hampton,432,0,93,0
-5405369,Hampton,0,143,-2,0
+5299934,Hampton,0,0,0,1
+5299941,Hampton,0,105,0,0
+5300418,Hampton,0,44,0,0
+5405364,Hampton,0,43,3,0
+5405365,Hampton,531,0,114,0
+5405369,Hampton,0,205,-2,0
 5405370,Hampton,0,3,77,0
 5405371,Hampton,0,0,0,2
 5405373,Hampton,0,0,0,1
 5405376,Hampton,0,0,0,2
 5083571,Harvard,0,35,65,0
 5170832,Harvard,0,0,0,5
-5170865,Harvard,0,17,274,0
+5170865,Harvard,0,17,292,0
 5170927,Harvard,0,0,0,1
 5170928,Harvard,0,0,0,2
 5170929,Harvard,0,0,0,1
-5170931,Harvard,0,84,0,0
-5174065,Harvard,0,0,0,2
+5170931,Harvard,0,132,0,0
+5174065,Harvard,0,0,0,3
 5174070,Harvard,0,0,0,5
 5174073,Harvard,0,0,0,1
 5174080,Harvard,0,145,0,0
-5226850,Harvard,0,24,144,0
-5226853,Harvard,0,0,0,16
+5226850,Harvard,0,24,291,0
+5226853,Harvard,0,0,3,17
 5226859,Harvard,0,55,57,0
-5226861,Harvard,0,0,0,1
+5226861,Harvard,0,0,0,2
 5226864,Harvard,0,0,0,1
-5295915,Harvard,18,0,70,0
-5299769,Harvard,0,152,0,0
+5295915,Harvard,18,0,71,0
+5299769,Harvard,0,164,0,0
 5299770,Harvard,0,0,0,2
-5299776,Harvard,1698,0,61,0
-5299780,Harvard,0,194,0,0
+5299776,Harvard,1873,0,61,0
+5299780,Harvard,0,242,0,0
 5299781,Harvard,0,10,93,0
-5299822,Harvard,0,243,0,0
+5299822,Harvard,0,251,0,0
 5299834,Harvard,0,0,0,1
 5327010,Harvard,0,0,58,0
 5442860,Harvard,0,0,0,1
-5442864,Harvard,0,498,92,0
+5442864,Harvard,0,557,102,0
 5442877,Harvard,0,247,0,0
 4432712,Hawai'i,0,0,0,4
 4683516,Hawai'i,0,0,0,3
@@ -2374,34 +2427,35 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5218881,Hawai'i,7,283,43,0
 5218882,Hawai'i,0,155,0,0
 5295239,Hawai'i,0,0,0,2
-4870820,Holy Cross,0,48,238,0
-5145820,Holy Cross,0,0,0,3
-5146936,Holy Cross,0,374,-5,0
-5152159,Holy Cross,0,0,0,5
-5154302,Holy Cross,1409,0,76,0
+4870820,Holy Cross,0,51,256,0
+5145820,Holy Cross,0,0,0,4
+5146936,Holy Cross,0,447,2,0
+5152159,Holy Cross,0,0,0,7
+5154302,Holy Cross,1558,0,130,0
 5156384,Holy Cross,0,0,0,3
 5157385,Holy Cross,0,0,0,1
-5157387,Holy Cross,0,0,0,3
-5157393,Holy Cross,0,0,0,5
+5157387,Holy Cross,0,0,0,4
+5157393,Holy Cross,0,0,0,6
 5157396,Holy Cross,0,0,0,3
 5157397,Holy Cross,0,0,0,3
-5157411,Holy Cross,0,26,0,0
+5157411,Holy Cross,0,28,0,0
 5211751,Holy Cross,0,0,0,2
-5213299,Holy Cross,0,334,0,0
-5214367,Holy Cross,0,171,760,0
+5213299,Holy Cross,0,351,0,0
+5214367,Holy Cross,17,213,811,0
 5220696,Holy Cross,0,103,0,0
 5225776,Holy Cross,0,0,0,1
 5225777,Holy Cross,0,0,0,1
-5225780,Holy Cross,0,0,0,5
-5225782,Holy Cross,0,81,0,0
+5225780,Holy Cross,0,0,0,7
+5225782,Holy Cross,0,89,0,0
 5225791,Holy Cross,0,25,0,0
 5225794,Holy Cross,0,141,8,0
 5229434,Holy Cross,0,0,0,1
-5231612,Holy Cross,9,69,147,0
+5231612,Holy Cross,16,69,158,0
 5299282,Holy Cross,0,0,0,1
-5299295,Holy Cross,0,93,2,0
+5299295,Holy Cross,0,112,2,0
 5299297,Holy Cross,0,0,0,2
 5402192,Holy Cross,0,0,0,1
+5402195,Holy Cross,0,0,0,2
 5402197,Holy Cross,0,0,0,1
 4429771,Houston,0,0,0,1
 4567252,Houston,0,0,0,3
@@ -2583,28 +2637,28 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5369891,Illinois,0,0,0,2
 5369903,Illinois,0,0,0,1
 4833241,Illinois State,671,0,46,0
-4878994,Illinois State,0,21,420,0
+4878994,Illinois State,0,23,462,0
 4879807,Illinois State,0,0,0,1
-5087039,Illinois State,0,208,0,0
+5087039,Illinois State,0,220,0,0
 5087234,Illinois State,0,0,0,5
-5087241,Illinois State,0,65,0,0
-5089279,Illinois State,0,25,213,0
+5087241,Illinois State,0,76,0,0
+5089279,Illinois State,0,40,260,0
 5168718,Illinois State,0,0,0,1
 5168719,Illinois State,0,0,0,4
 5168735,Illinois State,0,0,0,6
 5169520,Illinois State,0,26,0,0
 5225297,Illinois State,0,118,0,0
-5227699,Illinois State,823,0,55,0
-5227704,Illinois State,0,417,0,0
+5227699,Illinois State,975,0,50,0
+5227704,Illinois State,0,474,0,0
 5227708,Illinois State,0,0,0,3
-5227714,Illinois State,0,0,0,5
+5227714,Illinois State,0,0,0,7
 5227719,Illinois State,0,0,0,1
 5227723,Illinois State,0,215,0,0
-5227724,Illinois State,0,0,0,5
-5293901,Illinois State,0,0,0,3
+5227724,Illinois State,0,0,0,6
+5293901,Illinois State,0,0,0,4
 5298092,Illinois State,0,0,0,1
-5298093,Illinois State,0,57,0,0
-5298094,Illinois State,23,0,165,0
+5298093,Illinois State,0,103,0,0
+5298094,Illinois State,23,9,165,0
 5298095,Illinois State,0,0,0,4
 5298097,Illinois State,0,81,0,0
 5298101,Illinois State,0,47,174,0
@@ -2729,61 +2783,67 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5300482,Iowa,0,58,0,0
 5300856,Iowa,0,452,55,0
 4718462,Iowa State,0,0,0,1
-4837269,Iowa State,0,246,23,0
-4875853,Iowa State,0,236,0,0
+4837269,Iowa State,0,274,23,0
+4875853,Iowa State,0,255,0,0
 4920898,Iowa State,0,0,0,2
-5080403,Iowa State,1428,0,240,0
+5080403,Iowa State,1684,0,291,0
 5081857,Iowa State,0,0,0,1
-5081882,Iowa State,0,156,0,0
+5081882,Iowa State,0,176,0,0
 5084892,Iowa State,0,0,0,3
-5085573,Iowa State,0,0,0,2
-5110516,Iowa State,0,0,55,0
+5085122,Iowa State,0,0,0,1
+5085573,Iowa State,0,0,0,3
+5110516,Iowa State,0,3,66,0
 5120867,Iowa State,0,0,0,1
 5125393,Iowa State,0,0,0,2
 5140620,Iowa State,58,0,51,0
-5150693,Iowa State,0,108,0,0
-5153035,Iowa State,0,0,0,4
+5150693,Iowa State,0,117,0,0
+5153035,Iowa State,0,0,0,5
 5153062,Iowa State,0,0,0,1
 5161735,Iowa State,0,40,12,0
 5174446,Iowa State,0,0,0,2
 5192958,Iowa State,0,212,0,0
 5193049,Iowa State,0,0,0,4
-5194663,Iowa State,0,82,42,0
+5194663,Iowa State,0,134,42,0
 5203478,Iowa State,0,0,29,0
-5218664,Iowa State,0,32,0,0
-5219258,Iowa State,48,92,936,0
+5218664,Iowa State,0,67,0,0
+5219255,Iowa State,0,27,0,0
+5219258,Iowa State,48,112,1117,0
 5224370,Iowa State,0,0,0,4
 5263572,Iowa State,0,0,0,1
 5263613,Iowa State,0,24,0,0
 5264502,Iowa State,0,0,0,7
+5290954,Iowa State,0,21,0,0
 5311263,Iowa State,0,0,0,1
-5326123,Iowa State,0,286,0,0
+5326123,Iowa State,0,321,0,0
+5331611,Iowa State,0,0,0,1
 5383006,Iowa State,0,0,0,1
 4685462,Jackson State,0,0,0,1
 4685531,Jackson State,0,0,0,4
-4712885,Jackson State,0,0,0,2
-4714427,Jackson State,0,141,0,0
+4712885,Jackson State,0,0,0,3
+4714427,Jackson State,0,236,0,0
 4881961,Jackson State,0,43,-2,0
 5077392,Jackson State,0,0,0,2
-5083976,Jackson State,0,5,159,0
-5083981,Jackson State,0,45,0,0
+5083976,Jackson State,0,5,180,0
+5083981,Jackson State,0,98,0,0
 5157537,Jackson State,155,0,95,0
 5162077,Jackson State,0,0,0,2
 5162176,Jackson State,0,0,0,5
-5198479,Jackson State,0,245,0,0
+5198479,Jackson State,0,295,0,0
 5227398,Jackson State,0,0,0,1
 5227401,Jackson State,0,0,0,5
 5227403,Jackson State,0,23,400,0
 5227406,Jackson State,0,0,0,2
-5229597,Jackson State,0,450,37,0
-5271363,Jackson State,0,53,293,0
+5229597,Jackson State,0,501,37,0
+5271363,Jackson State,0,64,322,0
 5295534,Jackson State,0,0,0,1
-5298925,Jackson State,967,0,108,0
+5295739,Jackson State,0,0,0,2
+5298925,Jackson State,1216,0,146,0
 5298941,Jackson State,0,0,0,1
 5435768,Jackson State,0,43,0,0
 5441290,Jackson State,0,34,3,0
 5441293,Jackson State,0,0,0,2
 5441300,Jackson State,0,0,0,1
+5441303,Jackson State,0,0,0,1
 4685351,Jacksonville State,0,0,0,2
 4685505,Jacksonville State,0,0,0,1
 4920148,Jacksonville State,0,0,0,3
@@ -2887,29 +2947,29 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4870857,Kansas State,1165,0,451,0
 4894839,Kansas State,0,73,37,0
 4920187,Kansas State,0,84,0,0
-4921113,Kansas State,0,311,27,0
+4921113,Kansas State,0,318,31,0
 4921519,Kansas State,0,0,0,2
 4923029,Kansas State,0,0,0,3
 5075706,Kansas State,0,0,0,1
-5078225,Kansas State,0,339,4,0
+5078225,Kansas State,0,350,4,0
 5078916,Kansas State,0,138,350,0
 5079426,Kansas State,0,0,0,3
 5086452,Kansas State,0,0,0,1
 5104035,Kansas State,0,0,0,1
-5124584,Kansas State,226,0,62,0
-5125335,Kansas State,0,73,473,0
+5124584,Kansas State,332,0,85,0
+5125335,Kansas State,0,73,523,0
 5151087,Kansas State,0,0,0,2
-5154323,Kansas State,0,0,0,4
-5164346,Kansas State,0,125,0,0
+5154323,Kansas State,0,0,0,5
+5164346,Kansas State,0,140,0,0
 5189028,Kansas State,0,0,0,4
 5193496,Kansas State,0,0,28,0
 5193653,Kansas State,0,0,0,4
-5195735,Kansas State,0,0,0,2
+5195735,Kansas State,0,0,0,4
 5215552,Kansas State,0,0,0,7
 5245108,Kansas State,0,0,0,2
 5265481,Kansas State,0,0,0,1
 5278414,Kansas State,0,0,0,1
-5384681,Kansas State,0,273,0,0
+5384681,Kansas State,0,346,0,0
 5384689,Kansas State,0,0,0,1
 4570574,Kennesaw State,0,0,0,4
 4685422,Kennesaw State,0,0,0,2
@@ -3022,11 +3082,11 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5227998,LSU,0,76,0,0
 5229444,LSU,0,0,0,2
 5266919,LSU,0,55,0,0
-5083853,Lafayette,0,0,0,7
+5083853,Lafayette,0,0,0,8
 5134550,Lafayette,0,0,0,6
 5141354,Lafayette,0,0,0,1
 5150684,Lafayette,0,0,0,1
-5152661,Lafayette,0,309,7,0
+5152661,Lafayette,0,330,7,0
 5152668,Lafayette,0,3,21,0
 5152676,Lafayette,0,0,0,1
 5152682,Lafayette,0,68,0,0
@@ -3035,22 +3095,23 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5155724,Lafayette,0,0,0,1
 5178080,Lafayette,0,0,0,3
 5219078,Lafayette,0,0,0,3
-5225797,Lafayette,0,546,0,0
-5225799,Lafayette,5,0,96,0
-5225800,Lafayette,0,23,597,0
+5225797,Lafayette,0,604,0,0
+5225799,Lafayette,25,0,185,0
+5225800,Lafayette,0,50,665,0
 5225805,Lafayette,0,0,0,2
 5225806,Lafayette,0,0,0,1
 5225810,Lafayette,0,0,0,4
-5271361,Lafayette,567,0,81,0
-5299431,Lafayette,0,73,0,0
+5271361,Lafayette,697,0,95,0
+5299431,Lafayette,0,82,0,0
 5299432,Lafayette,0,48,0,0
 5299437,Lafayette,0,0,24,0
 5299440,Lafayette,0,0,0,11
 5299441,Lafayette,0,0,0,2
+5299454,Lafayette,0,19,7,0
 5299455,Lafayette,0,29,0,0
 5299456,Lafayette,0,0,0,1
-5402213,Lafayette,0,141,16,0
-5402220,Lafayette,0,41,222,0
+5402213,Lafayette,0,171,16,0
+5402220,Lafayette,0,41,250,0
 4685257,Lamar,0,0,0,1
 4812356,Lamar,0,149,0,0
 4911932,Lamar,0,30,0,0
@@ -3149,57 +3210,58 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5296294,Liberty,0,111,270,0
 5296296,Liberty,0,0,0,3
 5382935,Liberty,0,0,0,1
-4885443,Lindenwood,0,18,40,0
-5086086,Lindenwood,0,321,4,0
+4885443,Lindenwood,0,18,51,0
+5086086,Lindenwood,0,377,4,0
 5086090,Lindenwood,0,0,0,1
-5086091,Lindenwood,0,82,336,0
-5091557,Lindenwood,0,0,0,3
+5086091,Lindenwood,0,93,392,0
+5091557,Lindenwood,0,0,0,5
 5154162,Lindenwood,0,0,0,2
-5165074,Lindenwood,0,392,0,0
-5165078,Lindenwood,0,81,213,0
-5215537,Lindenwood,0,0,0,1
-5219859,Lindenwood,0,0,0,5
+5165074,Lindenwood,0,402,0,0
+5165078,Lindenwood,0,81,279,0
+5215537,Lindenwood,0,0,0,2
+5219859,Lindenwood,0,0,0,6
 5225287,Lindenwood,0,0,0,2
-5225648,Lindenwood,1376,0,338,0
+5225648,Lindenwood,1513,0,410,0
 5225649,Lindenwood,0,0,0,2
 5225652,Lindenwood,0,0,0,1
 5225673,Lindenwood,0,0,0,2
-5225675,Lindenwood,0,0,0,4
-5298517,Lindenwood,0,39,0,0
+5225675,Lindenwood,0,0,0,5
+5298517,Lindenwood,0,60,0,0
 5298518,Lindenwood,34,0,41,0
 5298519,Lindenwood,0,0,0,2
 5298525,Lindenwood,0,0,0,2
 5298527,Lindenwood,0,123,0,0
-5298538,Lindenwood,0,200,0,0
+5298538,Lindenwood,0,239,0,0
 5298539,Lindenwood,0,134,5,0
-5402596,Lindenwood,0,0,0,1
+5298541,Lindenwood,0,0,0,1
+5402596,Lindenwood,0,0,0,2
 5402597,Lindenwood,0,0,30,0
 4837195,Long Island University,589,0,313,0
-4885342,Long Island University,0,0,0,2
-4892208,Long Island University,0,0,0,2
-5079320,Long Island University,0,88,25,0
+4885342,Long Island University,0,0,0,3
+4892208,Long Island University,0,0,0,3
+5079320,Long Island University,0,88,30,0
 5083850,Long Island University,0,0,0,3
-5087070,Long Island University,4,11,366,0
-5095771,Long Island University,128,0,142,0
+5087070,Long Island University,4,13,391,0
+5095771,Long Island University,258,0,244,0
 5159288,Long Island University,0,0,23,0
-5219678,Long Island University,0,138,17,0
+5219678,Long Island University,0,187,18,0
 5230028,Long Island University,0,0,0,2
-5230030,Long Island University,0,0,0,6
-5230031,Long Island University,0,0,58,0
-5230035,Long Island University,0,160,17,0
+5230030,Long Island University,0,0,0,7
+5230031,Long Island University,0,12,64,0
+5230035,Long Island University,0,171,17,0
 5232065,Long Island University,0,3,25,0
 5295327,Long Island University,0,0,0,2
 5303530,Long Island University,0,0,30,0
 5304044,Long Island University,0,0,0,2
-5304535,Long Island University,0,0,0,6
+5304535,Long Island University,0,0,0,7
 5304953,Long Island University,0,80,0,0
 5304955,Long Island University,0,96,0,0
 5432138,Long Island University,0,0,0,1
 5433305,Long Island University,0,0,0,4
-5438683,Long Island University,0,7,39,0
+5438683,Long Island University,0,7,46,0
 5438687,Long Island University,0,0,154,0
 5438690,Long Island University,0,0,0,2
-5438704,Long Island University,0,123,0,0
+5438704,Long Island University,0,126,0,0
 4702749,Louisiana,0,0,-2,1
 4871010,Louisiana,0,124,0,0
 4871091,Louisiana,1342,0,459,0
@@ -3313,33 +3375,36 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405439,Maine,0,21,0,0
 5405446,Maine,0,0,27,0
 5405455,Maine,0,75,0,0
-4870786,Marist,0,190,22,0
-4880760,Marist,0,319,0,0
+4870786,Marist,0,203,22,0
+4880760,Marist,0,324,0,0
 5081981,Marist,0,116,0,0
 5087671,Marist,0,0,0,1
-5088964,Marist,1795,0,270,0
+5088964,Marist,1894,0,432,0
+5088987,Marist,0,0,0,1
 5158804,Marist,0,0,0,1
-5158809,Marist,0,51,102,0
+5158809,Marist,0,51,128,0
+5158815,Marist,0,0,0,2
 5158828,Marist,0,0,0,1
 5225315,Marist,0,0,0,1
 5225986,Marist,0,121,0,0
-5225991,Marist,0,55,104,0
-5225994,Marist,0,0,0,8
-5225999,Marist,0,0,0,5
+5225991,Marist,0,57,104,0
+5225994,Marist,0,0,0,9
+5225999,Marist,0,0,0,6
+5226003,Marist,0,0,0,1
 5226005,Marist,0,0,0,2
 5226006,Marist,0,0,0,2
 5226017,Marist,0,0,0,3
-5226677,Marist,0,421,0,0
-5298895,Marist,0,433,43,0
+5226677,Marist,0,477,0,0
+5298895,Marist,0,433,42,0
 5298896,Marist,25,0,8,0
-5298899,Marist,0,0,0,7
+5298899,Marist,0,0,0,8
 5298900,Marist,0,0,0,1
 5298901,Marist,0,0,0,6
 5298908,Marist,0,0,0,2
 5298921,Marist,0,0,0,1
-5298922,Marist,0,0,0,1
-5412445,Marist,0,0,0,2
-5419632,Marist,0,86,562,0
+5298922,Marist,0,0,0,2
+5412445,Marist,0,0,0,3
+5419632,Marist,0,109,621,0
 5429869,Marist,0,0,0,2
 5439187,Marist,0,0,0,4
 4430746,Marshall,0,0,0,2
@@ -3370,32 +3435,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5290597,Marshall,0,0,0,2
 5300926,Marshall,0,82,188,0
 5394434,Marshall,0,0,0,3
-4685393,Maryland,0,70,2,0
-4838539,Maryland,0,0,0,3
-4838556,Maryland,0,304,0,0
-4870792,Maryland,0,0,0,3
+4685393,Maryland,0,89,2,0
+4838539,Maryland,0,0,0,4
+4838556,Maryland,0,321,0,0
+4870792,Maryland,0,0,0,4
 4873464,Maryland,0,0,0,1
 4912140,Maryland,0,0,0,9
 4921326,Maryland,0,0,0,1
 4940236,Maryland,0,28,0,0
-5079450,Maryland,0,0,0,2
-5092410,Maryland,0,215,0,0
+5079450,Maryland,0,0,0,3
+5092410,Maryland,0,219,1,0
 5141419,Maryland,0,16,57,0
-5141522,Maryland,0,33,208,0
+5141522,Maryland,0,41,213,0
 5141529,Maryland,0,0,0,1
 5141676,Maryland,0,0,0,2
-5141682,Maryland,0,0,0,2
-5141695,Maryland,1754,0,185,0
+5141682,Maryland,0,0,0,3
+5141695,Maryland,2017,0,224,0
 5148665,Maryland,0,0,0,4
 5155142,Maryland,0,0,0,1
 5178090,Maryland,0,0,0,1
-5193298,Maryland,0,658,46,0
-5209297,Maryland,0,0,0,1
+5193298,Maryland,0,795,46,0
+5209297,Maryland,0,0,0,3
 5213231,Maryland,0,70,0,0
-5213305,Maryland,0,0,0,1
-5218946,Maryland,0,0,0,1
+5213305,Maryland,0,0,0,2
+5218946,Maryland,0,0,0,2
 5220193,Maryland,0,0,0,1
-5295550,Maryland,0,88,327,0
+5295550,Maryland,0,88,426,0
 4688904,Massachusetts,0,178,3,0
 4700147,Massachusetts,0,211,0,0
 4709810,Massachusetts,0,0,0,1
@@ -3488,14 +3553,14 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5382927,Memphis,0,0,110,0
 4838520,Mercer,0,0,31,0
 4870616,Mercer,0,4,51,0
-5092806,Mercer,6,267,4,0
+5092806,Mercer,6,311,4,0
 5109796,Mercer,0,0,0,1
-5152839,Mercer,835,0,189,0
-5153401,Mercer,0,649,24,0
+5152839,Mercer,875,0,189,0
+5153401,Mercer,3,719,27,0
 5153410,Mercer,0,31,0,0
 5154372,Mercer,0,28,0,0
 5176019,Mercer,0,0,0,1
-5193282,Mercer,684,6,524,0
+5193282,Mercer,802,6,605,0
 5219666,Mercer,0,0,0,9
 5224165,Mercer,0,57,0,0
 5224266,Mercer,0,72,0,0
@@ -3504,15 +3569,15 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5300302,Mercer,0,0,0,5
 5300307,Mercer,0,0,0,1
 5300310,Mercer,0,0,0,1
-5300313,Mercer,0,0,0,2
-5300933,Mercer,0,0,0,5
-5417142,Mercer,0,178,96,0
-5437957,Mercer,0,106,506,0
+5300313,Mercer,0,0,0,3
+5300933,Mercer,0,0,0,6
+5417142,Mercer,0,218,101,0
+5437957,Mercer,0,106,602,0
 5441252,Mercer,0,46,0,0
-5441258,Mercer,0,45,403,0
+5441258,Mercer,0,49,413,0
 5441259,Mercer,0,0,0,1
 5441260,Mercer,0,36,0,0
-5441261,Mercer,0,0,0,2
+5441261,Mercer,0,0,0,3
 5441268,Mercer,0,0,0,4
 5441289,Mercer,0,0,0,1
 4433968,Mercyhurst,0,0,56,0
@@ -3718,13 +3783,13 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5383051,Middle Tennessee,0,0,0,3
 5383058,Middle Tennessee,0,180,0,0
 4808762,Minnesota,0,0,0,1
-4831976,Minnesota,0,470,22,0
+4831976,Minnesota,0,495,22,0
 4832823,Minnesota,0,0,0,1
-4837371,Minnesota,0,0,0,2
+4837371,Minnesota,0,0,0,3
 4870787,Minnesota,0,0,0,3
 4908813,Minnesota,0,0,0,3
 4917620,Minnesota,0,0,0,6
-4920901,Minnesota,0,176,219,0
+4920901,Minnesota,0,194,265,0
 4923042,Minnesota,0,0,0,3
 4924139,Minnesota,0,0,0,3
 4941011,Minnesota,0,0,0,4
@@ -3734,15 +3799,16 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5079377,Minnesota,0,0,0,1
 5082548,Minnesota,0,5,23,0
 5141794,Minnesota,0,0,0,1
-5144959,Minnesota,1554,0,14,0
-5144962,Minnesota,0,241,0,0
-5164749,Minnesota,0,379,32,0
-5207988,Minnesota,0,0,0,4
+5144959,Minnesota,1774,0,14,0
+5144962,Minnesota,0,341,0,0
+5146754,Minnesota,0,21,0,0
+5164749,Minnesota,0,405,32,0
+5207988,Minnesota,0,0,0,5
 5214532,Minnesota,0,0,0,2
-5216702,Minnesota,0,0,0,6
-5224792,Minnesota,0,101,255,0
-5244731,Minnesota,0,117,0,0
-5264245,Minnesota,0,1,65,0
+5216702,Minnesota,0,0,0,7
+5224792,Minnesota,0,118,276,0
+5244731,Minnesota,0,126,0,0
+5264245,Minnesota,0,1,87,0
 5295954,Minnesota,0,0,0,1
 4251322,Mississippi State,0,0,0,4
 4603193,Mississippi State,0,0,0,4
@@ -3774,55 +3840,57 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5294649,Mississippi State,0,0,0,1
 5372129,Mississippi State,0,0,0,2
 4877400,Mississippi Valley State,0,0,0,2
-5088974,Mississippi Valley State,0,63,31,0
+5088974,Mississippi Valley State,0,69,51,0
 5153756,Mississippi Valley State,0,57,0,0
 5161729,Mississippi Valley State,0,0,0,3
 5233879,Mississippi Valley State,73,0,0,0
 5304042,Mississippi Valley State,0,0,0,3
 5304060,Mississippi Valley State,0,0,0,1
 5304063,Mississippi Valley State,0,0,0,1
-5304069,Mississippi Valley State,0,43,185,0
-5304085,Mississippi Valley State,0,250,5,0
+5304069,Mississippi Valley State,0,43,188,0
+5304085,Mississippi Valley State,0,256,5,0
 5304086,Mississippi Valley State,0,0,0,5
-5304985,Mississippi Valley State,0,0,0,3
+5304985,Mississippi Valley State,0,0,0,5
 5306301,Mississippi Valley State,0,0,0,4
 5306304,Mississippi Valley State,0,0,0,1
 5326837,Mississippi Valley State,0,0,0,1
-5439345,Mississippi Valley State,0,4,114,0
+5439345,Mississippi Valley State,0,20,175,0
 5439346,Mississippi Valley State,0,0,0,3
 5439348,Mississippi Valley State,0,0,0,1
-5439350,Mississippi Valley State,0,277,31,0
+5439350,Mississippi Valley State,0,283,31,0
 5439351,Mississippi Valley State,0,55,0,0
+5439355,Mississippi Valley State,0,0,0,1
 5439359,Mississippi Valley State,0,0,0,2
 5439371,Mississippi Valley State,0,46,13,0
-5439373,Mississippi Valley State,0,123,0,0
+5439373,Mississippi Valley State,0,140,0,0
 4685604,Missouri,0,0,0,2
+4708355,Missouri,0,0,0,1
 4808749,Missouri,0,0,0,8
-4870858,Missouri,0,743,0,0
-4870869,Missouri,0,92,0,0
+4870858,Missouri,0,822,0,0
+4870869,Missouri,0,113,0,0
 4872820,Missouri,0,0,0,1
 4880351,Missouri,0,0,0,6
-4921116,Missouri,0,135,875,0
+4921116,Missouri,0,135,941,0
 5001149,Missouri,0,0,0,1
 5079582,Missouri,0,0,0,1
-5120454,Missouri,0,94,0,0
-5121688,Missouri,0,0,0,5
+5120454,Missouri,0,98,0,0
+5121688,Missouri,0,0,0,6
 5141415,Missouri,0,0,0,1
-5141582,Missouri,0,555,0,0
-5141584,Missouri,0,94,0,0
-5141684,Missouri,1862,0,43,0
+5141582,Missouri,0,595,0,0
+5141584,Missouri,0,175,0,0
+5141684,Missouri,2120,0,52,0
 5141973,Missouri,0,0,0,4
 5144161,Missouri,0,0,0,1
 5148622,Missouri,0,0,0,1
-5156379,Missouri,0,31,21,0
-5158245,Missouri,0,41,0,0
+5156379,Missouri,0,51,37,0
+5158245,Missouri,0,45,0,0
 5164690,Missouri,0,0,0,3
 5172033,Missouri,0,0,0,3
 5195300,Missouri,30,0,4,0
-5195617,Missouri,0,76,0,0
+5195617,Missouri,0,85,0,0
 5201870,Missouri,0,0,0,3
 5219025,Missouri,0,0,0,2
-5221314,Missouri,0,0,0,8
+5221314,Missouri,0,0,0,10
 5225880,Missouri,0,15,111,0
 5260012,Missouri,0,0,0,1
 4431508,Missouri State,0,0,0,2
@@ -3881,31 +3949,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405662,Monmouth,0,224,0,0
 5405664,Monmouth,0,0,0,1
 5405666,Monmouth,0,0,0,2
-4697633,Montana,0,66,117,0
+4697633,Montana,0,73,130,0
 4895267,Montana,0,0,0,1
-5081364,Montana,0,86,0,0
+5081364,Montana,0,94,0,0
+5083214,Montana,0,0,0,2
 5085586,Montana,0,0,0,6
 5086162,Montana,0,0,0,2
 5086631,Montana,0,0,0,1
-5087687,Montana,0,233,973,0
+5087687,Montana,0,281,1169,0
 5087705,Montana,0,96,0,0
 5147158,Montana,0,0,0,1
-5151276,Montana,0,412,0,0
+5151276,Montana,0,443,0,0
 5153060,Montana,0,0,0,3
 5153708,Montana,272,0,0,0
 5153709,Montana,0,0,0,1
 5153716,Montana,0,0,0,3
 5165023,Montana,0,0,0,6
 5169295,Montana,0,0,0,3
-5210482,Montana,0,0,0,1
+5210482,Montana,0,0,0,2
 5219149,Montana,0,0,0,2
 5220663,Montana,0,0,0,1
-5225209,Montana,0,4,51,0
-5225211,Montana,0,1002,-15,0
+5225209,Montana,0,4,53,0
+5225211,Montana,0,1090,-15,0
 5225218,Montana,0,0,30,0
-5225221,Montana,0,316,0,0
-5226228,Montana,0,97,0,0
-5298088,Montana,0,100,0,0
+5225221,Montana,0,348,0,0
+5226228,Montana,0,109,0,0
+5298088,Montana,0,120,0,0
 5300637,Montana,0,0,0,3
 5300640,Montana,0,0,0,7
 5300642,Montana,0,0,0,3
@@ -3945,113 +4014,116 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5300681,Montana State,0,0,0,3
 5300687,Montana State,0,25,0,0
 5405779,Montana State,0,602,19,1
-5084352,Morehead State,1249,0,203,0
+5084352,Morehead State,1500,0,221,0
 5084355,Morehead State,0,0,0,1
 5084361,Morehead State,0,0,0,3
-5097372,Morehead State,0,0,0,2
-5103084,Morehead State,0,97,200,0
+5097372,Morehead State,0,0,0,3
+5103084,Morehead State,0,97,234,0
 5155295,Morehead State,0,0,0,1
 5172453,Morehead State,0,0,0,3
-5229448,Morehead State,217,0,53,0
+5229448,Morehead State,227,0,61,0
 5229452,Morehead State,0,0,0,1
-5229475,Morehead State,0,519,0,0
+5229475,Morehead State,0,549,0,0
 5300068,Morehead State,0,0,0,1
-5300099,Morehead State,0,329,0,0
+5300099,Morehead State,0,394,0,0
 5300102,Morehead State,0,150,0,0
-5300103,Morehead State,0,154,0,0
+5300103,Morehead State,0,252,0,0
 5406205,Morehead State,0,0,0,1
-5406210,Morehead State,0,0,0,1
-5406213,Morehead State,0,149,6,0
-5406215,Morehead State,0,54,243,0
-5406220,Morehead State,0,0,0,5
+5406209,Morehead State,0,0,0,2
+5406210,Morehead State,0,0,0,2
+5406213,Morehead State,0,217,6,0
+5406215,Morehead State,0,54,246,0
+5406220,Morehead State,0,0,0,6
 5406221,Morehead State,0,0,0,3
 5406230,Morehead State,0,0,0,1
 5406231,Morehead State,0,0,0,1
-4870712,Morgan State,1630,0,126,0
-5084050,Morgan State,0,113,0,0
-5088896,Morgan State,0,244,389,0
+4870712,Morgan State,1765,0,140,0
+5084050,Morgan State,0,122,0,0
+5088896,Morgan State,0,244,444,0
 5088910,Morgan State,0,43,0,0
 5098702,Morgan State,0,2,0,1
+5098705,Morgan State,0,0,0,1
 5101129,Morgan State,0,0,0,4
 5154534,Morgan State,0,0,22,0
 5154536,Morgan State,0,0,0,2
 5154558,Morgan State,0,0,0,1
 5154561,Morgan State,0,0,0,2
 5155778,Morgan State,0,0,0,1
-5166225,Morgan State,0,0,0,2
+5166225,Morgan State,0,0,0,3
 5167704,Morgan State,0,0,0,1
 5168837,Morgan State,0,3,32,0
 5168850,Morgan State,0,37,1,0
 5198305,Morgan State,0,0,0,2
 5217104,Morgan State,0,0,0,4
-5219427,Morgan State,0,11,19,0
+5219427,Morgan State,0,14,25,0
 5221602,Morgan State,0,0,0,1
 5302651,Morgan State,0,118,0,0
 5302654,Morgan State,0,0,0,4
 5302655,Morgan State,37,25,0,0
-5302656,Morgan State,0,419,0,0
+5302656,Morgan State,0,431,0,0
 5302659,Morgan State,0,0,0,4
 5302661,Morgan State,0,0,0,3
-5302677,Morgan State,0,107,0,0
+5302677,Morgan State,0,116,0,0
 5304035,Morgan State,0,0,0,1
-5305159,Morgan State,0,467,0,0
+5305159,Morgan State,0,527,0,0
 5423820,Morgan State,0,8,188,0
 5432397,Morgan State,0,0,0,1
-5439920,Morgan State,0,27,52,0
-5439928,Morgan State,0,0,0,1
-5439934,Morgan State,0,0,0,1
+5439920,Morgan State,0,35,51,0
+5439926,Morgan State,0,20,0,0
+5439928,Morgan State,0,0,0,2
+5439934,Morgan State,0,0,0,3
 5439956,Morgan State,0,0,0,1
-4905594,Murray State,0,17,168,0
-5083941,Murray State,631,0,9,0
-5092666,Murray State,0,311,0,0
+4905594,Murray State,0,17,169,0
+5083941,Murray State,888,0,17,0
+5092666,Murray State,0,387,0,0
 5150931,Murray State,0,0,0,1
 5159042,Murray State,0,0,0,1
 5193343,Murray State,316,0,16,0
 5224219,Murray State,0,72,0,0
 5227844,Murray State,0,0,0,1
-5227853,Murray State,0,98,321,0
+5227853,Murray State,0,133,347,0
 5227854,Murray State,305,0,104,0
-5301281,Murray State,0,169,103,0
+5301281,Murray State,0,226,103,0
 5301283,Murray State,0,0,0,1
 5301284,Murray State,0,0,0,3
 5301291,Murray State,0,0,0,1
 5301293,Murray State,0,0,0,1
-5301297,Murray State,0,34,8,0
+5301297,Murray State,0,34,10,0
 5301305,Murray State,0,0,0,4
 5301310,Murray State,0,0,0,4
 5301331,Murray State,0,67,0,0
-5301334,Murray State,0,364,0,0
+5301334,Murray State,0,431,0,0
 5435106,Murray State,0,0,0,2
 5438542,Murray State,0,0,0,2
 5438545,Murray State,0,0,0,3
 5438546,Murray State,0,50,186,0
-5438551,Murray State,0,0,0,4
+5438551,Murray State,0,0,0,5
 5438567,Murray State,0,0,0,1
 5438586,Murray State,0,25,0,0
 4703069,NC State,0,0,0,5
 4870877,NC State,0,0,0,1
-4870957,NC State,0,0,0,2
+4870957,NC State,0,0,0,3
 4871041,NC State,0,0,0,2
 4901373,NC State,0,0,0,4
-5079301,NC State,1832,0,248,0
+5079301,NC State,1953,0,250,0
 5079315,NC State,0,0,0,2
-5079468,NC State,0,196,324,0
-5079524,NC State,0,404,0,0
-5079661,NC State,0,153,0,0
-5079745,NC State,5,225,0,0
+5079468,NC State,0,212,350,0
+5079524,NC State,0,425,0,0
+5079661,NC State,0,158,0,0
+5079745,NC State,5,234,0,0
 5080819,NC State,0,35,0,0
-5084967,NC State,0,161,1,0
+5084967,NC State,0,178,1,0
 5086869,NC State,0,0,0,1
-5125151,NC State,0,0,0,3
-5126513,NC State,0,10,341,0
-5141409,NC State,0,128,0,0
+5125151,NC State,0,0,0,4
+5126513,NC State,0,10,359,0
+5141409,NC State,0,128,5,0
 5146992,NC State,0,0,0,1
 5147970,NC State,0,0,0,4
 5148611,NC State,2,0,115,0
-5151801,NC State,0,0,0,1
+5151801,NC State,0,0,0,2
 5159453,NC State,0,8,25,0
 5160003,NC State,0,109,0,0
-5172608,NC State,0,69,0,0
+5172608,NC State,0,122,0,0
 5201877,NC State,0,21,0,0
 5215337,NC State,0,304,0,0
 5263574,NC State,0,0,0,1
@@ -4144,63 +4216,66 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5388802,Nevada,0,28,0,0
 4703029,New Hampshire,0,0,0,2
 4905600,New Hampshire,0,0,0,1
-4920228,New Hampshire,0,55,415,0
-5083441,New Hampshire,0,0,0,5
-5083442,New Hampshire,0,116,342,0
+4920228,New Hampshire,0,55,447,0
+5083441,New Hampshire,0,0,0,7
+5083442,New Hampshire,0,126,426,0
 5083444,New Hampshire,0,107,0,0
-5083457,New Hampshire,0,54,0,0
+5083457,New Hampshire,0,66,0,0
 5083461,New Hampshire,0,0,0,1
 5094037,New Hampshire,0,0,0,1
-5153852,New Hampshire,0,377,-5,0
-5153911,New Hampshire,0,76,0,0
+5153852,New Hampshire,0,472,-5,0
+5153911,New Hampshire,0,76,2,0
 5155411,New Hampshire,0,0,0,1
 5158764,New Hampshire,0,0,0,1
-5171037,New Hampshire,0,0,0,5
+5171032,New Hampshire,0,0,0,1
+5171037,New Hampshire,0,0,0,7
 5171040,New Hampshire,0,83,0,0
 5171041,New Hampshire,27,0,0,0
 5193221,New Hampshire,0,0,0,1
-5218930,New Hampshire,0,0,0,4
-5226483,New Hampshire,0,349,0,0
-5226704,New Hampshire,364,0,0,0
+5218930,New Hampshire,0,0,0,5
+5226483,New Hampshire,7,383,0,0
+5226704,New Hampshire,644,7,1,0
+5226709,New Hampshire,0,0,0,1
 5226710,New Hampshire,0,0,0,1
 5226711,New Hampshire,0,0,0,2
 5226712,New Hampshire,0,0,0,1
-5226721,New Hampshire,0,312,0,0
+5226721,New Hampshire,0,403,0,0
 5298487,New Hampshire,1291,0,81,0
 5298491,New Hampshire,0,0,0,1
 5298505,New Hampshire,0,0,0,1
-5298510,New Hampshire,0,0,0,1
-5405751,New Hampshire,0,147,0,0
-4685334,New Haven,739,0,65,0
+5298510,New Hampshire,0,0,0,2
+5405751,New Hampshire,0,185,0,0
+4685334,New Haven,968,0,71,0
 4876620,New Haven,0,0,0,2
-4879163,New Haven,0,164,7,0
+4879163,New Haven,0,183,7,0
 4879291,New Haven,0,0,0,2
-5083518,New Haven,0,152,0,0
+5083518,New Haven,0,161,0,0
 5092568,New Haven,0,0,0,2
-5121696,New Haven,0,215,0,0
-5150455,New Haven,0,17,66,0
+5121696,New Haven,0,292,0,0
+5150455,New Haven,0,17,96,0
 5164562,New Haven,0,24,0,0
 5220033,New Haven,0,0,0,1
 5226100,New Haven,0,163,18,0
+5227645,New Haven,0,0,0,1
 5261653,New Haven,616,0,8,0
-5303820,New Haven,0,219,2,0
+5303820,New Haven,0,273,2,0
 5303821,New Haven,0,0,0,5
-5303822,New Haven,0,83,418,0
+5303822,New Haven,0,102,445,0
 5303825,New Haven,0,0,0,1
-5303827,New Haven,0,0,0,6
+5303827,New Haven,0,0,0,10
 5303841,New Haven,0,0,0,4
 5303850,New Haven,0,0,0,3
 5303858,New Haven,0,0,0,3
-5303866,New Haven,0,0,0,6
+5303866,New Haven,0,0,0,7
 5303868,New Haven,0,0,0,1
 5303879,New Haven,0,0,0,1
-5303904,New Haven,0,166,6,0
-5303910,New Haven,0,213,0,0
+5303904,New Haven,0,188,6,0
+5303910,New Haven,0,220,0,0
 5303911,New Haven,0,73,-6,0
 5303912,New Haven,0,22,0,0
 5303929,New Haven,0,0,0,1
 5430949,New Haven,213,0,39,0
-5440664,New Haven,0,30,87,0
+5440664,New Haven,0,34,87,0
 5440673,New Haven,0,0,0,1
 5440675,New Haven,0,0,0,1
 4430827,New Mexico,0,112,0,0
@@ -4292,29 +4367,29 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5439307,Nicholls,315,0,367,0
 4683698,Norfolk State,0,0,0,2
 4920147,Norfolk State,0,204,0,0
-5082364,Norfolk State,0,0,0,3
+5082364,Norfolk State,0,0,0,6
 5083534,Norfolk State,0,0,0,3
 5083657,Norfolk State,0,168,0,0
-5087255,Norfolk State,0,104,76,0
+5087255,Norfolk State,0,182,76,0
 5087262,Norfolk State,0,0,0,2
-5093197,Norfolk State,0,65,468,0
+5093197,Norfolk State,0,78,542,0
 5138654,Norfolk State,0,0,0,5
-5150426,Norfolk State,428,0,105,0
-5155995,Norfolk State,0,404,-5,0
+5150426,Norfolk State,706,0,125,0
+5155995,Norfolk State,0,462,-5,0
 5155998,Norfolk State,0,0,0,1
-5156001,Norfolk State,0,0,0,1
-5159964,Norfolk State,0,0,0,2
+5156001,Norfolk State,0,0,0,2
+5159964,Norfolk State,0,0,0,4
 5194661,Norfolk State,0,0,0,4
 5220784,Norfolk State,0,0,0,5
-5224506,Norfolk State,0,0,0,1
-5227504,Norfolk State,0,53,0,0
+5224506,Norfolk State,0,0,0,2
+5227504,Norfolk State,0,157,0,0
 5228217,Norfolk State,0,0,0,4
 5301379,Norfolk State,0,37,1,0
 5301382,Norfolk State,0,0,0,1
-5301383,Norfolk State,0,33,0,0
-5301395,Norfolk State,0,0,0,2
+5301383,Norfolk State,0,35,0,0
+5301395,Norfolk State,0,0,0,5
 5305901,Norfolk State,0,2,23,0
-5410232,Norfolk State,6,340,0,0
+5410232,Norfolk State,6,364,0,0
 5417461,Norfolk State,0,0,0,1
 5421621,Norfolk State,0,39,0,0
 5439441,Norfolk State,1095,6,159,0
@@ -4350,32 +4425,33 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5435761,North Alabama,0,0,0,2
 5442000,North Alabama,0,0,0,1
 5442002,North Alabama,0,0,0,1
-4592532,North Carolina,1881,0,141,0
+4592532,North Carolina,2136,0,156,0
 4683224,North Carolina,0,0,0,2
 4781738,North Carolina,0,0,0,3
 4812367,North Carolina,0,0,0,2
-4870709,North Carolina,0,142,0,0
-4871039,North Carolina,0,463,0,0
+4870709,North Carolina,0,146,0,0
+4871039,North Carolina,0,527,0,0
 4877894,North Carolina,0,0,0,1
-5008017,North Carolina,0,60,296,0
-5077266,North Carolina,0,219,0,0
+5008017,North Carolina,0,86,377,0
+5077266,North Carolina,0,248,0,0
 5078061,North Carolina,0,0,0,3
 5079439,North Carolina,0,0,0,2
-5079687,North Carolina,0,587,0,0
-5127733,North Carolina,0,0,0,2
+5079687,North Carolina,0,642,0,0
+5086966,North Carolina,0,0,0,1
+5127733,North Carolina,0,0,0,3
 5127877,North Carolina,0,0,0,1
-5136504,North Carolina,0,0,0,6
+5136504,North Carolina,0,0,0,7
 5146756,North Carolina,0,23,0,0
 5146953,North Carolina,0,0,0,2
 5149828,North Carolina,0,0,0,1
 5152717,North Carolina,0,57,0,0
 5159039,North Carolina,0,113,0,0
-5161835,North Carolina,0,108,246,0
+5161835,North Carolina,0,126,261,0
 5181309,North Carolina,0,0,0,7
-5209388,North Carolina,0,0,0,1
-5214654,North Carolina,0,34,0,0
-5226835,North Carolina,0,0,0,3
-5228607,North Carolina,0,64,283,0
+5209388,North Carolina,0,0,0,2
+5214654,North Carolina,0,39,0,0
+5226835,North Carolina,0,0,0,8
+5228607,North Carolina,0,95,343,0
 5280069,North Carolina,0,0,0,1
 5294564,North Carolina,0,0,0,7
 4812342,North Carolina A&T,0,167,0,0
@@ -4411,65 +4487,67 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405348,North Carolina A&T,0,0,0,2
 5405351,North Carolina A&T,0,172,3,0
 5405356,North Carolina A&T,0,0,0,2
-4432534,North Carolina Central,0,117,0,0
-4703067,North Carolina Central,0,276,14,0
+4432534,North Carolina Central,0,177,0,0
+4703067,North Carolina Central,0,314,14,0
 5083663,North Carolina Central,0,1,310,0
-5095834,North Carolina Central,0,98,0,0
+5095834,North Carolina Central,0,106,0,0
 5122088,North Carolina Central,0,0,0,1
 5156212,North Carolina Central,0,25,3,0
-5159177,North Carolina Central,285,0,17,0
+5159177,North Carolina Central,441,0,59,0
 5159192,North Carolina Central,0,0,0,1
-5159200,North Carolina Central,0,282,5,0
+5159200,North Carolina Central,0,323,5,0
 5160565,North Carolina Central,0,49,0,0
 5160637,North Carolina Central,0,0,0,5
-5160646,North Carolina Central,0,0,0,2
+5160646,North Carolina Central,0,0,0,4
 5214491,North Carolina Central,0,0,0,1
 5218987,North Carolina Central,0,0,0,2
-5221101,North Carolina Central,0,0,0,1
+5221101,North Carolina Central,0,0,0,2
 5222278,North Carolina Central,0,0,0,13
 5227657,North Carolina Central,0,0,0,3
-5227658,North Carolina Central,0,58,247,0
+5227658,North Carolina Central,0,58,262,0
 5227660,North Carolina Central,0,0,0,4
 5230073,North Carolina Central,319,0,139,0
 5232921,North Carolina Central,0,36,0,0
 5237881,North Carolina Central,0,0,0,1
 5301057,North Carolina Central,694,0,287,0
-5302914,North Carolina Central,0,148,0,0
+5301169,North Carolina Central,0,0,0,1
+5302914,North Carolina Central,0,157,0,0
 5423419,North Carolina Central,0,0,0,1
 5436002,North Carolina Central,0,115,0,0
 5440068,North Carolina Central,0,0,0,1
-5440070,North Carolina Central,0,70,397,0
+5440070,North Carolina Central,0,70,555,0
 5440072,North Carolina Central,0,0,0,11
 5440075,North Carolina Central,0,0,0,2
 5440080,North Carolina Central,0,0,0,1
-4920196,North Dakota,38,0,67,0
+4920196,North Dakota,38,0,77,0
 5083544,North Dakota,0,0,0,1
 5087198,North Dakota,0,43,0,0
-5087199,North Dakota,0,25,0,0
-5087215,North Dakota,0,169,0,0
+5087199,North Dakota,0,27,0,0
+5087215,North Dakota,0,240,0,0
 5155527,North Dakota,0,0,0,1
-5155528,North Dakota,2168,21,409,0
-5155530,North Dakota,0,362,0,0
+5155528,North Dakota,2461,21,417,0
+5155530,North Dakota,0,407,0,0
 5155535,North Dakota,0,0,0,1
-5155537,North Dakota,0,0,0,1
-5155552,North Dakota,0,0,0,8
-5155553,North Dakota,0,0,0,1
+5155537,North Dakota,0,0,0,3
+5155552,North Dakota,0,0,0,9
+5155553,North Dakota,0,0,0,2
 5161482,North Dakota,0,0,0,1
 5164594,North Dakota,0,43,0,0
 5191175,North Dakota,0,191,0,0
+5193304,North Dakota,0,108,0,0
 5222062,North Dakota,0,0,0,1
 5222072,North Dakota,0,0,0,3
-5227709,North Dakota,0,128,522,0
-5227872,North Dakota,0,684,0,0
+5227709,North Dakota,0,129,573,0
+5227872,North Dakota,0,765,0,0
 5227880,North Dakota,0,11,27,0
 5227883,North Dakota,0,8,0,5
-5228032,North Dakota,0,0,0,2
+5228032,North Dakota,0,0,0,3
 5229449,North Dakota,0,0,0,1
 5296471,North Dakota,0,261,13,0
-5301476,North Dakota,0,0,0,16
+5301476,North Dakota,0,0,0,17
 5301477,North Dakota,0,0,0,3
 5301478,North Dakota,0,0,74,0
-5301479,North Dakota,0,123,502,0
+5301479,North Dakota,0,123,565,0
 5301483,North Dakota,0,0,0,5
 5301497,North Dakota,0,105,0,0
 4832952,North Dakota State,0,215,0,0
@@ -4566,39 +4644,41 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405896,Northern Arizona,21,0,30,0
 5405898,Northern Arizona,0,16,20,0
 5405924,Northern Arizona,0,0,0,1
-4873077,Northern Colorado,429,0,101,0
-5082304,Northern Colorado,0,73,497,0
+4873077,Northern Colorado,578,0,152,0
+5082304,Northern Colorado,0,82,550,0
 5083227,Northern Colorado,0,0,0,1
 5083236,Northern Colorado,0,0,0,4
-5085026,Northern Colorado,341,8,177,0
+5085026,Northern Colorado,341,8,182,0
 5150632,Northern Colorado,0,0,0,2
-5151080,Northern Colorado,0,202,0,0
+5151080,Northern Colorado,0,232,0,0
 5152768,Northern Colorado,0,0,0,2
 5159154,Northern Colorado,0,0,0,2
 5168774,Northern Colorado,0,0,0,1
 5168778,Northern Colorado,0,0,0,1
-5215367,Northern Colorado,0,258,0,0
+5215367,Northern Colorado,0,304,0,0
 5216499,Northern Colorado,0,0,0,2
 5219929,Northern Colorado,660,0,254,0
 5220401,Northern Colorado,0,0,0,2
 5225442,Northern Colorado,0,83,5,0
-5225594,Northern Colorado,8,95,41,0
-5226494,Northern Colorado,0,44,0,0
+5225594,Northern Colorado,8,98,41,0
+5226494,Northern Colorado,0,50,0,0
 5229987,Northern Colorado,0,2,171,0
 5229995,Northern Colorado,0,0,0,1
-5229996,Northern Colorado,0,0,0,1
+5229996,Northern Colorado,0,14,0,1
+5229999,Northern Colorado,0,0,0,1
 5230002,Northern Colorado,0,0,0,2
 5230013,Northern Colorado,0,31,0,0
 5230020,Northern Colorado,0,0,0,1
-5300804,Northern Colorado,0,59,0,0
-5300808,Northern Colorado,0,19,62,0
-5300810,Northern Colorado,0,103,91,0
+5300804,Northern Colorado,0,100,0,0
+5300808,Northern Colorado,0,19,91,0
+5300810,Northern Colorado,0,103,158,0
 5300820,Northern Colorado,0,0,0,1
 5300827,Northern Colorado,0,425,24,0
 5300834,Northern Colorado,0,0,0,2
 5439594,Northern Colorado,0,0,0,1
+5439609,Northern Colorado,0,0,0,1
 5439612,Northern Colorado,0,0,0,1
-5439620,Northern Colorado,0,0,0,4
+5439620,Northern Colorado,0,0,0,5
 5439622,Northern Colorado,0,0,0,2
 4881032,Northern Illinois,1398,0,153,0
 4884086,Northern Illinois,19,0,19,0
@@ -4625,25 +4705,25 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5388918,Northern Illinois,0,0,0,2
 5388924,Northern Illinois,0,0,0,2
 5388936,Northern Illinois,0,0,0,1
-4826635,Northern Iowa,1687,5,155,0
+4826635,Northern Iowa,1827,5,168,0
 4887396,Northern Iowa,0,82,5,0
-4918422,Northern Iowa,0,189,0,0
-4950560,Northern Iowa,0,45,329,0
-5085685,Northern Iowa,0,283,43,0
+4918422,Northern Iowa,0,210,0,0
+4950560,Northern Iowa,0,48,350,0
+5085685,Northern Iowa,0,338,45,0
 5085748,Northern Iowa,0,0,0,3
 5085753,Northern Iowa,0,0,0,2
-5085768,Northern Iowa,0,281,0,0
+5085768,Northern Iowa,0,283,0,0
 5102185,Northern Iowa,0,0,0,1
-5150653,Northern Iowa,0,80,-4,0
+5150653,Northern Iowa,0,83,-4,0
 5152389,Northern Iowa,0,0,0,1
 5154569,Northern Iowa,0,14,13,0
-5154575,Northern Iowa,0,223,0,0
+5154575,Northern Iowa,0,250,0,0
 5154580,Northern Iowa,0,63,0,0
 5154584,Northern Iowa,0,0,0,2
 5154591,Northern Iowa,0,0,0,1
 5190996,Northern Iowa,0,0,0,1
 5219940,Northern Iowa,0,0,0,2
-5224681,Northern Iowa,0,0,0,4
+5224681,Northern Iowa,0,0,0,5
 5227966,Northern Iowa,0,96,161,0
 5227972,Northern Iowa,0,0,0,3
 5227974,Northern Iowa,0,18,6,0
@@ -4651,12 +4731,12 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5227979,Northern Iowa,0,0,0,7
 5227980,Northern Iowa,0,0,0,2
 5227985,Northern Iowa,0,0,0,4
-5227992,Northern Iowa,0,88,0,0
-5297965,Northern Iowa,0,37,257,0
+5227992,Northern Iowa,0,101,0,0
+5297965,Northern Iowa,0,40,284,0
 5297969,Northern Iowa,0,0,0,7
 5297972,Northern Iowa,0,0,35,0
 5297996,Northern Iowa,0,39,0,0
-5442915,Northern Iowa,0,144,0,0
+5442915,Northern Iowa,0,157,0,0
 4569262,Northwestern,0,229,0,0
 4685448,Northwestern,0,0,0,4
 4685545,Northwestern,0,9,196,0
@@ -4680,27 +4760,29 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5196355,Northwestern,0,0,0,4
 5222752,Northwestern,0,261,39,0
 5328488,Northwestern,0,251,0,0
-4808719,Northwestern State,1254,0,294,0
+4713335,Northwestern State,0,32,0,0
+4808719,Northwestern State,1358,0,306,0
 4877209,Northwestern State,0,2,31,0
 4879514,Northwestern State,0,0,0,3
 5084479,Northwestern State,0,0,0,1
+5085502,Northwestern State,0,0,0,1
 5121619,Northwestern State,0,0,0,2
 5156260,Northwestern State,0,0,0,1
 5156264,Northwestern State,0,0,0,1
-5156285,Northwestern State,0,302,-9,0
+5156285,Northwestern State,0,310,-9,0
 5160104,Northwestern State,0,0,0,1
 5160454,Northwestern State,0,0,0,1
-5161891,Northwestern State,0,161,0,0
+5161891,Northwestern State,0,177,0,0
 5161895,Northwestern State,0,34,0,0
 5194305,Northwestern State,0,0,0,1
-5226584,Northwestern State,0,184,0,0
-5226585,Northwestern State,114,0,31,0
-5226587,Northwestern State,0,283,171,0
+5226584,Northwestern State,0,200,0,0
+5226585,Northwestern State,114,0,41,0
+5226587,Northwestern State,0,291,189,0
 5226589,Northwestern State,0,0,0,1
 5226605,Northwestern State,0,0,0,3
 5226621,Northwestern State,0,0,0,1
 5295742,Northwestern State,0,0,0,1
-5302468,Northwestern State,0,127,4,0
+5302468,Northwestern State,0,142,4,0
 5302469,Northwestern State,0,228,31,0
 5405880,Northwestern State,0,11,54,0
 5405885,Northwestern State,0,0,0,1
@@ -4833,48 +4915,50 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4918428,Oklahoma State,0,0,0,1
 5078222,Oklahoma State,0,0,0,1
 5080244,Oklahoma State,0,0,0,1
-5083747,Oklahoma State,0,731,0,0
+5083747,Oklahoma State,0,774,0,0
 5092199,Oklahoma State,0,0,0,3
 5092690,Oklahoma State,0,0,0,1
 5099451,Oklahoma State,0,0,0,3
 5121895,Oklahoma State,0,0,0,3
 5124996,Oklahoma State,0,0,0,2
-5148787,Oklahoma State,0,717,9,0
+5148787,Oklahoma State,0,758,9,0
 5148822,Oklahoma State,0,172,0,0
-5149007,Oklahoma State,0,348,0,0
-5156853,Oklahoma State,0,0,0,9
-5207931,Oklahoma State,0,169,0,0
-5219834,Oklahoma State,2607,0,227,0
-5219835,Oklahoma State,0,22,0,0
-5219841,Oklahoma State,0,0,0,2
+5149007,Oklahoma State,0,443,0,0
+5156853,Oklahoma State,0,0,0,10
+5159497,Oklahoma State,0,0,0,1
+5207931,Oklahoma State,0,182,0,0
+5219834,Oklahoma State,2877,0,238,0
+5219835,Oklahoma State,0,27,0,0
+5219841,Oklahoma State,0,0,0,3
 5224505,Oklahoma State,0,0,28,0
 5228041,Oklahoma State,0,48,0,0
-5258016,Oklahoma State,0,359,900,0
+5258016,Oklahoma State,0,429,1070,0
 5390453,Oklahoma State,0,0,27,0
-4832875,Old Dominion,0,188,0,0
+4832875,Old Dominion,0,255,0,0
 4879884,Old Dominion,0,0,0,3
-4922993,Old Dominion,0,110,386,0
-5091836,Old Dominion,454,0,21,0
+4922993,Old Dominion,0,123,432,0
+5091836,Old Dominion,604,0,20,0
 5092324,Old Dominion,0,0,0,2
 5121762,Old Dominion,0,0,0,2
-5122091,Old Dominion,0,0,0,4
+5122091,Old Dominion,0,0,0,5
 5125798,Old Dominion,0,0,0,4
 5127805,Old Dominion,0,120,0,0
-5151973,Old Dominion,0,0,0,1
-5153408,Old Dominion,0,257,0,0
+5151973,Old Dominion,0,0,0,4
+5153408,Old Dominion,0,280,0,0
 5157802,Old Dominion,0,0,0,1
 5193174,Old Dominion,0,0,0,3
-5193330,Old Dominion,0,0,0,6
-5193346,Old Dominion,580,0,335,0
-5193349,Old Dominion,0,18,90,0
+5193330,Old Dominion,0,0,0,7
+5193346,Old Dominion,625,0,353,0
+5193349,Old Dominion,0,34,105,0
 5210044,Old Dominion,0,15,6,0
-5258047,Old Dominion,0,0,0,2
-5291747,Old Dominion,0,53,0,0
-5294446,Old Dominion,0,17,101,0
+5216691,Old Dominion,0,0,0,2
+5258047,Old Dominion,0,0,0,3
+5291747,Old Dominion,0,72,0,0
+5294446,Old Dominion,0,17,111,0
 5295919,Old Dominion,382,0,6,0
-5295921,Old Dominion,0,340,1,0
-5295923,Old Dominion,0,293,0,0
-5295929,Old Dominion,0,0,0,5
+5295921,Old Dominion,0,393,1,0
+5295923,Old Dominion,0,297,0,0
+5295929,Old Dominion,0,0,0,6
 5295936,Old Dominion,0,0,0,4
 5303258,Old Dominion,0,0,0,1
 5327551,Old Dominion,0,0,0,1
@@ -4993,32 +5077,36 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5273821,Penn State,0,31,0,0
 5289311,Penn State,0,0,0,3
 5296212,Penn State,0,117,0,0
-5155353,Pennsylvania,0,64,0,0
+5155353,Pennsylvania,0,86,0,0
 5155357,Pennsylvania,0,0,0,4
-5155360,Pennsylvania,0,0,0,11
+5155360,Pennsylvania,0,0,0,12
+5155364,Pennsylvania,0,0,0,1
 5155365,Pennsylvania,0,0,0,3
 5155369,Pennsylvania,0,0,0,6
 5155370,Pennsylvania,0,0,0,3
-5155372,Pennsylvania,0,0,0,4
-5230195,Pennsylvania,799,6,26,0
-5230200,Pennsylvania,0,275,0,0
+5155372,Pennsylvania,0,0,0,5
+5230195,Pennsylvania,1019,6,26,0
+5230200,Pennsylvania,0,304,0,0
 5230201,Pennsylvania,0,40,119,0
-5230205,Pennsylvania,0,0,0,1
+5230205,Pennsylvania,0,0,0,2
 5230208,Pennsylvania,0,0,0,3
-5230219,Pennsylvania,0,176,-2,0
+5230214,Pennsylvania,0,0,0,1
+5230219,Pennsylvania,0,189,-2,0
 5230221,Pennsylvania,0,0,0,3
-5289943,Pennsylvania,820,0,260,0
+5289943,Pennsylvania,820,0,258,0
 5301002,Pennsylvania,0,5,0,2
 5301003,Pennsylvania,0,93,0,0
 5301006,Pennsylvania,0,46,140,0
 5301008,Pennsylvania,0,0,0,4
 5301010,Pennsylvania,0,0,0,1
 5301018,Pennsylvania,0,0,0,1
-5301019,Pennsylvania,6,405,0,0
+5301019,Pennsylvania,6,511,0,0
+5301021,Pennsylvania,0,0,0,1
 5301024,Pennsylvania,0,0,0,4
+5442842,Pennsylvania,0,0,0,1
 5442854,Pennsylvania,0,0,0,2
-5442857,Pennsylvania,0,89,7,0
-5442858,Pennsylvania,0,386,0,0
+5442857,Pennsylvania,0,114,7,0
+5442858,Pennsylvania,0,408,0,0
 4683234,Pittsburgh,0,61,285,0
 4714300,Pittsburgh,630,0,40,0
 4806851,Pittsburgh,0,0,0,2
@@ -5050,41 +5138,42 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5281153,Pittsburgh,0,56,4,0
 5296040,Pittsburgh,0,37,0,0
 5296232,Pittsburgh,0,7,103,0
-4613112,Portland State,0,552,0,0
-5075571,Portland State,168,0,3,0
+4613112,Portland State,0,622,0,0
+5075571,Portland State,303,0,11,0
 5085580,Portland State,0,0,0,5
-5085598,Portland State,0,288,0,0
+5085598,Portland State,0,317,0,0
 5152778,Portland State,663,0,30,0
-5152791,Portland State,0,177,631,0
+5152791,Portland State,0,180,686,0
 5158771,Portland State,0,0,0,1
-5220667,Portland State,0,0,0,8
+5220667,Portland State,0,0,0,10
 5223873,Portland State,0,0,0,4
-5225571,Portland State,0,197,58,0
+5225571,Portland State,0,205,67,0
 5225576,Portland State,736,0,170,0
 5225583,Portland State,0,22,0,0
 5225608,Portland State,0,0,0,1
-5264242,Portland State,0,0,0,7
+5264242,Portland State,0,0,0,8
 5295186,Portland State,0,0,0,2
 5298715,Portland State,0,0,0,1
 5298719,Portland State,0,0,0,4
 5300635,Portland State,0,0,0,4
 5441315,Portland State,0,99,23,0
 5441316,Portland State,0,23,0,0
-5441318,Portland State,0,154,17,0
+5441318,Portland State,0,164,23,0
 5441319,Portland State,0,0,0,1
-5441326,Portland State,0,4,107,0
+5441326,Portland State,0,4,104,0
 5441335,Portland State,0,0,0,1
 5441358,Portland State,0,0,0,3
-4692968,Prairie View A&M,0,146,0,0
-4801301,Prairie View A&M,1433,0,542,0
+4431579,Prairie View A&M,0,0,0,1
+4692968,Prairie View A&M,0,166,0,0
+4801301,Prairie View A&M,1720,0,584,0
 4876248,Prairie View A&M,0,0,0,7
-4899470,Prairie View A&M,0,36,0,0
-5054390,Prairie View A&M,0,28,317,0
-5079512,Prairie View A&M,0,0,0,3
+4899470,Prairie View A&M,0,37,0,0
+5054390,Prairie View A&M,0,37,337,0
+5079512,Prairie View A&M,0,0,0,4
 5081147,Prairie View A&M,0,0,0,6
 5082171,Prairie View A&M,0,0,0,2
 5084183,Prairie View A&M,0,35,0,0
-5084291,Prairie View A&M,0,431,13,0
+5084291,Prairie View A&M,0,586,14,0
 5092245,Prairie View A&M,0,0,0,4
 5092435,Prairie View A&M,0,0,0,1
 5096976,Prairie View A&M,0,0,0,3
@@ -5097,16 +5186,17 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5159295,Prairie View A&M,0,0,0,4
 5220421,Prairie View A&M,0,0,0,1
 5227685,Prairie View A&M,11,371,0,0
-5227686,Prairie View A&M,0,105,262,0
-5227697,Prairie View A&M,0,65,0,0
-5231822,Prairie View A&M,0,0,0,4
-5232174,Prairie View A&M,0,0,0,4
-5296571,Prairie View A&M,0,59,0,0
+5227686,Prairie View A&M,0,112,293,0
+5227697,Prairie View A&M,0,74,0,0
+5231822,Prairie View A&M,0,0,0,5
+5232174,Prairie View A&M,0,0,0,8
+5296571,Prairie View A&M,0,87,0,0
+5301345,Prairie View A&M,0,40,0,0
 5418816,Prairie View A&M,0,8,0,1
 5425111,Prairie View A&M,62,0,-1,0
-5438084,Prairie View A&M,0,14,85,1
+5438084,Prairie View A&M,0,14,135,1
 5441889,Prairie View A&M,0,0,11,3
-5441890,Prairie View A&M,0,156,0,0
+5441890,Prairie View A&M,0,177,0,0
 5441891,Prairie View A&M,0,35,140,1
 5441896,Prairie View A&M,0,0,0,2
 5088100,Presbyterian,0,126,0,0
@@ -5170,37 +5260,40 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5442814,Princeton,0,0,0,1
 4431647,Purdue,0,216,18,0
 4685478,Purdue,0,0,0,2
-4702561,Purdue,0,116,0,0
-4808767,Purdue,0,413,4,0
+4702561,Purdue,0,156,0,0
+4722881,Purdue,0,0,0,1
+4808767,Purdue,0,431,34,0
 4831987,Purdue,0,0,0,1
-4871062,Purdue,0,652,-1,0
+4871062,Purdue,0,709,-1,0
 4873443,Purdue,0,0,0,2
 4918115,Purdue,0,0,0,2
 4918431,Purdue,0,0,0,1
-5075912,Purdue,0,137,0,0
-5079410,Purdue,0,14,34,0
+5075912,Purdue,0,152,0,0
+5079410,Purdue,0,14,39,0
 5083141,Purdue,0,0,0,4
 5084905,Purdue,0,22,0,0
 5089578,Purdue,0,0,0,2
 5099737,Purdue,0,0,0,1
 5101126,Purdue,0,0,0,6
-5104738,Purdue,1924,0,177,0
+5104738,Purdue,2227,0,249,0
 5125530,Purdue,0,0,0,4
 5142753,Purdue,0,50,0,0
-5146739,Purdue,0,104,0,0
+5146739,Purdue,0,180,0,0
 5150917,Purdue,0,0,0,1
+5154320,Purdue,0,0,0,1
 5154324,Purdue,0,0,0,2
 5158234,Purdue,0,0,0,2
-5218961,Purdue,0,113,545,0
+5218961,Purdue,0,149,569,0
 5219085,Purdue,0,0,0,2
-5219089,Purdue,0,66,46,0
+5219089,Purdue,0,68,97,0
 5220031,Purdue,47,0,0,0
 5227400,Purdue,0,22,44,0
+5291714,Purdue,0,59,0,0
 5376415,Purdue,0,0,0,2
-4432404,Rhode Island,0,151,0,0
+4432404,Rhode Island,0,191,0,0
 4602644,Rhode Island,0,56,244,0
-4685358,Rhode Island,0,108,31,0
-4715386,Rhode Island,0,30,0,0
+4685358,Rhode Island,0,113,31,0
+4715386,Rhode Island,0,37,0,0
 5079657,Rhode Island,0,28,177,0
 5083393,Rhode Island,0,872,0,0
 5085499,Rhode Island,0,0,0,4
@@ -5210,26 +5303,27 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5100583,Rhode Island,0,23,0,0
 5103834,Rhode Island,0,0,0,3
 5110490,Rhode Island,0,0,0,2
-5115307,Rhode Island,0,0,0,1
+5115307,Rhode Island,0,0,0,2
 5145592,Rhode Island,824,0,275,0
-5153961,Rhode Island,0,0,0,3
+5153961,Rhode Island,0,0,0,4
 5153962,Rhode Island,0,0,0,2
 5153965,Rhode Island,0,0,0,1
 5153966,Rhode Island,0,0,0,3
-5153967,Rhode Island,0,0,0,4
-5153968,Rhode Island,0,0,0,4
-5153973,Rhode Island,0,4,25,0
-5220461,Rhode Island,0,0,0,9
+5153967,Rhode Island,0,0,0,5
+5153968,Rhode Island,0,0,0,5
+5153971,Rhode Island,0,42,0,0
+5153973,Rhode Island,0,4,22,0
+5220461,Rhode Island,0,0,0,11
 5226799,Rhode Island,0,0,0,3
 5226800,Rhode Island,0,0,0,2
 5226802,Rhode Island,0,0,0,3
-5226806,Rhode Island,0,0,0,1
+5226806,Rhode Island,0,0,0,2
 5226807,Rhode Island,0,0,0,2
-5226812,Rhode Island,806,0,268,0
-5301083,Rhode Island,0,7,206,0
-5301085,Rhode Island,0,0,0,4
-5405108,Rhode Island,0,170,0,0
-5405109,Rhode Island,0,5,117,0
+5226812,Rhode Island,948,0,327,0
+5301083,Rhode Island,0,7,207,0
+5301085,Rhode Island,0,0,0,5
+5405108,Rhode Island,0,218,0,0
+5405109,Rhode Island,0,5,246,0
 4685291,Rice,429,0,725,0
 4834814,Rice,0,0,0,1
 4868249,Rice,0,11,14,0
@@ -5260,14 +5354,15 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5296001,Rice,0,0,0,2
 5296003,Rice,0,0,0,2
 4868926,Richmond,0,0,0,9
-5083372,Richmond,33,318,-9,0
+5083372,Richmond,33,345,-9,0
 5083373,Richmond,1583,0,171,0
 5083375,Richmond,0,0,0,2
 5083381,Richmond,0,232,0,0
 5137681,Richmond,0,0,0,2
-5150671,Richmond,0,94,0,0
+5150671,Richmond,0,95,0,0
 5153977,Richmond,0,19,182,0
-5153983,Richmond,0,198,665,0
+5153981,Richmond,0,0,0,1
+5153983,Richmond,0,215,684,0
 5153997,Richmond,0,0,0,1
 5212703,Richmond,0,42,0,0
 5226830,Richmond,0,0,0,3
@@ -5276,9 +5371,10 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5226845,Richmond,0,175,0,0
 5226848,Richmond,0,0,0,3
 5299846,Richmond,0,27,67,0
-5299847,Richmond,0,0,0,5
+5299847,Richmond,0,0,0,6
 5299848,Richmond,0,25,40,0
-5299850,Richmond,0,0,0,4
+5299849,Richmond,45,0,35,0
+5299850,Richmond,0,0,0,5
 5299852,Richmond,0,0,0,2
 5299853,Richmond,0,0,0,5
 5299858,Richmond,0,0,75,0
@@ -5288,31 +5384,33 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5402260,Richmond,0,381,0,0
 5402264,Richmond,0,0,0,1
 4684087,Robert Morris,0,0,0,2
-4832789,Robert Morris,1871,0,113,0
+4832789,Robert Morris,2088,0,132,0
 4837348,Robert Morris,0,15,119,0
 5083843,Robert Morris,0,0,0,2
 5095119,Robert Morris,0,0,0,5
-5150518,Robert Morris,0,87,0,0
-5151680,Robert Morris,0,304,0,0
+5150518,Robert Morris,0,146,0,0
+5151680,Robert Morris,0,396,2,0
 5153466,Robert Morris,0,50,0,0
 5162550,Robert Morris,0,0,0,1
 5178092,Robert Morris,0,23,35,0
-5198314,Robert Morris,0,72,144,0
-5223988,Robert Morris,0,17,0,6
+5198314,Robert Morris,0,72,149,0
+5223988,Robert Morris,0,17,0,7
 5227179,Robert Morris,0,0,0,2
-5298324,Robert Morris,0,559,2,0
+5227201,Robert Morris,0,31,0,0
+5297062,Robert Morris,0,0,0,1
+5298324,Robert Morris,0,577,2,0
 5298331,Robert Morris,0,0,0,4
 5298332,Robert Morris,0,0,0,1
-5298335,Robert Morris,0,0,0,1
+5298335,Robert Morris,0,0,0,2
 5298338,Robert Morris,0,0,0,2
 5298340,Robert Morris,0,0,0,5
 5298351,Robert Morris,0,26,0,0
-5298352,Robert Morris,0,316,0,0
+5298352,Robert Morris,0,326,0,0
 5298354,Robert Morris,0,0,0,2
 5298359,Robert Morris,0,0,0,1
 5308773,Robert Morris,0,0,0,4
 5405854,Robert Morris,0,122,0,0
-5405857,Robert Morris,0,47,59,0
+5405857,Robert Morris,0,47,66,0
 5405858,Robert Morris,0,0,0,2
 5438540,Robert Morris,0,145,0,0
 4612622,Rutgers,0,0,0,1
@@ -5436,27 +5534,31 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5401458,Sacramento State,136,0,7,0
 5081076,Sacred Heart,0,63,0,0
 5083471,Sacred Heart,0,0,0,2
-5087087,Sacred Heart,0,0,0,7
+5087087,Sacred Heart,0,0,0,8
 5087093,Sacred Heart,0,0,5,1
-5165909,Sacred Heart,0,377,0,0
+5165909,Sacred Heart,0,482,8,0
 5165910,Sacred Heart,0,0,0,1
 5165914,Sacred Heart,0,46,0,0
 5165931,Sacred Heart,0,21,44,0
+5165934,Sacred Heart,0,0,0,1
 5165936,Sacred Heart,0,0,0,1
 5165945,Sacred Heart,0,0,0,1
 5165957,Sacred Heart,0,0,0,2
 5165965,Sacred Heart,0,62,0,0
+5165970,Sacred Heart,0,21,0,0
 5165981,Sacred Heart,0,0,0,1
 5225678,Sacred Heart,0,0,0,2
 5225688,Sacred Heart,0,0,0,3
-5225703,Sacred Heart,0,86,479,0
-5225710,Sacred Heart,0,369,68,0
-5298399,Sacred Heart,0,38,9,0
+5225703,Sacred Heart,0,93,603,0
+5225710,Sacred Heart,0,369,87,0
+5229301,Sacred Heart,0,0,0,3
+5232195,Sacred Heart,0,0,0,2
+5298399,Sacred Heart,0,44,9,0
 5298448,Sacred Heart,0,48,0,0
 5442379,Sacred Heart,0,0,0,1
-5442380,Sacred Heart,0,186,0,0
-5442382,Sacred Heart,1473,0,383,0
-5442389,Sacred Heart,0,159,242,0
+5442380,Sacred Heart,0,290,0,0
+5442382,Sacred Heart,1726,0,424,0
+5442389,Sacred Heart,0,171,259,0
 4568237,Sam Houston,0,28,0,0
 4680018,Sam Houston,0,57,206,0
 4685343,Sam Houston,0,0,0,2
@@ -5494,13 +5596,14 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5384800,Sam Houston,0,0,0,1
 5438482,Sam Houston,0,0,0,1
 4362190,Samford,0,0,0,1
-4870864,Samford,1560,0,160,0
+4870864,Samford,1728,0,220,0
 5077059,Samford,123,0,2,0
-5081436,Samford,0,108,139,0
+5081436,Samford,0,133,164,0
 5082376,Samford,0,0,0,1
 5082421,Samford,0,0,0,2
 5083903,Samford,0,0,0,3
 5085644,Samford,74,0,11,0
+5086470,Samford,0,4,3,1
 5127044,Samford,0,0,0,1
 5148411,Samford,0,0,0,2
 5148847,Samford,0,0,0,1
@@ -5508,40 +5611,45 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5152618,Samford,0,0,0,1
 5165853,Samford,0,0,0,3
 5222940,Samford,0,37,0,5
-5224435,Samford,0,88,316,0
-5224444,Samford,0,150,0,0
-5224446,Samford,0,51,86,0
-5224455,Samford,0,300,0,0
-5300519,Samford,0,0,0,1
-5300526,Samford,0,0,20,0
-5300544,Samford,0,27,0,0
-5301299,Samford,0,0,0,3
-5441426,Samford,0,292,0,0
-5441429,Samford,46,225,-1,0
+5224435,Samford,0,88,323,0
+5224444,Samford,0,168,0,0
+5224446,Samford,0,51,98,0
+5224455,Samford,0,357,0,0
+5300519,Samford,0,0,0,3
+5300526,Samford,0,0,25,0
+5300544,Samford,0,30,0,0
+5301299,Samford,0,0,0,4
+5302448,Samford,0,0,0,1
+5441426,Samford,0,315,0,0
+5441429,Samford,46,270,-1,0
 5441433,Samford,0,20,0,0
-5441436,Samford,0,469,40,0
-5441449,Samford,36,22,3,0
+5441436,Samford,0,494,49,0
+5441441,Samford,0,0,0,1
+5441449,Samford,77,27,3,0
 5441450,Samford,0,0,0,2
-4876243,San Diego,0,758,0,0
+4876243,San Diego,0,764,0,0
 5088995,San Diego,0,23,4,0
-5091758,San Diego,0,0,0,2
-5093342,San Diego,0,0,0,5
-5093343,San Diego,0,0,0,5
-5093362,San Diego,0,563,0,0
-5093363,San Diego,0,70,726,0
+5091758,San Diego,0,0,0,3
+5093342,San Diego,0,0,0,7
+5093343,San Diego,0,0,0,6
+5093362,San Diego,0,665,0,0
+5093363,San Diego,0,70,898,0
 5161319,San Diego,0,196,0,0
 5165884,San Diego,2099,0,170,0
 5177386,San Diego,0,0,0,1
 5177387,San Diego,0,0,0,1
-5226133,San Diego,0,0,0,3
+5226133,San Diego,0,0,0,5
 5226138,San Diego,0,100,0,0
-5226148,San Diego,0,190,0,0
+5226148,San Diego,0,230,0,0
 5226150,San Diego,0,0,0,1
+5232445,San Diego,148,0,20,0
 5232450,San Diego,0,0,0,6
 5232452,San Diego,0,0,0,3
-5300168,San Diego,0,51,242,0
+5232467,San Diego,0,0,0,3
+5300168,San Diego,0,51,275,0
 5300169,San Diego,0,0,0,1
 5300174,San Diego,0,0,0,1
+5442974,San Diego,0,9,28,0
 5442978,San Diego,0,0,0,1
 5442988,San Diego,0,0,0,3
 5442999,San Diego,0,100,0,0
@@ -5639,32 +5747,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5295070,South Alabama,0,115,545,0
 5395308,South Alabama,0,0,0,1
 5395309,South Alabama,0,0,0,3
-4683210,South Carolina,0,118,0,0
+4683210,South Carolina,0,169,0,0
 4833630,South Carolina,0,0,0,3
 4870667,South Carolina,0,0,0,2
 4870738,South Carolina,0,0,0,3
-4870745,South Carolina,0,327,0,0
-4875127,South Carolina,1798,0,632,0
+4870745,South Carolina,0,397,0,0
+4875127,South Carolina,2049,0,686,0
 4878232,South Carolina,0,0,0,4
 4921117,South Carolina,0,19,0,5
-4921292,South Carolina,0,19,38,0
+4921292,South Carolina,0,23,88,0
 5077110,South Carolina,0,0,0,4
-5079329,South Carolina,0,425,10,0
-5081213,South Carolina,0,330,0,0
+5079329,South Carolina,0,491,10,0
+5081213,South Carolina,0,347,0,0
 5084052,South Carolina,0,0,0,3
 5093005,South Carolina,0,0,0,1
 5127724,South Carolina,0,17,58,0
 5130792,South Carolina,0,39,4,0
-5141742,South Carolina,0,53,265,0
+5141742,South Carolina,0,57,285,0
 5142601,South Carolina,0,0,0,1
 5145737,South Carolina,0,147,499,0
-5147140,South Carolina,0,0,0,1
-5147146,South Carolina,0,0,0,2
-5149824,South Carolina,0,0,0,1
+5147140,South Carolina,0,0,0,2
+5147146,South Carolina,0,0,0,3
+5149824,South Carolina,0,0,0,3
 5154341,South Carolina,0,100,-2,0
 5159002,South Carolina,0,0,0,1
-5169550,South Carolina,0,30,0,0
-5200374,South Carolina,0,148,0,0
+5169550,South Carolina,0,35,0,0
+5200374,South Carolina,0,174,0,0
 5209406,South Carolina,0,0,0,2
 5209528,South Carolina,0,0,0,2
 5209681,South Carolina,0,0,0,3
@@ -5734,10 +5842,10 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5424271,South Dakota,0,0,0,6
 5436495,South Dakota,0,0,0,1
 5441938,South Dakota,0,0,35,0
-4878886,South Dakota State,0,495,0,0
-5083545,South Dakota State,0,222,0,0
+4878886,South Dakota State,0,506,0,0
+5083545,South Dakota State,0,231,0,0
 5085774,South Dakota State,0,0,0,3
-5085784,South Dakota State,1403,0,147,0
+5085784,South Dakota State,1584,0,168,0
 5098517,South Dakota State,0,0,0,3
 5112706,South Dakota State,0,0,0,2
 5112710,South Dakota State,0,0,0,2
@@ -5749,16 +5857,16 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5221953,South Dakota State,0,0,0,1
 5225353,South Dakota State,0,0,0,1
 5227809,South Dakota State,0,28,0,0
-5227812,South Dakota State,0,486,0,0
+5227812,South Dakota State,0,541,0,0
 5227817,South Dakota State,0,0,0,1
-5227818,South Dakota State,0,50,0,0
-5227822,South Dakota State,0,0,0,1
-5227838,South Dakota State,0,291,5,0
+5227818,South Dakota State,0,87,0,0
+5227822,South Dakota State,0,0,0,2
+5227838,South Dakota State,0,360,5,0
 5301771,South Dakota State,0,24,0,0
 5301777,South Dakota State,0,0,0,1
 5301779,South Dakota State,0,16,219,0
-5301781,South Dakota State,0,0,428,0
-5301782,South Dakota State,0,27,929,0
+5301781,South Dakota State,0,0,467,0
+5301782,South Dakota State,0,27,1011,0
 5305530,South Dakota State,0,0,83,0
 5411885,South Dakota State,0,0,0,2
 5422984,South Dakota State,0,0,0,2
@@ -5823,8 +5931,8 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5402634,Southeast Missouri State,0,0,0,4
 5402635,Southeast Missouri State,0,225,0,0
 5402661,Southeast Missouri State,0,0,0,1
-4870784,Southern,0,81,644,0
-4923221,Southern,0,25,66,0
+4870784,Southern,0,92,760,0
+4923221,Southern,0,25,70,0
 5079534,Southern,0,0,0,2
 5081430,Southern,0,0,0,3
 5084452,Southern,0,0,0,2
@@ -5832,25 +5940,27 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5151889,Southern,0,0,0,1
 5152296,Southern,0,0,0,5
 5156311,Southern,0,0,0,2
+5157119,Southern,0,25,0,0
 5166020,Southern,0,50,0,0
 5166021,Southern,0,20,0,0
-5226608,Southern,0,24,3,0
+5226608,Southern,0,41,3,0
 5230881,Southern,0,0,0,2
-5230883,Southern,0,0,0,1
-5230885,Southern,0,0,0,5
-5235634,Southern,0,7,175,2
-5258447,Southern,0,193,-2,0
+5230883,Southern,0,0,0,2
+5230885,Southern,0,0,0,6
+5235634,Southern,0,7,190,2
+5258447,Southern,0,219,-2,0
+5294658,Southern,0,35,0,0
 5298032,Southern,0,0,0,1
 5300330,Southern,0,0,0,1
 5442197,Southern,0,0,0,3
 5442201,Southern,141,0,-3,0
-5442202,Southern,810,0,160,0
+5442202,Southern,921,0,175,0
 5442205,Southern,0,53,0,0
 5442207,Southern,0,168,0,0
 5442211,Southern,0,0,0,1
-5442214,Southern,0,14,49,0
-5442215,Southern,0,24,0,0
-5442237,Southern,0,54,0,0
+5442214,Southern,0,14,153,0
+5442215,Southern,0,45,12,0
+5442237,Southern,0,60,0,0
 5442240,Southern,0,135,0,0
 4697094,Southern Illinois,1295,11,294,0
 4710681,Southern Illinois,0,0,0,1
@@ -5913,52 +6023,55 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5394591,Southern Miss,27,17,0,0
 5394596,Southern Miss,0,126,669,0
 5394604,Southern Miss,0,0,0,3
-4696073,Southern Utah,0,452,0,0
+4571205,Southern Utah,0,0,25,0
+4696073,Southern Utah,0,496,0,0
 4710805,Southern Utah,0,0,0,1
 4924140,Southern Utah,0,0,0,3
 5085538,Southern Utah,0,0,0,2
 5089560,Southern Utah,0,38,57,0
-5089859,Southern Utah,0,130,1184,0
-5093733,Southern Utah,0,310,0,0
-5093750,Southern Utah,0,115,0,0
+5089859,Southern Utah,0,144,1250,0
+5093733,Southern Utah,0,367,15,0
+5093750,Southern Utah,0,162,0,0
 5150636,Southern Utah,0,77,0,0
-5151171,Southern Utah,1614,0,956,0
+5151171,Southern Utah,1822,0,1023,0
 5160025,Southern Utah,0,2,53,0
 5160033,Southern Utah,0,0,0,3
 5180100,Southern Utah,0,0,0,2
-5189537,Southern Utah,0,74,0,0
+5189537,Southern Utah,0,90,0,0
 5218520,Southern Utah,0,0,0,6
 5224391,Southern Utah,0,0,0,1
-5224414,Southern Utah,0,326,18,0
-5225844,Southern Utah,0,0,0,3
+5224414,Southern Utah,0,356,18,0
+5225844,Southern Utah,0,0,0,4
 5296252,Southern Utah,0,0,0,5
 5301522,Southern Utah,0,29,23,0
 5301523,Southern Utah,0,0,0,2
 5301526,Southern Utah,0,0,0,7
-5301529,Southern Utah,0,0,0,4
+5301529,Southern Utah,0,0,0,5
+5301533,Southern Utah,0,0,0,1
 5301535,Southern Utah,0,0,0,1
-5301539,Southern Utah,0,0,0,9
-5441467,Southern Utah,0,0,0,1
+5301539,Southern Utah,0,0,0,10
+5441467,Southern Utah,0,0,0,4
 5441481,Southern Utah,0,49,0,0
-5441486,Southern Utah,0,0,0,4
-5088989,St. Thomas (MN),0,1,484,0
+5441486,Southern Utah,0,0,0,5
+5088989,St. Thomas (MN),0,1,498,0
 5088993,St. Thomas (MN),0,0,0,1
 5088998,St. Thomas (MN),0,0,0,5
 5089005,St. Thomas (MN),0,0,0,2
-5151370,St. Thomas (MN),263,0,26,0
-5155294,St. Thomas (MN),0,178,5,0
-5155297,St. Thomas (MN),0,0,0,1
-5155308,St. Thomas (MN),0,116,0,0
+5151370,St. Thomas (MN),343,0,47,0
+5155294,St. Thomas (MN),18,178,5,0
+5155297,St. Thomas (MN),0,0,0,2
+5155308,St. Thomas (MN),0,134,0,0
 5155314,St. Thomas (MN),0,26,0,0
 5155317,St. Thomas (MN),0,0,0,5
-5226234,St. Thomas (MN),10,485,11,0
-5226248,St. Thomas (MN),0,45,98,0
+5226234,St. Thomas (MN),10,528,11,0
+5226236,St. Thomas (MN),0,0,0,1
+5226248,St. Thomas (MN),0,70,109,0
 5226254,St. Thomas (MN),0,0,0,2
 5226256,St. Thomas (MN),0,0,0,1
 5226481,St. Thomas (MN),0,3,33,0
-5300200,St. Thomas (MN),12,483,15,0
-5300203,St. Thomas (MN),0,0,0,7
-5300206,St. Thomas (MN),1116,0,369,0
+5300200,St. Thomas (MN),12,507,15,0
+5300203,St. Thomas (MN),0,0,0,8
+5300206,St. Thomas (MN),1145,0,414,0
 5300208,St. Thomas (MN),0,0,0,3
 5300223,St. Thomas (MN),0,0,0,1
 5426552,St. Thomas (MN),0,0,0,3
@@ -6027,52 +6140,53 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5441772,Stephen F. Austin,0,0,0,4
 5441784,Stephen F. Austin,0,50,0,0
 5098560,Stetson,0,0,0,4
-5103799,Stetson,0,0,0,1
-5161149,Stetson,0,159,48,0
-5161159,Stetson,8,3,115,0
+5103799,Stetson,0,0,0,4
+5161149,Stetson,0,192,53,0
+5161159,Stetson,12,3,131,0
 5161174,Stetson,0,0,0,1
 5161175,Stetson,0,0,0,1
-5161193,Stetson,0,450,14,0
+5161193,Stetson,0,505,14,0
 5219833,Stetson,170,0,0,0
 5226397,Stetson,62,0,0,0
-5226398,Stetson,0,89,0,0
-5226403,Stetson,0,12,52,0
+5226398,Stetson,0,96,0,0
+5226403,Stetson,0,21,54,0
 5226409,Stetson,0,0,0,1
 5226411,Stetson,0,0,0,1
-5226441,Stetson,0,186,355,0
-5304549,Stetson,0,312,0,0
+5226441,Stetson,0,224,357,0
+5304549,Stetson,0,380,0,0
 5304550,Stetson,0,0,0,8
 5304556,Stetson,0,12,0,3
 5304561,Stetson,0,42,18,0
 5304566,Stetson,0,67,0,0
 5304572,Stetson,0,73,0,0
 5304582,Stetson,0,0,0,1
-5442122,Stetson,0,443,0,0
+5442122,Stetson,0,568,0,0
 5442123,Stetson,0,21,0,0
 5442126,Stetson,0,0,0,4
 5442127,Stetson,0,0,0,2
 5442128,Stetson,0,50,0,0
-5442132,Stetson,0,16,10,0
+5442132,Stetson,0,21,10,0
 5442142,Stetson,0,0,0,3
-5088170,Stonehill,0,403,0,0
+5088170,Stonehill,0,427,0,0
 5088174,Stonehill,0,0,0,7
-5088178,Stonehill,0,0,0,5
+5088178,Stonehill,0,0,0,7
 5088205,Stonehill,0,0,0,4
-5106897,Stonehill,1720,0,234,0
+5106897,Stonehill,1767,0,253,0
 5156021,Stonehill,0,0,0,2
 5156026,Stonehill,0,109,0,0
 5156027,Stonehill,0,0,0,3
-5156439,Stonehill,0,235,0,0
+5156439,Stonehill,0,244,0,0
 5157474,Stonehill,0,0,0,4
 5226406,Stonehill,0,0,0,6
 5229289,Stonehill,0,0,12,2
 5229299,Stonehill,0,0,0,1
 5229303,Stonehill,0,0,0,1
 5229304,Stonehill,0,0,0,1
+5229308,Stonehill,0,0,0,1
 5229310,Stonehill,0,0,0,1
 5229312,Stonehill,0,21,0,0
-5298362,Stonehill,0,63,428,0
-5298364,Stonehill,0,190,297,0
+5298362,Stonehill,0,63,459,0
+5298364,Stonehill,0,190,304,0
 5298365,Stonehill,0,0,0,2
 5298369,Stonehill,0,0,0,3
 5298380,Stonehill,0,140,15,0
@@ -6080,7 +6194,7 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5298394,Stonehill,0,0,0,1
 5298412,Stonehill,0,0,0,1
 5405193,Stonehill,0,0,0,2
-5405194,Stonehill,0,167,0,0
+5405194,Stonehill,0,181,0,0
 5405195,Stonehill,0,282,0,0
 5405196,Stonehill,0,1,73,0
 5405199,Stonehill,0,0,0,1
@@ -6088,39 +6202,42 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5405216,Stonehill,0,0,0,1
 4923059,Stony Brook,0,43,195,0
 4923282,Stony Brook,0,216,605,0
-5083437,Stony Brook,0,450,0,0
-5087722,Stony Brook,0,44,0,0
+5083437,Stony Brook,0,536,0,0
+5085023,Stony Brook,0,73,0,0
+5087722,Stony Brook,0,55,0,0
 5087944,Stony Brook,0,0,0,1
+5091564,Stony Brook,25,0,3,0
 5094093,Stony Brook,0,0,0,2
 5152851,Stony Brook,0,0,0,7
 5154546,Stony Brook,0,0,0,6
 5155110,Stony Brook,0,0,0,3
-5156210,Stony Brook,0,779,15,0
-5156794,Stony Brook,0,4,46,0
-5156795,Stony Brook,0,0,0,6
-5159293,Stony Brook,0,0,0,6
-5226896,Stony Brook,2353,0,424,0
+5156210,Stony Brook,0,928,15,0
+5156794,Stony Brook,0,4,87,0
+5156795,Stony Brook,0,0,0,8
+5159293,Stony Brook,0,0,0,8
+5226896,Stony Brook,2711,0,467,0
+5226902,Stony Brook,0,27,100,0
 5226903,Stony Brook,0,0,0,1
 5227243,Stony Brook,0,0,0,3
 5301597,Stony Brook,0,0,0,1
-5301599,Stony Brook,0,110,0,0
-5301602,Stony Brook,0,74,0,0
+5301599,Stony Brook,0,127,0,0
+5301602,Stony Brook,0,86,0,0
 5301612,Stony Brook,0,418,0,0
-5301613,Stony Brook,0,65,0,0
+5301613,Stony Brook,0,81,1,0
 5301614,Stony Brook,0,102,0,0
-5301615,Stony Brook,0,0,0,10
+5301615,Stony Brook,0,0,0,11
 5301617,Stony Brook,0,0,0,1
 5405824,Stony Brook,0,40,0,0
 4432655,Syracuse,0,0,0,4
-4685694,Syracuse,1117,0,54,0
-4691315,Syracuse,0,886,39,0
+4685694,Syracuse,1382,0,59,0
+4691315,Syracuse,0,898,39,0
 4870928,Syracuse,546,0,11,0
 4870944,Syracuse,0,0,0,3
-4910239,Syracuse,0,147,0,0
+4910239,Syracuse,0,231,0,0
 4941016,Syracuse,0,0,0,1
 5004520,Syracuse,0,119,0,0
 5026719,Syracuse,0,0,0,3
-5079537,Syracuse,0,32,149,0
+5079537,Syracuse,0,37,160,0
 5086156,Syracuse,74,0,0,0
 5092238,Syracuse,0,0,0,3
 5103802,Syracuse,0,0,0,5
@@ -6129,19 +6246,20 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5122076,Syracuse,0,59,0,0
 5148278,Syracuse,0,0,0,1
 5153782,Syracuse,389,0,20,0
-5154420,Syracuse,0,40,413,0
+5154420,Syracuse,0,40,514,0
 5155073,Syracuse,0,12,0,1
-5158837,Syracuse,0,0,0,4
-5159036,Syracuse,0,194,8,0
+5158837,Syracuse,0,0,0,5
+5159036,Syracuse,0,276,8,0
 5173414,Syracuse,0,0,0,1
-5200435,Syracuse,0,0,2,5
+5200435,Syracuse,0,0,2,6
 5206061,Syracuse,0,31,0,0
-5210515,Syracuse,0,321,0,0
+5210515,Syracuse,0,403,0,0
 5212990,Syracuse,0,120,0,0
 5214358,Syracuse,0,0,0,1
 5235453,Syracuse,0,0,0,1
-5261613,Syracuse,0,5,495,0
-5289321,Syracuse,0,15,144,0
+5239197,Syracuse,0,0,0,1
+5261613,Syracuse,0,5,511,0
+5289321,Syracuse,0,15,149,0
 5290980,Syracuse,12,0,-14,0
 4832593,TCU,0,0,0,1
 4832804,TCU,0,495,0,0
@@ -6283,103 +6401,105 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5441159,Tennessee State,0,31,0,0
 4695037,Tennessee Tech,0,0,0,1
 4702800,Tennessee Tech,0,0,0,1
-4812346,Tennessee Tech,0,393,31,0
+4812346,Tennessee Tech,0,505,31,0
 4870240,Tennessee Tech,0,0,0,5
 4877508,Tennessee Tech,0,0,0,6
 4878881,Tennessee Tech,0,0,0,2
 4917139,Tennessee Tech,0,0,0,8
 4921324,Tennessee Tech,0,22,0,3
-5027925,Tennessee Tech,2255,0,32,0
-5077211,Tennessee Tech,0,0,0,1
-5083111,Tennessee Tech,0,97,293,0
-5083726,Tennessee Tech,0,127,555,0
+5027925,Tennessee Tech,2549,0,34,0
+5077211,Tennessee Tech,0,0,0,2
+5083111,Tennessee Tech,0,97,308,0
+5083726,Tennessee Tech,0,128,585,0
 5084063,Tennessee Tech,0,0,0,1
 5085521,Tennessee Tech,0,33,0,0
 5088020,Tennessee Tech,0,0,0,3
 5089028,Tennessee Tech,0,22,36,0
 5095115,Tennessee Tech,0,0,0,3
-5104968,Tennessee Tech,0,523,0,0
+5104968,Tennessee Tech,0,568,0,0
 5153315,Tennessee Tech,0,0,0,3
 5153764,Tennessee Tech,0,57,2,0
-5153765,Tennessee Tech,0,0,0,3
+5153765,Tennessee Tech,0,0,0,4
 5164727,Tennessee Tech,0,0,0,2
-5221590,Tennessee Tech,0,594,15,0
-5226122,Tennessee Tech,0,31,0,0
-5227195,Tennessee Tech,0,0,0,2
-5303335,Tennessee Tech,0,255,0,0
+5221590,Tennessee Tech,0,650,15,0
+5226122,Tennessee Tech,0,52,0,0
+5227195,Tennessee Tech,0,0,0,3
+5303335,Tennessee Tech,0,314,0,0
 5407202,Tennessee Tech,0,0,0,1
 5407532,Tennessee Tech,0,85,0,0
 5428086,Tennessee Tech,0,0,0,1
 5435896,Tennessee Tech,0,0,0,1
-4685268,Texas,0,74,416,0
-4816104,Texas,0,37,0,0
+4685268,Texas,0,122,501,0
+4816104,Texas,0,52,0,0
 4868356,Texas,0,0,0,2
-4870906,Texas,1762,0,263,0
+4870906,Texas,2059,0,263,0
 4871044,Texas,0,0,0,2
 4871053,Texas,0,96,283,0
+4918129,Texas,0,0,0,1
 4918434,Texas,0,0,0,5
 4921318,Texas,0,24,0,0
-4922981,Texas,0,0,0,8
+4922981,Texas,0,0,0,10
 4922989,Texas,0,0,0,4
 4950398,Texas,0,0,0,1
 5078162,Texas,0,0,0,3
 5079376,Texas,0,395,0,0
 5079504,Texas,0,0,0,4
-5079613,Texas,0,419,0,1
+5079613,Texas,0,504,0,1
 5079689,Texas,0,0,0,8
-5141729,Texas,0,0,57,0
-5141757,Texas,0,63,0,0
+5141729,Texas,0,0,71,0
+5141757,Texas,0,72,0,0
 5150773,Texas,0,0,0,1
-5161011,Texas,0,130,0,0
+5161011,Texas,0,190,0,0
 5166881,Texas,0,0,0,2
-5189756,Texas,0,0,0,2
+5189756,Texas,0,0,0,4
 5195299,Texas,0,31,0,0
 5198245,Texas,0,0,0,6
-5203606,Texas,0,13,103,0
-5218633,Texas,0,478,-1,0
-5293823,Texas,0,0,0,3
-4685383,Texas A&M,0,314,0,0
+5203606,Texas,0,37,105,0
+5218633,Texas,0,531,5,0
+5293823,Texas,0,0,0,4
+4685383,Texas A&M,0,392,0,0
 4685412,Texas A&M,0,0,0,4
-4801276,Texas A&M,0,52,0,0
-4870644,Texas A&M,0,0,0,1
-4870934,Texas A&M,0,52,318,0
-4870971,Texas A&M,1395,0,299,0
+4801276,Texas A&M,0,72,0,0
+4870644,Texas A&M,0,0,0,2
+4870934,Texas A&M,0,52,455,0
+4870971,Texas A&M,1650,0,328,0
 4870990,Texas A&M,0,0,0,1
 4899422,Texas A&M,0,0,0,2
 4921319,Texas A&M,0,0,0,2
-4950396,Texas A&M,0,0,0,2
+4950396,Texas A&M,0,0,0,3
 5078108,Texas A&M,0,0,0,1
-5078160,Texas A&M,0,22,0,0
+5078160,Texas A&M,0,27,0,0
 5079326,Texas A&M,0,92,10,0
-5079345,Texas A&M,0,300,16,0
+5079345,Texas A&M,0,324,16,0
 5079656,Texas A&M,0,0,0,1
 5081054,Texas A&M,0,18,3,0
 5139057,Texas A&M,0,56,0,0
-5141358,Texas A&M,0,98,0,0
-5141540,Texas A&M,0,0,0,3
-5141561,Texas A&M,0,96,146,0
+5141358,Texas A&M,0,120,0,0
+5141540,Texas A&M,0,0,0,4
+5141561,Texas A&M,0,99,154,0
 5141596,Texas A&M,0,0,0,1
 5141651,Texas A&M,0,0,0,1
 5153340,Texas A&M,0,0,0,1
-5158975,Texas A&M,0,10,226,0
-5158998,Texas A&M,0,122,0,0
-5164360,Texas A&M,0,179,0,0
-5199850,Texas A&M,0,0,43,0
+5158975,Texas A&M,0,20,259,0
+5158998,Texas A&M,0,170,0,0
+5164360,Texas A&M,0,224,0,0
+5199850,Texas A&M,0,0,52,0
+5269126,Texas A&M,0,0,0,1
 5295969,Texas A&M,49,0,0,0
-4241676,Texas Southern,0,81,0,0
-4522107,Texas Southern,0,245,4,0
+4241676,Texas Southern,0,98,0,0
+4522107,Texas Southern,0,267,4,0
 4683821,Texas Southern,0,0,0,2
 4870979,Texas Southern,0,0,0,2
 4887176,Texas Southern,0,0,0,3
 4900152,Texas Southern,0,72,0,0
-4917305,Texas Southern,1177,0,374,0
+4917305,Texas Southern,1290,0,497,0
 5155699,Texas Southern,0,211,3,0
-5163009,Texas Southern,0,239,5,0
-5163010,Texas Southern,0,16,170,0
+5163009,Texas Southern,0,276,5,0
+5163010,Texas Southern,0,16,186,0
 5166452,Texas Southern,0,0,0,2
 5168803,Texas Southern,0,0,0,2
 5220130,Texas Southern,0,0,0,2
-5227762,Texas Southern,0,57,823,0
+5227762,Texas Southern,0,66,898,0
 5230777,Texas Southern,0,84,0,0
 5232129,Texas Southern,0,0,0,1
 5232139,Texas Southern,0,0,0,2
@@ -6448,28 +6568,30 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5219124,Texas Tech,0,0,0,2
 5227057,Texas Tech,0,32,0,0
 5280093,Texas Tech,0,0,0,2
-4683911,The Citadel,0,159,0,0
-4695602,The Citadel,358,0,281,0
-4695743,The Citadel,0,55,13,0
-4832849,The Citadel,0,38,681,0
-5085498,The Citadel,0,0,0,5
+4683911,The Citadel,0,200,0,0
+4695602,The Citadel,478,0,408,0
+4695743,The Citadel,0,61,78,0
+4832849,The Citadel,0,58,719,0
+5085498,The Citadel,0,0,0,6
 5085851,The Citadel,0,0,0,1
 5088151,The Citadel,0,0,0,2
-5089455,The Citadel,0,69,49,0
-5091764,The Citadel,0,121,0,0
+5089455,The Citadel,0,69,52,0
+5091764,The Citadel,0,154,0,0
 5095783,The Citadel,0,0,0,3
+5150497,The Citadel,0,28,0,0
 5153428,The Citadel,0,0,0,1
 5157273,The Citadel,0,0,0,1
-5162969,The Citadel,0,0,0,2
+5162969,The Citadel,0,0,0,3
 5168686,The Citadel,0,37,0,0
 5223107,The Citadel,370,0,341,0
 5230048,The Citadel,0,0,0,2
-5230050,The Citadel,0,151,79,0
+5230050,The Citadel,0,151,78,0
 5230053,The Citadel,0,0,0,2
-5230060,The Citadel,0,30,174,0
+5230060,The Citadel,0,30,188,0
+5230077,The Citadel,0,0,0,2
 5302081,The Citadel,66,0,19,0
-5302082,The Citadel,0,75,0,0
-5302084,The Citadel,0,0,0,1
+5302082,The Citadel,0,82,3,0
+5302084,The Citadel,0,0,0,2
 5302086,The Citadel,0,0,0,1
 5304076,The Citadel,0,0,0,2
 5306282,The Citadel,0,0,0,1
@@ -6505,34 +6627,34 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5230932,Toledo,0,229,0,0
 5252597,Toledo,0,0,0,2
 5300317,Toledo,0,0,0,2
-4876663,Towson,0,0,0,4
+4876663,Towson,0,0,0,5
 4880840,Towson,0,0,0,1
-5092663,Towson,0,190,0,0
-5122060,Towson,0,100,0,0
-5153815,Towson,0,67,203,0
+5092663,Towson,0,205,0,0
+5122060,Towson,0,128,0,0
+5153815,Towson,0,101,368,0
 5155816,Towson,0,0,0,5
 5155818,Towson,0,157,0,0
 5155829,Towson,0,0,0,1
 5166208,Towson,0,0,0,1
-5197048,Towson,0,0,0,2
+5197048,Towson,0,0,0,3
 5220270,Towson,0,0,0,3
-5226924,Towson,0,0,0,4
-5226938,Towson,0,224,16,0
-5226940,Towson,0,474,0,0
-5230376,Towson,0,698,0,0
+5226924,Towson,0,0,0,6
+5226938,Towson,0,226,16,0
+5226940,Towson,0,515,0,0
+5230376,Towson,0,789,0,0
 5301657,Towson,1543,0,92,0
-5301659,Towson,0,173,347,0
+5301659,Towson,0,176,375,0
 5301662,Towson,0,0,0,5
 5301665,Towson,0,0,0,1
 5301673,Towson,0,0,0,1
 5301675,Towson,0,0,0,2
 5301685,Towson,0,0,0,1
-5405929,Towson,0,106,0,0
+5405929,Towson,0,137,0,0
 5405930,Towson,0,81,184,0
-5405931,Towson,834,0,255,0
+5405931,Towson,1085,0,291,0
 5405933,Towson,0,77,0,0
 5405935,Towson,0,0,0,1
-5405958,Towson,0,0,0,1
+5405958,Towson,0,0,0,2
 4431633,Troy,1174,1,343,0
 4701541,Troy,0,0,0,2
 4701593,Troy,0,112,0,0
@@ -6567,16 +6689,16 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4698572,Tulane,0,0,0,1
 4710027,Tulane,0,0,0,2
 4808758,Tulane,0,0,0,2
-4837391,Tulane,0,96,337,0
+4837391,Tulane,0,96,339,0
 4870518,Tulane,72,0,15,0
-4870635,Tulane,0,277,0,0
-4871148,Tulane,0,132,290,0
+4870635,Tulane,0,291,0,0
+4871148,Tulane,0,139,295,0
 4920129,Tulane,0,0,0,3
 5077965,Tulane,0,0,0,2
 5078109,Tulane,0,0,0,1
-5079501,Tulane,0,112,-11,0
+5079501,Tulane,0,121,-11,0
 5079686,Tulane,0,153,0,0
-5080925,Tulane,0,0,0,3
+5080925,Tulane,0,0,0,4
 5085391,Tulane,0,0,0,1
 5085879,Tulane,0,0,0,4
 5091744,Tulane,0,143,0,0
@@ -6588,31 +6710,31 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5147197,Tulane,0,0,0,3
 5147842,Tulane,0,0,0,1
 5148838,Tulane,0,0,45,0
-5150834,Tulane,0,394,0,0
+5150834,Tulane,0,419,0,0
 5203726,Tulane,0,60,0,0
 5215501,Tulane,0,105,0,0
-5218820,Tulane,0,25,486,0
+5218820,Tulane,0,25,502,0
 5219709,Tulane,10,0,26,0
 5222239,Tulane,0,74,0,0
 5226524,Tulane,0,0,0,6
 5279206,Tulane,0,0,0,3
-5291713,Tulane,745,0,30,0
+5291713,Tulane,800,0,30,0
 5294299,Tulane,0,0,0,1
 5294301,Tulane,0,56,0,0
 5294303,Tulane,0,0,0,3
 4429028,Tulsa,0,0,0,2
-4429804,Tulsa,0,219,41,0
+4429804,Tulsa,0,243,52,0
 4565355,Tulsa,289,0,35,0
 4683043,Tulsa,0,0,0,4
-4685699,Tulsa,0,110,412,0
-4710860,Tulsa,10,539,28,0
-4900577,Tulsa,0,0,0,2
+4685699,Tulsa,0,110,435,0
+4710860,Tulsa,10,654,28,0
+4900577,Tulsa,0,0,0,4
 5079744,Tulsa,0,0,0,2
-5084564,Tulsa,0,0,0,1
+5084564,Tulsa,0,0,0,2
 5091837,Tulsa,0,0,0,1
-5092825,Tulsa,0,0,0,1
+5092825,Tulsa,0,0,0,2
 5125741,Tulsa,0,0,0,1
-5125823,Tulsa,0,28,73,0
+5125823,Tulsa,0,31,74,0
 5146761,Tulsa,0,23,0,0
 5147932,Tulsa,0,0,0,1
 5150130,Tulsa,0,0,0,5
@@ -6621,13 +6743,13 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5157287,Tulsa,0,194,11,0
 5163541,Tulsa,0,0,23,0
 5183808,Tulsa,0,0,0,1
-5196927,Tulsa,0,0,0,5
-5222570,Tulsa,0,38,0,0
+5196927,Tulsa,0,0,0,6
+5222570,Tulsa,0,39,0,0
 5223788,Tulsa,0,96,0,0
-5224011,Tulsa,1361,0,120,0
-5229589,Tulsa,0,309,44,0
+5224011,Tulsa,1522,0,136,0
+5229589,Tulsa,0,309,64,0
 5258476,Tulsa,0,0,56,0
-5295930,Tulsa,0,10,376,0
+5295930,Tulsa,0,28,406,0
 5296086,Tulsa,0,63,0,0
 4685283,UAB,0,67,24,0
 4711421,UAB,0,403,22,0
@@ -6656,7 +6778,7 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5227913,UAB,0,0,0,6
 5295450,UAB,0,36,0,0
 4884485,UAlbany,0,0,0,8
-5082909,UAlbany,176,0,90,0
+5082909,UAlbany,176,0,102,0
 5086969,UAlbany,0,0,0,1
 5095216,UAlbany,40,0,0,0
 5095222,UAlbany,0,0,0,2
@@ -6664,25 +6786,25 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5122033,UAlbany,0,40,0,0
 5153884,UAlbany,0,0,0,3
 5153888,UAlbany,0,84,0,0
-5156959,UAlbany,0,208,7,0
-5156960,UAlbany,0,113,423,0
+5156959,UAlbany,0,215,11,0
+5156960,UAlbany,0,134,476,0
 5156966,UAlbany,0,0,0,6
 5156969,UAlbany,0,0,0,1
-5160028,UAlbany,0,50,0,0
+5160028,UAlbany,0,60,0,0
 5172433,UAlbany,0,0,0,1
 5218494,UAlbany,0,0,0,3
-5226676,UAlbany,0,126,0,0
+5226676,UAlbany,0,132,0,0
 5229220,UAlbany,0,0,0,4
 5229223,UAlbany,0,0,0,2
 5229224,UAlbany,0,0,21,0
-5229237,UAlbany,0,258,2,0
-5301250,UAlbany,0,476,87,0
+5229237,UAlbany,0,306,28,0
+5301250,UAlbany,0,486,87,0
 5301253,UAlbany,0,0,0,4
 5301255,UAlbany,0,0,0,1
 5301275,UAlbany,0,0,0,1
 5414450,UAlbany,0,54,6,0
 5432343,UAlbany,0,0,65,0
-5433027,UAlbany,0,0,0,5
+5433027,UAlbany,0,0,0,6
 5438593,UAlbany,0,0,0,8
 5438595,UAlbany,0,26,0,0
 5438597,UAlbany,0,0,0,2
@@ -6756,94 +6878,95 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4869442,UCLA,0,96,0,0
 4870799,UCLA,893,0,177,0
 4870973,UCLA,0,0,0,4
-4899366,UCLA,0,414,4,0
-4899483,UCLA,0,0,0,8
-4901131,UCLA,0,0,0,1
-4912342,UCLA,0,122,617,0
-4917945,UCLA,0,92,33,0
+4899366,UCLA,0,468,4,0
+4899483,UCLA,0,0,0,10
+4901131,UCLA,0,0,0,2
+4912342,UCLA,0,150,726,0
+4917945,UCLA,0,242,33,0
 4917948,UCLA,0,0,0,4
 4921306,UCLA,0,88,0,0
 5015143,UCLA,0,0,0,1
-5077815,UCLA,0,0,0,5
-5079055,UCLA,0,0,0,4
+5077815,UCLA,0,0,0,6
+5079055,UCLA,0,0,0,5
 5083150,UCLA,0,0,0,2
-5083175,UCLA,0,48,481,0
-5092275,UCLA,676,0,31,0
+5083175,UCLA,0,48,509,0
+5092275,UCLA,979,0,67,0
 5102800,UCLA,0,0,0,2
-5114332,UCLA,0,24,239,0
-5152410,UCLA,0,0,0,7
+5114332,UCLA,0,29,240,0
+5152410,UCLA,0,0,0,10
 5153614,UCLA,0,0,21,0
 5153994,UCLA,0,136,0,0
 5176073,UCLA,0,0,0,2
 5197086,UCLA,0,0,0,1
 5209129,UCLA,0,0,0,3
-5209464,UCLA,0,332,20,0
-5219086,UCLA,0,79,0,0
-5295326,UCLA,0,20,0,0
-4587719,UConn,0,0,0,2
+5209464,UCLA,0,358,20,0
+5219086,UCLA,0,92,0,0
+5295326,UCLA,0,47,0,0
+4587719,UConn,0,0,0,3
 4592781,UConn,0,0,0,1
-4689529,UConn,0,134,275,0
-4698471,UConn,0,96,0,0
+4689529,UConn,0,137,302,0
+4698471,UConn,0,100,0,0
 4870938,UConn,0,0,0,2
-4870959,UConn,0,304,0,0
+4870959,UConn,0,329,0,0
 4900905,UConn,0,0,0,1
 4921112,UConn,0,0,0,1
 5075952,UConn,0,26,198,0
 5077896,UConn,0,0,0,1
-5079619,UConn,1810,0,417,0
+5079619,UConn,2061,0,477,0
 5082306,UConn,0,0,0,2
 5084343,UConn,0,0,0,5
-5084414,UConn,0,0,0,2
+5084414,UConn,0,0,0,3
 5089304,UConn,0,0,0,1
-5125750,UConn,0,271,0,0
+5125750,UConn,0,281,0,0
 5147933,UConn,0,0,0,1
-5150459,UConn,0,0,0,5
-5151689,UConn,0,57,0,0
+5150459,UConn,0,0,0,6
+5151689,UConn,0,90,0,0
 5157300,UConn,0,0,0,1
 5166798,UConn,0,0,0,3
 5193720,UConn,0,184,0,0
-5215278,UConn,0,0,0,1
+5215278,UConn,0,0,0,2
 5215700,UConn,0,0,0,4
 5220131,UConn,0,0,0,4
 5221596,UConn,0,85,0,0
-5222571,UConn,0,118,0,0
+5222571,UConn,0,153,0,0
 5222645,UConn,0,0,0,2
-5228882,UConn,0,255,0,0
-5278798,UConn,0,78,0,0
-5296247,UConn,0,61,565,0
-5300740,UConn,0,135,0,0
-4685184,UL Monroe,0,0,75,0
+5228882,UConn,0,337,0,0
+5278798,UConn,0,118,0,0
+5296247,UConn,0,61,633,0
+5300740,UConn,0,149,0,0
+4685184,UL Monroe,0,12,143,0
 4912282,UL Monroe,0,0,0,2
 5082336,UL Monroe,0,0,0,1
 5091526,UL Monroe,0,0,0,1
 5097058,UL Monroe,0,22,105,0
-5122054,UL Monroe,1239,0,119,0
-5122072,UL Monroe,0,194,0,0
-5207934,UL Monroe,261,0,228,0
-5218754,UL Monroe,0,207,0,0
+5122054,UL Monroe,1331,0,152,0
+5122072,UL Monroe,0,211,0,0
+5147172,UL Monroe,0,0,0,2
+5207934,UL Monroe,292,0,347,0
+5218754,UL Monroe,0,212,0,0
 5218821,UL Monroe,0,0,0,3
-5220218,UL Monroe,0,0,0,3
-5220227,UL Monroe,0,0,0,3
+5220218,UL Monroe,0,0,0,4
+5220227,UL Monroe,0,0,0,4
 5220244,UL Monroe,0,0,0,3
-5220666,UL Monroe,0,33,141,0
+5220666,UL Monroe,0,35,137,0
 5222256,UL Monroe,0,0,0,3
 5225330,UL Monroe,0,47,0,0
-5274368,UL Monroe,0,5,18,0
-5295371,UL Monroe,0,163,0,0
-5295734,UL Monroe,0,0,0,1
-5295735,UL Monroe,0,177,15,0
-5295736,UL Monroe,0,0,0,1
+5274368,UL Monroe,0,5,20,0
+5295371,UL Monroe,0,169,0,0
+5295734,UL Monroe,0,0,0,2
+5295735,UL Monroe,0,191,15,0
+5295736,UL Monroe,0,0,0,2
 5295738,UL Monroe,0,0,0,1
-5297103,UL Monroe,0,0,0,5
+5297103,UL Monroe,0,0,0,7
 5327625,UL Monroe,0,0,0,2
-5382841,UL Monroe,0,204,-1,0
+5382841,UL Monroe,0,214,-1,0
 5382843,UL Monroe,0,0,0,1
 5382846,UL Monroe,0,0,0,1
 5382848,UL Monroe,0,0,0,2
 5382854,UL Monroe,0,51,66,0
 5382855,UL Monroe,0,0,0,1
-5382856,UL Monroe,0,28,117,0
-5382869,UL Monroe,0,328,24,0
+5382856,UL Monroe,0,63,167,0
+5382869,UL Monroe,0,350,37,0
 5447032,UL Monroe,0,0,0,2
 5447033,UL Monroe,0,37,0,0
 4429921,UNLV,0,0,0,1
@@ -6908,35 +7031,37 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5264686,USC,0,279,0,0
 5268018,USC,0,84,0,0
 5295318,USC,0,57,291,0
-4698362,UT Martin,0,103,0,0
+4698362,UT Martin,0,117,0,0
 4801302,UT Martin,247,0,86,0
-4910238,UT Martin,0,82,0,0
-5081201,UT Martin,0,0,0,3
-5085906,UT Martin,0,0,0,4
-5089861,UT Martin,0,54,0,0
+4910238,UT Martin,0,89,0,0
+5081201,UT Martin,0,0,0,4
+5085906,UT Martin,0,0,0,5
+5089861,UT Martin,0,68,0,0
 5125786,UT Martin,0,0,0,2
 5152511,UT Martin,0,0,0,1
 5154846,UT Martin,0,25,0,0
-5155453,UT Martin,0,0,0,4
-5155455,UT Martin,0,63,493,0
+5155453,UT Martin,0,0,0,5
+5155455,UT Martin,0,66,563,0
+5155458,UT Martin,0,0,0,1
 5155463,UT Martin,0,0,0,5
 5155469,UT Martin,0,0,0,1
 5155472,UT Martin,0,0,0,2
 5162502,UT Martin,0,189,0,0
 5193216,UT Martin,0,4,37,0
-5220266,UT Martin,0,45,0,0
-5226220,UT Martin,0,136,2,0
-5226221,UT Martin,0,288,18,0
+5220266,UT Martin,0,56,0,0
+5226220,UT Martin,0,147,2,0
+5226221,UT Martin,0,301,18,0
 5226223,UT Martin,0,0,0,8
 5265527,UT Martin,0,2,60,0
 5299224,UT Martin,0,36,182,0
-5299226,UT Martin,1059,0,196,0
+5299226,UT Martin,1153,0,206,0
 5299230,UT Martin,0,0,0,2
 5299260,UT Martin,0,0,0,4
 5302678,UT Martin,0,0,0,1
 5436996,UT Martin,0,0,0,3
-5438965,UT Martin,0,241,51,0
-5438970,UT Martin,0,38,302,0
+5438965,UT Martin,0,256,51,0
+5438969,UT Martin,0,0,0,1
+5438970,UT Martin,0,38,381,0
 5438984,UT Martin,0,0,0,2
 5438986,UT Martin,0,0,0,2
 4685521,UT Rio Grande Valley,708,0,121,0
@@ -6944,30 +7069,31 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4879217,UT Rio Grande Valley,0,0,0,1
 4880792,UT Rio Grande Valley,0,0,0,7
 5085643,UT Rio Grande Valley,0,0,0,3
-5141955,UT Rio Grande Valley,0,307,0,0
-5152230,UT Rio Grande Valley,0,0,0,3
+5141955,UT Rio Grande Valley,0,341,0,0
+5152230,UT Rio Grande Valley,0,0,0,4
 5193050,UT Rio Grande Valley,0,31,0,0
-5219509,UT Rio Grande Valley,0,215,0,0
+5219509,UT Rio Grande Valley,0,246,0,0
+5300836,UT Rio Grande Valley,0,0,0,2
 5300845,UT Rio Grande Valley,0,0,0,1
 5300846,UT Rio Grande Valley,0,27,195,0
 5300847,UT Rio Grande Valley,20,0,14,0
-5300851,UT Rio Grande Valley,0,52,0,0
+5300851,UT Rio Grande Valley,0,86,0,0
 5300855,UT Rio Grande Valley,0,57,331,0
 5300861,UT Rio Grande Valley,0,0,0,1
-5300863,UT Rio Grande Valley,0,44,30,0
+5300863,UT Rio Grande Valley,0,44,45,0
 5300866,UT Rio Grande Valley,0,93,0,0
 5300873,UT Rio Grande Valley,0,0,0,4
 5300877,UT Rio Grande Valley,0,140,0,0
 5300879,UT Rio Grande Valley,0,0,0,1
-5300880,UT Rio Grande Valley,946,0,151,0
-5300882,UT Rio Grande Valley,0,422,3,0
+5300880,UT Rio Grande Valley,1103,0,151,0
+5300882,UT Rio Grande Valley,0,480,3,0
 5300885,UT Rio Grande Valley,0,0,0,1
 5300891,UT Rio Grande Valley,0,0,0,1
-5300892,UT Rio Grande Valley,0,0,0,6
+5300892,UT Rio Grande Valley,0,0,0,8
 5300898,UT Rio Grande Valley,0,0,0,1
-5300900,UT Rio Grande Valley,0,0,0,6
+5300900,UT Rio Grande Valley,0,0,0,8
 5300903,UT Rio Grande Valley,0,93,0,0
-5300907,UT Rio Grande Valley,0,0,80,0
+5300907,UT Rio Grande Valley,0,0,177,0
 5405187,UT Rio Grande Valley,0,0,0,1
 5405188,UT Rio Grande Valley,0,172,0,0
 4565306,UTEP,0,0,0,3
@@ -7025,32 +7151,33 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5236921,UTSA,0,0,0,1
 5297116,UTSA,0,0,0,1
 5394625,UTSA,0,0,0,3
-4430691,Utah,0,0,0,3
-4597311,Utah,0,0,0,3
-4685704,Utah,0,59,0,0
+4430691,Utah,0,0,0,4
+4597311,Utah,0,0,0,4
+4685704,Utah,0,71,0,0
 4808760,Utah,0,0,0,6
 4816097,Utah,0,0,0,3
-4869422,Utah,0,483,12,1
-4871040,Utah,0,318,0,0
-4900351,Utah,0,213,0,0
+4869422,Utah,0,569,12,1
+4871040,Utah,29,322,0,0
+4878108,Utah,0,0,0,1
+4900351,Utah,0,260,0,0
 4903471,Utah,0,0,0,4
-5078818,Utah,0,0,0,3
+5078818,Utah,0,0,0,4
 5104280,Utah,0,0,0,1
-5105849,Utah,1781,0,418,0
-5132652,Utah,0,233,0,0
-5147164,Utah,0,0,0,5
+5105849,Utah,1961,29,487,0
+5132652,Utah,0,251,0,0
+5147164,Utah,0,0,0,6
 5148821,Utah,0,146,43,0
 5152199,Utah,0,0,0,1
 5167189,Utah,0,0,0,3
 5167750,Utah,0,0,0,3
-5173431,Utah,0,262,685,0
+5173431,Utah,1,268,721,0
 5193707,Utah,0,0,0,3
-5203476,Utah,0,96,227,0
+5203476,Utah,0,102,227,0
 5215636,Utah,0,0,0,2
 5219991,Utah,0,0,0,6
-5219993,Utah,0,0,0,6
+5219993,Utah,0,0,0,7
 5258445,Utah,0,0,0,1
-5294263,Utah,56,26,75,0
+5294263,Utah,56,27,75,0
 4613165,Utah State,0,125,5,0
 4694500,Utah State,0,0,0,2
 4816099,Utah State,0,90,501,0
@@ -7123,19 +7250,19 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5155271,VMI,0,0,0,6
 5155276,VMI,0,0,0,3
 5225339,VMI,0,0,0,6
-5225341,VMI,80,0,56,0
+5225341,VMI,121,0,60,0
 5225347,VMI,0,17,27,0
-5225349,VMI,0,49,66,0
-5225351,VMI,0,1,326,0
+5225349,VMI,0,90,66,0
+5225351,VMI,0,1,402,0
 5225360,VMI,0,0,0,1
 5225363,VMI,0,0,0,1
 5279192,VMI,0,35,0,0
 5301596,VMI,0,29,0,0
 5302498,VMI,0,0,0,3
-5302501,VMI,428,0,79,0
+5302501,VMI,428,0,88,0
 5302516,VMI,0,0,0,1
 5302525,VMI,0,104,3,0
-5302527,VMI,0,125,183,0
+5302527,VMI,0,125,182,0
 5302528,VMI,0,61,13,0
 5439852,VMI,0,0,0,2
 5439854,VMI,0,0,0,1
@@ -7197,30 +7324,30 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5257993,Vanderbilt,0,44,2,0
 5281576,Vanderbilt,0,0,0,5
 5295920,Vanderbilt,0,225,0,0
-4875733,Villanova,2109,0,136,0
+4875733,Villanova,2261,0,178,0
 5083291,Villanova,0,0,0,4
 5154000,Villanova,0,135,0,0
-5154007,Villanova,0,199,634,0
+5154007,Villanova,0,218,711,0
 5154008,Villanova,0,0,0,1
 5154012,Villanova,0,0,0,1
-5154013,Villanova,7,181,492,0
+5154013,Villanova,7,181,592,0
 5154017,Villanova,0,0,0,4
 5160054,Villanova,0,0,0,2
-5226948,Villanova,0,0,0,7
-5226951,Villanova,0,0,0,6
-5226954,Villanova,0,0,0,11
+5226948,Villanova,0,0,0,8
+5226951,Villanova,0,0,0,7
+5226954,Villanova,0,0,0,12
 5226956,Villanova,0,30,0,0
 5226957,Villanova,0,0,0,1
 5226961,Villanova,0,171,0,0
-5226962,Villanova,0,496,0,0
-5226966,Villanova,0,0,0,2
+5226962,Villanova,0,535,0,0
+5226966,Villanova,0,0,0,3
 5226967,Villanova,0,0,0,2
 5301179,Villanova,0,0,0,1
-5301181,Villanova,0,546,-2,0
+5301181,Villanova,0,621,-2,0
 5301185,Villanova,0,0,0,1
 5301186,Villanova,0,23,0,0
 5402291,Villanova,0,47,0,0
-5402298,Villanova,0,283,0,0
+5402298,Villanova,0,293,0,0
 5402309,Villanova,0,0,0,7
 5402312,Villanova,0,0,37,0
 4685594,Virginia,0,111,0,0
@@ -7519,49 +7646,52 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5265461,West Virginia,0,0,0,2
 5384826,West Virginia,0,0,0,1
 4431527,Western Carolina,0,32,6,0
-4875128,Western Carolina,1931,9,377,0
-5081427,Western Carolina,0,110,0,0
-5085697,Western Carolina,0,0,12,1
+4875128,Western Carolina,2172,9,419,0
+5081427,Western Carolina,0,140,0,0
+5085697,Western Carolina,0,0,12,2
 5089541,Western Carolina,0,0,0,3
-5089572,Western Carolina,0,444,15,0
-5158904,Western Carolina,0,20,69,0
-5158955,Western Carolina,0,0,0,2
-5159359,Western Carolina,5,422,0,0
+5089563,Western Carolina,0,0,0,1
+5089572,Western Carolina,0,494,21,0
+5158904,Western Carolina,0,35,69,0
+5158955,Western Carolina,0,0,0,3
+5159359,Western Carolina,5,466,0,0
 5159364,Western Carolina,0,20,170,0
 5169041,Western Carolina,0,0,0,2
 5222257,Western Carolina,0,66,6,0
 5225514,Western Carolina,0,0,0,2
-5225515,Western Carolina,0,0,0,3
+5225515,Western Carolina,0,0,0,4
+5225518,Western Carolina,0,0,0,1
 5225522,Western Carolina,0,0,0,4
 5225529,Western Carolina,0,89,0,0
-5225532,Western Carolina,0,110,0,0
+5225532,Western Carolina,0,122,0,0
 5272771,Western Carolina,0,180,0,0
 5299923,Western Carolina,0,0,0,2
 5301952,Western Carolina,0,0,0,3
-5301961,Western Carolina,0,7,0,9
-5301971,Western Carolina,0,6,36,0
-5301979,Western Carolina,0,147,470,0
+5301961,Western Carolina,0,7,0,10
+5301971,Western Carolina,0,26,36,0
+5301979,Western Carolina,0,152,505,0
 5301980,Western Carolina,0,0,0,1
-5301981,Western Carolina,0,162,13,0
-5301983,Western Carolina,0,65,0,0
+5301981,Western Carolina,0,185,13,0
+5301983,Western Carolina,0,68,0,0
 5441187,Western Carolina,0,0,0,3
-5441191,Western Carolina,0,0,0,1
+5441191,Western Carolina,0,0,0,2
+5441194,Western Carolina,0,39,0,0
 5441211,Western Carolina,0,45,3,0
 5441217,Western Carolina,0,0,0,1
-4832021,Western Illinois,0,307,280,0
-4891191,Western Illinois,64,149,-2,0
+4832021,Western Illinois,0,328,319,0
+4891191,Western Illinois,64,164,0,0
 5079448,Western Illinois,29,40,0,0
 5154522,Western Illinois,0,0,0,5
 5156201,Western Illinois,0,0,0,2
-5160578,Western Illinois,0,0,-1,3
+5160578,Western Illinois,0,0,-1,4
 5161737,Western Illinois,0,0,0,3
-5165011,Western Illinois,1503,0,1138,0
-5165734,Western Illinois,0,36,34,0
-5226195,Western Illinois,0,0,0,4
+5165011,Western Illinois,1715,0,1238,0
+5165734,Western Illinois,0,36,67,0
+5226195,Western Illinois,0,0,0,5
 5226318,Western Illinois,0,97,70,0
 5226320,Western Illinois,0,31,0,0
-5226323,Western Illinois,0,0,0,1
-5226329,Western Illinois,0,42,0,0
+5226323,Western Illinois,0,0,0,2
+5226329,Western Illinois,0,43,0,0
 5226341,Western Illinois,0,0,0,3
 5299372,Western Illinois,0,0,0,9
 5299373,Western Illinois,0,0,0,3
@@ -7571,8 +7701,8 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5299398,Western Illinois,0,0,0,1
 5299399,Western Illinois,0,3,0,1
 5408175,Western Illinois,0,0,0,1
-5414870,Western Illinois,0,220,26,0
-5419701,Western Illinois,0,205,36,0
+5414870,Western Illinois,0,237,30,0
+5419701,Western Illinois,0,358,51,0
 5438626,Western Illinois,0,152,31,0
 5438628,Western Illinois,0,292,0,0
 5438630,Western Illinois,0,0,0,3
@@ -7636,34 +7766,34 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 4702897,William & Mary,0,0,0,4
 4878154,William & Mary,0,0,0,4
 4878157,William & Mary,0,0,0,3
-5083268,William & Mary,0,74,3,0
-5083271,William & Mary,0,61,0,0
+5083268,William & Mary,0,145,3,0
+5083271,William & Mary,0,70,0,0
 5121424,William & Mary,0,0,0,2
 5154022,William & Mary,0,0,0,6
-5154032,William & Mary,0,69,0,0
-5226827,William & Mary,0,68,513,0
-5226917,William & Mary,1172,0,253,0
+5154032,William & Mary,0,71,0,0
+5226827,William & Mary,0,76,609,0
+5226917,William & Mary,1306,0,305,0
 5226996,William & Mary,0,12,43,0
 5226998,William & Mary,0,0,0,1
 5227001,William & Mary,0,0,0,1
 5227010,William & Mary,0,0,0,1
 5227012,William & Mary,0,0,0,4
 5228777,William & Mary,0,0,0,1
-5299908,William & Mary,0,8,155,0
-5301109,William & Mary,0,220,0,0
-5301110,William & Mary,0,124,0,0
+5299908,William & Mary,0,8,163,0
+5301109,William & Mary,0,233,0,0
+5301110,William & Mary,0,136,0,0
 5301112,William & Mary,0,0,0,1
-5301113,William & Mary,0,0,0,7
+5301113,William & Mary,0,0,0,8
 5301114,William & Mary,47,0,0,0
 5301115,William & Mary,0,0,0,1
 5301119,William & Mary,0,0,0,2
 5305455,William & Mary,28,0,0,0
 5402324,William & Mary,0,0,0,3
-5402325,William & Mary,0,467,2,0
+5402325,William & Mary,0,481,16,0
 5402326,William & Mary,0,0,0,1
-5402327,William & Mary,0,0,0,3
+5402327,William & Mary,0,0,0,4
 5402328,William & Mary,9,0,21,0
-5402331,William & Mary,0,73,0,0
+5402331,William & Mary,0,78,0,0
 5402348,William & Mary,0,47,0,0
 4603090,Wisconsin,0,0,0,2
 4685314,Wisconsin,0,0,0,4
@@ -7695,36 +7825,36 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5077671,Wofford,0,0,0,1
 5153785,Wofford,0,0,0,4
 5153786,Wofford,0,0,0,1
-5153790,Wofford,0,0,0,6
+5153790,Wofford,0,0,0,7
 5153791,Wofford,0,0,0,2
 5153792,Wofford,0,78,0,0
-5153798,Wofford,0,0,0,1
-5156255,Wofford,829,0,27,0
-5172059,Wofford,0,174,0,0
+5153798,Wofford,0,0,0,2
+5156255,Wofford,851,0,27,0
+5172059,Wofford,0,225,0,0
 5203716,Wofford,840,0,39,0
 5209366,Wofford,0,20,78,0
-5225610,Wofford,0,288,-3,0
+5225610,Wofford,0,292,-3,0
 5225611,Wofford,0,315,7,0
 5225614,Wofford,0,25,48,0
 5225615,Wofford,0,61,0,0
 5225624,Wofford,0,0,0,2
 5227284,Wofford,0,0,0,1
 5300953,Wofford,0,0,0,1
-5301987,Wofford,34,252,0,0
-5301989,Wofford,0,123,872,0
+5301987,Wofford,34,270,26,0
+5301989,Wofford,0,135,945,0
 5301991,Wofford,0,0,0,7
-5301997,Wofford,0,0,0,2
+5301997,Wofford,0,0,0,3
 5302006,Wofford,0,0,0,1
 5302007,Wofford,0,0,0,3
 5302011,Wofford,0,0,0,3
 5302024,Wofford,0,26,0,0
 5302026,Wofford,0,132,0,0
-5302028,Wofford,0,217,21,0
+5302028,Wofford,0,229,25,0
 5302031,Wofford,0,0,0,1
 5439477,Wofford,0,0,0,1
-5439482,Wofford,0,0,0,5
-5439484,Wofford,25,0,-3,0
-5439487,Wofford,0,17,11,0
+5439482,Wofford,0,0,0,6
+5439484,Wofford,121,0,57,0
+5439487,Wofford,0,26,63,0
 4702578,Wyoming,0,0,0,1
 4838536,Wyoming,1109,0,708,0
 4879876,Wyoming,0,23,0,0
@@ -7776,30 +7906,32 @@ athlete_id,team,pass_yds,rec_yds,rush_yds,def_plays
 5300440,Yale,0,216,0,0
 5442791,Yale,0,1,100,0
 4683116,Youngstown State,0,0,0,3
-4869735,Youngstown State,31,110,6,0
+4869735,Youngstown State,31,188,6,0
 5027555,Youngstown State,0,0,0,2
+5077814,Youngstown State,0,0,0,1
 5081998,Youngstown State,0,0,0,5
-5085913,Youngstown State,0,166,0,0
+5085913,Youngstown State,0,195,0,0
 5102806,Youngstown State,0,57,0,0
 5102808,Youngstown State,0,0,0,1
 5106937,Youngstown State,0,0,47,7
-5109518,Youngstown State,2112,31,735,0
+5109518,Youngstown State,2502,31,767,0
 5122403,Youngstown State,0,133,0,0
-5144409,Youngstown State,0,126,-6,0
-5152297,Youngstown State,0,0,0,5
+5144409,Youngstown State,0,148,-6,0
+5152297,Youngstown State,0,0,0,6
 5180026,Youngstown State,0,0,0,2
-5182253,Youngstown State,0,201,493,0
+5182253,Youngstown State,0,278,517,0
 5211438,Youngstown State,0,0,0,2
 5225796,Youngstown State,0,0,0,3
 5227364,Youngstown State,0,0,0,1
-5227365,Youngstown State,0,0,0,2
-5227371,Youngstown State,0,67,194,0
+5227365,Youngstown State,0,0,0,3
+5227371,Youngstown State,0,69,222,0
 5227375,Youngstown State,0,0,0,1
 5300739,Youngstown State,0,50,38,0
 5300745,Youngstown State,0,0,0,2
-5300752,Youngstown State,0,158,0,0
+5300752,Youngstown State,0,175,0,0
+5300753,Youngstown State,0,0,0,1
 5300757,Youngstown State,0,0,0,2
-5406177,Youngstown State,0,740,114,0
-5406179,Youngstown State,0,304,0,0
+5406177,Youngstown State,0,876,122,0
+5406179,Youngstown State,0,323,0,0
 5406182,Youngstown State,0,0,0,4
 5406192,Youngstown State,0,0,0,3
