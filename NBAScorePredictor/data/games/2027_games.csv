@@ -131,13 +131,13 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909293,2027,R,2026-11-07 01:00:00+00:00,NOP,MIN,109.0,115.0,4.0,False,Smoothie King Center,New Orleans,LA
 401909294,2027,R,2026-11-07 03:00:00+00:00,LAL,POR,124.0,118.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401909295,2027,R,2026-11-07 03:00:00+00:00,SAC,SAS,109.0,124.0,4.0,False,Golden 1 Center,Sacramento,CA
-401909938,2027,R,2026-11-07 22:00:00+00:00,IND,DEN,,,,True,Arena CDMX,Mexico City,
-401909939,2027,R,2026-11-08 00:30:00+00:00,ATL,BKN,,,,False,State Farm Arena,Atlanta,GA
-401909940,2027,R,2026-11-08 01:00:00+00:00,CLE,NYK,,,,False,Rocket Arena,Cleveland,OH
-401909941,2027,R,2026-11-08 01:00:00+00:00,OKC,WAS,,,,False,Paycom Center,Oklahoma City,OK
-401909942,2027,R,2026-11-08 01:30:00+00:00,GSW,ORL,,,,False,Chase Center,San Francisco,CA
-401909943,2027,R,2026-11-08 02:00:00+00:00,PHX,HOU,,,,False,Mortgage Matchup Center,Phoenix,AZ
-401909944,2027,R,2026-11-08 03:00:00+00:00,POR,SAS,,,,False,Moda Center,Portland,OR
+401909938,2027,R,2026-11-07 22:00:00+00:00,IND,DEN,102.0,114.0,4.0,True,Arena CDMX,Mexico City,
+401909939,2027,R,2026-11-08 00:30:00+00:00,ATL,BKN,124.0,121.0,4.0,False,State Farm Arena,Atlanta,GA
+401909940,2027,R,2026-11-08 01:00:00+00:00,CLE,NYK,97.0,109.0,4.0,False,Rocket Arena,Cleveland,OH
+401909941,2027,R,2026-11-08 01:00:00+00:00,OKC,WAS,114.0,75.0,4.0,False,Paycom Center,Oklahoma City,OK
+401909942,2027,R,2026-11-08 01:30:00+00:00,GSW,ORL,126.0,119.0,5.0,False,Chase Center,San Francisco,CA
+401909943,2027,R,2026-11-08 02:00:00+00:00,PHX,HOU,102.0,99.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
+401909944,2027,R,2026-11-08 03:00:00+00:00,POR,SAS,103.0,125.0,4.0,False,Moda Center,Portland,OR
 401909945,2027,R,2026-11-08 20:30:00+00:00,CHI,PHI,,,,False,United Center,Chicago,IL
 401909946,2027,R,2026-11-08 23:00:00+00:00,DET,LAL,,,,False,Little Caesars Arena,Detroit,MI
 401909947,2027,R,2026-11-09 00:00:00+00:00,MIN,UTA,,,,False,Target Center,Minneapolis,MN
@@ -207,8 +207,8 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910002,2027,R,2026-11-18 00:30:00+00:00,TOR,NYK,,,,False,Scotiabank Arena,Toronto,ON
 401910003,2027,R,2026-11-18 01:00:00+00:00,MIN,POR,,,,False,Target Center,Minneapolis,MN
 401910004,2027,R,2026-11-18 01:00:00+00:00,SAS,DET,,,,False,Frost Bank Center,San Antonio,TX
-401910005,2027,R,2026-11-18 03:00:00+00:00,LAL,CHA,,,,False,crypto.com Arena,Los Angeles,CA
-401910006,2027,R,2026-11-18 04:00:00+00:00,LAC,UTA,,,,False,Intuit Dome,Inglewood,CA
+401910006,2027,R,2026-11-18 03:30:00+00:00,LAC,UTA,,,,False,Intuit Dome,Inglewood,CA
+401910005,2027,R,2026-11-18 04:00:00+00:00,LAL,CHA,,,,False,crypto.com Arena,Los Angeles,CA
 401910007,2027,R,2026-11-19 00:00:00+00:00,CLE,MEM,,,,False,Rocket Arena,Cleveland,OH
 401910008,2027,R,2026-11-19 00:00:00+00:00,IND,HOU,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
 401910009,2027,R,2026-11-19 00:00:00+00:00,MIA,MIL,,,,False,Kaseya Center,Miami,FL
