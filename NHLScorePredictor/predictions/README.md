@@ -1,6 +1,6 @@
 # NHL score predictions
 
-Updated Sat Nov 07, 2026 08:26 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
+Updated Sat Nov 07, 2026 09:42 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
 
 Each game is simulated 10,000 times minute by minute, with pulled goalies, empty-net goals, overtime and shootouts. The predicted score is the most common final score in which the likelier winner wins; as in the official result, a shootout winner gets one extra goal. Hockey is low-scoring and luck-heavy, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,28 +14,26 @@ The edge columns price each side of the puck line, moneyline and total with the 
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 9:00 PM | DET @ COL | DET 3, COL 4 | COL 64% | DET +175 / COL -175 | 2.8 – 3.7 | 1–5 / 1–6 | 20% | COL -1.5 43% | 6.5 / 6.5 (over 49%) | Daniil Tarasov (expected) / Mackenzie Blackwood (confirmed) | DET +185 / COL -225 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 9:00 PM | PIT @ LAK | PIT 3, LAK 4 | LAK 51% | PIT +105 / LAK -105 | 3.2 – 3.3 | 1–6 / 1–6 | 22% | LAK -1.5 31% | 6.4 / 6.5 (over 49%) | Sergei Murashov (confirmed) / Darcy Kuemper (confirmed) | PIT +102 / LAK -122 | no edge | no edge | no edge |
-| 10:00 PM | VAN @ EDM | VAN 3, EDM 4 | EDM 73% | VAN +270 / EDM -270 | 2.7 – 4.3 | 1–5 / 2–7 | 18% | EDM -1.5 53% | 7.0 / 6.5 (over 57%) | Leevi Meriläinen (confirmed) / Devon Levi (confirmed) | VAN +295 / EDM -375 | no edge | no edge | no edge |
+| 10:00 PM | VAN @ EDM | VAN 3, EDM 4 | EDM 73% | VAN +265 / EDM -265 | 2.7 – 4.3 | 1–5 / 2–7 | 19% | EDM -1.5 52% | 7.0 / 6.5 (over 57%) | Leevi Meriläinen (confirmed) / Devon Levi (confirmed) | VAN +295 / EDM -375 | no edge | no edge | no edge |
 
 ## Sunday, November 8
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1:00 PM | FLA @ BOS | FLA 3, BOS 4 | BOS 57% | FLA +130 / BOS -130 | 2.9 – 3.4 | 1–5 / 1–6 | 21% | BOS -1.5 36% | 6.3 / 6.5 (over 46%) | Jacob Markstrom (expected) / Jeremy Swayman (expected) | FLA +114 / BOS -135 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 3:30 PM | VGK @ BUF | VGK 4, BUF 3 | VGK 50% | VGK -100 / BUF +100 | 3.2 – 3.2 | 1–6 / 1–6 | 21% | VGK -1.5 30% | 6.3 / 6.5 (over 47%) | Carter Hart (expected) / Colten Ellis (expected) | VGK -112 / BUF -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 6:00 PM | TBL @ WPG | TBL 3, WPG 2 | TBL 56% | TBL -130 / WPG +130 | 3.3 – 2.9 | 1–6 / 1–5 | 22% | TBL -1.5 35% | 6.2 / 6.5 (over 45%) | Andrei Vasilevskiy (expected) / Stuart Skinner (expected) | TBL -142 / WPG +120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 7:00 PM | NJD @ TOR | NJD 3, TOR 2 | NJD 57% | NJD -130 / TOR +130 | 3.3 – 2.9 | 1–6 / 1–5 | 22% | NJD -1.5 35% | 6.2 / 6.5 (over 44%) | Connor Hellebuyck (expected) / Anthony Stolarz (expected) | NJD -142 / TOR +120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 7:00 PM | PHI @ CGY | PHI 2, CGY 3 | CGY 51% | PHI +105 / CGY -105 | 3.0 – 3.1 | 1–5 / 1–5 | 22% | CGY -1.5 30% | 6.1 / 5.5 (over 54%) | Dan Vladar (expected) / Dustin Wolf (expected) | PHI -112 / CGY -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | PIT @ ANA | PIT 3, ANA 4 | ANA 50% | PIT +100 / ANA -100 | 3.4 – 3.4 | 1–6 / 1–6 | 21% | ANA -1.5 31% | 6.9 / 6.5 (over 56%) | Arturs Silovs (expected) / Laurent Brossoit (expected) | PIT +100 / ANA -120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 1:00 PM | FLA @ BOS | FLA 2, BOS 3 | BOS 56% | FLA +130 / BOS -130 | 2.9 – 3.3 | 1–5 / 1–6 | 22% | BOS -1.5 35% | 6.2 / 6.5 (over 44%) | Jacob Markstrom (expected) / Jeremy Swayman (expected) | FLA +114 / BOS -135 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 3:30 PM | VGK @ BUF | VGK 4, BUF 3 | VGK 51% | VGK -105 / BUF +105 | 3.2 – 3.2 | 1–6 / 1–6 | 22% | VGK -1.5 30% | 6.4 / 6.5 (over 49%) | Carter Hart (expected) / Colten Ellis (expected) | VGK -112 / BUF -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 6:00 PM | TBL @ WPG | TBL 4, WPG 3 | TBL 56% | TBL -125 / WPG +125 | 3.3 – 2.9 | 1–6 / 1–5 | 23% | TBL -1.5 34% | 6.2 / 6.5 (over 46%) | Andrei Vasilevskiy (expected) / Stuart Skinner (expected) | TBL -142 / WPG +120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 7:00 PM | NJD @ TOR | NJD 3, TOR 2 | NJD 57% | NJD -135 / TOR +135 | 3.3 – 2.8 | 1–6 / 1–5 | 22% | NJD -1.5 35% | 6.1 / 6.5 (over 44%) | Connor Hellebuyck (expected) / Anthony Stolarz (expected) | NJD -142 / TOR +120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 7:00 PM | PHI @ CGY | PHI 2, CGY 3 | CGY 50% | PHI +100 / CGY -100 | 3.0 – 3.1 | 1–5 / 1–5 | 23% | CGY -1.5 29% | 6.1 / 5.5 (over 54%) | Dan Vladar (expected) / Dustin Wolf (expected) | PHI -112 / CGY -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | PIT @ ANA | PIT 4, ANA 3 | PIT 50% | PIT -100 / ANA +100 | 3.5 – 3.5 | 1–6 / 1–6 | 21% | PIT -1.5 31% | 6.9 / 6.5 (over 57%) | Arturs Silovs (expected) / Laurent Brossoit (expected) | PIT +100 / ANA -120 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
 
 ## Monday, November 9
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8:00 PM | NYR @ EDM | NYR 3, EDM 4 | EDM 56% | NYR +125 / EDM -125 | 3.0 – 3.4 | 1–5 / 1–6 | 21% | EDM -1.5 35% | 6.5 | Dylan Garand (expected) / Devon Levi (expected) | – | no line yet (model fair EDM -1.5 +180 / NYR +1.5 -180) | no line yet | no line yet |
-| 9:30 PM | PHI @ VAN | PHI 4, VAN 3 | PHI 55% | PHI -120 / VAN +120 | 3.3 – 3.0 | 1–6 / 1–5 | 22% | PHI -1.5 33% | 6.4 | Joseph Woll (expected) / Leevi Meriläinen (expected) | – | no line yet (model fair VAN +1.5 -200 / PHI -1.5 +200) | no line yet | no line yet |
-| 10:00 PM | NYI @ SJS | NYI 4, SJS 3 | NYI 63% | NYI -170 / SJS +170 | 3.7 – 2.8 | 1–6 / 1–5 | 21% | NYI -1.5 41% | 6.5 | Ilya Sorokin (expected) / Yaroslav Askarov (expected) | – | no line yet (model fair SJS +1.5 -140 / NYI -1.5 +140) | no line yet | no line yet |
+| 8:00 PM | NYR @ EDM | NYR 3, EDM 4 | EDM 56% | NYR +125 / EDM -125 | 3.1 – 3.4 | 1–5 / 1–6 | 22% | EDM -1.5 34% | 6.5 | Dylan Garand (expected) / Devon Levi (expected) | – | no line yet (model fair EDM -1.5 +190 / NYR +1.5 -190) | no line yet | no line yet |
+| 9:30 PM | PHI @ VAN | PHI 4, VAN 3 | PHI 53% | PHI -115 / VAN +115 | 3.3 – 3.1 | 1–6 / 1–5 | 22% | PHI -1.5 33% | 6.4 | Joseph Woll (expected) / Leevi Meriläinen (expected) | – | no line yet (model fair VAN +1.5 -200 / PHI -1.5 +200) | no line yet | no line yet |
+| 10:00 PM | NYI @ SJS | NYI 4, SJS 3 | NYI 64% | NYI -175 / SJS +175 | 3.7 – 2.8 | 1–6 / 1–5 | 20% | NYI -1.5 42% | 6.5 | Ilya Sorokin (expected) / Yaroslav Askarov (expected) | – | no line yet (model fair SJS +1.5 -135 / NYI -1.5 +135) | no line yet | no line yet |
 
 \* price not posted; assumed -110.
 
