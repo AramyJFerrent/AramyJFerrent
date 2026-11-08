@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sat Nov 07, 2026 02:01 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Sun Nov 08, 2026 02:12 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -53,7 +53,7 @@ Runs per game better than an average team against an average opponent at a neutr
 
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
-| 1 | LAD | +1.50 | +0.75 | +0.40 | +0.11 | +0.25 | 5.2 | 1576 |
+| 1 | LAD | +1.50 | +0.75 | +0.40 | +0.11 | +0.24 | 5.2 | 1576 |
 | 2 | MIL | +0.96 | +0.40 | +0.16 | +0.15 | +0.26 | 4.9 | 1613 |
 | 3 | ATL | +0.71 | +0.33 | +0.15 | +0.09 | +0.14 | 5.1 | 1529 |
 | 4 | CHC | +0.68 | +0.59 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
@@ -61,8 +61,8 @@ Runs per game better than an average team against an average opponent at a neutr
 | 6 | SD | +0.62 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
 | 7 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.5 | 1531 |
 | 8 | TB | +0.59 | +0.07 | +0.22 | +0.13 | +0.17 | 5.2 | 1552 |
-| 9 | NYM | +0.49 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
-| 10 | ARI | +0.48 | +0.40 | +0.01 | +0.11 | -0.03 | 5.2 | 1512 |
+| 9 | NYM | +0.48 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
+| 10 | ARI | +0.48 | +0.40 | +0.01 | +0.11 | -0.04 | 5.2 | 1512 |
 | 11 | HOU | +0.45 | +0.37 | +0.04 | +0.07 | -0.04 | 4.9 | 1489 |
 | 12 | SEA | +0.44 | +0.34 | +0.13 | +0.04 | -0.07 | 5.3 | 1475 |
 | 13 | CLE | +0.44 | +0.06 | +0.13 | +0.13 | +0.11 | 4.6 | 1514 |
