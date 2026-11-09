@@ -138,13 +138,13 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909942,2027,R,2026-11-08 01:30:00+00:00,GSW,ORL,126.0,119.0,5.0,False,Chase Center,San Francisco,CA
 401909943,2027,R,2026-11-08 02:00:00+00:00,PHX,HOU,102.0,99.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
 401909944,2027,R,2026-11-08 03:00:00+00:00,POR,SAS,103.0,125.0,4.0,False,Moda Center,Portland,OR
-401909945,2027,R,2026-11-08 20:30:00+00:00,CHI,PHI,,,,False,United Center,Chicago,IL
-401909946,2027,R,2026-11-08 23:00:00+00:00,DET,LAL,,,,False,Little Caesars Arena,Detroit,MI
-401909947,2027,R,2026-11-09 00:00:00+00:00,MIN,UTA,,,,False,Target Center,Minneapolis,MN
-401909948,2027,R,2026-11-09 00:30:00+00:00,DAL,BKN,,,,False,American Airlines Center,Dallas,TX
-401909949,2027,R,2026-11-09 01:00:00+00:00,MIL,BOS,,,,False,Fiserv Forum,Milwaukee,WI
-401909950,2027,R,2026-11-09 02:00:00+00:00,LAC,NOP,,,,False,Intuit Dome,Inglewood,CA
-401909951,2027,R,2026-11-09 02:00:00+00:00,SAC,MIA,,,,False,Golden 1 Center,Sacramento,CA
+401909945,2027,R,2026-11-08 20:30:00+00:00,CHI,PHI,121.0,127.0,4.0,False,United Center,Chicago,IL
+401909946,2027,R,2026-11-08 23:00:00+00:00,DET,LAL,116.0,121.0,4.0,False,Little Caesars Arena,Detroit,MI
+401909947,2027,R,2026-11-09 00:00:00+00:00,MIN,UTA,115.0,100.0,4.0,False,Target Center,Minneapolis,MN
+401909948,2027,R,2026-11-09 00:30:00+00:00,DAL,BKN,130.0,93.0,4.0,False,American Airlines Center,Dallas,TX
+401909949,2027,R,2026-11-09 01:00:00+00:00,MIL,BOS,97.0,117.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909950,2027,R,2026-11-09 02:00:00+00:00,LAC,NOP,139.0,123.0,4.0,False,Intuit Dome,Inglewood,CA
+401909951,2027,R,2026-11-09 02:00:00+00:00,SAC,MIA,108.0,114.0,4.0,False,Golden 1 Center,Sacramento,CA
 401909952,2027,R,2026-11-10 00:00:00+00:00,ATL,LAL,,,,False,State Farm Arena,Atlanta,GA
 401909953,2027,R,2026-11-10 00:00:00+00:00,CHA,CLE,,,,False,Spectrum Center,Charlotte,NC
 401909954,2027,R,2026-11-10 00:00:00+00:00,DET,WAS,,,,False,Little Caesars Arena,Detroit,MI
