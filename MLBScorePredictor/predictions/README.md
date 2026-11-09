@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Sun Nov 08, 2026 02:12 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Mon Nov 09, 2026 02:53 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -56,7 +56,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 1 | LAD | +1.50 | +0.75 | +0.40 | +0.11 | +0.24 | 5.2 | 1576 |
 | 2 | MIL | +0.96 | +0.40 | +0.16 | +0.15 | +0.26 | 4.9 | 1613 |
 | 3 | ATL | +0.71 | +0.33 | +0.15 | +0.09 | +0.14 | 5.1 | 1529 |
-| 4 | CHC | +0.68 | +0.59 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
+| 4 | CHC | +0.68 | +0.58 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
 | 5 | NYY | +0.65 | +0.19 | +0.19 | +0.07 | +0.20 | 5.2 | 1560 |
 | 6 | SD | +0.62 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
 | 7 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.5 | 1531 |
@@ -81,7 +81,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 26 | CIN | -0.59 | -0.19 | -0.21 | +0.00 | -0.20 | 5.0 | 1456 |
 | 27 | SF | -0.64 | -0.51 | -0.10 | -0.02 | +0.00 | 4.8 | 1461 |
 | 28 | LAA | -0.66 | -0.54 | -0.02 | -0.03 | -0.06 | 5.2 | 1434 |
-| 29 | ATH | -0.69 | -0.01 | -0.18 | -0.07 | -0.44 | 4.8 | 1405 |
+| 29 | ATH | -0.69 | -0.01 | -0.18 | -0.07 | -0.43 | 4.8 | 1405 |
 | 30 | COL | -0.97 | -0.18 | -0.24 | -0.00 | -0.55 | 4.9 | 1379 |
 
 ## Current model fit
