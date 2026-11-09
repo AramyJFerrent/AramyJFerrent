@@ -1,6 +1,6 @@
 # NFL score predictions
 
-Updated Sun Nov 08, 2026 03:25 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
+Updated Sun Nov 08, 2026 09:37 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
 
 Expected points blend the model with the betting line using the weight that has predicted best in recent seasons (see Current model fit). The spread and total columns show the model's own numbers next to the line, so you can see where it disagrees.
 
@@ -12,39 +12,34 @@ The edge columns price every side of the spread, moneyline and total with the fi
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Sun 11/08 4:05 PM | HOU @ LAC | HOU 23, LAC 17 | HOU 67% | HOU -205 / LAC +205 | 23.0 – 17.4 | 11–35 / 7–29 | HOU -6.1 / HOU -5.5 | 38.0 / 40.5 | no edge | no edge | no edge | C.J. Stroud / Justin Herbert |  |
-| Sun 11/08 4:05 PM | LV @ SF | LV 20, SF 30 | SF 75% | LV +305 / SF -305 | 21.4 – 30.1 | 10–34 / 17–43 | SF -10.7 / SF -8.5 | 50.9 / 51.5 | no edge | no edge | no edge | Kirk Cousins / Brock Purdy |  |
-| Sun 11/08 4:25 PM | ARI @ SEA | ARI 17, SEA 24 | SEA 75% | ARI +305 / SEA -305 | 15.6 – 23.9 | 6–27 / 13–36 | SEA -5.9 / SEA -8.5 | 39.4 / 39.5 | no edge | no edge | no edge | Gardner Minshew / Drew Lock |  |
-| Sun 11/08 4:25 PM | GB @ NE | GB 20, NE 23 | NE 60% | GB +150 / NE -150 | 20.8 – 23.8 | 10–33 / 13–37 | NE -3.7 / NE -3.0 | 49.2 / 44.5 | no edge | no edge | no edge | Jordan Love / Drake Maye |  |
-| Sun 11/08 8:20 PM | TB @ CHI | TB 20, CHI 27 | CHI 67% | TB +210 / CHI -210 | 20.8 – 26.7 | 10–33 / 14–39 | CHI -5.1 / CHI -6.0 | 45.8 / 47.5 | no edge | no edge | no edge | Baker Mayfield / Caleb Williams |  |
-| Mon 11/09 8:15 PM | BUF @ MIN | BUF 23, MIN 20 | BUF 59% | BUF -145 / MIN +145 | 23.2 – 20.4 | 12–35 / 10–32 | BUF -1.0 / BUF -3.0 | 45.3 / 43.5 | no edge | no edge | no edge | Josh Allen / Kyler Murray |  |
+| Mon 11/09 8:15 PM | BUF @ MIN | BUF 23, MIN 20 | BUF 59% | BUF -145 / MIN +145 | 23.2 – 20.4 | 12–35 / 10–31 | BUF -1.0 / BUF -3.0 | 45.4 / 43.5 | no edge | no edge | no edge | Josh Allen / Kyler Murray |  |
 
 ## 2026 Week 10
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Thu 11/12 8:15 PM | WAS @ NYG | WAS 20, NYG 23 | WAS 51% | WAS -105 / NYG +105 | 22.5 – 22.4 | 10–34 / 10–34 | WAS -0.1 / – | 44.9 / – | no line yet | no line yet | no line yet | Jayden Daniels / J.J. McCarthy |  |
-| Sun 11/15 9:30 AM | NE @ DET | NE 27, DET 24 | DET 50% | NE +100 / DET -100 | 25.1 – 25.1 | 13–37 / 13–37 | PK / – | 50.3 / – | no line yet | no line yet | no line yet | Drake Maye / Jared Goff |  |
-| Sun 11/15 1:00 PM | BUF @ NYJ | BUF 27, NYJ 24 | BUF 67% | BUF -200 / NYJ +200 | 27.7 – 22.1 | 16–40 / 10–34 | BUF -5.6 / – | 52.7 / – | no line yet | no line yet | no line yet | Josh Allen / Geno Smith | wind 16 mph |
-| Sun 11/15 1:00 PM | CAR @ NO | CAR 20, NO 23 | NO 50% | CAR +100 / NO -100 | 23.0 – 23.3 | 12–35 / 12–35 | NO -0.3 / – | 46.2 / – | no line yet | no line yet | no line yet | Bryce Young / Tyler Shough |  |
-| Sun 11/15 1:00 PM | HOU @ CLE | HOU 20, CLE 17 | HOU 55% | HOU -125 / CLE +125 | 19.2 – 17.4 | 9–30 / 7–28 | HOU -1.8 / – | 40.0 / – | no line yet | no line yet | no line yet | C.J. Stroud / Deshaun Watson | wind 17 mph |
-| Sun 11/15 1:00 PM | JAX @ TEN | JAX 27, TEN 20 | JAX 76% | JAX -315 / TEN +315 | 27.2 – 18.3 | 15–40 / 7–30 | JAX -8.9 / – | 45.5 / – | no line yet | no line yet | no line yet | Trevor Lawrence / Cam Ward |  |
-| Sun 11/15 1:00 PM | KC @ ATL | KC 23, ATL 20 | KC 66% | KC -195 / ATL +195 | 25.0 – 19.9 | 13–37 / 9–31 | KC -5.1 / – | 44.8 / – | no line yet | no line yet | no line yet | Patrick Mahomes / Michael Penix Jr. |  |
-| Sun 11/15 1:00 PM | MIA @ IND | MIA 20, IND 23 | IND 64% | MIA +180 / IND -180 | 20.4 – 24.9 | 10–32 / 13–38 | IND -4.5 / – | 45.3 / – | no line yet | no line yet | no line yet | Malik Willis / Daniel Jones |  |
-| Sun 11/15 1:00 PM | MIN @ GB | MIN 20, GB 23 | GB 55% | MIN +125 / GB -125 | 20.0 – 21.7 | 10–31 / 10–34 | GB -1.7 / – | 41.9 / – | no line yet | no line yet | no line yet | Kyler Murray / Jordan Love |  |
-| Sun 11/15 4:05 PM | LA @ ARI | LA 23, ARI 20 | LA 66% | LA -195 / ARI +195 | 25.7 – 20.1 | 13–38 / 9–31 | LA -5.6 / – | 45.8 / – | no line yet | no line yet | no line yet | Matthew Stafford / Gardner Minshew |  |
-| Sun 11/15 4:05 PM | SEA @ LV | SEA 23, LV 20 | SEA 67% | SEA -200 / LV +200 | 23.4 – 18.0 | 13–35 / 7–29 | SEA -5.4 / – | 41.5 / – | no line yet | no line yet | no line yet | Sam Darnold / Kirk Cousins |  |
-| Sun 11/15 4:25 PM | SF @ DAL | SF 30, DAL 27 | SF 59% | SF -145 / DAL +145 | 29.9 – 26.8 | 17–42 / 15–40 | SF -3.1 / – | 56.7 / – | no line yet | no line yet | no line yet | Brock Purdy / Dak Prescott |  |
-| Sun 11/15 8:20 PM | PIT @ CIN | PIT 24, CIN 27 | CIN 60% | PIT +150 / CIN -150 | 23.4 – 26.8 | 12–36 / 15–39 | CIN -3.4 / – | 50.2 / – | no line yet | no line yet | no line yet | Aaron Rodgers / Joe Burrow |  |
-| Mon 11/16 8:15 PM | LAC @ BAL | LAC 17, BAL 20 | BAL 63% | LAC +175 / BAL -175 | 16.7 – 20.7 | 6–27 / 10–32 | BAL -4.1 / – | 37.4 / – | no line yet | no line yet | no line yet | Justin Herbert / Tyler Huntley |  |
+| Thu 11/12 8:15 PM | WAS @ NYG | WAS 20, NYG 23 | NYG 55% | WAS +125 / NYG -125 | 20.4 – 21.9 | 10–31 / 10–34 | NYG -0.9 / NYG -1.5 | 44.0 / 42.5 | no edge | no edge | no edge | Jayden Daniels / J.J. McCarthy |  |
+| Sun 11/15 9:30 AM | NE @ DET | NE 24, DET 27 | DET 56% | NE +130 / DET -130 | 24.1 – 26.4 | 13–36 / 14–38 | DET -1.0 / DET -2.5 | 49.9 / 50.5 | no edge | no edge | no edge | Drake Maye / Jared Goff |  |
+| Sun 11/15 1:00 PM | BUF @ NYJ | BUF 27, NYJ 20 | BUF 74% | BUF -285 / NYJ +285 | 28.9 – 20.6 | 17–41 / 10–32 | BUF -6.0 / BUF -8.5 | 52.3 / 50.5 | no edge | no edge | no edge | Josh Allen / Geno Smith | wind 15 mph |
+| Sun 11/15 1:00 PM | CAR @ NO | CAR 23, NO 20 | CAR 54% | CAR -120 / NO +120 | 24.4 – 23.1 | 13–37 / 12–35 | NO -0.2 / CAR -1.5 | 46.6 / 47.5 | no edge | no edge | no edge | Bryce Young / Tyler Shough |  |
+| Sun 11/15 1:00 PM | HOU @ CLE | HOU 20, CLE 17 | HOU 64% | HOU -180 / CLE +180 | 20.6 – 16.3 | 10–33 / 6–27 | HOU -2.5 / HOU -4.5 | 40.2 / 38.5 | no edge | no edge | Under 38.5 (-110): EV +4.7%, 55%, stake 1.3u | C.J. Stroud / Deshaun Watson | wind 18 mph |
+| Sun 11/15 1:00 PM | JAX @ TEN | JAX 27, TEN 17 | JAX 78% | JAX -360 / TEN +360 | 28.2 – 18.3 | 16–41 / 7–30 | JAX -8.8 / JAX -10.0 | 45.5 / 46.5 | no edge | no edge | no edge | Trevor Lawrence / Cam Ward |  |
+| Sun 11/15 1:00 PM | KC @ ATL | KC 23, ATL 20 | KC 60% | KC -150 / ATL +150 | 24.9 – 21.6 | 13–37 / 10–34 | KC -5.4 / KC -3.0 | 46.2 / 46.5 | no edge | no edge | no edge | Patrick Mahomes / Michael Penix Jr. |  |
+| Sun 11/15 1:00 PM | MIA @ IND | MIA 20, IND 23 | IND 59% | MIA +145 / IND -145 | 19.9 – 22.6 | 9–31 / 10–35 | IND -4.4 / IND -2.5 | 44.3 / 42.5 | no edge | no edge | no edge | Malik Willis / Daniel Jones |  |
+| Sun 11/15 1:00 PM | MIN @ GB | MIN 20, GB 23 | GB 59% | MIN +145 / GB -145 | 19.8 – 22.7 | 9–31 / 11–35 | GB -2.6 / GB -3.0 | 42.4 / 42.5 | no edge | no edge | no edge | Kyler Murray / Jordan Love |  |
+| Sun 11/15 4:05 PM | LA @ ARI | LA 27, ARI 20 | LA 72% | LA -265 / ARI +265 | 26.9 – 19.6 | 15–40 / 9–31 | LA -6.0 / LA -7.5 | 45.5 / 46.5 | no edge | no edge | no edge | Matthew Stafford / Gardner Minshew |  |
+| Sun 11/15 4:05 PM | SEA @ LV | SEA 23, LV 20 | SEA 62% | SEA -160 / LV +160 | 23.6 – 19.8 | 13–36 / 9–31 | SEA -6.4 / SEA -3.5 | 41.2 / 43.5 | no edge | no edge | no edge | Sam Darnold / Kirk Cousins |  |
+| Sun 11/15 4:25 PM | SF @ DAL | SF 30, DAL 27 | SF 63% | SF -175 / DAL +175 | 30.0 – 25.6 | 17–43 / 13–38 | SF -3.3 / SF -4.5 | 56.6 / 55.5 | no edge | no edge | no edge | Brock Purdy / Dak Prescott |  |
+| Sun 11/15 8:20 PM | PIT @ CIN | PIT 24, CIN 27 | CIN 60% | PIT +155 / CIN -155 | 22.5 – 26.1 | 10–34 / 14–38 | CIN -4.1 / CIN -3.5 | 51.4 / 48.5 | no edge | no edge | no edge | Aaron Rodgers / Joe Burrow |  |
+| Mon 11/16 8:15 PM | LAC @ BAL | LAC 17, BAL 20 | BAL 62% | LAC +160 / BAL -160 | 17.4 – 21.0 | 7–28 / 10–33 | BAL -4.7 / BAL -3.5 | 37.6 / 38.5 | no edge | no edge | no edge | Justin Herbert / Tyler Huntley |  |
 
 ## How the 2026 predictions have done
 
 | Predictor | Games | Margin MAE | Total MAE | Team-score MAE | Winners | Brier | 80% range hit |
 |---|---|---|---|---|---|---|---|
-| Final prediction | 123 | 9.64 | 10.52 | 7.34 | 66.4% | 0.222 | 84.1% |
-| Model only (before blending) | 123 | 9.63 | 11.00 | 7.47 | 64.8% | – | – |
-| Betting line when predicted | 123 | 9.65 | 10.52 | 7.33 | 66.4% | – | – |
+| Final prediction | 134 | 9.49 | 10.61 | 7.29 | 68.4% | 0.215 | 84.0% |
+| Model only (before blending) | 134 | 9.60 | 11.11 | 7.45 | 66.9% | – | – |
+| Betting line when predicted | 134 | 9.49 | 10.60 | 7.29 | 68.4% | – | – |
 
 MAE is mean absolute error in points (lower is better). Brier scores the win chances (lower is better, 0.25 is a coin flip). Even the closing betting line misses the final margin by about 10 points per game.
 
@@ -68,6 +63,17 @@ Spread line moved toward the model's early spread edge before kickoff: 5 of 7 ga
 |---|---|---|---|---|
 | JAX @ BAL | 24–17 | 33–10 | 79% | yes |
 | CIN @ ATL | 27–24 | 34–17 | 62% | yes |
+| CLE @ NO | 20–23 | 22–23 | 62% | yes |
+| DAL @ IND | 27–24 | 27–23 | 62% | yes |
+| DEN @ CAR | 23–20 | 26–21 | 59% | yes |
+| DET @ MIA | 27–20 | 19–9 | 68% | no |
+| LA @ WAS | 27–24 | 20–13 | 63% | yes |
+| NYG @ PHI | 20–17 | 19–11 | 60% | yes |
+| NYJ @ KC | 20–27 | 12–35 | 76% | yes |
+| HOU @ LAC | 23–17 | 44–22 | 67% | no |
+| LV @ SF | 20–30 | 17–38 | 75% | yes |
+| ARI @ SEA | 17–24 | 3–17 | 75% | no |
+| GB @ NE | 20–23 | 45–27 | 40% | no |
 
 ## Power ratings
 
@@ -76,43 +82,43 @@ Points per game better than an average team on a neutral field, from opponent-ad
 | # | Team | Net | Offense | Defense | Special teams | Elo |
 |---|---|---|---|---|---|---|
 | 1 | JAX | +5.7 | +3.1 | +1.9 | +0.8 | 1645 |
-| 2 | BUF | +5.6 | +5.2 | -0.7 | +1.1 | 1669 |
-| 3 | CHI | +4.5 | +2.8 | +0.2 | +1.4 | 1622 |
-| 4 | SEA | +3.6 | -1.0 | +3.1 | +1.5 | 1628 |
-| 5 | DET | +3.6 | +2.7 | -0.7 | +1.5 | 1582 |
-| 6 | SF | +3.5 | +4.3 | +0.0 | -0.8 | 1624 |
-| 7 | NE | +3.5 | +2.5 | +0.9 | +0.1 | 1607 |
-| 8 | LA | +3.1 | +2.8 | +1.9 | -1.6 | 1590 |
-| 9 | GB | +2.3 | +2.4 | +0.9 | -0.9 | 1539 |
-| 10 | KC | +1.9 | +2.8 | +0.1 | -1.0 | 1554 |
-| 11 | MIN | +1.7 | -3.1 | +3.4 | +1.5 | 1619 |
-| 12 | DEN | +1.5 | -0.0 | +1.7 | -0.1 | 1637 |
-| 13 | CIN | +1.4 | +2.7 | -1.5 | +0.3 | 1590 |
-| 14 | HOU | +0.8 | -0.7 | +1.1 | +0.4 | 1517 |
-| 15 | TB | +0.6 | -1.7 | +1.9 | +0.4 | 1501 |
-| 16 | BAL | +0.3 | +1.3 | -0.1 | -0.9 | 1477 |
-| 17 | DAL | -0.1 | +2.8 | -3.2 | +0.3 | 1451 |
-| 18 | PIT | -0.5 | -0.5 | +0.2 | -0.2 | 1576 |
-| 19 | CAR | -1.2 | +0.0 | -1.3 | +0.1 | 1437 |
-| 20 | NYG | -1.4 | -0.8 | -0.4 | -0.1 | 1464 |
-| 21 | WAS | -1.5 | -0.4 | -1.4 | +0.3 | 1443 |
-| 22 | PHI | -1.7 | -2.4 | +0.5 | +0.2 | 1420 |
-| 23 | IND | -1.7 | -0.9 | -1.1 | +0.3 | 1405 |
-| 24 | NYJ | -3.0 | -1.4 | -1.8 | +0.2 | 1346 |
-| 25 | ATL | -3.2 | -2.5 | +0.7 | -1.3 | 1445 |
-| 26 | NO | -3.3 | -1.7 | -0.9 | -0.7 | 1413 |
-| 27 | CLE | -3.3 | -4.1 | +1.1 | -0.2 | 1450 |
-| 28 | MIA | -3.6 | -0.9 | -2.1 | -0.6 | 1380 |
-| 29 | LAC | -4.3 | -5.4 | +1.4 | -0.3 | 1398 |
-| 30 | ARI | -4.4 | -1.8 | -1.4 | -1.2 | 1400 |
-| 31 | LV | -4.4 | -2.6 | -1.7 | -0.2 | 1420 |
-| 32 | TEN | -6.1 | -3.5 | -2.6 | -0.1 | 1309 |
+| 2 | BUF | +5.6 | +5.2 | -0.8 | +1.1 | 1669 |
+| 3 | CHI | +4.4 | +2.8 | +0.2 | +1.4 | 1622 |
+| 4 | SF | +4.1 | +4.7 | +0.4 | -1.0 | 1635 |
+| 5 | SEA | +3.8 | -0.8 | +3.3 | +1.3 | 1636 |
+| 6 | DET | +3.7 | +2.6 | -0.4 | +1.5 | 1595 |
+| 7 | LA | +3.2 | +2.7 | +2.0 | -1.5 | 1604 |
+| 8 | GB | +3.2 | +3.0 | +1.2 | -1.0 | 1581 |
+| 9 | NE | +2.6 | +2.1 | +0.4 | +0.1 | 1566 |
+| 10 | CIN | +2.2 | +3.6 | -1.9 | +0.5 | 1590 |
+| 11 | KC | +2.1 | +3.0 | +0.4 | -1.3 | 1565 |
+| 12 | MIN | +1.7 | -3.1 | +3.3 | +1.5 | 1619 |
+| 13 | DEN | +1.5 | +0.0 | +1.4 | +0.1 | 1647 |
+| 14 | HOU | +1.5 | -0.1 | +1.2 | +0.3 | 1541 |
+| 15 | TB | +0.7 | -1.7 | +1.9 | +0.4 | 1501 |
+| 16 | BAL | +0.4 | +1.3 | -0.1 | -0.9 | 1477 |
+| 17 | DAL | +0.3 | +3.1 | -2.8 | -0.1 | 1467 |
+| 18 | PIT | -0.5 | -0.6 | +0.2 | -0.2 | 1576 |
+| 19 | NYG | -0.8 | -0.8 | +0.1 | -0.1 | 1486 |
+| 20 | CAR | -1.1 | +0.4 | -1.4 | -0.1 | 1427 |
+| 21 | WAS | -1.8 | -0.6 | -1.4 | +0.1 | 1428 |
+| 22 | IND | -2.1 | -1.5 | -1.3 | +0.6 | 1389 |
+| 23 | PHI | -2.4 | -3.1 | +0.5 | +0.1 | 1397 |
+| 24 | NO | -3.3 | -1.6 | -0.7 | -0.9 | 1419 |
+| 25 | CLE | -3.3 | -4.4 | +1.0 | +0.1 | 1444 |
+| 26 | NYJ | -3.4 | -2.0 | -2.0 | +0.6 | 1335 |
+| 27 | ATL | -3.4 | -1.9 | +0.0 | -1.6 | 1445 |
+| 28 | MIA | -3.9 | -1.3 | -2.0 | -0.6 | 1367 |
+| 29 | ARI | -4.6 | -2.0 | -1.5 | -1.1 | 1392 |
+| 30 | LAC | -4.9 | -5.7 | +1.0 | -0.2 | 1374 |
+| 31 | LV | -5.1 | -3.2 | -1.9 | +0.0 | 1409 |
+| 32 | TEN | -6.1 | -3.5 | -2.6 | -0.0 | 1309 |
 
 ## Current model fit
 
-- Fitted on 1816 games from seasons 2020–2026.
+- Fitted on 1827 games from seasons 2020–2026.
 - Home field: 1.5 points (2.0 in divisional games).
-- QB adjustment: 0.84 points per point of QB value gap.
-- Special teams: 0.45 points per point of net special-teams EPA.
-- Weight on the betting line: 89% for the margin, 97% for the total.
+- QB adjustment: 0.85 points per point of QB value gap.
+- Special teams: 0.44 points per point of net special-teams EPA.
+- Weight on the betting line: 90% for the margin, 97% for the total.
 - Wind: -0.20 total points per mph above 10 mph at open-air stadiums.
