@@ -145,14 +145,14 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909949,2027,R,2026-11-09 01:00:00+00:00,MIL,BOS,97.0,117.0,4.0,False,Fiserv Forum,Milwaukee,WI
 401909950,2027,R,2026-11-09 02:00:00+00:00,LAC,NOP,139.0,123.0,4.0,False,Intuit Dome,Inglewood,CA
 401909951,2027,R,2026-11-09 02:00:00+00:00,SAC,MIA,108.0,114.0,4.0,False,Golden 1 Center,Sacramento,CA
-401909952,2027,R,2026-11-10 00:00:00+00:00,ATL,LAL,,,,False,State Farm Arena,Atlanta,GA
-401909953,2027,R,2026-11-10 00:00:00+00:00,CHA,CLE,,,,False,Spectrum Center,Charlotte,NC
-401909954,2027,R,2026-11-10 00:00:00+00:00,DET,WAS,,,,False,Little Caesars Arena,Detroit,MI
-401909955,2027,R,2026-11-10 00:30:00+00:00,TOR,MEM,,,,False,Scotiabank Arena,Toronto,ON
-401909956,2027,R,2026-11-10 01:00:00+00:00,DAL,IND,,,,False,American Airlines Center,Dallas,TX
-401909957,2027,R,2026-11-10 01:30:00+00:00,HOU,DEN,,,,False,Toyota Center (Houston),Houston,TX
-401909958,2027,R,2026-11-10 02:00:00+00:00,PHX,SAS,,,,False,Mortgage Matchup Center,Phoenix,AZ
-401909959,2027,R,2026-11-10 03:00:00+00:00,GSW,NOP,,,,False,Chase Center,San Francisco,CA
+401909952,2027,R,2026-11-10 00:00:00+00:00,ATL,LAL,114.0,124.0,4.0,False,State Farm Arena,Atlanta,GA
+401909953,2027,R,2026-11-10 00:00:00+00:00,CHA,CLE,124.0,112.0,4.0,False,Spectrum Center,Charlotte,NC
+401909954,2027,R,2026-11-10 00:00:00+00:00,DET,WAS,122.0,111.0,4.0,False,Little Caesars Arena,Detroit,MI
+401909955,2027,R,2026-11-10 00:30:00+00:00,TOR,MEM,102.0,118.0,4.0,False,Scotiabank Arena,Toronto,ON
+401909956,2027,R,2026-11-10 01:00:00+00:00,DAL,IND,125.0,122.0,4.0,False,American Airlines Center,Dallas,TX
+401909957,2027,R,2026-11-10 01:30:00+00:00,HOU,DEN,110.0,100.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909958,2027,R,2026-11-10 02:00:00+00:00,PHX,SAS,96.0,122.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
+401909959,2027,R,2026-11-10 03:00:00+00:00,GSW,NOP,138.0,87.0,4.0,False,Chase Center,San Francisco,CA
 401909960,2027,R,2026-11-11 00:30:00+00:00,NYK,MIL,,,,False,Madison Square Garden,New York,NY
 401909961,2027,R,2026-11-11 01:00:00+00:00,PHI,BOS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401909962,2027,R,2026-11-11 02:00:00+00:00,PHX,LAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
