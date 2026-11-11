@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Tue Nov 10, 2026 08:25 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Tue Nov 10, 2026 09:47 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -14,25 +14,23 @@ The edge columns check every side of the spread, the moneyline and the total for
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 9:00 PM | LAC @ PHX | LAC 110, PHX 113 | PHX 60% | LAC +150 / PHX -150<br>posted LAC +145 / PHX -173 | PHX -3.1 / PHX -3.5 (fav covers 51%) | 223.8 / 223.5 (over 50%) | 96–125 / 99–128 | 5% | LAC: Brandon Ingram (out); Jordan Miller (out); Bradley Beal (out); Yanic Konan Niederhauser (out) (+0.7)<br>PHX: Mark Williams (out) (+0.4) | no edge | no edge | no edge |
-| 9:00 PM | MIA @ UTA | MIA 118, UTA 110 | MIA 72% | MIA -250 / UTA +250<br>posted MIA -358 / UTA +286 | MIA -7.7 / MIA -8.5 (fav covers 48%) | 227.6 / 227.5 (over 50%) | 103–132 / 96–124 | 4% | UTA: Lauri Markkanen (out); Keyonte George (out); Jaren Jackson Jr. (out); Jusuf Nurkic (out) (-2.3) | no edge | no edge | no edge |
-| 10:00 PM | ORL @ SAC | ORL 114, SAC 109 | ORL 65% | ORL -185 / SAC +185<br>posted ORL -217 / SAC +180 | ORL -5.1 / ORL -5.5 (fav covers 50%) | 222.6 / 222.5 (over 49%) | 100–128 / 95–123 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out); Tristan da Silva (day-to-day) (+0.5)<br>SAC: Maxime Raynaud (out) (+0.7) | no edge | no edge | no edge |
-| 11:00 PM | OKC @ POR | OKC 114, POR 113 | OKC 55% | OKC -120 / POR +120<br>posted OKC -125 / POR +106 | OKC -1.4 / OKC -1.5 (fav covers 52%) | 226.8 / 226.5 (over 50%) | 100–129 / 98–127 | 6% | OKC: Chet Holmgren (out); Jalen Williams (out); Jaylin Williams (out); Cason Wallace (out) (-0.2)<br>POR: Ja Morant (out) (-0.4) | no edge | no edge | no edge |
+| 10:00 PM | ORL @ SAC | ORL 114, SAC 109 | ORL 65% | ORL -190 / SAC +190<br>posted ORL -217 / SAC +180 | ORL -5.3 / ORL -5.5 (fav covers 51%) | 222.7 / 222.5 (over 50%) | 100–128 / 95–123 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out); Tristan da Silva (out) (+1.3)<br>SAC: Maxime Raynaud (out) (+0.7) | no edge | no edge | no edge |
+| 11:00 PM | OKC @ POR | OKC 114, POR 113 | OKC 53% | OKC -115 / POR +115<br>posted OKC -125 / POR +106 | OKC -1.1 / OKC -1.5 (fav covers 51%) | 226.5 / 226.5 (over 49%) | 99–128 / 99–127 | 5% | OKC: Chet Holmgren (out); Jalen Williams (out); Jaylin Williams (out); Cason Wallace (out) (-0.2)<br>POR: Ja Morant (out) (-0.4) | no edge | no edge | no edge |
 
 ## Wednesday, November 11
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | WAS @ IND | WAS 111, IND 116 | IND 64% | WAS +175 / IND -175<br>posted WAS +135 / IND -160 | IND -4.5 / IND -4.5 (fav covers 52%) | 226.7 / 226.5 (over 50%) | 96–126 / 101–130 | 5% | WAS: Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (+0.0)<br>IND: Tyrese Haliburton (out); Johnny Furphy (out); Ben Sheppard (out) (-0.2) | no edge | no edge | no edge |
-| 7:00 PM | CLE @ NYK | CLE 109, NYK 113 | NYK 61% | CLE +155 / NYK -155 | NYK -3.9 | 222.1 | 95–124 / 99–127 | 6% | CLE: Sam Merrill (out); Jaylon Tyson (out) (-0.5)<br>NYK: Josh Hart (out) (-0.2) | no line yet | no line yet | no line yet |
-| 7:00 PM | BOS @ TOR | BOS 114, TOR 108 | BOS 66% | BOS -200 / TOR +200 | BOS -5.7 | 221.6 | 99–128 / 94–122 | 5% | TOR: Scottie Barnes (out); Immanuel Quickley (day-to-day); Kawhi Leonard (out); Collin Murray-Boyles (day-to-day) (-3.1) | no line yet | no line yet | no line yet |
-| 8:00 PM | SAS @ CHI | SAS 127, CHI 111 | SAS 87% | SAS -660 / CHI +660<br>posted SAS -940 / CHI +630 | SAS -15.5 / SAS -15.5 (fav covers 48%) | 237.9 / 238.5 (over 48%) | 112–141 / 96–126 | 3% | SAS: Tobias Harris (out); Devin Vassell (day-to-day) (+0.6)<br>CHI: Norman Powell (day-to-day) (-0.2) | no edge | no edge | no edge |
-| 8:00 PM | DEN @ MEM | DEN 116, MEM 112 | DEN 63% | DEN -170 / MEM +170<br>posted DEN -156 / MEM +131 | DEN -4.2 / DEN -4.5 (fav covers 51%) | 228.7 / 228.5 (over 50%) | 102–131 / 98–127 | 5% | MEM: Isaiah Stewart (day-to-day); Scotty Pippen Jr. (out) (+0.8) | no edge | no edge | no edge |
-| 8:00 PM | LAL @ MIL | LAL 124, MIL 109 | LAL 85% | LAL -585 / MIL +585 | LAL -14.7 | 232.7 | 110–138 / 94–124 | 3% | LAL: Quentin Grimes (day-to-day) (+0.2)<br>MIL: Tyler Herro (out) (-1.0) | no line yet | no line yet | no line yet |
-| 8:00 PM | BKN @ NOP | BKN 112, NOP 117 | NOP 65% | BKN +185 / NOP -185<br>posted BKN +146 / NOP -174 | NOP -5.2 / NOP -5.5 (fav covers 50%) | 229.4 / 229.5 (over 49%) | 97–127 / 103–132 | 5% | BKN: Nolan Traore (day-to-day); Egor Demin (out) (+0.5)<br>NOP: Trey Murphy III (day-to-day); Yves Missi (out); Trendon Watford (out) (+0.3) | no edge | no edge | no edge |
-| 9:00 PM | ORL @ UTA | ORL 111, UTA 109 | ORL 59% | ORL -145 / UTA +145 | ORL -2.8 | 220.1 | 97–126 / 94–123 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out); Tristan da Silva (day-to-day) (+0.5)<br>UTA: Lauri Markkanen (out); Keyonte George (out); Jaren Jackson Jr. (out); Jusuf Nurkic (out) (-2.3) | no line yet | no line yet | no line yet |
-| 9:30 PM | GSW @ HOU | GSW 110, HOU 114 | HOU 63% | GSW +170 / HOU -170<br>posted GSW +158 / HOU -189 | HOU -4.5 / HOU -4.5 (fav covers 51%) | 223.9 / 223.5 (over 50%) | 95–124 / 100–128 | 5% | GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out); Will Richard (out); Gary Payton II (out); Brandon Williams (out) (+0.2)<br>HOU: Steven Adams (out); Clint Capela (out) (-0.6) | no edge | no edge | no edge |
-| 10:00 PM | OKC @ POR | OKC 115, POR 114 | OKC 51% | OKC -105 / POR +105 | pick'em | 228.9 | 100–129 / 100–129 | 5% | OKC: Chet Holmgren (out); Jalen Williams (out); Jaylin Williams (out); Cason Wallace (out) (-0.2)<br>POR: Ja Morant (out) (-0.4) | no line yet | no line yet | no line yet |
+| 7:00 PM | WAS @ IND | WAS 111, IND 116 | IND 63% | WAS +170 / IND -170<br>posted WAS +135 / IND -160 | IND -4.6 / IND -4.5 (fav covers 52%) | 226.6 / 226.5 (over 50%) | 96–126 / 101–130 | 5% | WAS: Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (+0.0)<br>IND: Tyrese Haliburton (out); Johnny Furphy (out); Ben Sheppard (out) (-0.2) | no edge | no edge | no edge |
+| 7:00 PM | CLE @ NYK | CLE 109, NYK 113 | NYK 61% | CLE +160 / NYK -160 | NYK -3.8 | 222.1 | 95–124 / 99–128 | 5% | CLE: Sam Merrill (out); Jaylon Tyson (out) (-0.5)<br>NYK: Josh Hart (out) (-0.2) | no line yet | no line yet | no line yet |
+| 7:00 PM | BOS @ TOR | BOS 114, TOR 108 | BOS 67% | BOS -200 / TOR +200 | BOS -5.7 | 221.4 | 99–128 / 94–122 | 5% | TOR: Scottie Barnes (out); Immanuel Quickley (day-to-day); Kawhi Leonard (out); Collin Murray-Boyles (day-to-day) (-3.1) | no line yet | no line yet | no line yet |
+| 8:00 PM | SAS @ CHI | SAS 127, CHI 111 | SAS 87% | SAS -665 / CHI +665<br>posted SAS -940 / CHI +630 | SAS -15.6 / SAS -15.5 (fav covers 49%) | 238.1 / 238.5 (over 48%) | 113–141 / 96–126 | 3% | SAS: Tobias Harris (out); Devin Vassell (day-to-day) (+0.6)<br>CHI: Norman Powell (day-to-day) (-0.2) | no edge | no edge | no edge |
+| 8:00 PM | DEN @ MEM | DEN 116, MEM 112 | DEN 62% | DEN -160 / MEM +160<br>posted DEN -156 / MEM +131 | DEN -4.1 / DEN -4.5 (fav covers 50%) | 228.5 / 228.5 (over 49%) | 102–131 / 98–127 | 5% | MEM: Isaiah Stewart (day-to-day); Scotty Pippen Jr. (out) (+0.8) | no edge | no edge | no edge |
+| 8:00 PM | LAL @ MIL | LAL 124, MIL 109 | LAL 86% | LAL -635 / MIL +635 | LAL -14.6 | 232.6 | 109–138 / 94–124 | 3% | LAL: Quentin Grimes (day-to-day) (+0.2)<br>MIL: Tyler Herro (out) (-1.0) | no line yet | no line yet | no line yet |
+| 8:00 PM | BKN @ NOP | BKN 113, NOP 117 | NOP 62% | BKN +165 / NOP -165<br>posted BKN +154 / NOP -184 | NOP -4.3 / NOP -4.5 (fav covers 50%) | 229.5 / 229.5 (over 49%) | 98–127 / 102–131 | 4% | BKN: Nolan Traore (day-to-day); Egor Demin (out) (+0.5)<br>NOP: Trey Murphy III (day-to-day); Yves Missi (out); Trendon Watford (out) (+0.3) | no edge | no edge | no edge |
+| 9:00 PM | ORL @ UTA | ORL 112, UTA 108 | ORL 61% | ORL -155 / UTA +155 | ORL -3.6 | 219.7 | 98–126 / 94–122 | 5% | ORL: Paolo Banchero (out); Jalen Suggs (out); Tristan da Silva (out) (+1.3)<br>UTA: Lauri Markkanen (out); Keyonte George (out); Jaren Jackson Jr. (out); Jusuf Nurkic (out) (-2.3) | no line yet | no line yet | no line yet |
+| 9:30 PM | GSW @ HOU | GSW 109, HOU 114 | HOU 65% | GSW +185 / HOU -185<br>posted GSW +165 / HOU -197 | HOU -5.2 / HOU -5.5 (fav covers 51%) | 223.5 / 223.5 (over 49%) | 95–124 / 100–129 | 5% | GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out); Will Richard (out); Gary Payton II (out); Brandon Williams (out) (+0.2)<br>HOU: Steven Adams (out); Clint Capela (out) (-0.6) | no edge | no edge | no edge |
+| 10:00 PM | OKC @ POR | OKC 116, POR 115 | OKC 50% | OKC -100 / POR +100 | pick'em | 229.2 | 100–129 / 100–129 | 5% | OKC: Chet Holmgren (out); Jalen Williams (out); Jaylin Williams (out); Cason Wallace (out) (-0.2)<br>POR: Ja Morant (out) (-0.4) | no line yet | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
 
@@ -97,7 +95,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 15 | TOR | +0.2 | +0.2 | -0.1 | +0.3 | 102.9 | -3.2 | 1525 |
 | 16 | MIA | -0.3 | -0.4 | +0.7 | -1.1 | 104.9 | +0.0 | 1491 |
 | 17 | PHX | -0.8 | -0.8 | +0.6 | -1.3 | 100.2 | +0.4 | 1488 |
-| 18 | ORL | -1.7 | -1.7 | -2.6 | +1.0 | 100.6 | +0.5 | 1489 |
+| 18 | ORL | -1.7 | -1.7 | -2.6 | +1.0 | 100.6 | +1.3 | 1489 |
 | 19 | MEM | -1.7 | -1.7 | +0.0 | -1.7 | 101.6 | +0.9 | 1428 |
 | 20 | IND | -2.0 | -2.1 | -0.6 | -1.4 | 103.3 | -0.2 | 1355 |
 | 21 | ATL | -2.2 | -2.4 | -0.9 | -1.3 | 108.2 | +2.0 | 1539 |
