@@ -153,12 +153,12 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909957,2027,R,2026-11-10 01:30:00+00:00,HOU,DEN,110.0,100.0,4.0,False,Toyota Center (Houston),Houston,TX
 401909958,2027,R,2026-11-10 02:00:00+00:00,PHX,SAS,96.0,122.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
 401909959,2027,R,2026-11-10 03:00:00+00:00,GSW,NOP,138.0,87.0,4.0,False,Chase Center,San Francisco,CA
-401909960,2027,R,2026-11-11 00:30:00+00:00,NYK,MIL,,,,False,Madison Square Garden,New York,NY
-401909961,2027,R,2026-11-11 01:00:00+00:00,PHI,BOS,,,,False,Xfinity Mobile Arena,Philadelphia,PA
-401909962,2027,R,2026-11-11 02:00:00+00:00,PHX,LAC,,,,False,Mortgage Matchup Center,Phoenix,AZ
-401909963,2027,R,2026-11-11 02:00:00+00:00,UTA,MIA,,,,False,Delta Center,Salt Lake City,UT
-401909964,2027,R,2026-11-11 03:00:00+00:00,SAC,ORL,,,,False,Golden 1 Center,Sacramento,CA
-401909965,2027,R,2026-11-11 04:00:00+00:00,POR,OKC,,,,False,Moda Center,Portland,OR
+401909960,2027,R,2026-11-11 00:30:00+00:00,NYK,MIL,117.0,85.0,4.0,False,Madison Square Garden,New York,NY
+401909961,2027,R,2026-11-11 01:00:00+00:00,PHI,BOS,101.0,123.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
+401909962,2027,R,2026-11-11 02:00:00+00:00,PHX,LAC,133.0,110.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
+401909963,2027,R,2026-11-11 02:00:00+00:00,UTA,MIA,109.0,115.0,4.0,False,Delta Center,Salt Lake City,UT
+401909964,2027,R,2026-11-11 03:00:00+00:00,SAC,ORL,100.0,107.0,4.0,False,Golden 1 Center,Sacramento,CA
+401909965,2027,R,2026-11-11 04:00:00+00:00,POR,OKC,123.0,103.0,4.0,False,Moda Center,Portland,OR
 401909966,2027,R,2026-11-12 00:00:00+00:00,IND,WAS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
 401909967,2027,R,2026-11-12 00:00:00+00:00,NYK,CLE,,,,False,Madison Square Garden,New York,NY
 401909968,2027,R,2026-11-12 00:00:00+00:00,TOR,BOS,,,,False,Scotiabank Arena,Toronto,ON
