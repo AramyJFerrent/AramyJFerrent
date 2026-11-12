@@ -159,16 +159,16 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909963,2027,R,2026-11-11 02:00:00+00:00,UTA,MIA,109.0,115.0,4.0,False,Delta Center,Salt Lake City,UT
 401909964,2027,R,2026-11-11 03:00:00+00:00,SAC,ORL,100.0,107.0,4.0,False,Golden 1 Center,Sacramento,CA
 401909965,2027,R,2026-11-11 04:00:00+00:00,POR,OKC,123.0,103.0,4.0,False,Moda Center,Portland,OR
-401909966,2027,R,2026-11-12 00:00:00+00:00,IND,WAS,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
-401909967,2027,R,2026-11-12 00:00:00+00:00,NYK,CLE,,,,False,Madison Square Garden,New York,NY
-401909968,2027,R,2026-11-12 00:00:00+00:00,TOR,BOS,,,,False,Scotiabank Arena,Toronto,ON
-401909969,2027,R,2026-11-12 01:00:00+00:00,CHI,SAS,,,,False,United Center,Chicago,IL
-401909970,2027,R,2026-11-12 01:00:00+00:00,MEM,DEN,,,,False,FedExForum,Memphis,TN
-401909971,2027,R,2026-11-12 01:00:00+00:00,MIL,LAL,,,,False,Fiserv Forum,Milwaukee,WI
-401909972,2027,R,2026-11-12 01:00:00+00:00,NOP,BKN,,,,False,Smoothie King Center,New Orleans,LA
-401909973,2027,R,2026-11-12 02:00:00+00:00,UTA,ORL,,,,False,Delta Center,Salt Lake City,UT
-401909974,2027,R,2026-11-12 02:30:00+00:00,HOU,GSW,,,,False,Toyota Center (Houston),Houston,TX
-401909975,2027,R,2026-11-12 03:00:00+00:00,POR,OKC,,,,False,Moda Center,Portland,OR
+401909966,2027,R,2026-11-12 00:00:00+00:00,IND,WAS,114.0,101.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909967,2027,R,2026-11-12 00:00:00+00:00,NYK,CLE,107.0,115.0,4.0,False,Madison Square Garden,New York,NY
+401909968,2027,R,2026-11-12 00:00:00+00:00,TOR,BOS,93.0,98.0,4.0,False,Scotiabank Arena,Toronto,ON
+401909969,2027,R,2026-11-12 01:00:00+00:00,CHI,SAS,119.0,124.0,4.0,False,United Center,Chicago,IL
+401909970,2027,R,2026-11-12 01:00:00+00:00,MEM,DEN,118.0,123.0,4.0,False,FedExForum,Memphis,TN
+401909971,2027,R,2026-11-12 01:00:00+00:00,MIL,LAL,112.0,123.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401909972,2027,R,2026-11-12 01:00:00+00:00,NOP,BKN,111.0,145.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909973,2027,R,2026-11-12 02:00:00+00:00,UTA,ORL,108.0,123.0,4.0,False,Delta Center,Salt Lake City,UT
+401909974,2027,R,2026-11-12 02:30:00+00:00,HOU,GSW,115.0,108.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909975,2027,R,2026-11-12 03:00:00+00:00,POR,OKC,118.0,108.0,4.0,False,Moda Center,Portland,OR
 401909976,2027,R,2026-11-13 00:00:00+00:00,PHI,TOR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401909977,2027,R,2026-11-13 00:00:00+00:00,WAS,DET,,,,False,Capital One Arena,Washington,DC
 401909978,2027,R,2026-11-13 01:00:00+00:00,MIN,DAL,,,,False,Target Center,Minneapolis,MN
