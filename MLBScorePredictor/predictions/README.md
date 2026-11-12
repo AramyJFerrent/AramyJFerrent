@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Wed Nov 11, 2026 02:42 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Thu Nov 12, 2026 03:12 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -54,7 +54,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | # | Team | Net | Lineup | Rotation | Bullpen | Fielding and the rest | Starter innings | Elo |
 |---|---|---|---|---|---|---|---|---|
 | 1 | LAD | +1.50 | +0.75 | +0.40 | +0.11 | +0.24 | 5.2 | 1576 |
-| 2 | MIL | +0.96 | +0.40 | +0.16 | +0.15 | +0.26 | 4.9 | 1613 |
+| 2 | MIL | +0.96 | +0.40 | +0.16 | +0.15 | +0.25 | 4.9 | 1613 |
 | 3 | ATL | +0.71 | +0.33 | +0.15 | +0.09 | +0.14 | 5.1 | 1529 |
 | 4 | CHC | +0.68 | +0.58 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
 | 5 | NYY | +0.65 | +0.19 | +0.19 | +0.07 | +0.20 | 5.2 | 1560 |
@@ -68,7 +68,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 13 | CLE | +0.44 | +0.06 | +0.13 | +0.13 | +0.11 | 4.6 | 1514 |
 | 14 | BOS | +0.27 | -0.04 | +0.08 | +0.08 | +0.15 | 5.0 | 1531 |
 | 15 | DET | +0.26 | +0.12 | -0.00 | +0.08 | +0.07 | 5.0 | 1512 |
-| 16 | PIT | +0.25 | +0.01 | +0.14 | +0.05 | +0.04 | 4.7 | 1508 |
+| 16 | PIT | +0.24 | +0.01 | +0.14 | +0.05 | +0.04 | 4.7 | 1508 |
 | 17 | CWS | +0.17 | +0.20 | -0.04 | +0.03 | -0.02 | 4.4 | 1507 |
 | 18 | TEX | +0.14 | +0.05 | +0.05 | +0.06 | -0.01 | 5.0 | 1489 |
 | 19 | TOR | +0.11 | -0.03 | +0.03 | +0.03 | +0.07 | 4.8 | 1502 |
@@ -81,8 +81,8 @@ Runs per game better than an average team against an average opponent at a neutr
 | 26 | CIN | -0.59 | -0.19 | -0.21 | +0.00 | -0.20 | 5.0 | 1456 |
 | 27 | SF | -0.64 | -0.51 | -0.10 | -0.02 | +0.00 | 4.8 | 1461 |
 | 28 | LAA | -0.66 | -0.54 | -0.02 | -0.03 | -0.06 | 5.2 | 1434 |
-| 29 | ATH | -0.69 | -0.01 | -0.18 | -0.07 | -0.43 | 4.8 | 1405 |
-| 30 | COL | -0.97 | -0.18 | -0.24 | -0.00 | -0.55 | 4.9 | 1379 |
+| 29 | ATH | -0.68 | -0.01 | -0.18 | -0.07 | -0.43 | 4.8 | 1405 |
+| 30 | COL | -0.97 | -0.18 | -0.24 | -0.00 | -0.54 | 4.9 | 1379 |
 
 ## Current model fit
 
