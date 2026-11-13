@@ -169,10 +169,10 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909973,2027,R,2026-11-12 02:00:00+00:00,UTA,ORL,108.0,123.0,4.0,False,Delta Center,Salt Lake City,UT
 401909974,2027,R,2026-11-12 02:30:00+00:00,HOU,GSW,115.0,108.0,4.0,False,Toyota Center (Houston),Houston,TX
 401909975,2027,R,2026-11-12 03:00:00+00:00,POR,OKC,118.0,108.0,4.0,False,Moda Center,Portland,OR
-401909976,2027,R,2026-11-13 00:00:00+00:00,PHI,TOR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
-401909977,2027,R,2026-11-13 00:00:00+00:00,WAS,DET,,,,False,Capital One Arena,Washington,DC
-401909978,2027,R,2026-11-13 01:00:00+00:00,MIN,DAL,,,,False,Target Center,Minneapolis,MN
-401909979,2027,R,2026-11-13 02:00:00+00:00,PHX,CHA,,,,False,Mortgage Matchup Center,Phoenix,AZ
+401909976,2027,R,2026-11-13 00:00:00+00:00,PHI,TOR,123.0,112.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
+401909977,2027,R,2026-11-13 00:00:00+00:00,WAS,DET,140.0,144.0,6.0,False,Capital One Arena,Washington,DC
+401909978,2027,R,2026-11-13 01:00:00+00:00,MIN,DAL,133.0,94.0,4.0,False,Target Center,Minneapolis,MN
+401909979,2027,R,2026-11-13 02:00:00+00:00,PHX,CHA,101.0,96.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
 401909296,2027,R,2026-11-14 00:00:00+00:00,IND,NYK,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
 401909297,2027,R,2026-11-14 00:00:00+00:00,ORL,MIL,,,,False,Kia Center,Orlando,FL
 401909298,2027,R,2026-11-14 01:00:00+00:00,MIA,CLE,,,,False,Kaseya Center,Miami,FL
