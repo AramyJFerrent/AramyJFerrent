@@ -9005,6 +9005,7 @@ game_id,wind,wind_source
 401858282,4.4,open-meteo archive
 401858283,2.3,open-meteo archive
 401858284,5.8,open-meteo archive
+401858288,8.4,open-meteo archive
 401858422,7.2,open-meteo archive
 401858423,4.0,open-meteo archive
 401858424,6.2,open-meteo archive
@@ -9089,6 +9090,7 @@ game_id,wind,wind_source
 401858507,4.7,open-meteo archive
 401858508,3.5,open-meteo archive
 401858509,4.4,open-meteo archive
+401858510,5.7,open-meteo archive
 401859184,5.6,open-meteo archive
 401860878,3.6,open-meteo archive
 401860879,5.7,open-meteo archive
@@ -9189,6 +9191,7 @@ game_id,wind,wind_source
 401862815,6.8,open-meteo archive
 401862816,9.5,open-meteo archive
 401862817,4.2,open-meteo archive
+401862818,6.6,open-meteo archive
 401864424,6.3,open-meteo archive
 401864425,5.9,open-meteo archive
 401864432,6.8,open-meteo archive
@@ -9224,6 +9227,7 @@ game_id,wind,wind_source
 401864527,4.5,open-meteo archive
 401864528,5.1,open-meteo archive
 401864529,6.3,open-meteo archive
+401864533,0.9,open-meteo archive
 401864570,4.1,open-meteo archive
 401864571,7.2,open-meteo archive
 401864572,4.8,open-meteo archive
