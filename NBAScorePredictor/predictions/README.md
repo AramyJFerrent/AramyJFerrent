@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Thu Nov 12, 2026 09:02 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Thu Nov 12, 2026 10:26 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -107,7 +107,7 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 23 | UTA | -3.9 | -4.0 | -3.6 | -0.3 | 102.1 | -2.8 | 1285 |
 | 24 | BKN | -5.3 | -5.4 | -2.9 | -2.4 | 101.9 | +0.5 | 1347 |
 | 25 | NOP | -5.5 | -5.6 | -1.7 | -3.7 | 102.8 | +0.3 | 1372 |
-| 26 | WAS | -5.5 | -5.6 | -3.4 | -2.1 | 101.0 | +0.0 | 1321 |
+| 26 | WAS | -5.5 | -5.6 | -3.4 | -2.1 | 101.0 | +0.9 | 1321 |
 | 27 | CHA | -5.5 | -5.4 | -4.5 | -1.1 | 96.6 | -0.4 | 1481 |
 | 28 | CHI | -6.4 | -7.0 | -2.6 | -3.9 | 109.3 | +1.3 | 1350 |
 | 29 | SAC | -7.9 | -8.1 | -4.0 | -3.9 | 102.3 | +0.6 | 1328 |
