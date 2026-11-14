@@ -173,15 +173,15 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909977,2027,R,2026-11-13 00:00:00+00:00,WAS,DET,140.0,144.0,6.0,False,Capital One Arena,Washington,DC
 401909978,2027,R,2026-11-13 01:00:00+00:00,MIN,DAL,133.0,94.0,4.0,False,Target Center,Minneapolis,MN
 401909979,2027,R,2026-11-13 02:00:00+00:00,PHX,CHA,101.0,96.0,4.0,False,Mortgage Matchup Center,Phoenix,AZ
-401909296,2027,R,2026-11-14 00:00:00+00:00,IND,NYK,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
-401909297,2027,R,2026-11-14 00:00:00+00:00,ORL,MIL,,,,False,Kia Center,Orlando,FL
-401909298,2027,R,2026-11-14 01:00:00+00:00,MIA,CLE,,,,False,Kaseya Center,Miami,FL
-401909299,2027,R,2026-11-14 01:00:00+00:00,CHI,ATL,,,,False,United Center,Chicago,IL
-401909300,2027,R,2026-11-14 01:00:00+00:00,NOP,MEM,,,,False,Smoothie King Center,New Orleans,LA
-401909301,2027,R,2026-11-14 01:30:00+00:00,HOU,UTA,,,,False,Toyota Center (Houston),Houston,TX
-401909302,2027,R,2026-11-14 02:30:00+00:00,SAS,GSW,,,,False,Frost Bank Center,San Antonio,TX
-401909303,2027,R,2026-11-14 03:00:00+00:00,SAC,POR,,,,False,Golden 1 Center,Sacramento,CA
-401909304,2027,R,2026-11-14 03:30:00+00:00,LAC,OKC,,,,False,Intuit Dome,Inglewood,CA
+401909296,2027,R,2026-11-14 00:00:00+00:00,IND,NYK,106.0,104.0,4.0,False,Gainbridge Fieldhouse,Indianapolis,IN
+401909297,2027,R,2026-11-14 00:00:00+00:00,ORL,MIL,107.0,99.0,4.0,False,Kia Center,Orlando,FL
+401909298,2027,R,2026-11-14 01:00:00+00:00,MIA,CLE,133.0,121.0,4.0,False,Kaseya Center,Miami,FL
+401909299,2027,R,2026-11-14 01:00:00+00:00,CHI,ATL,125.0,117.0,5.0,False,United Center,Chicago,IL
+401909300,2027,R,2026-11-14 01:00:00+00:00,NOP,MEM,111.0,142.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909301,2027,R,2026-11-14 01:30:00+00:00,HOU,UTA,125.0,118.0,4.0,False,Toyota Center (Houston),Houston,TX
+401909302,2027,R,2026-11-14 02:30:00+00:00,SAS,GSW,123.0,85.0,4.0,False,Frost Bank Center,San Antonio,TX
+401909303,2027,R,2026-11-14 03:00:00+00:00,SAC,POR,107.0,120.0,4.0,False,Golden 1 Center,Sacramento,CA
+401909304,2027,R,2026-11-14 03:30:00+00:00,LAC,OKC,113.0,112.0,4.0,False,Intuit Dome,Inglewood,CA
 401909980,2027,R,2026-11-15 00:00:00+00:00,NOP,DEN,,,,False,Smoothie King Center,New Orleans,LA
 401909981,2027,R,2026-11-15 00:30:00+00:00,CLE,DAL,,,,False,Rocket Arena,Cleveland,OH
 401909982,2027,R,2026-11-15 01:00:00+00:00,MIA,DET,,,,False,Kaseya Center,Miami,FL
