@@ -1,6 +1,6 @@
 # NHL score predictions
 
-Updated Sat Nov 14, 2026 08:55 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
+Updated Sat Nov 14, 2026 09:06 PM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at puck drop and graded once the final score is in.
 
 Each game is simulated 10,000 times minute by minute, with pulled goalies, empty-net goals, overtime and shootouts. The predicted score is the most common final score in which the likelier winner wins; as in the official result, a shootout winner gets one extra goal. Hockey is low-scoring and luck-heavy, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -14,26 +14,25 @@ The edge columns price each side of the puck line, moneyline and total with the 
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 9:00 PM | SJS @ UTA | SJS 3, UTA 4 | UTA 66% | SJS +200 / UTA -200 | 2.7 – 3.8 | 1–5 / 1–6 | 20% | UTA -1.5 45% | 6.4 / 6.5 (over 48%) | Yaroslav Askarov (confirmed) / Karel Vejmelka (confirmed) | SJS +154 / UTA -185 | no edge | no edge | no edge |
-| 10:00 PM | NYI @ ANA | NYI 4, ANA 3 | NYI 50% | NYI -100 / ANA +100 | 3.4 – 3.4 | 1–6 / 1–6 | 21% | NYI -1.5 31% | 6.9 / 6.5 (over 55%) | Semyon Varlamov (expected) / Lukas Dostal (expected) | NYI -112 / ANA -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 10:00 PM | CGY @ LAK | CGY 2, LAK 3 | LAK 59% | CGY +145 / LAK -145 | 2.7 – 3.3 | 1–5 / 1–6 | 22% | LAK -1.5 37% | 6.0 / 5.5 (over 53%) | Dustin Wolf (confirmed) / Anton Forsberg (confirmed) | CGY +145 / LAK -175 | no edge | no edge | no edge |
+| 10:00 PM | NYI @ ANA | NYI 4, ANA 3 | NYI 50% | NYI -100 / ANA +100 | 3.4 – 3.5 | 1–6 / 1–6 | 21% | NYI -1.5 30% | 6.9 / 6.5 (over 56%) | Semyon Varlamov (expected) / Lukas Dostal (expected) | NYI -112 / ANA -108 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 10:00 PM | CGY @ LAK | CGY 2, LAK 3 | LAK 59% | CGY +140 / LAK -140 | 2.7 – 3.3 | 1–5 / 1–6 | 23% | LAK -1.5 36% | 6.0 / 5.5 (over 52%) | Dustin Wolf (confirmed) / Anton Forsberg (confirmed) | CGY +145 / LAK -175 | no edge | no edge | no edge |
 
 ## Sunday, November 15
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:30 PM | EDM @ PHI | EDM 4, PHI 3 | EDM 57% | EDM -130 / PHI +130 | 3.3 – 2.9 | 1–6 / 1–5 | 22% | EDM -1.5 35% | 6.2 / 6.5 (over 45%) | Tristan Jarry (expected) / Dan Vladar (confirmed) | EDM -155 / PHI +130 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 8:00 PM | FLA @ DAL | FLA 2, DAL 3 | DAL 55% | FLA +120 / DAL -120 | 2.8 – 3.1 | 1–5 / 1–5 | 23% | DAL -1.5 33% | 5.9 / 5.5 (over 51%) | Akira Schmid (expected) / Casey DeSmith (expected) | FLA +114 / DAL -135 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 7:30 PM | EDM @ PHI | EDM 3, PHI 2 | EDM 57% | EDM -130 / PHI +130 | 3.3 – 2.9 | 1–6 / 1–5 | 22% | EDM -1.5 35% | 6.2 / 6.5 (over 45%) | Tristan Jarry (expected) / Dan Vladar (confirmed) | EDM -155 / PHI +130 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 8:00 PM | FLA @ DAL | FLA 2, DAL 3 | DAL 55% | FLA +125 / DAL -125 | 2.8 – 3.1 | 1–5 / 1–5 | 23% | DAL -1.5 33% | 5.9 / 5.5 (over 51%) | Akira Schmid (expected) / Casey DeSmith (expected) | FLA +114 / DAL -135 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
 | 8:00 PM | CGY @ ANA | CGY 3, ANA 4 | ANA 54% | CGY +115 / ANA -115 | 3.2 – 3.4 | 1–6 / 1–6 | 22% | ANA -1.5 33% | 6.6 / 6.5 (over 52%) | Devin Cooley (expected) / Ville Husso (expected) | CGY +130 / ANA -155 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 9:00 PM | VAN @ VGK | VAN 3, VGK 4 | VGK 77% | VAN +330 / VGK -330 | 2.4 – 4.2 | 0–5 / 2–7 | 18% | VGK -1.5 57% | 6.6 / 6.5 (over 51%) | Leevi Meriläinen (expected) / Carter Hart (expected) | VAN +320 / VGK -410 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
-| 9:00 PM | NSH @ SJS | NSH 4, SJS 3 | NSH 63% | NSH -175 / SJS +175 | 3.7 – 2.8 | 1–6 / 1–5 | 20% | NSH -1.5 43% | 6.6 / 6.5 (over 51%) | Juuse Saros (expected) / Alex Nedeljkovic (expected) | NSH -170 / SJS +142 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 9:00 PM | VAN @ VGK | VAN 3, VGK 4 | VGK 77% | VAN +340 / VGK -340 | 2.3 – 4.2 | 0–4 / 2–7 | 17% | VGK -1.5 58% | 6.6 / 6.5 (over 51%) | Leevi Meriläinen (expected) / Carter Hart (expected) | VAN +320 / VGK -410 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
+| 9:00 PM | NSH @ SJS | NSH 4, SJS 3 | NSH 64% | NSH -175 / SJS +175 | 3.7 – 2.9 | 1–6 / 1–5 | 20% | NSH -1.5 42% | 6.6 / 6.5 (over 51%) | Juuse Saros (expected) / Alex Nedeljkovic (expected) | NSH -170 / SJS +142 | waiting for confirmed goalies | waiting for confirmed goalies | waiting for confirmed goalies |
 
 ## Monday, November 16
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected goals | 80% range | Overtime | Puck line | Total: model / line | Goalies | Posted moneyline | Puck line edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 7:30 PM | MTL @ NYR | MTL 3, NYR 4 | NYR 51% | MTL +105 / NYR -105 | 3.2 – 3.2 | 1–6 / 1–6 | 22% | NYR -1.5 30% | 6.4 | Jacob Fowler (expected) / Joonas Korpisalo (expected) | – | no line yet (model fair NYR -1.5 +230 / MTL +1.5 -230) | no line yet | no line yet |
-| 9:30 PM | VAN @ UTA | VAN 2, UTA 5 | UTA 78% | VAN +355 / UTA -355 | 2.4 – 4.4 | 0–5 / 2–7 | 16% | UTA -1.5 60% | 6.7 | Kevin Lankinen (expected) / Karel Vejmelka (expected) | – | no line yet (model fair UTA -1.5 -150 / VAN +1.5 +150) | no line yet | no line yet |
+| 9:30 PM | VAN @ UTA | VAN 2, UTA 5 | UTA 78% | VAN +355 / UTA -355 | 2.3 – 4.4 | 0–5 / 2–7 | 16% | UTA -1.5 59% | 6.7 | Kevin Lankinen (expected) / Karel Vejmelka (expected) | – | no line yet (model fair UTA -1.5 -145 / VAN +1.5 +145) | no line yet | no line yet |
 
 \* price not posted; assumed -110.
 
