@@ -182,11 +182,11 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909302,2027,R,2026-11-14 02:30:00+00:00,SAS,GSW,123.0,85.0,4.0,False,Frost Bank Center,San Antonio,TX
 401909303,2027,R,2026-11-14 03:00:00+00:00,SAC,POR,107.0,120.0,4.0,False,Golden 1 Center,Sacramento,CA
 401909304,2027,R,2026-11-14 03:30:00+00:00,LAC,OKC,113.0,112.0,4.0,False,Intuit Dome,Inglewood,CA
-401909980,2027,R,2026-11-15 00:00:00+00:00,NOP,DEN,,,,False,Smoothie King Center,New Orleans,LA
-401909981,2027,R,2026-11-15 00:30:00+00:00,CLE,DAL,,,,False,Rocket Arena,Cleveland,OH
-401909982,2027,R,2026-11-15 01:00:00+00:00,MIA,DET,,,,False,Kaseya Center,Miami,FL
-401909983,2027,R,2026-11-15 01:00:00+00:00,MEM,BKN,,,,False,FedExForum,Memphis,TN
-401909984,2027,R,2026-11-15 01:00:00+00:00,MIN,CHI,,,,False,Target Center,Minneapolis,MN
+401909980,2027,R,2026-11-15 00:00:00+00:00,NOP,DEN,108.0,116.0,4.0,False,Smoothie King Center,New Orleans,LA
+401909981,2027,R,2026-11-15 00:30:00+00:00,CLE,DAL,127.0,117.0,4.0,False,Rocket Arena,Cleveland,OH
+401909982,2027,R,2026-11-15 01:00:00+00:00,MIA,DET,137.0,117.0,4.0,False,Kaseya Center,Miami,FL
+401909983,2027,R,2026-11-15 01:00:00+00:00,MEM,BKN,129.0,110.0,4.0,False,FedExForum,Memphis,TN
+401909984,2027,R,2026-11-15 01:00:00+00:00,MIN,CHI,106.0,117.0,4.0,False,Target Center,Minneapolis,MN
 401909985,2027,R,2026-11-15 18:00:00+00:00,PHI,IND,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401909986,2027,R,2026-11-15 21:00:00+00:00,PHX,LAL,,,,False,Mortgage Matchup Center,Phoenix,AZ
 401909987,2027,R,2026-11-15 21:30:00+00:00,LAC,CHA,,,,False,Intuit Dome,Inglewood,CA
@@ -217,8 +217,8 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910012,2027,R,2026-11-19 00:30:00+00:00,TOR,WAS,,,,False,Scotiabank Arena,Toronto,ON
 401910013,2027,R,2026-11-19 01:00:00+00:00,NOP,DET,,,,False,Smoothie King Center,New Orleans,LA
 401910014,2027,R,2026-11-19 01:00:00+00:00,OKC,ATL,,,,False,Paycom Center,Oklahoma City,OK
-401910015,2027,R,2026-11-19 02:00:00+00:00,DEN,BOS,,,,False,Ball Arena,Denver,CO
-401910016,2027,R,2026-11-19 02:30:00+00:00,DAL,GSW,,,,False,American Airlines Center,Dallas,TX
+401910016,2027,R,2026-11-19 01:00:00+00:00,DAL,GSW,,,,False,American Airlines Center,Dallas,TX
+401910015,2027,R,2026-11-19 02:30:00+00:00,DEN,BOS,,,,False,Ball Arena,Denver,CO
 401910017,2027,R,2026-11-19 03:00:00+00:00,LAL,UTA,,,,False,crypto.com Arena,Los Angeles,CA
 401910018,2027,R,2026-11-19 03:00:00+00:00,SAC,PHX,,,,False,Golden 1 Center,Sacramento,CA
 401910019,2027,R,2026-11-20 01:00:00+00:00,MEM,GSW,,,,False,FedExForum,Memphis,TN
