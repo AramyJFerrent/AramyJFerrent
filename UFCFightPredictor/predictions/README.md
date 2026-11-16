@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Sun Nov 15, 2026 02:28 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Mon Nov 16, 2026 06:00 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -16,15 +16,15 @@ Saturday, November 21, 2026 · first bout locks Sat Nov 21, 10:00 AM ET
 
 | Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **Jiří Procházka** vs. **Navajo Stirling**<br>LHW, 5 rds | Procházka 37% – 63% Stirling | +170 / -170 | Procházka 42% (+130 / -155) | Procházka 32% (+215) | Procházka 25% / 3% / 9%<br>Stirling 47% / 4% / 12% | 21% | Stirling by KO/TKO (47%) | Stirling (-155): EV +3.5%, 63%, stake 1.4u | no edge | no prices yet; fair KO / Sub / Dec<br>Procházka +300 / +3635 / +975<br>Stirling +115 / +2405 / +725 |
-| **Aljamain Sterling** vs. **Kevin Vallejos**<br>FW, 3 rds | Sterling 43% – 57% Vallejos | +130 / -130 | Sterling 45% (+114 / -135) | Sterling 43% (+130) | Sterling 7% / 5% / 32%<br>Vallejos 25% / 3% / 29% | 61% | Sterling by decision (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Sterling +1380 / +2055 / +215<br>Vallejos +305 / +3165 / +245 |
-| **Dan Hooker** vs. **Brian Ortega**<br>LW, 3 rds | Hooker 59% – 41% Ortega | -145 / +145 | Hooker 60% (-166 / +140) | Hooker 46% (+115) | Hooker 25% / 9% / 26%<br>Ortega 15% / 10% / 15% | 41% | Hooker by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Hooker +295 / +1065 / +290<br>Ortega +555 / +875 / +560 |
-| **Kyoji Horiguchi** vs. **Asu Almabayev**<br>FLW, 3 rds | Horiguchi 63% – 37% Almabayev | -170 / +170 | Horiguchi 64% (-198 / +170) | Horiguchi 43% (+135) | Horiguchi 13% / 12% / 38%<br>Almabayev 5% / 15% / 18% | 56% | Horiguchi by decision (38%) | no edge | no price yet; fair Over 2.5 -150, Under +150 | no prices yet; fair KO / Sub / Dec<br>Horiguchi +690 / +725 / +160<br>Almabayev +2065 / +585 / +460 |
-| **Jared Cannonier** vs. **Ikram Aliskerov**<br>MW, 3 rds | Cannonier 20% – 80% Aliskerov | +410 / -410 | Cannonier 26% (+275 / -345) | Cannonier 21% (+375) | Cannonier 8% / 2% / 10%<br>Aliskerov 33% / 9% / 39% | 48% | Aliskerov by decision (39%) | Aliskerov (-345): EV +3.8%, 80%, stake 3.0u | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Cannonier +1135 / +5420 / +940<br>Aliskerov +205 / +1050 / +160 |
+| **Jiří Procházka** vs. **Navajo Stirling**<br>LHW, 5 rds | Procházka 35% – 65% Stirling | +185 / -185 | Procházka 40% (+142 / -170) | Procházka 32% (+215) | Procházka 24% / 3% / 9%<br>Stirling 48% / 4% / 13% | 21% | Stirling by KO/TKO (48%) | Stirling (-170): EV +3.2%, 65%, stake 1.4u | no edge | no prices yet; fair KO / Sub / Dec<br>Procházka +320 / +3875 / +1035<br>Stirling +105 / +2310 / +700 |
+| **Aljamain Sterling** vs. **Kevin Vallejos**<br>FW, 3 rds | Sterling 44% – 56% Vallejos | +125 / -125 | Sterling 46% (+110 / -130) | Sterling 43% (+130) | Sterling 7% / 5% / 32%<br>Vallejos 24% / 3% / 29% | 61% | Sterling by decision (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Sterling +1345 / +2005 / +210<br>Vallejos +310 / +3230 / +250 |
+| **Dan Hooker** vs. **Brian Ortega**<br>LW, 3 rds | Hooker 62% – 38% Ortega | -160 / +160 | Hooker 62% (-185 / +154) | Hooker 46% (+115) | Hooker 26% / 9% / 26%<br>Ortega 14% / 10% / 14% | 41% | Hooker by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Hooker +280 / +1010 / +280<br>Ortega +595 / +945 / +600 |
+| **Kyoji Horiguchi** vs. **Asu Almabayev**<br>FLW, 3 rds | Horiguchi 63% – 37% Almabayev | -170 / +170 | Horiguchi 64% (-205 / +170) | Horiguchi 43% (+135) | Horiguchi 13% / 12% / 38%<br>Almabayev 5% / 14% / 18% | 56% | Horiguchi by decision (38%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Horiguchi +685 / +720 / +160<br>Almabayev +2085 / +590 / +465 |
+| **Jared Cannonier** vs. **Ikram Aliskerov**<br>MW, 3 rds | Cannonier 21% – 79% Aliskerov | +375 / -375 | Cannonier 27% (+250 / -310) | Cannonier 21% (+375) | Cannonier 9% / 2% / 10%<br>Aliskerov 32% / 8% / 38% | 49% | Aliskerov by decision (38%) | Aliskerov (-310): EV +4.4%, 79%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Cannonier +1040 / +4970 / +865<br>Aliskerov +210 / +1085 / +160 |
 | **Aleksandre Topuria** vs. **Santiago Luna**<br>BW, 3 rds | Topuria 40% – 60% Luna | +155 / -155 | no line yet | Topuria 40% (+155) | Topuria 8% / 7% / 25%<br>Luna 16% / 8% / 36% | 61% | Luna by decision (36%) | no line yet | no price yet; fair Over 2.5 -185, Under +185 | no prices yet; fair KO / Sub / Dec<br>Topuria +1140 / +1420 / +300<br>Luna +530 / +1125 / +175 |
-| **Shamil Gaziev** vs. **Tallison Teixeira**<br>HW, 3 rds | Gaziev 62% – 38% Teixeira | -165 / +165 | Gaziev 66% (-225 / +185) | Gaziev 29% (+245) | Gaziev 41% / 5% / 16%<br>Teixeira 23% / 3% / 12% | 27% | Gaziev by KO/TKO (41%) | Teixeira (+185): EV +8.3%, 38%, stake 1.1u | no edge | no prices yet; fair KO / Sub / Dec<br>Gaziev +145 / +1790 / +540<br>Teixeira +330 / +3065 / +755 |
-| **Amir Albazi** vs. **Alessandro Costa**<br>FLW, 3 rds | Albazi 45% – 55% Costa | +120 / -120 | Albazi 46% (+110 / -130) | Albazi 49% (+105) | Albazi 11% / 9% / 26%<br>Costa 16% / 12% / 26% | 53% | Costa by decision (26%) | no edge | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Albazi +850 / +1060 / +285<br>Costa +530 / +705 / +280 |
-| **Jake Matthews** vs. **Tahir Abdullayev**<br>WW, 3 rds | Matthews 63% – 37% Abdullayev | -175 / +175 | Matthews 62% (-180 / +150) | Matthews 56% (-130) | Matthews 19% / 11% / 33%<br>Abdullayev 11% / 7% / 19% | 53% | Matthews by decision (33%) | no edge | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Matthews +415 / +825 / +200<br>Abdullayev +835 / +1430 / +415 |
+| **Shamil Gaziev** vs. **Tallison Teixeira**<br>HW, 3 rds | Gaziev 60% – 40% Teixeira | -150 / +150 | Gaziev 64% (-198 / +170) | Gaziev 29% (+245) | Gaziev 40% / 5% / 15%<br>Teixeira 25% / 3% / 12% | 27% | Gaziev by KO/TKO (40%) | Teixeira (+170): EV +8.9%, 40%, stake 1.3u | no edge | no prices yet; fair KO / Sub / Dec<br>Gaziev +155 / +1875 / +565<br>Teixeira +305 / +2860 / +705 |
+| **Amir Albazi** vs. **Alessandro Costa**<br>FLW, 3 rds | Albazi 51% – 49% Costa | -105 / +105 | Albazi 51% (-115 / -105) | Albazi 49% (+105) | Albazi 12% / 10% / 29%<br>Costa 14% / 11% / 24% | 53% | Albazi by decision (29%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Albazi +745 / +920 / +245<br>Costa +600 / +810 / +315 |
+| **Jake Matthews** vs. **Tahir Abdullayev**<br>WW, 3 rds | Matthews 70% – 30% Abdullayev | -230 / +230 | Matthews 68% (-245 / +200) | Matthews 56% (-130) | Matthews 21% / 12% / 36%<br>Abdullayev 9% / 5% / 16% | 52% | Matthews by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Matthews +370 / +720 / +175<br>Abdullayev +1035 / +1795 / +520 |
 | **Nikolas Motta** vs. **Dom Mar Fan**<br>LW, 3 rds | Motta 28% – 72% Fan | +265 / -265 | no line yet | Motta 28% (+265) | Motta 13% / 4% / 11%<br>Fan 31% / 9% / 32% | 44% | Fan by decision (32%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Motta +700 / +2630 / +785<br>Fan +225 / +970 / +210 |
 | **Diyar Nurgozhay** vs. **Alik Lorenz**<br>LHW, 3 rds, UFC debut: Lorenz | Nurgozhay 65% – 35% Lorenz | -180 / +180 | no line yet | Nurgozhay 65% (-180) | Nurgozhay 39% / 6% / 20%<br>Lorenz 17% / 8% / 10% | 29% | Nurgozhay by KO/TKO (39%) | no line yet | no price yet; fair Over 1.5 +100, Under -100 | no prices yet; fair KO / Sub / Dec<br>Nurgozhay +155 / +1655 / +410<br>Lorenz +485 / +1090 / +905 |
 
@@ -36,11 +36,11 @@ When it ends (either fighter):
 | Sterling vs. Vallejos | 19% | 13% | 7% |  |  | 61% |
 | Hooker vs. Ortega | 32% | 19% | 9% |  |  | 41% |
 | Horiguchi vs. Almabayev | 22% | 15% | 8% |  |  | 56% |
-| Cannonier vs. Aliskerov | 27% | 17% | 8% |  |  | 48% |
+| Cannonier vs. Aliskerov | 27% | 17% | 8% |  |  | 49% |
 | Topuria vs. Luna | 19% | 13% | 7% |  |  | 61% |
 | Gaziev vs. Teixeira | 42% | 21% | 9% |  |  | 27% |
-| Albazi vs. Costa | 24% | 16% | 8% |  |  | 53% |
-| Matthews vs. Abdullayev | 24% | 16% | 8% |  |  | 53% |
+| Albazi vs. Costa | 24% | 15% | 8% |  |  | 53% |
+| Matthews vs. Abdullayev | 24% | 16% | 8% |  |  | 52% |
 | Motta vs. Fan | 30% | 18% | 9% |  |  | 44% |
 | Nurgozhay vs. Lorenz | 40% | 21% | 9% |  |  | 29% |
 
@@ -138,7 +138,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 5 | Alex Pereira | 2268 | 255 | 10-3 | 2026-06-14 |
 | Women's Strawweight | 1 | Tatiana Suarez | 2021 | 295 | 10-1 | 2026-11-07 |
 |  | 2 | Virna Jandiroba | 1834 | 242 | 9-5 | 2026-11-07 |
-|  | 3 | Mackenzie Dern | 1797 | 230 | 12-5 | 2026-08-15 |
+|  | 3 | Mackenzie Dern | 1797 | 231 | 12-5 | 2026-08-15 |
 |  | 4 | Gillian Robertson | 1785 | 232 | 14-7 | 2026-08-15 |
 |  | 5 | Jessica Andrade | 1753 | 221 | 17-13 | 2025-08-16 |
 | Women's Flyweight | 1 | Valentina Shevchenko | 1998 | 256 | 15-3-1 | 2025-11-15 |
