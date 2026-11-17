@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Mon Nov 16, 2026 02:53 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Tue Nov 17, 2026 04:04 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -59,7 +59,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 4 | CHC | +0.68 | +0.58 | +0.03 | +0.00 | +0.06 | 5.3 | 1539 |
 | 5 | NYY | +0.65 | +0.19 | +0.19 | +0.07 | +0.20 | 5.2 | 1560 |
 | 6 | SD | +0.62 | +0.38 | -0.02 | +0.15 | +0.12 | 5.0 | 1546 |
-| 7 | PHI | +0.62 | +0.20 | +0.23 | +0.10 | +0.09 | 5.5 | 1531 |
+| 7 | PHI | +0.62 | +0.21 | +0.23 | +0.10 | +0.09 | 5.5 | 1531 |
 | 8 | TB | +0.59 | +0.07 | +0.22 | +0.13 | +0.16 | 5.2 | 1552 |
 | 9 | NYM | +0.48 | +0.51 | -0.02 | +0.03 | -0.04 | 5.2 | 1497 |
 | 10 | ARI | +0.48 | +0.41 | +0.01 | +0.11 | -0.04 | 5.2 | 1512 |
@@ -70,7 +70,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 15 | DET | +0.26 | +0.12 | -0.00 | +0.08 | +0.07 | 5.0 | 1512 |
 | 16 | PIT | +0.24 | +0.01 | +0.14 | +0.05 | +0.04 | 4.7 | 1508 |
 | 17 | CWS | +0.16 | +0.20 | -0.04 | +0.03 | -0.02 | 4.4 | 1507 |
-| 18 | TEX | +0.14 | +0.05 | +0.05 | +0.06 | -0.00 | 5.0 | 1489 |
+| 18 | TEX | +0.15 | +0.05 | +0.05 | +0.06 | -0.00 | 5.0 | 1489 |
 | 19 | TOR | +0.11 | -0.03 | +0.03 | +0.03 | +0.07 | 4.8 | 1502 |
 | 20 | MIN | +0.10 | +0.09 | +0.09 | +0.02 | -0.10 | 5.3 | 1470 |
 | 21 | BAL | +0.02 | +0.01 | -0.08 | +0.06 | +0.03 | 5.4 | 1496 |
