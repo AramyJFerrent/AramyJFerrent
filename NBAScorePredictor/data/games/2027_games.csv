@@ -204,11 +204,11 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909999,2027,R,2026-11-17 01:00:00+00:00,MIN,POR,106.0,98.0,4.0,False,Target Center,Minneapolis,MN
 401910000,2027,R,2026-11-17 01:00:00+00:00,NOP,GSW,115.0,94.0,4.0,False,Smoothie King Center,New Orleans,LA
 401910001,2027,R,2026-11-17 02:00:00+00:00,DEN,PHX,105.0,117.0,4.0,False,Ball Arena,Denver,CO
-401910002,2027,R,2026-11-18 00:30:00+00:00,TOR,NYK,,,,False,Scotiabank Arena,Toronto,ON
-401910003,2027,R,2026-11-18 01:00:00+00:00,MIN,POR,,,,False,Target Center,Minneapolis,MN
-401910004,2027,R,2026-11-18 01:00:00+00:00,SAS,DET,,,,False,Frost Bank Center,San Antonio,TX
-401910006,2027,R,2026-11-18 03:30:00+00:00,LAC,UTA,,,,False,Intuit Dome,Inglewood,CA
-401910005,2027,R,2026-11-18 04:00:00+00:00,LAL,CHA,,,,False,crypto.com Arena,Los Angeles,CA
+401910002,2027,R,2026-11-18 00:30:00+00:00,TOR,NYK,102.0,111.0,4.0,False,Scotiabank Arena,Toronto,ON
+401910003,2027,R,2026-11-18 01:00:00+00:00,MIN,POR,106.0,105.0,4.0,False,Target Center,Minneapolis,MN
+401910004,2027,R,2026-11-18 01:00:00+00:00,SAS,DET,93.0,105.0,4.0,False,Frost Bank Center,San Antonio,TX
+401910006,2027,R,2026-11-18 03:30:00+00:00,LAC,UTA,107.0,132.0,4.0,False,Intuit Dome,Inglewood,CA
+401910005,2027,R,2026-11-18 04:00:00+00:00,LAL,CHA,118.0,114.0,5.0,False,crypto.com Arena,Los Angeles,CA
 401910007,2027,R,2026-11-19 00:00:00+00:00,CLE,MEM,,,,False,Rocket Arena,Cleveland,OH
 401910008,2027,R,2026-11-19 00:00:00+00:00,IND,HOU,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
 401910009,2027,R,2026-11-19 00:00:00+00:00,MIA,MIL,,,,False,Kaseya Center,Miami,FL
