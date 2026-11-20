@@ -221,10 +221,10 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910015,2027,R,2026-11-19 02:30:00+00:00,DEN,BOS,105.0,101.0,4.0,False,Ball Arena,Denver,CO
 401910017,2027,R,2026-11-19 03:00:00+00:00,LAL,UTA,97.0,109.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401910018,2027,R,2026-11-19 03:00:00+00:00,SAC,PHX,107.0,128.0,4.0,False,Golden 1 Center,Sacramento,CA
-401910019,2027,R,2026-11-20 01:00:00+00:00,MEM,GSW,,,,False,FedExForum,Memphis,TN
-401910020,2027,R,2026-11-20 01:00:00+00:00,MIL,POR,,,,False,Fiserv Forum,Milwaukee,WI
-401910021,2027,R,2026-11-20 01:00:00+00:00,MIN,NYK,,,,False,Target Center,Minneapolis,MN
-401910022,2027,R,2026-11-20 01:00:00+00:00,SAS,LAC,,,,False,Frost Bank Center,San Antonio,TX
+401910019,2027,R,2026-11-20 01:00:00+00:00,MEM,GSW,126.0,98.0,4.0,False,FedExForum,Memphis,TN
+401910020,2027,R,2026-11-20 01:00:00+00:00,MIL,POR,114.0,124.0,4.0,False,Fiserv Forum,Milwaukee,WI
+401910021,2027,R,2026-11-20 01:00:00+00:00,MIN,NYK,99.0,102.0,4.0,False,Target Center,Minneapolis,MN
+401910022,2027,R,2026-11-20 01:00:00+00:00,SAS,LAC,124.0,112.0,4.0,False,Frost Bank Center,San Antonio,TX
 401909305,2027,R,2026-11-21 00:00:00+00:00,ATL,CHA,,,,False,State Farm Arena,Atlanta,GA
 401909306,2027,R,2026-11-21 00:30:00+00:00,BKN,ORL,,,,False,Barclays Center,Brooklyn,NY
 401909307,2027,R,2026-11-21 00:30:00+00:00,CLE,IND,,,,False,Rocket Arena,Cleveland,OH
@@ -285,10 +285,10 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910048,2027,R,2026-11-29 01:00:00+00:00,CHI,IND,,,,False,United Center,Chicago,IL
 401910049,2027,R,2026-11-29 01:00:00+00:00,MIL,OKC,,,,False,Fiserv Forum,Milwaukee,WI
 401910050,2027,R,2026-11-29 01:30:00+00:00,HOU,PHI,,,,False,Toyota Center (Houston),Houston,TX
+401910054,2027,R,2026-11-29 20:30:00+00:00,CLE,MIA,,,,False,Rocket Arena,Cleveland,OH
 401910051,2027,R,2026-11-29 21:00:00+00:00,MEM,LAL,,,,False,FedExForum,Memphis,TN
 401910052,2027,R,2026-11-29 21:00:00+00:00,SAS,BOS,,,,False,Frost Bank Center,San Antonio,TX
 401910053,2027,R,2026-11-29 22:00:00+00:00,UTA,PHX,,,,False,Delta Center,Salt Lake City,UT
-401910054,2027,R,2026-11-29 23:00:00+00:00,CLE,MIA,,,,False,Rocket Arena,Cleveland,OH
 401910055,2027,R,2026-11-29 23:00:00+00:00,DET,ORL,,,,False,Little Caesars Arena,Detroit,MI
 401910056,2027,R,2026-11-29 23:00:00+00:00,NYK,ATL,,,,False,Madison Square Garden,New York,NY
 401910057,2027,R,2026-11-29 23:00:00+00:00,TOR,DEN,,,,False,Scotiabank Arena,Toronto,ON
