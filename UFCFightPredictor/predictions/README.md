@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Fri Nov 20, 2026 07:57 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Sat Nov 21, 2026 03:13 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 81% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -10,52 +10,16 @@ The three edge columns value every side of each market at its posted price: expe
 
 See the backtest (backtest.md) for how these edges did against the dataset's closing prices, next to the model alone, which finds a 3% edge in most fights and lost money on them. Treat these columns as a live test, tracked below, not as betting advice.
 
-## UFC Fight Night: Procházka vs. Stirling
-
-Saturday, November 21, 2026 · first bout locks Sat Nov 21, 10:00 AM ET
-
-| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Jiří Procházka** vs. **Navajo Stirling**<br>LHW, 5 rds | Procházka 34% – 66% Stirling | +195 / -195 | Procházka 38% (+150 / -180) | Procházka 32% (+215) | Procházka 23% / 2% / 9%<br>Stirling 49% / 4% / 13% | 21% | Stirling by KO/TKO (49%) | Stirling (-180): EV +3.0%, 66%, stake 1.4u | no edge | no prices yet; fair KO / Sub / Dec<br>Procházka +340 / +4040 / +1075<br>Stirling +105 / +2255 / +685 |
-| **Aljamain Sterling** vs. **Kevin Vallejos**<br>FW, 3 rds | Sterling 44% – 56% Vallejos | +125 / -125 | Sterling 46% (+110 / -130) | Sterling 43% (+130) | Sterling 7% / 5% / 32%<br>Vallejos 24% / 3% / 29% | 61% | Sterling by decision (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Sterling +1345 / +2005 / +210<br>Vallejos +310 / +3230 / +250 |
-| **Dan Hooker** vs. **Brian Ortega**<br>LW, 3 rds | Hooker 62% – 38% Ortega | -160 / +160 | Hooker 62% (-185 / +154) | Hooker 46% (+115) | Hooker 26% / 9% / 26%<br>Ortega 14% / 10% / 14% | 41% | Hooker by decision (26%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Hooker +280 / +1010 / +280<br>Ortega +595 / +945 / +600 |
-| **Kyoji Horiguchi** vs. **Asu Almabayev**<br>FLW, 3 rds | Horiguchi 62% – 38% Almabayev | -160 / +160 | Horiguchi 63% (-192 / +160) | Horiguchi 43% (+135) | Horiguchi 12% / 12% / 38%<br>Almabayev 5% / 15% / 18% | 56% | Horiguchi by decision (38%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Horiguchi +705 / +745 / +165<br>Almabayev +2005 / +565 / +445 |
-| **Jared Cannonier** vs. **Ikram Aliskerov**<br>MW, 3 rds | Cannonier 20% – 80% Aliskerov | +390 / -390 | Cannonier 27% (+260 / -325) | Cannonier 21% (+375) | Cannonier 8% / 2% / 10%<br>Aliskerov 33% / 9% / 38% | 48% | Aliskerov by decision (38%) | Aliskerov (-325): EV +4.1%, 80%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Cannonier +1080 / +5155 / +895<br>Aliskerov +205 / +1070 / +160 |
-| **Aleksandre Topuria** vs. **Santiago Luna**<br>BW, 3 rds | Topuria 69% – 31% Luna | -220 / +220 | Topuria 71% (-278 / +225) | Topuria 40% (+155) | Topuria 14% / 13% / 42%<br>Luna 8% / 4% / 19% | 61% | Topuria by decision (42%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Topuria +605 / +695 / +135<br>Luna +1140 / +2535 / +420 |
-| **Shamil Gaziev** vs. **Tallison Teixeira**<br>HW, 3 rds | Gaziev 58% – 42% Teixeira | -140 / +140 | Gaziev 63% (-192 / +160) | Gaziev 29% (+245) | Gaziev 39% / 5% / 15%<br>Teixeira 25% / 3% / 13% | 27% | Gaziev by KO/TKO (39%) | Teixeira (+160): EV +8.0%, 42%, stake 1.3u | no edge | no prices yet; fair KO / Sub / Dec<br>Gaziev +160 / +1925 / +580<br>Teixeira +295 / +2765 / +685 |
-| **Amir Albazi** vs. **Alessandro Costa**<br>FLW, 3 rds | Albazi 49% – 51% Costa | +105 / -105 | Albazi 50% (-108 / -112) | Albazi 49% (+105) | Albazi 11% / 9% / 28%<br>Costa 15% / 11% / 25% | 53% | Albazi by decision (28%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Albazi +770 / +955 / +255<br>Costa +580 / +775 / +305 |
-| **Jake Matthews** vs. **Tahir Abdullayev**<br>WW, 3 rds | Matthews 69% – 31% Abdullayev | -225 / +225 | Matthews 68% (-238 / +195) | Matthews 56% (-130) | Matthews 21% / 12% / 36%<br>Abdullayev 9% / 5% / 16% | 52% | Matthews by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Matthews +370 / +730 / +175<br>Abdullayev +1015 / +1760 / +510 |
-| **Nikolas Motta** vs. **Dom Mar Fan**<br>LW, 3 rds | Motta 33% – 67% Fan | +205 / -205 | Motta 38% (+150 / -180) | Motta 28% (+265) | Motta 15% / 4% / 13%<br>Fan 29% / 9% / 30% | 43% | Fan by decision (30%) | Fan (-180): EV +4.6%, 67%, stake 2.1u | no edge | no prices yet; fair KO / Sub / Dec<br>Motta +570 / +2155 / +645<br>Fan +250 / +1070 / +230 |
-| **Diyar Nurgozhay** vs. **Alik Lorenz**<br>LHW, 3 rds, UFC debut: Lorenz | Nurgozhay 73% – 27% Lorenz | -265 / +265 | Nurgozhay 69% (-258 / +210) | Nurgozhay 65% (-180) | Nurgozhay 44% / 7% / 22%<br>Lorenz 13% / 6% / 8% | 30% | Nurgozhay by KO/TKO (44%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Nurgozhay +125 / +1415 / +360<br>Lorenz +650 / +1480 / +1180 |
-| **Shoaib Yousaf** vs. **John Mitchell**<br>LW, 3 rds, UFC debut: Yousaf, UFC debut: Mitchell | Yousaf 43% – 57% Mitchell | +130 / -130 | Yousaf 44% (+120 / -142) | Yousaf 50% (+100) | Yousaf 15% / 9% / 20%<br>Mitchell 19% / 12% / 25% | 45% | Mitchell by decision (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Yousaf +575 / +1015 / +410<br>Mitchell +420 / +725 / +295 |
-
-When it ends (either fighter):
-
-| Bout | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 | Decision |
-|---|---|---|---|---|---|---|
-| Procházka vs. Stirling | 33% | 22% | 13% | 6% | 5% | 21% |
-| Sterling vs. Vallejos | 19% | 13% | 7% |  |  | 61% |
-| Hooker vs. Ortega | 32% | 19% | 9% |  |  | 41% |
-| Horiguchi vs. Almabayev | 22% | 15% | 8% |  |  | 56% |
-| Cannonier vs. Aliskerov | 27% | 17% | 8% |  |  | 48% |
-| Topuria vs. Luna | 19% | 13% | 7% |  |  | 61% |
-| Gaziev vs. Teixeira | 42% | 21% | 9% |  |  | 27% |
-| Albazi vs. Costa | 24% | 15% | 8% |  |  | 53% |
-| Matthews vs. Abdullayev | 24% | 16% | 8% |  |  | 52% |
-| Motta vs. Fan | 30% | 18% | 9% |  |  | 43% |
-| Nurgozhay vs. Lorenz | 40% | 21% | 9% |  |  | 30% |
-| Yousaf vs. Mitchell | 29% | 18% | 9% |  |  | 45% |
-
 ## UFC Fight Night: Adesanya vs Magomedov
 
 Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 
 | Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **Israel Adesanya** vs. **Shara Magomedov**<br>MW, 5 rds | Adesanya 59% – 41% Magomedov | -145 / +145 | Adesanya 60% (-166 / +140) | Adesanya 46% (+120) | Adesanya 32% / 5% / 22%<br>Magomedov 23% / 4% / 14% | 36% | Adesanya by KO/TKO (32%) | no edge | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Adesanya +215 / +1745 / +350<br>Magomedov +335 / +2355 / +635 |
+| **Israel Adesanya** vs. **Shara Magomedov**<br>MW, 5 rds | Adesanya 60% – 40% Magomedov | -150 / +150 | Adesanya 60% (-170 / +142) | Adesanya 46% (+120) | Adesanya 32% / 5% / 22%<br>Magomedov 23% / 4% / 13% | 36% | Adesanya by KO/TKO (32%) | no edge | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Adesanya +215 / +1730 / +345<br>Magomedov +340 / +2385 / +640 |
 | **Ian Machado Garry** vs. **Yaroslav Amosov**<br>WW, 3 rds | Garry 59% – 41% Amosov | -145 / +145 | Garry 61% (-175 / +145) | Garry 41% (+140) | Garry 18% / 6% / 36%<br>Amosov 4% / 20% / 17% | 53% | Garry by decision (36%) | no edge | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Garry +465 / +1660 / +180<br>Amosov +2235 / +410 / +490 |
 | **Serghei Spivac** vs. **Mario Pinto**<br>HW, 3 rds | Spivac 23% – 77% Pinto | +335 / -335 | no line yet | Spivac 23% (+335) | Spivac 8% / 3% / 12%<br>Pinto 34% / 13% / 29% | 41% | Pinto by KO/TKO (34%) | no line yet | no price yet; fair Over 2.5 +120, Under -120 | no prices yet; fair KO / Sub / Dec<br>Spivac +1150 / +2960 / +745<br>Pinto +195 / +645 / +240 |
-| **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 47% – 53% Dulatov | +115 / -115 | no line yet | Chokheli 47% (+115) | Chokheli 24% / 3% / 19%<br>Dulatov 24% / 5% / 24% | 43% | Chokheli by KO/TKO (24%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Chokheli +315 / +2790 / +415<br>Dulatov +315 / +1835 / +325 |
+| **Luke Riley** vs. **Gabriel Santos**<br>FW, 3 rds | Riley 64% – 36% Santos | -175 / +175 | no line yet | Riley 64% (-175) | Riley 28% / 4% / 31%<br>Santos 9% / 7% / 21% | 52% | Riley by decision (31%) | no line yet | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Riley +250 / +2470 / +220<br>Santos +1040 / +1380 / +385 |
 | **Mairon Santos** vs. **Akbar Abdullaev**<br>LW, 3 rds, UFC debut: Abdullaev | Santos 74% – 26% Abdullaev | -280 / +280 | no line yet | Santos 74% (-280) | Santos 31% / 8% / 34%<br>Abdullaev 8% / 4% / 14% | 49% | Santos by decision (34%) | no line yet | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Santos +225 / +1080 / +195<br>Abdullaev +1205 / +2200 / +590 |
 | **Magomed Tuchalov** vs. **Ion Cutelaba**<br>LHW, 3 rds | Tuchalov 59% – 41% Cutelaba | -145 / +145 | no line yet | Tuchalov 59% (-145) | Tuchalov 23% / 14% / 22%<br>Cutelaba 13% / 12% / 17% | 39% | Tuchalov by KO/TKO (23%) | no line yet | no price yet; fair Over 2.5 +130, Under -130 | no prices yet; fair KO / Sub / Dec<br>Tuchalov +340 / +595 / +355<br>Cutelaba +690 / +770 / +500 |
 | **Bruno Silva** vs. **Jafel Filho**<br>FLW, 3 rds, UFC debut: Silva | Silva 45% – 55% Filho | +120 / -120 | no line yet | Silva 45% (+120) | Silva 9% / 11% / 25%<br>Filho 7% / 30% / 19% | 43% | Filho by submission (30%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Silva +990 / +785 / +305<br>Filho +1425 / +235 / +435 |
@@ -64,6 +28,7 @@ Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 | **Pavel Andrusca** vs. **Mehemmedeli Osmanli**<br>BW, 3 rds | Andrusca 83% – 17% Osmanli | -480 / +480 | no line yet | Andrusca 83% (-480) | Andrusca 15% / 18% / 50%<br>Osmanli 5% / 3% / 10% | 60% | Andrusca by decision (50%) | no line yet | no price yet; fair Over 2.5 -175, Under +175 | no prices yet; fair KO / Sub / Dec<br>Andrusca +570 / +460 / +100<br>Osmanli +2080 / +3895 / +885 |
 | **Modestino Rodrigues** vs. **Matthieu Letho Duclos**<br>MW, 3 rds, UFC debut: Rodrigues | Rodrigues 38% – 62% Duclos | +165 / -165 | no line yet | Rodrigues 38% (+165) | Rodrigues 14% / 7% / 16%<br>Duclos 34% / 8% / 21% | 37% | Duclos by KO/TKO (34%) | no line yet | no price yet; fair Over 1.5 -125, Under +125 | no prices yet; fair KO / Sub / Dec<br>Rodrigues +595 / +1285 / +515<br>Duclos +195 / +1230 / +385 |
 | **Abdul Hussein** vs. **Hecher Sosa**<br>BW, 3 rds | Hussein 66% – 34% Sosa | -195 / +195 | no line yet | Hussein 66% (-195) | Hussein 18% / 23% / 25%<br>Sosa 8% / 3% / 22% | 48% | Hussein by decision (25%) | no line yet | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Hussein +470 / +330 / +295<br>Sosa +1120 / +2935 / +345 |
+| **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 47% – 53% Dulatov | +115 / -115 | no line yet | Chokheli 47% (+115) | Chokheli 24% / 3% / 19%<br>Dulatov 24% / 5% / 24% | 43% | Chokheli by KO/TKO (24%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Chokheli +315 / +2790 / +415<br>Dulatov +315 / +1835 / +325 |
 
 When it ends (either fighter):
 
@@ -72,7 +37,7 @@ When it ends (either fighter):
 | Adesanya vs. Magomedov | 23% | 18% | 12% | 6% | 5% | 36% |
 | Garry vs. Amosov | 24% | 15% | 8% |  |  | 53% |
 | Spivac vs. Pinto | 31% | 19% | 9% |  |  | 41% |
-| Chokheli vs. Dulatov | 30% | 18% | 9% |  |  | 43% |
+| Riley vs. Santos | 24% | 16% | 8% |  |  | 52% |
 | Santos vs. Abdullaev | 26% | 17% | 8% |  |  | 49% |
 | Tuchalov vs. Cutelaba | 33% | 19% | 9% |  |  | 39% |
 | Silva vs. Filho | 30% | 18% | 9% |  |  | 43% |
@@ -81,6 +46,7 @@ When it ends (either fighter):
 | Andrusca vs. Osmanli | 20% | 13% | 7% |  |  | 60% |
 | Rodrigues vs. Duclos | 34% | 20% | 9% |  |  | 37% |
 | Hussein vs. Sosa | 27% | 17% | 8% |  |  | 48% |
+| Chokheli vs. Dulatov | 30% | 18% | 9% |  |  | 43% |
 
 ## How the 2026 predictions have done
 
@@ -127,6 +93,8 @@ Every edge logged with a live prediction (the last one before the fight), at the
 | Macy Chiasson vs. Bia Mesquita | Mesquita 74% | Bia Mesquita by submission, R1 | 74% | 43% |
 | Alatengheili vs. Juan Diaz | Diaz 84% | Juan Diaz by decision | 84% | 43% |
 | Evan Elder vs. Samuel Sanches | Sanches 53% | Evan Elder by decision | 47% | 22% |
+
+12 locked predictions are waiting for official results.
 
 ## Top fighters by division
 
@@ -187,7 +155,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 | Women's Bantamweight | 1 | Kayla Harrison | 2165 | 401 | 4-0 | 2026-11-14 |
 |  | 2 | Amanda Nunes | 1981 | 279 | 16-3 | 2026-11-14 |
 |  | 3 | Luana Santos | 1846 | 323 | 7-1 | 2026-10-31 |
-|  | 4 | Ketlen Vieira | 1773 | 250 | 10-5 | 2026-05-16 |
+|  | 4 | Ketlen Vieira | 1773 | 251 | 10-5 | 2026-05-16 |
 |  | 5 | Julianna Pena | 1821 | 307 | 8-4 | 2025-06-07 |
 
 ## Current model fit
