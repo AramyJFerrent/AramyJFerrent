@@ -234,12 +234,12 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401909311,2027,R,2026-11-21 02:30:00+00:00,UTA,PHX,101.0,111.0,4.0,False,Delta Center,Salt Lake City,UT
 401909312,2027,R,2026-11-21 03:00:00+00:00,DEN,HOU,133.0,124.0,4.0,False,Ball Arena,Denver,CO
 401909313,2027,R,2026-11-21 03:00:00+00:00,LAL,SAC,106.0,104.0,4.0,False,crypto.com Arena,Los Angeles,CA
-401910023,2027,R,2026-11-21 18:00:00+00:00,PHI,MIL,,,,False,Xfinity Mobile Arena,Philadelphia,PA
-401910024,2027,R,2026-11-22 00:30:00+00:00,NYK,POR,,,,False,Madison Square Garden,New York,NY
-401910025,2027,R,2026-11-22 01:00:00+00:00,DAL,LAC,,,,False,American Airlines Center,Dallas,TX
-401910026,2027,R,2026-11-22 01:00:00+00:00,MIN,MEM,,,,False,Target Center,Minneapolis,MN
-401910027,2027,R,2026-11-22 01:00:00+00:00,SAS,NOP,,,,False,Frost Bank Center,San Antonio,TX
-401910028,2027,R,2026-11-22 03:00:00+00:00,SAC,BOS,,,,False,Golden 1 Center,Sacramento,CA
+401910023,2027,R,2026-11-21 18:00:00+00:00,PHI,MIL,132.0,129.0,4.0,False,Xfinity Mobile Arena,Philadelphia,PA
+401910024,2027,R,2026-11-22 00:30:00+00:00,NYK,POR,97.0,96.0,4.0,False,Madison Square Garden,New York,NY
+401910025,2027,R,2026-11-22 01:00:00+00:00,DAL,LAC,110.0,100.0,4.0,False,American Airlines Center,Dallas,TX
+401910026,2027,R,2026-11-22 01:00:00+00:00,MIN,MEM,104.0,95.0,4.0,False,Target Center,Minneapolis,MN
+401910027,2027,R,2026-11-22 01:00:00+00:00,SAS,NOP,114.0,91.0,4.0,False,Frost Bank Center,San Antonio,TX
+401910028,2027,R,2026-11-22 03:00:00+00:00,SAC,BOS,97.0,96.0,4.0,False,Golden 1 Center,Sacramento,CA
 401910029,2027,R,2026-11-22 20:30:00+00:00,ATL,DET,,,,False,State Farm Arena,Atlanta,GA
 401910030,2027,R,2026-11-22 23:00:00+00:00,MIA,OKC,,,,False,Kaseya Center,Miami,FL
 401910031,2027,R,2026-11-23 00:00:00+00:00,WAS,ORL,,,,False,Capital One Arena,Washington,DC
