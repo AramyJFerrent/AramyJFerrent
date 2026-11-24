@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Sun Nov 22, 2026 03:28 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Mon Nov 23, 2026 08:11 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 80% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -16,10 +16,11 @@ Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 
 | Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **Israel Adesanya** vs. **Shara Magomedov**<br>MW, 5 rds | Adesanya 59% – 41% Magomedov | -145 / +145 | Adesanya 60% (-166 / +140) | Adesanya 46% (+120) | Adesanya 32% / 5% / 22%<br>Magomedov 23% / 4% / 14% | 36% | Adesanya by KO/TKO (32%) | no edge | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Adesanya +215 / +1750 / +350<br>Magomedov +335 / +2350 / +635 |
-| **Ian Machado Garry** vs. **Yaroslav Amosov**<br>WW, 3 rds | Garry 60% – 40% Amosov | -150 / +150 | Garry 61% (-175 / +150) | Garry 42% (+140) | Garry 18% / 6% / 36%<br>Amosov 4% / 19% / 17% | 53% | Garry by decision (36%) | no edge | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Garry +460 / +1650 / +175<br>Amosov +2275 / +415 / +500 |
+| **Israel Adesanya** vs. **Shara Magomedov**<br>MW, 5 rds | Adesanya 59% – 41% Magomedov | -140 / +140 | Adesanya 59% (-162 / +136) | Adesanya 46% (+120) | Adesanya 31% / 5% / 22%<br>Magomedov 23% / 4% / 14% | 36% | Adesanya by KO/TKO (31%) | no edge | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Adesanya +220 / +1770 / +355<br>Magomedov +330 / +2305 / +625 |
+| **Ian Machado Garry** vs. **Yaroslav Amosov**<br>WW, 3 rds | Garry 60% – 40% Amosov | -150 / +150 | Garry 62% (-180 / +150) | Garry 42% (+140) | Garry 18% / 6% / 36%<br>Amosov 4% / 19% / 17% | 53% | Garry by decision (36%) | no edge | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Garry +460 / +1640 / +175<br>Amosov +2290 / +420 / +500 |
 | **Serghei Spivac** vs. **Mario Pinto**<br>HW, 3 rds | Spivac 23% – 77% Pinto | +335 / -335 | no line yet | Spivac 23% (+335) | Spivac 8% / 3% / 12%<br>Pinto 34% / 13% / 30% | 41% | Pinto by KO/TKO (34%) | no line yet | no price yet; fair Over 2.5 +120, Under -120 | no prices yet; fair KO / Sub / Dec<br>Spivac +1165 / +2985 / +750<br>Pinto +195 / +645 / +235 |
 | **Luke Riley** vs. **Gabriel Santos**<br>FW, 3 rds | Riley 64% – 36% Santos | -180 / +180 | no line yet | Riley 64% (-180) | Riley 28% / 4% / 32%<br>Santos 9% / 7% / 21% | 52% | Riley by decision (32%) | no line yet | no price yet; fair Over 2.5 -130, Under +130 | no prices yet; fair KO / Sub / Dec<br>Riley +250 / +2465 / +215<br>Santos +1050 / +1395 / +385 |
+| **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 47% – 53% Dulatov | +110 / -110 | no line yet | Chokheli 47% (+110) | Chokheli 24% / 3% / 20%<br>Dulatov 24% / 5% / 24% | 43% | Chokheli by KO/TKO (24%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Chokheli +315 / +2790 / +410<br>Dulatov +315 / +1840 / +320 |
 | **Mairon Santos** vs. **Akbar Abdullaev**<br>LW, 3 rds, UFC debut: Abdullaev | Santos 73% – 27% Abdullaev | -275 / +275 | no line yet | Santos 73% (-275) | Santos 31% / 8% / 34%<br>Abdullaev 8% / 4% / 15% | 49% | Santos by decision (34%) | no line yet | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Santos +225 / +1085 / +195<br>Abdullaev +1205 / +2205 / +590 |
 | **Magomed Tuchalov** vs. **Ion Cutelaba**<br>LHW, 3 rds | Tuchalov 59% – 41% Cutelaba | -145 / +145 | no line yet | Tuchalov 59% (-145) | Tuchalov 23% / 14% / 22%<br>Cutelaba 13% / 11% / 17% | 39% | Tuchalov by KO/TKO (23%) | no line yet | no price yet; fair Over 2.5 +130, Under -130 | no prices yet; fair KO / Sub / Dec<br>Tuchalov +335 / +595 / +355<br>Cutelaba +690 / +770 / +500 |
 | **Bruno Silva** vs. **Jafel Filho**<br>FLW, 3 rds, UFC debut: Silva | Silva 45% – 55% Filho | +120 / -120 | no line yet | Silva 45% (+120) | Silva 9% / 11% / 25%<br>Filho 6% / 30% / 18% | 43% | Filho by submission (30%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Silva +1000 / +775 / +305<br>Filho +1450 / +235 / +445 |
@@ -28,7 +29,6 @@ Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 | **Pavel Andrusca** vs. **Mehemmedeli Osmanli**<br>BW, 3 rds | Andrusca 83% – 17% Osmanli | -480 / +480 | no line yet | Andrusca 83% (-480) | Andrusca 15% / 18% / 50%<br>Osmanli 5% / 3% / 10% | 60% | Andrusca by decision (50%) | no line yet | no price yet; fair Over 2.5 -175, Under +175 | no prices yet; fair KO / Sub / Dec<br>Andrusca +570 / +465 / -100<br>Osmanli +2080 / +3895 / +880 |
 | **Modestino Rodrigues** vs. **Matthieu Letho Duclos**<br>MW, 3 rds, UFC debut: Rodrigues | Rodrigues 38% – 62% Duclos | +165 / -165 | no line yet | Rodrigues 38% (+165) | Rodrigues 14% / 7% / 16%<br>Duclos 34% / 8% / 21% | 37% | Duclos by KO/TKO (34%) | no line yet | no price yet; fair Over 1.5 -125, Under +125 | no prices yet; fair KO / Sub / Dec<br>Rodrigues +595 / +1285 / +515<br>Duclos +195 / +1230 / +385 |
 | **Abdul Hussein** vs. **Hecher Sosa**<br>BW, 3 rds | Hussein 66% – 34% Sosa | -195 / +195 | no line yet | Hussein 66% (-195) | Hussein 18% / 23% / 25%<br>Sosa 8% / 3% / 22% | 48% | Hussein by decision (25%) | no line yet | no price yet; fair Over 2.5 -110, Under +110 | no prices yet; fair KO / Sub / Dec<br>Hussein +470 / +330 / +295<br>Sosa +1125 / +2945 / +345 |
-| **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 47% – 53% Dulatov | +110 / -110 | no line yet | Chokheli 47% (+110) | Chokheli 24% / 3% / 20%<br>Dulatov 24% / 5% / 24% | 43% | Chokheli by KO/TKO (24%) | no line yet | no price yet; fair Over 2.5 +110, Under -110 | no prices yet; fair KO / Sub / Dec<br>Chokheli +315 / +2790 / +410<br>Dulatov +315 / +1840 / +320 |
 
 When it ends (either fighter):
 
@@ -38,6 +38,7 @@ When it ends (either fighter):
 | Garry vs. Amosov | 24% | 15% | 8% |  |  | 53% |
 | Spivac vs. Pinto | 31% | 18% | 9% |  |  | 41% |
 | Riley vs. Santos | 24% | 16% | 8% |  |  | 52% |
+| Chokheli vs. Dulatov | 30% | 18% | 9% |  |  | 43% |
 | Santos vs. Abdullaev | 26% | 17% | 8% |  |  | 49% |
 | Tuchalov vs. Cutelaba | 33% | 19% | 9% |  |  | 39% |
 | Silva vs. Filho | 30% | 18% | 9% |  |  | 43% |
@@ -46,7 +47,6 @@ When it ends (either fighter):
 | Andrusca vs. Osmanli | 20% | 13% | 7% |  |  | 60% |
 | Rodrigues vs. Duclos | 34% | 20% | 9% |  |  | 37% |
 | Hussein vs. Sosa | 27% | 17% | 8% |  |  | 48% |
-| Chokheli vs. Dulatov | 30% | 18% | 9% |  |  | 43% |
 
 ## How the 2026 predictions have done
 
@@ -133,7 +133,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 2 | Robert Whittaker | 2156 | 231 | 18-7 | 2026-07-11 |
 |  | 3 | Carlos Ulberg | 2126 | 273 | 10-1 | 2026-04-11 |
 |  | 4 | Paulo Costa | 2107 | 268 | 8-4 | 2026-04-11 |
-|  | 5 | Dominick Reyes | 2063 | 236 | 11-5 | 2026-10-24 |
+|  | 5 | Dominick Reyes | 2063 | 237 | 11-5 | 2026-10-24 |
 | Heavyweight | 1 | Ciryl Gane | 2350 | 260 | 12-2 | 2026-11-14 |
 |  | 2 | Alexander Volkov | 2247 | 231 | 15-5 | 2026-10-24 |
 |  | 3 | Alex Pereira | 2268 | 255 | 10-3 | 2026-06-14 |
@@ -150,7 +150,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 4 | Natalia Silva | 2007 | 311 | 9-0 | 2026-10-03 |
 |  | 5 | Manon Fiorot | 1961 | 288 | 8-2 | 2026-09-12 |
 | Women's Bantamweight | 1 | Kayla Harrison | 2165 | 401 | 4-0 | 2026-11-14 |
-|  | 2 | Amanda Nunes | 1981 | 279 | 16-3 | 2026-11-14 |
+|  | 2 | Amanda Nunes | 1981 | 280 | 16-3 | 2026-11-14 |
 |  | 3 | Luana Santos | 1846 | 323 | 7-1 | 2026-10-31 |
 |  | 4 | Ketlen Vieira | 1773 | 251 | 10-5 | 2026-05-16 |
 |  | 5 | Julianna Pena | 1821 | 307 | 8-4 | 2025-06-07 |
