@@ -2689,201 +2689,257 @@ game_id,season,week,season_type,team,opp,home,neutral,division,opp_division,conf
 401856747,2026,12,regular,Samford,Auburn,0,False,fcs,fbs,Southern,SEC,75,30.0000,-6.5124,9.0000,20.0000,-5.7967,10.0000,-0.7157,-0.2752,12,1,45,11.6495
 401856748,2026,12,regular,Florida,Vanderbilt,1,False,fbs,fbs,SEC,SEC,71,71.0000,20.0050,34.0000,30.0000,8.5810,41.0000,11.4239,-8.7500,9,2,0,0.0000
 401856748,2026,12,regular,Vanderbilt,Florida,0,False,fbs,fbs,SEC,SEC,62,62.0000,2.1573,21.0000,28.0000,3.5451,34.0000,-1.3878,8.7500,10,4,0,0.0000
-401856749,2026,12,regular,Ole Miss,Wofford,1,False,fbs,fcs,SEC,Southern,78,32.0000,28.1204,23.0000,23.0000,31.5668,9.0000,-3.4465,-1.8247,14,1,46,-3.1114
-401856749,2026,12,regular,Wofford,Ole Miss,0,False,fcs,fbs,Southern,SEC,54,23.0000,-7.7510,2.0000,17.0000,-3.3080,6.0000,-4.4430,1.8247,13,1,31,-4.4265
-401856750,2026,12,regular,Mississippi State,Tennessee Tech,1,False,fbs,fcs,SEC,Southern,51,51.0000,9.2341,25.0000,27.0000,4.9783,24.0000,4.2558,3.6593,10,2,0,0.0000
-401856750,2026,12,regular,Tennessee Tech,Mississippi State,0,False,fcs,fbs,Southern,SEC,71,63.0000,-0.6406,25.0000,44.0000,4.4568,19.0000,-5.0974,-3.6593,10,3,8,-6.3238
-401856752,2026,12,regular,Oklahoma,Texas A&M,1,False,fbs,fbs,SEC,SEC,71,71.0000,8.9036,31.0000,35.0000,9.8051,36.0000,-0.9014,0.7851,12,0,0,0.0000
-401856752,2026,12,regular,Texas A&M,Oklahoma,0,False,fbs,fbs,SEC,SEC,51,51.0000,-19.8889,12.0000,23.0000,-9.5511,28.0000,-10.3377,-0.7851,12,0,0,0.0000
-401856755,2026,12,regular,Arkansas,Texas,0,False,fbs,fbs,SEC,SEC,73,37.0000,-7.4171,16.0000,18.0000,-5.7441,19.0000,-1.6730,-4.2459,10,1,36,-1.6119
-401856755,2026,12,regular,Texas,Arkansas,1,False,fbs,fbs,SEC,SEC,58,39.0000,17.5986,23.0000,23.0000,17.3563,16.0000,0.2423,4.2459,9,1,19,1.8336
+401856749,2026,12,regular,Ole Miss,Wofford,1,False,fbs,fcs,SEC,Southern,80,32.0000,28.1204,23.0000,23.0000,31.5668,9.0000,-3.4465,-1.8247,14,1,48,4.0803
+401856749,2026,12,regular,Wofford,Ole Miss,0,False,fcs,fbs,Southern,SEC,54,23.0000,-7.7510,2.0000,17.0000,-3.3080,6.0000,-4.4430,1.8247,13,1,31,-3.5675
+401856750,2026,12,regular,Mississippi State,Tennessee Tech,1,False,fbs,fcs,SEC,Southern,51,51.0000,9.0945,25.0000,27.0000,4.8387,24.0000,4.2558,3.7771,10,2,0,0.0000
+401856750,2026,12,regular,Tennessee Tech,Mississippi State,0,False,fcs,fbs,Southern,SEC,71,63.0000,-0.6406,25.0000,44.0000,4.4568,19.0000,-5.0974,-3.7771,10,3,8,-6.3238
+401856751,2026,12,regular,Kentucky,Missouri,0,False,fbs,fbs,SEC,SEC,79,79.0000,-0.5834,36.0000,47.0000,-4.0222,32.0000,3.4388,3.3834,10,2,0,0.0000
+401856751,2026,12,regular,Missouri,Kentucky,1,False,fbs,fbs,SEC,SEC,49,49.0000,13.8744,20.0000,22.0000,23.9378,27.0000,-10.0634,-3.3834,10,0,0,0.0000
+401856752,2026,12,regular,Oklahoma,Texas A&M,1,False,fbs,fbs,SEC,SEC,71,71.0000,8.7525,31.0000,35.0000,9.7027,36.0000,-0.9501,1.0639,12,0,0,0.0000
+401856752,2026,12,regular,Texas A&M,Oklahoma,0,False,fbs,fbs,SEC,SEC,51,51.0000,-19.8360,12.0000,23.0000,-9.4995,28.0000,-10.3365,-1.0639,12,0,0,0.0000
+401856753,2026,12,regular,Georgia,South Carolina,0,False,fbs,fbs,SEC,SEC,66,66.0000,13.3856,33.0000,24.0000,19.4068,42.0000,-6.0212,4.4142,9,2,0,0.0000
+401856753,2026,12,regular,South Carolina,Georgia,1,False,fbs,fbs,SEC,SEC,49,45.0000,-2.4510,17.0000,21.0000,-8.8879,24.0000,6.4369,-4.4142,8,2,4,-0.2390
+401856754,2026,12,regular,LSU,Tennessee,0,False,fbs,fbs,SEC,SEC,72,72.0000,-25.5270,20.0000,47.0000,-14.4833,25.0000,-11.0437,-8.3415,17,2,0,0.0000
+401856754,2026,12,regular,Tennessee,LSU,1,False,fbs,fbs,SEC,SEC,71,71.0000,-24.8168,25.0000,30.0000,-23.2112,41.0000,-1.6056,8.3415,16,2,0,0.0000
+401856755,2026,12,regular,Arkansas,Texas,0,False,fbs,fbs,SEC,SEC,73,37.0000,-7.4171,16.0000,18.0000,-5.7441,19.0000,-1.6730,-4.2675,10,1,36,-1.6119
+401856755,2026,12,regular,Texas,Arkansas,1,False,fbs,fbs,SEC,SEC,58,39.0000,17.5986,23.0000,23.0000,17.3563,16.0000,0.2423,4.2675,9,1,19,1.8336
+401856865,2026,12,regular,Arizona,Kansas State,0,False,fbs,fbs,Big 12,Big 12,71,71.0000,-1.5362,23.0000,44.0000,-1.2396,27.0000,-0.2965,4.9475,15,2,0,0.0000
+401856865,2026,12,regular,Kansas State,Arizona,1,False,fbs,fbs,Big 12,Big 12,58,58.0000,-0.4165,22.0000,17.0000,-2.7708,41.0000,2.3543,-4.9475,13,0,0,0.0000
 401856866,2026,12,regular,BYU,Kansas,0,False,fbs,fbs,Big 12,Big 12,66,66.0000,2.0345,27.0000,27.0000,-2.7058,39.0000,4.7403,-2.0688,9,3,0,0.0000
 401856866,2026,12,regular,Kansas,BYU,1,False,fbs,fbs,Big 12,Big 12,57,57.0000,-1.4552,22.0000,27.0000,-1.6343,30.0000,0.1791,2.0688,9,3,0,0.0000
-401856867,2026,12,regular,Cincinnati,Colorado,1,False,fbs,fbs,Big 12,Big 12,72,72.0000,11.1963,39.0000,23.0000,5.8546,49.0000,5.3417,-1.6617,11,0,0,0.0000
-401856867,2026,12,regular,Colorado,Cincinnati,0,False,fbs,fbs,Big 12,Big 12,54,54.0000,18.7149,25.0000,27.0000,14.3611,27.0000,4.3539,1.6617,11,0,0,0.0000
-401856868,2026,12,regular,Houston,West Virginia,0,False,fbs,fbs,Big 12,Big 12,70,70.0000,14.3551,29.0000,28.0000,8.7848,42.0000,5.5703,-1.2407,13,2,0,0.0000
-401856868,2026,12,regular,West Virginia,Houston,1,False,fbs,fbs,Big 12,Big 12,81,81.0000,12.3556,35.0000,26.0000,-3.1623,55.0000,15.5179,1.2407,13,1,0,0.0000
-401856869,2026,12,regular,Iowa State,UCF,0,False,fbs,fbs,Big 12,Big 12,57,43.0000,-0.7777,15.0000,17.0000,-9.5001,26.0000,8.7224,2.1840,12,1,14,-4.5650
-401856869,2026,12,regular,UCF,Iowa State,1,False,fbs,fbs,Big 12,Big 12,68,63.0000,22.6833,34.0000,26.0000,15.9367,37.0000,6.7466,-2.1840,13,2,5,1.4444
-401856871,2026,12,regular,Baylor,Texas Tech,1,False,fbs,fbs,Big 12,Big 12,71,71.0000,-17.5080,24.0000,53.0000,-13.5126,18.0000,-3.9954,-1.4534,13,1,0,0.0000
-401856871,2026,12,regular,Texas Tech,Baylor,0,False,fbs,fbs,Big 12,Big 12,66,66.0000,-2.6340,22.0000,18.0000,-4.2128,48.0000,1.5788,1.4534,12,2,0,0.0000
+401856867,2026,12,regular,Cincinnati,Colorado,1,False,fbs,fbs,Big 12,Big 12,72,72.0000,12.9991,39.0000,23.0000,7.6574,49.0000,5.3417,-4.8008,11,0,0,0.0000
+401856867,2026,12,regular,Colorado,Cincinnati,0,False,fbs,fbs,Big 12,Big 12,54,54.0000,15.4369,24.0000,27.0000,12.6971,27.0000,2.7398,4.8008,11,0,0,0.0000
+401856868,2026,12,regular,Houston,West Virginia,0,False,fbs,fbs,Big 12,Big 12,71,71.0000,17.5650,30.0000,29.0000,12.0829,42.0000,5.4821,-1.2051,13,2,0,0.0000
+401856868,2026,12,regular,West Virginia,Houston,1,False,fbs,fbs,Big 12,Big 12,81,81.0000,12.3556,35.0000,26.0000,-3.1623,55.0000,15.5179,1.2051,13,1,0,0.0000
+401856869,2026,12,regular,Iowa State,UCF,0,False,fbs,fbs,Big 12,Big 12,57,43.0000,-0.6713,15.0000,17.0000,-9.5001,26.0000,8.8288,6.3816,12,1,14,-4.5650
+401856869,2026,12,regular,UCF,Iowa State,1,False,fbs,fbs,Big 12,Big 12,68,63.0000,22.6833,34.0000,26.0000,15.9056,37.0000,6.7777,-6.3816,13,2,5,1.4444
+401856870,2026,12,regular,Arizona State,Oklahoma State,1,False,fbs,fbs,Big 12,Big 12,64,64.0000,5.5526,27.0000,30.0000,4.7845,34.0000,0.7681,0.9027,11,2,0,0.0000
+401856870,2026,12,regular,Oklahoma State,Arizona State,0,False,fbs,fbs,Big 12,Big 12,69,69.0000,13.3434,36.0000,39.0000,7.6689,30.0000,5.6744,-0.9027,11,3,0,0.0000
+401856871,2026,12,regular,Baylor,Texas Tech,1,False,fbs,fbs,Big 12,Big 12,71,71.0000,-17.5519,24.0000,53.0000,-13.5565,18.0000,-3.9954,-1.4534,13,1,0,0.0000
+401856871,2026,12,regular,Texas Tech,Baylor,0,False,fbs,fbs,Big 12,Big 12,66,66.0000,-2.6208,22.0000,18.0000,-4.2128,48.0000,1.5920,1.4534,12,2,0,0.0000
+401856872,2026,12,regular,TCU,Utah,1,False,fbs,fbs,Big 12,Big 12,59,59.0000,-11.9257,19.0000,34.0000,-22.4027,25.0000,10.4770,0.6474,12,1,0,0.0000
+401856872,2026,12,regular,Utah,TCU,0,False,fbs,fbs,Big 12,Big 12,67,67.0000,11.4890,30.0000,33.0000,9.3766,34.0000,2.1125,-0.6474,13,1,0,0.0000
+401858302,2026,12,regular,Miami,Virginia Tech,1,False,fbs,fbs,ACC,ACC,74,74.0000,9.6641,34.0000,39.0000,2.6844,35.0000,6.9797,2.6826,11,2,0,0.0000
+401858302,2026,12,regular,Virginia Tech,Miami,0,False,fbs,fbs,ACC,ACC,55,55.0000,-6.4426,18.0000,38.0000,-4.9216,17.0000,-1.5210,-2.6826,10,2,0,0.0000
 401858303,2026,12,regular,Clemson,Duke,0,False,fbs,fbs,ACC,ACC,80,80.0000,-1.3953,31.0000,30.0000,1.0625,50.0000,-2.4578,4.9788,12,2,0,0.0000
 401858303,2026,12,regular,Duke,Clemson,1,False,fbs,fbs,ACC,ACC,59,59.0000,-13.6846,17.0000,40.0000,-14.1781,19.0000,0.4935,-4.9788,12,1,0,0.0000
-401858304,2026,12,regular,Florida State,NC State,1,False,fbs,fbs,ACC,ACC,62,62.0000,-13.0978,24.0000,39.0000,-13.3979,23.0000,0.3001,8.5744,11,1,0,0.0000
-401858304,2026,12,regular,NC State,Florida State,0,False,fbs,fbs,ACC,ACC,76,76.0000,22.9087,33.0000,37.0000,19.3710,39.0000,3.5377,-8.5744,11,0,0,0.0000
+401858304,2026,12,regular,Florida State,NC State,1,False,fbs,fbs,ACC,ACC,62,62.0000,-13.0978,24.0000,39.0000,-13.3979,23.0000,0.3001,8.6864,11,1,0,0.0000
+401858304,2026,12,regular,NC State,Florida State,0,False,fbs,fbs,ACC,ACC,76,76.0000,22.9087,33.0000,37.0000,19.3710,39.0000,3.5377,-8.6864,11,0,0,0.0000
 401858305,2026,12,regular,North Carolina,Virginia,0,False,fbs,fbs,ACC,ACC,84,62.0000,10.5106,25.0000,31.0000,3.4789,31.0000,7.0317,-9.0484,11,1,22,15.2220
-401858305,2026,12,regular,Virginia,North Carolina,1,False,fbs,fbs,ACC,ACC,58,55.0000,17.1090,29.0000,25.0000,15.0018,30.0000,2.1072,9.0484,10,2,3,-1.3126
-401858309,2026,12,regular,Boston College,Syracuse,1,False,fbs,fbs,ACC,ACC,60,60.0000,4.5741,21.0000,26.0000,-2.5662,34.0000,7.1404,2.9485,11,2,0,0.0000
-401858309,2026,12,regular,Syracuse,Boston College,0,False,fbs,fbs,ACC,ACC,81,81.0000,5.1692,37.0000,55.0000,3.3098,26.0000,1.8594,-2.9485,11,3,0,0.0000
+401858305,2026,12,regular,Virginia,North Carolina,1,False,fbs,fbs,ACC,ACC,58,55.0000,17.1090,29.0000,25.0000,15.0018,30.0000,2.1072,9.0484,10,2,3,-1.1695
+401858306,2026,12,regular,Louisville,Pittsburgh,1,False,fbs,fbs,ACC,ACC,79,64.0000,-2.4293,26.0000,41.0000,2.9586,23.0000,-5.3879,-1.6288,14,0,15,3.9784
+401858306,2026,12,regular,Pittsburgh,Louisville,0,False,fbs,fbs,ACC,ACC,53,47.0000,-23.1315,10.0000,27.0000,-17.2297,20.0000,-5.9018,1.6288,13,1,6,-3.5817
+401858307,2026,12,regular,Notre Dame,SMU,1,False,fbs,fbs,FBS Independents,ACC,62,62.0000,8.0051,36.0000,30.0000,3.1243,32.0000,4.8808,3.0639,10,1,0,0.0000
+401858307,2026,12,regular,SMU,Notre Dame,0,False,fbs,fbs,ACC,FBS Independents,70,70.0000,-4.5081,20.0000,47.0000,-8.8317,23.0000,4.3236,-3.0639,10,1,0,0.0000
+401858308,2026,12,regular,California,Stanford,1,False,fbs,fbs,ACC,ACC,69,56.0000,11.7685,21.0000,20.0000,8.5989,36.0000,3.1696,-5.8694,12,0,13,2.6540
+401858308,2026,12,regular,Stanford,California,0,False,fbs,fbs,ACC,ACC,60,56.0000,16.2237,27.0000,27.0000,5.9868,29.0000,10.2369,5.8694,13,1,4,-4.9411
+401858309,2026,12,regular,Boston College,Syracuse,1,False,fbs,fbs,ACC,ACC,60,60.0000,4.5190,21.0000,26.0000,-2.8523,34.0000,7.3714,3.0003,11,2,0,0.0000
+401858309,2026,12,regular,Syracuse,Boston College,0,False,fbs,fbs,ACC,ACC,82,82.0000,1.4503,37.0000,56.0000,-0.4091,26.0000,1.8594,-3.0003,11,3,0,0.0000
 401858310,2026,12,regular,Georgia Tech,Wake Forest,1,False,fbs,fbs,ACC,ACC,59,28.0000,-2.4757,13.0000,9.0000,-6.4572,19.0000,3.9815,2.9845,11,0,31,24.5127
 401858310,2026,12,regular,Wake Forest,Georgia Tech,0,False,fbs,fbs,ACC,ACC,66,50.0000,28.2549,35.0000,17.0000,13.6460,33.0000,14.6089,-2.9845,12,0,16,1.4042
 401858527,2026,12,regular,Illinois,Iowa,1,False,fbs,fbs,Big Ten,Big Ten,56,56.0000,-10.4339,20.0000,41.0000,-2.2910,15.0000,-8.1428,-1.0100,11,1,0,0.0000
 401858527,2026,12,regular,Iowa,Illinois,0,False,fbs,fbs,Big Ten,Big Ten,75,75.0000,14.0004,39.0000,26.0000,4.5523,49.0000,9.4481,1.0100,10,2,0,0.0000
 401858528,2026,12,regular,Michigan,UCLA,1,False,fbs,fbs,Big Ten,Big Ten,59,59.0000,-13.8204,20.0000,23.0000,-2.7639,36.0000,-11.0565,-0.4345,13,3,0,0.0000
 401858528,2026,12,regular,UCLA,Michigan,0,False,fbs,fbs,Big Ten,Big Ten,66,66.0000,-5.5589,27.0000,34.0000,-2.6848,32.0000,-2.8740,0.4345,13,3,0,0.0000
-401858529,2026,12,regular,Michigan State,Oregon,1,False,fbs,fbs,Big Ten,Big Ten,60,44.0000,-4.0097,17.0000,17.0000,3.1040,27.0000,-7.1137,-19.8973,10,0,16,-5.5528
-401858529,2026,12,regular,Oregon,Michigan State,0,False,fbs,fbs,Big Ten,Big Ten,69,53.0000,9.2900,27.0000,26.0000,-7.0315,27.0000,16.3215,19.8973,11,1,16,5.5621
-401858530,2026,12,regular,Minnesota,Northwestern,1,False,fbs,fbs,Big Ten,Big Ten,66,66.0000,7.8313,28.0000,39.0000,1.9676,27.0000,5.8637,0.1905,10,2,0,0.0000
-401858530,2026,12,regular,Northwestern,Minnesota,0,False,fbs,fbs,Big Ten,Big Ten,59,59.0000,12.0671,24.0000,25.0000,5.6124,34.0000,6.4546,-0.1905,10,1,0,0.0000
-401858531,2026,12,regular,Nebraska,Ohio State,1,False,fbs,fbs,Big Ten,Big Ten,72,72.0000,20.8346,36.0000,29.0000,19.2580,43.0000,1.5766,-0.3049,9,1,0,0.0000
-401858531,2026,12,regular,Ohio State,Nebraska,0,False,fbs,fbs,Big Ten,Big Ten,48,48.0000,21.7159,23.0000,28.0000,19.0156,20.0000,2.7003,0.3049,8,0,0,0.0000
-401858532,2026,12,regular,Penn State,Rutgers,1,False,fbs,fbs,Big Ten,Big Ten,55,55.0000,3.3825,23.0000,23.0000,9.1643,32.0000,-5.7818,-1.3312,11,0,0,0.0000
-401858532,2026,12,regular,Rutgers,Penn State,0,False,fbs,fbs,Big Ten,Big Ten,71,71.0000,0.6298,26.0000,43.0000,-2.4560,28.0000,3.0858,1.3312,11,1,0,0.0000
-401858533,2026,12,regular,Purdue,Wisconsin,1,False,fbs,fbs,Big Ten,Big Ten,55,43.0000,0.8403,14.0000,25.0000,-0.0716,18.0000,0.9119,4.5830,9,1,12,-3.7020
-401858533,2026,12,regular,Wisconsin,Purdue,0,False,fbs,fbs,Big Ten,Big Ten,69,59.0000,22.1891,31.0000,19.0000,5.4791,40.0000,16.7100,-4.5830,9,0,10,4.9190
+401858529,2026,12,regular,Michigan State,Oregon,1,False,fbs,fbs,Big Ten,Big Ten,60,30.0000,-4.7574,9.0000,12.0000,3.3654,18.0000,-8.1228,-20.7451,10,0,30,-3.4891
+401858529,2026,12,regular,Oregon,Michigan State,0,False,fbs,fbs,Big Ten,Big Ten,70,54.0000,9.6748,29.0000,27.0000,-6.0726,27.0000,15.7474,20.7451,11,1,16,5.5640
+401858530,2026,12,regular,Minnesota,Northwestern,1,False,fbs,fbs,Big Ten,Big Ten,66,66.0000,7.8313,28.0000,39.0000,1.9668,27.0000,5.8645,0.1905,10,2,0,0.0000
+401858530,2026,12,regular,Northwestern,Minnesota,0,False,fbs,fbs,Big Ten,Big Ten,59,59.0000,9.6364,23.0000,25.0000,5.6124,34.0000,4.0240,-0.1905,10,1,0,0.0000
+401858531,2026,12,regular,Nebraska,Ohio State,1,False,fbs,fbs,Big Ten,Big Ten,72,72.0000,20.8350,36.0000,29.0000,19.2584,43.0000,1.5766,-2.3816,9,1,0,0.0000
+401858531,2026,12,regular,Ohio State,Nebraska,0,False,fbs,fbs,Big Ten,Big Ten,48,48.0000,21.7159,23.0000,28.0000,19.0156,20.0000,2.7003,2.3816,8,0,0,0.0000
+401858532,2026,12,regular,Penn State,Rutgers,1,False,fbs,fbs,Big Ten,Big Ten,55,55.0000,2.5035,23.0000,23.0000,9.1643,32.0000,-6.6608,-1.6950,11,0,0,0.0000
+401858532,2026,12,regular,Rutgers,Penn State,0,False,fbs,fbs,Big Ten,Big Ten,71,71.0000,2.6898,26.0000,43.0000,-0.3960,28.0000,3.0858,1.6950,11,1,0,0.0000
+401858533,2026,12,regular,Purdue,Wisconsin,1,False,fbs,fbs,Big Ten,Big Ten,56,43.0000,0.8403,14.0000,25.0000,-0.0716,18.0000,0.9119,4.5830,9,1,13,-5.0934
+401858533,2026,12,regular,Wisconsin,Purdue,0,False,fbs,fbs,Big Ten,Big Ten,70,59.0000,22.1891,31.0000,19.0000,5.4791,40.0000,16.7100,-4.5830,9,0,11,3.7039
+401858534,2026,12,regular,Maryland,USC,0,False,fbs,fbs,Big Ten,Big Ten,63,63.0000,9.3421,29.0000,40.0000,1.7648,23.0000,7.5772,-2.3462,10,0,0,0.0000
+401858534,2026,12,regular,USC,Maryland,1,False,fbs,fbs,Big Ten,Big Ten,72,72.0000,13.7985,40.0000,35.0000,8.3346,37.0000,5.4639,2.3462,11,2,0,0.0000
 401858535,2026,12,regular,Indiana,Washington,0,False,fbs,fbs,Big Ten,Big Ten,61,61.0000,3.4759,23.0000,29.0000,-3.1489,32.0000,6.6248,2.9454,13,1,0,0.0000
 401858535,2026,12,regular,Washington,Indiana,1,False,fbs,fbs,Big Ten,Big Ten,71,71.0000,5.0549,31.0000,44.0000,-6.7747,27.0000,11.8295,-2.9454,14,2,0,0.0000
-401861968,2026,12,regular,Old Dominion,UConn,0,False,fbs,fbs,Sun Belt,FBS Independents,67,67.0000,14.8087,32.0000,47.0000,18.5139,20.0000,-3.7051,-2.2693,11,0,0,0.0000
-401861968,2026,12,regular,UConn,Old Dominion,1,False,fbs,fbs,FBS Independents,Sun Belt,69,69.0000,8.8614,33.0000,23.0000,10.5414,46.0000,-1.6800,2.2693,11,3,0,0.0000
-401862830,2026,12,regular,Rice,Temple,0,False,fbs,fbs,American Athletic,American Athletic,75,75.0000,24.2400,39.0000,27.0000,13.3383,48.0000,10.9017,-1.5975,9,1,0,0.0000
-401862830,2026,12,regular,Temple,Rice,1,False,fbs,fbs,American Athletic,American Athletic,52,52.0000,14.7626,23.0000,18.0000,3.7646,34.0000,10.9980,1.5975,10,2,0,0.0000
+401860918,2026,12,regular,Colorado State,Fresno State,0,False,fbs,fbs,Pac-12,Pac-12,78,78.0000,38.1816,38.0000,39.0000,28.2613,39.0000,9.9203,-2.9585,12,2,0,0.0000
+401860918,2026,12,regular,Fresno State,Colorado State,1,False,fbs,fbs,Pac-12,Pac-12,52,52.0000,22.3283,30.0000,20.0000,17.2485,32.0000,5.0798,2.9585,10,0,0,0.0000
+401860919,2026,12,regular,Oregon State,Utah State,1,False,fbs,fbs,Pac-12,Pac-12,58,58.0000,9.0011,29.0000,29.0000,12.7100,29.0000,-3.7090,3.5277,12,1,0,0.0000
+401860919,2026,12,regular,Utah State,Oregon State,0,False,fbs,fbs,Pac-12,Pac-12,73,73.0000,-4.5290,34.0000,41.0000,-4.1796,32.0000,-0.3494,-3.5277,12,1,0,0.0000
+401860920,2026,12,regular,Texas State,Washington State,1,False,fbs,fbs,Pac-12,Pac-12,60,53.0000,16.2090,27.0000,20.0000,1.8872,33.0000,14.3218,14.5984,10,0,7,2.3844
+401860920,2026,12,regular,Washington State,Texas State,0,False,fbs,fbs,Pac-12,Pac-12,62,48.0000,2.0172,20.0000,25.0000,2.4089,23.0000,-0.3917,-14.5984,10,0,14,-3.1911
+401860925,2026,12,regular,Boise State,San Diego State,1,False,fbs,fbs,Pac-12,Pac-12,65,65.0000,-0.1520,24.0000,35.0000,6.2700,30.0000,-6.4220,-1.2041,12,2,0,0.0000
+401860925,2026,12,regular,San Diego State,Boise State,0,False,fbs,fbs,Pac-12,Pac-12,73,73.0000,9.1645,31.0000,38.0000,0.7845,35.0000,8.3800,1.2041,12,3,0,0.0000
+401861968,2026,12,regular,Old Dominion,UConn,0,False,fbs,fbs,Sun Belt,FBS Independents,66,66.0000,9.7399,31.0000,46.0000,13.4450,20.0000,-3.7051,-1.1426,11,0,0,0.0000
+401861968,2026,12,regular,UConn,Old Dominion,1,False,fbs,fbs,FBS Independents,Sun Belt,70,70.0000,9.0176,33.0000,24.0000,10.6974,46.0000,-1.6799,1.1426,11,3,0,0.0000
+401862830,2026,12,regular,Rice,Temple,0,False,fbs,fbs,American Athletic,American Athletic,75,75.0000,22.1313,39.0000,27.0000,11.6807,48.0000,10.4506,-1.4451,9,1,0,0.0000
+401862830,2026,12,regular,Temple,Rice,1,False,fbs,fbs,American Athletic,American Athletic,52,52.0000,14.7626,23.0000,18.0000,3.7646,34.0000,10.9980,1.4451,10,2,0,0.0000
 401862831,2026,12,regular,Army,East Carolina,1,False,fbs,fbs,American Athletic,American Athletic,65,65.0000,-9.5544,25.0000,20.0000,-4.0749,45.0000,-5.4794,3.1903,9,2,0,0.0000
 401862831,2026,12,regular,East Carolina,Army,0,False,fbs,fbs,American Athletic,American Athletic,56,56.0000,6.2465,25.0000,24.0000,4.1662,32.0000,2.0804,-3.1903,9,1,0,0.0000
-401862832,2026,12,regular,Charlotte,Tulsa,0,False,fbs,fbs,American Athletic,American Athletic,60,48.0000,-8.2373,13.0000,26.0000,-8.0714,22.0000,-0.1659,3.1500,14,0,12,-1.0675
+401862832,2026,12,regular,Charlotte,Tulsa,0,False,fbs,fbs,American Athletic,American Athletic,60,48.0000,-10.7110,12.0000,26.0000,-8.0714,22.0000,-2.6397,3.1500,14,0,12,-1.0675
 401862832,2026,12,regular,Tulsa,Charlotte,1,False,fbs,fbs,American Athletic,American Athletic,68,65.0000,16.1197,32.0000,33.0000,13.0031,32.0000,3.1165,-3.1500,14,0,3,-1.4020
-401862834,2026,12,regular,Memphis,Navy,0,False,fbs,fbs,American Athletic,American Athletic,73,73.0000,9.8262,28.0000,34.0000,-6.1750,39.0000,16.0012,-5.7094,15,2,0,0.0000
-401862834,2026,12,regular,Navy,Memphis,1,False,fbs,fbs,American Athletic,American Athletic,65,65.0000,8.4871,25.0000,14.0000,-5.4475,51.0000,13.9346,5.7094,15,1,0,0.0000
-401862835,2026,12,regular,North Texas,Tulane,0,False,fbs,fbs,American Athletic,American Athletic,82,82.0000,7.3030,38.0000,25.0000,-7.1275,57.0000,14.4305,-2.8530,12,1,0,0.0000
+401862833,2026,12,regular,Florida Atlantic,South Florida,1,False,fbs,fbs,American Athletic,American Athletic,65,53.0000,14.7967,29.0000,35.0000,19.5164,18.0000,-4.7197,4.9349,10,2,12,-1.5987
+401862833,2026,12,regular,South Florida,Florida Atlantic,0,False,fbs,fbs,American Athletic,American Athletic,76,50.0000,6.7468,16.0000,31.0000,14.4104,19.0000,-7.6636,-4.9349,10,0,26,0.3789
+401862834,2026,12,regular,Memphis,Navy,0,False,fbs,fbs,American Athletic,American Athletic,74,74.0000,9.6204,28.0000,35.0000,-6.3808,39.0000,16.0012,-5.7757,15,2,0,0.0000
+401862834,2026,12,regular,Navy,Memphis,1,False,fbs,fbs,American Athletic,American Athletic,65,65.0000,8.4871,25.0000,14.0000,-5.4475,51.0000,13.9346,5.7757,15,1,0,0.0000
+401862835,2026,12,regular,North Texas,Tulane,0,False,fbs,fbs,American Athletic,American Athletic,82,82.0000,3.5598,37.0000,25.0000,-7.1275,57.0000,10.6873,-2.8530,12,1,0,0.0000
 401862835,2026,12,regular,Tulane,North Texas,1,False,fbs,fbs,American Athletic,American Athletic,49,49.0000,8.6888,21.0000,25.0000,11.5877,24.0000,-2.8988,2.8530,11,0,0,0.0000
+401862836,2026,12,regular,UAB,UTSA,1,False,fbs,fbs,American Athletic,American Athletic,63,63.0000,-9.3123,21.0000,26.0000,-3.4560,37.0000,-5.8563,1.4420,12,1,0,0.0000
+401862836,2026,12,regular,UTSA,UAB,0,False,fbs,fbs,American Athletic,American Athletic,68,68.0000,-4.9223,25.0000,22.0000,3.6058,46.0000,-8.5281,-1.4420,13,1,0,0.0000
+401864541,2026,12,regular,Hawai'i,Nevada,0,False,fbs,fbs,Mountain West,Mountain West,56,56.0000,-17.1442,17.0000,38.0000,-16.4216,18.0000,-0.7226,-7.1737,11,0,0,0.0000
+401864541,2026,12,regular,Nevada,Hawai'i,1,False,fbs,fbs,Mountain West,Mountain West,59,59.0000,-5.0627,19.0000,21.0000,-6.9864,38.0000,1.9237,7.1737,11,3,0,0.0000
 401864542,2026,12,regular,New Mexico,Wyoming,0,False,fbs,fbs,Mountain West,Mountain West,79,79.0000,11.7452,33.0000,41.0000,11.1925,38.0000,0.5527,-3.1714,10,1,0,0.0000
 401864542,2026,12,regular,Wyoming,New Mexico,1,False,fbs,fbs,Mountain West,Mountain West,48,48.0000,-2.6394,16.0000,26.0000,-0.5622,22.0000,-2.0772,3.1714,11,1,0,0.0000
-401864543,2026,12,regular,North Dakota State,Northern Illinois,1,False,fbs,fbs,Mountain West,Mountain West,56,56.0000,6.1347,31.0000,28.0000,12.0937,28.0000,-5.9591,10.0273,11,1,0,0.0000
-401864543,2026,12,regular,Northern Illinois,North Dakota State,0,False,fbs,fbs,Mountain West,Mountain West,65,65.0000,23.6271,31.0000,32.0000,17.1498,33.0000,6.4773,-10.0273,11,1,0,0.0000
+401864543,2026,12,regular,North Dakota State,Northern Illinois,1,False,fbs,fbs,Mountain West,Mountain West,57,57.0000,7.4691,32.0000,28.0000,12.0937,29.0000,-4.6246,10.0167,11,1,0,0.0000
+401864543,2026,12,regular,Northern Illinois,North Dakota State,0,False,fbs,fbs,Mountain West,Mountain West,66,66.0000,17.1703,31.0000,32.0000,12.5930,34.0000,4.5773,-10.0167,11,1,0,0.0000
+401864544,2026,12,regular,San José State,UNLV,1,False,fbs,fbs,Mountain West,Mountain West,62,62.0000,2.1535,21.0000,40.0000,7.0247,22.0000,-4.8713,-6.2746,12,3,0,0.0000
+401864544,2026,12,regular,UNLV,San José State,0,False,fbs,fbs,Mountain West,Mountain West,65,65.0000,-0.8993,33.0000,28.0000,3.7313,37.0000,-4.6306,6.2746,11,1,0,0.0000
 401864545,2026,12,regular,Air Force,UTEP,1,False,fbs,fbs,Mountain West,Mountain West,68,40.0000,14.8948,23.0000,4.0000,8.0905,36.0000,6.8043,0.4119,11,1,28,-0.7694
 401864545,2026,12,regular,UTEP,Air Force,0,False,fbs,fbs,Mountain West,Mountain West,41,24.0000,-6.5019,8.0000,16.0000,-3.0536,8.0000,-3.4483,-0.4119,10,1,17,-7.5132
 401866464,2026,12,regular,Ball State,Ohio,0,False,fbs,fbs,Mid-American,Mid-American,70,70.0000,4.9257,27.0000,37.0000,2.9638,33.0000,1.9620,1.9073,11,2,0,0.0000
 401866464,2026,12,regular,Ohio,Ball State,1,False,fbs,fbs,Mid-American,Mid-American,56,56.0000,12.6249,30.0000,19.0000,2.6094,37.0000,10.0156,-1.9073,9,0,0,0.0000
-401866465,2026,12,regular,Eastern Michigan,Western Michigan,0,False,fbs,fbs,Mid-American,Mid-American,67,67.0000,5.6264,30.0000,28.0000,-5.7189,39.0000,11.3452,2.2614,11,0,0,0.0000
-401866465,2026,12,regular,Western Michigan,Eastern Michigan,1,False,fbs,fbs,Mid-American,Mid-American,60,60.0000,4.5773,30.0000,19.0000,-2.4835,41.0000,7.0607,-2.2614,9,2,0,0.0000
+401866465,2026,12,regular,Eastern Michigan,Western Michigan,0,False,fbs,fbs,Mid-American,Mid-American,67,67.0000,6.1588,30.0000,28.0000,-5.1865,39.0000,11.3452,2.2614,11,0,0,0.0000
+401866465,2026,12,regular,Western Michigan,Eastern Michigan,1,False,fbs,fbs,Mid-American,Mid-American,60,60.0000,5.0704,31.0000,19.0000,-1.9903,41.0000,7.0607,-2.2614,9,2,0,0.0000
 401866466,2026,12,regular,Kent State,Miami (OH),1,False,fbs,fbs,Mid-American,Mid-American,40,40.0000,-8.0685,17.0000,24.0000,-5.9609,16.0000,-2.1075,3.1123,8,1,0,0.0000
-401866466,2026,12,regular,Miami (OH),Kent State,0,False,fbs,fbs,Mid-American,Mid-American,68,68.0000,15.3897,37.0000,13.0000,7.8665,55.0000,7.5232,-3.1123,8,0,0,0.0000
+401866466,2026,12,regular,Miami (OH),Kent State,0,False,fbs,fbs,Mid-American,Mid-American,68,68.0000,15.2786,37.0000,13.0000,7.8665,55.0000,7.4120,-3.1123,8,0,0,0.0000
 401866467,2026,12,regular,Akron,Massachusetts,0,False,fbs,fbs,Mid-American,Mid-American,52,52.0000,7.2267,26.0000,18.0000,-0.9657,34.0000,8.1923,7.1607,10,2,0,0.0000
 401866467,2026,12,regular,Massachusetts,Akron,1,False,fbs,fbs,Mid-American,Mid-American,71,71.0000,7.1299,31.0000,22.0000,3.0624,49.0000,4.0675,-7.1607,11,2,0,0.0000
 401866468,2026,12,regular,Bowling Green,Toledo,0,False,fbs,fbs,Mid-American,Mid-American,51,51.0000,-22.0157,11.0000,25.0000,-6.3365,26.0000,-15.6791,-5.5883,13,0,0,0.0000
-401866468,2026,12,regular,Toledo,Bowling Green,1,False,fbs,fbs,Mid-American,Mid-American,63,63.0000,-13.9562,21.0000,27.0000,-5.5624,36.0000,-8.3939,5.5883,13,4,0,0.0000
+401866468,2026,12,regular,Toledo,Bowling Green,1,False,fbs,fbs,Mid-American,Mid-American,65,65.0000,-13.0956,23.0000,29.0000,-4.7156,36.0000,-8.3800,5.5883,13,4,0,0.0000
 401866469,2026,12,regular,Buffalo,Central Michigan,1,False,fbs,fbs,Mid-American,Mid-American,57,57.0000,21.4132,27.0000,13.0000,11.1176,44.0000,10.2956,-1.1601,10,2,0,0.0000
 401866469,2026,12,regular,Central Michigan,Buffalo,0,False,fbs,fbs,Mid-American,Mid-American,65,65.0000,1.9712,35.0000,23.0000,-1.1063,42.0000,3.0775,1.1601,10,0,0,0.0000
-401866694,2026,12,regular,North Carolina A&T,UAlbany,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,56,56.0000,-12.1246,20.0000,27.0000,-9.8598,29.0000,-2.2648,4.7317,12,0,0,0.0000
-401866694,2026,12,regular,UAlbany,North Carolina A&T,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,63,63.0000,0.8967,25.0000,33.0000,4.3320,30.0000,-3.4353,-4.7317,12,1,0,0.0000
-401866695,2026,12,regular,Hampton,Stony Brook,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,60,60.0000,-12.3641,13.0000,41.0000,-4.9574,19.0000,-7.4067,-11.3922,12,1,0,0.0000
-401866695,2026,12,regular,Stony Brook,Hampton,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,74,74.0000,-17.8510,29.0000,34.0000,-13.4026,40.0000,-4.4484,11.3922,11,2,0,0.0000
+401866694,2026,12,regular,North Carolina A&T,UAlbany,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,56,56.0000,-12.1246,20.0000,27.0000,-9.8123,29.0000,-2.3123,4.7317,12,0,0,0.0000
+401866694,2026,12,regular,UAlbany,North Carolina A&T,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,63,63.0000,0.8967,25.0000,33.0000,4.3681,30.0000,-3.4714,-4.7317,12,1,0,0.0000
+401866695,2026,12,regular,Hampton,Stony Brook,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,60,60.0000,-12.1100,13.0000,41.0000,-5.6540,19.0000,-6.4560,-9.8685,12,1,0,0.0000
+401866695,2026,12,regular,Stony Brook,Hampton,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,74,74.0000,-17.3318,29.0000,34.0000,-14.3878,40.0000,-2.9440,9.8685,11,2,0,0.0000
 401866696,2026,12,regular,Bryant,Rhode Island,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,48,48.0000,13.6637,23.0000,10.0000,5.4369,38.0000,8.2268,-4.2610,9,0,0,0.0000
-401866696,2026,12,regular,Rhode Island,Bryant,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,61,61.0000,-10.3277,27.0000,31.0000,-12.9193,30.0000,2.5916,4.2610,9,0,0,0.0000
+401866696,2026,12,regular,Rhode Island,Bryant,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,61,61.0000,-11.4292,26.0000,31.0000,-14.0209,30.0000,2.5916,4.2610,9,0,0,0.0000
 401866697,2026,12,regular,Campbell,Monmouth,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,78,78.0000,26.1750,36.0000,41.0000,12.6081,37.0000,13.5669,-3.0101,13,0,0,0.0000
 401866697,2026,12,regular,Monmouth,Campbell,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,70,70.0000,39.0894,32.0000,40.0000,38.6347,30.0000,0.4547,3.0101,13,0,0,0.0000
-401866698,2026,12,regular,Elon,Towson,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,65,65.0000,6.1267,27.0000,32.0000,-1.8085,33.0000,7.9351,8.1703,11,1,0,0.0000
-401866698,2026,12,regular,Towson,Elon,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,75,75.0000,18.0343,39.0000,48.0000,8.2722,27.0000,9.7620,-8.1703,10,0,0,0.0000
+401866698,2026,12,regular,Elon,Towson,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,66,66.0000,6.8566,27.0000,32.0000,-1.8085,34.0000,8.6651,8.1703,11,1,0,0.0000
+401866698,2026,12,regular,Towson,Elon,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,75,75.0000,18.0343,39.0000,48.0000,8.2073,27.0000,9.8269,-8.1703,10,0,0,0.0000
 401866699,2026,12,regular,Maine,New Hampshire,1,False,fcs,fcs,Coastal Athletic,Coastal Athletic,64,64.0000,7.3515,31.0000,23.0000,5.6441,41.0000,1.7074,-4.4425,11,0,0,0.0000
 401866699,2026,12,regular,New Hampshire,Maine,0,False,fcs,fcs,Coastal Athletic,Coastal Athletic,62,62.0000,4.5040,20.0000,42.0000,8.3981,20.0000,-3.8941,4.4425,12,1,0,0.0000
-401866700,2026,12,regular,Merrimack,Sacred Heart,1,False,fcs,fcs,FCS Independents,Coastal Athletic,65,54.0000,-0.2883,20.0000,27.0000,5.5040,27.0000,-5.7924,-2.8262,10,1,11,-3.8269
-401866700,2026,12,regular,Sacred Heart,Merrimack,0,False,fcs,fcs,Coastal Athletic,FCS Independents,52,47.0000,13.3262,24.0000,17.0000,7.9825,30.0000,5.3437,2.8262,9,0,5,-4.4718
+401866700,2026,12,regular,Merrimack,Sacred Heart,1,False,fcs,fcs,FCS Independents,Coastal Athletic,65,53.0000,4.0957,20.0000,27.0000,5.5040,26.0000,-1.4084,-2.8262,10,1,12,-7.7153
+401866700,2026,12,regular,Sacred Heart,Merrimack,0,False,fcs,fcs,Coastal Athletic,FCS Independents,52,47.0000,13.4087,24.0000,17.0000,1.9202,30.0000,11.4885,2.8262,9,0,5,-1.2008
 401867812,2026,12,regular,Brown,Dartmouth,0,False,fcs,fcs,Ivy,Ivy,61,61.0000,-2.6701,24.0000,29.0000,-3.0461,32.0000,0.3760,-1.2120,9,0,0,0.0000
 401867812,2026,12,regular,Dartmouth,Brown,1,False,fcs,fcs,Ivy,Ivy,71,71.0000,-0.0628,34.0000,31.0000,15.3857,40.0000,-15.4485,1.2120,10,1,0,0.0000
 401867825,2026,12,regular,Columbia,Cornell,1,False,fcs,fcs,Ivy,Ivy,58,58.0000,21.7197,26.0000,38.0000,19.1184,20.0000,2.6014,5.2011,10,1,0,0.0000
-401867825,2026,12,regular,Cornell,Columbia,0,False,fcs,fcs,Ivy,Ivy,69,69.0000,25.4750,37.0000,34.0000,12.4950,35.0000,12.9799,-5.2011,10,1,0,0.0000
+401867825,2026,12,regular,Cornell,Columbia,0,False,fcs,fcs,Ivy,Ivy,70,70.0000,29.6953,37.0000,34.0000,12.5224,36.0000,17.1729,-5.2011,10,1,0,0.0000
 401867844,2026,12,regular,Harvard,Yale,1,False,fcs,fcs,Ivy,Ivy,64,64.0000,-1.9103,27.0000,29.0000,-14.6082,35.0000,12.6978,-5.1272,9,1,0,0.0000
-401867844,2026,12,regular,Yale,Harvard,0,False,fcs,fcs,Ivy,Ivy,66,66.0000,-5.4334,25.0000,26.0000,-9.3784,40.0000,3.9451,5.1272,10,2,0,0.0000
+401867844,2026,12,regular,Yale,Harvard,0,False,fcs,fcs,Ivy,Ivy,66,66.0000,0.4510,25.0000,26.0000,-3.4941,40.0000,3.9451,5.1272,10,2,0,0.0000
 401867854,2026,12,regular,Illinois State,South Dakota,1,False,fcs,fcs,MVFC,MVFC,79,79.0000,-18.7940,27.0000,45.0000,-12.8065,34.0000,-5.9875,-2.6404,12,1,0,0.0000
 401867854,2026,12,regular,South Dakota,Illinois State,0,False,fcs,fcs,MVFC,MVFC,58,58.0000,-5.9154,20.0000,35.0000,-1.9270,23.0000,-3.9884,2.6404,11,1,0,0.0000
 401867864,2026,12,regular,Indiana State,South Dakota State,0,False,fcs,fcs,MVFC,MVFC,64,44.0000,14.5184,15.0000,27.0000,16.5592,17.0000,-2.0408,-12.9627,12,0,20,-7.2679
-401867864,2026,12,regular,South Dakota State,Indiana State,1,False,fcs,fcs,MVFC,MVFC,78,58.0000,8.1293,41.0000,28.0000,1.6023,30.0000,6.5270,12.9627,12,1,20,1.8390
-401867873,2026,12,regular,Murray State,Northern Iowa,1,False,fcs,fcs,MVFC,MVFC,73,64.0000,12.4915,28.0000,31.0000,10.5790,33.0000,1.9125,-0.7142,13,1,9,7.7316
+401867864,2026,12,regular,South Dakota State,Indiana State,1,False,fcs,fcs,MVFC,MVFC,78,58.0000,8.3997,41.0000,28.0000,1.8727,30.0000,6.5270,12.9627,12,1,20,1.8390
+401867873,2026,12,regular,Murray State,Northern Iowa,1,False,fcs,fcs,MVFC,MVFC,73,64.0000,12.4915,28.0000,31.0000,10.4577,33.0000,2.0337,-0.7142,13,1,9,7.7316
 401867873,2026,12,regular,Northern Iowa,Murray State,0,False,fcs,fcs,MVFC,MVFC,61,36.0000,-19.8437,9.0000,25.0000,-20.8990,11.0000,1.0554,0.7142,12,0,25,4.8795
-401867881,2026,12,regular,North Dakota,Southern Illinois,1,False,fcs,fcs,MVFC,MVFC,69,69.0000,11.8183,30.0000,39.0000,16.7006,30.0000,-4.8823,4.7932,12,0,0,0.0000
-401867881,2026,12,regular,Southern Illinois,North Dakota,0,False,fcs,fcs,MVFC,MVFC,69,69.0000,8.1196,32.0000,39.0000,1.4700,30.0000,6.6496,-4.7932,12,1,0,0.0000
+401867881,2026,12,regular,North Dakota,Southern Illinois,1,False,fcs,fcs,MVFC,MVFC,69,69.0000,11.8183,30.0000,39.0000,16.7006,30.0000,-4.8823,5.2725,12,0,0,0.0000
+401867881,2026,12,regular,Southern Illinois,North Dakota,0,False,fcs,fcs,MVFC,MVFC,69,69.0000,8.1196,32.0000,39.0000,1.4700,30.0000,6.6496,-5.2725,12,1,0,0.0000
 401867906,2026,12,regular,Central Connecticut,Duquesne,1,False,fcs,fcs,NEC,NEC,63,63.0000,-10.5085,26.0000,26.0000,-22.2999,37.0000,11.7913,3.5686,14,1,0,0.0000
 401867906,2026,12,regular,Duquesne,Central Connecticut,0,False,fcs,fcs,NEC,NEC,54,54.0000,-2.0432,23.0000,21.0000,-2.3016,33.0000,0.2584,-3.5686,14,1,0,0.0000
-401867915,2026,12,regular,Long Island University,Robert Morris,0,False,fcs,fcs,NEC,NEC,65,65.0000,-0.6790,25.0000,30.0000,2.9074,35.0000,-3.5864,-2.3174,12,2,0,0.0000
+401867915,2026,12,regular,Long Island University,Robert Morris,0,False,fcs,fcs,NEC,NEC,65,65.0000,-1.8091,25.0000,30.0000,2.9074,35.0000,-4.7165,-2.3174,12,2,0,0.0000
 401867915,2026,12,regular,Robert Morris,Long Island University,1,False,fcs,fcs,NEC,NEC,66,66.0000,-10.4489,20.0000,45.0000,-2.5515,21.0000,-7.8974,2.3174,12,0,0,0.0000
-401867927,2026,12,regular,Stonehill,Wagner,1,False,fcs,fcs,NEC,NEC,56,56.0000,-8.1890,22.0000,32.0000,-3.2887,24.0000,-4.9003,-21.1759,11,1,0,0.0000
-401867927,2026,12,regular,Wagner,Stonehill,0,False,fcs,fcs,NEC,NEC,70,70.0000,0.6086,25.0000,38.0000,11.8231,32.0000,-11.2145,21.1759,12,1,0,0.0000
-401867959,2026,12,regular,Delaware State,South Carolina State,0,False,fcs,fcs,MEAC,MEAC,56,56.0000,2.8234,22.0000,40.0000,-1.7947,16.0000,4.6181,-4.5483,10,0,0,0.0000
-401867959,2026,12,regular,South Carolina State,Delaware State,1,False,fcs,fcs,MEAC,MEAC,76,76.0000,3.5599,28.0000,34.0000,4.5190,42.0000,-0.9591,4.5483,10,2,0,0.0000
+401867927,2026,12,regular,Stonehill,Wagner,1,False,fcs,fcs,NEC,NEC,56,56.0000,-3.9435,22.0000,32.0000,0.9568,24.0000,-4.9003,-21.1759,11,1,0,0.0000
+401867927,2026,12,regular,Wagner,Stonehill,0,False,fcs,fcs,NEC,NEC,69,69.0000,0.2357,25.0000,38.0000,11.8231,31.0000,-11.5874,21.1759,12,1,0,0.0000
+401867959,2026,12,regular,Delaware State,South Carolina State,0,False,fcs,fcs,MEAC,MEAC,57,57.0000,9.1687,23.0000,41.0000,4.5507,16.0000,4.6181,-4.5904,10,0,0,0.0000
+401867959,2026,12,regular,South Carolina State,Delaware State,1,False,fcs,fcs,MEAC,MEAC,76,76.0000,3.5599,28.0000,34.0000,4.5190,42.0000,-0.9591,4.5904,10,2,0,0.0000
 401867965,2026,12,regular,Howard,Norfolk State,0,False,fcs,fcs,MEAC,MEAC,69,61.0000,-9.7317,22.0000,32.0000,-12.8128,29.0000,3.0810,10.0113,11,0,8,-0.8840
 401867965,2026,12,regular,Norfolk State,Howard,1,False,fcs,fcs,MEAC,MEAC,60,59.0000,16.3512,25.0000,21.0000,7.1976,38.0000,9.1535,-10.0113,9,0,1,0.1296
-401867971,2026,12,regular,Morgan State,North Carolina Central,0,False,fcs,fcs,MEAC,MEAC,61,61.0000,-2.3353,19.0000,38.0000,2.9609,23.0000,-5.2962,9.7594,12,0,0,0.0000
-401867971,2026,12,regular,North Carolina Central,Morgan State,1,False,fcs,fcs,MEAC,MEAC,61,61.0000,10.3614,27.0000,27.0000,5.6075,34.0000,4.7539,-9.7594,12,0,0,0.0000
+401867971,2026,12,regular,Morgan State,North Carolina Central,0,False,fcs,fcs,MEAC,MEAC,60,60.0000,0.7778,19.0000,37.0000,6.0886,23.0000,-5.3108,11.3812,12,0,0,0.0000
+401867971,2026,12,regular,North Carolina Central,Morgan State,1,False,fcs,fcs,MEAC,MEAC,61,61.0000,9.7285,27.0000,27.0000,4.9922,34.0000,4.7363,-11.3812,12,0,0,0.0000
 401867998,2026,12,regular,Bucknell,Colgate,1,False,fcs,fcs,Patriot,Patriot,62,62.0000,-2.6127,26.0000,36.0000,2.6218,26.0000,-5.2346,-1.6888,13,2,0,0.0000
-401867998,2026,12,regular,Colgate,Bucknell,0,False,fcs,fcs,Patriot,Patriot,60,60.0000,-4.4736,24.0000,29.0000,1.7337,31.0000,-6.2073,1.6888,13,0,0,0.0000
-401868015,2026,12,regular,Fordham,Holy Cross,0,False,fcs,fcs,Patriot,Patriot,63,63.0000,-3.7223,21.0000,26.0000,8.4606,37.0000,-12.1830,-10.4092,9,1,0,0.0000
-401868015,2026,12,regular,Holy Cross,Fordham,1,False,fcs,fcs,Patriot,Patriot,56,56.0000,6.0400,22.0000,24.0000,6.0316,32.0000,0.0085,10.4092,8,2,0,0.0000
-401868021,2026,12,regular,Georgetown,Villanova,0,False,fcs,fcs,Patriot,Patriot,67,67.0000,-14.1526,23.0000,35.0000,-15.3141,32.0000,1.1615,-5.1439,11,0,0,0.0000
+401867998,2026,12,regular,Colgate,Bucknell,0,False,fcs,fcs,Patriot,Patriot,60,60.0000,-7.8473,24.0000,29.0000,1.7337,31.0000,-9.5810,1.6888,13,0,0,0.0000
+401868015,2026,12,regular,Fordham,Holy Cross,0,False,fcs,fcs,Patriot,Patriot,63,63.0000,-9.0613,20.0000,26.0000,4.8419,37.0000,-13.9032,-8.3292,9,1,0,0.0000
+401868015,2026,12,regular,Holy Cross,Fordham,1,False,fcs,fcs,Patriot,Patriot,56,56.0000,5.8390,22.0000,24.0000,6.0316,32.0000,-0.1925,8.3292,8,2,0,0.0000
+401868021,2026,12,regular,Georgetown,Villanova,0,False,fcs,fcs,Patriot,Patriot,67,67.0000,-11.9807,23.0000,35.0000,-15.3141,32.0000,3.3334,-5.1439,11,0,0,0.0000
 401868021,2026,12,regular,Villanova,Georgetown,1,False,fcs,fcs,Patriot,Patriot,64,64.0000,8.7145,29.0000,31.0000,13.1618,33.0000,-4.4474,5.1439,12,2,0,0.0000
-401868032,2026,12,regular,Lafayette,Lehigh,1,False,fcs,fcs,Patriot,Patriot,63,63.0000,24.6377,33.0000,27.0000,22.5997,36.0000,2.0380,-0.9209,13,2,0,0.0000
-401868032,2026,12,regular,Lehigh,Lafayette,0,False,fcs,fcs,Patriot,Patriot,54,54.0000,27.0958,27.0000,17.0000,21.4928,37.0000,5.6030,0.9209,13,3,0,0.0000
-401868039,2026,12,regular,Richmond,William & Mary,1,False,fcs,fcs,Patriot,Patriot,55,55.0000,7.2061,23.0000,17.0000,-6.6081,38.0000,13.8142,-4.9627,11,1,0,0.0000
-401868039,2026,12,regular,William & Mary,Richmond,0,False,fcs,fcs,Patriot,Patriot,57,57.0000,-1.6134,23.0000,25.0000,-1.5768,32.0000,-0.0366,4.9627,12,0,0,0.0000
-401868059,2026,12,regular,Abilene Christian,Eastern Kentucky,1,False,fcs,fcs,UAC,UAC,63,47.0000,-2.2042,24.0000,24.0000,-10.2802,23.0000,8.0759,5.8865,13,1,16,3.1166
-401868059,2026,12,regular,Eastern Kentucky,Abilene Christian,0,False,fcs,fcs,UAC,UAC,59,51.0000,14.0666,24.0000,21.0000,10.6822,30.0000,3.3844,-5.8865,13,1,8,-6.9194
-401868092,2026,12,regular,Eastern Washington,Portland State,1,False,fcs,fcs,Big Sky,Big Sky,56,56.0000,23.2147,30.0000,36.0000,14.2142,20.0000,9.0005,-13.1841,10,1,0,0.0000
-401868092,2026,12,regular,Portland State,Eastern Washington,0,False,fcs,fcs,Big Sky,Big Sky,78,78.0000,8.4966,36.0000,42.0000,19.0283,36.0000,-10.5317,13.1841,11,2,0,0.0000
+401868032,2026,12,regular,Lafayette,Lehigh,1,False,fcs,fcs,Patriot,Patriot,64,64.0000,27.5622,34.0000,28.0000,25.5242,36.0000,2.0380,-0.9209,13,2,0,0.0000
+401868032,2026,12,regular,Lehigh,Lafayette,0,False,fcs,fcs,Patriot,Patriot,55,55.0000,26.5888,27.0000,18.0000,20.9859,37.0000,5.6030,0.9209,13,3,0,0.0000
+401868039,2026,12,regular,Richmond,William & Mary,1,False,fcs,fcs,Patriot,Patriot,57,57.0000,11.3848,23.0000,17.0000,-6.6081,40.0000,17.9929,-6.7869,11,1,0,0.0000
+401868039,2026,12,regular,William & Mary,Richmond,0,False,fcs,fcs,Patriot,Patriot,58,58.0000,-1.5902,23.0000,26.0000,-1.6665,32.0000,0.0763,6.7869,12,0,0,0.0000
+401868059,2026,12,regular,Abilene Christian,Eastern Kentucky,1,False,fcs,fcs,UAC,UAC,63,48.0000,-3.6971,24.0000,25.0000,-11.7730,23.0000,8.0759,4.1580,13,1,15,4.5908
+401868059,2026,12,regular,Eastern Kentucky,Abilene Christian,0,False,fcs,fcs,UAC,UAC,58,50.0000,18.2700,24.0000,21.0000,10.7067,29.0000,7.5633,-4.1580,13,1,8,-6.4703
+401868069,2026,12,regular,Austin Peay,Central Arkansas,0,False,fcs,fcs,UAC,UAC,49,49.0000,3.4356,17.0000,30.0000,-0.9205,19.0000,4.3561,7.0354,10,1,0,0.0000
+401868069,2026,12,regular,Central Arkansas,Austin Peay,1,False,fcs,fcs,UAC,UAC,80,80.0000,18.3351,33.0000,28.0000,11.3564,52.0000,6.9787,-7.0354,11,3,0,0.0000
+401868083,2026,12,regular,Cal Poly,UC Davis,0,False,fcs,fcs,Big Sky,Big Sky,56,56.0000,11.1875,23.0000,35.0000,4.6323,21.0000,6.5552,-5.6863,12,0,0,0.0000
+401868083,2026,12,regular,UC Davis,Cal Poly,1,False,fcs,fcs,Big Sky,Big Sky,81,81.0000,25.3782,41.0000,40.0000,11.7763,41.0000,13.6020,5.6863,12,1,0,0.0000
+401868092,2026,12,regular,Eastern Washington,Portland State,1,False,fcs,fcs,Big Sky,Big Sky,57,57.0000,24.9775,31.0000,37.0000,15.9770,20.0000,9.0005,-13.1841,10,1,0,0.0000
+401868092,2026,12,regular,Portland State,Eastern Washington,0,False,fcs,fcs,Big Sky,Big Sky,78,78.0000,15.5568,37.0000,42.0000,19.0283,36.0000,-3.4715,13.1841,11,2,0,0.0000
+401868100,2026,12,regular,Idaho,Idaho State,0,False,fcs,fcs,Big Sky,Big Sky,71,71.0000,-21.2628,19.0000,44.0000,-22.9141,27.0000,1.6513,8.0208,11,1,0,0.0000
+401868100,2026,12,regular,Idaho State,Idaho,1,False,fcs,fcs,Big Sky,Big Sky,72,72.0000,3.4862,31.0000,46.0000,3.5738,26.0000,-0.0876,-8.0208,10,1,0,0.0000
 401868117,2026,12,regular,Montana,Montana State,0,False,fcs,fcs,Big Sky,Big Sky,78,73.0000,11.8725,39.0000,49.0000,12.1010,24.0000,-0.2286,0.6950,10,1,5,-0.9621
-401868117,2026,12,regular,Montana State,Montana,1,False,fcs,fcs,Big Sky,Big Sky,59,58.0000,32.5475,36.0000,25.0000,16.0461,33.0000,16.5013,-0.6950,11,0,1,-0.2801
-401868128,2026,12,regular,Northern Arizona,Northern Colorado,1,False,fcs,fcs,Big Sky,Big Sky,64,64.0000,24.2867,37.0000,36.0000,19.4035,28.0000,4.8832,-1.9731,10,0,0,0.0000
+401868117,2026,12,regular,Montana State,Montana,1,False,fcs,fcs,Big Sky,Big Sky,59,58.0000,32.3219,36.0000,25.0000,15.8417,33.0000,16.4802,-0.6950,11,0,1,-0.2801
+401868128,2026,12,regular,Northern Arizona,Northern Colorado,1,False,fcs,fcs,Big Sky,Big Sky,64,64.0000,24.2867,37.0000,36.0000,19.4286,28.0000,4.8582,-1.9731,10,0,0,0.0000
 401868128,2026,12,regular,Northern Colorado,Northern Arizona,0,False,fcs,fcs,Big Sky,Big Sky,64,64.0000,15.8066,28.0000,31.0000,3.9032,33.0000,11.9034,1.9731,10,0,0,0.0000
 401868167,2026,12,regular,Utah Tech,Weber State,0,False,fcs,fcs,Big Sky,Big Sky,68,68.0000,1.3601,27.0000,38.0000,3.2347,30.0000,-1.8746,-2.8189,11,1,0,0.0000
-401868167,2026,12,regular,Weber State,Utah Tech,1,False,fcs,fcs,Big Sky,Big Sky,67,67.0000,-0.5312,30.0000,34.0000,-7.5058,33.0000,6.9746,2.8189,11,1,0,0.0000
+401868167,2026,12,regular,Weber State,Utah Tech,1,False,fcs,fcs,Big Sky,Big Sky,67,67.0000,-0.3465,30.0000,34.0000,-7.2485,33.0000,6.9019,2.8189,11,1,0,0.0000
 401868178,2026,12,regular,Charleston Southern,Eastern Illinois,0,False,fcs,fcs,OVC,OVC,47,47.0000,-12.1476,8.0000,3.0000,-2.5749,44.0000,-9.5726,-10.5457,14,1,0,0.0000
-401868178,2026,12,regular,Eastern Illinois,Charleston Southern,1,False,fcs,fcs,OVC,OVC,71,71.0000,-11.7320,20.0000,47.0000,-17.4675,24.0000,5.7355,10.5457,15,2,0,0.0000
+401868178,2026,12,regular,Eastern Illinois,Charleston Southern,1,False,fcs,fcs,OVC,OVC,71,71.0000,-11.9258,20.0000,47.0000,-17.6613,24.0000,5.7355,10.5457,15,2,0,0.0000
 401868193,2026,12,regular,Gardner-Webb,Tennessee State,1,False,fcs,fcs,OVC,OVC,70,70.0000,-15.6690,22.0000,38.0000,-4.3094,32.0000,-11.3596,5.9640,11,4,0,0.0000
 401868193,2026,12,regular,Tennessee State,Gardner-Webb,0,False,fcs,fcs,OVC,OVC,67,67.0000,-7.7298,18.0000,33.0000,1.9290,34.0000,-9.6588,-5.9640,10,1,0,0.0000
 401868203,2026,12,regular,Southeast Missouri State,UT Martin,1,False,fcs,fcs,OVC,OVC,54,54.0000,1.0619,19.0000,15.0000,-6.8717,39.0000,7.9337,18.8077,13,1,0,0.0000
-401868203,2026,12,regular,UT Martin,Southeast Missouri State,0,False,fcs,fcs,OVC,OVC,75,75.0000,28.9374,36.0000,33.0000,17.1843,42.0000,11.7531,-18.8077,14,1,0,0.0000
+401868203,2026,12,regular,UT Martin,Southeast Missouri State,0,False,fcs,fcs,OVC,OVC,75,75.0000,28.9374,36.0000,33.0000,17.1824,42.0000,11.7550,-18.8077,14,1,0,0.0000
 401868208,2026,12,regular,Lindenwood,Western Illinois,1,False,fcs,fcs,OVC,OVC,52,38.0000,-16.3144,10.0000,20.0000,-7.4128,18.0000,-8.9015,-3.7225,13,0,14,-1.2282
 401868208,2026,12,regular,Western Illinois,Lindenwood,0,False,fcs,fcs,OVC,OVC,76,62.0000,7.1264,33.0000,14.0000,-0.1550,48.0000,7.2814,3.7225,13,2,14,1.0322
-401868218,2026,12,regular,Butler,Morehead State,1,False,fcs,fcs,Pioneer,Pioneer,61,61.0000,6.8407,30.0000,18.0000,1.8213,43.0000,5.0194,10.3676,9,1,0,0.0000
-401868218,2026,12,regular,Morehead State,Butler,0,False,fcs,fcs,Pioneer,Pioneer,58,58.0000,-2.9698,21.0000,39.0000,6.8834,19.0000,-9.8532,-10.3676,9,0,0,0.0000
+401868218,2026,12,regular,Butler,Morehead State,1,False,fcs,fcs,Pioneer,Pioneer,63,63.0000,10.5058,29.0000,19.0000,7.9112,44.0000,2.5946,10.3676,9,1,0,0.0000
+401868218,2026,12,regular,Morehead State,Butler,0,False,fcs,fcs,Pioneer,Pioneer,58,58.0000,-2.6536,21.0000,39.0000,6.8834,19.0000,-9.5370,-10.3676,9,0,0,0.0000
 401868226,2026,12,regular,Davidson,Marist,1,False,fcs,fcs,Pioneer,Pioneer,63,34.0000,-13.7683,11.0000,17.0000,-6.7971,17.0000,-6.9713,2.5035,11,0,29,4.8706
-401868226,2026,12,regular,Marist,Davidson,0,False,fcs,fcs,Pioneer,Pioneer,64,56.0000,14.8747,28.0000,26.0000,6.7368,30.0000,8.1378,-2.5035,10,0,8,-0.8268
-401868244,2026,12,regular,West Florida,West Georgia,0,False,fcs,fcs,UAC,UAC,73,73.0000,1.1519,33.0000,40.0000,-1.9994,33.0000,3.1513,-0.0005,10,1,0,0.0000
+401868226,2026,12,regular,Marist,Davidson,0,False,fcs,fcs,Pioneer,Pioneer,65,57.0000,13.7615,28.0000,27.0000,5.6237,30.0000,8.1378,-2.5035,10,0,8,-0.8268
+401868234,2026,12,regular,North Alabama,Tarleton State,1,False,fcs,fcs,UAC,UAC,58,50.0000,3.2931,15.0000,26.0000,0.8186,24.0000,2.4745,-0.3023,12,1,8,8.0352
+401868234,2026,12,regular,Tarleton State,North Alabama,0,False,fcs,fcs,UAC,UAC,68,68.0000,14.9794,34.0000,35.0000,6.7637,33.0000,8.2157,0.3023,12,1,0,0.0000
+401868244,2026,12,regular,West Florida,West Georgia,0,False,fcs,fcs,UAC,UAC,73,73.0000,1.2021,33.0000,40.0000,-1.9330,33.0000,3.1350,-0.0005,10,1,0,0.0000
 401868244,2026,12,regular,West Georgia,West Florida,1,False,fcs,fcs,UAC,UAC,55,55.0000,4.2810,21.0000,33.0000,10.9775,22.0000,-6.6965,0.0005,10,1,0,0.0000
-401868253,2026,12,regular,Dayton,Presbyterian,0,False,fcs,fcs,Pioneer,Pioneer,57,57.0000,2.9944,23.0000,20.0000,-1.5036,37.0000,4.4980,7.6511,10,2,0,0.0000
-401868253,2026,12,regular,Presbyterian,Dayton,1,False,fcs,fcs,Pioneer,Pioneer,61,61.0000,-4.9222,18.0000,37.0000,-3.0926,24.0000,-1.8296,-7.6511,9,1,0,0.0000
-401868283,2026,12,regular,St. Thomas (MN),Valparaiso,0,False,fcs,fcs,Pioneer,Pioneer,61,61.0000,-20.6870,21.0000,26.0000,-11.4165,35.0000,-9.2705,-0.8375,15,2,0,0.0000
-401868283,2026,12,regular,Valparaiso,St. Thomas (MN),1,False,fcs,fcs,Pioneer,Pioneer,59,59.0000,-42.4751,14.0000,42.0000,-34.7795,17.0000,-7.6957,0.8375,15,0,0,0.0000
+401868253,2026,12,regular,Dayton,Presbyterian,0,False,fcs,fcs,Pioneer,Pioneer,58,58.0000,3.1445,24.0000,21.0000,-0.6655,37.0000,3.8100,5.4435,10,2,0,0.0000
+401868253,2026,12,regular,Presbyterian,Dayton,1,False,fcs,fcs,Pioneer,Pioneer,61,61.0000,-2.5455,18.0000,37.0000,-0.7159,24.0000,-1.8296,-5.4435,9,1,0,0.0000
+401868283,2026,12,regular,St. Thomas (MN),Valparaiso,0,False,fcs,fcs,Pioneer,Pioneer,61,61.0000,-19.4531,21.0000,26.0000,-10.1826,35.0000,-9.2705,-0.9833,15,2,0,0.0000
+401868283,2026,12,regular,Valparaiso,St. Thomas (MN),1,False,fcs,fcs,Pioneer,Pioneer,59,59.0000,-41.5049,14.0000,42.0000,-34.9610,17.0000,-6.5439,0.9833,15,0,0,0.0000
+401868287,2026,12,regular,San Diego,Stetson,1,False,fcs,fcs,Pioneer,Pioneer,80,63.0000,24.6580,42.0000,24.0000,19.9809,39.0000,4.6772,3.2565,12,1,17,2.7672
+401868287,2026,12,regular,Stetson,San Diego,0,False,fcs,fcs,Pioneer,Pioneer,54,43.0000,-0.8004,15.0000,35.0000,-3.5812,8.0000,2.7808,-3.2565,12,0,11,-2.0607
+401868294,2026,12,regular,Houston Christian,UT Rio Grande Valley,1,False,fcs,fcs,Southland,Southland,90,90.0000,-20.7094,33.0000,51.0000,-16.4361,39.0000,-4.2732,-7.5131,15,0,0,0.0000
+401868294,2026,12,regular,UT Rio Grande Valley,Houston Christian,0,False,fcs,fcs,Southland,Southland,61,61.0000,-15.2788,23.0000,26.0000,-0.7611,35.0000,-14.5177,7.5131,14,1,0,0.0000
 401868304,2026,12,regular,Alabama A&M,Mississippi Valley State,0,False,fcs,fcs,SWAC,SWAC,65,61.0000,4.9447,25.0000,31.0000,-7.5972,30.0000,12.5418,-2.5798,14,1,4,4.4735
 401868304,2026,12,regular,Mississippi Valley State,Alabama A&M,1,False,fcs,fcs,SWAC,SWAC,58,52.0000,-14.0722,11.0000,26.0000,-4.9610,26.0000,-9.1111,2.5798,15,4,6,-1.7298
-401868314,2026,12,regular,Northwestern State,Stephen F. Austin,0,False,fcs,fcs,Southland,Southland,61,28.0000,-9.7667,9.0000,21.0000,-10.6285,7.0000,0.8618,-13.5842,14,0,33,-4.1372
-401868314,2026,12,regular,Stephen F. Austin,Northwestern State,1,False,fcs,fcs,Southland,Southland,82,40.0000,18.7907,24.0000,19.0000,15.2017,21.0000,3.5890,13.5842,12,1,42,7.5122
+401868314,2026,12,regular,Northwestern State,Stephen F. Austin,0,False,fcs,fcs,Southland,Southland,61,28.0000,-9.7631,9.0000,21.0000,-10.6249,7.0000,0.8618,-13.5842,14,0,33,-4.1372
+401868314,2026,12,regular,Stephen F. Austin,Northwestern State,1,False,fcs,fcs,Southland,Southland,82,40.0000,18.7943,24.0000,19.0000,15.2053,21.0000,3.5890,13.5842,12,1,42,7.5122
 401868323,2026,12,regular,Nicholls,SE Louisiana,1,False,fcs,fcs,Southland,Southland,57,53.0000,-21.0940,12.0000,30.0000,-16.6267,23.0000,-4.4673,1.9661,13,1,4,-2.2585
-401868323,2026,12,regular,SE Louisiana,Nicholls,0,False,fcs,fcs,Southland,Southland,73,73.0000,7.6990,30.0000,26.0000,2.7120,47.0000,4.9870,-1.9661,13,1,0,0.0000
-401868352,2026,12,regular,East Tennessee State,Mercer,0,False,fcs,fcs,Southern,Southern,71,71.0000,8.5203,27.0000,28.0000,-4.1912,43.0000,12.7116,-11.8091,12,1,0,0.0000
-401868352,2026,12,regular,Mercer,East Tennessee State,1,False,fcs,fcs,Southern,Southern,54,54.0000,-0.7457,16.0000,24.0000,-5.2545,30.0000,4.5088,11.8091,11,2,0,0.0000
-401868353,2026,12,regular,Alabama State,Prairie View A&M,1,False,fcs,fcs,SWAC,SWAC,57,41.0000,-11.5394,12.0000,25.0000,-2.7544,16.0000,-8.7850,-3.0629,11,1,16,-4.5431
-401868353,2026,12,regular,Prairie View A&M,Alabama State,0,False,fcs,fcs,SWAC,SWAC,68,52.0000,19.8216,23.0000,19.0000,6.8514,33.0000,12.9701,3.0629,11,1,16,-0.6125
-401868365,2026,12,regular,Alcorn State,Jackson State,1,False,fcs,fcs,SWAC,SWAC,62,56.0000,24.9648,22.0000,36.0000,16.1344,20.0000,8.8304,-9.7059,13,0,6,12.0101
-401868365,2026,12,regular,Jackson State,Alcorn State,0,False,fcs,fcs,SWAC,SWAC,73,73.0000,16.8036,36.0000,32.0000,16.4260,41.0000,0.3776,9.7059,12,1,0,0.0000
-401868380,2026,12,regular,Furman,VMI,0,False,fcs,fcs,Southern,Southern,68,53.0000,13.3404,29.0000,23.0000,12.1310,30.0000,1.2094,1.6346,10,0,15,6.2365
+401868323,2026,12,regular,SE Louisiana,Nicholls,0,False,fcs,fcs,Southland,Southland,73,73.0000,7.7195,30.0000,26.0000,2.7325,47.0000,4.9870,-1.9661,13,1,0,0.0000
+401868352,2026,12,regular,East Tennessee State,Mercer,0,False,fcs,fcs,Southern,Southern,71,71.0000,8.0006,27.0000,28.0000,-4.7110,43.0000,12.7116,-11.8091,12,1,0,0.0000
+401868352,2026,12,regular,Mercer,East Tennessee State,1,False,fcs,fcs,Southern,Southern,54,54.0000,-0.8293,16.0000,24.0000,-5.2545,30.0000,4.4252,11.8091,11,2,0,0.0000
+401868353,2026,12,regular,Alabama State,Prairie View A&M,1,False,fcs,fcs,SWAC,SWAC,57,41.0000,-11.2076,12.0000,25.0000,-2.8386,16.0000,-8.3690,-2.8379,11,1,16,-4.5951
+401868353,2026,12,regular,Prairie View A&M,Alabama State,0,False,fcs,fcs,SWAC,SWAC,71,55.0000,10.7181,22.0000,20.0000,1.7135,35.0000,9.0047,2.8379,11,1,16,-0.6125
+401868365,2026,12,regular,Alcorn State,Jackson State,1,False,fcs,fcs,SWAC,SWAC,61,55.0000,24.9604,22.0000,35.0000,16.1300,20.0000,8.8304,-9.7059,13,0,6,12.0101
+401868365,2026,12,regular,Jackson State,Alcorn State,0,False,fcs,fcs,SWAC,SWAC,73,73.0000,16.5522,36.0000,32.0000,16.3971,41.0000,0.1551,9.7059,12,1,0,0.0000
+401868380,2026,12,regular,Furman,VMI,0,False,fcs,fcs,Southern,Southern,68,53.0000,13.3404,29.0000,23.0000,12.1310,30.0000,1.2094,1.6346,10,0,15,5.8408
 401868380,2026,12,regular,VMI,Furman,1,False,fcs,fcs,Southern,Southern,57,42.0000,-8.3468,13.0000,8.0000,-5.9527,34.0000,-2.3942,-1.6346,10,1,15,0.4271
-401868396,2026,12,regular,The Citadel,Western Carolina,0,False,fcs,fcs,Southern,Southern,62,62.0000,22.0535,32.0000,13.0000,2.6676,49.0000,19.3859,5.3882,11,1,0,0.0000
-401868396,2026,12,regular,Western Carolina,The Citadel,1,False,fcs,fcs,Southern,Southern,70,70.0000,15.5847,29.0000,39.0000,10.3499,31.0000,5.2348,-5.3882,10,1,0,0.0000
+401868396,2026,12,regular,The Citadel,Western Carolina,0,False,fcs,fcs,Southern,Southern,63,63.0000,18.6410,32.0000,14.0000,-0.7449,49.0000,19.3859,5.3882,11,1,0,0.0000
+401868396,2026,12,regular,Western Carolina,The Citadel,1,False,fcs,fcs,Southern,Southern,71,71.0000,21.1270,29.0000,40.0000,15.8921,31.0000,5.2348,-5.3882,10,1,0,0.0000
 401868941,2026,12,regular,Arkansas-Pine Bluff,Texas Southern,0,False,fcs,fcs,SWAC,SWAC,50,38.0000,10.9686,18.0000,18.0000,5.6309,20.0000,5.3377,-2.1715,10,0,12,-1.2863
-401868941,2026,12,regular,Texas Southern,Arkansas-Pine Bluff,1,False,fcs,fcs,SWAC,SWAC,70,39.0000,-9.4005,12.0000,13.0000,-15.0182,26.0000,5.6178,2.1715,11,1,31,10.8424
-401868947,2026,12,regular,Bethune-Cookman,Florida A&M,1,False,fcs,fcs,SWAC,SWAC,63,63.0000,-9.5125,22.0000,25.0000,-6.3988,38.0000,-3.1138,-0.4452,14,0,0,0.0000
-401868947,2026,12,regular,Florida A&M,Bethune-Cookman,0,False,fcs,fcs,SWAC,SWAC,64,64.0000,-15.0056,22.0000,27.0000,-7.0325,37.0000,-7.9731,0.4452,16,2,0,0.0000
-401869149,2026,12,regular,East Texas A&M,Incarnate Word,1,False,fcs,fcs,Southland,Southland,77,39.0000,-11.7727,7.0000,26.0000,-16.6845,13.0000,4.9119,-1.9259,13,1,38,2.6423
+401868941,2026,12,regular,Texas Southern,Arkansas-Pine Bluff,1,False,fcs,fcs,SWAC,SWAC,58,39.0000,-9.4005,12.0000,13.0000,-15.0182,26.0000,5.6178,2.1715,10,1,19,8.2013
+401868947,2026,12,regular,Bethune-Cookman,Florida A&M,1,False,fcs,fcs,SWAC,SWAC,63,63.0000,-9.5125,22.0000,25.0000,-6.3988,38.0000,-3.1138,0.1480,14,0,0,0.0000
+401868947,2026,12,regular,Florida A&M,Bethune-Cookman,0,False,fcs,fcs,SWAC,SWAC,64,64.0000,-13.2627,22.0000,27.0000,-5.2896,37.0000,-7.9731,-0.1480,16,2,0,0.0000
+401869141,2026,12,regular,Lamar,McNeese,0,False,fcs,fcs,Southland,Southland,71,71.0000,3.1468,30.0000,32.0000,-2.1273,39.0000,5.2741,-2.0799,10,4,0,0.0000
+401869141,2026,12,regular,McNeese,Lamar,1,False,fcs,fcs,Southland,Southland,54,54.0000,-1.8378,22.0000,25.0000,-3.7202,29.0000,1.8825,2.0799,12,1,0,0.0000
+401869149,2026,12,regular,East Texas A&M,Incarnate Word,1,False,fcs,fcs,Southland,Southland,77,39.0000,-11.7727,7.0000,26.0000,-16.6845,13.0000,4.9119,-1.9259,13,1,38,2.2642
 401869149,2026,12,regular,Incarnate Word,East Texas A&M,0,False,fcs,fcs,Southland,Southland,64,51.0000,13.8053,27.0000,29.0000,12.7040,22.0000,1.1013,1.9259,11,1,13,5.8181
 401869929,2026,12,regular,App State,UL Monroe,1,False,fbs,fbs,Sun Belt,Sun Belt,73,73.0000,-6.0887,26.0000,35.0000,-7.6831,38.0000,1.5944,-10.3984,11,1,0,0.0000
 401869929,2026,12,regular,UL Monroe,App State,0,False,fbs,fbs,Sun Belt,Sun Belt,59,59.0000,-6.6358,21.0000,28.0000,1.7794,31.0000,-8.4152,10.3984,10,1,0,0.0000
-401869946,2026,12,regular,Coastal Carolina,Louisiana,0,False,fbs,fbs,Sun Belt,Sun Belt,71,71.0000,1.0758,33.0000,42.0000,0.2840,29.0000,0.7918,0.2131,13,1,0,0.0000
-401869946,2026,12,regular,Louisiana,Coastal Carolina,1,False,fbs,fbs,Sun Belt,Sun Belt,51,51.0000,8.8508,24.0000,21.0000,15.2703,30.0000,-6.4195,-0.2131,11,1,0,0.0000
-401869953,2026,12,regular,Georgia Southern,Troy,0,False,fbs,fbs,Sun Belt,Sun Belt,61,54.0000,3.9257,23.0000,31.0000,4.6258,23.0000,-0.7001,1.8302,12,1,7,5.0919
-401869953,2026,12,regular,Troy,Georgia Southern,1,False,fbs,fbs,Sun Belt,Sun Belt,47,33.0000,-5.2505,6.0000,21.0000,0.4132,12.0000,-5.6637,-1.8302,13,0,14,-5.2407
+401869938,2026,12,regular,Arkansas State,Louisiana Tech,0,False,fbs,fbs,Sun Belt,Sun Belt,56,44.0000,-6.3878,14.0000,23.0000,-1.4352,21.0000,-4.9526,-2.2059,11,1,12,0.4156
+401869938,2026,12,regular,Louisiana Tech,Arkansas State,1,False,fbs,fbs,Sun Belt,Sun Belt,64,43.0000,16.9058,20.0000,26.0000,15.1734,17.0000,1.7324,2.2059,10,0,21,9.2766
+401869946,2026,12,regular,Coastal Carolina,Louisiana,0,False,fbs,fbs,Sun Belt,Sun Belt,70,70.0000,2.6341,33.0000,41.0000,1.2171,29.0000,1.4171,-0.7058,13,1,0,0.0000
+401869946,2026,12,regular,Louisiana,Coastal Carolina,1,False,fbs,fbs,Sun Belt,Sun Belt,52,52.0000,9.1010,25.0000,21.0000,15.2345,31.0000,-6.1335,0.7058,11,1,0,0.0000
+401869953,2026,12,regular,Georgia Southern,Troy,0,False,fbs,fbs,Sun Belt,Sun Belt,61,54.0000,-0.8825,22.0000,31.0000,4.6258,23.0000,-5.5083,1.8302,12,1,7,5.0919
+401869953,2026,12,regular,Troy,Georgia Southern,1,False,fbs,fbs,Sun Belt,Sun Belt,47,33.0000,-5.2505,6.0000,21.0000,0.4132,12.0000,-5.6637,-1.8302,13,0,14,-5.0316
 401869958,2026,12,regular,Georgia State,Marshall,0,False,fbs,fbs,Sun Belt,Sun Belt,73,73.0000,9.5650,30.0000,33.0000,6.3367,40.0000,3.2283,0.4745,12,0,0,0.0000
 401869958,2026,12,regular,Marshall,Georgia State,1,False,fbs,fbs,Sun Belt,Sun Belt,57,57.0000,12.9226,23.0000,24.0000,9.9479,33.0000,2.9747,-0.4745,11,0,0,0.0000
-401871077,2026,12,regular,Delaware,New Mexico State,0,False,fbs,fbs,Conference USA,Conference USA,71,71.0000,25.7711,34.0000,45.0000,25.7549,26.0000,0.0162,1.9691,11,0,0,0.0000
-401871077,2026,12,regular,New Mexico State,Delaware,1,False,fbs,fbs,Conference USA,Conference USA,63,63.0000,12.5081,26.0000,36.0000,13.8973,27.0000,-1.3892,-1.9691,11,1,0,0.0000
-401871078,2026,12,regular,Florida International,Kennesaw State,0,False,fbs,fbs,Conference USA,Conference USA,64,60.0000,11.5411,26.0000,37.0000,7.4465,23.0000,4.0946,7.4553,9,1,4,4.2266
+401871077,2026,12,regular,Delaware,New Mexico State,0,False,fbs,fbs,Conference USA,Conference USA,71,71.0000,25.7711,34.0000,45.0000,25.7549,26.0000,0.0162,0.5799,11,0,0,0.0000
+401871077,2026,12,regular,New Mexico State,Delaware,1,False,fbs,fbs,Conference USA,Conference USA,63,63.0000,12.5081,26.0000,36.0000,13.9331,27.0000,-1.4250,-0.5799,11,1,0,0.0000
+401871078,2026,12,regular,Florida International,Kennesaw State,0,False,fbs,fbs,Conference USA,Conference USA,64,60.0000,13.5359,27.0000,37.0000,9.4414,23.0000,4.0946,7.4553,9,1,4,4.2266
 401871078,2026,12,regular,Kennesaw State,Florida International,1,False,fbs,fbs,Conference USA,Conference USA,60,60.0000,24.0904,29.0000,29.0000,18.8342,31.0000,5.2562,-7.4553,9,0,0,0.0000
-401871079,2026,12,regular,Jacksonville State,Missouri State,1,False,fbs,fbs,Conference USA,Conference USA,57,57.0000,15.4694,24.0000,32.0000,13.0976,25.0000,2.3719,-3.9451,11,1,0,0.0000
+401871079,2026,12,regular,Jacksonville State,Missouri State,1,False,fbs,fbs,Conference USA,Conference USA,59,59.0000,21.8137,24.0000,34.0000,19.5219,25.0000,2.2917,-3.9451,11,1,0,0.0000
 401871079,2026,12,regular,Missouri State,Jacksonville State,0,False,fbs,fbs,Conference USA,Conference USA,70,70.0000,-6.1974,27.0000,33.0000,-4.9674,37.0000,-1.2300,3.9451,11,2,0,0.0000
 401871080,2026,12,regular,Liberty,Western Kentucky,1,False,fbs,fbs,Conference USA,Conference USA,59,43.0000,10.5682,23.0000,22.0000,16.2298,21.0000,-5.6617,4.6896,11,1,16,3.9985
 401871080,2026,12,regular,Western Kentucky,Liberty,0,False,fbs,fbs,Conference USA,Conference USA,75,43.0000,-8.8539,12.0000,27.0000,-8.6968,16.0000,-0.1571,-4.6896,11,0,32,15.1409
-401871081,2026,12,regular,Middle Tennessee,Sam Houston,0,False,fbs,fbs,Conference USA,Conference USA,63,63.0000,7.7809,26.0000,29.0000,-2.4473,34.0000,10.2282,-2.0856,12,1,0,0.0000
-401871081,2026,12,regular,Sam Houston,Middle Tennessee,1,False,fbs,fbs,Conference USA,Conference USA,68,68.0000,1.2607,29.0000,34.0000,3.4884,34.0000,-2.2277,2.0856,13,0,0,0.0000
+401871081,2026,12,regular,Middle Tennessee,Sam Houston,0,False,fbs,fbs,Conference USA,Conference USA,63,63.0000,6.9832,26.0000,29.0000,-2.6519,34.0000,9.6351,-1.1167,12,1,0,0.0000
+401871081,2026,12,regular,Sam Houston,Middle Tennessee,1,False,fbs,fbs,Conference USA,Conference USA,68,68.0000,1.0353,29.0000,34.0000,3.3432,34.0000,-2.3079,1.1167,13,0,0,0.0000
 401871101,2026,12,regular,South Alabama,Southern Miss,0,False,fbs,fbs,Sun Belt,Sun Belt,76,76.0000,25.4278,33.0000,29.0000,14.2055,47.0000,11.2223,7.2162,11,2,0,0.0000
-401871101,2026,12,regular,Southern Miss,South Alabama,1,False,fbs,fbs,Sun Belt,Sun Belt,59,59.0000,13.8140,25.0000,36.0000,10.8321,23.0000,2.9820,-7.2162,13,0,0,0.0000
-401872619,2026,12,regular,Pennsylvania,Princeton,0,False,fcs,fcs,Ivy,Ivy,75,75.0000,-17.6423,27.0000,28.0000,-3.3011,47.0000,-14.3413,-2.2753,15,2,0,0.0000
+401871101,2026,12,regular,Southern Miss,South Alabama,1,False,fbs,fbs,Sun Belt,Sun Belt,59,59.0000,13.4709,25.0000,36.0000,10.8321,23.0000,2.6389,-7.2162,13,0,0,0.0000
+401872619,2026,12,regular,Pennsylvania,Princeton,0,False,fcs,fcs,Ivy,Ivy,75,75.0000,-18.6594,27.0000,28.0000,-3.3011,47.0000,-15.3583,-2.2753,15,2,0,0.0000
 401872619,2026,12,regular,Princeton,Pennsylvania,1,False,fcs,fcs,Ivy,Ivy,65,65.0000,-12.5248,20.0000,43.0000,-4.8092,22.0000,-7.7157,2.2753,14,0,0,0.0000
-401872643,2026,12,regular,Mercyhurst,New Haven,1,False,fcs,fcs,NEC,NEC,64,64.0000,11.0215,29.0000,29.0000,3.8192,35.0000,7.2023,6.5872,10,1,0,0.0000
-401872643,2026,12,regular,New Haven,Mercyhurst,0,False,fcs,fcs,NEC,NEC,48,48.0000,-14.6808,15.0000,24.0000,-9.0876,24.0000,-5.5932,-6.5872,10,2,0,0.0000
+401872643,2026,12,regular,Mercyhurst,New Haven,1,False,fcs,fcs,NEC,NEC,64,64.0000,5.9391,29.0000,29.0000,-1.2851,35.0000,7.2242,0.1376,10,1,0,0.0000
+401872643,2026,12,regular,New Haven,Mercyhurst,0,False,fcs,fcs,NEC,NEC,48,48.0000,-17.7618,14.0000,24.0000,-9.0876,24.0000,-8.6742,-0.1376,10,2,0,0.0000
+401891330,2026,12,regular,Chicago State,Southern Utah,0,False,fcs,fcs,FCS Independents,Big Sky,60,21.0000,-8.1237,3.0000,14.0000,-7.0906,7.0000,-1.0330,-12.1784,13,1,39,-1.1622
+401891330,2026,12,regular,Southern Utah,Chicago State,1,False,fcs,fcs,Big Sky,FCS Independents,65,33.0000,11.8653,17.0000,12.0000,4.6795,21.0000,7.1858,12.1784,11,1,32,8.6846
