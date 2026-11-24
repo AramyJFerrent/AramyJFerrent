@@ -240,13 +240,13 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910026,2027,R,2026-11-22 01:00:00+00:00,MIN,MEM,104.0,95.0,4.0,False,Target Center,Minneapolis,MN
 401910027,2027,R,2026-11-22 01:00:00+00:00,SAS,NOP,114.0,91.0,4.0,False,Frost Bank Center,San Antonio,TX
 401910028,2027,R,2026-11-22 03:00:00+00:00,SAC,BOS,97.0,96.0,4.0,False,Golden 1 Center,Sacramento,CA
-401910029,2027,R,2026-11-22 20:30:00+00:00,ATL,DET,,,,False,State Farm Arena,Atlanta,GA
-401910030,2027,R,2026-11-22 23:00:00+00:00,MIA,OKC,,,,False,Kaseya Center,Miami,FL
-401910031,2027,R,2026-11-23 00:00:00+00:00,WAS,ORL,,,,False,Capital One Arena,Washington,DC
-401910032,2027,R,2026-11-23 00:00:00+00:00,CHI,DEN,,,,False,United Center,Chicago,IL
-401910033,2027,R,2026-11-23 00:00:00+00:00,UTA,DAL,,,,False,Delta Center,Salt Lake City,UT
-401910034,2027,R,2026-11-23 01:00:00+00:00,NYK,IND,,,,False,Madison Square Garden,New York,NY
-401910035,2027,R,2026-11-23 01:30:00+00:00,GSW,BOS,,,,False,Chase Center,San Francisco,CA
+401910029,2027,R,2026-11-22 20:30:00+00:00,ATL,DET,107.0,97.0,4.0,False,State Farm Arena,Atlanta,GA
+401910030,2027,R,2026-11-22 23:00:00+00:00,MIA,OKC,123.0,113.0,4.0,False,Kaseya Center,Miami,FL
+401910031,2027,R,2026-11-23 00:00:00+00:00,WAS,ORL,116.0,96.0,4.0,False,Capital One Arena,Washington,DC
+401910032,2027,R,2026-11-23 00:00:00+00:00,CHI,DEN,145.0,151.0,5.0,False,United Center,Chicago,IL
+401910033,2027,R,2026-11-23 00:00:00+00:00,UTA,DAL,114.0,116.0,4.0,False,Delta Center,Salt Lake City,UT
+401910034,2027,R,2026-11-23 01:00:00+00:00,NYK,IND,113.0,106.0,4.0,False,Madison Square Garden,New York,NY
+401910035,2027,R,2026-11-23 01:30:00+00:00,GSW,BOS,88.0,87.0,4.0,False,Chase Center,San Francisco,CA
 401910036,2027,R,2026-11-24 00:00:00+00:00,CHA,MEM,,,,False,Spectrum Center,Charlotte,NC
 401910037,2027,R,2026-11-24 00:00:00+00:00,PHI,POR,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401910038,2027,R,2026-11-24 00:30:00+00:00,IND,OKC,,,,False,Gainbridge Fieldhouse,Indianapolis,IN
