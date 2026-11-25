@@ -1,6 +1,6 @@
 # NBA score predictions
 
-Updated Tue Nov 24, 2026 06:11 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
+Updated Tue Nov 24, 2026 08:37 PM ET. Refreshed automatically several times a day during the season, around the injury report's deadlines; each game's prediction is locked at tip-off and graded once the final score is in.
 
 Each team's expected points are its expected possessions times its expected points per possession, from team efficiency ratings and the ratings of the players expected to play, blended with the betting line. Each game is then simulated 10,000 times, overtime included. The predicted score is the expected points rounded; the 80% range holds 80% of simulated outcomes for each team. Basketball is the most predictable major sport, but a team's score still varies by about ±14 points around the forecast, so read the win chance and the ranges too.
 
@@ -14,23 +14,21 @@ The edge columns check every side of the spread, the moneyline and the total for
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 7:00 PM | DET @ ORL | DET 108, ORL 105 | DET 57% | DET -135 / ORL +135<br>posted DET -130 / ORL +110 | DET -2.4 / DET -2.5 (fav covers 52%) | 212.9 / 212.5 (over 50%) | 94–122 / 91–119 | 6% | DET: Cade Cunningham (day-to-day); Duncan Robinson (out); Jalen Duren (out) (-0.3)<br>ORL: Paolo Banchero (out) (+1.5) | no edge | no edge | no edge |
-| 8:00 PM | BOS @ WAS | BOS 114, WAS 104 | BOS 78% | BOS -350 / WAS +350<br>posted BOS -424 / WAS +331 | BOS -10.2 / BOS -10.5 (fav covers 48%) | 218.2 / 218.5 (over 49%) | 100–128 / 90–118 | 4% | BOS: Mitchell Robinson (out) (+0.4)<br>WAS: Jamir Watkins (out); Justin Champagnie (out); Tristan Vukcevic (out) (+0.3) | no edge | no edge | no edge |
-| 10:00 PM | DAL @ DEN | DAL 113, DEN 121 | DEN 73% | DAL +265 / DEN -265<br>posted DAL +251 / DEN -310 | DEN -8.4 / DEN -8.5 (fav covers 50%) | 234.5 / 234.5 (over 49%) | 98–128 / 107–136 | 4% | DAL: P.J. Washington (day-to-day); Dereck Lively II (out); Sergio de Larrea (out) (+1.0) | no edge | no edge | no edge |
+| 10:00 PM | DAL @ DEN | DAL 113, DEN 121 | DEN 73% | DAL +270 / DEN -270<br>posted DAL +241 / DEN -297 | DEN -8.5 / DEN -8.5 (fav covers 50%) | 234.5 / 234.5 (over 49%) | 98–128 / 107–136 | 4% | DAL: P.J. Washington (day-to-day); Dereck Lively II (out); Sergio de Larrea (out) (+1.0) | no edge | no edge | no edge |
 
 ## Wednesday, November 25
 
 | Time (ET) | Game | Predicted score | Win chance | Fair moneyline | Spread: model / line | Total: model / line | 80% range | Overtime | Missing (effect on margin) | Spread edge | Moneyline edge | Total edge |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 5:00 PM | MIA @ PHI | MIA 119, PHI 120 | PHI 55% | MIA +120 / PHI -120<br>posted MIA -102 / PHI -116 | PHI -1.7 / PHI -1.5 (fav covers 52%) | 238.7 / 238.5 (over 50%) | 104–134 / 105–135 | 5% | MIA: Giannis Antetokounmpo (day-to-day) (-0.9)<br>PHI: Joel Embiid (day-to-day) (-0.5) | no edge | no edge | no edge |
-| 7:00 PM | CHI @ CHA | CHI 111, CHA 112 | CHA 51% | CHI +105 / CHA -105 | CHA -0.3 | 223.2 | 97–126 / 97–126 | 6% | CHI: Norman Powell (out); Jalen Smith (day-to-day); Caleb Wilson (out) (+0.3)<br>CHA: Sion James (day-to-day); Grayson Allen (out); Dennis Schroder (out); Kon Knueppel (out); Ryan Kalkbrenner (day-to-day) (-0.2) | no line yet | no line yet | no line yet |
-| 7:30 PM | CLE @ NYK | CLE 109, NYK 112 | NYK 60% | CLE +150 / NYK -150<br>posted CLE +137 / NYK -163 | NYK -3.3 / NYK -3.5 (fav covers 51%) | 220.6 / 220.5 (over 49%) | 95–123 / 98–126 | 5% | CLE: Evan Mobley (out) (-0.3)<br>NYK: OG Anunoby (out); Josh Hart (day-to-day); Karl-Anthony Towns (day-to-day) (-2.1) | no edge | no edge | no edge |
-| 7:30 PM | MIN @ OKC | MIN 111, OKC 112 | OKC 52% | MIN +110 / OKC -110<br>posted MIN +105 / OKC -125 | OKC -0.8 / OKC -1.5 (fav covers 50%) | 223.6 / 223.5 (over 49%) | 97–126 / 98–127 | 5% | MIN: Anthony Edwards (out); Donte DiVincenzo (out); Jaylen Clark (out) (-0.5)<br>OKC: Chet Holmgren (out); Jalen Williams (out); Aday Mara (day-to-day); Cason Wallace (out); Alex Caruso (out); Jaylin Williams (day-to-day) (-1.5) | no edge | no edge | no edge |
-| 8:00 PM | LAC @ MEM | LAC 112, MEM 119 | MEM 70% | LAC +235 / MEM -235 | MEM -7 | 231.6 | 98–127 / 105–134 | 5% | LAC: Jordan Miller (out); Bradley Beal (out) (+0.5)<br>MEM: Cameron Boozer (out); Jerami Grant (out); Scotty Pippen Jr. (out) (+2.3) | no line yet | no line yet | no line yet |
+| 5:00 PM | MIA @ PHI | MIA 118, PHI 120 | PHI 55% | MIA +125 / PHI -125<br>posted MIA -102 / PHI -116 | PHI -1.8 / PHI -1.5 (fav covers 53%) | 238.8 / 238.5 (over 50%) | 104–134 / 106–135 | 5% | MIA: Giannis Antetokounmpo (day-to-day) (-0.9)<br>PHI: Joel Embiid (day-to-day) (-0.5) | no edge | no edge | no edge |
+| 7:00 PM | CHI @ CHA | CHI 112, CHA 113 | CHI 50% | CHI -100 / CHA +100 | pick'em | 223.3 | 97–126 / 98–126 | 5% | CHI: Norman Powell (out); Jalen Smith (day-to-day); Caleb Wilson (out) (+0.3)<br>CHA: Sion James (day-to-day); Grayson Allen (out); Dennis Schroder (out); Kon Knueppel (out); Ryan Kalkbrenner (day-to-day) (-0.2) | no line yet | no line yet | no line yet |
+| 7:30 PM | CLE @ NYK | CLE 109, NYK 112 | NYK 61% | CLE +155 / NYK -155<br>posted CLE +137 / NYK -163 | NYK -3.5 / NYK -3.5 (fav covers 52%) | 220.5 / 220.5 (over 49%) | 94–123 / 98–126 | 5% | CLE: Evan Mobley (out) (-0.3)<br>NYK: OG Anunoby (out); Josh Hart (day-to-day); Karl-Anthony Towns (day-to-day) (-2.1) | no edge | no edge | no edge |
+| 7:30 PM | MIN @ OKC | MIN 112, OKC 113 | OKC 54% | MIN +115 / OKC -115<br>posted MIN +101 / OKC -119 | OKC -1.3 / OKC -1.5 (fav covers 51%) | 224.5 / 224.5 (over 49%) | 97–126 / 99–127 | 5% | MIN: Anthony Edwards (out); Donte DiVincenzo (out); Jaylen Clark (out) (-0.5)<br>OKC: Chet Holmgren (out); Jalen Williams (out); Aday Mara (out); Cason Wallace (out); Jaylin Williams (out) (+1.5) | no edge | no edge | no edge |
+| 8:00 PM | LAC @ MEM | LAC 112, MEM 119 | MEM 70% | LAC +230 / MEM -230 | MEM -6.9 | 231.6 | 98–127 / 105–134 | 4% | LAC: Jordan Miller (out); Bradley Beal (out) (+0.5)<br>MEM: Cameron Boozer (out); Jerami Grant (out); Scotty Pippen Jr. (out) (+2.3) | no line yet | no line yet | no line yet |
 | 8:00 PM | BKN @ MIL | BKN 117, MIL 118 | MIL 54% | BKN +115 / MIL -115 | MIL -1.3 | 234.9 | 102–132 / 103–133 | 5% | BKN: Nolan Traore (out) (+0.8) | no line yet | no line yet | no line yet |
-| 8:30 PM | PHX @ HOU | PHX 108, HOU 116 | HOU 73% | PHX +265 / HOU -265<br>posted PHX +319 / HOU -406 | HOU -8.1 / HOU -8.5 (fav covers 49%) | 224.5 / 224.5 (over 49%) | 94–123 / 102–130 | 5% | PHX: Mark Williams (out) (+0.5) | no edge | no edge | no edge |
-| 10:00 PM | SAC @ GSW | SAC 107, GSW 112 | GSW 64% | SAC +180 / GSW -180 | GSW -4.9 | 219.7 | 93–122 / 98–126 | 5% | SAC: Maxime Raynaud (out) (+0.7)<br>GSW: Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out); Stephen Curry (out); Brandon Williams (out) (-3.3) | no line yet | no line yet | no line yet |
-| 10:00 PM | SAS @ POR | SAS 113, POR 114 | POR 51% | SAS +105 / POR -105 | POR -0.3 | 226.3 | 99–127 / 99–128 | 5% | SAS: Dylan Harper (out); Victor Wembanyama (day-to-day); Tobias Harris (out); De'Aaron Fox (day-to-day) (-1.3)<br>POR: Ja Morant (out); Chris Youngblood (out) (+0.8) | no line yet | no line yet | no line yet |
+| 8:30 PM | PHX @ HOU | PHX 108, HOU 116 | HOU 73% | PHX +265 / HOU -265<br>posted PHX +319 / HOU -406 | HOU -8 / HOU -8.5 (fav covers 48%) | 224.6 / 224.5 (over 49%) | 94–123 / 102–130 | 5% | PHX: Mark Williams (out) (+0.5) | no edge | no edge | no edge |
+| 10:00 PM | SAC @ GSW | SAC 107, GSW 113 | GSW 66% | SAC +200 / GSW -200 | GSW -5.7 | 219.5 | 92–121 / 98–126 | 5% | SAC: Maxime Raynaud (out) (+0.7)<br>GSW: Yaxel Lendeborg (day-to-day); Moses Moody (out); Jimmy Butler III (out); Kristaps Porzingis (out); Stephen Curry (out); Brandon Williams (out) (-2.6) | no line yet | no line yet | no line yet |
+| 10:00 PM | SAS @ POR | SAS 113, POR 114 | POR 51% | SAS +105 / POR -105 | POR -0.3 | 226.2 | 99–127 / 99–128 | 6% | SAS: Dylan Harper (out); Victor Wembanyama (day-to-day); Tobias Harris (out); De'Aaron Fox (day-to-day) (-1.3)<br>POR: Ja Morant (out); Chris Youngblood (out) (+0.8) | no line yet | no line yet | no line yet |
 
 ## How the 2026-27 predictions have done
 
@@ -83,20 +81,20 @@ Points per 100 possessions better than an average team on a neutral floor, combi
 | 1 | BOS | +7.3 | +6.9 | +2.3 | +5.0 | 95.4 | +0.3 | 1634 |
 | 2 | SAS | +7.0 | +7.0 | +2.7 | +4.4 | 99.4 | -1.3 | 1721 |
 | 3 | HOU | +6.4 | +6.3 | +4.0 | +2.3 | 98.2 | +0.0 | 1616 |
-| 4 | DET | +5.2 | +5.1 | +2.1 | +3.1 | 97.4 | -0.3 | 1629 |
+| 4 | DET | +5.2 | +5.1 | +2.1 | +3.1 | 97.4 | -1.3 | 1629 |
 | 5 | MIN | +5.1 | +5.3 | +1.2 | +4.0 | 103.6 | -0.5 | 1615 |
 | 6 | DEN | +5.1 | +5.1 | +5.1 | +0.0 | 100.3 | +0.0 | 1586 |
 | 7 | LAL | +3.8 | +3.9 | +2.9 | +0.9 | 101.4 | -1.3 | 1607 |
 | 8 | NYK | +3.7 | +3.5 | -0.3 | +4.0 | 93.9 | -2.1 | 1696 |
 | 9 | POR | +3.4 | +3.4 | +1.8 | +1.6 | 102.0 | +0.8 | 1595 |
-| 10 | OKC | +1.9 | +1.9 | -0.6 | +2.5 | 101.6 | -1.5 | 1617 |
+| 10 | OKC | +1.9 | +1.9 | -0.6 | +2.5 | 101.6 | +1.5 | 1617 |
 | 11 | PHI | +1.6 | +1.6 | +1.6 | +0.0 | 100.4 | -0.5 | 1564 |
 | 12 | MIA | +0.8 | +0.8 | +2.1 | -1.4 | 104.7 | -0.9 | 1559 |
 | 13 | PHX | +0.7 | +0.7 | +0.8 | -0.1 | 100.8 | +0.5 | 1538 |
 | 14 | TOR | +0.3 | +0.3 | +0.1 | +0.2 | 97.5 | -2.5 | 1485 |
 | 15 | CLE | +0.3 | +0.3 | +1.7 | -1.4 | 100.9 | -0.3 | 1552 |
 | 16 | MEM | -0.3 | -0.4 | +1.4 | -1.7 | 100.5 | +2.3 | 1496 |
-| 17 | GSW | -0.4 | -0.4 | -1.0 | +0.7 | 98.4 | -3.3 | 1474 |
+| 17 | GSW | -0.4 | -0.4 | -1.0 | +0.7 | 98.4 | -2.6 | 1474 |
 | 18 | ORL | -0.6 | -0.6 | -1.6 | +0.9 | 98.4 | +1.5 | 1497 |
 | 19 | IND | -1.4 | -1.4 | -0.2 | -1.2 | 105.0 | -0.6 | 1373 |
 | 20 | DAL | -1.8 | -1.8 | -1.2 | -0.7 | 101.1 | +1.0 | 1460 |
