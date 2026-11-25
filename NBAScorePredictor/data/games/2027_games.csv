@@ -257,9 +257,9 @@ game_id,season,game_type,start,home_team,away_team,home_score,away_score,periods
 401910043,2027,R,2026-11-24 01:30:00+00:00,HOU,LAC,116.0,104.0,4.0,False,Toyota Center (Houston),Houston,TX
 401910044,2027,R,2026-11-24 03:00:00+00:00,LAL,UTA,109.0,94.0,4.0,False,crypto.com Arena,Los Angeles,CA
 401910045,2027,R,2026-11-24 03:00:00+00:00,SAC,SAS,107.0,123.0,4.0,False,Golden 1 Center,Sacramento,CA
-401909314,2027,R,2026-11-25 00:00:00+00:00,ORL,DET,,,,False,Kia Center,Orlando,FL
-401909315,2027,R,2026-11-25 01:00:00+00:00,WAS,BOS,,,,False,Capital One Arena,Washington,DC
-401909316,2027,R,2026-11-25 03:00:00+00:00,DEN,DAL,,,,False,Ball Arena,Denver,CO
+401909314,2027,R,2026-11-25 00:00:00+00:00,ORL,DET,86.0,104.0,4.0,False,Kia Center,Orlando,FL
+401909315,2027,R,2026-11-25 01:00:00+00:00,WAS,BOS,116.0,131.0,4.0,False,Capital One Arena,Washington,DC
+401909316,2027,R,2026-11-25 03:00:00+00:00,DEN,DAL,101.0,120.0,4.0,False,Ball Arena,Denver,CO
 401909317,2027,R,2026-11-25 22:00:00+00:00,PHI,MIA,,,,False,Xfinity Mobile Arena,Philadelphia,PA
 401909318,2027,R,2026-11-26 00:00:00+00:00,CHA,CHI,,,,False,Spectrum Center,Charlotte,NC
 401909319,2027,R,2026-11-26 00:30:00+00:00,NYK,CLE,,,,False,Madison Square Garden,New York,NY
