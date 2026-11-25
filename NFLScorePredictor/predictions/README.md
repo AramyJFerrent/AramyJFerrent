@@ -1,6 +1,6 @@
 # NFL score predictions
 
-Updated Tue Nov 24, 2026 06:00 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
+Updated Wed Nov 25, 2026 05:30 PM ET. Refreshed automatically every day of the season; each game's prediction is locked at kickoff and graded once the final score is in. Scores are the most likely real scoreline near the expected points; ranges cover 80% of simulated outcomes for each team.
 
 Expected points blend the model with the betting line using the weight that has predicted best in recent seasons (see Current model fit). The spread and total columns show the model's own numbers next to the line, so you can see where it disagrees.
 
@@ -12,41 +12,41 @@ The edge columns price every side of the spread, moneyline and total with the fi
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Wed 11/25 8:00 PM | GB @ LA | GB 20, LA 23 | LA 58% | GB +140 / LA -140 | 20.5 – 23.1 | 10–31 / 12–35 | LA -3.6 / LA -2.5 | 48.6 / 43.5 | no edge | no edge | no edge | Jordan Love / Matthew Stafford |  |
-| Thu 11/26 1:00 PM | CHI @ DET | CHI 30, DET 27 | CHI 57% | CHI -130 / DET +130 | 28.7 – 26.6 | 17–41 / 14–39 | DET -2.3 / CHI -2.5 | 50.6 / 55.5 | no edge | no edge | no edge | Caleb Williams / Jared Goff |  |
-| Thu 11/26 4:30 PM | PHI @ DAL | PHI 20, DAL 27 | DAL 75% | PHI +295 / DAL -295 | 19.6 – 27.9 | 9–31 / 16–41 | DAL -6.5 / DAL -8.5 | 45.6 / 47.5 | no edge | no edge | no edge | Joe Milton III / Dak Prescott |  |
-| Thu 11/26 8:20 PM | KC @ BUF | KC 24, BUF 27 | BUF 60% | KC +150 / BUF -150 | 22.3 – 25.4 | 10–34 / 13–38 | BUF -3.9 / BUF -3.0 | 52.6 / 47.5 | no edge | no edge | no edge | Patrick Mahomes / Josh Allen |  |
-| Fri 11/27 3:00 PM | DEN @ PIT | DEN 20, PIT 17 | DEN 59% | DEN -145 / PIT +145 | 20.8 – 17.9 | 10–33 / 7–29 | DEN -1.8 / DEN -3.0 | 43.0 / 38.5 | no edge | no edge | no edge | Bo Nix / Aaron Rodgers |  |
-| Sun 11/29 1:00 PM | ATL @ MIN | ATL 17, MIN 24 | MIN 72% | ATL +255 / MIN -255 | 17.2 – 24.2 | 6–28 / 13–37 | MIN -7.6 / MIN -7.0 | 38.9 / 41.5 | no edge | no edge | no edge | Michael Penix Jr. / Kirk Cousins |  |
-| Sun 11/29 1:00 PM | BAL @ HOU | BAL 20, HOU 27 | HOU 70% | BAL +235 / HOU -235 | 20.5 – 26.9 | 10–32 / 15–39 | HOU -5.9 / HOU -6.5 | 44.2 / 47.5 | no edge | no edge | no edge | Jacoby Brissett / C.J. Stroud |  |
-| Sun 11/29 1:00 PM | NO @ CIN | NO 20, CIN 30 | CIN 77% | NO +340 / CIN -340 | 20.3 – 30.1 | 9–32 / 17–44 | CIN -7.5 / CIN -10.0 | 50.2 / 50.5 | no edge | no edge | no edge | Tyler Shough / Joe Burrow |  |
-| Sun 11/29 1:00 PM | NYG @ IND | NYG 23, IND 17 | NYG 69% | NYG -220 / IND +220 | 23.7 – 17.7 | 13–36 / 7–29 | NYG -0.1 / NYG -6.5 | 40.5 / 41.5 | no edge | no edge | no edge | J.J. McCarthy / Anthony Richardson |  |
-| Sun 11/29 1:00 PM | NYJ @ MIA | NYJ 23, MIA 20 | NYJ 61% | NYJ -155 / MIA +155 | 22.0 – 18.6 | 10–34 / 7–30 | NYJ -3.0 / NYJ -3.5 | 43.5 / 40.5 | no edge | no edge | no edge | Geno Smith / Kyle McCord |  |
-| Sun 11/29 1:00 PM | TEN @ JAX | TEN 17, JAX 31 | JAX 87% | TEN +680 / JAX -680 | 16.5 – 30.9 | 6–27 / 19–44 | JAX -12.7 / JAX -14.5 | 45.9 / 47.5 | no edge | no edge | no edge | Cam Ward / Trevor Lawrence |  |
-| Sun 11/29 4:05 PM | NE @ LAC | NE 17, LAC 20 | LAC 53% | NE +115 / LAC -115 | 17.4 – 18.3 | 7–29 / 7–30 | NE -5.8 / LAC -1.5 | 42.9 / 35.5 | no edge | no edge | no edge | Drake Maye / Justin Herbert |  |
-| Sun 11/29 4:25 PM | SEA @ SF | SEA 20, SF 23 | SF 59% | SEA +145 / SF -145 | 21.8 – 24.8 | 10–34 / 13–37 | SF -2.7 / SF -3.0 | 48.9 / 46.5 | no edge | no edge | no edge | Sam Darnold / Brock Purdy |  |
-| Sun 11/29 4:25 PM | WAS @ ARI | WAS 24, ARI 17 | WAS 71% | WAS -250 / ARI +250 | 24.9 – 17.8 | 13–37 / 7–29 | WAS -2.8 / WAS -7.5 | 46.6 / 42.5 | no edge | no edge | no edge | Jayden Daniels / Gardner Minshew |  |
-| Sun 11/29 8:20 PM | LV @ CLE | LV 17, CLE 20 | CLE 66% | LV +190 / CLE -190 | 17.7 – 22.7 | 7–29 / 10–35 | CLE -9.6 / CLE -4.5 | 37.7 / 40.5 | no edge | no edge | no edge | Fernando Mendoza / Deshaun Watson |  |
-| Mon 11/30 8:15 PM | CAR @ TB | CAR 20, TB 23 | TB 59% | CAR +145 / TB -145 | 20.2 – 23.3 | 9–32 / 12–35 | TB -3.3 / TB -3.0 | 43.9 / 43.5 | no edge | no edge | no edge | Bryce Young / Baker Mayfield |  |
+| Wed 11/25 8:00 PM | GB @ LA | GB 20, LA 23 | LA 59% | GB +145 / LA -145 | 20.5 – 23.1 | 10–31 / 12–35 | LA -3.7 / LA -2.5 | 47.8 / 43.5 | no edge | no edge | no edge | Jordan Love / Matthew Stafford |  |
+| Thu 11/26 1:00 PM | CHI @ DET | CHI 30, DET 27 | CHI 54% | CHI -120 / DET +120 | 28.3 – 27.1 | 16–41 / 15–40 | DET -2.3 / CHI -1.5 | 50.6 / 55.5 | no edge | no edge | no edge | Caleb Williams / Jared Goff |  |
+| Thu 11/26 4:30 PM | PHI @ DAL | PHI 20, DAL 27 | DAL 76% | PHI +310 / DAL -310 | 19.6 – 27.9 | 9–31 / 16–41 | DAL -6.5 / DAL -8.5 | 45.6 / 47.5 | no edge | no edge | no edge | Joe Milton III / Dak Prescott |  |
+| Thu 11/26 8:20 PM | KC @ BUF | KC 20, BUF 23 | BUF 61% | KC +155 / BUF -155 | 20.7 – 23.8 | 10–33 / 13–37 | BUF -3.9 / BUF -3.0 | 52.6 / 46.5 | no edge | no edge | Under 46.5 (-111): EV +7.7%, 57%, stake 2.1u | Patrick Mahomes / Josh Allen | wind 21 mph |
+| Fri 11/27 3:00 PM | DEN @ PIT | DEN 20, PIT 17 | DEN 61% | DEN -160 / PIT +160 | 19.9 – 16.3 | 9–31 / 6–27 | DEN -5.1 / DEN -3.5 | 39.7 / 36.5 | no edge | no edge | no edge | Bo Nix / Mason Rudolph | wind 12 mph |
+| Sun 11/29 1:00 PM | ATL @ MIN | ATL 17, MIN 23 | MIN 71% | ATL +245 / MIN -245 | 17.2 – 24.2 | 6–28 / 13–37 | MIN -7.6 / MIN -7.0 | 38.9 / 41.5 | no edge | no edge | no edge | Michael Penix Jr. / Kirk Cousins |  |
+| Sun 11/29 1:00 PM | BAL @ HOU | BAL 20, HOU 27 | HOU 69% | BAL +230 / HOU -230 | 20.5 – 26.9 | 10–32 / 15–39 | HOU -5.9 / HOU -6.5 | 44.2 / 47.5 | no edge | no edge | no edge | Jacoby Brissett / C.J. Stroud |  |
+| Sun 11/29 1:00 PM | NO @ CIN | NO 20, CIN 27 | CIN 78% | NO +355 / CIN -355 | 19.7 – 29.5 | 9–31 / 17–42 | CIN -7.5 / CIN -10.0 | 50.2 / 49.5 | no edge | no edge | no edge | Tyler Shough / Joe Burrow |  |
+| Sun 11/29 1:00 PM | NYG @ IND | NYG 23, IND 17 | NYG 68% | NYG -215 / IND +215 | 23.7 – 17.7 | 13–36 / 7–29 | NYG -0.1 / NYG -6.5 | 40.5 / 41.5 | no edge | no edge | no edge | J.J. McCarthy / Anthony Richardson |  |
+| Sun 11/29 1:00 PM | NYJ @ MIA | NYJ 20, MIA 17 | NYJ 61% | NYJ -155 / MIA +155 | 22.0 – 18.6 | 10–34 / 9–30 | NYJ -3.0 / NYJ -3.5 | 43.5 / 40.5 | no edge | no edge | no edge | Geno Smith / Kyle McCord |  |
+| Sun 11/29 1:00 PM | TEN @ JAX | TEN 17, JAX 31 | JAX 88% | TEN +715 / JAX -715 | 17.0 – 31.4 | 6–28 / 19–44 | JAX -12.7 / JAX -14.5 | 45.9 / 48.5 | no edge | no edge | no edge | Cam Ward / Trevor Lawrence |  |
+| Sun 11/29 4:05 PM | NE @ LAC | NE 20, LAC 17 | NE 57% | NE -130 / LAC +130 | 18.8 – 16.9 | 9–30 / 7–28 | NE -5.8 / NE -1.5 | 42.9 / 35.5 | no edge | no edge | no edge | Drake Maye / Justin Herbert |  |
+| Sun 11/29 4:25 PM | SEA @ SF | SEA 20, SF 23 | SF 57% | SEA +135 / SF -135 | 21.0 – 23.5 | 10–33 / 12–35 | SF -2.7 / SF -2.5 | 48.9 / 44.5 | no edge | no edge | no edge | Sam Darnold / Brock Purdy |  |
+| Sun 11/29 4:25 PM | WAS @ ARI | WAS 24, ARI 17 | WAS 71% | WAS -240 / ARI +240 | 24.2 – 17.5 | 13–37 / 7–28 | WAS -2.8 / WAS -7.0 | 46.6 / 41.5 | no edge | no edge | no edge | Jayden Daniels / Gardner Minshew |  |
+| Sun 11/29 8:20 PM | LV @ CLE | LV 17, CLE 20 | CLE 66% | LV +195 / CLE -195 | 17.1 – 22.1 | 7–28 / 10–34 | CLE -9.6 / CLE -4.5 | 37.7 / 39.5 | no edge | no edge | no edge | Fernando Mendoza / Deshaun Watson |  |
+| Mon 11/30 8:15 PM | CAR @ TB | CAR 20, TB 23 | TB 59% | CAR +145 / TB -145 | 20.2 – 23.3 | 10–32 / 12–35 | TB -3.3 / TB -3.0 | 43.9 / 43.5 | no edge | no edge | no edge | Bryce Young / Baker Mayfield |  |
 
 ## 2026 Week 13
 
 | Kickoff (ET) | Game | Predicted score | Win chance | Fair moneyline | Expected points | 80% range | Spread: model / line | Total: model / line | Spread edge | Moneyline edge | Total edge | QBs | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Thu 12/03 8:15 PM | KC @ LA | KC 20, LA 23 | LA 55% | KC +125 / LA -125 | 22.5 – 24.1 | 10–34 / 13–36 | LA -2.2 / LA -1.5 | 49.7 / 46.5 | no edge | no edge | no edge | P.Mahomes / M.Stafford |  |
-| Sun 12/06 1:00 PM | CIN @ CLE | CIN 27, CLE 20 | CIN 67% | CIN -205 / CLE +205 | 26.6 – 20.9 | 15–39 / 10–33 | CIN -3.1 / CIN -6.0 | 47.9 / 47.5 | no edge | no edge | no edge | J.Burrow / D.Watson |  |
-| Sun 12/06 1:00 PM | DET @ ATL | DET 27, ATL 24 | DET 62% | DET -165 / ATL +165 | 26.6 – 22.8 | 15–39 / 10–34 | DET -7.8 / DET -3.5 | 46.5 / 49.5 | no edge | no edge | no edge | J.Goff / M.Penix |  |
-| Sun 12/06 1:00 PM | GB @ NO | GB 23, NO 20 | GB 66% | GB -195 / NO +195 | 25.9 – 20.5 | 14–38 / 10–32 | GB -4.4 / GB -5.5 | 45.8 / 46.5 | no edge | no edge | no edge | J.Love / T.Shough |  |
-| Sun 12/06 1:00 PM | JAX @ CHI | JAX 24, CHI 27 | CHI 57% | JAX +135 / CHI -135 | 23.5 – 25.9 | 12–35 / 14–38 | CHI -1.8 / CHI -2.5 | 47.5 / 49.5 | no edge | no edge | no edge | T.Lawrence / C.Williams |  |
-| Sun 12/06 1:00 PM | LAC @ TB | LAC 17, TB 23 | TB 67% | LAC +205 / TB -205 | 17.5 – 23.0 | 7–29 / 11–35 | TB -5.3 / TB -5.5 | 39.0 / 40.5 | no edge | no edge | no edge | J.Herbert / B.Mayfield |  |
-| Sun 12/06 1:00 PM | SF @ NYG | SF 27, NYG 20 | SF 70% | SF -230 / NYG +230 | 27.0 – 20.5 | 15–40 / 10–33 | SF -6.7 / SF -6.5 | 49.9 / 47.5 | no edge | no edge | no edge | B.Purdy / J.McCarthy |  |
-| Sun 12/06 1:00 PM | WAS @ TEN | WAS 27, TEN 24 | WAS 61% | WAS -155 / TEN +155 | 25.5 – 22.0 | 13–38 / 10–34 | WAS -4.0 / WAS -3.5 | 46.7 / 47.5 | no edge | no edge | no edge | J.Daniels / C.Ward |  |
-| Sun 12/06 4:05 PM | MIA @ DEN | MIA 13, DEN 27 | DEN 89% | MIA +780 / DEN -780 | 12.6 – 26.9 | 3–23 / 14–40 | DEN -11.5 / DEN -14.5 | 40.4 / 39.5 | no edge | no edge | no edge | K.McCord / B.Nix |  |
-| Sun 12/06 4:05 PM | PHI @ ARI | PHI 20, ARI 17 | PHI 60% | PHI -150 / ARI +150 | 19.7 – 16.8 | 9–31 / 6–27 | PHI -1.1 / PHI -3.0 | 37.6 / 36.5 | no edge | no edge | no edge | J.Milton / J.Johnson |  |
-| Sun 12/06 4:25 PM | BUF @ NE | BUF 27, NE 17 | BUF 84% | BUF -515 / NE +515 | 28.3 – 16.2 | 16–41 / 6–27 | BUF -8.2 / BUF -12.5 | 45.8 / 44.5 | no edge | no edge | no edge | J.Allen / T.DeVito |  |
-| Sun 12/06 4:25 PM | CAR @ MIN | CAR 20, MIN 23 | MIN 67% | CAR +205 / MIN -205 | 18.9 – 24.5 | 9–30 / 13–37 | MIN -6.7 / MIN -5.5 | 42.3 / 43.5 | no edge | no edge | no edge | B.Young / K.Cousins |  |
-| Sun 12/06 8:20 PM | HOU @ PIT | HOU 23, PIT 20 | HOU 59% | HOU -145 / PIT +145 | 22.7 – 19.8 | 12–34 / 9–31 | HOU -1.6 / HOU -3.0 | 43.0 / 42.5 | no edge | no edge | no edge | C.Stroud / A.Rodgers |  |
-| Mon 12/07 8:15 PM | DAL @ SEA | DAL 20, SEA 27 | SEA 68% | DAL +220 / SEA -220 | 22.3 – 28.1 | 10–34 / 16–41 | SEA -2.8 / SEA -6.0 | 47.5 / 50.5 | no edge | no edge | no edge | D.Prescott / D.Lock |  |
+| Thu 12/03 8:15 PM | KC @ LA | KC 20, LA 23 | LA 55% | KC +120 / LA -120 | 22.0 – 23.6 | 10–34 / 12–35 | LA -2.2 / LA -1.5 | 49.7 / 45.5 | no edge | no edge | no edge | Patrick Mahomes / Matthew Stafford |  |
+| Sun 12/06 1:00 PM | CIN @ CLE | CIN 27, CLE 20 | CIN 67% | CIN -205 / CLE +205 | 26.1 – 20.4 | 14–38 / 10–32 | CIN -3.1 / CIN -6.0 | 47.9 / 46.5 | no edge | no edge | no edge | Joe Burrow / Deshaun Watson |  |
+| Sun 12/06 1:00 PM | DET @ ATL | DET 27, ATL 24 | DET 62% | DET -165 / ATL +165 | 26.6 – 22.8 | 15–39 / 10–34 | DET -7.8 / DET -3.5 | 46.5 / 49.5 | no edge | no edge | no edge | Jared Goff / Michael Penix Jr. |  |
+| Sun 12/06 1:00 PM | GB @ NO | GB 27, NO 20 | GB 67% | GB -200 / NO +200 | 25.9 – 20.5 | 14–38 / 10–33 | GB -4.4 / GB -5.5 | 45.8 / 46.5 | no edge | no edge | no edge | Jordan Love / Tyler Shough |  |
+| Sun 12/06 1:00 PM | JAX @ CHI | JAX 24, CHI 27 | CHI 59% | JAX +140 / CHI -140 | 23.3 – 26.2 | 11–35 / 14–38 | CHI -1.8 / CHI -3.0 | 47.5 / 49.5 | no edge | no edge | no edge | Trevor Lawrence / Caleb Williams |  |
+| Sun 12/06 1:00 PM | LAC @ TB | LAC 17, TB 20 | TB 67% | LAC +205 / TB -205 | 17.5 – 23.0 | 7–29 / 10–35 | TB -5.3 / TB -5.5 | 39.0 / 40.5 | no edge | no edge | no edge | Justin Herbert / Baker Mayfield |  |
+| Sun 12/06 1:00 PM | SF @ NYG | SF 27, NYG 20 | SF 70% | SF -235 / NYG +235 | 27.0 – 20.5 | 16–40 / 10–32 | SF -6.7 / SF -6.5 | 49.9 / 47.5 | no edge | no edge | no edge | Brock Purdy / J.J. McCarthy |  |
+| Sun 12/06 1:00 PM | WAS @ TEN | WAS 27, TEN 24 | WAS 64% | WAS -180 / TEN +180 | 26.0 – 21.5 | 14–38 / 10–34 | WAS -4.0 / WAS -4.5 | 46.7 / 47.5 | no edge | no edge | no edge | Jayden Daniels / Cam Ward |  |
+| Sun 12/06 4:05 PM | MIA @ DEN | MIA 13, DEN 27 | DEN 89% | MIA +815 / DEN -815 | 12.6 – 26.9 | 3–23 / 15–40 | DEN -11.5 / DEN -14.5 | 40.4 / 39.5 | no edge | no edge | no edge | Kyle McCord / Bo Nix |  |
+| Sun 12/06 4:05 PM | PHI @ ARI | PHI 20, ARI 17 | PHI 59% | PHI -145 / ARI +145 | 19.7 – 16.9 | 9–31 / 6–27 | PHI -0.2 / PHI -3.0 | 38.5 / 36.5 | no edge | no edge | no edge | Joe Milton III / Gardner Minshew |  |
+| Sun 12/06 4:25 PM | BUF @ NE | BUF 27, NE 17 | BUF 83% | BUF -480 / NE +480 | 28.2 – 16.5 | 16–41 / 6–27 | BUF -2.9 / BUF -12.5 | 51.1 / 44.5 | no edge | NE (+549): EV +4.0%, 16%, stake 0.2u | no edge | Josh Allen / Drake Maye |  |
+| Sun 12/06 4:25 PM | CAR @ MIN | CAR 20, MIN 23 | MIN 67% | CAR +205 / MIN -205 | 18.9 – 24.5 | 9–30 / 13–37 | MIN -6.7 / MIN -5.5 | 42.3 / 43.5 | no edge | no edge | no edge | Bryce Young / Kirk Cousins |  |
+| Sun 12/06 8:20 PM | HOU @ PIT | HOU 23, PIT 20 | HOU 61% | HOU -160 / PIT +160 | 22.5 – 18.9 | 10–34 / 7–30 | HOU -4.9 / HOU -3.5 | 39.6 / 41.5 | no edge | no edge | no edge | C.J. Stroud / Mason Rudolph |  |
+| Mon 12/07 8:15 PM | DAL @ SEA | DAL 24, SEA 27 | SEA 68% | DAL +215 / SEA -215 | 22.3 – 28.2 | 10–34 / 16–41 | SEA -4.4 / SEA -6.0 | 49.1 / 50.5 | no edge | no edge | no edge | Dak Prescott / Sam Darnold |  |
 
 ## How the 2026 predictions have done
 
