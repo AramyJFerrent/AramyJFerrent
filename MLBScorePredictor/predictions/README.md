@@ -1,6 +1,6 @@
 # MLB score predictions
 
-Updated Wed Nov 25, 2026 04:45 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
+Updated Thu Nov 26, 2026 04:24 AM ET. Refreshed automatically several times a day during the season; each game's prediction is locked at first pitch and graded once the final score is in.
 
 Each game is simulated 10,000 times inning by inning from tonight's starting pitchers, lineups and bullpens, with the home team skipping the bottom of the ninth when ahead, walk-offs, and the runner on second in regular-season extra innings. The predicted score is a common final score in which the likelier winner wins. Baseball is the most luck-driven of the major sports, so read the win chance and the ranges (80% of simulated outcomes for each team) before the single score.
 
@@ -66,7 +66,7 @@ Runs per game better than an average team against an average opponent at a neutr
 | 11 | SEA | +0.46 | +0.35 | +0.13 | +0.04 | -0.06 | 5.3 | 1475 |
 | 12 | HOU | +0.46 | +0.37 | +0.04 | +0.07 | -0.03 | 4.9 | 1489 |
 | 13 | CLE | +0.44 | +0.06 | +0.13 | +0.13 | +0.11 | 4.6 | 1514 |
-| 14 | BOS | +0.27 | -0.04 | +0.08 | +0.08 | +0.14 | 5.0 | 1531 |
+| 14 | BOS | +0.27 | -0.03 | +0.08 | +0.08 | +0.14 | 5.0 | 1531 |
 | 15 | DET | +0.26 | +0.12 | -0.00 | +0.08 | +0.07 | 5.0 | 1512 |
 | 16 | PIT | +0.24 | +0.01 | +0.14 | +0.05 | +0.04 | 4.7 | 1508 |
 | 17 | CWS | +0.16 | +0.19 | -0.04 | +0.03 | -0.03 | 4.4 | 1507 |
@@ -74,15 +74,15 @@ Runs per game better than an average team against an average opponent at a neutr
 | 19 | TOR | +0.11 | -0.02 | +0.03 | +0.03 | +0.07 | 4.8 | 1502 |
 | 20 | MIN | +0.10 | +0.08 | +0.09 | +0.02 | -0.10 | 5.3 | 1470 |
 | 21 | BAL | +0.02 | +0.01 | -0.08 | +0.06 | +0.03 | 5.4 | 1496 |
-| 22 | KC | -0.17 | -0.02 | -0.04 | -0.04 | -0.07 | 5.2 | 1460 |
-| 23 | WSH | -0.24 | +0.06 | -0.08 | -0.06 | -0.16 | 4.7 | 1475 |
+| 22 | KC | -0.16 | -0.02 | -0.04 | -0.04 | -0.07 | 5.2 | 1460 |
+| 23 | WSH | -0.25 | +0.06 | -0.08 | -0.06 | -0.16 | 4.7 | 1475 |
 | 24 | MIA | -0.33 | -0.26 | -0.05 | +0.01 | -0.03 | 4.8 | 1502 |
 | 25 | STL | -0.36 | -0.22 | -0.10 | -0.01 | -0.04 | 5.1 | 1481 |
 | 26 | CIN | -0.57 | -0.18 | -0.21 | +0.00 | -0.18 | 5.0 | 1456 |
 | 27 | SF | -0.64 | -0.51 | -0.10 | -0.02 | +0.00 | 4.8 | 1461 |
 | 28 | ATH | -0.65 | -0.01 | -0.18 | -0.07 | -0.40 | 4.8 | 1405 |
 | 29 | LAA | -0.66 | -0.54 | -0.02 | -0.03 | -0.07 | 5.2 | 1434 |
-| 30 | COL | -0.95 | -0.18 | -0.24 | -0.00 | -0.53 | 4.9 | 1379 |
+| 30 | COL | -0.95 | -0.19 | -0.24 | -0.00 | -0.53 | 4.9 | 1379 |
 
 ## Current model fit
 
