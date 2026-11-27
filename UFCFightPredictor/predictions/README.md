@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Thu Nov 26, 2026 05:34 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Fri Nov 27, 2026 05:18 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 80% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -18,7 +18,7 @@ Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Israel Adesanya** vs. **Shara Magomedov**<br>MW, 5 rds | Adesanya 59% – 41% Magomedov | -145 / +145 | Adesanya 60% (-166 / +140) | Adesanya 46% (+120) | Adesanya 32% / 5% / 22%<br>Magomedov 23% / 4% / 14% | 36% | Adesanya by KO/TKO (32%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Adesanya +215 / +1750 / +350<br>Magomedov +335 / +2350 / +635 |
 | **Ian Machado Garry** vs. **Yaroslav Amosov**<br>WW, 3 rds | Garry 59% – 41% Amosov | -140 / +140 | Garry 60% (-170 / +142) | Garry 42% (+140) | Garry 17% / 6% / 36%<br>Amosov 4% / 20% / 17% | 53% | Garry by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Garry +470 / +1690 / +180<br>Amosov +2215 / +405 / +485 |
-| **Serghei Spivac** vs. **Mario Pinto**<br>HW, 3 rds | Spivac 20% – 80% Pinto | +410 / -410 | Spivac 25% (+280 / -355) | Spivac 23% (+335) | Spivac 7% / 3% / 10%<br>Pinto 35% / 14% / 31% | 41% | Pinto by KO/TKO (35%) | Pinto (-355): EV +3.1%, 80%, stake 2.7u | no edge | no prices yet; fair KO / Sub / Dec<br>Spivac +1385 / +3570 / +890<br>Pinto +180 / +605 / +225 |
+| **Serghei Spivac** vs. **Mario Pinto**<br>HW, 3 rds | Spivac 21% – 79% Pinto | +365 / -365 | Spivac 27% (+250 / -310) | Spivac 23% (+335) | Spivac 7% / 3% / 11%<br>Pinto 35% / 14% / 30% | 41% | Pinto by KO/TKO (35%) | Pinto (-310): EV +3.9%, 79%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Spivac +1255 / +3215 / +805<br>Pinto +190 / +630 / +230 |
 | **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 37% – 63% Dulatov | +170 / -170 | Chokheli 38% (+154 / -185) | Chokheli 47% (+110) | Chokheli 19% / 3% / 15%<br>Dulatov 29% / 6% / 28% | 43% | Dulatov by KO/TKO (29%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Chokheli +435 / +3720 / +550<br>Dulatov +245 / +1470 / +255 |
 | **Mairon Santos** vs. **Akbar Abdullaev**<br>LW, 3 rds, UFC debut: Abdullaev | Santos 33% – 67% Abdullaev | +200 / -200 | Santos 29% (+235 / -290) | Santos 73% (-275) | Santos 14% / 3% / 16%<br>Abdullaev 19% / 12% / 35% | 51% | Abdullaev by decision (35%) | Santos (+235): EV +12.1%, 33%, stake 1.3u | no edge | no prices yet; fair KO / Sub / Dec<br>Santos +620 / +2860 / +520<br>Abdullaev +415 / +710 / +185 |
 | **Magomed Tuchalov** vs. **Ion Cutelaba**<br>LHW, 3 rds | Tuchalov 65% – 35% Cutelaba | -185 / +185 | Tuchalov 62% (-185 / +154) | Tuchalov 59% (-145) | Tuchalov 25% / 16% / 24%<br>Cutelaba 11% / 10% / 15% | 38% | Tuchalov by KO/TKO (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Tuchalov +300 / +530 / +320<br>Cutelaba +810 / +920 / +585 |
@@ -117,23 +117,23 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 4 | Jean Silva | 2075 | 302 | 7-1 | 2026-09-12 |
 |  | 5 | Jose Aldo | 2015 | 247 | 14-9 | 2025-05-10 |
 | Lightweight | 1 | Ilia Topuria | 2274 | 297 | 9-1 | 2026-06-14 |
-|  | 2 | Justin Gaethje | 2193 | 240 | 11-5 | 2026-06-14 |
+|  | 2 | Justin Gaethje | 2193 | 241 | 11-5 | 2026-06-14 |
 |  | 3 | Charles Oliveira | 2146 | 213 | 25-11 | 2026-03-07 |
 |  | 4 | Arman Tsarukyan | 2148 | 268 | 11-2 | 2026-09-19 |
 |  | 5 | Dustin Poirier | 2096 | 231 | 22-9 | 2025-07-19 |
 | Welterweight | 1 | Islam Makhachev | 2278 | 234 | 18-1 | 2026-08-15 |
 |  | 2 | Shavkat Rakhmonov | 2401 | 408 | 7-0 | 2024-12-07 |
 |  | 3 | Max Holloway | 2190 | 212 | 24-9 | 2026-07-11 |
-|  | 4 | Carlos Prates | 2236 | 282 | 7-1 | 2026-05-02 |
+|  | 4 | Carlos Prates | 2236 | 283 | 7-1 | 2026-05-02 |
 |  | 5 | Michael Morales | 2245 | 323 | 7-0 | 2025-11-15 |
 | Middleweight | 1 | Dricus Du Plessis | 2231 | 254 | 10-1 | 2026-07-18 |
 |  | 2 | Khamzat Chimaev | 2255 | 278 | 9-1 | 2026-05-09 |
 |  | 3 | Kamaru Usman | 2181 | 241 | 16-4 | 2026-07-18 |
-|  | 4 | Nassourdine Imavov | 2173 | 277 | 9-2 | 2025-09-06 |
+|  | 4 | Nassourdine Imavov | 2173 | 278 | 9-2 | 2025-09-06 |
 |  | 5 | Brendan Allen | 2123 | 229 | 16-4 | 2026-10-10 |
 | Light Heavyweight | 1 | Magomed Ankalaev | 2188 | 242 | 13-2-1 | 2026-07-25 |
 |  | 2 | Robert Whittaker | 2156 | 231 | 18-7 | 2026-07-11 |
-|  | 3 | Carlos Ulberg | 2126 | 273 | 10-1 | 2026-04-11 |
+|  | 3 | Carlos Ulberg | 2126 | 274 | 10-1 | 2026-04-11 |
 |  | 4 | Paulo Costa | 2107 | 269 | 8-4 | 2026-04-11 |
 |  | 5 | Dominick Reyes | 2063 | 237 | 11-5 | 2026-10-24 |
 | Heavyweight | 1 | Ciryl Gane | 2350 | 260 | 12-2 | 2026-11-14 |
@@ -150,7 +150,7 @@ Glicko-2 rating from UFC results, with finishes counting as clearer wins than de
 |  | 2 | Zhang Weili | 1981 | 258 | 10-3 | 2025-11-15 |
 |  | 3 | Erin Blanchfield | 1984 | 286 | 8-2 | 2026-10-17 |
 |  | 4 | Natalia Silva | 2007 | 311 | 9-0 | 2026-10-03 |
-|  | 5 | Manon Fiorot | 1961 | 288 | 8-2 | 2026-09-12 |
+|  | 5 | Manon Fiorot | 1961 | 289 | 8-2 | 2026-09-12 |
 | Women's Bantamweight | 1 | Kayla Harrison | 2165 | 401 | 4-0 | 2026-11-14 |
 |  | 2 | Amanda Nunes | 1981 | 280 | 16-3 | 2026-11-14 |
 |  | 3 | Luana Santos | 1846 | 323 | 7-1 | 2026-10-31 |
