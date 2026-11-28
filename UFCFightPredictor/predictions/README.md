@@ -1,6 +1,6 @@
 # UFC fight predictions
 
-Updated Fri Nov 27, 2026 05:18 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
+Updated Fri Nov 27, 2026 09:10 PM ET. Refreshed automatically every day and several times on fight week; each bout's prediction is locked when its part of the card starts and graded once the result is in.
 
 Each bout gets one consistent breakdown: each fighter's chance to win, split into KO/TKO, submission and decision, and the chance it ends in each round. The win chance blends the model with the betting market (about 80% market, the weight that has predicted best on past fights) and corrects the market's habit of underrating heavy favorites. MMA is high-variance: even the most likely single result is usually well under 50%.
 
@@ -20,13 +20,13 @@ Saturday, December 05, 2026 · first bout locks Sat Dec 5, 10:00 AM ET
 | **Ian Machado Garry** vs. **Yaroslav Amosov**<br>WW, 3 rds | Garry 59% – 41% Amosov | -140 / +140 | Garry 60% (-170 / +142) | Garry 42% (+140) | Garry 17% / 6% / 36%<br>Amosov 4% / 20% / 17% | 53% | Garry by decision (36%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Garry +470 / +1690 / +180<br>Amosov +2215 / +405 / +485 |
 | **Serghei Spivac** vs. **Mario Pinto**<br>HW, 3 rds | Spivac 21% – 79% Pinto | +365 / -365 | Spivac 27% (+250 / -310) | Spivac 23% (+335) | Spivac 7% / 3% / 11%<br>Pinto 35% / 14% / 30% | 41% | Pinto by KO/TKO (35%) | Pinto (-310): EV +3.9%, 79%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Spivac +1255 / +3215 / +805<br>Pinto +190 / +630 / +230 |
 | **Levan Chokheli** vs. **Islam Dulatov**<br>WW, 3 rds | Chokheli 37% – 63% Dulatov | +170 / -170 | Chokheli 38% (+154 / -185) | Chokheli 47% (+110) | Chokheli 19% / 3% / 15%<br>Dulatov 29% / 6% / 28% | 43% | Dulatov by KO/TKO (29%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Chokheli +435 / +3720 / +550<br>Dulatov +245 / +1470 / +255 |
-| **Mairon Santos** vs. **Akbar Abdullaev**<br>LW, 3 rds, UFC debut: Abdullaev | Santos 33% – 67% Abdullaev | +200 / -200 | Santos 29% (+235 / -290) | Santos 73% (-275) | Santos 14% / 3% / 16%<br>Abdullaev 19% / 12% / 35% | 51% | Abdullaev by decision (35%) | Santos (+235): EV +12.1%, 33%, stake 1.3u | no edge | no prices yet; fair KO / Sub / Dec<br>Santos +620 / +2860 / +520<br>Abdullaev +415 / +710 / +185 |
+| **Mairon Santos** vs. **Akbar Abdullaev**<br>LW, 3 rds, UFC debut: Abdullaev | Santos 32% – 68% Abdullaev | +215 / -215 | Santos 27% (+260 / -298) | Santos 73% (-275) | Santos 13% / 3% / 15%<br>Abdullaev 20% / 13% / 36% | 51% | Abdullaev by decision (36%) | Santos (+260): EV +14.0%, 32%, stake 1.4u | no edge | no prices yet; fair KO / Sub / Dec<br>Santos +660 / +3045 / +550<br>Abdullaev +405 / +685 / +180 |
 | **Magomed Tuchalov** vs. **Ion Cutelaba**<br>LHW, 3 rds | Tuchalov 65% – 35% Cutelaba | -185 / +185 | Tuchalov 62% (-185 / +154) | Tuchalov 59% (-145) | Tuchalov 25% / 16% / 24%<br>Cutelaba 11% / 10% / 15% | 38% | Tuchalov by KO/TKO (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Tuchalov +300 / +530 / +320<br>Cutelaba +810 / +920 / +585 |
 | **Bruno Silva** vs. **Jafel Filho**<br>FLW, 3 rds, UFC debut: Silva | Silva 45% – 55% Filho | +120 / -120 | no line yet | Silva 45% (+120) | Silva 9% / 11% / 25%<br>Filho 6% / 30% / 18% | 43% | Filho by submission (30%) | no line yet | no edge | no prices yet; fair KO / Sub / Dec<br>Silva +1000 / +775 / +305<br>Filho +1450 / +235 / +445 |
 | **Uran Satybaldiev** vs. **Ivan Gnizditskiy**<br>LHW, 3 rds, UFC debut: Gnizditskiy | Satybaldiev 52% – 48% Gnizditskiy | -110 / +110 | Satybaldiev 53% (-125 / +102) | Satybaldiev 48% (+110) | Satybaldiev 25% / 15% / 13%<br>Gnizditskiy 23% / 8% / 17% | 30% | Satybaldiev by KO/TKO (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Satybaldiev +305 / +555 / +695<br>Gnizditskiy +345 / +1210 / +475 |
 | **Marco Tulio** vs. **JunYong Park**<br>MW, 3 rds | Tulio 59% – 41% Park | -145 / +145 | no line yet | Tulio 59% (-145) | Tulio 28% / 6% / 25%<br>Park 18% / 7% / 16% | 40% | Tulio by KO/TKO (28%) | no line yet | no price yet; fair Over 2.5 +125, Under -125 | no prices yet; fair KO / Sub / Dec<br>Tulio +255 / +1490 / +310<br>Park +455 / +1275 / +540 |
 | **Pavel Andrusca** vs. **Mehemmedeli Osmanli**<br>BW, 3 rds | Andrusca 66% – 34% Osmanli | -190 / +190 | Andrusca 56% (-142 / +120) | Andrusca 83% (-480) | Andrusca 12% / 13% / 41%<br>Osmanli 9% / 5% / 20% | 61% | Andrusca by decision (41%) | Andrusca (-142): EV +11.8%, 66%, stake 3.0u | no edge | no prices yet; fair KO / Sub / Dec<br>Andrusca +745 / +660 / +145<br>Osmanli +990 / +1775 / +405 |
-| **Modestino Rodrigues** vs. **Matthieu Letho Duclos**<br>MW, 3 rds, UFC debut: Rodrigues | Rodrigues 41% – 59% Duclos | +145 / -145 | Rodrigues 44% (+120 / -142) | Rodrigues 38% (+165) | Rodrigues 15% / 8% / 17%<br>Duclos 33% / 7% / 20% | 37% | Duclos by KO/TKO (33%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Rodrigues +550 / +1185 / +475<br>Duclos +205 / +1300 / +405 |
+| **Modestino Rodrigues** vs. **Matthieu Letho Duclos**<br>MW, 3 rds, UFC debut: Rodrigues | Rodrigues 43% – 57% Duclos | +135 / -135 | Rodrigues 46% (+110 / -130) | Rodrigues 38% (+165) | Rodrigues 16% / 8% / 18%<br>Duclos 31% / 7% / 19% | 37% | Duclos by KO/TKO (31%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Rodrigues +520 / +1115 / +450<br>Duclos +220 / +1360 / +420 |
 | **Abdul Hussein** vs. **Hecher Sosa**<br>BW, 3 rds | Hussein 66% – 34% Sosa | -190 / +190 | Hussein 62% (-180 / +150) | Hussein 66% (-195) | Hussein 17% / 23% / 25%<br>Sosa 8% / 3% / 23% | 48% | Hussein by decision (25%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Hussein +475 / +335 / +295<br>Sosa +1110 / +2910 / +340 |
 | **Luke Riley** vs. **Gabriel Santos**<br>FW, 3 rds | Riley 59% – 41% Santos | -140 / +140 | Riley 55% (-135 / +114) | Riley 64% (-180) | Riley 26% / 4% / 29%<br>Santos 10% / 8% / 23% | 53% | Riley by decision (29%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Riley +285 / +2745 / +240<br>Santos +900 / +1180 / +325 |
 | **Mateusz Rębecki** vs. **Elves Brener**<br>LW, 3 rds | Rębecki 55% – 45% Brener | -120 / +120 | Rębecki 54% (-130 / +110) | Rębecki 53% (-110) | Rębecki 21% / 6% / 28%<br>Brener 19% / 6% / 20% | 48% | Rębecki by decision (28%) | no edge | no edge | no prices yet; fair KO / Sub / Dec<br>Rębecki +365 / +1580 / +260<br>Brener +420 / +1645 / +400 |
@@ -45,10 +45,38 @@ When it ends (either fighter):
 | Satybaldiev vs. Gnizditskiy | 40% | 21% | 9% |  |  | 30% |
 | Tulio vs. Park | 32% | 19% | 9% |  |  | 40% |
 | Andrusca vs. Osmanli | 19% | 13% | 7% |  |  | 61% |
-| Rodrigues vs. Duclos | 34% | 20% | 9% |  |  | 37% |
+| Rodrigues vs. Duclos | 34% | 19% | 9% |  |  | 37% |
 | Hussein vs. Sosa | 27% | 17% | 8% |  |  | 48% |
 | Riley vs. Santos | 24% | 15% | 8% |  |  | 53% |
 | Rębecki vs. Brener | 27% | 17% | 8% |  |  | 48% |
+
+## UFC 335: Oliveira vs. Lopes
+
+Saturday, December 12, 2026 · first bout locks Sat Dec 12, 5:00 PM ET
+
+| Bout | Win chance | Fair odds | Market | Model alone | KO / Sub / Dec | Distance | Most likely result | Moneyline edge | Round total edge | Method edge |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Charles Oliveira** vs. **Diego Lopes**<br>LW, 5 rds | Oliveira 56% – 44% Lopes | -125 / +125 | Oliveira 57% (-148 / +124) | Oliveira 42% (+135) | Oliveira 15% / 23% / 17%<br>Lopes 23% / 7% / 14% | 32% | Lopes by KO/TKO (23%) | no edge | no price yet; fair Over 2.5 +105, Under -105 | no prices yet; fair KO / Sub / Dec<br>Oliveira +560 / +335 / +475<br>Lopes +330 / +1300 / +610 |
+| **Alex Pereira** vs. **Sergei Pavlovich**<br>HW, 5 rds | Pereira 33% – 67% Pavlovich | +205 / -205 | Pereira 36% (+164 / -198) | Pereira 35% (+185) | Pereira 23% / 2% / 8%<br>Pavlovich 48% / 3% / 16% | 24% | Pavlovich by KO/TKO (48%) | no edge | no price yet; fair Over 1.5 -140, Under +140 | no prices yet; fair KO / Sub / Dec<br>Pereira +330 / +6160 / +1210<br>Pavlovich +105 / +3315 / +515 |
+| **Brandon Moreno** vs. **Charles Johnson**<br>FLW, 3 rds | Moreno 70% – 30% Johnson | -230 / +230 | no line yet | Moreno 70% (-230) | Moreno 17% / 11% / 41%<br>Johnson 8% / 4% / 19% | 60% | Moreno by decision (41%) | no line yet | no price yet; fair Over 2.5 -170, Under +170 | no prices yet; fair KO / Sub / Dec<br>Moreno +480 / +770 / +145<br>Johnson +1180 / +2475 / +440 |
+| **Damian Pinas** vs. **Baisangur Susurkaev**<br>MW, 3 rds | Pinas 44% – 56% Susurkaev | +130 / -130 | no line yet | Pinas 44% (+130) | Pinas 33% / 1% / 10%<br>Susurkaev 18% / 15% / 23% | 34% | Pinas by KO/TKO (33%) | no line yet | no price yet; fair Over 1.5 -115, Under +115 | no prices yet; fair KO / Sub / Dec<br>Pinas +210 / +9900 / +860<br>Susurkaev +445 / +585 / +330 |
+| **Kyler Phillips** vs. **Ethyn Ewing**<br>BW, 3 rds | Phillips 39% – 61% Ewing | +155 / -155 | no line yet | Phillips 39% (+155) | Phillips 8% / 4% / 26%<br>Ewing 16% / 4% / 41% | 67% | Ewing by decision (41%) | no line yet | no price yet; fair Over 2.5 -235, Under +235 | no prices yet; fair KO / Sub / Dec<br>Phillips +1100 / +2175 / +280<br>Ewing +510 / +2490 / +145 |
+| **Quentin Pasley** vs. **Junior Tafa**<br>LHW, 3 rds, UFC debut: Pasley | Pasley 52% – 48% Tafa | -110 / +110 | no line yet | Pasley 52% (-110) | Pasley 26% / 14% / 13%<br>Tafa 28% / 6% / 14% | 26% | Tafa by KO/TKO (28%) | no line yet | no price yet; fair Over 1.5 +115, Under -115 | no prices yet; fair KO / Sub / Dec<br>Pasley +285 / +640 / +685<br>Tafa +255 / +1565 / +630 |
+| **Roque Conceição** vs. **Nilson Rojas**<br>FLW, 3 rds, UFC debut: Conceição | Conceição 57% – 43% Rojas | -135 / +135 | no line yet | Conceição 57% (-135) | Conceição 20% / 14% / 23%<br>Rojas 10% / 9% / 23% | 46% | Rojas by decision (23%) | no line yet | no price yet; fair Over 2.5 -100, Under +100 | no prices yet; fair KO / Sub / Dec<br>Conceição +410 / +595 / +330<br>Rojas +860 / +995 / +330 |
+| **Jacqueline Cavalcanti** vs. **Michelle Montague**<br>W-BW, 3 rds | Cavalcanti 56% – 44% Montague | -130 / +130 | no line yet | Cavalcanti 56% (-130) | Cavalcanti 8% / 4% / 44%<br>Montague 4% / 4% / 36% | 81% | Cavalcanti by decision (44%) | no line yet | no price yet; fair Over 2.5 -470, Under +470 | no prices yet; fair KO / Sub / Dec<br>Cavalcanti +1165 / +2440 / +125<br>Montague +2455 / +2645 / +175 |
+
+When it ends (either fighter):
+
+| Bout | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 | Decision |
+|---|---|---|---|---|---|---|
+| Oliveira vs. Lopes | 26% | 20% | 12% | 6% | 5% | 32% |
+| Pereira vs. Pavlovich | 31% | 22% | 13% | 6% | 5% | 24% |
+| Moreno vs. Johnson | 20% | 13% | 7% |  |  | 60% |
+| Pinas vs. Susurkaev | 37% | 20% | 9% |  |  | 34% |
+| Phillips vs. Ewing | 16% | 11% | 6% |  |  | 67% |
+| Pasley vs. Tafa | 43% | 22% | 9% |  |  | 26% |
+| Conceição vs. Rojas | 28% | 17% | 9% |  |  | 46% |
+| Cavalcanti vs. Montague | 9% | 7% | 4% |  |  | 81% |
 
 ## How the 2026 predictions have done
 
